@@ -6,4 +6,4 @@ run:
 	bin/django runserver
 
 static:
-	bin/django collectstatic
+	bin/django collectstatic --noinput
