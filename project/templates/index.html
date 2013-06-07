@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div style="padding:80px; max-width:600px;margin:auto;">
+        <h2>{% trans "Puslapis ruošiamas..." %} </h2>   
+        <h4>{% trans "Artimiausi planai" %}</h4>
+        <p>
+           <ul>
+               <li>{% trans "Sukonfigūruoti Django serveryje." %}</li>
+               <li>{% trans "Suprojektuoti prototipą, kuris leistų:" %}</li>
+               <ul>
+                   <li>{% trans "Prisijungti" %}</li>
+                   <li>{% trans "Įkelti savo duomenis" %}</li>
+                   <li>{% trans "Įkelti savo algoritmą" %}</li>
+                   <li>{% trans "Įvykdyti algoritmą su pasirinktais duomenimis superkompiuteryje" %}</li>
+                   <li>{% trans "Pamatyti vykdymo rezultatus." %}</li>
+               </ul>
+               <li>{% trans "Realizuoti prototipą." %}</li>
+        </p>
+    </div>
+{% endblock %}
