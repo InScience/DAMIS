@@ -15,11 +15,11 @@
 <meta name="author" content="" />
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="" />
+<link rel="shortcut icon" href="/static/img/favicon.ico" />
 
 <!-- CSS -->
-<link rel="stylesheet" href="" media="screen,projection" type="text/css" />
-<link rel="stylesheet" href="" media="print" type="text/css" />
+<link rel="stylesheet" href="/static/css/bootstrap.min.css" media="screen,projection" type="text/css" />
+<link rel="stylesheet" href="/static/css/style.css" media="screen,projection" type="text/css" />
 
 <!-- RSS -->
 <link rel="alternate" href="" title="RSS Feed" type="application/rss+xml" />
@@ -30,7 +30,44 @@
 </head>
 
 <body>
-    {% block content %}
+    <div class="content">
+    <div class="row-fluid">
+        {% block menu %}
+        <div class="header">
+            <div class="span12 navbar-align">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                    <ul class="nav">
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+    <div class='footer'>
+        {% block footer %}
+        <div class="span12">
+            <br>
+            <br>
+            <hr>
+            <div class="attribution">
+                <a href="http://www.inscience.lt">by InScience.LT </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"> CC BY-SA 3.0 </a>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+    </div>
+    </div>
+
+    {% block javascript %}
+        <script src="/static/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery.js" type="text/javascript"></script>
     {% endblock %}
 </body>
 </html>

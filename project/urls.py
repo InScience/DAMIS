@@ -8,9 +8,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', 'project.views.index')
-    # Example:
-    # (r'^{{ project_name }}/', include('{{ project_name }}.foo.urls')),
+    (r'^$', 'project.views.index'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -19,10 +17,8 @@ urlpatterns = patterns('',
     # (r'^admin/', include(admin.site.urls)),
 )
 
-if settings.DEBUG:
-    urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve',
-         {'document_root': settings.MEDIA_ROOT}),
-    )
-
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += patterns('',
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve',
+     {'document_root': settings.MEDIA_ROOT}),
+)

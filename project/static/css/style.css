@@ -1,0 +1,28 @@
+/* ---- Body ---- */
+body {
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+.content {
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.navbar a:hover, .navbar a:focus {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.125) inset;
+}
+
+
+/* ---- Footer ---- */
+.footer {
+    width: 600px;
+    margin: auto;
+    text-align: center;
+    float: none;
+    margin-top: -20px;
+}
+
+.attribution {
+    text-align: center;
+}
