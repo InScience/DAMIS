@@ -4,3 +4,6 @@ install:
 
 run:
 	bin/django runserver
+
+static:
+	bin/django collectstatic
