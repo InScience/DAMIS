@@ -1,0 +1,10 @@
+# Python temporary files
+*.pyc
+
+# Buildout directories
+bin
+var
+eggs
+
+# Buildout temporary file 
+.installed.cfg
