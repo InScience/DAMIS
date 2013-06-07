@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
 "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
@@ -34,14 +35,7 @@
     <div class="row-fluid">
         {% block menu %}
         <div class="header">
-            <div class="span12 navbar-align">
-                <div class="navbar">
-                    <div class="navbar-inner">
-                    <ul class="nav">
-                    </ul>
-                    </div>
-                </div>
-            </div>
+            {% include 'menu.html' %}
         </div>
         {% endblock %}
 

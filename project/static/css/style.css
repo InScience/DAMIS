@@ -13,6 +13,13 @@ body {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.125) inset;
 }
 
+/* ---- Extra ---- */
+.login-form {
+    padding: 80px;
+    margin:0 auto !important;
+    float:none !important;
+}
+
 
 /* ---- Footer ---- */
 .footer {
