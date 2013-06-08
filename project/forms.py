@@ -19,4 +19,5 @@ class LoginForm(forms.Form):
         if not user:
             raise forms.ValidationError(_(u'Naudotojo vardas arba slaptažodis '
                                             'yra neteisingi'))
-        return {'user': user}
+        cleaned_data['user'] = user
+        return cleaned_data
