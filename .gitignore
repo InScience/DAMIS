@@ -5,6 +5,7 @@
 bin
 var
 eggs
+develop-eggs
 
 # Buildout temporary file 
 .installed.cfg
