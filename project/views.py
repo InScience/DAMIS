@@ -1,5 +1,5 @@
 #! coding: utf-8
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 
@@ -7,7 +7,7 @@ from forms import LoginForm
 
 
 def index(request):
-    return render_to_response('index.html', {})
+    return render(request, 'index.html', {})
 
 def login_view(request):
     if request.method == 'POST':
@@ -27,4 +27,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/login')
