@@ -2,13 +2,13 @@
 <div class="span12 navbar-align">
     <div class="navbar">
         <div class="navbar-inner">
-        <ul class="nav">
-            {% if user.is_authenticated %}
-                <li><a href="/logout"><b>{{ user }}</b> <span class="helptext">{% trans "(Atsijungti)" %}</span></a></li>
-            {% else %}
-                <li><a href="/login">{% trans "Prisijungti" %}</a></li>
-            {% endif %}
+        <ul class="nav pull-right">
+                {% if user.is_authenticated %}
+                    <li><a href="/logout"><b>{{ user }}</b> <span class="helptext">{% trans "(Atsijungti)" %}</span></a></li>
+                {% else %}
+                    <li><a href="/login">{% trans "Prisijungti" %}</a></li>
+                {% endif %}
+            </div>
         </ul>
-        </div>
     </div>
 </div>
