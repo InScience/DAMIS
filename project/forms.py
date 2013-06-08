@@ -5,7 +5,10 @@ from subprocess import Popen, PIPE
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label=_('Naudotojo vardas'), max_length=100)
+    username = forms.CharField(label=_('Naudotojo vardas'), max_length=100,
+                               help_text=_('Vilniaus Universiteto Matematikos '
+                                   'ir informatikos fakulteto uosis.mif.vu.lt '
+                                   'serverio naudotojo vardas.'))
     password = forms.CharField(label=_(u'Slaptažodis'), max_length=128,
                         widget=forms.PasswordInput(render_value=False))
 
