@@ -15,6 +15,7 @@ def login_view(request):
         if form.is_valid():
             user = form.cleaned_data['user']
             if user is not None and user.is_active:
+                request.session['password'] = form.cleaned_data['password']
                 login(request, user)
                 return HttpResponseRedirect('/')
     else:
