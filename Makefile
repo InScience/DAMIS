@@ -1,3 +1,5 @@
+.PHONY: install run static tags
+
 install:
 	python bootstrap.py
 	bin/buildout
@@ -7,3 +9,6 @@ run:
 
 static:
 	bin/django collectstatic --noinput
+
+tags:
+	bin/ctags -v
