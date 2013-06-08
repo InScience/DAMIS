@@ -20,6 +20,16 @@ body {
     float:none !important;
 }
 
+.helptext {
+    color: gray;
+    font-size: 11px;
+    line-height: 0.8;
+}
+
+.errorlist {
+    color: #A60000;
+    list-style-type: none;
+}
 
 /* ---- Footer ---- */
 .footer {
