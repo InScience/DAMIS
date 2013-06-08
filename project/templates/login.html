@@ -3,16 +3,8 @@
 
 {% block content %}
     <div class="span6 login-form">
-        {% if form.non_field_errors %}
-            <div class='error'>{{ form.non_field_errors }}</div>
-        {% endif %}
         <form action="/login" method="post">{% csrf_token %}
-            {% for field in form %}
-                {% if field.errors %}
-                    <div class='error'>{{ field.errors }}</div>
-                {% endif %}
-                {{ field.label_tag }} {{ field }}
-            {% endfor %}
+            {{ form.as_p }}
             <p><input class="btn" type="submit" value="{% trans "Prisijungti" %}" /></p>
         </form>
     </div>
