@@ -108,6 +108,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'project.urls'
 
+AUTHENTICATION_BACKENDS = ('project.models.UosisMIFVUAuthBackend',)
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
