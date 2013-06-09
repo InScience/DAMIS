@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 
 class LoginForm(forms.Form):
     username = forms.CharField(label=_('Naudotojo vardas'), max_length=100,
-                               help_text=_('VU MIF uosis.mif.vu.lt serverio.'))
+                               help_text=_('@uosis.mif.vu.lt'))
     password = forms.CharField(label=_(u'Slaptažodis'), max_length=128,
                         widget=forms.PasswordInput(render_value=False))
 
@@ -18,6 +18,6 @@ class LoginForm(forms.Form):
         user = authenticate(**cleaned_data)
         if not user:
             raise forms.ValidationError(_(u'Naudotojo vardas arba slaptažodis '
-                                            'yra neteisingi'))
+                                            'yra neteisingas'))
         cleaned_data['user'] = user
         return cleaned_data

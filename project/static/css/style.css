@@ -30,6 +30,10 @@ body {
     padding-bottom: 17px;
 }
 
+.top-space{
+    padding-top: 50px;
+}
+
 .content-about {
     padding: 80px;
     font-family: 'Open Sans Light',sans-serif;

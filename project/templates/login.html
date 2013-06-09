@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="span6 login-form">
+    <div class="span6 offset4 top-space">
         <form action="/login" method="post">{% csrf_token %}
             {{ form.as_p }}
-            <p><input class="btn" type="submit" value="{% trans "Prisijungti" %}" /></p>
+            <p><input class="btn btn-primary" type="submit" value="{% trans "Prisijungti" %}" /></p>
         </form>
     </div>
 {% endblock %}
