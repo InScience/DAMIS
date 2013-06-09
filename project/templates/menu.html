@@ -4,6 +4,9 @@
         <div class="navbar-inner">
         <ul class="nav">
             <li class="{% if active == "home" %}active{% endif %}"><a href="/"><img src="/static/img/home_icon.png"/></a></li>
+            <li class="{% if active == "data" %}active{% endif %}"><a href="#">{% trans "Duomenys" %}</a></li>
+            <li class="{% if active == "algorithms" %}active{% endif %}"><a href="#">{% trans "Algoritmai" %}</a></li>
+            <li class="{% if active == "experiments" %}active{% endif %}"><a href="#">{% trans "Eksperimentai" %}</a></li>
         </ul>
         <ul class="nav pull-right">
             {% if user.is_authenticated %}

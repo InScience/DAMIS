@@ -1,3 +1,10 @@
+@font-face {
+    font-family: Open Sans Light;
+    src: url("/static/open-sans.light.ttf");
+    /* font-weight, font-style ==> default to normal */
+}
+
+
 /* ---- Body ---- */
 body {
     padding-top: 20px;
@@ -12,6 +19,30 @@ body {
 .navbar a:hover, .navbar a:focus {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.125) inset;
 }
+
+/* ---- Body about ---- */
+.logo {
+    width: 170px;
+}
+
+.logo-div {
+    text-align: center;
+    padding-bottom: 17px;
+}
+
+.content-about {
+    padding: 80px;
+    font-family: 'Open Sans Light',sans-serif;
+    font-size: 14px;
+}
+
+.content-about li {
+    list-style-type: none;
+    padding-bottom: 10px;
+}
+
+
+
 
 /* ---- Extra ---- */
 .login-form {

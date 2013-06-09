@@ -6,21 +6,12 @@
 {% endblock %}
 
 {% block content %}
-    <div style='padding: 80px;'>
-        <h2>{% trans "Puslapis ruošiamas..." %} </h2>   
-        <h4>{% trans "Artimiausi planai" %}</h4>
-        <p>
-           <ul>
-               <li>{% trans "Sukonfigūruoti Django serveryje." %}</li>
-               <li>{% trans "Suprojektuoti prototipą, kuris leistų:" %}</li>
-               <ul>
-                   <li>{% trans "Prisijungti" %}</li>
-                   <li>{% trans "Įkelti savo duomenis" %}</li>
-                   <li>{% trans "Įkelti savo algoritmą" %}</li>
-                   <li>{% trans "Įvykdyti algoritmą su pasirinktais duomenimis superkompiuteryje" %}</li>
-                   <li>{% trans "Pamatyti vykdymo rezultatus." %}</li>
-               </ul>
-               <li>{% trans "Realizuoti prototipą." %}</li>
-        </p>
+    <div class='content-about'>
+        <div class='logo-div'><img class="logo" src='/static/img/logo.png'/></div>
+        <ul>
+            <li>&nbsp;&nbsp;&nbsp;{% trans "Tai <b>atvira mokslo infrastruktūra</b>, skirta mokslą norintiems kurti Lietuvos piliečiams." %}</li>
+            <li>&nbsp;&nbsp;&nbsp;{% trans "Pagrindinis įrankis mokslininkams, bet tinka tiek verslui, siekiančiam praktiškai taikyti mokslo žinias, tiek ir individualiems programuotojams, norintiems išbandyti savo jėgas." %}</li>
+            <li>&nbsp;&nbsp;&nbsp;{% trans "Įrankis maksimaliai orientuotas į atvirumą, perpanaudojamumą, siekiant sukurti idealią nišą <b>skaičiuojamąjam</b> bei <b>mokslo taikomąjam</b> verslui kurtis." %}</li>
+        </ul>
     </div>
 {% endblock %}
