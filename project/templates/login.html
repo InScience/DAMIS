@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block menu %}
+    {% include 'menu.html' with active='login' %}
+{% endblock %}
+
 {% block content %}
     <div class="span6 login-form">
         <form action="/login" method="post">{% csrf_token %}
