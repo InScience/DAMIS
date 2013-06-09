@@ -10,7 +10,7 @@
         </ul>
         <ul class="nav pull-right">
             {% if user.is_authenticated %}
-                <li><a href="/logout"><b>{{ user }}</b> <span class="helptext">{% trans "(Atsijungti)" %}</span></a></li>
+                <li><a href="/logout">{{ user }} <span class="helptext">{% trans "(Atsijungti)" %}</span></a></li>
             {% else %}
                 <li class="{% if active == "login" %}active{% endif %}"><a href="/login">{% trans "Prisijungti" %}</a></li>
             {% endif %}
