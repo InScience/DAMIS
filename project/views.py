@@ -6,9 +6,19 @@ from django.contrib.auth import login, logout
 from forms import LoginForm
 
 
-def index(request):
+def index_view(request):
     return render(request, 'index.html', {})
 
+def data_view(request):
+    return render(request, 'data.html', {})
+
+def experiments_view(request):
+    return render(request, 'experiments.html', {})
+
+def algorithms_view(request):
+    return render(request, 'algorithms.html', {})
+
+## User views
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
