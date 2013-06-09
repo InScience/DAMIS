@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block menu %}
+    {% include 'menu.html' with active='home' %}
+{% endblock %}
+
 {% block content %}
     <div style='padding: 80px;'>
         <h2>{% trans "Puslapis ruošiamas..." %} </h2>   

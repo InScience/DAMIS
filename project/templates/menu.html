@@ -2,6 +2,9 @@
 <div class="span12 navbar-align">
     <div class="navbar">
         <div class="navbar-inner">
+        <ul class="nav">
+            <li class="{% if active == "home" %}active{% endif %}"><a href="/"><img src="/static/img/home_icon.png"/></a></li>
+        </ul>
         <ul class="nav pull-right">
             {% if user.is_authenticated %}
                 <li><a href="/logout"><b>{{ user }}</b> <span class="helptext">{% trans "(Atsijungti)" %}</span></a></li>
