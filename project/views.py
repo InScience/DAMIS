@@ -3,14 +3,22 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 
-from forms import LoginForm
+from forms import LoginForm, DataFileUploadForm
 
 
 def index_view(request):
     return render(request, 'index.html', {})
 
 def data_view(request):
-    return render(request, 'data.html', {})
+    if request.method == 'POST':
+        form = DataFileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            # handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('/')
+    form = DataFileUploadForm()
+    return render(request, 'data.html', {
+            'form': form,
+        })
 
 def experiments_view(request):
     return render(request, 'experiments.html', {})

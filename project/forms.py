@@ -21,3 +21,9 @@ class LoginForm(forms.Form):
                                             'yra neteisingas'))
         cleaned_data['user'] = user
         return cleaned_data
+
+class DataFileUploadForm(forms.Form):
+    title = forms.CharField(label=_('Pavadinimas'))
+    data_file = forms.FileField(label=_(u'Duomenų failas'))
+    comment = forms.CharField(label=_(u'Aprašymas'),
+            widget=forms.Textarea(attrs={'rows':'5', 'cols': '25'}))
