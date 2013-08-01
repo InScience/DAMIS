@@ -22,8 +22,15 @@ class LoginForm(forms.Form):
         cleaned_data['user'] = user
         return cleaned_data
 
+DATA_LICENCES = (
+    ('private', u"Privatūs"),
+    ('public', 'Vieši pagal http://opendatacommons.org/licenses/pddl/')
+)
+
 class DataFileUploadForm(forms.Form):
     title = forms.CharField(label=_('Pavadinimas'))
     data_file = forms.FileField(label=_(u'Duomenų failas'))
+    licence = forms.ChoiceField(label=_(u'Licencija'), choices=DATA_LICENCES)
     comment = forms.CharField(label=_(u'Aprašymas'),
-            widget=forms.Textarea(attrs={'rows':'5', 'cols': '25'}))
+            widget=forms.Textarea(attrs={'rows':'5', 'cols': '25'}),
+            required=False)

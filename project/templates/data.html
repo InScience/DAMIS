@@ -25,10 +25,12 @@
               </tr>
           </thead>
           <tbody>
+            {% for file in files %}
               <tr>
-                  <td>Sintetiniai normaliai pasiskirstę stipriai persidengiantys duomenys</td>
-                  <td>Privatūs</td>
-                  <td>24MB</td>
+                
+                  <td>{{ file.title }}</td>
+                  <td>{{ file.licence }}</td>
+                  <td>{{ file.size }}</td>
                   <td>
                       <div class="btn-group" >
                           <button type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
@@ -44,13 +46,14 @@
                       </div>
                   </td>
               </tr>
+            {% endfor %}
           </tbody>
       </table>
     </div>
     <div class="tab-pane" id="upload-data">
 
     <div class="span8 offset3">
-        <form method='POST' action='.'>
+        <form method='POST' action='/data' enctype="multipart/form-data">{% csrf_token %}
             {{ form.as_p }}
             <input type='submit' class="btn btn-primary" value="{% trans "Įkelti duomenis" %}" />
         </form>
