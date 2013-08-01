@@ -7,8 +7,10 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 from forms import LoginForm, DataFileUploadForm
+from utils import slugify
 
 DATA_LICENCE_SHORT = {
     'private': u'Privatūs',
@@ -21,8 +23,11 @@ def index_view(request):
 
 @login_required
 def data_view(request):
-    absolute_dir = 'data/'
+    absolute_dir = settings.MEDIA_ROOT
     user_dir = join(absolute_dir, request.user.username)
+    if not exists(user_dir):
+        makedirs(user_dir)
+
     files = []
     for f in listdir(user_dir):
         if f.endswith('.names'):
@@ -34,7 +39,6 @@ def data_view(request):
 
     # files = [f for f in listdir(user_dir) if f.endswith('.names')]
 
-
     if request.method == 'POST':
         form = DataFileUploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -44,15 +48,13 @@ def data_view(request):
                 'comment': form.cleaned_data['comment'],
             }
             # STUB: aboslute_dir should be in supercomputer, not in web server
-            if not exists(user_dir):
-                makedirs(user_dir)
 
-            filename = '_'.join(form.cleaned_data['title'].lower().split())
+            filename = slugify(form.cleaned_data['title'])
             meta_file = open(join(user_dir, filename + '.names'), 'w')
             data_file = open(join(user_dir, filename + '.csv'), 'w')
 
             # TODO: SCP meta-data file and uploaded file to logged in user home directory
-            json.dump(meta_data, meta_file)
+            json.dump(meta_data, meta_file, indent=4)
             data_file.write(form.cleaned_data['data_file'].read())
             meta_file.close()
             data_file.close()
