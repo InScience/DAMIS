@@ -9,6 +9,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import get_language
 
 from forms import LoginForm, DataFileUploadForm
 from utils import slugify
@@ -81,7 +82,7 @@ def login_view(request):
             if user is not None and user.is_active:
                 request.session['password'] = form.cleaned_data['password']
                 login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/%s/' % get_language())
     else:
         form = LoginForm()
 
@@ -92,4 +93,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     request.session.clear()
-    return HttpResponseRedirect('/login')
+    return HttpResponseRedirect('/login/')
