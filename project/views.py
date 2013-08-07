@@ -35,9 +35,6 @@ def data_view(request):
             f_meta['licence'] = DATA_LICENCE_SHORT[f_meta['licence']]
             files.append(f_meta)
             files[-1]['size'] = str(getsize(join(user_dir, splitext(f)[0]+'.csv'))) + ' B'
-            # files.append(f_meta)
-
-    # files = [f for f in listdir(user_dir) if f.endswith('.names')]
 
     if request.method == 'POST':
         form = DataFileUploadForm(request.POST, request.FILES)
@@ -66,9 +63,11 @@ def data_view(request):
             'files': files,
         })
 
+@login_required
 def experiments_view(request):
     return render(request, 'experiments.html', {})
 
+@login_required
 def algorithms_view(request):
     return render(request, 'algorithms.html', {})
 
