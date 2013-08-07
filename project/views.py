@@ -57,7 +57,7 @@ def data_view(request):
             data_file.write(form.cleaned_data['data_file'].read())
             meta_file.close()
             data_file.close()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/%s/data/' % get_language())
 
     form = DataFileUploadForm()
     return render(request, 'data.html', {
