@@ -8,13 +8,14 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
 from forms import LoginForm, DataFileUploadForm
 from utils import slugify
 
 DATA_LICENCE_SHORT = {
-    'private': u'Privatūs',
-    'public': u'Vieši'
+    'private': _('Private'),
+    'open': _('Open'),
 }
 
 

@@ -1,20 +1,26 @@
 {% load i18n %}
+{% get_current_language as lang %}
 <div class="span12 navbar-align">
     <div class="navbar">
         <div class="navbar-inner">
         <ul class="nav">
-            <li class="{% if active == "home" %}active{% endif %}"><a href="/"><img src="/static/img/home_icon.png"/></a></li>
-            <li class="{% if active == "data" %}active{% endif %}"><a href="/data">{% trans "Duomenys" %}</a></li>
-            <li class="{% if active == "algorithms" %}active{% endif %}"><a href="/algorithms">{% trans "Algoritmai" %}</a></li>
-            <li class="{% if active == "experiments" %}active{% endif %}"><a href="/experiments">{% trans "Eksperimentai" %}</a></li>
+            <li class="{% if active == "home" %}active{% endif %}"><a href="/{{ lang }}/"><img src="/static/img/home_icon.png"/></a></li>
+            <li class="{% if active == "data" %}active{% endif %}"><a href="/{{ lang }}/data">{% trans "Datasets" %}</a></li>
+            <li class="{% if active == "algorithms" %}active{% endif %}"><a href="/{{ lang }}/algorithms">{% trans "Algorithms" %}</a></li>
+            <li class="{% if active == "experiments" %}active{% endif %}"><a href="/{{ lang }}/experiments">{% trans "Eksperiments" %}</a></li>
         </ul>
         <ul class="nav pull-right">
             {% if user.is_authenticated %}
-                <li><a href="/logout">{{ user }} <span class="helptext">{% trans "(Atsijungti)" %}</span></a></li>
+                <li><a href="/{{ lang }}/logout">{{ user }} <span class="helptext">{% trans "(Logout)" %}</span></a></li>
             {% else %}
-                <li class="{% if active == "login" %}active{% endif %}"><a href="/login">{% trans "Prisijungti" %}</a></li>
+                <li class="{% if active == "login" %}active{% endif %}"><a
+                    href="/{{ lang }}/login">{% trans "Log in" %}</a></li>
             {% endif %}
         </ul>
+        </div>
+        <div class="pull-right" style="margin-top: 6px; margin-right: 8px;">
+            <a href="/lt/"><img class="flag {% if lang == lt %}active{% endif %}" src="/static/img/lt.png"/></a>
+            <a href="/en/"><img class="flag {% if lang == en %}active{% endif %}" src="/static/img/en.png"/></a>
         </div>
     </div>
 </div>

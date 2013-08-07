@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% get_current_language as lang %}
 
 {% block menu %}
     {% include 'menu.html' with active='data' %}
@@ -9,19 +10,19 @@
 <div class="span12">
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs" id="myTab2">
-      <li class="active"><a href="#data-list" data-toggle="tab">{% trans "Rinkmenų sąrašas" %}</a></li>
-      <li><a href="#upload-data" data-toggle="tab">{% trans "Įkelti duomenis" %}</a></li>
+      <li class="active"><a href="#data-list" data-toggle="tab">{% trans "Dataset list" %}</a></li>
+      <li><a href="#upload-data" data-toggle="tab">{% trans "Upload dataset" %}</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
       <table class="table table-hover">
           <thead>
               <tr>
-                  <th>{% trans "Pavadinimas" %}</th>
-                  <th>{% trans "Licencija" %}</th>
-                  <th>{% trans "Dydis" %}</th>
-                  <th>{% trans "Veiksmai" %}</th>
-                  <th>{% trans "Atsisiųsti" %}</th>
+                  <th>{% trans "Title" %}</th>
+                  <th>{% trans "Licence" %}</th>
+                  <th>{% trans "Size" %}</th>
+                  <th>{% trans "Actions" %}</th>
+                  <th>{% trans "Download" %}</th>
               </tr>
           </thead>
           <tbody>
@@ -55,7 +56,7 @@
     <div class="span8 offset3">
         <form method='POST' action='/data' enctype="multipart/form-data">{% csrf_token %}
             {{ form.as_p }}
-            <input type='submit' class="btn btn-primary" value="{% trans "Įkelti duomenis" %}" />
+            <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
         </form>
     </div>
 

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% get_current_language as lang %}
 
 {% block menu %}
     {% include 'menu.html' with active='home' %}
@@ -9,9 +10,9 @@
     <div class='content-about'>
         <div class='logo-div'><img class="logo" src='/static/img/logo.png'/></div>
         <ul>
-            <li>&nbsp;&nbsp;&nbsp;{% trans "Tai <b>atvira mokslo infrastruktūra</b>, skirta mokslą norintiems kurti Lietuvos piliečiams." %}</li>
-            <li>&nbsp;&nbsp;&nbsp;{% trans "Pagrindinis įrankis mokslininkams, bet tinka tiek verslui, siekiančiam praktiškai taikyti mokslo žinias, tiek ir individualiems programuotojams, norintiems išbandyti savo jėgas." %}</li>
-            <li>&nbsp;&nbsp;&nbsp;{% trans "Įrankis maksimaliai orientuotas į atvirumą, perpanaudojamumą, siekiant sukurti idealią nišą <b>skaičiuojamąjam</b> bei <b>mokslo taikomąjam</b> verslui kurtis." %}</li>
+            <li>&nbsp;&nbsp;&nbsp;{% trans "Its <b>open science infrastructure</b>, provided for Lithuanians, who want to create science." %}</li>
+            <li>&nbsp;&nbsp;&nbsp;{% trans "Main tool for scientists, but also suitable for business, which aims to practically apply scientific knowledge, and for individual programmers, who search for challenges." %}</li>
+            <li>&nbsp;&nbsp;&nbsp;{% trans "Tool ultimately oriented to openess, reusability, endeavoring to create a perfect niche for <b>computational</b> and <b>science application</b> business arise." %}</li>
         </ul>
     </div>
 {% endblock %}

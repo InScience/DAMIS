@@ -1,25 +1,24 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from project.views import *
+
 
 urlpatterns = patterns('',
-    (r'^$', 'project.views.index_view'),
-    (r'^login$', 'project.views.login_view'),
-    (r'^logout$', 'project.views.logout_view'),
-    (r'^data$', 'project.views.data_view'),
-    (r'^algorithms$', 'project.views.algorithms_view'),
-    (r'^experiments$', 'project.views.experiments_view'),
+    (r'^i18n/', include('django.conf.urls.i18n')),
+)
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+urlpatterns += i18n_patterns('',
+    (r'^$', index_view),
+    (r'^login/$', login_view),
+    (r'^logout/$', logout_view),
+    (r'^data/$', data_view),
+    (r'^algorithms/$', algorithms_view),
+    (r'^experiments/$', experiments_view),
 
-    # Uncomment the next line to enable the admin:
-    # (r'^admin/', include(admin.site.urls)),
 )
 
 urlpatterns += staticfiles_urlpatterns()

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% get_current_language as lang %}
 
 {% block menu %}
     {% include 'menu.html' with active='login' %}
@@ -7,9 +8,9 @@
 
 {% block content %}
     <div class="span6 offset4 top-space">
-        <form action="/login" method="post">{% csrf_token %}
+        <form action="/{{ lang }}/login" method="post">{% csrf_token %}
             {{ form.as_p }}
-            <p><input class="btn btn-primary" type="submit" value="{% trans "Prisijungti" %}" /></p>
+            <p><input class="btn btn-primary" type="submit" value="{% trans "Login in" %}" /></p>
         </form>
     </div>
 {% endblock %}

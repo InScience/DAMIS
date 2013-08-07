@@ -1,0 +1,158 @@
+# Lithuanian translation file for DAMIS project.
+# This file is distributed under the same license as the package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-07 11:19+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: forms.py:8
+msgid "Username"
+msgstr "Naudotojo vardas"
+
+#: forms.py:9
+msgid "@uosis.mif.vu.lt"
+msgstr "@uosis.mif.vu.lt"
+
+#: forms.py:10
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: forms.py:20
+msgid "Username or password is incorrect"
+msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
+
+#: forms.py:25 views.py:17
+msgid "Private"
+msgstr "Privatūs"
+
+#: forms.py:26
+msgid "Open under http://opendatacommons.org/licenses/pddl/"
+msgstr "Atviri pagal http://opendatacommons.org/licenses/pddl/"
+
+#: forms.py:30 templates/data.html:21
+msgid "Title"
+msgstr "Pavadinimas"
+        
+
+#: forms.py:31
+msgid "Dataset file"
+msgstr "Duomenų failas"
+
+#: forms.py:32 templates/data.html:22
+msgid "Licence"
+msgstr "Licencija"
+
+#: forms.py:33
+msgid "Description"
+msgstr "Aprašymas"
+
+#: settings.py:47
+msgid "Lithuanian"
+msgstr "Lietuvių"
+
+#: settings.py:48
+msgid "English"
+msgstr "Anlgų"
+
+#: views.py:18
+msgid "Open"
+msgstr "Atviri"
+
+#: templates/base.html:54
+msgid "Source code"
+msgstr "Išeities kodas"
+
+#: templates/data.html:13
+msgid "Dataset list"
+msgstr "Rinkmenų sąrašas"
+
+#: templates/data.html:14 templates/data.html.py:59
+msgid "Upload dataset"
+msgstr "Įkelti duomenis"
+
+#: templates/data.html:23
+msgid "Size"
+msgstr "Dydis"
+
+#: templates/data.html:24
+msgid "Actions"
+msgstr "Veiksmai"
+
+#: templates/data.html:25
+msgid "Download"
+msgstr "Atsisiųsti"
+
+#: templates/data.html:44
+msgid "CSV"
+msgstr "CSV"
+
+#: templates/data.html:45
+msgid "ARFF"
+msgstr "ARFF"
+
+#: templates/data.html:46
+msgid "XLS"
+msgstr "XLS"
+
+#: templates/index.html:13
+msgid ""
+"Its <b>open science infrastructure</b>, provided for Lithuanians, who want "
+"to create science."
+msgstr ""
+"Tai <b>atvira mokslo infrastruktūra</b>, skirta mokslą norintiems kurti "
+"Lietuvos piliečiams."
+
+#: templates/index.html:14
+msgid ""
+"Main tool for scientists, but also suitable for business, which aims to "
+"practically apply scientific knowledge, and for individual programmers, who "
+"search for challenges."
+msgstr ""
+"Pagrindinis įrankis mokslininkams, bet tinka tiek verslui, siekiančiam "
+"praktiškai taikyti mokslo žinias, tiek ir individualiems programuotojams, "
+"norintiems išbandyti savo jėgas."
+
+#: templates/index.html:15
+msgid ""
+"Tool ultimately oriented to openess, reusability, endeavoring to create a "
+"perfect niche for <b>computational</b> and <b>science application</b> "
+"business arise."
+msgstr ""
+"Įrankis maksimaliai orientuotas į atvirumą, perpanaudojamumą, siekiant "
+"sukurti idealią nišą <b>skaičiuojamąjam</b> bei <b>mokslo taikomąjam</b> "
+"verslui kurtis."
+
+#: templates/login.html:13
+msgid "Login in"
+msgstr "Prisijungti"
+
+#: templates/menu.html:8
+msgid "Datasets"
+msgstr "Duomenys"
+
+#: templates/menu.html:9
+msgid "Algorithms"
+msgstr "Algoritmai"
+
+#: templates/menu.html:10
+msgid "Eksperiments"
+msgstr "Eksperimentai"
+
+#: templates/menu.html:14
+msgid "(Logout)"
+msgstr "(Atsijungti)"
+
+#: templates/menu.html:17
+msgid "Log in"
+msgstr "Prisijungti"
