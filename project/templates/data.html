@@ -54,7 +54,7 @@
     <div class="tab-pane" id="upload-data">
 
     <div class="span8 offset3">
-        <form method='POST' action='/data' enctype="multipart/form-data">{% csrf_token %}
+        <form method='POST' action='/data/' enctype="multipart/form-data">{% csrf_token %}
             {{ form.as_p }}
             <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
         </form>

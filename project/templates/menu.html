@@ -5,16 +5,16 @@
         <div class="navbar-inner">
         <ul class="nav">
             <li class="{% if active == "home" %}active{% endif %}"><a href="/{{ lang }}/"><img src="/static/img/home_icon.png"/></a></li>
-            <li class="{% if active == "data" %}active{% endif %}"><a href="/{{ lang }}/data">{% trans "Datasets" %}</a></li>
-            <li class="{% if active == "algorithms" %}active{% endif %}"><a href="/{{ lang }}/algorithms">{% trans "Algorithms" %}</a></li>
-            <li class="{% if active == "experiments" %}active{% endif %}"><a href="/{{ lang }}/experiments">{% trans "Eksperiments" %}</a></li>
+            <li class="{% if active == "data" %}active{% endif %}"><a href="/{{ lang }}/data/">{% trans "Datasets" %}</a></li>
+            <li class="{% if active == "algorithms" %}active{% endif %}"><a href="/{{ lang }}/algorithms/">{% trans "Algorithms" %}</a></li>
+            <li class="{% if active == "experiments" %}active{% endif %}"><a href="/{{ lang }}/experiments/">{% trans "Eksperiments" %}</a></li>
         </ul>
         <ul class="nav pull-right">
             {% if user.is_authenticated %}
-                <li><a href="/{{ lang }}/logout">{{ user }} <span class="helptext">{% trans "(Logout)" %}</span></a></li>
+                <li><a href="/{{ lang }}/logout/">{{ user }} <span class="helptext">{% trans "(Logout)" %}</span></a></li>
             {% else %}
                 <li class="{% if active == "login" %}active{% endif %}"><a
-                    href="/{{ lang }}/login">{% trans "Log in" %}</a></li>
+                    href="/{{ lang }}/login/">{% trans "Log in" %}</a></li>
             {% endif %}
         </ul>
         </div>
