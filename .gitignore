@@ -9,3 +9,6 @@ develop-eggs
 
 # Buildout temporary file 
 .installed.cfg
+
+# Compiled translation files
+*.mo
