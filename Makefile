@@ -1,5 +1,7 @@
 .PHONY: install run static tags
 
+all: install start_database messages
+
 install:
 	python bootstrap.py
 	bin/buildout
@@ -12,3 +14,13 @@ static:
 
 tags:
 	bin/ctags -v
+
+start_database:
+	mkdir var || touch var/db
+	bin/django syncdb
+
+messages:
+	bin/django compilemessages
+
+clean:
+	git clean -dfx
