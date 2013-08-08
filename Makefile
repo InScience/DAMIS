@@ -16,7 +16,8 @@ tags:
 	bin/ctags -v
 
 start_database:
-	mkdir var || touch var/db
+	mkdir var & true
+	touch var/db
 	bin/django syncdb
 
 messages:

@@ -23,7 +23,7 @@ DATA_LICENCE_SHORT = {
 def index_view(request):
     return render(request, 'index.html', {})
 
-@login_required
+@login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
 def data_view(request):
     absolute_dir = settings.MEDIA_ROOT
     user_dir = join(absolute_dir, request.user.username)
@@ -65,11 +65,11 @@ def data_view(request):
             'files': files,
         })
 
-@login_required
+@login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
 def experiments_view(request):
     return render(request, 'experiments.html', {})
 
-@login_required
+@login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
 def algorithms_view(request):
     return render(request, 'algorithms.html', {})
 
