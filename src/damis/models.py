@@ -28,5 +28,6 @@ class Dataset(models.Model):
     file_format = models.ForeignKey('FileFormat')
     description = models.TextField()
     author = models.ForeignKey(User)
+    slug = models.SlugField(max_length=40)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
