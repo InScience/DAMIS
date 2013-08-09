@@ -117,7 +117,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'project.urls'
 
-AUTHENTICATION_BACKENDS = ('project.models.UosisMIFVUAuthBackend',)
+AUTHENTICATION_BACKENDS = ('project.auth.UosisMIFVUAuthBackend',)
 
 INTERNAL_IPS = (
     '127.0.0.1',

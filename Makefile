@@ -16,9 +16,8 @@ tags:
 	bin/ctags -v
 
 start_database:
-	mkdir var & true
-	touch var/db
-	bin/django syncdb
+	mkdir var || touch var/db
+	bin/django syncdb --noinput
 
 messages:
 	bin/django compilemessages
