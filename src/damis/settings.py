@@ -1,10 +1,9 @@
-
-# Django settings for project project.
+# Django settings for DAMIS project.
 
 import os
 
 PROJECT_DIR = os.path.realpath(os.path.dirname(__file__))
-BUILDOUT_DIR = os.path.abspath(os.path.join(PROJECT_DIR, '..'))
+BUILDOUT_DIR = os.path.abspath(os.path.join(PROJECT_DIR, '..', '..'))
 
 
 ADMINS = (
@@ -84,7 +83,7 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(BUILDOUT_DIR, 'project', 'static'),
+    os.path.join(BUILDOUT_DIR, 'src', 'damis', 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -115,9 +114,9 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'damis.urls'
 
-AUTHENTICATION_BACKENDS = ('project.auth.UosisMIFVUAuthBackend',)
+AUTHENTICATION_BACKENDS = ('damis.auth.UosisMIFVUAuthBackend',)
 
 INTERNAL_IPS = (
     '127.0.0.1',
@@ -143,7 +142,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'debug_toolbar',
+    'piston',
+
+    'damis',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

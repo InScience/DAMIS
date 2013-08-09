@@ -14,7 +14,7 @@ from django.utils.translation import get_language
 from forms import LoginForm, DataFileUploadForm
 from utils import slugify
 
-DATA_LICENCE_SHORT = {
+DATA_LICENSE_SHORT = {
     'private': _('Private'),
     'open': _('Open'),
 }
@@ -34,7 +34,7 @@ def data_view(request):
     for f in listdir(user_dir):
         if f.endswith('.names'):
             f_meta = json.load(open(join(user_dir, f)))
-            f_meta['licence'] = DATA_LICENCE_SHORT[f_meta['licence']]
+            f_meta['license'] = DATA_LICENSE_SHORT[f_meta['license']]
             files.append(f_meta)
             files[-1]['size'] = str(getsize(join(user_dir, splitext(f)[0]+'.csv'))) + ' B'
 
@@ -43,7 +43,7 @@ def data_view(request):
         if form.is_valid():
             meta_data = {
                 'title': form.cleaned_data['title'],
-                'licence': form.cleaned_data['licence'],
+                'license': form.cleaned_data['license'],
                 'comment': form.cleaned_data['comment'],
             }
             # STUB: aboslute_dir should be in supercomputer, not in web server

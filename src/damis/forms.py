@@ -21,7 +21,7 @@ class LoginForm(forms.Form):
         cleaned_data['user'] = user
         return cleaned_data
 
-DATA_LICENCES = (
+DATA_LICENSES = (
     ('private', _('Private')),
     ('open', _('Open under http://opendatacommons.org/licenses/pddl/')),
 )
@@ -29,7 +29,7 @@ DATA_LICENCES = (
 class DataFileUploadForm(forms.Form):
     title = forms.CharField(label=_('Title'))
     data_file = forms.FileField(label=_('Dataset file'))
-    licence = forms.ChoiceField(label=_('Licence'), choices=DATA_LICENCES)
+    license = forms.ChoiceField(label=_('License'), choices=DATA_LICENCES)
     comment = forms.CharField(label=_('Description'),
             widget=forms.Textarea(attrs={'rows':'5', 'cols': '25'}),
             required=False)
