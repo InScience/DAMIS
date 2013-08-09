@@ -1,14 +1,19 @@
 # Python temporary files
 *.pyc
+*.pyo
 
-# Buildout directories
-bin
-var
-eggs
-develop-eggs
-
-# Buildout temporary file 
+# Buildout generated files
 .installed.cfg
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+src/*.egg-info
 
-# Compiled translation files
+# Compiled Django translation files
 *.mo
+
+# Static content directory
+var
