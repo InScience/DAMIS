@@ -4,7 +4,7 @@ from django.conf.urls.i18n import i18n_patterns
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from project.views import *
+from damis.views import *
 
 
 urlpatterns = patterns('',

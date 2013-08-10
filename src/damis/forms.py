@@ -29,7 +29,7 @@ DATA_LICENSES = (
 class DataFileUploadForm(forms.Form):
     title = forms.CharField(label=_('Title'))
     data_file = forms.FileField(label=_('Dataset file'))
-    license = forms.ChoiceField(label=_('License'), choices=DATA_LICENCES)
+    license = forms.ChoiceField(label=_('License'), choices=DATA_LICENSES)
     comment = forms.CharField(label=_('Description'),
             widget=forms.Textarea(attrs={'rows':'5', 'cols': '25'}),
             required=False)

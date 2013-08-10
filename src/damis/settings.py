@@ -144,7 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'debug_toolbar',
-    'piston',
+    'rest_framework',
 
     'damis',
     # Uncomment the next line to enable the admin:
