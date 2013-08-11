@@ -8,6 +8,7 @@ from damis.views import *
 
 
 urlpatterns = patterns('',
+    (r'^api/', include('damis.api.urls')),
     (r'^i18n/', include('django.conf.urls.i18n')),
 )
 
