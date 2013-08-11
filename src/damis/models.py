@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class DatasetLicence(models.Model):
+class DatasetLicense(models.Model):
     title = models.CharField(max_length=255)
     short_title = models.CharField(max_length=30)
     url = models.URLField()
@@ -23,7 +23,7 @@ def get_dataset_upload_path(self, instance, filename):
 
 class Dataset(models.Model):
     title = models.CharField(max_length=255)
-    licence = models.ForeignKey('DatasetLicence')
+    license = models.ForeignKey('DatasetLicense')
     file = models.FileField(upload_to=get_dataset_upload_path)
     file_format = models.ForeignKey('FileFormat')
     description = models.TextField()
