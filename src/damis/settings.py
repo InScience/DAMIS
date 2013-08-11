@@ -145,6 +145,7 @@ INSTALLED_APPS = (
 
     'debug_toolbar',
     'rest_framework',
+    'south',
 
     'damis',
     # Uncomment the next line to enable the admin:
