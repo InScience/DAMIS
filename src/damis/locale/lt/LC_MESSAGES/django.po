@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-07 11:19+0000\n"
+"POT-Creation-Date: 2013-08-13 19:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "Slaptažodis"
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:25 views.py:17
+#: forms.py:25 views.py:18
 msgid "Private"
 msgstr "Privatūs"
 
@@ -43,35 +43,39 @@ msgstr "Atviri pagal http://opendatacommons.org/licenses/pddl/"
 #: forms.py:30 templates/data.html:21
 msgid "Title"
 msgstr "Pavadinimas"
-        
 
 #: forms.py:31
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:32 templates/data.html:22
-msgid "Licence"
+#: forms.py:32
+#, fuzzy
+msgid "License"
 msgstr "Licencija"
 
 #: forms.py:33
 msgid "Description"
 msgstr "Aprašymas"
 
-#: settings.py:47
+#: settings.py:46
 msgid "Lithuanian"
 msgstr "Lietuvių"
 
-#: settings.py:48
+#: settings.py:47
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:18
+#: views.py:19
 msgid "Open"
 msgstr "Atviri"
 
 #: templates/base.html:54
 msgid "Source code"
 msgstr "Išeities kodas"
+
+#: templates/base.html:57
+msgid "API"
+msgstr ""
 
 #: templates/data.html:13
 msgid "Dataset list"
@@ -80,6 +84,10 @@ msgstr "Rinkmenų sąrašas"
 #: templates/data.html:14 templates/data.html.py:59
 msgid "Upload dataset"
 msgstr "Įkelti duomenis"
+
+#: templates/data.html:22
+msgid "Licence"
+msgstr "Licencija"
 
 #: templates/data.html:23
 msgid "Size"
@@ -146,7 +154,7 @@ msgid "Algorithms"
 msgstr "Algoritmai"
 
 #: templates/menu.html:10
-msgid "Eksperiments"
+msgid "Experiments"
 msgstr "Eksperimentai"
 
 #: templates/menu.html:14
