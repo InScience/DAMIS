@@ -16,7 +16,10 @@ urlpatterns += i18n_patterns('',
     (r'^$', index_view),
     (r'^login/$', login_view),
     (r'^logout/$', logout_view),
-    (r'^data/$', data_view),
+    (r'^datasets/$', DatasetCreate.as_view()),    # data_view
+    # (r'^datasets/create/$', ),
+    (r'^datasets/licenses/create/$', DatasetLicenseCreate.as_view()),
+    (r'^datasets/fileformats/create/$', FileFormatCreate.as_view()),
     (r'^algorithms/$', algorithms_view),
     (r'^experiments/$', experiments_view),
 

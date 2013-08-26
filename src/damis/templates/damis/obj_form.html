@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='data' %}
+{% endblock %}
+
+{% block content %}
+<div class="span8 offset3">
+    <form action="." method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn" type='submit'>{% trans "Save" %}</button>
+    </form>
+</div>
+{% endblock %}

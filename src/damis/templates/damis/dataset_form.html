@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='data' %}
+{% endblock %}
+
+{% block content %}
+<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-error">{{ error }}</div>
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+        {{ field.errors }}
+        {{ field.name }}
+        {% if field.name == 'Title' %}
+        <p>{{ field.name }}:<br/> {{ field }} &nbsp;&nbsp;&nbsp;<a href="/{{ lang }}/datasets/licenses/create/">{% trans "Add" %}</a></p>
+        {% else %}
+            <p>{{ field.name }}:<br/> {{ field }}</p>
+        {% endif %}
+    {% endfor %}
+    {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+    <button class="btn" type='submit'>{% trans "Save" %}</button>
+</form>
+{% endblock %}

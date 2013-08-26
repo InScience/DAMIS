@@ -3,6 +3,7 @@ import json
 from os.path import join, exists, getsize, splitext
 from os import makedirs, listdir
 
+from django.views.generic import FormView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
@@ -11,8 +12,31 @@ from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import get_language
 
-from forms import LoginForm, DataFileUploadForm
-from utils import slugify
+from damis.forms import LoginForm, DataFileUploadForm, DatasetForm
+from damis.utils import slugify
+from damis.models import DatasetLicense, FileFormat, Dataset
+
+
+class DatasetLicenseCreate(CreateView):
+    model = DatasetLicense
+    template_name = 'damis/obj_form.html'
+# @login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
+# def dispatch(self, *args, **kwargs):
+#     return super(DatasetLicenseCreate, self).dispatch(*args, **kwargs)
+
+class FileFormatCreate(CreateView):
+    model = FileFormat
+    template_name = 'damis/obj_form.html'
+
+class DatasetCreate(CreateView):
+    model = Dataset
+    template_name = 'damis/dataset_create.html'
+    form_class = DatasetForm
+
+    def form_valid(self, form):
+        form.instance.slug = slugify(form.instance.title)
+        return super(DatasetCreate, self).form_valid(form)
+
 
 DATA_LICENSE_SHORT = {
     'private': _('Private'),
@@ -23,7 +47,8 @@ DATA_LICENSE_SHORT = {
 def index_view(request):
     return render(request, 'index.html', {})
 
-@login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
+
+# @login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
 def data_view(request):
     absolute_dir = settings.MEDIA_ROOT
     user_dir = join(absolute_dir, request.user.username)
@@ -65,11 +90,11 @@ def data_view(request):
             'files': files,
         })
 
-@login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
+# @login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
 def experiments_view(request):
     return render(request, 'experiments.html', {})
 
-@login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
+# @login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
 def algorithms_view(request):
     return render(request, 'algorithms.html', {})
 

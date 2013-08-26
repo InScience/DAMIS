@@ -54,8 +54,22 @@
     <div class="tab-pane" id="upload-data">
 
     <div class="span8 offset3">
-        <form method='POST' action='/{{ lang }}/data/' enctype="multipart/form-data">{% csrf_token %}
-            {{ form.as_p }}
+        <form method='POST' action='/{{ lang }}/datasets/' enctype="multipart/form-data">{% csrf_token %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-error">{{ error }}</div>
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {% if field.name == 'license' %}
+                <p>{{ field.label }}:<br/> {{ field }} &nbsp;&nbsp;&nbsp;<a href="/{{ lang }}/datasets/licenses/create/">{% trans "Add" %}</a></p>
+                {% else %}
+                    <p>{{ field.label }}:<br/> {{ field }}</p>
+                {% endif %}
+            {% endfor %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
             <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
         </form>
     </div>

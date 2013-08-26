@@ -3,6 +3,14 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
 
+from damis.models import Dataset
+
+
+class DatasetForm(forms.ModelForm):
+    class Meta:
+        model = Dataset
+        fields = ('title', 'license', 'file', 'description')
+
 
 class LoginForm(forms.Form):
     username = forms.CharField(label=_('Username'), max_length=100,
