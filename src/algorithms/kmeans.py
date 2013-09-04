@@ -116,7 +116,7 @@ class UnsupervisedKMeans:
         means = None
         sizes = None # sizes of the k groups
         for row in reader:
-            cls = int(row[-1])
+            cls = int(float(row[-1]))
         
             # update group size
             if sizes == None:
