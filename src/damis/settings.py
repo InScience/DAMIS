@@ -147,6 +147,9 @@ INSTALLED_APPS = (
     'rest_framework',
     'south',
 
+    'django_nose',
+    'test_utils',
+
     'algorithms',
     'damis',
     # Uncomment the next line to enable the admin:
@@ -194,3 +197,6 @@ REST_FRAMEWORK = {
     ],
     'PAGINATE_BY': 100,
 }
+
+# Testing settings
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
