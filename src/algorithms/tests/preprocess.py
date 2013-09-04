@@ -7,6 +7,36 @@ from algorithms.tests import TEST_FILE_PATH
 from algorithms.preprocess import divide
 
 
+class CleanTests(TestCase):
+    def test_check_attr_types(self):
+        pass
+
+    def test_fill_missing_values(self):
+        pass
+
+
+class TransposeTests(TestCase):
+    # Categorical attr is changed to an attr for each category {0, 1}
+    def test_transpose(self):
+        pass
+
+
+class TransformTests(TestCase):
+    def test_z_normalisation(self):
+        # Selected attr is normalised: sub mean, div std
+        pass
+
+
+class FilteringTests(TestCase):
+    def test_z_filter(self):
+        # Selected attr is normalised and filtered by chosen or default value
+        pass
+
+    def test_quartile_filter(self):
+        # Selected attr is normalised using quartile transformation and filtered
+        pass
+
+
 class DivideFileIntoShardsTests(TestCase):
     def line_count(self, filename, i=0):
         for i, line in enumerate(open(filename)):
