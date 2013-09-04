@@ -30,4 +30,4 @@ class KMeansTests(TestCase):
             shutil.rmtree(testDir)
 
         self.assertEqual(bestK, 5)
-        self.assertEqual(bestRatio, 169.55817157830558)
+        self.assertEqual(round(bestRatio, 8), round(169.55817157830558, 8))
