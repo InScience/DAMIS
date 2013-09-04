@@ -3,7 +3,7 @@
 
 from math import log, sqrt
 import scipy.stats
-from sm_utils import printTree, saveTree
+from sm_utils import printTree
 from optparse import OptionParser
 from tools import readData, writeData
 
