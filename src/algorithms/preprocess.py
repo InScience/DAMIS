@@ -3,6 +3,37 @@ from datetime import datetime
 from os.path import split, splitext, join, exists
 from os import makedirs
 from random import random
+from math import sqrt
+
+
+def normalise(source, output, attr=-1):
+    '''Applies Z normalisation for the attribute: substracts mean and divides
+    by deviation.'''
+    attr_sum = 0.0
+    attr_sq_sum = 0.0
+    total_rows = 0
+
+    # First file scan to get sum and squered sum for the attribute
+    with open(source) as source_file:
+        for attr_list in csv.reader(source_file):
+            attr_sum += float(attr_list[attr])
+            attr_sq_sum += float(attr_list[attr]) * float(attr_list[attr])
+            total_rows += 1
+
+    # Calculate mean and deviation
+    attr_mean = attr_sum / total_rows
+    attr_deviation = sqrt(attr_sq_sum / total_rows  - attr_mean**2)
+
+    # Second file scan to normalise the attribute
+    output_file = open(output, 'w')
+    output_writer = csv.writer(output_file)
+    with open(source) as source_file:
+        for attr_list in csv.reader(source_file):
+            attr_list[attr] = (float(attr_list[attr]) - attr_mean) / attr_deviation
+            output_writer.writerow(attr_list)
+    output_file.close()
+
+
 
 
 

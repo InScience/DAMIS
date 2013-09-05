@@ -9,6 +9,7 @@ from algorithms.tests import TEST_FILE_PATH
 from algorithms.preprocess import get_types, fill_missing_values
 from algorithms.preprocess import transpose
 from algorithms.preprocess import divide
+from algorithms.preprocess import normalise
 from random import seed
 
 
@@ -73,8 +74,17 @@ class TransposeTests(TestCase):
 
 class TransformTests(TestCase):
     def test_z_normalisation(self):
-        # Selected attr is normalised: sub mean, div std
-        pass
+        source = join(TEST_FILE_PATH, u'pauksciai.csv')
+        output = join(TEST_FILE_PATH, 'tmp', u'pauksciai_normalizuota.csv')
+        attr = 3
+
+        normalise(source, output, attr)
+        self.assertTrue(exists(output))
+
+        with open(output) as output_file:
+            for attr_list in csv.reader(output_file):
+                self.assertTrue(float(attr_list[attr]) < 4.5)
+                self.assertTrue(float(attr_list[attr]) > -4.5)
 
 
 class FilteringTests(TestCase):
