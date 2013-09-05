@@ -6,7 +6,34 @@ from random import random
 
 
 
-def value_by_prob(each_value_count, total):
+def transpose(source, output, attr=-1, *args, **kwargs):
+    '''Categorical attribute is changed to attribute list: an attribute for
+    each category is created, which value is 1 if the vector belongs to this
+    category and 0 if it does not.'''
+    values = set()
+    with open(source) as source_file:
+        for attr_list in csv.reader(source_file):
+            value = attr_list[attr].strip()
+            values.add(value)
+
+    values = sorted(list(values))
+
+    output_file = open(output, 'w')
+    output_writer = csv.writer(output_file)
+    with open(source) as source_file:
+        for attr_list in csv.reader(source_file):
+            value = attr_list[attr]
+            transposed = []
+            for v in values:
+                if v.strip() == value.strip():
+                    transposed.append(' 1')
+                else:
+                    transposed.append(' 0')
+            output_writer.writerow(attr_list[:attr] + transposed + attr_list[attr:][1:])
+    output_file.close()
+
+
+def _value_by_prob(each_value_count, total):
     missing = each_value_count.get('?', 0)
 
     random_value = random()
@@ -18,8 +45,6 @@ def value_by_prob(each_value_count, total):
             cum_prob += probability
             if cum_prob >= random_value:
                 return key
-
-
 
 def fill_missing_values(source, output, attr=-1):
     total = 0.0
@@ -37,7 +62,7 @@ def fill_missing_values(source, output, attr=-1):
                 each_value_count[value] = 1
 
             if value == '?':
-                new_value = value_by_prob(each_value_count, total)
+                new_value = _value_by_prob(each_value_count, total)
                 value_list[attr] = new_value
             output_writer.writerow(value_list)
     output_file.close()

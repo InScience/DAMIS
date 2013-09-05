@@ -1,11 +1,14 @@
+#! coding: utf-8
 import csv
 import json
-from os.path import split, splitext, join
+from os.path import split, splitext, join, exists
 from os import remove
 from unittest import TestCase
 
 from algorithms.tests import TEST_FILE_PATH
-from algorithms.preprocess import divide, get_types, fill_missing_values
+from algorithms.preprocess import get_types, fill_missing_values
+from algorithms.preprocess import transpose
+from algorithms.preprocess import divide
 from random import seed
 
 
@@ -54,9 +57,18 @@ class CleanTests(TestCase):
 
 
 class TransposeTests(TestCase):
-    # Categorical attr is changed to an attr for each category {0, 1}
     def test_transpose(self):
-        pass
+        source = join(TEST_FILE_PATH, u'klasės.csv')
+        output = join(TEST_FILE_PATH, 'tmp', u'trokštami_išėjimai.csv')
+        attr_to_transpose = -1
+        transpose(source, output=output, attr=attr_to_transpose)
+        self.assertTrue(exists(output))
+
+        with open(output) as output_file:
+            for line_nr, attr_list in enumerate(csv.reader(output_file)):
+                self.assertTrue('1' in attr_list[-3:][line_nr % 3])
+                self.assertTrue('0' in attr_list[-3:][(line_nr + 1) % 3])
+                self.assertTrue('0' in attr_list[-3:][(line_nr + 2) % 3])
 
 
 class TransformTests(TestCase):
