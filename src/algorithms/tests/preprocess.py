@@ -10,6 +10,7 @@ from algorithms.preprocess import get_types, fill_missing_values
 from algorithms.preprocess import transpose
 from algorithms.preprocess import divide
 from algorithms.preprocess import normalise
+from algorithms.preprocess import filter
 from random import seed
 from math import fabs
 
@@ -76,8 +77,8 @@ class TransposeTests(TestCase):
 class TransformTests(TestCase):
     def test_z_normalisation(self):
         source = join(TEST_FILE_PATH, u'pauksciai.csv')
-        output = join(TEST_FILE_PATH, 'tmp', u'pauksciai_normalizuota.csv')
-        attr = 3
+        output = join(TEST_FILE_PATH, 'tmp', u'pauksciai_z_norm.csv')
+        attr = 2
 
         normalise(source, output, attr)
         self.assertTrue(exists(output))
@@ -91,19 +92,29 @@ class TransformTests(TestCase):
 class FilteringTests(TestCase):
     def test_z_filter(self):
         source = join(TEST_FILE_PATH, u'pauksciai.csv')
-        output = join(TEST_FILE_PATH, 'tmp', u'pauksciai_filtruoti.csv')
-        attr = 3
+        output = join(TEST_FILE_PATH, 'tmp', u'pauksciai_z_filter.csv')
+        attr = 2
 
-        normalise(source, output, attr, filter='outliers')
+        filter(source, output, attr, filter='outliers', update_value=True)
         self.assertTrue(exists(output))
 
         with open(output) as output_file:
             for attr_list in csv.reader(output_file):
+                # Assert only strutis yra
                 self.assertTrue(fabs(float(attr_list[attr])) > 3)
 
     def test_quartile_filter(self):
         # Selected attr is normalised using quartile transformation and filtered
-        pass
+        source = join(TEST_FILE_PATH, u'pauksciai.csv')
+        output = join(TEST_FILE_PATH, 'tmp', u'pauksciai_quartil_filter.csv')
+        attr = 2
+
+        filter(source, output, attr, filter='outliers', method='quartil')
+        self.assertTrue(exists(output))
+
+        with open(output) as output_file:
+            for attr_list in csv.reader(output_file):
+                self.assertTrue('strutis' in attr_list[1])
 
 
 class DivideFileIntoShardsTests(TestCase):

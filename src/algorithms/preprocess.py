@@ -6,35 +6,86 @@ from random import random
 from math import sqrt, fabs
 
 
-def normalise(source, output, attr=-1, filter=None):
-    '''Applies Z normalisation for the attribute: substracts mean and divides
-    by deviation.'''
+def z_factor(source, output, attr=-1, filter=None, update_value=True):
+    # First scan to get mean and deviation
     attr_sum = 0.0
     attr_sq_sum = 0.0
     total_rows = 0
-
-    # First file scan to get sum and squered sum for the attribute
     with open(source) as source_file:
         for attr_list in csv.reader(source_file):
             attr_sum += float(attr_list[attr])
             attr_sq_sum += float(attr_list[attr]) * float(attr_list[attr])
             total_rows += 1
 
-    # Calculate mean and deviation
-    attr_mean = attr_sum / total_rows
-    attr_deviation = sqrt(attr_sq_sum / total_rows  - attr_mean**2)
+    mean = attr_sum / total_rows
+    deviation = sqrt(attr_sq_sum / total_rows  - mean**2)
 
-    # Second file scan to normalise the attribute
+    # Second file scan to normalise (or filter by) the attribute
     output_file = open(output, 'w')
     output_writer = csv.writer(output_file)
     with open(source) as source_file:
         for attr_list in csv.reader(source_file):
-            attr_list[attr] = (float(attr_list[attr]) - attr_mean) / attr_deviation
+            if update_value:
+                attr_list[attr] = (float(attr_list[attr]) - mean) / deviation
             if (filter is None) or\
-               (filter == 'outliers' and fabs(attr_list[attr]) > 3) or\
-               (filter != 'outliers' and fabs(attr_list[attr]) < 3):
+               (filter == 'outliers' and fabs(float(attr_list[attr])) > 3) or\
+               (filter != 'outliers' and fabs(float(attr_list[attr])) < 3):
                 output_writer.writerow(attr_list)
     output_file.close()
+
+
+def quartil(source, output, attr=-1, filter=None, update_value=True):
+    # First scan to get first and second quartils
+    total = 0
+    each_value_count = {}
+    with open(source) as file:
+        for value_list in csv.reader(file):
+            total += 1
+            value = value_list[attr].strip()
+            if each_value_count.has_key(value):
+                each_value_count[value] += 1
+            else:
+                each_value_count[value] = 1
+
+    Q1, Q2, viewed = None, None, 0
+    for key, count in sorted(each_value_count.items(), key=lambda x: float(x[0])):
+        viewed += count
+        if Q1 is None and viewed > 0.25 * (total + 1):
+            Q1 = float(key)
+        if Q2 is None and viewed > 0.75 * (total + 1):
+            Q2 = float(key)
+
+    IQR = Q2 - Q1
+
+    # Second file scan to normalise (or filter by) the attribute
+    output_file = open(output, 'w')
+    output_writer = csv.writer(output_file)
+    with open(source) as source_file:
+        for attr_list in csv.reader(source_file):
+            is_outlier = bool(float(attr_list[attr]) <= Q1 - 1.5*IQR or\
+                              float(attr_list[attr]) >= Q2 + 1.5*IQR)
+            if (filter == 'outliers' and is_outlier) or\
+               (filter != 'outliers' and is_outlier):
+                output_writer.writerow(attr_list)
+    output_file.close()
+
+
+def filter(source, output, attr=-1, filter=None, method='z-factor', update_value=False):
+    '''Applies one for the filters to the attribute:
+            Z-factor - normalised value is not in [-3, 3]
+            Quartil - value is <= Q1 - 1.5 * (Q2 - Q1)
+                            or >= Q2 + 1.5 * (Q2 - Q1)
+            '''
+    if method == 'z-factor':
+        z_factor(source, output, attr, filter, update_value)
+    elif method == 'quartil':
+        quartil(source, output, attr, filter, update_value)
+
+
+def normalise(source, output, attr=-1, filter=None):
+    '''Applies Z normalisation for the attribute: substracts mean and divides
+    by deviation.'''
+    z_factor(source, output, attr, filter, update_value=True)
 
 
 def transpose(source, output, attr=-1, *args, **kwargs):
