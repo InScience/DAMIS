@@ -2,6 +2,46 @@ import csv
 from datetime import datetime
 from os.path import split, splitext, join, exists
 from os import makedirs
+from random import random
+
+
+
+def value_by_prob(each_value_count, total):
+    missing = each_value_count.get('?', 0)
+
+    random_value = random()
+
+    cum_prob = 0
+    for key, value in sorted(each_value_count.items(), key=lambda x: x[0]):
+        if key != '?':
+            probability = value / (total - missing)
+            cum_prob += probability
+            if cum_prob >= random_value:
+                return key
+
+
+
+def fill_missing_values(source, output, attr=-1):
+    total = 0.0
+    each_value_count = {}
+    output_file = open(output, 'w')
+    output_writer = csv.writer(output_file)
+    with open(source) as file:
+        for value_list in csv.reader(file):
+            total += 1
+            value = value_list[attr].strip()
+
+            if each_value_count.has_key(value):
+                each_value_count[value] += 1
+            else:
+                each_value_count[value] = 1
+
+            if value == '?':
+                new_value = value_by_prob(each_value_count, total)
+                value_list[attr] = new_value
+            output_writer.writerow(value_list)
+    output_file.close()
+
 
 
 separators = {
