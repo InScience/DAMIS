@@ -1,6 +1,6 @@
-ID, Pavadinimas, Skaičius, Data,       Klasė
-1,  balandis,    3,        2013-07-01, 2
-2,  žvirblis,    14,       2013-07-02, 1
-4,  zylė,        5,        2013-07-02, 1
-5,  varna,       1,        2013-07-03, 2
-3,  žvirblis,    8,        2013-07-04, 1
+ID, Pavadinimas, Skaičius, Suvalgė, Data,       Klasė
+1,  balandis,    3,        0.23,    2013-07-01, 2
+2,  žvirblis,    14,       1.14,    2013-07-02, 1
+3,  zylė,        5,        0.44,    2013-07-02, 1
+4,  varna,       1,        0.319,   2013-07-03, 2
+5,  žvirblis,    8,        0.26,    2013-07-04, 1

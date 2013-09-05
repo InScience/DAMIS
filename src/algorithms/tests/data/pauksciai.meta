@@ -1,0 +1,10 @@
+{
+    "types": [
+        "int",
+        "string",
+        "int",
+        "float",
+        "date",
+        "int"
+    ]
+}

@@ -1,15 +1,19 @@
 import csv
+import json
 from os.path import split, splitext, join
 from os import remove
 from unittest import TestCase
 
 from algorithms.tests import TEST_FILE_PATH
-from algorithms.preprocess import divide
+from algorithms.preprocess import divide, get_types
 
 
 class CleanTests(TestCase):
     def test_check_attr_types(self):
-        pass
+        source = join(TEST_FILE_PATH, 'pauksciai.csv')
+        types = get_types(source)
+        source_meta = json.load(open(splitext(source)[0] + '.meta'))
+        self.assertEqual(types, source_meta['types'])
 
     def test_fill_missing_values(self):
         pass
