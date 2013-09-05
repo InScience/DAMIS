@@ -3,10 +3,10 @@ from datetime import datetime
 from os.path import split, splitext, join, exists
 from os import makedirs
 from random import random
-from math import sqrt
+from math import sqrt, fabs
 
 
-def normalise(source, output, attr=-1):
+def normalise(source, output, attr=-1, filter=None):
     '''Applies Z normalisation for the attribute: substracts mean and divides
     by deviation.'''
     attr_sum = 0.0
@@ -30,11 +30,11 @@ def normalise(source, output, attr=-1):
     with open(source) as source_file:
         for attr_list in csv.reader(source_file):
             attr_list[attr] = (float(attr_list[attr]) - attr_mean) / attr_deviation
-            output_writer.writerow(attr_list)
+            if (filter is None) or\
+               (filter == 'outliers' and fabs(attr_list[attr]) > 3) or\
+               (filter != 'outliers' and fabs(attr_list[attr]) < 3):
+                output_writer.writerow(attr_list)
     output_file.close()
-
-
-
 
 
 def transpose(source, output, attr=-1, *args, **kwargs):

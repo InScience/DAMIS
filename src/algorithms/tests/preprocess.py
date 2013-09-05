@@ -11,6 +11,7 @@ from algorithms.preprocess import transpose
 from algorithms.preprocess import divide
 from algorithms.preprocess import normalise
 from random import seed
+from math import fabs
 
 
 class CleanTests(TestCase):
@@ -89,8 +90,16 @@ class TransformTests(TestCase):
 
 class FilteringTests(TestCase):
     def test_z_filter(self):
-        # Selected attr is normalised and filtered by chosen or default value
-        pass
+        source = join(TEST_FILE_PATH, u'pauksciai.csv')
+        output = join(TEST_FILE_PATH, 'tmp', u'pauksciai_filtruoti.csv')
+        attr = 3
+
+        normalise(source, output, attr, filter='outliers')
+        self.assertTrue(exists(output))
+
+        with open(output) as output_file:
+            for attr_list in csv.reader(output_file):
+                self.assertTrue(fabs(float(attr_list[attr])) > 3)
 
     def test_quartile_filter(self):
         # Selected attr is normalised using quartile transformation and filtered
