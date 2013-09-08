@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block menu %}
+    {% include 'menu.html' with active='data' %}
+{% endblock %}
+
+{% block content %}
+<div class="span8 offset3">
+<br/>
+<br/>
+<form action="" method="post">{% csrf_token %}
+    <p>{% trans 'Are you sure you want to delete' %} "{{ object }}"?</p>
+        <input class='btn btn-primary' type="submit" value="Confirm" />
+</form>
+</div>
+{% endblock %}

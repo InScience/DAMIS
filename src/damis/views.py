@@ -3,100 +3,93 @@ import json
 from os.path import join, exists, getsize, splitext
 from os import makedirs, listdir
 
-from django.views.generic import FormView, CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import get_language
 
-from damis.forms import LoginForm, DataFileUploadForm, DatasetForm
+from damis.forms import LoginForm, DatasetForm
 from damis.utils import slugify
-from damis.models import DatasetLicense, FileFormat, Dataset
+from damis.models import Algorithm
+from damis.models import Dataset
+from damis.models import DatasetLicense
+from damis.models import Experiment
 
 
-class DatasetLicenseCreate(CreateView):
-    model = DatasetLicense
-    template_name = 'damis/obj_form.html'
-# @login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
-# def dispatch(self, *args, **kwargs):
-#     return super(DatasetLicenseCreate, self).dispatch(*args, **kwargs)
-
-class FileFormatCreate(CreateView):
-    model = FileFormat
-    template_name = 'damis/obj_form.html'
-
-class DatasetCreate(CreateView):
-    model = Dataset
-    template_name = 'damis/dataset_create.html'
-    form_class = DatasetForm
-
-    def form_valid(self, form):
-        form.instance.slug = slugify(form.instance.title)
-        return super(DatasetCreate, self).form_valid(form)
-
-
-DATA_LICENSE_SHORT = {
-    'private': _('Private'),
-    'open': _('Open'),
-}
+class LoginRequiredMixin(object):
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
+    def dispatch(self, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 
 def index_view(request):
     return render(request, 'index.html', {})
 
 
-# @login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
-def data_view(request):
-    absolute_dir = settings.MEDIA_ROOT
-    user_dir = join(absolute_dir, request.user.username)
-    if not exists(user_dir):
-        makedirs(user_dir)
+class DatasetCreate(LoginRequiredMixin, CreateView):
+    model = Dataset
+    template_name = 'damis/dataset_new.html'
+    form_class = DatasetForm
 
-    files = []
-    for f in listdir(user_dir):
-        if f.endswith('.names'):
-            f_meta = json.load(open(join(user_dir, f)))
-            f_meta['license'] = DATA_LICENSE_SHORT[f_meta['license']]
-            files.append(f_meta)
-            files[-1]['size'] = str(getsize(join(user_dir, splitext(f)[0]+'.csv'))) + ' B'
+    def form_valid(self, form):
+        form.instance.slug = slugify(form.instance.title)
+        return super(DatasetCreate, self).form_valid(form)
 
-    if request.method == 'POST':
-        form = DataFileUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            meta_data = {
-                'title': form.cleaned_data['title'],
-                'license': form.cleaned_data['license'],
-                'comment': form.cleaned_data['comment'],
-            }
-            # STUB: aboslute_dir should be in supercomputer, not in web server
+class DatasetList(LoginRequiredMixin, ListView):
+    model = Dataset
+    paginate_by = 50
+    template_name = 'damis/dataset_list.html'
 
-            filename = slugify(form.cleaned_data['title'])
-            meta_file = open(join(user_dir, filename + '.names'), 'w')
-            data_file = open(join(user_dir, filename + '.csv'), 'w')
+    def get_queryset(self):
+        qs = super(DatasetList, self).get_queryset()
+        return qs.order_by('-created')
 
-            # TODO: SCP meta-data file and uploaded file to logged in user home directory
-            json.dump(meta_data, meta_file, indent=4)
-            data_file.write(form.cleaned_data['data_file'].read())
-            meta_file.close()
-            data_file.close()
-            return HttpResponseRedirect('/%s/data/' % get_language())
+class DatasetUpdate(LoginRequiredMixin, UpdateView):
+    model = Dataset
 
-    form = DataFileUploadForm()
-    return render(request, 'data.html', {
-            'form': form,
-            'files': files,
-        })
+class DatasetDetail(LoginRequiredMixin, DetailView):
+    model = Dataset
 
-# @login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
-def experiments_view(request):
-    return render(request, 'experiments.html', {})
+class DatasetDelete(LoginRequiredMixin, DeleteView):
+    model = Dataset
+    success_url = reverse_lazy('dataset-list')
 
-# @login_required(login_url="/%s%s" % (get_language(), settings.LOGIN_URL))
-def algorithms_view(request):
-    return render(request, 'algorithms.html', {})
+
+class AlgorithmCreate(LoginRequiredMixin, CreateView):
+    model = Algorithm
+
+class AlgorithmList(LoginRequiredMixin, ListView):
+    model = Algorithm
+    template_name = 'damis/obj_list.html'
+
+class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
+    model = Algorithm
+
+class AlgorithmDetail(LoginRequiredMixin, DetailView):
+    model = Algorithm
+
+class AlgorithmDelete(LoginRequiredMixin, DeleteView):
+    model = Algorithm
+    success_url = reverse_lazy('algorithm-list')
+
+
+class ExperimentList(LoginRequiredMixin, ListView):
+    model = Experiment
+    template_name = 'damis/obj_list.html'
+
+
+
+class DatasetLicenseCreate(LoginRequiredMixin, CreateView):
+    model = DatasetLicense
+    template_name = 'damis/obj_form.html'
+
+
+
 
 ## User views
 def login_view(request):
@@ -107,7 +100,7 @@ def login_view(request):
             if user is not None and user.is_active:
                 request.session['password'] = form.cleaned_data['password']
                 login(request, user)
-                return HttpResponseRedirect('/%s/' % get_language())
+                return HttpResponseRedirect(reverse_lazy('home'))
     else:
         form = LoginForm()
 

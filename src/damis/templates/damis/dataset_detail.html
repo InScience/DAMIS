@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='data' %}
+{% endblock %}
+
+{% block content %}
+<h1>{{ object.title }}</h1>
+<p>{% trans "License" %}: {{ object.license }}</p>
+<p>{% trans "File" %}: {{ object.file.url }}</p>
+<p>{% trans "Description" %}: {{ object.description }}</p>
+<p>{% trans "Author" %}: {{ object.author }}</p>
+<p>{% trans "Updated" %}: {{ object.updated|date:"Y-m-d H:i" }}</p>
+<p>{% trans "Created" %}: {{ object.created|date:"Y-m-d H:i" }}</p>
+{% endblock %}
+
+{% block javascript %}
+{{ block.super }}
+    <script src="/static/js/bootstrap-tab.js" type="text/javascript"></script>
+{% endblock %}
+

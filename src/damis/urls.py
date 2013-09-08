@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, url, include
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 
@@ -13,16 +13,18 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += i18n_patterns('',
-    (r'^$', index_view),
-    (r'^login/$', login_view),
-    (r'^logout/$', logout_view),
-    (r'^datasets/$', DatasetCreate.as_view()),    # data_view
-    # (r'^datasets/create/$', ),
-    (r'^datasets/licenses/create/$', DatasetLicenseCreate.as_view()),
-    (r'^datasets/fileformats/create/$', FileFormatCreate.as_view()),
-    (r'^algorithms/$', algorithms_view),
-    (r'^experiments/$', experiments_view),
+    url(r'^$', index_view, name='home'),
+    url(r'^login/$', login_view, name='login'),
+    url(r'^logout/$', logout_view, name='logout'),
+    url(r'^datasets/$', DatasetList.as_view(), name='dataset-list'),
+    url(r'^dataset/new/$', DatasetCreate.as_view(), name='dataset-new'),
+    url(r'^dataset/(?P<pk>\d*)/$', DatasetDetail.as_view(), name='dataset-detail'),
+    url(r'^dataset/(?P<pk>\d*)/edit/$', DatasetUpdate.as_view(), name='dataset-update'),
+    url(r'^dataset/(?P<pk>\d*)/delete/$', DatasetDelete.as_view(), name='dataset-delete'),
+    url(r'^datasets/licenses/create/$', DatasetLicenseCreate.as_view()),
 
+    url(r'^algorithms/$', AlgorithmList.as_view(), name='algorithm-list'),
+    url(r'^experiments/$', ExperimentList.as_view(), name='experiment-list'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

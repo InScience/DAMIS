@@ -4,10 +4,10 @@
     <div class="navbar">
         <div class="navbar-inner">
         <ul class="nav">
-            <li class="{% if active == "home" %}active{% endif %}"><a href="/{{ lang }}/"><img src="/static/img/home_icon.png"/></a></li>
-            <li class="{% if active == "data" %}active{% endif %}"><a href="/{{ lang }}/datasets/">{% trans "Datasets" %}</a></li>
-            <li class="{% if active == "algorithms" %}active{% endif %}"><a href="/{{ lang }}/algorithms/">{% trans "Algorithms" %}</a></li>
-            <li class="{% if active == "experiments" %}active{% endif %}"><a href="/{{ lang }}/experiments/">{% trans "Experiments" %}</a></li>
+            <li class="{% if active == "home" %}active{% endif %}"><a href="{% url 'home' %}"><img src="/static/img/home_icon.png"/></a></li>
+            <li class="{% if active == "data" %}active{% endif %}"><a href="{% url 'dataset-list' %}">{% trans "Datasets" %}</a></li>
+            <li class="{% if active == "algorithms" %}active{% endif %}"><a href="{% url 'algorithm-list' %}">{% trans "Algorithms" %}</a></li>
+            <li class="{% if active == "experiments" %}active{% endif %}"><a href="{% url 'experiment-list' %}">{% trans "Experiments" %}</a></li>
         </ul>
         <ul class="nav pull-right">
             {% if user.is_authenticated %}

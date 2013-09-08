@@ -16,9 +16,9 @@
         {{ field.errors }}
         {{ field.name }}
         {% if field.name == 'Title' %}
-        <p>{{ field.name }}:<br/> {{ field }} &nbsp;&nbsp;&nbsp;<a href="/{{ lang }}/datasets/licenses/create/">{% trans "Add" %}</a></p>
+        <p>{{ field }} &nbsp;&nbsp;&nbsp;<a href="/{{ lang }}/datasets/licenses/create/">{% trans "Add" %}</a></p>
         {% else %}
-            <p>{{ field.name }}:<br/> {{ field }}</p>
+            <p>{{ field }}</p>
         {% endif %}
     {% endfor %}
     {% for hidden in form.hidden_fields %}

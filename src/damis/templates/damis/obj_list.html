@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='data' %}
+{% endblock %}
+
+{% block content %}
+<div class="span8 offset3">
+    {% for obj in object_list %}
+    <p>{{ obj }}</p>
+    {% endfor %}
+</div>
+{% endblock %}
