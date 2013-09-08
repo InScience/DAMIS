@@ -1,0 +1,11 @@
+@RELATION iris
+@ATTRIBUTE id NUMERIC
+@ATTRIBUTE pavadinimas STRING
+@ATTRIBUTE skaicius NUMERIC
+@ATTRIBUTE skaicius DATE
+@DATA
+1,  balandis,    3,        2013-07-01
+2,  žvirblis,    14,       2013-07-02
+4,  zylė,        5,        2013-07-02
+5,  varna,       1,        2013-07-03
+3,  zvirblis,    8,        2013-07-04

@@ -1,0 +1,29 @@
+<paukstis id="1">
+    <name>
+        balandis
+    </name>
+    <kiekis>3</kiekis>
+    <data>2013-07-01</data>
+</paukstis>
+<paukstis id="2">
+    <name>
+        žvirblis
+    </name>
+    <kiekis>14</kiekis>
+    <data>2013-07-02</data>
+</paukstis>
+<paukstis id="3">
+    <name>zylė</name>
+    <kiekis>5</kiekis>
+    <data>2013-07-02</data>
+</paukstis>
+<paukstis id="4">
+    <name>varna</name>
+    <kiekis>1</kiekis>
+    <data>2013-07-03</data>
+</paukstis>
+<paukstis id="4">
+    <name>žvirblis</name>
+    <kiekis>8</kiekis>
+    <data>2013-07-04</data>
+</paukstis>
