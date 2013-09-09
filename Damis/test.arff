@@ -1,0 +1,13 @@
+@attribute aukstis numeric
+@attribute plotis numeric
+@attribute spalva string
+@attribute kampas numeric
+@attribute gylis numeric
+@attribute rastas string
+@data
+1,2,zalia,56,2,linijos
+4,5,geltona,45,3,kvadratai
+7,8,melyna,13,3,linijos
+1,2,zalia,56,2,linijos
+4,5,raudona,45,3,kvadratai
+7,9,melyna,13,3,apskritimai
