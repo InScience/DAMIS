@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='algorithms' %}
+{% endblock %}
+
+{% block content %}
+<div class="span8 offset3">
+    <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn" type='submit'>{% trans "Save" %}</button>
+        <h3>Add parameter</h3>
+        {% for form in parameter_forms %}
+            {{ form.as_p }}
+        {% endfor %}
+        <button class="btn" type='submit'>{% trans "Add parameter" %}</button>
+    </form>
+</div>
+{% endblock %}

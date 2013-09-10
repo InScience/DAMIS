@@ -4,6 +4,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
 
 from damis.models import Dataset
+from damis.models import Algorithm
+from damis.models import Parameter
+from damis.models import Experiment
+from damis.models import Task
 
 
 class DatasetForm(forms.ModelForm):
@@ -41,3 +45,24 @@ class DataFileUploadForm(forms.Form):
     comment = forms.CharField(label=_('Description'),
             widget=forms.Textarea(attrs={'rows':'5', 'cols': '25'}),
             required=False)
+
+
+class AlgorithmForm(forms.ModelForm):
+    class Meta:
+        model = Algorithm
+        exclude = ['user']
+
+class ExperimentForm(forms.ModelForm):
+    class Meta:
+        model = Experiment
+        exclude = ['user']
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['dataset', 'algorithm']
+
+class ParameterForm(forms.ModelForm):
+    class Meta:
+        model = Parameter
+        fields = ['name', 'type', 'required', 'default']

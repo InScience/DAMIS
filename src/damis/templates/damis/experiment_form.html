@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='experiments' %}
+{% endblock %}
+
+{% block content %}
+<div class="span8 offset3">
+    <form action="." method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn" type='submit'>{% trans "Save" %}</button>
+        {% for task_form in tasks %}
+        <h3> {% trans 'New task' %} </h3>
+        <p>
+            {{ task_form }}
+        </p>
+        <button class="btn" type='submit'>{% trans "Add new task" %}</button>
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}

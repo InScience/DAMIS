@@ -12,13 +12,23 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
+from django.forms.models import modelformset_factory
 
-from damis.forms import LoginForm, DatasetForm
+from damis.forms import LoginForm
+from damis.forms import ParameterForm
+from damis.forms import DatasetForm
+from damis.forms import AlgorithmForm
+from damis.forms import ExperimentForm
+from damis.forms import TaskForm
+
 from damis.utils import slugify
+
 from damis.models import Algorithm
+from damis.models import Parameter
 from damis.models import Dataset
 from damis.models import DatasetLicense
 from damis.models import Experiment
+from damis.models import Task
 
 
 class LoginRequiredMixin(object):
@@ -62,10 +72,30 @@ class DatasetDelete(LoginRequiredMixin, DeleteView):
 
 class AlgorithmCreate(LoginRequiredMixin, CreateView):
     model = Algorithm
+    form_class = AlgorithmForm
+
+    def post(self, request, *args, **kwargs):
+        algorithm_form = AlgorithmForm(request.POST)
+        ParameterFormSet = modelformset_factory(Parameter)
+        parameter_form = ParameterFormSet(request.POST)
+        if algorithm_form.is_valid() and parameter_form.is_valid():
+            algorithm_form.save()
+            parameter_form.save()
+
+        kwargs.update({
+            'form': algorithm_form,
+            'parameter_forms': parameter_form,
+            })
+        # return self.get(request, *args, **kwargs)
+        return super(AlgorithmCreate, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(AlgorithmCreate, self).get_context_data(**kwargs)
+        context['parameter_forms'] = modelformset_factory(Parameter, form=ParameterForm)
+        return context
 
 class AlgorithmList(LoginRequiredMixin, ListView):
     model = Algorithm
-    template_name = 'damis/obj_list.html'
 
 class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
     model = Algorithm
@@ -80,7 +110,15 @@ class AlgorithmDelete(LoginRequiredMixin, DeleteView):
 
 class ExperimentList(LoginRequiredMixin, ListView):
     model = Experiment
-    template_name = 'damis/obj_list.html'
+
+class ExperimentCreate(LoginRequiredMixin, CreateView):
+    model = Experiment
+    form_class = ExperimentForm
+
+    def get_context_data(self, **kwargs):
+        context = super(ExperimentCreate, self).get_context_data(**kwargs)
+        context['tasks'] = modelformset_factory(Task, form=TaskForm, extra=1)
+        return context
 
 
 

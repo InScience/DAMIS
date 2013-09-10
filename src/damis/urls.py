@@ -24,7 +24,10 @@ urlpatterns += i18n_patterns('',
     url(r'^datasets/licenses/create/$', DatasetLicenseCreate.as_view()),
 
     url(r'^algorithms/$', AlgorithmList.as_view(), name='algorithm-list'),
+    url(r'^algorithm/new/$', AlgorithmCreate.as_view(), name='algorithm-new'),
+
     url(r'^experiments/$', ExperimentList.as_view(), name='experiment-list'),
+    url(r'^experiment/new/$', ExperimentCreate.as_view(), name='experiment-new'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

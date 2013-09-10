@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+# from django.contrib.contenttypes import generic
+# from django.contrib.contenttypes.models import ContentType
 
 
 class DatasetLicense(models.Model):
@@ -45,19 +47,20 @@ class Dataset(models.Model):
 
 def get_algorithm_file_upload_path(instance, filename):
     username = 'anonymous'
-    if instance.algorithm.user:
-        username = instance.algorithm.user.username
+    if instance.user:
+        username = instance.user.username
     return  '%s/algorithms/%s' % (username, filename)
 
 
-class AlgorithmFile(models.Model):
-    file = models.FileField(upload_to=get_algorithm_file_upload_path)
-    algorithm = models.ForeignKey('Algorithm', related_name='files')
+#class File(models.Model):
+#    file = models.FileField(upload_to=get_algorithm_file_upload_path)
+#    algorithm = models.ForeignKey('Algorithm', related_name='files')
 
 class Algorithm(models.Model):
     title = models.CharField(_('Title'), max_length=255, null=True, blank=True)
-    user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='algorithms')
-    executable_file = models.CharField(_('Title'), max_length=255, null=True, blank=True)
+    user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'))
+    file = models.FileField(upload_to=get_algorithm_file_upload_path)
+    executable_file = models.CharField(_('Executable'), max_length=255, null=True, blank=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
 
@@ -80,7 +83,6 @@ class Experiment(models.Model):
     finish = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
     processors = models.IntegerField()
-    result = models.ForeignKey('Task', related_name='result_for_experiment')
 
 
 def get_result_file_upload_path(instance, filename):
@@ -90,11 +92,12 @@ def get_result_file_upload_path(instance, filename):
     return  '%s/result/%s' % (username, filename)
 
 class Task(models.Model):
-    experiment = models.ForeignKey('Experiment', related_name='tasks')
+    experiment = models.ForeignKey('Experiment', related_name='tasks', blank=True, null=True)
+    dataset = models.ForeignKey('Dataset', blank=True, null=True)
     algorithm = models.ForeignKey('Algorithm')
-    sequence = models.IntegerField()
-    stdout = models.TextField()
-    stderr = models.TextField()
+    sequence = models.IntegerField(blank=True, null=True)
+    stdout = models.TextField(blank=True, null=True)
+    stderr = models.TextField(blank=True, null=True)
 
 class TaskFile(models.Model):
     file = models.FileField(upload_to=get_algorithm_file_upload_path)
