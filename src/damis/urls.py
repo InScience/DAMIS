@@ -17,17 +17,19 @@ urlpatterns += i18n_patterns('',
     url(r'^login/$', login_view, name='login'),
     url(r'^logout/$', logout_view, name='logout'),
     url(r'^datasets/$', DatasetList.as_view(), name='dataset-list'),
-    url(r'^dataset/new/$', DatasetCreate.as_view(), name='dataset-new'),
-    url(r'^dataset/(?P<pk>\d*)/$', DatasetDetail.as_view(), name='dataset-detail'),
-    url(r'^dataset/(?P<pk>\d*)/edit/$', DatasetUpdate.as_view(), name='dataset-update'),
-    url(r'^dataset/(?P<pk>\d*)/delete/$', DatasetDelete.as_view(), name='dataset-delete'),
+    url(r'^datasets/new/$', DatasetCreate.as_view(), name='dataset-new'),
+    url(r'^datasets/(?P<pk>\d*)/$', DatasetDetail.as_view(), name='dataset-detail'),
+    url(r'^datasets/(?P<pk>\d*)/edit/$', DatasetUpdate.as_view(), name='dataset-update'),
+    url(r'^datasets/(?P<pk>\d*)/delete/$', DatasetDelete.as_view(), name='dataset-delete'),
     url(r'^datasets/licenses/create/$', DatasetLicenseCreate.as_view()),
 
     url(r'^algorithms/$', AlgorithmList.as_view(), name='algorithm-list'),
-    url(r'^algorithm/new/$', AlgorithmCreate.as_view(), name='algorithm-new'),
+    url(r'^algorithms/new/$', AlgorithmCreate.as_view(), name='algorithm-new'),
+    url(r'^algorithms/(?P<pk>\d*)/edit/$', AlgorithmUpdate.as_view(), name='algorithm-update'),
+    url(r'^algorithms/(?P<pk>\d*)/delete/$', AlgorithmDelete.as_view(), name='algorithm-delete'),
 
     url(r'^experiments/$', ExperimentList.as_view(), name='experiment-list'),
-    url(r'^experiment/new/$', ExperimentCreate.as_view(), name='experiment-new'),
+    url(r'^experiments/new/$', ExperimentCreate.as_view(), name='experiment-new'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

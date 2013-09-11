@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
-from django.forms.models import modelformset_factory
+from django.forms.models import inlineformset_factory
 
 from damis.forms import LoginForm
 from damis.forms import DatasetForm
@@ -103,11 +103,39 @@ class AlgorithmCreate(LoginRequiredMixin, CreateView):
         return self.render_to_response(self.get_context_data(form=form,
             parameter_form=parameter_form))
 
+
 class AlgorithmList(LoginRequiredMixin, ListView):
     model = Algorithm
 
 class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
     model = Algorithm
+    form_class = AlgorithmForm
+
+    def post(self, request, *args, **kwargs):
+        self.object = Algorithm.objects.get(pk=self.kwargs['pk'])
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        parameter_form = ParameterFormSet(self.request.POST, instance=self.object)
+        if form.is_valid() and parameter_form.is_valid():
+            return self.form_valid(form, parameter_form)
+        else:
+            return self.form_invalid(form, parameter_form)
+
+    def form_valid(self, form, parameter_form):
+        self.object = form.save()
+        parameter_form.instance = self.object
+        parameter_form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form, parameter_form):
+        return self.render_to_response(self.get_context_data(form=form,
+            parameter_form=parameter_form))
+
+    def get_context_data(self, **kwargs):
+        context = super(AlgorithmUpdate, self).get_context_data(**kwargs)
+        ParameterFormSet = inlineformset_factory(Algorithm, Parameter, extra=0, can_delete=True)
+        context['parameter_form'] = ParameterFormSet(instance=self.object)
+        return context
 
 class AlgorithmDetail(LoginRequiredMixin, DetailView):
     model = Algorithm
