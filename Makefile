@@ -3,7 +3,6 @@
 all: install start_database messages
 
 install:
-	# sudo apt-get install python-numpy python-scipy python-matplotlib ipython
 	python bootstrap.py
 	bin/buildout
 
