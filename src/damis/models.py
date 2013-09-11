@@ -65,11 +65,10 @@ class Algorithm(models.Model):
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
 
     def get_absolute_url(self):
-        return "/datasets/"
+        return reverse('algorithm-list')
 
     def __unicode__(self):
         return self.title
-
 
 class Parameter(models.Model):
     algorithm = models.ForeignKey(Algorithm, related_name='parameters')
