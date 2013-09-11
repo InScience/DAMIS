@@ -78,9 +78,16 @@ class Parameter(models.Model):
     default = models.CharField(max_length=255, null=True, blank=True)
 
 class Experiment(models.Model):
-    title = models.CharField(_('Title'), max_length=255, null=True, blank=True)
+    STATUSES = (
+        ('CREATED', 'Created'),
+        ('SUBMITED', 'Submited'),
+        ('RUNNING', 'Running'),
+        ('FINISHED', 'Finished'),
+    )
     start = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     finish = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
+    status = models.CharField(_('Status'), max_length=50, null=True, blank=True,
+                              choices=STATUSES, default='CREATED')
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
 
     def get_absolute_url(self):
