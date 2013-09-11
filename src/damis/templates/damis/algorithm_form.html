@@ -3,7 +3,14 @@
 {% get_current_language as lang %}
 
 {% block content %}
-<div class="span8 offset3">
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs" id="myTab2">
+      <li><a href="{% url 'algorithm-list' %}">{% trans "Algorithm list" %}</a></li>
+      <li class="active"><a href="{% url 'algorithm-new' %}">{% trans "Upload algorithm" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="data-list">
+    <div class="span8 offset3">
     <form action="." method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
@@ -22,6 +29,9 @@
         </fieldset>
         <button class="btn" type='submit'>{% trans "Save" %}</button>
     </form>
+      </table>
+    </div>
+  </div>
 </div>
 {% endblock %}
 
