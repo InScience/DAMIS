@@ -19,12 +19,19 @@
           <thead>
               <tr>
                   <th>{% trans "Title" %}</th>
+                  <th>{% trans "Status" %}</th>
+                  <th>{% trans "Results" %}</th>
               </tr>
           </thead>
           <tbody>
 
                 {% for obj in object_list %}
-                <tr><td> {{ obj }}</td>
+                <tr>
+                    <td> {{ obj.title }}</td>
+                    <td> {{ obj.status }}</td>
+                    <td>
+                        <button type="button" class="btn btn-small"><i class="icon-th-list"></i></button>
+                    </td>
                 </tr>
                 {% endfor %}
           </tbody>
