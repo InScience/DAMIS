@@ -1,6 +1,7 @@
 {% extends "algorithms.html" %}
 {% load i18n %}
 {% get_current_language as lang %}
+{% load filename from damis %}
 
 {% block content %}
 <div class="span12">
@@ -21,21 +22,19 @@
 
                 {% for obj in object_list %}
                 <tr><td> {{ obj }}</td>
-                <td> {{ obj.file.name }}</td>
+                <td> 
+                    <a href="{{ obj.file.url }}">
+                          <button type="button" class="btn btn-small"><i class="icon-arrow-down"></i></button>
+                    </a>
+                    {{ obj.file.name|filename }}
+                </td>
                 <td>
-                    <div class="btn-group" >
                         <a href="{% url 'algorithm-update' obj.pk %}">
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
                         </a>
                         <a href="{% url 'algorithm-delete' obj.pk %}">
                             <button type="button" class="btn btn-small"><i class="icon-trash"></i></button>
                         </a>
-                    </div>
-                </td>
-                <td>
-                    <a href="{{ obj.file.url }}">
-                          <button type="button" class="btn btn-small">{% trans "Files" %}</button>
-                    </a>
                 </td>
                 </tr>
                 {% endfor %}
