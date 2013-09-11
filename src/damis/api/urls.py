@@ -5,6 +5,8 @@ from damis.api import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'datasets', views.DatasetViewSet)
+router.register(r'algorithms', views.AlgorithmViewSet)
+router.register(r'experiments', views.ExperimentViewSet)
 
 urlpatterns = patterns('',
     url(r'^', include(router.urls)),
