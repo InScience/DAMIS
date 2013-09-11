@@ -15,7 +15,7 @@ class DatasetLicense(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return "/datasets/"
+        return reverse('dataset-list')
 
     def __unicode__(self):
         return self.title
@@ -71,17 +71,24 @@ class Algorithm(models.Model):
         return self.title
 
 class Parameter(models.Model):
-    algorithm = models.ForeignKey(Algorithm, related_name='parameters')
+    algorithm = models.ForeignKey(Algorithm, related_name='parameters', null=True, blank=True)
     name = models.CharField(_('Title'), max_length=255, null=True, blank=True)
-    type = models.CharField(max_length=255)
-    required = models.BooleanField()
-    default = models.CharField(max_length=255)
+    type = models.CharField(max_length=255, null=True, blank=True)
+    required = models.BooleanField(blank=True)
+    default = models.CharField(max_length=255, null=True, blank=True)
 
 class Experiment(models.Model):
+    title = models.CharField(_('Title'), max_length=255, null=True, blank=True)
     start = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     finish = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
     processors = models.IntegerField()
+
+    def get_absolute_url(self):
+        return reverse('experiment-list')
+
+    def __unicode__(self):
+        return self.title
 
 
 def get_result_file_upload_path(instance, filename):
