@@ -8,6 +8,7 @@ install:
 	bin/buildout
 
 run:
+	bin/django migrate damis
 	bin/django runserver
 
 static:
