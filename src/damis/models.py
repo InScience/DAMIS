@@ -68,11 +68,11 @@ class Algorithm(models.Model):
         return reverse('algorithm-list')
 
     def __unicode__(self):
-        return self.title
+        return str(self.title)
 
 class Parameter(models.Model):
     algorithm = models.ForeignKey(Algorithm, related_name='parameters', null=True, blank=True)
-    name = models.CharField(_('Title'), max_length=255, null=True, blank=True)
+    name = models.CharField(_('Title'), max_length=255, null=True)
     type = models.CharField(max_length=255, null=True, blank=True)
     required = models.BooleanField(blank=True)
     default = models.CharField(max_length=255, null=True, blank=True)
@@ -88,7 +88,7 @@ class Experiment(models.Model):
         return reverse('experiment-list')
 
     def __unicode__(self):
-        return self.title
+        return str(self.title)
 
 
 def get_result_file_upload_path(instance, filename):
