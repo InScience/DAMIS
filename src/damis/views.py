@@ -159,12 +159,9 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         return context
 
 
-
 class DatasetLicenseCreate(LoginRequiredMixin, CreateView):
     model = DatasetLicense
     template_name = 'damis/obj_form.html'
-
-
 
 
 ## User views
