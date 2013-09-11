@@ -7,10 +7,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="span8 offset3">
-    <form action="." method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn" type='submit'>{% trans "Save" %}</button>
-    </form>
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs" id="myTab2">
+      <li><a href="{% url 'dataset-list' %}">{% trans "Dataset list" %}</a></li>
+      <li><a href="{% url 'dataset-new' %}">{% trans "Upload dataset" %}</a></li>
+      <li class="active"><a href="{% url 'license-new' %}">{% trans "Add license" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="offset3">
+        <form action="." method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type='submit'>{% trans "Save" %}</button>
+        </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

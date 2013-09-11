@@ -7,17 +7,27 @@
 {% endblock %}
 
 {% block content %}
-<div class="span8 offset3">
+<div class="span12">
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs" id="myTab2">
+      <li><a href="{% url 'experiment-list' %}">{% trans "Experiments" %}</a></li>
+      <li class="active"><a href="{% url 'experiment-new' %}">{% trans "New experiment" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="offset3">
     <form action="." method="post">{% csrf_token %}
+        <h2> {% trans 'New experiment' %} </h2>
         {{ form.as_p }}
-        <button class="btn btn-primary" type='submit'>{% trans "Execute" %}</button>
         {% for task_form in tasks %}
         <h3> {% trans 'Tasks' %} </h3>
         <p>
             {{ task_form }}
         </p>
-        <button class="btn" type='submit'>{% trans "Add new task" %}</button>
+        <button class="btn btn-primary" type='submit'>{% trans "Execute" %}</button>&nbsp;
+        <button class="btn" type='submit'><i class="icon-plus"></i>{% trans " Task" %}</button>
         {% endfor %}
     </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

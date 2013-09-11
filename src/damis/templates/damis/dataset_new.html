@@ -7,13 +7,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="span12">
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs" id="myTab2">
       <li><a href="{% url 'dataset-list' %}">{% trans "Dataset list" %}</a></li>
       <li class="active"><a href="{% url 'dataset-new' %}">{% trans "Upload dataset" %}</a></li>
+      <li><a href="{% url 'license-new' %}">{% trans "Add license" %}</a></li>
   </ul>
   <div class="tab-content">
+    <div class="offset3">
       <form method='POST' action='{% url 'dataset-new' %}' enctype="multipart/form-data">{% csrf_token %}
         {% for error in form.non_field_errors %}
             <div class="alert alert-error">{{ error }}</div>
