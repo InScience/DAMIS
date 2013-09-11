@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
+from django.forms.models import modelformset_factory
 from django.forms.models import inlineformset_factory
 
 from damis.forms import LoginForm
