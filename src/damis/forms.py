@@ -9,6 +9,7 @@ from damis.models import Parameter
 from damis.models import Experiment
 from damis.models import Task
 
+from django.forms.models import inlineformset_factory
 
 class DatasetForm(forms.ModelForm):
     class Meta:
@@ -52,17 +53,22 @@ class AlgorithmForm(forms.ModelForm):
         model = Algorithm
         exclude = ['user']
 
+ParameterFormSet = inlineformset_factory(Algorithm, Parameter, extra=1, can_delete=False)
+
+
 class ExperimentForm(forms.ModelForm):
     class Meta:
         model = Experiment
         exclude = ['user']
+
 
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['dataset', 'algorithm']
 
-class ParameterForm(forms.ModelForm):
-    class Meta:
-        model = Parameter
-        fields = ['name', 'type', 'required', 'default']
+
+#class ParameterForm(forms.ModelForm):
+#    class Meta:
+#        model = Parameter
+#        fields = ['name', 'type', 'required', 'default']

@@ -15,9 +15,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.forms.models import modelformset_factory
 
 from damis.forms import LoginForm
-from damis.forms import ParameterForm
 from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
+from damis.forms import ParameterFormSet
 from damis.forms import ExperimentForm
 from damis.forms import TaskForm
 
@@ -74,25 +74,34 @@ class AlgorithmCreate(LoginRequiredMixin, CreateView):
     model = Algorithm
     form_class = AlgorithmForm
 
+    def get(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        parameter_form =  ParameterFormSet()
+        return self.render_to_response(
+                self.get_context_data(form=form,
+                    parameter_form=parameter_form))
+
     def post(self, request, *args, **kwargs):
-        algorithm_form = AlgorithmForm(request.POST)
-        ParameterFormSet = modelformset_factory(Parameter)
-        parameter_form = ParameterFormSet(request.POST)
-        if algorithm_form.is_valid() and parameter_form.is_valid():
-            algorithm_form.save()
-            parameter_form.save()
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        parameter_form = ParameterFormSet(self.request.POST)
+        if form.is_valid() and parameter_form.is_valid():
+            return self.form_valid(form, parameter_form)
+        else:
+            return self.form_invalid(form, parameter_form)
 
-        kwargs.update({
-            'form': algorithm_form,
-            'parameter_forms': parameter_form,
-            })
-        # return self.get(request, *args, **kwargs)
-        return super(AlgorithmCreate, self).get(request, *args, **kwargs)
+    def form_valid(self, form, parameter_form):
+        self.object = form.save()
+        parameter_form.instance = self.object
+        parameter_form.save()
+        return HttpResponseRedirect(self.get_success_url())
 
-    def get_context_data(self, **kwargs):
-        context = super(AlgorithmCreate, self).get_context_data(**kwargs)
-        context['parameter_forms'] = modelformset_factory(Parameter, form=ParameterForm)
-        return context
+    def form_invalid(self, form, parameter_form):
+        return self.render_to_response(self.get_context_data(form=form,
+            parameter_form=parameter_form))
 
 class AlgorithmList(LoginRequiredMixin, ListView):
     model = Algorithm

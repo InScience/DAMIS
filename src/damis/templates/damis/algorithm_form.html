@@ -8,14 +8,23 @@
 
 {% block content %}
 <div class="span8 offset3">
-    <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn" type='submit'>{% trans "Save" %}</button>
-        <h3>Add parameter</h3>
-        {% for form in parameter_forms %}
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
             {{ form.as_p }}
-        {% endfor %}
-        <button class="btn" type='submit'>{% trans "Add parameter" %}</button>
+        </div>
+        <fieldset>
+            <legend>Algorithm Parameter</legend>
+            {{ parameter_form.management_form }}
+            {{ parameter_form.non_form_errors }}
+            {% for form in parameter_form %}
+                {{ form.id }}
+                <div class="inline"> 
+                    {{ form.as_p}}
+                </div>
+            {% endfor %}
+        </fieldset>
+        <button class="btn" type='submit'>{% trans "Save" %}</button>
     </form>
 </div>
 {% endblock %}
