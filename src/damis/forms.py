@@ -65,7 +65,7 @@ class ExperimentForm(forms.ModelForm):
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['dataset', 'algorithm']
+        fields = ['dataset', 'algorithm', 'processors']
 
 
 #class ParameterForm(forms.ModelForm):

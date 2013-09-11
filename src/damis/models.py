@@ -82,7 +82,6 @@ class Experiment(models.Model):
     start = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     finish = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
-    processors = models.IntegerField()
 
     def get_absolute_url(self):
         return reverse('experiment-list')
@@ -102,6 +101,7 @@ class Task(models.Model):
     dataset = models.ForeignKey('Dataset', blank=True, null=True)
     algorithm = models.ForeignKey('Algorithm')
     sequence = models.IntegerField(blank=True, null=True)
+    processors = models.IntegerField(blank=True, null=True)
     stdout = models.TextField(blank=True, null=True)
     stderr = models.TextField(blank=True, null=True)
 
