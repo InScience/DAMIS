@@ -1,0 +1,31 @@
+{% extends "experiments.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block content %}
+<div class="span12">
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs" id="myTab2">
+      <li><a href="{% url 'experiment-list' %}">{% trans "Experiments" %}</a></li>
+      <li class="active"><a href="{% url 'experiment-new' %}">{% trans "New experiment" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="offset3">
+        <h3>{% trans "Confirm " %} "{{ object.title }}" {% trans "execution" %}</h3>
+        <form action"" method="POST">
+            <input type="hidden" name='experiment-id-to-execute' value='{{ object.pk }}'><br/>
+            {% trans 'Password:' %}<br/> <input type='password' name='password'/><br/>
+            <input class='btn btn-primary' type='submit' value='{% trans 'Execute' %} '/>
+        </form>
+
+        <h3>Tasks</h3>
+        <ol>
+        {% for task in object.tasks.all %}
+        <li><b>"{{ task.dataset }}"</b>&nbsp; {% trans 'dataset with' %}
+        &nbsp;<b>"{{ task.algorithm }}"</b>&nbsp; {% trans 'algorithm.' %}</li>
+        {% endfor %}
+        </ol>
+    </div>
+  </div>
+</div>
+{% endblock %}

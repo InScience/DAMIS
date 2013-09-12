@@ -30,6 +30,7 @@ urlpatterns += i18n_patterns('',
 
     url(r'^experiments/$', ExperimentList.as_view(), name='experiment-list'),
     url(r'^experiments/new/$', ExperimentCreate.as_view(), name='experiment-new'),
+    url(r'^experiments/(?P<pk>\d*)/confirm/$', ExperimentDetail.as_view(), name='experiment-confirm'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

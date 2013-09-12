@@ -150,6 +150,9 @@ class AlgorithmDelete(LoginRequiredMixin, DeleteView):
 class ExperimentList(LoginRequiredMixin, ListView):
     model = Experiment
 
+class ExperimentDetail(LoginRequiredMixin, DetailView):
+    model = Experiment
+
 class ExperimentCreate(LoginRequiredMixin, CreateView):
     model = Experiment
     form_class = ExperimentForm
@@ -177,7 +180,9 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         self.object = form.save()
         tasks_form.instance = self.object
         tasks_form.save()
-        return HttpResponseRedirect(self.get_success_url())
+
+        # Redirect to Experiment review page and ask for password to confirm experiment execution.
+        return HttpResponseRedirect(reverse_lazy('experiment-confirm', args=[self.object.pk]))
 
     def form_invalid(self, form, tasks_form):
         return self.render_to_response(self.get_context_data(form=form,
