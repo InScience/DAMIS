@@ -6,11 +6,18 @@
                    projectFiles="true">
       <itemPath>DataMatrix.h</itemPath>
       <itemPath>DataObject.h</itemPath>
+      <itemPath>DimReductionMethod.h</itemPath>
       <itemPath>DistanceMetrics.h</itemPath>
       <itemPath>DistanceMetricsEnum.h</itemPath>
+      <itemPath>ExternalMethods.h</itemPath>
       <itemPath>Feature.h</itemPath>
+      <itemPath>HPCMethod.h</itemPath>
       <itemPath>ObjectMatrix.h</itemPath>
+      <itemPath>PCA.h</itemPath>
       <itemPath>Statistics.h</itemPath>
+      <itemPath>WebInterface.h</itemPath>
+      <itemPath>/home/mindaugas/cpp/src/alglibinternal.h</itemPath>
+      <itemPath>/home/mindaugas/cpp/src/alglibmisc.h</itemPath>
       <itemPath>arff.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -21,9 +28,12 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>DataObject.cpp</itemPath>
+      <itemPath>DimReductionMethod.cpp</itemPath>
       <itemPath>DistanceMetrics.cpp</itemPath>
       <itemPath>Feature.cpp</itemPath>
+      <itemPath>HPCMethod.cpp</itemPath>
       <itemPath>ObjectMatrix.cpp</itemPath>
+      <itemPath>PCA.cpp</itemPath>
       <itemPath>Statistics.cpp</itemPath>
       <itemPath>arff.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -50,12 +60,33 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>/home/mindaugas/cpp/src/alglibinternal.so</linkerLibFileItem>
+            <linkerLibFileItem>/home/mindaugas/cpp/src/alglibmisc.so</linkerLibFileItem>
+            <linkerLibFileItem>/home/mindaugas/cpp/src/libalglib.so</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
+      <item path="/home/mindaugas/cpp/src/alglibinternal.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/mindaugas/cpp/src/alglibmisc.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="DataMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DataObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="DataObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DimReductionMethod.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DimReductionMethod.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DistanceMetrics.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -63,17 +94,29 @@
       </item>
       <item path="DistanceMetricsEnum.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ExternalMethods.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Feature.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Feature.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HPCMethod.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="HPCMethod.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ObjectMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ObjectMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="PCA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PCA.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Statistics.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Statistics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="WebInterface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="arff.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -103,11 +146,25 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="/home/mindaugas/cpp/src/alglibinternal.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/mindaugas/cpp/src/alglibmisc.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="DataMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DataObject.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="DataObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DimReductionMethod.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DimReductionMethod.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DistanceMetrics.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -115,17 +172,29 @@
       </item>
       <item path="DistanceMetricsEnum.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ExternalMethods.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Feature.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Feature.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="HPCMethod.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="HPCMethod.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ObjectMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ObjectMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="PCA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PCA.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Statistics.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Statistics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="WebInterface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="arff.cpp" ex="false" tool="1" flavor2="0">
       </item>

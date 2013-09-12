@@ -12,6 +12,7 @@
 #include <iostream>
 #include "DistanceMetrics.h"
 #include "ObjectMatrix.h"
+#include "alglibinternal.h"
 
 using namespace std;
 
@@ -75,6 +76,11 @@ int main(int argc, char** argv) {
             cout<<dooo[j]<< " ";
         cout<<endl;
     }
+    
+    
+    
+    alglib::real_2d_array arr;
+    
     
     return 0;
 }

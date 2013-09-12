@@ -36,9 +36,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/DataObject.o \
+	${OBJECTDIR}/DimReductionMethod.o \
 	${OBJECTDIR}/DistanceMetrics.o \
 	${OBJECTDIR}/Feature.o \
+	${OBJECTDIR}/HPCMethod.o \
 	${OBJECTDIR}/ObjectMatrix.o \
+	${OBJECTDIR}/PCA.o \
 	${OBJECTDIR}/Statistics.o \
 	${OBJECTDIR}/arff.o \
 	${OBJECTDIR}/main.o
@@ -58,11 +61,17 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=/home/mindaugas/cpp/src/alglibinternal.so /home/mindaugas/cpp/src/alglibmisc.so /home/mindaugas/cpp/src/libalglib.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis: /home/mindaugas/cpp/src/alglibinternal.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis: /home/mindaugas/cpp/src/alglibmisc.so
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis: /home/mindaugas/cpp/src/libalglib.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -72,6 +81,11 @@ ${OBJECTDIR}/DataObject.o: DataObject.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/DataObject.o DataObject.cpp
+
+${OBJECTDIR}/DimReductionMethod.o: DimReductionMethod.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/DimReductionMethod.o DimReductionMethod.cpp
 
 ${OBJECTDIR}/DistanceMetrics.o: DistanceMetrics.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -83,10 +97,20 @@ ${OBJECTDIR}/Feature.o: Feature.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Feature.o Feature.cpp
 
+${OBJECTDIR}/HPCMethod.o: HPCMethod.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/HPCMethod.o HPCMethod.cpp
+
 ${OBJECTDIR}/ObjectMatrix.o: ObjectMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/ObjectMatrix.o ObjectMatrix.cpp
+
+${OBJECTDIR}/PCA.o: PCA.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/PCA.o PCA.cpp
 
 ${OBJECTDIR}/Statistics.o: Statistics.cpp 
 	${MKDIR} -p ${OBJECTDIR}
