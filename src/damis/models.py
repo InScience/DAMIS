@@ -72,7 +72,7 @@ class Algorithm(models.Model):
 
 class Parameter(models.Model):
     algorithm = models.ForeignKey(Algorithm, related_name='parameters', null=True, blank=True)
-    name = models.CharField(_('Title'), max_length=255, null=True)
+    name = models.CharField(_('Option'), max_length=255, null=True)
     type = models.CharField(max_length=255, null=True, blank=True)
     required = models.BooleanField(blank=True)
     default = models.CharField(max_length=255, null=True, blank=True)
@@ -84,8 +84,9 @@ class Experiment(models.Model):
         ('RUNNING', 'Running'),
         ('FINISHED', 'Finished'),
     )
-    start = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
-    finish = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
+    title = models.CharField(_('Title'), max_length=255, null=True)
+    start = models.DateTimeField(_('Start'), blank=True, null=True)
+    finish = models.DateTimeField(_('Finish'), blank=True, null=True)
     status = models.CharField(_('Status'), max_length=50, null=True, blank=True,
                               choices=STATUSES, default='CREATED')
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
