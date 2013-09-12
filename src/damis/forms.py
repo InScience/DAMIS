@@ -53,13 +53,18 @@ class AlgorithmForm(forms.ModelForm):
         model = Algorithm
         exclude = ['user']
 
-ParameterFormSet = inlineformset_factory(Algorithm, Parameter, extra=1, can_delete=False)
+class ParameterForm(forms.ModelForm):
+    class Meta:
+        model = Parameter
+        fields = ['name', 'type', 'required', 'default']
+
+ParameterFormSet = inlineformset_factory(Algorithm, Parameter, extra=1, form=ParameterForm, can_delete=False)
 
 
 class ExperimentForm(forms.ModelForm):
     class Meta:
         model = Experiment
-        exclude = ['user']
+        exclude = ['user', 'start', 'finish', 'status']
 
 
 class TaskForm(forms.ModelForm):
@@ -67,8 +72,5 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ['dataset', 'algorithm', 'processors']
 
+TaskFormSet = inlineformset_factory(Experiment, Task, extra=1, form=TaskForm, can_delete=False)
 
-#class ParameterForm(forms.ModelForm):
-#    class Meta:
-#        model = Parameter
-#        fields = ['name', 'type', 'required', 'default']

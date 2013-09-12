@@ -18,8 +18,9 @@
     <form action="." method="post">{% csrf_token %}
         <h2> {% trans 'New experiment' %} </h2>
         {{ form.as_p }}
-        {% for task_form in tasks %}
         <h3> {% trans 'Tasks' %} </h3>
+        {{ tasks_form.management_form }}
+        {% for task_form in tasks_form %}
         <p>
             {{ task_form }}
         </p>

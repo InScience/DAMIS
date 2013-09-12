@@ -20,6 +20,7 @@ from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
 from damis.forms import ParameterFormSet
 from damis.forms import ExperimentForm
+from damis.forms import TaskFormSet
 from damis.forms import TaskForm
 
 from damis.utils import slugify
@@ -153,10 +154,39 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
     model = Experiment
     form_class = ExperimentForm
 
-    def get_context_data(self, **kwargs):
-        context = super(ExperimentCreate, self).get_context_data(**kwargs)
-        context['tasks'] = modelformset_factory(Task, form=TaskForm, extra=1)
-        return context
+    def get(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        tasks_form = TaskFormSet()
+        return self.render_to_response(
+                    self.get_context_data(form=form,
+                                          tasks_form=tasks_form))
+
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        tasks_form = TaskFormSet(self.request.POST)
+        if form.is_valid() and tasks_form.is_valid():
+            return self.form_valid(form, tasks_form)
+        else:
+            return self.form_invalid(form, tasks_form)
+
+    def form_valid(self, form, tasks_form):
+        self.object = form.save()
+        tasks_form.instance = self.object
+        tasks_form.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form, tasks_form):
+        return self.render_to_response(self.get_context_data(form=form,
+            tasks_form=tasks_form))
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(ExperimentCreate, self).get_context_data(**kwargs)
+    #     context['tasks'] = modelformset_factory(Task, form=TaskForm, extra=1)
+    #     return context
 
 
 class DatasetLicenseCreate(LoginRequiredMixin, CreateView):
