@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-13 19:47+0000\n"
+"POT-Creation-Date: 2013-09-12 01:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,46 +16,84 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:8
+#: forms.py:21
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:9
+#: forms.py:22
 msgid "@uosis.mif.vu.lt"
 msgstr "@uosis.mif.vu.lt"
 
-#: forms.py:10
+#: forms.py:23
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:20
+#: forms.py:33
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:25 views.py:18
+#: forms.py:38
 msgid "Private"
 msgstr "Privatūs"
 
-#: forms.py:26
+#: forms.py:39
 msgid "Open under http://opendatacommons.org/licenses/pddl/"
 msgstr "Atviri pagal http://opendatacommons.org/licenses/pddl/"
 
-#: forms.py:30 templates/data.html:21
+#: forms.py:43 models.py:32 models.py:60 models.py:87
+#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:22
+#: templates/damis/experiment_list.html:21
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:31
+#: forms.py:44
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:32
-#, fuzzy
+#: forms.py:45 templates/damis/dataset_detail.html:11
 msgid "License"
 msgstr "Licencija"
 
-#: forms.py:33
+#: forms.py:46 models.py:11 models.py:35
+#: templates/damis/dataset_detail.html:13
 msgid "Description"
 msgstr "Aprašymas"
+
+#: models.py:33
+msgid "Dataset License"
+msgstr "Duomenų licencija"
+
+#: models.py:36 models.py:61 models.py:92
+msgid "User"
+msgstr "Naudotojas"
+
+#: models.py:37 models.py:64 templates/damis/dataset_detail.html:15
+msgid "Updated"
+msgstr "Atnaujinta"
+
+#: models.py:38 models.py:65 templates/damis/dataset_detail.html:16
+msgid "Created"
+msgstr "Sukurta"
+
+#: models.py:63
+msgid "Executable"
+msgstr "Vykdomasis"
+
+#: models.py:75
+msgid "Option"
+msgstr "Parinktis"
+
+#: models.py:88
+msgid "Start"
+msgstr "Pradžia"
+
+#: models.py:89
+msgid "Finish"
+msgstr "Pabaiga"
+
+#: models.py:90 templates/damis/experiment_list.html:22
+msgid "Status"
+msgstr "Statusas"
 
 #: settings.py:46
 msgid "Lithuanian"
@@ -65,53 +103,13 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:19
-msgid "Open"
-msgstr "Atviri"
-
-#: templates/base.html:54
+#: templates/base.html:57
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:57
+#: templates/base.html:60
 msgid "API"
-msgstr ""
-
-#: templates/data.html:13
-msgid "Dataset list"
-msgstr "Rinkmenų sąrašas"
-
-#: templates/data.html:14 templates/data.html.py:59
-msgid "Upload dataset"
-msgstr "Įkelti duomenis"
-
-#: templates/data.html:22
-msgid "Licence"
-msgstr "Licencija"
-
-#: templates/data.html:23
-msgid "Size"
-msgstr "Dydis"
-
-#: templates/data.html:24
-msgid "Actions"
-msgstr "Veiksmai"
-
-#: templates/data.html:25
-msgid "Download"
-msgstr "Atsisiųsti"
-
-#: templates/data.html:44
-msgid "CSV"
-msgstr "CSV"
-
-#: templates/data.html:45
-msgid "ARFF"
-msgstr "ARFF"
-
-#: templates/data.html:46
-msgid "XLS"
-msgstr "XLS"
+msgstr "API"
 
 #: templates/index.html:13
 msgid ""
@@ -142,7 +140,7 @@ msgstr ""
 "verslui kurtis."
 
 #: templates/login.html:13
-msgid "Login in"
+msgid "Login"
 msgstr "Prisijungti"
 
 #: templates/menu.html:8
@@ -153,7 +151,9 @@ msgstr "Duomenys"
 msgid "Algorithms"
 msgstr "Algoritmai"
 
-#: templates/menu.html:10
+#: templates/menu.html:10 templates/damis/experiment_detail.html:9
+#: templates/damis/experiment_form.html:13
+#: templates/damis/experiment_list.html:13
 msgid "Experiments"
 msgstr "Eksperimentai"
 
@@ -164,3 +164,127 @@ msgstr "(Atsijungti)"
 #: templates/menu.html:17
 msgid "Log in"
 msgstr "Prisijungti"
+
+#: templates/damis/algorithm_confirm_delete.html:13
+msgid "Are you sure you want to delete algorithm"
+msgstr "Ar tikrai norite pašalinti algoritmą"
+
+#: templates/damis/algorithm_form.html:8
+#: templates/damis/algorithm_list.html:10
+msgid "Algorithm list"
+msgstr "Algoritmai"
+
+#: templates/damis/algorithm_form.html:9
+#: templates/damis/algorithm_list.html:11
+msgid "Upload algorithm"
+msgstr "Įkelti algoritmą"
+
+#: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
+#: templates/damis/obj_form.html:20
+msgid "Save"
+msgstr "Išsaugoti"
+
+#: templates/damis/dataset_confirm_delete.html:13
+msgid "Are you sure you want to delete dataset"
+msgstr "Ar tikrai norite pašalinti duomenų rinkinį"
+
+#: templates/damis/dataset_detail.html:12
+msgid "File"
+msgstr "Failas"
+
+#: templates/damis/dataset_detail.html:14
+msgid "Author"
+msgstr "Autorius"
+
+#: templates/damis/dataset_form.html:19 templates/damis/dataset_new.html:26
+msgid "Add"
+msgstr "Pridėti"
+
+#: templates/damis/dataset_list.html:13 templates/damis/dataset_new.html:12
+#: templates/damis/obj_form.html:12
+msgid "Dataset list"
+msgstr "Rinkmenų sąrašas"
+
+#: templates/damis/dataset_list.html:14 templates/damis/dataset_new.html:13
+#: templates/damis/dataset_new.html:34 templates/damis/obj_form.html:13
+msgid "Upload dataset"
+msgstr "Įkelti duomenis"
+
+#: templates/damis/dataset_list.html:15 templates/damis/dataset_new.html:14
+#: templates/damis/obj_form.html:14
+msgid "Add license"
+msgstr "Įkelti licenciją"
+
+#: templates/damis/dataset_list.html:23
+msgid "Licence"
+msgstr "Licencija"
+
+#: templates/damis/dataset_list.html:24
+msgid "Size"
+msgstr "Dydis"
+
+#: templates/damis/dataset_list.html:25
+msgid "Actions"
+msgstr "Veiksmai"
+
+#: templates/damis/dataset_list.html:26
+msgid "Download"
+msgstr "Atsisiųsti"
+
+#: templates/damis/dataset_list.html:50
+msgid "CSV"
+msgstr "CSV"
+
+#: templates/damis/dataset_list.html:51
+msgid "ARFF"
+msgstr "ARFF"
+
+#: templates/damis/dataset_list.html:52
+msgid "XML"
+msgstr "XML"
+
+#: templates/damis/experiment_detail.html:10
+#: templates/damis/experiment_form.html:14
+#: templates/damis/experiment_form.html:19
+#: templates/damis/experiment_list.html:14
+msgid "New experiment"
+msgstr "Naujas eksperimentas"
+
+#: templates/damis/experiment_detail.html:14
+msgid "Confirm "
+msgstr "Patvirtinkite"
+
+#: templates/damis/experiment_detail.html:14
+msgid "execution"
+msgstr "vykdymą"
+
+#: templates/damis/experiment_detail.html:17
+msgid "Password:"
+msgstr "Slaptažodis:"
+
+#: templates/damis/experiment_detail.html:18
+msgid "Execute"
+msgstr "Vykdyti"
+
+#: templates/damis/experiment_detail.html:24
+msgid "dataset with"
+msgstr "duomenų rinkmeną su"
+
+#: templates/damis/experiment_detail.html:25
+msgid "algorithm."
+msgstr "algoritmą."
+
+#: templates/damis/experiment_form.html:21
+msgid "Execute tasks"
+msgstr "Vykdyti užduotis"
+
+#: templates/damis/experiment_form.html:22
+msgid "Tasks"
+msgstr "Užduotys"
+
+#: templates/damis/experiment_list.html:23
+msgid "Results"
+msgstr "Rezultatai"
+
+#~ msgid "Open"
+#~ msgstr "Atviri"
