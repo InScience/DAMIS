@@ -18,17 +18,31 @@
     <form action="." method="post">{% csrf_token %}
         <h2> {% trans 'New experiment' %} </h2>
         {{ form.as_p }}
+        <button class="btn btn-primary" type='submit'>{% trans "Execute tasks" %}</button>
         <h3> {% trans 'Tasks' %} </h3>
         {{ tasks_form.management_form }}
         {% for task_form in tasks_form %}
         <p>
-            {{ task_form }}
+            {{ form.id }}
+            <div class="inline"> 
+                {{ task_form }}<br/>
+            </div>
         </p>
-        <button class="btn btn-primary" type='submit'>{% trans "Execute" %}</button>&nbsp;
-        <button class="btn" type='submit'><i class="icon-plus"></i>{% trans " Task" %}</button>
         {% endfor %}
     </form>
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script src="/static/js/jquery.formset.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+                $('.inline').formset({
+                    prefix: "{{ tasks_form.prefix }}",
+                 });
+        })
+    </script>
 {% endblock %}
