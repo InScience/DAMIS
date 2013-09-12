@@ -18,5 +18,6 @@ src/*.egg-info
 # Static content directory
 var
 
-# Temporary test files
+# Temporary files
 src/algorithms/tests/data/tmp
+tmp
