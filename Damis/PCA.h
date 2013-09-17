@@ -11,7 +11,7 @@
 #include "ObjectMatrix.h"
 #include "ExternalMethods.h"
 #include "DimReductionMethod.h"
-#include "ap.h"
+#include "alglib/ap.h"
 
 class PCA : public DimReductionMethod, public ExternalMethods
 {
@@ -25,6 +25,7 @@ public:
 	PCA(ObjectMatrix objMatrix, int d);
 	virtual void toDataType();
 	virtual void fromDataType();
+        ObjectMatrix getY();   // testavimui
 
 protected:
 	virtual ObjectMatrix getProjection();
@@ -34,6 +35,7 @@ private:
 	 * Dispersion part to retain in resulting projection
 	 */
 	float dispPart;
+        ObjectMatrix initialMatrix;
         alglib::real_2d_array arr;
         int n;  // number of DataObjects in ObjectMatrix
         int m;  // number of Features in DataObject

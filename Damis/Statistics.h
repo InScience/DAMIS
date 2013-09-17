@@ -13,9 +13,9 @@
 
 class Statistics{
 public:
-    static double getAverage(DataObject);
-    static double getCorrCoef(DataObject, DataObject);
-    static double getCovCoef(DataObject, DataObject);
+    static double getAverage(ObjectMatrix, int);
+    static double getCorrCoef(ObjectMatrix, int, int);
+    static double getCovCoef(ObjectMatrix, int, int);
     static ObjectMatrix getCovMatrix(ObjectMatrix);
     static double getRandom(double, double);
     static double getRandom();

@@ -32,6 +32,7 @@ typedef struct
 {
     ae_int_t s1;
     ae_int_t s2;
+    double v;
     ae_int_t magicv;
 } hqrndstate;
 typedef struct
@@ -162,11 +163,8 @@ double hqrnduniformr(const hqrndstate &state);
 /*************************************************************************
 This function generates random integer number in [0, N)
 
-1. State structure must be initialized with HQRNDRandomize() or HQRNDSeed()
-2. N can be any positive number except for very large numbers:
-   * close to 2^31 on 32-bit systems
-   * close to 2^62 on 64-bit systems
-   An exception will be generated if N is too large.
+1. N must be less than HQRNDMax-1.
+2. State structure must be initialized with HQRNDRandomize() or HQRNDSeed()
 
   -- ALGLIB --
      Copyright 02.12.2009 by Bochkanov Sergey

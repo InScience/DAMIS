@@ -30,7 +30,7 @@ protected:
 
 	virtual ObjectMatrix getProjection() =0;
 	int getProjectionDimension();
-	void initializeProjectionMatrix();
+	void initializeProjectionMatrix(int n);
 	void setProjectionDimension(int dimension);
 
 };

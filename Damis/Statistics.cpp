@@ -5,49 +5,52 @@
 #include <time.h>
 #include <stdlib.h>
 
-double Statistics::getAverage(DataObject d){
-    double to_return;
-    std::vector<double> v = d.getItems();
-    int n = d.getFeatureCount();
+double Statistics::getAverage(ObjectMatrix om, int k){
+    double average;
+    int n = om.getObjectCount();
     double s = 0.0;
     for (int i = 0; i < n; i++)
-        s += v[i];
-    to_return = s / n;
-    return to_return;
+        s += om.DataObjects.at(i).getItems().at(k);
+    average = s / n;
+    return average;
 }
 
-double Statistics::getCorrCoef(DataObject obj1, DataObject obj2)
+double Statistics::getCorrCoef(ObjectMatrix om, int k, int l)
 {
     double to_return = 0.0;
-    double avg_obj1 = 0.0, avg_obj2 = 0.0, meter, denominator, tmp1 = 0.0, tmp2 = 0.0;
-    std::vector<double> v1 = obj1.getItems();
-    std::vector<double> v2 = obj2.getItems();
-    int n = obj1.getFeatureCount();
-    
-    avg_obj1 = Statistics::getAverage(obj1);
-    avg_obj2 = Statistics::getAverage(obj2);
+    double avgFeatureK = Statistics::getAverage(om, k);
+    double avgFeatureL = Statistics::getAverage(om, l);
+    double fractionTop, fractionBottom, tmp1 = 0.0, tmp2 = 0.0, diffK, diffL;
+    int n = om.getObjectCount();
     
     for (int i = 0; i < n; i++)
     {
-        meter += (v1[i] - avg_obj1)*(v2[i] - avg_obj2);
-        tmp1 += std::pow((v1[i] - avg_obj1), 2);
-        tmp2 += std::pow((v2[i] - avg_obj2), 2);
+        diffK = om.DataObjects.at(i).getItems().at(k) - avgFeatureK;
+        diffL = om.DataObjects.at(i).getItems().at(l) - avgFeatureL;
+        fractionTop += diffK * diffL;
+        tmp1 += std::pow(diffK, 2);
+        tmp2 += std::pow(diffL, 2);
     }
-    denominator = std::sqrt(tmp1 * tmp2);
-    to_return = meter / denominator;
+    fractionBottom = std::sqrt(tmp1 * tmp2);
+    to_return = fractionTop / fractionBottom;
+    
     return to_return;
 }
 
-double Statistics::getCovCoef(DataObject obj1, DataObject obj2)
+double Statistics::getCovCoef(ObjectMatrix om, int k, int l)
 {
-    double to_return = 0.0, avg_obj1, avg_obj2;
-    int n = obj1.getFeatureCount();
-    std::vector<double> v1 = obj1.getItems();
-    std::vector<double> v2 = obj2.getItems();
-    avg_obj1 = Statistics::getAverage(obj1);
-    avg_obj2 = Statistics::getAverage(obj2);
+    double to_return = 0.0;
+    double avgFeatureK = Statistics::getAverage(om, k);
+    double avgFeatureL = Statistics::getAverage(om, l);
+    double diffK, diffL;
+    int n = om.getObjectCount();
+
     for (int i = 0; i < n; i++)
-        to_return += (v1[i] - avg_obj1)*(v2[i] - avg_obj2);
+    {
+        diffK = om.DataObjects.at(i).getItems().at(k) - avgFeatureK;
+        diffL = om.DataObjects.at(i).getItems().at(l) - avgFeatureL;
+        to_return += diffK * diffL;
+    }
     
     to_return = to_return / (n - 1);
     return to_return;
@@ -66,16 +69,15 @@ double Statistics::getRandom(double min, double max)
 
 ObjectMatrix Statistics::getCovMatrix(ObjectMatrix om)
 {
-    std::vector<DataObject> d = om.DataObjects;
     double tmp = 0.0;
     std::vector<double> dd;
-    int n = om.getObjectCount();
+    int n = om.DataObjects.at(0).getFeatureCount();
     ObjectMatrix cov(n);
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            tmp = Statistics::getCovCoef(d[i], d[j]);
+            tmp = Statistics::getCovCoef(om, i, j);
             dd.push_back(tmp);
         }
         DataObject dobj(dd);

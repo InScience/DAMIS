@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <stdlib.h>
+#include <algorithm>
 
 ARFF::ARFF(){
     data.reserve(0);
@@ -27,29 +28,32 @@ ARFF::ARFF(const char* path){
             continue;
         else
         {
-            if (sub == "@ATTRIBUTE" || sub == "@attribute")
+            std::transform(sub.begin(), sub.end(), sub.begin(), ::toupper);
+            if (sub == "@ATTRIBUTE")
             {
                 iss >> tmp1;
                 iss >> tmp2;
+                std::transform(tmp1.begin(), tmp1.end(), tmp1.begin(), ::toupper);
+                std::transform(tmp2.begin(), tmp2.end(), tmp2.begin(), ::toupper);
                 attributes.push_back(tmp1);
                 data_types.push_back(tmp2);
-                if (tmp2 != "REAL" && tmp2 != "real" && tmp2 != "integer" && tmp2 != "INTEGER" && tmp2 != "datetime" && tmp2 != "DATETIME")
+                if (tmp2 != "REAL"  && tmp2 != "INTEGER" && tmp2 != "DATETIME")
                 {
                     tmp.push_back(tmp1);
                     meta_data.push_back(tmp);
                     tmp.clear();
                 }
             }
-            else if (sub == "@DATA" || sub == "@data" || sub == "@RELATION" || sub == "@relation")
+            else if (sub == "@DATA" || sub == "@RELATION")
                 continue;
             else
             {
                 tmp = split(line_from_file, ',');
                 for (int i = 0; i < tmp.size(); i++)
                 {
-                    if (data_types[i] == "real" || data_types[i] == "REAL" || data_types[i] == "integer" || data_types[i] == "INTEGER")
+                    if (data_types[i] == "REAL" || data_types[i] == "INTEGER")
                         v.push_back(atof(tmp[i].c_str()));
-                    else if (data_types[i] != "datetime")
+                    else if (data_types[i] != "DATETIME")
                     {
                         d = StringToDouble(tmp[i], i);
                         v.push_back(d);

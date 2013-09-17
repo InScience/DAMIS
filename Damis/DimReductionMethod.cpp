@@ -9,39 +9,31 @@
 
 
 DimReductionMethod::DimReductionMethod(){
-
+    d = 2;
 }
-
-
 
 DimReductionMethod::~DimReductionMethod(){
 
 }
-
-
-
-
 
 /**
  * Returns d
  */
 int DimReductionMethod::getProjectionDimension(){
 
-	return 0;
+	return d;
 }
-
 
 /**
  * Initializes Y matrix acording to dimension d and fills it with data.
  */
-void DimReductionMethod::initializeProjectionMatrix(){
-
+void DimReductionMethod::initializeProjectionMatrix(int n){
+    Y = ObjectMatrix(n);
 }
-
 
 /**
  * Sets the desired projection dimension
  */
 void DimReductionMethod::setProjectionDimension(int dimension){
-
+    d = dimension;
 }

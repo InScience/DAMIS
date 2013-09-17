@@ -29,11 +29,11 @@ public:
 	DataObject getObjectAt(int index);
 	int getObjectCount();
 	void loadDataMatrix();
-        
+        std::vector<std::string> getFeaturesTitle();
 	void saveDataMatrix(ObjectMatrix, char);
 
 private:
 	int objectCount;
-
+        std::vector<std::string> featureTitles;
 };
 #endif // !defined(EA_EAE79B7B_5151_41cf_A08C_CE61651B7393__INCLUDED_)
