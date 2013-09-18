@@ -28,22 +28,27 @@ ObjectMatrix::~ObjectMatrix(){
 ObjectMatrix::ObjectMatrix(std::string fileName){
     const char* path = fileName.c_str();
     ARFF file(path);
-    std::vector< std::vector<double> > data = file.GetData();  
-    featureTitles = file.GetAttributes();
-    std::vector< std::vector<double> >::iterator dataObjectIterator;
-    std::vector<double>::iterator featureIterator;
-    std::vector<double> dataObjectItems;
-    
-    for(dataObjectIterator = data.begin();dataObjectIterator!=data.end();++dataObjectIterator)
+    if (file.ReadSuccess == true)
     {
-        for(featureIterator = (*dataObjectIterator).begin();featureIterator!=(*dataObjectIterator).end();++featureIterator)
-            dataObjectItems.push_back(*featureIterator);
+        std::vector< std::vector<double> > data = file.GetData();  
+        featureTitles = file.GetAttributes();
+        std::vector< std::vector<double> >::iterator dataObjectIterator;
+        std::vector<double>::iterator featureIterator;
+        std::vector<double> dataObjectItems;
 
-        DataObject tmp(dataObjectItems);
-        DataObjects.push_back(tmp);
-        dataObjectItems.clear();
-    }  
-    objectCount = DataObjects.size();
+        for(dataObjectIterator = data.begin();dataObjectIterator!=data.end();++dataObjectIterator)
+        {
+            for(featureIterator = (*dataObjectIterator).begin();featureIterator!=(*dataObjectIterator).end();++featureIterator)
+                dataObjectItems.push_back(*featureIterator);
+
+            DataObject tmp(dataObjectItems);
+            DataObjects.push_back(tmp);
+            dataObjectItems.clear();
+        }  
+        objectCount = DataObjects.size();
+    }
+    else
+        objectCount = 0;
 }
 
 

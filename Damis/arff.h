@@ -21,6 +21,7 @@ public:
     std::vector<std::string> GetAttributes();
     std::vector<std::string> GetAttributesTypes();
     std::vector<std::vector<double> > GetData();
+    bool ReadSuccess;
     void WriteData(char* file);
     
 private:

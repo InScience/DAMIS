@@ -53,7 +53,8 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/f1
+	${TESTDIR}/TestFiles/f1 \
+	${TESTDIR}/TestFiles/f2
 
 # C Compiler Flags
 CFLAGS=
@@ -148,6 +149,10 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/pcatestclass.o ${TESTDIR}/tests/pcates
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
 
+${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/ReadARFFtestclass.o ${TESTDIR}/tests/ReadARFFtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
 
 ${TESTDIR}/tests/pcatestclass.o: tests/pcatestclass.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
@@ -159,6 +164,18 @@ ${TESTDIR}/tests/pcatestrunner.o: tests/pcatestrunner.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/pcatestrunner.o tests/pcatestrunner.cpp
+
+
+${TESTDIR}/tests/ReadARFFtestclass.o: tests/ReadARFFtestclass.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/ReadARFFtestclass.o tests/ReadARFFtestclass.cpp
+
+
+${TESTDIR}/tests/ReadARFFtestrunner.o: tests/ReadARFFtestrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/ReadARFFtestrunner.o tests/ReadARFFtestrunner.cpp
 
 
 ${OBJECTDIR}/DataObject_nomain.o: ${OBJECTDIR}/DataObject.o DataObject.cpp 
@@ -322,6 +339,7 @@ ${OBJECTDIR}/tools_nomain.o: ${OBJECTDIR}/tools.o tools.cpp
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f2 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

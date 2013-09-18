@@ -30,15 +30,17 @@ int main(int argc, char** argv) {
     cout<<endl;
     
     PrintToScreen(omx);
-     
-    ObjectMatrix cov = Statistics::getCovMatrix(omx);
     
-    //PrintToScreen(cov);
+    if (omx.getObjectCount() > 0)
+    {
+        ObjectMatrix cov = Statistics::getCovMatrix(omx);    
+        PrintToScreen(cov);
+        PCA pca_test(omx, 2);
+        pca_test.toDataType();
+        ObjectMatrix Y = pca_test.getY();
+        PrintToScreen(Y);
+    }
     
-    PCA pca_test(omx, 2);
-    //pca_test.toDataType();
-    ObjectMatrix Y = pca_test.getY();
-    PrintToScreen(Y);
     
     return 0;
 }

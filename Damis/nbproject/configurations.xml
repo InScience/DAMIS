@@ -49,6 +49,11 @@
         <itemPath>tests/pcatestclass.h</itemPath>
         <itemPath>tests/pcatestrunner.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f2" displayName="ReadARFF" projectFiles="true" kind="TEST">
+        <itemPath>tests/ReadARFFtestclass.cpp</itemPath>
+        <itemPath>tests/ReadARFFtestclass.h</itemPath>
+        <itemPath>tests/ReadARFFtestrunner.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -132,11 +137,31 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="mds.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="mds.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/ReadARFFtestclass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/ReadARFFtestclass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/ReadARFFtestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/pcatestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -229,11 +254,31 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="mds.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="mds.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/ReadARFFtestclass.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/ReadARFFtestclass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/ReadARFFtestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/pcatestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>

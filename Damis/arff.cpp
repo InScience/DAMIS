@@ -17,54 +17,85 @@ ARFF::ARFF(const char* path){
     std::vector<std::string> tmp;
     std::vector<double> v;
     double d;
-    while (std::getline(file, line_from_file))
+    ReadSuccess = true;
+    if (file.is_open() != false)
     {
-        if (line_from_file.length() == 0)
-            continue;
-        std::istringstream iss(line_from_file);		
-        std::string sub;
-        iss >> sub;
-        if (sub == "%")		
-            continue;
-        else
+        while (std::getline(file, line_from_file))
         {
-            std::transform(sub.begin(), sub.end(), sub.begin(), ::toupper);
-            if (sub == "@ATTRIBUTE")
-            {
-                iss >> tmp1;
-                iss >> tmp2;
-                std::transform(tmp1.begin(), tmp1.end(), tmp1.begin(), ::toupper);
-                std::transform(tmp2.begin(), tmp2.end(), tmp2.begin(), ::toupper);
-                attributes.push_back(tmp1);
-                data_types.push_back(tmp2);
-                if (tmp2 != "REAL"  && tmp2 != "INTEGER" && tmp2 != "DATETIME")
-                {
-                    tmp.push_back(tmp1);
-                    meta_data.push_back(tmp);
-                    tmp.clear();
-                }
-            }
-            else if (sub == "@DATA" || sub == "@RELATION")
+            if (line_from_file.length() == 0)
+                continue;
+            std::istringstream iss(line_from_file);		
+            std::string sub;
+            iss >> sub;
+            if (sub == "%")		
                 continue;
             else
             {
-                tmp = split(line_from_file, ',');
-                for (int i = 0; i < tmp.size(); i++)
+                std::transform(sub.begin(), sub.end(), sub.begin(), ::toupper);
+                if (sub == "@ATTRIBUTE")
                 {
-                    if (data_types[i] == "REAL" || data_types[i] == "INTEGER")
-                        v.push_back(atof(tmp[i].c_str()));
-                    else if (data_types[i] != "DATETIME")
+                    iss >> tmp1;
+                    iss >> tmp2;
+                    std::transform(tmp1.begin(), tmp1.end(), tmp1.begin(), ::toupper);
+                    std::transform(tmp2.begin(), tmp2.end(), tmp2.begin(), ::toupper);
+                    if (tmp2 == "REAL"  || tmp2 == "INTEGER")
                     {
-                        d = StringToDouble(tmp[i], i);
-                        v.push_back(d);
+                        attributes.push_back(tmp1);
+                        data_types.push_back(tmp2);
                     }
-                    
+
+                    //if (tmp2 != "REAL"  && tmp2 != "INTEGER" && tmp2 != "DATETIME")
+                    //{
+                    //    tmp.push_back(tmp1);
+                    //    meta_data.push_back(tmp);
+                    //    tmp.clear();
+                    //}
                 }
-                data.push_back(v);
-                v.clear();
+                else if (sub == "@DATA" || sub == "@RELATION")
+                    continue;
+                else
+                {
+                    tmp = split(line_from_file, ',');
+                    if (tmp.size() != attributes.size())
+                    {
+                        ReadSuccess = false;
+                        break;
+                    }
+                    else
+                    {
+                        for (int i = 0; i < tmp.size(); i++)
+                        {
+                            if (data_types[i] == "REAL" || data_types[i] == "INTEGER")
+                            {
+                                if (tmp[i] == "?" || tmp[i] == "")
+                                {
+                                    ReadSuccess = false;
+                                    break;
+                                }
+                                else
+                                    v.push_back(atof(tmp[i].c_str()));                                
+                            }
+                            //else if (data_types[i] != "DATETIME")
+                            //{
+                            //    d = StringToDouble(tmp[i], i);
+                            //    v.push_back(d);
+                            //}
+
+                        }
+                        if (ReadSuccess == false)
+                            break;
+                        else
+                        {
+                            data.push_back(v);
+                            v.clear();
+                        }
+                    }
+                }
             }
         }
     }
+    else
+        ReadSuccess = false;
 }
 
 ARFF::~ARFF(){
