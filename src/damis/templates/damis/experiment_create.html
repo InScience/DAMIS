@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='experiments' %}
+{% endblock %}
+
+{% block content %}
+<div class="span12">
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs" id="myTab2">
+      <li><a href="{% url 'experiment-list' %}">{% trans "Experiments" %}</a></li>
+      <li class="active"><a href="{% url 'experiment-new' %}">{% trans "New experiment" %}</a></li>
+  </ul>
+  <div class="tab-content">
+    <div>
+        <form action="." method="post">{% csrf_token %}
+        <p>{{ experiment_form.as_p }}</p>
+        <table class='table'>
+            <thead>
+                <tr>
+                <th>{% trans 'Tasks' %}</th>
+                <th>{% trans 'parameters' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+                {{ task_formset.management_form }}
+                {% for task in task_formset.forms %}
+                 <tr>
+                     <td>
+                        {{ task.as_p }}
+                     </td>
+                     <td>
+                      {% if task.parameter_values %}
+                         {% for formset in task.parameter_values %}
+                             {{ formset.as_p }}
+                         {% endfor %}
+                      {% endif %}
+                     </td>
+                 </tr>
+                {% endfor %}
+                <button class="btn btn-primary pull-right" type='submit'>{% trans "Execute" %}</button>
+            </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    <script src="/static/js/jquery.formset.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+                $('.inline').formset({
+                    prefix: "{{ tasks_form.prefix }}",
+                 });
+        })
+    </script>
+{% endblock %}

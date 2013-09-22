@@ -190,6 +190,7 @@ class ExperimentUpdate(LoginRequiredMixin, UpdateView):
 
 class ExperimentCreate(LoginRequiredMixin, CreateView):
     model = Experiment
+    template_name = 'damis/experiment_create.html'
 
     def get(self, request, *args, **kwargs):
         self.object = None
