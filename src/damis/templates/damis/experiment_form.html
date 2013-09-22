@@ -16,6 +16,24 @@
   <div class="tab-content">
     <div class="offset3">
     <form action="." method="post">{% csrf_token %}
+        {{ form.management_form }}
+        {% for task in form.forms %}
+            <br/>
+          <h4> Task: </h4>
+          {{ task }}
+          {% if task.parameter_values %}
+             {% for pv in task.parameter_values %}
+             <br/>
+             <h4> Parameter value: </h4>
+                {{ pv }}
+             {% endfor %}
+          {% endif %}
+        {% endfor %}
+    </form>
+
+
+        {% comment %}
+    <form action="." method="post">{% csrf_token %}
         <h2> {% trans 'New experiment' %} </h2>
         {{ form.as_p }}
         <button class="btn btn-primary" type='submit'>{% trans "Execute tasks" %}</button>
@@ -30,6 +48,8 @@
         </p>
         {% endfor %}
     </form>
+    {% endcomment %}
+
     </div>
   </div>
 </div>
