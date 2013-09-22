@@ -30,6 +30,9 @@
                     <td> {{ obj.title }}</td>
                     <td> {{ obj.status }}</td>
                     <td>
+                        <a href="{% url 'experiment-update' obj.id %}">
+                            <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
+                        </a>
                         <button type="button" class="btn btn-small"><i class="icon-th-list"></i></button>
                     </td>
                 </tr>

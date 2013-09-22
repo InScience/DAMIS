@@ -34,9 +34,10 @@ from damis.models import Task
 
 
 class LoginRequiredMixin(object):
-    @method_decorator(login_required(login_url=reverse_lazy('login')))
-    def dispatch(self, *args, **kwargs):
-        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+    pass
+    # @method_decorator(login_required(login_url=reverse_lazy('login')))
+    # def dispatch(self, *args, **kwargs):
+    #     return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 
 def index_view(request):
@@ -152,6 +153,39 @@ class ExperimentList(LoginRequiredMixin, ListView):
 
 class ExperimentDetail(LoginRequiredMixin, DetailView):
     model = Experiment
+
+
+class ExperimentUpdate(LoginRequiredMixin, UpdateView):
+    model = Experiment
+
+    def get(self, request, *args, **kwargs):
+        self.object = None
+        experiment = get_object_or_404(Experiment, pk=self.kwargs['pk'])
+        task_formset = TaskFormset(instance=experiment)
+        return self.render_to_response(self.get_context_data(
+                    experiment=task_formset.instance,
+                    task_formset=task_formset,
+                ))
+
+    def post(self, request, *args, **kwargs):
+        self.object = None
+        instance = Experiment.objects.get(pk=11)
+
+        task_formset = TaskFormset(self.request.POST, instance=instance)
+        if task_formset.is_valid():
+            return self.form_valid(task_formset)
+        else:
+            return self.form_invalid(task_formset)
+
+    def form_valid(self, task_formset):
+        self.object = task_formset.save_all()
+        return HttpResponseRedirect(reverse_lazy('experiment-list'))
+
+    def form_invalid(self, task_formset):
+        return self.render_to_response(self.get_context_data(
+                        experiment=task_formset.instance,
+                        task_formset=task_formset,
+                    ))
 
 
 class ExperimentCreate(LoginRequiredMixin, CreateView):
