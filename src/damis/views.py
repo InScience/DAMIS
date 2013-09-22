@@ -1,12 +1,13 @@
 #! coding: utf-8
 import json
+import re
 from os.path import join, exists, getsize, splitext
 from os import makedirs, listdir
 
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, render_to_response
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -18,15 +19,15 @@ from django.forms.models import inlineformset_factory
 from damis.forms import LoginForm
 from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
-from damis.forms import ParameterFormSet
+from damis.forms import ParameterForm
 from damis.forms import ExperimentForm
-from damis.forms import TaskFormset, CreateExperimentFormset
+from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset
 
 
 from damis.utils import slugify
 
 from damis.models import Algorithm
-from damis.models import Parameter
+from damis.models import Parameter, ParameterValue
 from damis.models import Dataset
 from damis.models import DatasetLicense
 from damis.models import Experiment
@@ -205,10 +206,9 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
 
     def post(self, request, *args, **kwargs):
         self.object = None
-        instance = Experiment()
 
         experiment_form = ExperimentForm(self.request.POST)
-        task_formset = CreateExperimentFormset(self.request.POST, instance=instance)
+        task_formset = CreateExperimentFormset(self.request.POST)
         if experiment_form.is_valid() and task_formset.is_valid():
             return self.form_valid(experiment_form, task_formset)
         else:
@@ -225,6 +225,22 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
                         task_formset=task_formset,
                         experiment_form=experiment_form,
                     ))
+
+def algorithm_parameter_form(request):
+    algorithm = get_object_or_404(Algorithm, pk=request.GET.get('algorithm_id'))
+    task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
+    prefix = 'PARAMETER_VALUE_%s' % hash(task_form_prefix)
+
+    ParameterValueFormset = inlineformset_factory(Task, ParameterValue,
+            extra=len(algorithm.parameters.all()), can_delete=False)
+    parameter_formset = ParameterValueFormset(instance=None, prefix=prefix)
+    for parameter, form in zip(algorithm.parameters.all(), parameter_formset.forms):
+        form.initial = {'parameter': parameter}
+
+    return render_to_response('dynamic/parameter_form.html', {
+        'formset': parameter_formset,
+        })
+
 
 
 class DatasetLicenseCreate(LoginRequiredMixin, CreateView):

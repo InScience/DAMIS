@@ -22,22 +22,37 @@
                 <tr>
                 <th>{% trans 'Tasks' %}</th>
                 <th>{% trans 'parameters' %}</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
                 {{ task_formset.management_form }}
                 {% for task in task_formset.forms %}
-                 <tr>
+                 <tr class="inline">
                      <td>
-                        {{ task.as_p }}
+                        {{ task.non_field_errors }}
+                        {% for field in task.visible_fields %}
+                        <p>{{ field.errors}}
+                        {{ field.label }}:<br/>
+                        {% if field.name == 'algorithm' %} 
+                            <span class='algorithm-selection'>{{ field }}</span>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                        </p>
+                        {% endfor %}
+                        {% for field in task.hidden_fields %}
+                            {{ field }}
+                        {% endfor %}
                      </td>
-                     <td>
+                     <td class="parameter-values">
                       {% if task.parameter_values %}
                          {% for formset in task.parameter_values %}
                              {{ formset.as_p }}
                          {% endfor %}
                       {% endif %}
                      </td>
+                     <td></td>
                  </tr>
                 {% endfor %}
                 <button class="btn btn-primary pull-right" type='submit'>{% trans "Execute" %}</button>
@@ -53,10 +68,32 @@
     {{ block.super }}
     <script src="/static/js/jquery.formset.js" type="text/javascript"></script>
     <script type="text/javascript">
+        $('#id_tasks-0-algorithm').change(function() {
+                alert('changed'); 
+        });
+
         $(function() {
                 $('.inline').formset({
-                    prefix: "{{ tasks_form.prefix }}",
+                    prefix: "{{ task_formset.prefix }}",
                  });
         })
+    </script>
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('.algorithm-selection select').change(function() {
+                
+                $.ajax({
+                    url: "{% url 'parameters-form' %}",
+                    data: {
+                        algorithm_id: $(this).val(),
+                        prefix: $(this).attr('id')
+                    },
+                    context: $(this) }).done(function(resp) {
+                        var tag = $(this).closest('tr').find('.parameter-values').html(resp);
+                    });
+        });
     </script>
 {% endblock %}

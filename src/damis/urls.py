@@ -33,6 +33,9 @@ urlpatterns += i18n_patterns('',
     url(r'^experiments/(?P<pk>\d*)/edit/$', ExperimentUpdate.as_view(), name='experiment-update'),
 
     url(r'^experiments/(?P<pk>\d*)/confirm/$', ExperimentDetail.as_view(), name='experiment-confirm'),
+
+    # Dynamic urls
+    url(r'^x/algorithm-parameter-form/$', algorithm_parameter_form, name='parameters-form'),
 )
 
 urlpatterns += staticfiles_urlpatterns()
