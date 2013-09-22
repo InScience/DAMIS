@@ -14,23 +14,39 @@
       <li class="active"><a href="{% url 'experiment-new' %}">{% trans "New experiment" %}</a></li>
   </ul>
   <div class="tab-content">
-    <div class="offset3">
-    <form action="." method="post">{% csrf_token %}
-        {{ form.management_form }}
-        {% for task in form.forms %}
-            <br/>
-          <h4> Task: </h4>
-          {{ task }}
-          {% if task.parameter_values %}
-             {% for pv in task.parameter_values %}
-             <br/>
-             <h4> Parameter value: </h4>
-                {{ pv }}
-             {% endfor %}
-          {% endif %}
-        {% endfor %}
-    </form>
-
+    <div>
+        {% trans "Experiment" %}: <b>{{ experiment }}</b>
+        <table class='table'>
+            <thead>
+                <tr>
+                <th>{% trans 'Tasks' %}</th>
+                <th>{% trans 'parameters' %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <form action="." method="post">{% csrf_token %}
+                {{ task_formset.management_form }}
+                {% for task in task_formset.forms %}
+                 <tr>
+                     <td>
+                         {{ task.errors }}
+                         {% for field in task %}
+                            {{ field }}<br/>
+                         {% endfor %}
+                     </td>
+                     <td>
+                      {% if task.parameter_values %}
+                         {% for formset in task.parameter_values %}
+                             {{ formset.as_p }}
+                         {% endfor %}
+                      {% endif %}
+                     </td>
+                 </tr>
+                {% endfor %}
+                <button class="btn btn-primary pull-right" type='submit'>{% trans "Execute" %}</button>
+            </form>
+            </tbody>
+        </table>
 
         {% comment %}
     <form action="." method="post">{% csrf_token %}

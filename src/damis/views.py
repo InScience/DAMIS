@@ -5,7 +5,7 @@ from os import makedirs, listdir
 
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -20,8 +20,8 @@ from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
 from damis.forms import ParameterFormSet
 from damis.forms import ExperimentForm
-from damis.forms import TaskFormSet
-from damis.forms import TaskForm
+from damis.forms import TaskFormset
+
 
 from damis.utils import slugify
 
@@ -153,45 +153,39 @@ class ExperimentList(LoginRequiredMixin, ListView):
 class ExperimentDetail(LoginRequiredMixin, DetailView):
     model = Experiment
 
+
 class ExperimentCreate(LoginRequiredMixin, CreateView):
     model = Experiment
-    form_class = ExperimentForm
 
     def get(self, request, *args, **kwargs):
+        experiment = Experiment.objects.get(pk=11)
+
         self.object = None
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        tasks_form = TaskFormSet()
-        return self.render_to_response(
-                    self.get_context_data(form=form,
-                                          tasks_form=tasks_form))
+        task_formset = TaskFormset(instance=experiment)
+        return self.render_to_response(self.get_context_data(
+                    experiment=task_formset.instance,
+                    task_formset=task_formset,
+                ))
 
     def post(self, request, *args, **kwargs):
         self.object = None
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
-        tasks_form = TaskFormSet(self.request.POST)
-        if form.is_valid() and tasks_form.is_valid():
-            return self.form_valid(form, tasks_form)
+        instance = Experiment.objects.get(pk=11)
+
+        task_formset = TaskFormset(self.request.POST, instance=instance)
+        if task_formset.is_valid():
+            return self.form_valid(task_formset)
         else:
-            return self.form_invalid(form, tasks_form)
+            return self.form_invalid(task_formset)
 
-    def form_valid(self, form, tasks_form):
-        self.object = form.save()
-        tasks_form.instance = self.object
-        tasks_form.save()
+    def form_valid(self, task_formset):
+        self.object = task_formset.save_all()
+        return HttpResponseRedirect(reverse_lazy('experiment-list'))
 
-        # Redirect to Experiment review page and ask for password to confirm experiment execution.
-        return HttpResponseRedirect(reverse_lazy('experiment-confirm', args=[self.object.pk]))
-
-    def form_invalid(self, form, tasks_form):
-        return self.render_to_response(self.get_context_data(form=form,
-            tasks_form=tasks_form))
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(ExperimentCreate, self).get_context_data(**kwargs)
-    #     context['tasks'] = modelformset_factory(Task, form=TaskForm, extra=1)
-    #     return context
+    def form_invalid(self, task_formset):
+        return self.render_to_response(self.get_context_data(
+                        experiment=task_formset.instance,
+                        task_formset=task_formset,
+                    ))
 
 
 class DatasetLicenseCreate(LoginRequiredMixin, CreateView):
