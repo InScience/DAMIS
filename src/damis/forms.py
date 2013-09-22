@@ -134,4 +134,10 @@ class BaseTaskFormset(BaseInlineFormSet):
         return False
 
 
-TaskFormset = inlineformset_factory(Experiment, Task, formset=BaseTaskFormset, extra=0)
+
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        exclude = ['stdout', 'stderr']
+
+TaskFormset = inlineformset_factory(Experiment, Task, formset=BaseTaskFormset, form=TaskForm, extra=0, can_delete=False)

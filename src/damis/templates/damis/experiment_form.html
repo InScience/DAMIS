@@ -29,10 +29,7 @@
                 {% for task in task_formset.forms %}
                  <tr>
                      <td>
-                         {{ task.errors }}
-                         {% for field in task %}
-                            {{ field }}<br/>
-                         {% endfor %}
+                        {{ task.as_p }}
                      </td>
                      <td>
                       {% if task.parameter_values %}
