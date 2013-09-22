@@ -15,7 +15,8 @@
   </ul>
   <div class="tab-content">
     <div>
-        {% trans "Experiment" %}: <b>{{ experiment }}</b>
+        <form action="." method="post">{% csrf_token %}
+        <p>{{ experiment_form.as_p }}</p>
         <table class='table'>
             <thead>
                 <tr>
@@ -24,7 +25,6 @@
             </tr>
             </thead>
             <tbody>
-            <form action="." method="post">{% csrf_token %}
                 {{ task_formset.management_form }}
                 {% for task in task_formset.forms %}
                  <tr>
@@ -41,28 +41,9 @@
                  </tr>
                 {% endfor %}
                 <button class="btn btn-primary pull-right" type='submit'>{% trans "Execute" %}</button>
-            </form>
             </tbody>
         </table>
-
-        {% comment %}
-    <form action="." method="post">{% csrf_token %}
-        <h2> {% trans 'New experiment' %} </h2>
-        {{ form.as_p }}
-        <button class="btn btn-primary" type='submit'>{% trans "Execute tasks" %}</button>
-        <h3> {% trans 'Tasks' %} </h3>
-        {{ tasks_form.management_form }}
-        {% for task_form in tasks_form %}
-        <p>
-            {{ form.id }}
-            <div class="inline"> 
-                {{ task_form }}<br/>
-            </div>
-        </p>
-        {% endfor %}
-    </form>
-    {% endcomment %}
-
+      </form>
     </div>
   </div>
 </div>

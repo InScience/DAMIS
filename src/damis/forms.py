@@ -111,7 +111,10 @@ class BaseTaskFormset(BaseInlineFormSet):
 
         return instance
 
-    def save_all(self, commit=True):
+    def save_all(self, experiment=None, commit=True):
+        if experiment:
+            self.instance = experiment
+
         objects = self.save(commit=False)
         if commit:
             for o in objects:
@@ -141,3 +144,4 @@ class TaskForm(forms.ModelForm):
         exclude = ['stdout', 'stderr']
 
 TaskFormset = inlineformset_factory(Experiment, Task, formset=BaseTaskFormset, form=TaskForm, extra=0, can_delete=False)
+CreateExperimentFormset = inlineformset_factory(Experiment, Task, formset=BaseTaskFormset, form=TaskForm, extra=1, can_delete=False)

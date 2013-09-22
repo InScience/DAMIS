@@ -20,7 +20,7 @@ from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
 from damis.forms import ParameterFormSet
 from damis.forms import ExperimentForm
-from damis.forms import TaskFormset
+from damis.forms import TaskFormset, CreateExperimentFormset
 
 
 from damis.utils import slugify
@@ -192,33 +192,37 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
     model = Experiment
 
     def get(self, request, *args, **kwargs):
-        experiment = Experiment.objects.get(pk=11)
-
         self.object = None
-        task_formset = TaskFormset(instance=experiment)
+        experiment = Experiment()
+        experiment_form = ExperimentForm()
+        task_formset = CreateExperimentFormset(instance=experiment)
         return self.render_to_response(self.get_context_data(
                     experiment=task_formset.instance,
                     task_formset=task_formset,
+                    experiment_form=experiment_form,
                 ))
 
     def post(self, request, *args, **kwargs):
         self.object = None
-        instance = Experiment.objects.get(pk=11)
+        instance = Experiment()
 
-        task_formset = TaskFormset(self.request.POST, instance=instance)
-        if task_formset.is_valid():
-            return self.form_valid(task_formset)
+        experiment_form = ExperimentForm(self.request.POST)
+        task_formset = CreateExperimentFormset(self.request.POST, instance=instance)
+        if experiment_form.is_valid() and task_formset.is_valid():
+            return self.form_valid(experiment_form, task_formset)
         else:
-            return self.form_invalid(task_formset)
+            return self.form_invalid(experiment_form, task_formset)
 
-    def form_valid(self, task_formset):
-        self.object = task_formset.save_all()
+    def form_valid(self, experiment_form, task_formset):
+        experiment = experiment_form.save()
+        self.object = task_formset.save_all(experiment=experiment)
         return HttpResponseRedirect(reverse_lazy('experiment-list'))
 
-    def form_invalid(self, task_formset):
+    def form_invalid(self, experiment_form, task_formset):
         return self.render_to_response(self.get_context_data(
                         experiment=task_formset.instance,
                         task_formset=task_formset,
+                        experiment_form=experiment_form,
                     ))
 
 
