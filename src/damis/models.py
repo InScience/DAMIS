@@ -77,6 +77,10 @@ class Parameter(models.Model):
     required = models.BooleanField(blank=True)
     default = models.CharField(max_length=255, null=True, blank=True)
 
+    def __unicode__(self):
+        return '%s <%s>' % (self.name, self.type)
+
+
 class Experiment(models.Model):
     STATUSES = (
         ('CREATED', 'Created'),
@@ -105,13 +109,16 @@ def get_result_file_upload_path(instance, filename):
     return  '%s/result/%s' % (username, filename)
 
 class Task(models.Model):
-    experiment = models.ForeignKey('Experiment', related_name='tasks', blank=True, null=True)
-    dataset = models.ForeignKey('Dataset', blank=True, null=True)
+    experiment = models.ForeignKey('Experiment', related_name='tasks', null=True)
+    dataset = models.ForeignKey('Dataset', null=True)
     algorithm = models.ForeignKey('Algorithm')
     sequence = models.IntegerField(blank=True, null=True)
     processors = models.IntegerField(blank=True, null=True)
     stdout = models.TextField(blank=True, null=True)
     stderr = models.TextField(blank=True, null=True)
+
+    def __unicode__(self):
+        return '%s %s' % (self.sequence, self.algorithm.title)
 
 class TaskFile(models.Model):
     file = models.FileField(upload_to=get_algorithm_file_upload_path)
