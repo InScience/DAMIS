@@ -58,6 +58,14 @@
                 <button class="btn btn-primary pull-right" type='submit'>{% trans "Execute" %}</button>
             </tbody>
         </table>
+        <div id="flowchartContainer">
+        </div>
+        <div>
+            <div id="diva" class="window">Div A
+            </div>
+            <div id="divb" class="window">Div B
+            </div>
+        </div>
       </form>
     </div>
   </div>
@@ -94,6 +102,24 @@
                     context: $(this) }).done(function(resp) {
                         var tag = $(this).closest('tr').find('.parameter-values').html(resp);
                     });
+        });
+        jsPlumb.ready(function() {
+            jsPlumb.Defaults.Container = $("#flowchartContainer"); 
+
+            //var e0 = jsPlumb.addEndpoint("diva"),
+            //e1 = jsPlumb.addEndpoint("divb");
+            //jsPlumb.connect({ source:e0, target:e1 });
+
+            jsPlumb.connect({
+                source:"diva", 
+                target:"divb",
+                anchors:["Right", "Left" ],
+                endpoint:"Rectangle",
+                endpointStyle:{ fillStyle: "yellow" }
+            }); 
+
+            jsPlumb.draggable("diva");
+            jsPlumb.draggable("divb");
         });
     </script>
 {% endblock %}
