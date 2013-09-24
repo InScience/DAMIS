@@ -60,7 +60,7 @@ class ParameterForm(forms.ModelForm):
         model = Parameter
         fields = ['name', 'type', 'required', 'default']
 
-ParameterFormSet = inlineformset_factory(Algorithm, Parameter, extra=1, form=ParameterForm, can_delete=False)
+ParameterFormset = inlineformset_factory(Algorithm, Parameter, extra=1, form=ParameterForm, can_delete=False)
 
 
 class ExperimentForm(forms.ModelForm):

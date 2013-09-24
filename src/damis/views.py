@@ -19,7 +19,7 @@ from django.forms.models import inlineformset_factory
 from damis.forms import LoginForm
 from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
-from damis.forms import ParameterForm
+from damis.forms import ParameterForm, ParameterFormset
 from damis.forms import ExperimentForm
 from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset
 
@@ -82,7 +82,7 @@ class AlgorithmCreate(LoginRequiredMixin, CreateView):
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)
-        parameter_form =  ParameterFormSet()
+        parameter_form =  ParameterFormset()
         return self.render_to_response(
                 self.get_context_data(form=form,
                     parameter_form=parameter_form))
@@ -91,7 +91,7 @@ class AlgorithmCreate(LoginRequiredMixin, CreateView):
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)
-        parameter_form = ParameterFormSet(self.request.POST)
+        parameter_form = ParameterFormset(self.request.POST)
         if form.is_valid() and parameter_form.is_valid():
             return self.form_valid(form, parameter_form)
         else:
@@ -119,7 +119,7 @@ class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
         self.object = Algorithm.objects.get(pk=self.kwargs['pk'])
         form_class = self.get_form_class()
         form = self.get_form(form_class)
-        parameter_form = ParameterFormSet(self.request.POST, instance=self.object)
+        parameter_form = ParameterFormset(self.request.POST, instance=self.object)
         if form.is_valid() and parameter_form.is_valid():
             return self.form_valid(form, parameter_form)
         else:
@@ -137,8 +137,8 @@ class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(AlgorithmUpdate, self).get_context_data(**kwargs)
-        ParameterFormSet = inlineformset_factory(Algorithm, Parameter, extra=0, can_delete=True)
-        context['parameter_form'] = ParameterFormSet(instance=self.object)
+        ParameterFormset = inlineformset_factory(Algorithm, Parameter, extra=0, can_delete=True)
+        context['parameter_form'] = ParameterFormset(instance=self.object)
         return context
 
 class AlgorithmDetail(LoginRequiredMixin, DetailView):
