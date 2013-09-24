@@ -1,3 +1,9 @@
+#flowchartContainer {
+    position: relative;
+    margin-top:100px;
+    min-height: 400px;
+}
+
 .window { border:1px solid #346789;
 box-shadow: 2px 2px 19px #aaa;
    -o-box-shadow: 2px 2px 19px #aaa;
@@ -10,7 +16,8 @@ filter:alpha(opacity=80);
 width:5em; height:5em;
 line-height:5em;
 text-align:center;
-z-index:20; position:absolute;
+z-index:20;
+position:absolute;
 background-color:#eeeeef;
 color:black;
 font-family:helvetica;padding:0.5em;
@@ -26,9 +33,16 @@ filter:alpha(opacity=60);
 
 }
 
+.active-target {
+    border:1px dotted green;
+}
+
 .hover {
 	border:1px dotted red;
 }
+
+#diva { top:20px; left:20px;}
+#divb { top:20px; left:120px;}
 
 #window1 { top:34em;left:5em;}
 #window2 { top:7em; left:36em;}
