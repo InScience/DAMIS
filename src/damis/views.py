@@ -170,7 +170,7 @@ class ExperimentUpdate(LoginRequiredMixin, UpdateView):
 
     def post(self, request, *args, **kwargs):
         self.object = None
-        instance = Experiment.objects.get(pk=11)
+        instance = Experiment.objects.get(pk=self.kwargs['pk'])
 
         task_formset = TaskFormset(self.request.POST, instance=instance)
         if task_formset.is_valid():
