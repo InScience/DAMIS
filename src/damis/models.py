@@ -77,7 +77,7 @@ class Parameter(models.Model):
     required = models.BooleanField(blank=True)
     default = models.CharField(max_length=255, null=True, blank=True)
     is_output = models.BooleanField(blank=True, default=False)
-    is_source = models.BooleanField(blank=True, default=False)
+    is_input = models.BooleanField(blank=True, default=False)
 
     def __unicode__(self):
         return '%s <%s>' % (self.name, self.type)
