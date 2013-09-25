@@ -71,9 +71,6 @@
     border:1px dotted red;
 }
 
-#diva { top:20px; left:20px;}
-#divb { top:20px; left:120px;}
-
 ._jsPlumb_connector { z-index:4; }
 ._jsPlumb_endpoint, .endpointTargetLabel, .endpointSourceLabel{ z-index:21;cursor:pointer; }
 
