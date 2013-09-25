@@ -69,7 +69,24 @@ class ExperimentForm(forms.ModelForm):
         exclude = ['user', 'start', 'finish', 'status']
 
 
-ParameterValueFormset = inlineformset_factory(Task, ParameterValue, extra=0, can_delete=False)
+class ParameterValueForm(forms.ModelForm):
+    parameter = forms.ModelChoiceField(queryset=Parameter.objects.all(),
+                                       widget=forms.HiddenInput())
+
+    def __init__(self, *args, **kwargs):
+        super(ParameterValueForm, self).__init__(*args, **kwargs)
+        if kwargs.get('instance'):
+            self.fields['value'].label = str(kwargs['instance'].parameter)
+        if self.data:
+            parameter_id = self.data.get(self.prefix + '-parameter')
+            if parameter_id:
+                self.fields['value'].label = str(Parameter.objects.get(pk=parameter_id))
+
+    class Meta:
+        model = ParameterValue
+
+
+ParameterValueFormset = inlineformset_factory(Task, ParameterValue, form=ParameterValueForm, extra=0, can_delete=False)
 
 class BaseTaskFormset(BaseInlineFormSet):
     def add_fields(self, form, index):
@@ -141,7 +158,7 @@ class BaseTaskFormset(BaseInlineFormSet):
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        exclude = ['stdout', 'stderr']
+        exclude = ['stdout', 'stderr', 'processors', 'sequence']
 
 TaskFormset = inlineformset_factory(Experiment, Task, formset=BaseTaskFormset, form=TaskForm, extra=0, can_delete=False)
 CreateExperimentFormset = inlineformset_factory(Experiment, Task, formset=BaseTaskFormset, form=TaskForm, extra=1, can_delete=False)

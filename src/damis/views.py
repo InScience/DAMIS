@@ -21,7 +21,7 @@ from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
 from damis.forms import ParameterForm, ParameterFormset
 from damis.forms import ExperimentForm
-from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset
+from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset, ParameterValueForm
 
 
 from damis.utils import slugify
@@ -231,8 +231,12 @@ def algorithm_parameter_form(request):
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
     prefix = 'PARAMETER_VALUE_%s' % hash(task_form_prefix)
 
-    ParameterValueFormset = inlineformset_factory(Task, ParameterValue,
-            extra=len(algorithm.parameters.all()), can_delete=False)
+    ParameterValueFormset = inlineformset_factory(Task,
+                                ParameterValue,
+                                form=ParameterValueForm,
+                                extra=len(algorithm.parameters.all()),
+                                can_delete=False
+                            )
     parameter_formset = ParameterValueFormset(instance=None, prefix=prefix)
     for parameter, form in zip(algorithm.parameters.all(), parameter_formset.forms):
         form.initial = {'parameter': parameter}

@@ -2,6 +2,8 @@
 {% load disable from damis %}
 
 {{ formset.management_form }}
+<td class="parameter-values">
 {% for form in formset %}
-    <td class="parameter-values">{{ form.parameter|disable }}<br/> {{ form.value }}<br/></td>
+    {{ form.initial.parameter }}{{ form.parameter }}<br/> {{ form.value }}<br/>
 {% endfor %}
+</td>
