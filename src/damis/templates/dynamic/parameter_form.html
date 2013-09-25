@@ -1,3 +1,7 @@
 {% load i18n %}
+{% load disable from damis %}
 
-{{ formset }}
+{{ formset.management_form }}
+{% for form in formset %}
+    <td class="parameter-values">{{ form.parameter|disable }}<br/> {{ form.value }}<br/></td>
+{% endfor %}
