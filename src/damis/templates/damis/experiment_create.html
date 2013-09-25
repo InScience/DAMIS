@@ -60,9 +60,16 @@
         </table>
       </form>
     </div>
-    <div id="flowchartContainer" >
-        <div id="diva" class="window">Div A</div>
-        <div id="divb" class="window">Div B</div>
+    <div id="workflow-editor-container">
+        <div id="toolbox">
+            <div class="prototype-box">New task</div>
+        </div>
+        <div id="canvas">
+            <div id="flowchart-container" >
+                <div id="diva" class="task-box">Div A</div>
+                <div id="divb" class="task-box">Div B</div>
+            </div>
+        </div>
     </div>
   </div>
 </div>
@@ -101,7 +108,23 @@
         });
 
         jsPlumb.ready(function() {
-            experimentCanvas.init({id: "flowchartContainer"});
+            experimentCanvas.init({id: "flowchart-container"});
+        });
+        $(".prototype-box").draggable({
+            appendTo: "#flowchart-container",
+            helper: "clone"
+        }); 
+        $("#flowchart-container").droppable({
+            activeClass: "active-canvas",
+            accept: ".prototype-box",
+            drop: function( event, ui ) {
+                var el = $("<div>New task</div>")
+                el.addClass("task-box");
+                el.appendTo("#flowchart-container")
+                el.css("left", ui.position.left + "px")
+                el.css("top", ui.position.top + "px")
+		jsPlumb.draggable(el, { grid: [20, 20], containment: "parent"});		
+            }
         });
     </script>
 {% endblock %}

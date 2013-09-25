@@ -98,8 +98,8 @@
 				init(connInfo.connection);
 			});			
 						
-			// make all the window divs draggable						
-			jsPlumb.draggable(document.querySelectorAll(".window"), { grid: [20, 20], containment: "parent"});		
+			// make draggable						
+			jsPlumb.draggable(document.querySelectorAll(".task-box"), { grid: [20, 20], containment: "parent"});		
             
 			// connect
 			jsPlumb.connect({uuids:["divaTopCenter", "divbRightMiddle"], editable:true});
