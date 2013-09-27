@@ -17,7 +17,12 @@
                 taskBox.addClass("task-box");
 
                 //create modal window with form fields
-                var taskForm = $("<div class=\"task-form\">Task form</div>");
+                // click add form btn 
+                var addTaskBtn = $("a[class=\"add-row\"]")
+                addTaskBtn.click();
+                
+                // get generated form
+                var taskForm = addTaskBtn.prev();
                 taskForm.attr("id", taskBox.attr("id") + "-form");
                 taskForm.dialog({
                     autoOpen: false,
