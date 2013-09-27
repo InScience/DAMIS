@@ -1,13 +1,48 @@
 ;(function() {
 	window.taskBoxes = {
+            countBoxes : 0,
 
-            handleDbClick : function (task) {
-                console.log('Double click on ', task);
-            },
+            // Initialize a task box ready to accept click events
+            initTask: function(ev, ui, taskContainer) {
+                // drop the task where it was dragged
+                var taskBox = $("<div>New task</div>");
+                taskBox.appendTo(taskContainer);
+                taskBox.css("left", ui.position.left + "px");
+                taskBox.css("top", ui.position.top + "px");
 
-            setupTaskBox : function(el) {
-                // TODO: setup endpoints according to selected algorithm
-                // can be accessed as: window.experimentCanvas.setupTaskBox
+                //assign id and class
+                count = window.taskBoxes.countBoxes;
+                window.taskBoxes.countBoxes++;
+                taskBox.attr("id",  "task-box-" + count);
+                taskBox.addClass("task-box");
+
+                //create modal window with form fields
+                var taskForm = $("<div class=\"task-form\">Task form</div>");
+                taskForm.attr("id", taskBox.attr("id") + "-form");
+                taskForm.dialog({
+                    autoOpen: false,
+                    appendTo: "#task-forms",
+                    modal: true,
+                    buttons: [ 
+                       {text: "Save", click: function() { 
+                           /* TODO: create endpoints for in/out parameters */ 
+                           $( this ).dialog( "close" ); }
+                       },
+                       {text: "Cancel", click: function() { $( this ).dialog( "close" ); }}
+                    ]
+                });
+                taskBox.on('dblclick', function (ev) {
+                    var taskFormId = $(ev.currentTarget).attr("id") + "-form";
+                    $("#" + taskFormId).dialog('open'); 
+                });
+
+                //make it draggable
+                jsPlumb.draggable(taskBox, { grid: [20, 20], containment: "parent"});		
+                 
+                // TODO: remove when endpoints are rendered according to in/out
+                // parameters
+                jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {anchor: "LeftMiddle"});
+                jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getTargetEndpoint(), {anchor: "RightMiddle"});
             },
 
             initToolBox : function(spec) {
@@ -18,18 +53,8 @@
                 $(spec.droppable).droppable({
                     activeClass: "active-canvas",
                     accept: spec.draggable,
-                    drop: function( event, ui ) {
-                        var el = $("<div>New task</div>");
-                        el.addClass("task-box");
-                        el.appendTo(spec.droppable);
-                        el.css("left", ui.position.left + "px");
-                        el.css("top", ui.position.top + "px");
-                        jsPlumb.draggable(el, { grid: [20, 20], containment: "parent"});		
-                        //var endpoint = jsPlumb.addEndpoint(el, window.experimentCanvas.getSourceEndpoint(), {anchor: "LeftMiddle"});
-                        //jsPlumb.addEndpoint(el, window.experimentCanvas.getTargetEndpoint(), {anchor: "RightMiddle"});
-                        
-                        //endpoint.bind("dblclick", window.experimentCanvas.handleTaskBoxDoubleClick);
-                        
+                    drop: function (ev, ui) {
+                        window.taskBoxes.setupNewTask(ev, ui, spec.droppable);
                     }
                 });
             },
