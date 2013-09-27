@@ -18,18 +18,11 @@
         <form action="." method="post">{% csrf_token %}
         <p>{{ experiment_form.as_p }}</p>
         <table class='table'>
-            <thead>
-                <tr>
-                <th>{% trans 'Tasks' %}</th>
-                <th>{% trans 'parameters' %}</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
                 {{ task_formset.management_form }}
                 {% for task in task_formset.forms %}
-                 <tr class="inline">
-                     <td>
+                {% trans 'Task' %}
+                 <div class="inline task">
+                     <div>
                         {{ task.non_field_errors }}
                         {% for field in task.visible_fields %}
                         <p>{{ field.errors}}
@@ -44,20 +37,18 @@
                         {% for field in task.hidden_fields %}
                             {{ field }}
                         {% endfor %}
-                     </td>
-                     <td class="parameter-values">
+                     </div>
+                     <div class="parameter-values">
+                      {% trans 'parameters' %}
                       {% if task.parameter_values %}
                          {% for formset in task.parameter_values %}
                              {{ formset.as_p }}
                          {% endfor %}
                       {% endif %}
-                     </td>
-                     <td></td>
-                 </tr>
+                     </div>
+                 </div>
                 {% endfor %}
                 <button class="btn btn-primary pull-right" type='submit'>{% trans "Execute" %}</button>
-            </tbody>
-        </table>
       </form>
     </div>
     <div id="task-forms"></div>
@@ -102,7 +93,7 @@
                         prefix: $(this).attr('id')
                     },
                     context: $(this) }).done(function(resp) {
-                        var tag = $(this).closest('tr').find('.parameter-values').html(resp);
+                        var tag = $(this).closest('.task').find('.parameter-values').html(resp);
                     });
         });
         jsPlumb.ready(function() {
