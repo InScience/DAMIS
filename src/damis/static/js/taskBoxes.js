@@ -54,7 +54,7 @@
                     activeClass: "active-canvas",
                     accept: spec.draggable,
                     drop: function (ev, ui) {
-                        window.taskBoxes.setupNewTask(ev, ui, spec.droppable);
+                        window.taskBoxes.initTask(ev, ui, spec.droppable);
                     }
                 });
             },
