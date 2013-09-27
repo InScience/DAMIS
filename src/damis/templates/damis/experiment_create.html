@@ -104,10 +104,10 @@
                         var tag = $(this).closest('tr').find('.parameter-values').html(resp);
                     });
         });
-
         jsPlumb.ready(function() {
             experimentCanvas.init({id: "flowchart-container"});
-        });
-        experimentCanvas.initToolBox({draggable: ".prototype-box", droppable: "#flowchart-container"});
+        }); 
+        taskBoxes.initToolBox({draggable: ".prototype-box", droppable:
+                "#flowchart-container"});
     </script>
 {% endblock %}

@@ -65,32 +65,7 @@
                 }
             },			
 
-            setupTaskBox : function(el) {
-                // TODO: setup endpoints according to selected algorithm
-                // can be accessed as: window.experimentCanvas.setupTaskBox
-            },
-
-            initToolBox : function(spec) {
-                $(spec.draggable).draggable({
-                    appendTo: spec.droppable,
-                    helper: "clone"
-                }); 
-                $(spec.droppable).droppable({
-                    activeClass: "active-canvas",
-                    accept: spec.draggable,
-                    drop: function( event, ui ) {
-                        var el = $("<div>New task</div>");
-                        el.addClass("task-box");
-                        el.appendTo(spec.droppable);
-                        el.css("left", ui.position.left + "px");
-                        el.css("top", ui.position.top + "px");
-                        jsPlumb.draggable(el, { grid: [20, 20], containment: "parent"});		
-                        jsPlumb.addEndpoint(el, window.experimentCanvas.getSourceEndpoint(), {anchor: "LeftMiddle"});
-                        jsPlumb.addEndpoint(el, window.experimentCanvas.getTargetEndpoint(), {anchor: "RightMiddle"});
-                    }
-                });
-            },
-
+            // initialize 
             init : function(spec) {
 				
                 jsPlumb.importDefaults({
@@ -105,6 +80,11 @@
                     // case it returns the 'labelText' member that we set on each connection in the 'init' method below.
                     ConnectionOverlays : [
                         [ "Arrow", { location:1 } ],
+                        [ "Label", { 
+                            location:0.1,
+                            id:"label",
+                            cssClass:"aLabel"
+                        }]
                     ]
                 });		
 
@@ -131,13 +111,13 @@
 		    jsPlumb.detach(conn); 
 		});	
 			
-		jsPlumb.bind("connectionDrag", function(connection) {
-		    console.log("connection " + connection.id + " is being dragged. suspendedElement is ", connection.suspendedElement, " of type ", connection.suspendedElementType);
-		});		
-			
-		jsPlumb.bind("connectionDragStop", function(connection) {
-		    console.log("connection " + connection.id + " was dragged");
-		});
+		//jsPlumb.bind("connectionDrag", function(connection) {
+		//    console.log("connection " + connection.id + " is being dragged. suspendedElement is ", connection.suspendedElement, " of type ", connection.suspendedElementType);
+		//});		
+		//	
+		//jsPlumb.bind("connectionDragStop", function(connection) {
+		//    console.log("connection " + connection.id + " was dragged");
+		//});
 		},
 
 	};
