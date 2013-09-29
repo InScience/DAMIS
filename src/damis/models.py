@@ -90,7 +90,7 @@ class Experiment(models.Model):
         ('RUNNING', 'Running'),
         ('FINISHED', 'Finished'),
     )
-    title = models.CharField(_('Title'), max_length=255, null=True)
+    title = models.CharField(_('Experiment title'), max_length=255, null=True)
     start = models.DateTimeField(_('Start'), blank=True, null=True)
     finish = models.DateTimeField(_('Finish'), blank=True, null=True)
     status = models.CharField(_('Status'), max_length=50, null=True, blank=True,
