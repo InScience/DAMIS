@@ -112,10 +112,11 @@
 				//display disabled field to the user
 				var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
 				input.val(params.outParam);
-				input.attr("disabled", "disabled");
+				// input.attr("disabled", "disabled");
+				input.attr("type", "hidden");
 
 				// save input parameter form prefix and id for server side processing
-				input = $("#" + params.inParam).closest("div").find("input[id$='source']");
+				input = $("#" + params.inParam).closest("div").find("input[id$='source_label']");
 				input.val(params.outParam);
 			});
 

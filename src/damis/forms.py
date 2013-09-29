@@ -72,7 +72,7 @@ class ExperimentForm(forms.ModelForm):
 class ParameterValueForm(forms.ModelForm):
     parameter = forms.ModelChoiceField(queryset=Parameter.objects.all(),
                                        widget=forms.HiddenInput())
-    source = forms.CharField(max_length=255, widget=forms.HiddenInput(), required=False)
+    source_label = forms.CharField(max_length=255, widget=forms.HiddenInput(), required=False)
 
     def __init__(self, *args, **kwargs):
         super(ParameterValueForm, self).__init__(*args, **kwargs)

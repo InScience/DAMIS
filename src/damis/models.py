@@ -132,4 +132,4 @@ class ParameterValue(models.Model):
     parameter = models.ForeignKey('Parameter')
     value = models.CharField(max_length=255)
     task = models.ForeignKey('Task', related_name='parameter_values')
-    source = models.ForeignKey('ParameterValue', null=True)
+    source = models.ForeignKey('ParameterValue', null=True, blank=True)
