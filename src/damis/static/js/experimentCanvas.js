@@ -41,7 +41,7 @@
 					lineWidth: 2
 				},
 				isSource: true,
-				connector: ["Flowchart", {
+				connector: ["StateMachine", {
 					stub: [40, 60],
 					gap: 10,
 					cornerRadius: 5,
@@ -51,11 +51,6 @@
 				hoverPaintStyle: this.getEndpointHoverStyle(),
 				connectorHoverStyle: this.getConnectorHoverStyle(),
 				dragOptions: {},
-				overlays: [["Label", {
-					location: [0.5, 1.5],
-					label: "Drag",
-					cssClass: "endpointSourceLabel"
-				}]]
 			}
 		},
 
@@ -76,11 +71,6 @@
 					activeClass: "active-target"
 				},
 				isTarget: true,
-				overlays: [["Label", {
-					location: [0.5, - 0.5],
-					label: "Drop",
-					cssClass: "endpointTargetLabel"
-				}]]
 			}
 		},
 
@@ -147,6 +137,7 @@
                     jsPlumb.detach(conn);
                 }
 			});
+            $(document).on("contextmenu", function() {return false});
 		},
 
 	};
