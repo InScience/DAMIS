@@ -3,9 +3,12 @@
 
 {{ formset.management_form }}
 <td class="parameter-values">
-{% for form in formset %}
-<input id="{{ form.prefix }}-is_input" type="hidden" value="{{ form.initial.parameter.is_input }}" name="{{ form.prefix }}-is_input">
-<input id="{{ form.prefix }}-is_output" type="hidden" value="{{ form.initial.parameter.is_output }}" name="{{ form.prefix }}-is_output">
-    {{ form.initial.parameter }}{{ form.parameter }}<br/> {{ form.value }}<br/>
-{% endfor %}
+    {% trans 'parameters' %}
+    {% for form in formset %}
+    <div>
+        <input id="{{ form.prefix }}-is_input" type="hidden" value="{{ form.initial.parameter.is_input }}" name="{{ form.prefix }}-is_input">
+        <input id="{{ form.prefix }}-is_output" type="hidden" value="{{ form.initial.parameter.is_output }}" name="{{ form.prefix }}-is_output">
+        {{ form.initial.parameter }}{{ form.parameter }}<br/> {{ form.value }}<br/>
+    </div>
+    {% endfor %}
 </td>
