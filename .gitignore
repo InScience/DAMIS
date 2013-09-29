@@ -21,3 +21,6 @@ var
 # Temporary files
 src/algorithms/tests/data/tmp
 tmp
+
+# Git backup files
+*.orig
