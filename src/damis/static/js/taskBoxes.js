@@ -3,17 +3,89 @@
 	window.taskBoxes = {
 		countBoxes: 0,
 
-		handleTaskBoxRightClick: function(ev) {
-			if (ev.button == 2) {
-				jsPlumb.detachAllConnections(ev.target);
-				$(ev.target).find(".delete-row").click();
-				$(ev.target).remove();
-                //TODO: endpoints must also be removed; maybe their ids should
-                //be derivable from task box id
+		// Maps task boxes to their endpoints
+		taskBoxesToEndpoints: {},
+
+		// remove all endpoints of a task box
+		removeEndpoints: function(taskBoxId) {
+			var epoints = window.taskBoxes.taskBoxesToEndpoints[taskBoxId];
+			if (epoints && epoints.ipoints) {
+				$.each(epoints.ipoints, function(idx, e) {
+					jsPlumb.deleteEndpoint(e);
+				});
+			}
+			if (epoints && epoints.opoints) {
+				$.each(epoints.opoints, function(idx, e) {
+					jsPlumb.deleteEndpoint(e);
+				})
 			}
 		},
 
-		// Initialize a task box ready to accept click events
+		// Double click on task box
+		taskBoxRightClick: function(ev) {
+			if (ev.button == 2) {
+				// TODO: disable context 
+				var taskBox = $(ev.target);
+                var taskForm = $(taskBox.attr("id") + "-form");
+				jsPlumb.detachAllConnections(taskBox); // remove connections
+				// TODO: reset values in the forms corresponding to this
+				// connection
+				taskForm.find(".delete-row").click(); // remove task form
+				taskBox.remove(); // remove task box
+				window.taskBoxes.removeEndpoints(taskBox.attr("id"));
+			}
+		},
+
+		// Click on the Save button in the task modal window
+		taskBoxSave: function(saveBtn, ev) {
+			var taskForm = saveBtn.closest(".task-form");
+			var taskBoxId = taskForm.attr("id").replace("-form", "");
+
+			// TODO: remove existing endpoints only if algorithm has been
+            // changed
+			window.taskBoxes.removeEndpoints(taskBoxId);
+
+			// Add new endpoints for input/output parameters
+			var taskBox = $("#" + taskBoxId);
+			var parameters = taskForm.find('.parameter-values');
+
+			var outAnchors = ["RightMiddle", [1, 0, 1, 1], [1, 1, 1, 1]];
+			var oIdx = 0;
+			var inAnchors = ["LeftMiddle", [0, 0, - 1, - 1], [0, 1, - 1, - 1]];
+			var iIdx = 0;
+
+			var ipoints = []
+			var opoints = []
+
+			$.each(parameters.find('div'), function() {
+				var parameterId = $(this).find("input[id^='id']").attr("id");
+				var isIn = $(this).find("input[id$='is_input']").val();
+				var isOut = $(this).find("input[id$='is_output']").val();
+
+				if (isIn === "True") {
+					//add input endpoint
+					var x = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getTargetEndpoint(), {
+						anchor: inAnchors[iIdx],
+					});
+					ipoints.push(x);
+					iIdx++;
+				} else if (isOut === "True") {
+					//add output endpoint
+					var y = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {
+						anchor: outAnchors[oIdx],
+					});
+					opoints.push(y);
+					oIdx++;
+				}
+			});
+			window.taskBoxes.taskBoxesToEndpoints[taskBoxId] = {
+				"ipoints": ipoints,
+				"opoints": opoints
+			}
+			saveBtn.dialog("close");
+		},
+
+		// Initialize a new task box to accept double click events
 		initTask: function(ev, ui, taskContainer) {
 			// drop the task where it was dragged
 			var taskBox = $("<div>New task</div>");
@@ -26,7 +98,7 @@
 			window.taskBoxes.countBoxes++;
 			taskBox.attr("id", "task-box-" + count);
 			taskBox.addClass("task-box");
-			taskBox.on("mousedown", this.handleTaskBoxRightClick);
+			taskBox.on("mousedown", this.taskBoxRightClick);
 
 			//create modal window with form fields
 			// click add form btn 
@@ -40,17 +112,12 @@
 				autoOpen: false,
 				appendTo: "#task-forms",
 				modal: true,
+				// Canel button should return the box to a previous state, but
+				// that is too complicated for now, so no Cancel button
 				buttons: [{
 					text: "Save",
-					click: function() {
-						/* TODO: create endpoints for in/out parameters */
-						$(this).dialog("close");
-					}
-				},
-				{
-					text: "Cancel",
-					click: function() {
-						$(this).dialog("close");
+					click: function(ev) {
+						window.taskBoxes.taskBoxSave($(this), ev);
 					}
 				}]
 			});
@@ -64,17 +131,9 @@
 				grid: [20, 20],
 				containment: "parent"
 			});
-
-			// TODO: remove when endpoints are rendered according to in/out
-			// parameters
-			jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {
-				anchor: "LeftMiddle"
-			});
-			jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getTargetEndpoint(), {
-				anchor: "RightMiddle"
-			});
 		},
 
+		// Make boxes in the toolbox draggable
 		initToolBox: function(spec) {
 			$(spec.draggable).draggable({
 				appendTo: spec.droppable,
