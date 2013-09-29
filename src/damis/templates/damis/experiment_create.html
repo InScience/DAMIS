@@ -3,69 +3,71 @@
 {% get_current_language as lang %}
 
 {% block menu %}
-    {% include 'menu.html' with active='experiments' %}
+{% include 'menu.html' with active='experiments' %}
 {% endblock %}
 
 {% block content %}
 <div class="span12">
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs" id="myTab2">
-      <li><a href="{% url 'experiment-list' %}">{% trans "Experiments" %}</a></li>
-      <li class="active"><a href="{% url 'experiment-new' %}">{% trans "New experiment" %}</a></li>
-  </ul>
-  <div class="tab-content">
-    <div>
-        <form id="experiment-form" action="." method="post">{% csrf_token %}
-        <button class="btn btn-primary pull-right" type='submit'
-            id="execute-btn">{% trans "Execute" %}</button>
-        {{ experiment_form.as_p }}
-        <div class='table'>
-                {{ task_formset.management_form }}
-                <div style="display: none;">
-                {% for task in task_formset.forms %}
-                {% trans 'Task' %}
-                 <div class="inline task">
-                     <div>
-                        {{ task.non_field_errors }}
-                        {% for field in task.visible_fields %}
-                        <p>{{ field.errors}}
-                        {{ field.label }}:<br/>
-                        {% if field.name == 'algorithm' %} 
-                            <span class='algorithm-selection'>{{ field }}</span>
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                        </p>
-                        {% endfor %}
-                        {% for field in task.hidden_fields %}
-                            {{ field }}
-                        {% endfor %}
-                     </div>
-                     <div class="parameter-values">
-                      {% trans 'parameters' %}
-                      {% if task.parameter_values %}
-                         {% for formset in task.parameter_values %}
-                             {{ formset.as_p }}
-                         {% endfor %}
-                      {% endif %}
-                     </div>
-                 </div>
-                {% endfor %}
-                </div> 
-                <div id="task-forms"></div>
-        </div>
-        </form>
-    <div id="workflow-editor-container">
-        <div id="toolbox">
-            <div class="prototype-box">New task</div>
-        </div>
-        <div id="canvas">
-            <div id="flowchart-container" >
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs" id="myTab2">
+            <li><a href="{% url 'experiment-list' %}">{% trans "Experiments" %}</a></li>
+            <li class="active"><a href="{% url 'experiment-new' %}">{% trans "New experiment" %}</a></li>
+        </ul>
+        <div class="tab-content">
+            <div>
+                <form id="experiment-form" action="." method="post">{% csrf_token %}
+                    <button class="btn btn-primary pull-right" type='submit'
+                        id="execute-btn">{% trans "Execute" %}</button>
+                    {{ experiment_form.as_p }}
+                    <div class='table'>
+                        {{ task_formset.management_form }}
+                        <div style="display: none;">
+                            {% for task in task_formset.forms %}
+                            {% trans 'Task' %}
+                            <div class="inline task">
+                                <div>
+                                    {{ task.non_field_errors }}
+                                    {% for field in task.visible_fields %}
+                                    <p>{{ field.errors}}
+                                    {{ field.label }}:<br/>
+                                    {% if field.name == 'algorithm' %} 
+                                    <span class='algorithm-selection'>{{ field }}</span>
+                                    {% else %}
+                                    {{ field }}
+                                    {% endif %}
+                                    </p>
+                                    {% endfor %}
+                                    {% for field in task.hidden_fields %}
+                                </div>
+                                <div class="parameter-values">
+                                    {% trans 'parameters' %}
+                                    {% if task.parameter_values %}
+                                    {% for formset in task.parameter_values %}
+                                    <div>
+                                        {{ formset.as_p }}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div> 
+                        <div id="task-forms"></div>
+                    </div>
+                </form>
+                <div id="workflow-editor-container">
+                    <div id="toolbox">
+                        <div class="prototype-box">New task</div>
+                    </div>
+                    <div id="canvas">
+                        <div id="flowchart-container" >
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-  </div>
-</div>
+        </div> <!-- tab-content -->
+    </div> <!-- tabbable -->
+</div> <!-- span12-->
 {% endblock %}
 
 {% block javascript %}
@@ -76,15 +78,8 @@
         $(function() {
             $('.inline').formset({
                 prefix: "{{ task_formset.prefix }}",
+                extraClasses: ['task-form'],
             });
-            $("#execute-btn").click(function(ev) {
-                e.preventDefault();
-                var firstForm = $('.' + 'dynamic-form' + ':first');
-                //TODO: submit as Ajax, remove firstForm before submission and
-                // and return to form on response in case of validation errors
-                firstForm.remove();
-                $("#experiment-form").submit();
-            }); 
         })
     </script>
 {% endblock %}
@@ -92,22 +87,21 @@
 {% block javascript_footer %}
     {{ block.super }}
     <script type="text/javascript">
-        $('.algorithm-selection select').change(function() {
-                
-                $.ajax({
-                    url: "{% url 'parameters-form' %}",
-                    data: {
-                        algorithm_id: $(this).val(),
-                        prefix: $(this).attr('id')
-                    },
-                    context: $(this) }).done(function(resp) {
-                        var tag = $(this).closest('.task').find('.parameter-values').html(resp);
-                    });
-        });
-        jsPlumb.ready(function() {
-            experimentCanvas.init({id: "flowchart-container"});
-        }); 
-        taskBoxes.initToolBox({draggable: ".prototype-box", droppable:
-                "#flowchart-container"});
+                $('.algorithm-selection select').change(function() {
+                        $.ajax({
+                            url: "{% url 'parameters-form' %}",
+                            data: {
+                            algorithm_id: $(this).val(),
+                            prefix: $(this).attr('id')
+                        },
+                            context: $(this) }).done(function(resp) {
+                            var tag = $(this).closest('.task').find('.parameter-values').html(resp);
+                        });
+                });
+                jsPlumb.ready(function() {
+                    experimentCanvas.init({id: "flowchart-container"});
+                }); 
+                taskBoxes.initToolBox({draggable: ".prototype-box", droppable:
+                    "#flowchart-container"});
     </script>
 {% endblock %}
