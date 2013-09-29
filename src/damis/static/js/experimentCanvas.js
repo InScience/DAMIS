@@ -35,10 +35,8 @@
 			return {
 				endpoint: "Dot",
 				paintStyle: {
-					strokeStyle: "#1e8151",
-					fillStyle: "transparent",
-					radius: 7,
-					lineWidth: 2
+					fillStyle: "#1e8151",
+					radius: 11
 				},
 				isSource: true,
 				connector: ["StateMachine", {
@@ -61,8 +59,10 @@
 			return {
 				endpoint: "Dot",
 				paintStyle: {
-					fillStyle: "#1e8151",
-					radius: 11
+					strokeStyle: "#1e8151",
+					fillStyle: "transparent",
+					radius: 7,
+					lineWidth: 2
 				},
 				hoverPaintStyle: this.getEndpointHoverStyle(),
 				maxConnections: - 1,
