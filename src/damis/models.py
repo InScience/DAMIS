@@ -86,8 +86,10 @@ class Parameter(models.Model):
 class Experiment(models.Model):
     STATUSES = (
         ('CREATED', 'Created'),
-        ('SUBMITED', 'Submited'),
+        ('UPLOADING', 'Uploading files'),
+        ('SHEDULED', 'Sheduled'),
         ('RUNNING', 'Running'),
+        ('RETRIEVING_RESULTS', 'Retrieving results'),
         ('FINISHED', 'Finished'),
     )
     title = models.CharField(_('Experiment title'), max_length=255, null=True)
@@ -130,3 +132,4 @@ class ParameterValue(models.Model):
     parameter = models.ForeignKey('Parameter')
     value = models.CharField(max_length=255)
     task = models.ForeignKey('Task', related_name='parameter_values')
+    source = models.ForeignKey('ParameterValue', null=True)
