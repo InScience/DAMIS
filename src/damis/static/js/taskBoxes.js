@@ -24,9 +24,8 @@
 		// Double click on task box
 		taskBoxRightClick: function(ev) {
 			if (ev.button == 2) {
-				// TODO: disable context 
 				var taskBox = $(ev.target);
-                var taskForm = $(taskBox.attr("id") + "-form");
+				var taskForm = $(taskBox.attr("id") + "-form");
 				jsPlumb.detachAllConnections(taskBox); // remove connections
 				// TODO: reset values in the forms corresponding to this
 				// connection
@@ -42,11 +41,12 @@
 			var taskBoxId = taskForm.attr("id").replace("-form", "");
 
 			// TODO: remove existing endpoints only if algorithm has been
-            // changed
+			// changed
 			window.taskBoxes.removeEndpoints(taskBoxId);
 
 			// Add new endpoints for input/output parameters
 			var taskBox = $("#" + taskBoxId);
+			//taskBox.html(taskForm.find().text());
 			var parameters = taskForm.find('.parameter-values');
 
 			var outAnchors = ["RightMiddle", [1, 0, 1, 1], [1, 1, 1, 1]];
@@ -58,7 +58,9 @@
 			var opoints = []
 
 			$.each(parameters.find('div'), function() {
-				var parameterId = $(this).find("input[id^='id']").attr("id");
+				var valId = $(this).find("input[id$='-value']").attr("id");
+				var parameterFormPrefix = valId.replace("-value", "");
+
 				var isIn = $(this).find("input[id$='is_input']").val();
 				var isOut = $(this).find("input[id$='is_output']").val();
 
@@ -66,6 +68,9 @@
 					//add input endpoint
 					var x = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getTargetEndpoint(), {
 						anchor: inAnchors[iIdx],
+						parameters: {
+							inParam: valId
+						}
 					});
 					ipoints.push(x);
 					iIdx++;
@@ -73,6 +78,9 @@
 					//add output endpoint
 					var y = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {
 						anchor: outAnchors[oIdx],
+						parameters: {
+							outParam: parameterFormPrefix
+						}
 					});
 					opoints.push(y);
 					oIdx++;

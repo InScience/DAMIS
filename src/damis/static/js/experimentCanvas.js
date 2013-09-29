@@ -101,23 +101,22 @@
 				// case it returns the 'labelText' member that we set on each connection in the 'init' method below.
 				ConnectionOverlays: [["Arrow", {
 					location: 1
-				}], ["Label", {
-					location: 0.1,
-					id: "label",
-					cssClass: "aLabel"
 				}]]
 			});
 
-			init = function(connection) {
-				connection.getOverlay("label").setLabel(connection.sourceId.substring(6) + "-" + connection.targetId.substring(6));
-				connection.bind("editCompleted", function(o) {
-					if (typeof console != "undefined") console.log("connection edited. path is now ", o.path);
-				});
-			};
-
 			// listen for new connections; initialise them the same way we initialise the connections at startup.
-			jsPlumb.bind("connection", function(connInfo, originalEvent) {
-				init(connInfo.connection);
+			jsPlumb.bind("connection", function(connection, originalEvent) {
+				var conn = connection.connection;
+				var params = conn.getParameters();
+
+				//display disabled field to the user
+				var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
+				input.val(params.outParam);
+				input.attr("disabled", "disabled");
+
+				// save input parameter form prefix and id for server side processing
+				input = $("#" + params.inParam).closest("div").find("input[id$='source']");
+				input.val(params.outParam);
 			});
 
 			// make draggable						
@@ -131,13 +130,15 @@
 				jsPlumb.detach(conn);
 			});
 
-            // delete connections on right click
-	        jsPlumb.bind("contextmenu", function(conn, originalEvent) {
-                if (conn.connector) {
-                    jsPlumb.detach(conn);
-                }
+			// delete connections on right click
+			jsPlumb.bind("contextmenu", function(conn, originalEvent) {
+				if (conn.connector) {
+					jsPlumb.detach(conn);
+				}
 			});
-            $(document).on("contextmenu", function() {return false});
+			$(document).on("contextmenu", function() {
+				return false
+			});
 		},
 
 	};
