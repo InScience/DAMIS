@@ -28,24 +28,26 @@
                                 <div>
                                     {{ task.non_field_errors }}
                                     {% for field in task.visible_fields %}
-                                    <p>{{ field.errors}}
-                                    {{ field.label }}:<br/>
-                                    {% if field.name == 'algorithm' %} 
-                                    <span class='algorithm-selection'>{{ field }}</span>
-                                    {% else %}
-                                    {{ field }}
-                                    {% endif %}
-                                    </p>
+                                        <p>{{ field.errors}}
+                                        {{ field.label }}:<br/>
+                                        {% if field.name == 'algorithm' %} 
+                                        <span class='algorithm-selection'>{{ field }}</span>
+                                        {% else %}
+                                        {{ field }}
+                                        {% endif %}
+                                        </p>
                                     {% endfor %}
                                     {% for field in task.hidden_fields %}
+                                        {{ field }}
+                                    {% endfor %}
                                 </div>
                                 <div class="parameter-values">
                                     {% trans 'parameters' %}
                                     {% if task.parameter_values %}
                                     {% for formset in task.parameter_values %}
-                                    <div>
-                                        {{ formset.as_p }}
-                                    </div>
+                                        <div>
+                                            {{ formset.as_p }}
+                                        </div>
                                     {% endfor %}
                                     {% endif %}
                                 </div>
