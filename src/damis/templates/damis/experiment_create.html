@@ -97,7 +97,10 @@
                             prefix: $(this).attr('id')
                         },
                             context: $(this) }).done(function(resp) {
-                            var tag = $(this).closest('.task').find('.parameter-values').html(resp);
+                            
+                            var taskForm = $(this).closest('.task');
+                            taskForm.find(".parameter-values").html(resp);
+                            window.taskBoxes.handleAlgorithmChange(taskForm);
                         });
                 });
                 jsPlumb.ready(function() {

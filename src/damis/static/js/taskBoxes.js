@@ -34,19 +34,17 @@
 				window.taskBoxes.removeEndpoints(taskBox.attr("id"));
 			}
 		},
-
-		// Click on the Save button in the task modal window
-		taskBoxSave: function(saveBtn, ev) {
-			var taskForm = saveBtn.closest(".task-form");
+        
+        // Initialization required after a different algorithm has been
+        // selected 
+        handleAlgorithmChange: function(taskForm) {
 			var taskBoxId = taskForm.attr("id").replace("-form", "");
 
-			// TODO: remove existing endpoints only if algorithm has been
-			// changed
 			window.taskBoxes.removeEndpoints(taskBoxId);
 
 			// Add new endpoints for input/output parameters
 			var taskBox = $("#" + taskBoxId);
-			//taskBox.html(taskForm.find().text());
+			taskBox.html(taskForm.find("select[id$='-algorithm']").find("option:selected").text());
 			var parameters = taskForm.find('.parameter-values');
 
 			var outAnchors = ["RightMiddle", [1, 0, 1, 1], [1, 1, 1, 1]];
@@ -90,8 +88,7 @@
 				"ipoints": ipoints,
 				"opoints": opoints
 			}
-			saveBtn.dialog("close");
-		},
+        },
 
 		// Initialize a new task box to accept double click events
 		initTask: function(ev, ui, taskContainer) {
@@ -123,9 +120,9 @@
 				// Canel button should return the box to a previous state, but
 				// that is too complicated for now, so no Cancel button
 				buttons: [{
-					text: "Save",
+					text: "Close",
 					click: function(ev) {
-						window.taskBoxes.taskBoxSave($(this), ev);
+			            $(this).dialog("close");
 					}
 				}]
 			});
