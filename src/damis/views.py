@@ -155,6 +155,9 @@ class ExperimentList(LoginRequiredMixin, ListView):
 class ExperimentDetail(LoginRequiredMixin, DetailView):
     model = Experiment
 
+class ExperimentDelete(LoginRequiredMixin, DeleteView):
+    model = Experiment
+    success_url = reverse_lazy('experiment-list')
 
 class ExperimentUpdate(LoginRequiredMixin, UpdateView):
     model = Experiment

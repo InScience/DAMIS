@@ -34,6 +34,10 @@
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
                         </a>
                         <button type="button" class="btn btn-small"><i class="icon-th-list"></i></button>
+                        <form method='POST' action="{% url 'experiment-delete' obj.pk %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-small"><i class="icon-trash"></i></button>
+                        </form>
                     </td>
                 </tr>
                 {% endfor %}
