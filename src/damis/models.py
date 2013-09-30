@@ -114,7 +114,7 @@ def get_result_file_upload_path(instance, filename):
 
 class Task(models.Model):
     experiment = models.ForeignKey('Experiment', related_name='tasks', null=True)
-    dataset = models.ForeignKey('Dataset', null=True)
+    # dataset = models.ForeignKey('Dataset', null=True)
     algorithm = models.ForeignKey('Algorithm')
     sequence = models.IntegerField(blank=True, null=True)
     processors = models.IntegerField(blank=True, null=True)
