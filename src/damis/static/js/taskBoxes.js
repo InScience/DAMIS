@@ -152,8 +152,7 @@
 				activeClass: "active-canvas",
 				accept: spec.taskDraggable + ","+ spec.dataDraggable,
 				drop: function(ev, ui) {
-                    //TODO: ???
-                    if (!$(ui).hasClass(spec.dataDraggable.replace(".", ""))) {
+                    if (!$(ui.draggable).hasClass(spec.dataDraggable.replace(".", ""))) {
 				        window.taskBoxes.initTask(ev, ui, spec.droppable);
                     }
 				}
