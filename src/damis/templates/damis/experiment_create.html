@@ -16,9 +16,10 @@
         <div class="tab-content">
             <div>
                 <form id="experiment-form" action="." method="post">{% csrf_token %}
-                    <button class="btn btn-primary pull-right" type='submit'
-                        id="execute-btn">{% trans "Execute" %}</button>
-                    {{ experiment_form.as_p }}
+                    <div class="offset2">
+                        <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" style="font-size:16pt; height:16pt;">
+                        <button class="btn btn-large btn-primary offset1" type='submit' id="execute-btn">{% trans "Execute" %}</button>
+                    </div>
                     <div class='table'>
                         {{ task_formset.management_form }}
                         <div style="display: none;">
