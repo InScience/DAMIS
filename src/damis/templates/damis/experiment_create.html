@@ -19,7 +19,6 @@
                     <button class="btn btn-primary pull-right" type='submit'
                         id="execute-btn">{% trans "Execute" %}</button>
                     {{ experiment_form.as_p }}
-                    {{ dataset_form.as_p }}
                     <div class='table'>
                         {{ task_formset.management_form }}
                         <div style="display: none;">
@@ -60,8 +59,10 @@
                 </form>
                 <div id="workflow-editor-container">
                     <div id="toolbox">
-                        <div class="prototype-box">New task</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div class="data-box">Dataset</div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="prototype-box">New task</div>
                     </div>
                     <div id="canvas">
                         <div id="flowchart-container" >
