@@ -19,6 +19,10 @@ class DatasetForm(forms.ModelForm):
         fields = ('title', 'license', 'file', 'description')
 
 
+class DatasetSelectForm(forms.Form):
+    dataset = forms.ModelChoiceField(queryset=Dataset.objects.all())
+
+
 class LoginForm(forms.Form):
     username = forms.CharField(label=_('Username'), max_length=100,
                                help_text=_('@uosis.mif.vu.lt'))

@@ -22,6 +22,7 @@ from damis.forms import AlgorithmForm
 from damis.forms import ParameterForm, ParameterFormset
 from damis.forms import ExperimentForm
 from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset, ParameterValueForm
+from damis.forms import DatasetSelectForm
 
 
 from damis.utils import slugify
@@ -201,10 +202,12 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         experiment = Experiment()
         experiment_form = ExperimentForm()
         task_formset = CreateExperimentFormset(instance=experiment)
+        dataset_form = DatasetSelectForm()
         return self.render_to_response(self.get_context_data(
                     experiment=task_formset.instance,
                     task_formset=task_formset,
                     experiment_form=experiment_form,
+                    dataset_form=dataset_form,
                 ))
 
     def post(self, request, *args, **kwargs):
