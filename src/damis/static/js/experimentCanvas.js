@@ -120,11 +120,17 @@
 				input.val(params.outParam);
 			});
 
-			// make draggable						
-			jsPlumb.draggable(document.querySelectorAll(".task-box"), {
-				grid: [20, 20],
-				containment: "parent"
-			});
+			// make task jdraggable						
+			//jsPlumb.draggable(document.querySelectorAll(".task-box"), {
+			//	grid: [20, 20],
+			//	containment: "parent"
+			//});
+
+			//// make data draggable						
+			//jsPlumb.draggable(document.querySelectorAll(".data-box"), {
+			//	grid: [20, 20],
+			//	containment: "parent"
+			//});
 
 			// listen for clicks on connections, and offer to delete connections on click.
 			jsPlumb.bind("click", function(conn, originalEvent) {

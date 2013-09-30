@@ -61,6 +61,7 @@
                 <div id="workflow-editor-container">
                     <div id="toolbox">
                         <div class="prototype-box">New task</div>
+                        <div class="data-box">Dataset</div>
                     </div>
                     <div id="canvas">
                         <div id="flowchart-container" >
@@ -107,7 +108,7 @@
                 jsPlumb.ready(function() {
                     experimentCanvas.init({id: "flowchart-container"});
                 }); 
-                taskBoxes.initToolBox({draggable: ".prototype-box", droppable:
-                    "#flowchart-container"});
+                taskBoxes.initToolBox({taskDraggable: ".prototype-box",
+                        dataDraggable: ".data-box", droppable: "#flowchart-container"});
     </script>
 {% endblock %}

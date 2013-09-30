@@ -28,7 +28,7 @@
     min-height: 400px;
 }
 
-.task-box, .prototype-box {
+.task-box, .prototype-box, .data-box {
     border:1px solid #346789;
     box-shadow: 2px 2px 19px #aaa;
     -o-box-shadow: 2px 2px 19px #aaa;
@@ -49,8 +49,9 @@
     font-size:0.9em;
 }
 
-.prototype-box {
+.prototype-box, .data-box {
     position: relative; /* to be contained inside #toolbar */
+    display: inline-block;
 }
 
 .task-box:hover, .prototype-task:hover {

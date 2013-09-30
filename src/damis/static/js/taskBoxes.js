@@ -140,15 +140,22 @@
 
 		// Make boxes in the toolbox draggable
 		initToolBox: function(spec) {
-			$(spec.draggable).draggable({
+            // drag task
+			$(spec.taskDraggable).draggable({
 				appendTo: spec.droppable,
 				helper: "clone"
 			});
+			$(spec.dataDraggable).draggable({
+				appendTo: spec.droppable,
+			});
 			$(spec.droppable).droppable({
 				activeClass: "active-canvas",
-				accept: spec.draggable,
+				accept: spec.taskDraggable + ","+ spec.dataDraggable,
 				drop: function(ev, ui) {
-					window.taskBoxes.initTask(ev, ui, spec.droppable);
+                    //TODO: ???
+                    if (!$(ui).hasClass(spec.dataDraggable.replace(".", ""))) {
+				        window.taskBoxes.initTask(ev, ui, spec.droppable);
+                    }
 				}
 			});
 		},
