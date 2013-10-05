@@ -91,7 +91,7 @@
         },
 
 		// Initialize a new task box to accept double click events
-		initTask: function(ev, ui, taskContainer) {
+		initTaskBox: function(ev, ui, taskContainer) {
 			// drop the task where it was dragged
 			var taskBox = $("<div>New task</div>");
 			taskBox.appendTo(taskContainer);
@@ -135,27 +135,6 @@
 			jsPlumb.draggable(taskBox, {
 				grid: [20, 20],
 				containment: "parent"
-			});
-		},
-
-		// Make boxes in the toolbox draggable
-		initToolBox: function(spec) {
-            // drag task
-			$(spec.taskDraggable).draggable({
-				appendTo: spec.droppable,
-				helper: "clone"
-			});
-			$(spec.dataDraggable).draggable({
-				appendTo: spec.droppable,
-			});
-			$(spec.droppable).droppable({
-				activeClass: "active-canvas",
-				accept: spec.taskDraggable + ","+ spec.dataDraggable,
-				drop: function(ev, ui) {
-                    if (!$(ui.draggable).hasClass(spec.dataDraggable.replace(".", ""))) {
-				        window.taskBoxes.initTask(ev, ui, spec.droppable);
-                    }
-				}
 			});
 		},
 	}

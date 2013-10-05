@@ -49,7 +49,7 @@
     font-size:0.9em;
 }
 
-.data-box {
+.data-box, .prototype-data-box {
     border:1px solid #346789;
     box-shadow: 2px 2px 19px #aaa;
     -o-box-shadow: 2px 2px 19px #aaa;
@@ -70,12 +70,12 @@
     font-size:0.9em;
 }
 
-.prototype-box, .data-box {
+.prototype-box, .prototype-data-box {
     position: relative; /* to be contained inside #toolbar */
     display: inline-block;
 }
 
-.task-box:hover, .prototype-task:hover {
+.task-box:hover, .prototype-box:hover, .prototype-data-box:hover, .data-box:hover {
     box-shadow: 2px 2px 19px #444;
    -o-box-shadow: 2px 2px 19px #444;
    -webkit-box-shadow: 2px 2px 19px #444;

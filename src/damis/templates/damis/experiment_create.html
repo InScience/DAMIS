@@ -55,14 +55,13 @@
                             {% endfor %}
                         </div> 
                         <div id="task-forms"></div>
+                        <div id="data-input-container" style="display:none;">{{ dataset_form.as_p }}</div>
                     </div>
                 </form>
                 <div id="workflow-editor-container">
                     <div id="toolbox">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <div class="data-box">Dataset</div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <div class="prototype-box">New task</div>
+                        <div class="prototype-data-box">Dataset</div>
                     </div>
                     <div id="canvas">
                         <div id="flowchart-container" >
@@ -109,7 +108,7 @@
                 jsPlumb.ready(function() {
                     experimentCanvas.init({id: "flowchart-container"});
                 }); 
-                taskBoxes.initToolBox({taskDraggable: ".prototype-box",
-                        dataDraggable: ".data-box", droppable: "#flowchart-container"});
+                window.toolBox.init({task: ".prototype-box",
+                        data: ".prototype-data-box", canvas: "#flowchart-container"});
     </script>
 {% endblock %}

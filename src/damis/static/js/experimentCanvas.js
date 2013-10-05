@@ -109,28 +109,22 @@
 				var conn = connection.connection;
 				var params = conn.getParameters();
 
-				//display disabled field to the user
-				var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
-				input.val(params.outParam);
-				// input.attr("disabled", "disabled");
-				input.attr("type", "hidden");
+                if ($(conn.source).hasClass("task-box")) {
+				    //display disabled field to the user
+				    var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
+				    input.val(params.outParam);
+				    // input.attr("disabled", "disabled");
+				    input.attr("type", "hidden");
 
-				// save input parameter form prefix and id for server side processing
-				input = $("#" + params.inParam).closest("div").find("input[id$='source_label']");
-				input.val(params.outParam);
+				    // save input parameter form prefix and id for server side processing
+				    input = $("#" + params.inParam).closest("div").find("input[id$='source_label']");
+				    input.val(params.outParam);
+                } else if ($(conn.source).hasClass("data-box")) {
+				    var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
+                    input.val(params.outParam);
+				    input.attr("type", "hidden");
+                }
 			});
-
-			// make task jdraggable						
-			//jsPlumb.draggable(document.querySelectorAll(".task-box"), {
-			//	grid: [20, 20],
-			//	containment: "parent"
-			//});
-
-			//// make data draggable						
-			//jsPlumb.draggable(document.querySelectorAll(".data-box"), {
-			//	grid: [20, 20],
-			//	containment: "parent"
-			//});
 
 			// listen for clicks on connections, and offer to delete connections on click.
 			jsPlumb.bind("click", function(conn, originalEvent) {
@@ -147,7 +141,6 @@
 				return false
 			});
 		},
-
 	};
 })();
 
