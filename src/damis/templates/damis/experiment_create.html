@@ -103,9 +103,18 @@
                         });
                 });
                 $('#execute-btn').click(function(ev) {
-                    $("#experiment-form").submit();
-                    // TODO: Ajax post here, followed by re-creation of modal
-                    // windows
+                    var form = $("#experiment-form");
+                    var data = form.serialize();
+                    $.post("/x/experiment-formset/", data, function(resp) {
+                        if (resp === "OK") {
+                            window.location = "{% url 'experiment-list' %}";
+                            return;
+                        } 
+                        $("#experiment-form").remove();
+                        $("#workflow-editor-container").before(resp);
+                        // TODO: re-creation of modal windows
+                        } 
+                    );
                 });
                 
                 jsPlumb.ready(function() {
