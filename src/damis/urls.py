@@ -38,6 +38,7 @@ urlpatterns += i18n_patterns('',
 
     # Dynamic urls
     url(r'^x/algorithm-parameter-form/$', algorithm_parameter_form, name='parameters-form'),
+    url(r'^x/experiment-formset/$', ExperimentValidation.as_view(), name='experiment-formset'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

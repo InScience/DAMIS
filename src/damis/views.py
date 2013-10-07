@@ -232,6 +232,27 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
                         experiment_form=experiment_form,
                     ))
 
+
+
+class ExperimentValidation(ExperimentCreate):
+    model = Experiment
+    template_name = 'damis/experiment_create.html'
+
+    def form_valid(self, experiment_form, task_formset):
+        # experiment = experiment_form.save()
+        # self.object = task_formset.save_all(experiment=experiment)
+        return HttpResponse('OK')
+
+    def form_invalid(self, experiment_form, task_formset):
+        return render_to_response('dynamic/experiment_formset.html',
+                        self.get_context_data(
+                            experiment=task_formset.instance,
+                            task_formset=task_formset,
+                            experiment_form=experiment_form,
+                        ))
+
+
+
 def algorithm_parameter_form(request):
     algorithm = get_object_or_404(Algorithm, pk=request.GET.get('algorithm_id'))
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
