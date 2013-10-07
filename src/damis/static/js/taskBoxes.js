@@ -25,7 +25,7 @@
 		taskBoxRightClick: function(ev) {
 			if (ev.button == 2) {
 				var taskBox = $(ev.target);
-				var taskForm = $(taskBox.attr("id") + "-form");
+				var taskForm = window.taskBoxes.getFormId(taskBox);
 				jsPlumb.detachAllConnections(taskBox); // remove connections
 				// TODO: reset values in the forms corresponding to this
 				// connection
@@ -38,7 +38,7 @@
         // Initialization required after a different algorithm has been
         // selected 
         handleAlgorithmChange: function(taskForm) {
-			var taskBoxId = taskForm.attr("id").replace("-form", "");
+			var taskBoxId = window.taskBoxes.getBoxId(taskForm);
 
 			window.taskBoxes.removeEndpoints(taskBoxId);
 
@@ -127,10 +127,10 @@
 
 			// get generated form
 			var taskForm = addTaskBtn.prev();
-            window.taskBoxes.createTaskFormDialog(taskForm, taskBox.attr("id") + "-form");
+            window.taskBoxes.createTaskFormDialog(taskForm, window.taskBoxes.getFormId(taskBox));
 
 			taskBox.on('dblclick', function(ev) {
-				var taskFormId = $(ev.currentTarget).attr("id") + "-form";
+				var taskFormId = window.taskBoxes.getFormId($(ev.currentTarget));
 				$("#" + taskFormId).dialog('open');
 			});
 
@@ -140,6 +140,16 @@
 				containment: "parent"
 			});
 		},
+
+        //generates task box id from the provided task form 
+        getBoxId : function(taskForm) {
+			return taskForm.attr("id").replace("-form", "");
+        },
+
+        //generates task form id from the provided task box
+        getFormId : function(taskBox) {
+            return taskBox.attr("id") + "-form";
+        },
 	}
 
 })();
