@@ -89,7 +89,22 @@
 				"opoints": opoints
 			}
         },
-
+        createTaskFormDialog : function(taskForm, formId) {
+			taskForm.attr("id", formId);
+			taskForm.dialog({
+				autoOpen: false,
+				appendTo: "#task-forms",
+				modal: true,
+				// Cancel button should return the box to a previous state, but
+				// that is too complicated for now, so no Cancel button
+				buttons: [{
+					text: "Close",
+					click: function(ev) {
+			            $(this).dialog("close");
+					}
+				}]
+			});
+        },
 		// Initialize a new task box to accept double click events
 		initTaskBox: function(ev, ui, taskContainer) {
 			// drop the task where it was dragged
@@ -112,20 +127,8 @@
 
 			// get generated form
 			var taskForm = addTaskBtn.prev();
-			taskForm.attr("id", taskBox.attr("id") + "-form");
-			taskForm.dialog({
-				autoOpen: false,
-				appendTo: "#task-forms",
-				modal: true,
-				// Canel button should return the box to a previous state, but
-				// that is too complicated for now, so no Cancel button
-				buttons: [{
-					text: "Close",
-					click: function(ev) {
-			            $(this).dialog("close");
-					}
-				}]
-			});
+            window.taskBoxes.createTaskFormDialog(taskForm, taskBox.attr("id") + "-form");
+
 			taskBox.on('dblclick', function(ev) {
 				var taskFormId = $(ev.currentTarget).attr("id") + "-form";
 				$("#" + taskFormId).dialog('open');
