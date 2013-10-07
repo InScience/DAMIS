@@ -10,6 +10,7 @@ from damis.views import *
 urlpatterns = patterns('',
     (r'^api/', include('damis.api.urls')),
     (r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^api-token-auth/', 'rest_framework.authtoken.views.obtain_auth_token'),
 )
 
 urlpatterns += i18n_patterns('',
