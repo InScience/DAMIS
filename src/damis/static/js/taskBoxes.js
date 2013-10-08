@@ -25,27 +25,28 @@
 		taskBoxRightClick: function(ev) {
 			if (ev.button == 2) {
 				var taskBox = $(ev.target);
-				var taskForm = $("#" + window.taskBoxes.getFormId(taskBox));
+				var formWindow = $("#" + window.taskBoxes.getFormWindowId(taskBox));
 				jsPlumb.detachAllConnections(taskBox); // remove connections
 				// TODO: reset values in the forms corresponding to this
 				// connection
-				taskForm.find(".delete-row").click(); // remove task form
+				formWindow.find(".delete-row").click(); // remove task form
+				formWindow.remove(); // remove the window
 				taskBox.remove(); // remove task box
 				window.taskBoxes.removeEndpoints(taskBox.attr("id"));
 			}
 		},
-        
-        // Initialization required after a different algorithm has been
-        // selected 
-        handleAlgorithmChange: function(taskForm) {
-			var taskBoxId = window.taskBoxes.getBoxId(taskForm);
+
+		// Initialization required after a different algorithm has been
+		// selected 
+		handleAlgorithmChange: function(formWindow) {
+			var taskBoxId = window.taskBoxes.getBoxId(formWindow);
 
 			window.taskBoxes.removeEndpoints(taskBoxId);
 
 			// Add new endpoints for input/output parameters
 			var taskBox = $("#" + taskBoxId);
-			taskBox.html(taskForm.find("select[id$='-algorithm']").find("option:selected").text());
-			var parameters = taskForm.find('.parameter-values');
+			taskBox.html(formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text());
+			var parameters = formWindow.find('.parameter-values');
 
 			var outAnchors = ["RightMiddle", [1, 0, 1, 1], [1, 1, 1, 1]];
 			var oIdx = 0;
@@ -88,10 +89,14 @@
 				"ipoints": ipoints,
 				"opoints": opoints
 			}
-        },
-        createTaskFormDialog : function(taskForm, formId) {
-			taskForm.attr("id", formId);
-			taskForm.dialog({
+		},
+		createTaskFormDialog: function(newTaskForm, formWindowId) {
+			var taskFormContainer = $("<div></div>");
+			taskFormContainer.attr("id", formWindowId);
+			taskFormContainer.addClass("task-window");
+			taskFormContainer.append(newTaskForm);
+			taskFormContainer.append("<div class=\"parameter-values\"></div>");
+			taskFormContainer.dialog({
 				autoOpen: false,
 				appendTo: "#task-forms",
 				modal: true,
@@ -100,15 +105,15 @@
 				buttons: [{
 					text: "Close",
 					click: function(ev) {
-			            $(this).dialog("close");
+						$(this).dialog("close");
 					}
 				}]
 			});
-        },
-		// Initialize a new task box to accept double click events
+		},
+		// Initialize a new task box to accept double click events 
 		initTaskBox: function(ev, ui, taskContainer) {
-			// drop the task where it was dragged
-			var taskBox = $("<div>New task</div>");
+            // drop the task where it was dragged
+            var taskBox = $("<div>New task</div>");
 			taskBox.appendTo(taskContainer);
 			taskBox.css("left", ui.position.left + "px");
 			taskBox.css("top", ui.position.top + "px");
@@ -122,16 +127,16 @@
 
 			//create modal window with form fields
 			// click add form btn 
-			var addTaskBtn = $("a[class=\"add-row\"]")
+			var addTaskBtn = $("a.add-row")
 			addTaskBtn.click();
 
 			// get generated form
 			var taskForm = addTaskBtn.prev();
-            window.taskBoxes.createTaskFormDialog(taskForm, window.taskBoxes.getFormId(taskBox));
+			window.taskBoxes.createTaskFormDialog(taskForm, window.taskBoxes.getFormWindowId(taskBox));
 
 			taskBox.on('dblclick', function(ev) {
-				var taskFormId = window.taskBoxes.getFormId($(ev.currentTarget));
-				$("#" + taskFormId).dialog('open');
+				var formWindowId = window.taskBoxes.getFormWindowId($(ev.currentTarget));
+				$("#" + formWindowId).dialog('open');
 			});
 
 			//make it draggable
@@ -141,15 +146,15 @@
 			});
 		},
 
-        //generates task box id from the provided task form 
-        getBoxId : function(taskForm) {
-			return taskForm.attr("id").replace("-form", "");
-        },
+		//generates task box id from the provided task form 
+		getBoxId: function(formWindow) {
+			return formWindow.attr("id").replace("-form", "");
+		},
 
-        //generates task form id from the provided task box
-        getFormId : function(taskBox) {
-            return taskBox.attr("id") + "-form";
-        },
+		//generates task form id from the provided task box
+		getFormWindowId: function(taskBox) {
+			return taskBox.attr("id") + "-form";
+		},
 	}
 
 })();

@@ -40,15 +40,15 @@
                                     {{ field }}
                                 {% endfor %}
                             </div>
-                            <div class="parameter-values">
-                                {% if task.parameter_values %}
-                                {% for formset in task.parameter_values %}
-                                    <div>
-                                        {{ formset.as_p }}
-                                    </div>
-                                {% endfor %}
-                                {% endif %}
-                            </div>
+                        </div>
+                        <div class="parameter-values">
+                            {% if task.parameter_values %}
+                            {% for formset in task.parameter_values %}
+                                <div>
+                                    {{ formset.as_p }}
+                                </div>
+                            {% endfor %}
+                            {% endif %}
                         </div>
                         {% endfor %}
                     </div> 
@@ -88,34 +88,9 @@
 {% block javascript_footer %}
     {{ block.super }}
     <script type="text/javascript">
-                $('.algorithm-selection select').change(function() {
-                        $.ajax({
-                            url: "{% url 'parameters-form' %}",
-                            data: {
-                            algorithm_id: $(this).val(),
-                            prefix: $(this).attr('id')
-                        },
-                            context: $(this) }).done(function(resp) {
-                            
-                            var taskForm = $(this).closest('.task');
-                            taskForm.find(".parameter-values").html(resp);
-                            window.taskBoxes.handleAlgorithmChange(taskForm);
-                        });
-                });
-                $('#execute-btn').click(function(ev) {
-                    var form = $("#experiment-form");
-                    var data = form.serialize();
-                    $.post("/x/experiment-formset/", data, function(resp) {
-                        if (resp === "OK") {
-                            window.location = "{% url 'experiment-list' %}";
-                            return;
-                        } 
-                        $("#experiment-form").remove();
-                        $("#workflow-editor-container").before(resp);
-                        // TODO: re-creation of modal windows
-                        } 
-                    );
-                });
+        window.experimentForm.init("{% url 'parameters-form' %}", 
+                "{% url 'gen-parameter-prefixes' %}", 
+                "{% url 'experiment-list' %}");
                 
                 jsPlumb.ready(function() {
                     experimentCanvas.init({id: "flowchart-container"});

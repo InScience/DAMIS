@@ -26,15 +26,15 @@
                     {{ field }}
                 {% endfor %}
             </div>
-            <div class="parameter-values">
-                {% if task.parameter_values %}
-                {% for formset in task.parameter_values %}
-                    <div>
-                        {{ formset.as_p }}
-                    </div>
-                {% endfor %}
-                {% endif %}
-            </div>
+        </div>
+        <div class="parameter-values">
+            {% if task.parameter_values %}
+            {% for formset in task.parameter_values %}
+                <div>
+                    {{ formset.as_p }}
+                </div>
+            {% endfor %}
+            {% endif %}
         </div>
         {% endfor %}
     </div> 
