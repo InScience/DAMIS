@@ -32,6 +32,7 @@ PSMACOF::PSMACOF(float eps, int maxIter, int d, int numOfProcs):SMACOF(eps, maxI
 /**
  * Pure virtual method that calculates the projection
  */
+
 ObjectMatrix PSMACOF::getProjection(){
     
     Y = SMACOF::getProjection();    
@@ -61,4 +62,9 @@ double** PSMACOF::ObjectMatrixToDouble(ObjectMatrix matrix)
             matrixToReturn[i][j] = matrix.getObjectAt(i).getItems().at(j);
     
     return matrixToReturn;
+}
+
+double PSMACOF::getStress()
+{
+    return getStress();
 }

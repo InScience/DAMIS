@@ -10,8 +10,10 @@
 #include "Statistics.h"
 
 
-DimReductionMethod::DimReductionMethod() : HPCMethod(){
+DimReductionMethod::DimReductionMethod(){
     d = 2;
+    int n = X.getObjectCount();
+    DimReductionMethod::initializeProjectionMatrix(n);
 }
 
 DimReductionMethod::~DimReductionMethod(){
@@ -22,7 +24,6 @@ DimReductionMethod::~DimReductionMethod(){
  * Returns d
  */
 int DimReductionMethod::getProjectionDimension(){
-
 	return d;
 }
 

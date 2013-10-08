@@ -30,7 +30,6 @@ MDS::MDS(double eps, int maxIter, int dimension){
     epsilon = eps;
     maxIteration = maxIter;
     d = dimension;
-    initializeProjectionMatrix(X.getObjectCount());
 }
 
 /**

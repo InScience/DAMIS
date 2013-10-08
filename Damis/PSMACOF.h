@@ -23,6 +23,7 @@ public:
 
 	PSMACOF(float eps, int maxIter, int d, int p);
         double** getProjectionInDoubles();
+        double getStress();
 
 //protected:
 	virtual ObjectMatrix getProjection();

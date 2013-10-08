@@ -20,8 +20,7 @@ SMACOF::~SMACOF(){
  * Constructor for SMACOF object
  */
 SMACOF::SMACOF(float eps, int maxIter, int d):MDS(eps, maxIter, d){
-    getProjection();
-    //Y.saveDataMatrix(Y, "tests/smacof.txt");
+    
 }
 
 /**
@@ -36,38 +35,51 @@ SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix X, ObjectMatrix Y):MD
  */
 ObjectMatrix SMACOF::getProjection(){
 
-    int iteration = 0;
+    iteration = 0;
     int n = X.getObjectCount();
     double oldStressError = getStress();
     double newStressError = 0.0;
     double tmpStressError = oldStressError;
     double sum = 0.0;
     ObjectMatrix Gutman;
+    ObjectMatrix Y_new(n);
+    std::vector<double> Y_newRow;
+    Y_newRow.reserve(d);
 
     while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
     {
+        Y_new.DataObjects.clear();
         oldStressError = tmpStressError;
         Gutman = getGutman();
         for (int i=0; i < n; i++)
         {
+            Y_newRow.clear();
             for (int j = 0; j < d; j++)
             {
                 sum = 0.0;
                 for (int k = 0; k < n; k++)
                         sum += Gutman.getObjectAt(i).getItems().at(k) * Y.getObjectAt(k).getItems().at(j);
-                Y.getObjectAt(i).getItems().at(j) = sum / n;
+                Y_newRow.push_back(sum / n);
+                //Y.getObjectAt(i).getItems().at(j) = sum / n;
             }
+            Y_new.addObject(DataObject(Y_newRow));
         }
+        Y = Y_new;
         newStressError = getStress();
         tmpStressError = newStressError;
         iteration++;
     }
-    
+    //iteration = getMaxIteration();
+    stress = oldStressError - newStressError;
     return Y;
 }
 
-ObjectMatrix SMACOF::ReturnY()
+ObjectMatrix SMACOF::getX()
 {
-    
-    return Y;
+    return X;
 }
+
+//double SMACOF::getStress()
+//{
+//    return 100.0009;
+//}

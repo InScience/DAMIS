@@ -20,10 +20,12 @@ public:
 
 	SMACOF(float eps, int maxIter, int d);
 	SMACOF(float eps, int maxIter, int d, ObjectMatrix X, ObjectMatrix Y);
-        ObjectMatrix ReturnY();
 
 //protected:
 	virtual ObjectMatrix getProjection();
-
+        ObjectMatrix getX();
+        //double getStress();
+        int iteration;
+        double stress;
 };
 #endif // !defined(EA_33C383A8_AABC_4498_9E97_8D153E43A6A7__INCLUDED_)
