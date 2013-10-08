@@ -239,8 +239,8 @@ class ExperimentValidation(ExperimentCreate):
     template_name = 'damis/experiment_create.html'
 
     def form_valid(self, experiment_form, task_formset):
-        # experiment = experiment_form.save()
-        # self.object = task_formset.save_all(experiment=experiment)
+        experiment = experiment_form.save()
+        self.object = task_formset.save_all(experiment=experiment)
         return HttpResponse('OK')
 
     def form_invalid(self, experiment_form, task_formset):
