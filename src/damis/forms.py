@@ -108,7 +108,7 @@ class BaseTaskFormset(BaseInlineFormSet):
         data = self.data if self.data and index is not None else None
         form.parameter_values = [ParameterValueFormset(data=data,
                                                       instance=instance,
-                                                      prefix='PARAMETER_VALUE_%s' % pk_value)]
+                                                      prefix='PV_%s' % pk_value)]
 
     def is_valid(self):
         result = super(BaseTaskFormset, self).is_valid()

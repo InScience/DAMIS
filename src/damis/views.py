@@ -260,7 +260,7 @@ def gen_parameter_prefixes(request):
 def algorithm_parameter_form(request):
     algorithm = get_object_or_404(Algorithm, pk=request.GET.get('algorithm_id'))
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
-    prefix = 'PARAMETER_VALUE_%s' % hash(task_form_prefix)
+    prefix = 'PV_%s' % hash(task_form_prefix)
 
     ParameterValueFormset = inlineformset_factory(Task,
                                 ParameterValue,
