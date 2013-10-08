@@ -202,13 +202,16 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         experiment = Experiment()
         experiment_form = ExperimentForm()
         task_formset = CreateExperimentFormset(instance=experiment)
-        dataset_form = DatasetSelectForm()
         return self.render_to_response(self.get_context_data(
                     experiment=task_formset.instance,
                     task_formset=task_formset,
                     experiment_form=experiment_form,
-                    dataset_form=dataset_form,
                 ))
+
+    def get_context_data(self, **kwargs):
+        context = super(ExperimentCreate, self).get_context_data(**kwargs)
+        context['dataset_form'] = DatasetSelectForm()
+        return context
 
     def post(self, request, *args, **kwargs):
         self.object = None
@@ -219,24 +222,6 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             return self.form_valid(experiment_form, task_formset)
         else:
             return self.form_invalid(experiment_form, task_formset)
-
-    def form_valid(self, experiment_form, task_formset):
-        experiment = experiment_form.save()
-        self.object = task_formset.save_all(experiment=experiment)
-        return HttpResponseRedirect(reverse_lazy('experiment-list'))
-
-    def form_invalid(self, experiment_form, task_formset):
-        return self.render_to_response(self.get_context_data(
-                        experiment=task_formset.instance,
-                        task_formset=task_formset,
-                        experiment_form=experiment_form,
-                    ))
-
-
-
-class ExperimentValidation(ExperimentCreate):
-    model = Experiment
-    template_name = 'damis/experiment_create.html'
 
     def form_valid(self, experiment_form, task_formset):
         experiment = experiment_form.save()

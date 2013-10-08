@@ -14,7 +14,6 @@ urlpatterns = patterns('',
 
     # Dynamic urls
     url(r'^x/algorithm-parameter-form/$', algorithm_parameter_form, name='parameters-form'),
-    url(r'^x/experiment-formset/$', ExperimentValidation.as_view(), name='experiment-formset'),
     url(r'^x/gen-parameter-prefixes/$', gen_parameter_prefixes, name='gen-parameter-prefixes'),
 )
 
