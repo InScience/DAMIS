@@ -10,6 +10,9 @@ DAMIS-4:
         - Panaudoti egzistuojantį REST API duomenų bazės atnaujinimui
         - Įkelti failą, panaudojant REST API.
         - API panauda su HTTPS: 
+DAMIS-11:
+    Sukurti fixtures su pradiniais duomenimis: turi būti kelios licenzijos,
+        duomenų rinkiai, algoritmai bei eksperimentai.
 
 Nepriskirtos
 ============
