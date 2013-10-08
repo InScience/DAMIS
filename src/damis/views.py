@@ -252,6 +252,10 @@ class ExperimentValidation(ExperimentCreate):
                         ))
 
 
+def gen_parameter_prefixes(request):
+    prefixes = request.GET.get('prefixes')
+    return HttpResponse(str(prefixes))
+
 
 def algorithm_parameter_form(request):
     algorithm = get_object_or_404(Algorithm, pk=request.GET.get('algorithm_id'))
