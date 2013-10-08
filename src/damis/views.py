@@ -3,6 +3,7 @@ import json
 import re
 from os.path import join, exists, getsize, splitext
 from os import makedirs, listdir
+from subprocess import Popen, PIPE
 
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
@@ -226,6 +227,13 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, experiment_form, task_formset):
         experiment = experiment_form.save()
         self.object = task_formset.save_all(experiment=experiment)
+
+        # run_exp_cmd = "bin/fab run_experiment:%s -H %s@uosis.mif.vu.lt -p %s" % (
+        #         experiment.pk,
+        #         self.request.user.username,
+        #         self.request.session['password'])
+        # shell_response = Popen(run_exp_cmd, shell=True)
+
         return HttpResponse('OK')
 
     def form_invalid(self, experiment_form, task_formset):
