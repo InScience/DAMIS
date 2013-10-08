@@ -21,11 +21,11 @@
 			}
 		},
 
-		// Double click on task box
+		// Right-click on task box
 		taskBoxRightClick: function(ev) {
 			if (ev.button == 2) {
 				var taskBox = $(ev.target);
-				var taskForm = window.taskBoxes.getFormId(taskBox);
+				var taskForm = $("#" + window.taskBoxes.getFormId(taskBox));
 				jsPlumb.detachAllConnections(taskBox); // remove connections
 				// TODO: reset values in the forms corresponding to this
 				// connection
