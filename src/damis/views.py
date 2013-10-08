@@ -253,9 +253,10 @@ class ExperimentValidation(ExperimentCreate):
 
 
 def gen_parameter_prefixes(request):
-    prefixes = request.GET.get('prefixes')
-    return HttpResponse(str(prefixes))
-
+    prefixes = request.GET.getlist('prefixes[]')
+    task_prefixes = [re.findall('(tasks-\d+)', prefix)[0] for prefix in prefixes]
+    pv_prefixes = ['PV_' + str(hash(prefix)) for prefix in task_prefixes]
+    return HttpResponse(",".join(pv_prefixes))
 
 def algorithm_parameter_form(request):
     algorithm = get_object_or_404(Algorithm, pk=request.GET.get('algorithm_id'))
