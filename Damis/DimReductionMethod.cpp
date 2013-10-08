@@ -6,9 +6,11 @@
 ///////////////////////////////////////////////////////////
 
 #include "DimReductionMethod.h"
+#include "PCA.h"
+#include "Statistics.h"
 
 
-DimReductionMethod::DimReductionMethod(){
+DimReductionMethod::DimReductionMethod() : HPCMethod(){
     d = 2;
 }
 
@@ -29,6 +31,20 @@ int DimReductionMethod::getProjectionDimension(){
  */
 void DimReductionMethod::initializeProjectionMatrix(int n){
     Y = ObjectMatrix(n);
+    std::vector<double> DataObjectItem;
+    double r = 0.0;
+    for (int j = 0; j < d; j++)
+        DataObjectItem.push_back(0.0);
+    
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            r = Statistics::getRandom(-1.0, 1.0, (i + j * 5));
+            DataObjectItem.at(j) = r;
+        }
+        Y.addObject(DataObject(DataObjectItem));
+    }
 }
 
 /**
@@ -36,4 +52,9 @@ void DimReductionMethod::initializeProjectionMatrix(int n){
  */
 void DimReductionMethod::setProjectionDimension(int dimension){
     d = dimension;
+}
+
+ObjectMatrix DimReductionMethod::getProjection()
+{
+    return Y;
 }

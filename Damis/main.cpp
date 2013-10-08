@@ -13,45 +13,97 @@
 #include "DistanceMetrics.h"
 #include "ObjectMatrix.h"
 #include "PCA.h"
+#include "MDS.h"
+#include "HPCMethod.h"
+#include "DimReductionMethod.h"
+#include "SMACOF.h"
+#include "PSMACOF.h"
+#include "mpi.h"
+#include <sstream>
 
 using namespace std;
 
-void PrintToScreen(ObjectMatrix);
-
 int main(int argc, char** argv) {
     
-    ObjectMatrix omx("cpu.arff");
+    int numOfProcs, pid, bufferSize;
+    PSMACOF psmcf;
+    ObjectMatrix Y;
+    double **sendBuffer;
+    double ***receiveBuffer;
     
-    std::vector <std::string> attr;
-    std::vector <std::vector<double> > duom;
+    MPI_Init(&argc, &argv);
+    MPI_Comm_size(MPI_COMM_WORLD,&numOfProcs);
+    MPI_Comm_rank(MPI_COMM_WORLD,&pid);
     
-    for (int i = 0; i < omx.getFeaturesTitle().size(); i++)
-        cout<<omx.getFeaturesTitle().at(i)<< " ";
-    cout<<endl;
-    
-    PrintToScreen(omx);
-    
-    if (omx.getObjectCount() > 0)
+    if (pid == 0)
     {
-        ObjectMatrix cov = Statistics::getCovMatrix(omx);    
-        PrintToScreen(cov);
-        PCA pca_test(omx, 2);
-        pca_test.toDataType();
-        ObjectMatrix Y = pca_test.getY();
-        PrintToScreen(Y);
+        if (numOfProcs == 1)
+        {
+            SMACOF smcf (0.1, 2, 2);
+            Y = smcf.getProjection();
+            Y.saveDataMatrix("tests/new_test.txt");           
+        }
+        else
+        {
+            psmcf = PSMACOF(0.1, 2, 2, numOfProcs);
+            Y = psmcf.getProjection();
+            bufferSize = Y.getObjectCount() * Y.getObjectAt(0).getFeatureCount();
+            receiveBuffer = new double**[numOfProcs];   //   kiekvieno proceso Y matrica 
+            for (int i = 0; i < numOfProcs; i++)        
+            {
+                receiveBuffer[i] = new double *[Y.getObjectCount()];  // eilute
+                for (int j = 0; j< Y.getObjectCount(); j++)
+                    receiveBuffer[i][j] = new double[Y.getObjectAt(0).getFeatureCount()];   //  stulpelis
+            }
+            sendBuffer = psmcf.getProjectionInDoubles();
+            //MPI_Allgather( sendBuffer, bufferSize, MPI_DOUBLE, receiveBuffer, bufferSize, MPI_DOUBLE, MPI_COMM_WORLD);
+        }
     }
+    else
+    {
+        psmcf = PSMACOF(0.1, 2, 2, numOfProcs);
+        Y = psmcf.getProjection();
+        sendBuffer = psmcf.getProjectionInDoubles();
+        //Y.saveDataMatrix("/home/mindaugas/new_test1.txt");
+    }    
     
+    MPI_Finalize();
+    /*
+    int size, p_id;
+    SMACOF smcf;
+    ObjectMatrix Y;
+    int initialized, finalized;
+
+    MPI_Initialized(&initialized);
+    if (!initialized)
+        MPI_Init(NULL, NULL);
+    
+    MPI_Comm_size(MPI_COMM_WORLD,&size);
+    MPI_Comm_rank(MPI_COMM_WORLD,&p_id);
+    //if (size > 0)
+    //{
+    cout<<"Creating object in: "<<p_id<<endl;
+        smcf = SMACOF(0.1, 2, 2);
+        cout<<"Created object in: "<<p_id<<endl;
+        Y = smcf.getProjection();
+        int k = Y.getObjectCount();
+
+        std::stringstream ss;
+        ss << p_id;
+        std::string str = ss.str();
+        std::string c = std::string("tests/p.txt") + str;
+        
+        const char *cstr = c.c_str();
+        //cout<<cstr<<" "<<endl;
+        cout<<k<<endl;
+        Y.saveDataMatrix(Y, cstr);
+    //}
+    
+    MPI_Finalized(&finalized);
+    if (!finalized)
+        MPI_Finalize();
+    
+    */
     
     return 0;
-}
-
-void PrintToScreen(ObjectMatrix omx)
-{
-    for (int i = 0; i < omx.getObjectCount(); i++)
-    {
-        DataObject obj = omx.DataObjects[i];
-        for (int j = 0; j < obj.getFeatureCount(); j++)
-            cout<<obj.getItems().at(j)<< " ";
-        cout<<endl;
-    }
 }

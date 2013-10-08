@@ -12,13 +12,17 @@
       <itemPath>ExternalMethods.h</itemPath>
       <itemPath>Feature.h</itemPath>
       <itemPath>HPCMethod.h</itemPath>
+      <itemPath>MDS.h</itemPath>
       <itemPath>ObjectMatrix.h</itemPath>
       <itemPath>PCA.h</itemPath>
+      <itemPath>PSMACOF.h</itemPath>
+      <itemPath>SMACOF.h</itemPath>
+      <itemPath>SMACOFZEIDEL.h</itemPath>
+      <itemPath>ShufleEnum.h</itemPath>
+      <itemPath>ShufleObjects.h</itemPath>
       <itemPath>Statistics.h</itemPath>
       <itemPath>WebInterface.h</itemPath>
       <itemPath>arff.h</itemPath>
-      <itemPath>mds.h</itemPath>
-      <itemPath>tools.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -32,18 +36,26 @@
       <itemPath>DistanceMetrics.cpp</itemPath>
       <itemPath>Feature.cpp</itemPath>
       <itemPath>HPCMethod.cpp</itemPath>
+      <itemPath>MDS.cpp</itemPath>
       <itemPath>ObjectMatrix.cpp</itemPath>
       <itemPath>PCA.cpp</itemPath>
+      <itemPath>PSMACOF.cpp</itemPath>
+      <itemPath>SMACOF.cpp</itemPath>
+      <itemPath>SMACOFZEIDEL.cpp</itemPath>
+      <itemPath>ShufleObjects.cpp</itemPath>
       <itemPath>Statistics.cpp</itemPath>
       <itemPath>arff.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
-      <itemPath>mds.cpp</itemPath>
-      <itemPath>tools.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f3" displayName="MDSTest" projectFiles="true" kind="TEST">
+        <itemPath>tests/MDStestclass.cpp</itemPath>
+        <itemPath>tests/MDStestclass.h</itemPath>
+        <itemPath>tests/MDStestrunner.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f1" displayName="pcatest" projectFiles="true" kind="TEST">
         <itemPath>tests/pcatestclass.cpp</itemPath>
         <itemPath>tests/pcatestclass.h</itemPath>
@@ -53,6 +65,8 @@
         <itemPath>tests/ReadARFFtestclass.cpp</itemPath>
         <itemPath>tests/ReadARFFtestclass.h</itemPath>
         <itemPath>tests/ReadARFFtestrunner.cpp</itemPath>
+        <itemPath>tests/cpu.arff</itemPath>
+        <itemPath>tests/cpu_.arff</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -72,6 +86,10 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <commandlineTool>mpic++</commandlineTool>
+          <commandLine>--coverage</commandLine>
+        </ccTool>
         <linkerTool>
           <linkerLibItems>
             <linkerLibFileItem>alglib/libalglib.so</linkerLibFileItem>
@@ -104,6 +122,10 @@
       </item>
       <item path="HPCMethod.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="MDS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MDS.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ObjectMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ObjectMatrix.h" ex="false" tool="3" flavor2="0">
@@ -111,6 +133,24 @@
       <item path="PCA.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PCA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PSMACOF.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PSMACOF.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMACOF.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SMACOF.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMACOFZEIDEL.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SMACOFZEIDEL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ShufleEnum.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ShufleObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ShufleObjects.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Statistics.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -151,11 +191,27 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="mds.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/MDStestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="mds.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/MDStestclass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/MDStestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/ReadARFFtestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -163,15 +219,15 @@
       </item>
       <item path="tests/ReadARFFtestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="tests/cpu.arff" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/cpu_.arff" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/pcatestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/pcatestclass.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/pcatestrunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tools.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tools.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -187,6 +243,7 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <commandlineTool>mpic++</commandlineTool>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -194,6 +251,12 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>libalglib.so</linkerLibFileItem>
+          </linkerLibItems>
+          <commandLine>-L$HOME</commandLine>
+        </linkerTool>
       </compileType>
       <item path="DataMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -221,6 +284,10 @@
       </item>
       <item path="HPCMethod.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="MDS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MDS.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="ObjectMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="ObjectMatrix.h" ex="false" tool="3" flavor2="0">
@@ -228,6 +295,24 @@
       <item path="PCA.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PCA.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PSMACOF.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PSMACOF.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMACOF.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SMACOF.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMACOFZEIDEL.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SMACOFZEIDEL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ShufleEnum.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ShufleObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ShufleObjects.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Statistics.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -268,11 +353,27 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="mds.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/MDStestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="mds.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/MDStestclass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/MDStestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/ReadARFFtestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -280,15 +381,15 @@
       </item>
       <item path="tests/ReadARFFtestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="tests/cpu.arff" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/cpu_.arff" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/pcatestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/pcatestclass.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/pcatestrunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tools.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tools.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

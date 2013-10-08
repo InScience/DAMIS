@@ -20,8 +20,10 @@ PCA::~PCA(){
 /**
  * Constructor that sets desired projection d
  */
-PCA::PCA(int d){
-
+PCA::PCA(int dim){
+    setProjectionDimension(dim);
+    PCA::toDataType();
+    Y = PCA::getProjection();
 }
 
 /**
@@ -40,32 +42,33 @@ PCA::PCA(float disp){
 PCA::PCA(ObjectMatrix objMatrix, int dim){
  
     setProjectionDimension(dim);
-    initialMatrix = objMatrix;
-    n = initialMatrix.DataObjects.size();
-    m = initialMatrix.DataObjects.at(0).getFeatureCount();
+    X = objMatrix;
     PCA::toDataType();
     PCA::getProjection();
 }
 
-
 ObjectMatrix PCA::getProjection(){
-
+    int m = X.getObjectCount();
+    int n = X.getObjectAt(0).getItems().size();
+    double X_vid[n];
+    for (int i = 0; i < n; i++)
+        X_vid[i] = Statistics::getAverage(X, i);
     alglib::ae_int_t info;
     alglib::real_1d_array eigValues;
     alglib::real_2d_array eigVectors;
-    pcabuildbasis(arr, n, m, info, eigValues, eigVectors);
+    pcabuildbasis(alglibX, m, n, info, eigValues, eigVectors);
     initializeProjectionMatrix(m);
     std::vector<double> tmp(d);
 
     if (info == 1)
     {
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < m; i++)
         {
             for (int j = 0; j < d; j++)
             {
                 tmp[j] = 0.0;
-                for (int k = 0; k < m; k++)
-                    tmp[j] += arr[i][k] * eigVectors[k][j];
+                for (int k = 0; k < n; k++)
+                    tmp[j] += (alglibX(i,k) - X_vid[k]) * eigVectors[k][j];
             }
             DataObject dd(tmp);
             Y.addObject(dd);
@@ -73,6 +76,7 @@ ObjectMatrix PCA::getProjection(){
         
     }
     return Y;
+ 
 }
 
 ObjectMatrix PCA::getY(){
@@ -83,16 +87,13 @@ ObjectMatrix PCA::getY(){
  * Converts data object to datatype required by external method
  */
 void PCA::toDataType(){
- 
-    double tmp[n * m];
-    std::vector<double> tmp_values;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < m; j++)
-        {
-            tmp_values = initialMatrix.DataObjects[i].getItems();
-            tmp[m * i + j] = tmp_values[j];
-        }  
-    arr.setcontent(n, m, tmp);
+    int m = X.getObjectCount();
+    int n = X.getObjectAt(0).getItems().size();
+    alglibX.setlength(m, n);
+
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            alglibX(i,j) = X.getObjectAt(i).getItems().at(j);
 }
 
 

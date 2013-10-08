@@ -24,14 +24,12 @@ void ReadARFFtestclass::tearDown() {
 }
 
 void ReadARFFtestclass::ReadFileCorrect() {
-    bool ats = true;
-    ARFF file("cpu.arff");
-    ats = file.ReadSuccess;
-    CPPUNIT_ASSERT(ats);
+    ARFF file("./tests/cpu.arff");
+    CPPUNIT_ASSERT(file.ReadSuccess);
 }
 
 void ReadARFFtestclass::ReadFileNoSuchFile() {
-    bool ats = true;
+    bool ats = false;
     ARFF file("cpuu.arff");
     if (file.ReadSuccess == false)
         ats = true;
@@ -40,8 +38,8 @@ void ReadARFFtestclass::ReadFileNoSuchFile() {
 
 void ReadARFFtestclass::ReadFileMissingFeature()
 {
-    bool ats = true;
-    ARFF file("cpu_.arff");
+    bool ats = false;
+    ARFF file("./tests/cpu_.arff");
     if (file.ReadSuccess == false)
         ats = true;
     CPPUNIT_ASSERT(ats);

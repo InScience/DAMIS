@@ -15,8 +15,8 @@ NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
 CC=gcc
-CCC=g++
-CXX=g++
+CCC=mpic++
+CXX=mpic++
 FC=gfortran
 AS=as
 
@@ -40,19 +40,23 @@ OBJECTFILES= \
 	${OBJECTDIR}/DistanceMetrics.o \
 	${OBJECTDIR}/Feature.o \
 	${OBJECTDIR}/HPCMethod.o \
+	${OBJECTDIR}/MDS.o \
 	${OBJECTDIR}/ObjectMatrix.o \
 	${OBJECTDIR}/PCA.o \
+	${OBJECTDIR}/PSMACOF.o \
+	${OBJECTDIR}/SMACOF.o \
+	${OBJECTDIR}/SMACOFZEIDEL.o \
+	${OBJECTDIR}/ShufleObjects.o \
 	${OBJECTDIR}/Statistics.o \
 	${OBJECTDIR}/arff.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/mds.o \
-	${OBJECTDIR}/tools.o
+	${OBJECTDIR}/main.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
+	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f2
 
@@ -70,15 +74,17 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=libalglib.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis: libalglib.so
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis ${OBJECTFILES} ${LDLIBSOPTIONS} -L$HOME
 
 ${OBJECTDIR}/DataObject.o: DataObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -105,6 +111,11 @@ ${OBJECTDIR}/HPCMethod.o: HPCMethod.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/HPCMethod.o HPCMethod.cpp
 
+${OBJECTDIR}/MDS.o: MDS.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/MDS.o MDS.cpp
+
 ${OBJECTDIR}/ObjectMatrix.o: ObjectMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -114,6 +125,26 @@ ${OBJECTDIR}/PCA.o: PCA.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/PCA.o PCA.cpp
+
+${OBJECTDIR}/PSMACOF.o: PSMACOF.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/PSMACOF.o PSMACOF.cpp
+
+${OBJECTDIR}/SMACOF.o: SMACOF.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOF.o SMACOF.cpp
+
+${OBJECTDIR}/SMACOFZEIDEL.o: SMACOFZEIDEL.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOFZEIDEL.o SMACOFZEIDEL.cpp
+
+${OBJECTDIR}/ShufleObjects.o: ShufleObjects.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShufleObjects.o ShufleObjects.cpp
 
 ${OBJECTDIR}/Statistics.o: Statistics.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -130,21 +161,15 @@ ${OBJECTDIR}/main.o: main.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/mds.o: mds.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/mds.o mds.cpp
-
-${OBJECTDIR}/tools.o: tools.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/tools.o tools.cpp
-
 # Subprojects
 .build-subprojects:
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
+${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/MDStestclass.o ${TESTDIR}/tests/MDStestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/pcatestclass.o ${TESTDIR}/tests/pcatestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
@@ -152,6 +177,18 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/pcatestclass.o ${TESTDIR}/tests/pcates
 ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/ReadARFFtestclass.o ${TESTDIR}/tests/ReadARFFtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+
+${TESTDIR}/tests/MDStestclass.o: tests/MDStestclass.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/MDStestclass.o tests/MDStestclass.cpp
+
+
+${TESTDIR}/tests/MDStestrunner.o: tests/MDStestrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/MDStestrunner.o tests/MDStestrunner.cpp
 
 
 ${TESTDIR}/tests/pcatestclass.o: tests/pcatestclass.cpp 
@@ -243,6 +280,19 @@ ${OBJECTDIR}/HPCMethod_nomain.o: ${OBJECTDIR}/HPCMethod.o HPCMethod.cpp
 	    ${CP} ${OBJECTDIR}/HPCMethod.o ${OBJECTDIR}/HPCMethod_nomain.o;\
 	fi
 
+${OBJECTDIR}/MDS_nomain.o: ${OBJECTDIR}/MDS.o MDS.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/MDS.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/MDS_nomain.o MDS.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/MDS.o ${OBJECTDIR}/MDS_nomain.o;\
+	fi
+
 ${OBJECTDIR}/ObjectMatrix_nomain.o: ${OBJECTDIR}/ObjectMatrix.o ObjectMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/ObjectMatrix.o`; \
@@ -267,6 +317,58 @@ ${OBJECTDIR}/PCA_nomain.o: ${OBJECTDIR}/PCA.o PCA.cpp
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/PCA_nomain.o PCA.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/PCA.o ${OBJECTDIR}/PCA_nomain.o;\
+	fi
+
+${OBJECTDIR}/PSMACOF_nomain.o: ${OBJECTDIR}/PSMACOF.o PSMACOF.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/PSMACOF.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/PSMACOF_nomain.o PSMACOF.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/PSMACOF.o ${OBJECTDIR}/PSMACOF_nomain.o;\
+	fi
+
+${OBJECTDIR}/SMACOF_nomain.o: ${OBJECTDIR}/SMACOF.o SMACOF.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/SMACOF.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOF_nomain.o SMACOF.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/SMACOF.o ${OBJECTDIR}/SMACOF_nomain.o;\
+	fi
+
+${OBJECTDIR}/SMACOFZEIDEL_nomain.o: ${OBJECTDIR}/SMACOFZEIDEL.o SMACOFZEIDEL.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/SMACOFZEIDEL.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOFZEIDEL_nomain.o SMACOFZEIDEL.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/SMACOFZEIDEL.o ${OBJECTDIR}/SMACOFZEIDEL_nomain.o;\
+	fi
+
+${OBJECTDIR}/ShufleObjects_nomain.o: ${OBJECTDIR}/ShufleObjects.o ShufleObjects.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/ShufleObjects.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShufleObjects_nomain.o ShufleObjects.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/ShufleObjects.o ${OBJECTDIR}/ShufleObjects_nomain.o;\
 	fi
 
 ${OBJECTDIR}/Statistics_nomain.o: ${OBJECTDIR}/Statistics.o Statistics.cpp 
@@ -308,36 +410,11 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
 	fi
 
-${OBJECTDIR}/mds_nomain.o: ${OBJECTDIR}/mds.o mds.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/mds.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/mds_nomain.o mds.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/mds.o ${OBJECTDIR}/mds_nomain.o;\
-	fi
-
-${OBJECTDIR}/tools_nomain.o: ${OBJECTDIR}/tools.o tools.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/tools.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/tools_nomain.o tools.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/tools.o ${OBJECTDIR}/tools_nomain.o;\
-	fi
-
 # Run Test Targets
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
+	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	else  \

@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <string>
+#include "DataObject.h"
 
 class ARFF
 {
@@ -22,7 +23,7 @@ public:
     std::vector<std::string> GetAttributesTypes();
     std::vector<std::vector<double> > GetData();
     bool ReadSuccess;
-    void WriteData(char* file);
+    void WriteData(const char* file, std::vector<DataObject>);
     
 private:
     std::vector<std::vector<double> > data;  // data array

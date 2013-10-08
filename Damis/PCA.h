@@ -35,10 +35,7 @@ private:
 	 * Dispersion part to retain in resulting projection
 	 */
 	float dispPart;
-        ObjectMatrix initialMatrix;
-        alglib::real_2d_array arr;
-        int n;  // number of DataObjects in ObjectMatrix
-        int m;  // number of Features in DataObject
+        alglib::real_2d_array alglibX;
 
 };
 #endif // !defined(EA_137C79B9_5330_4edc_A6BF_D6D076823555__INCLUDED_)

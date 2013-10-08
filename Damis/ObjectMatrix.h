@@ -21,7 +21,7 @@ public:
 	ObjectMatrix();
 	virtual ~ObjectMatrix();
         std::vector<DataObject> DataObjects;
-	ObjectMatrix(std::string fileName);
+	ObjectMatrix(std::string);
 	ObjectMatrix(int count);
 	ObjectMatrix(int m, int n);
 	ObjectMatrix(int m, int n, int k);
@@ -30,10 +30,11 @@ public:
 	int getObjectCount();
 	void loadDataMatrix();
         std::vector<std::string> getFeaturesTitle();
-	void saveDataMatrix(ObjectMatrix, char);
-
+	void saveDataMatrix(const char*);
+        std::string ErrorMessage;
 private:
 	int objectCount;
         std::vector<std::string> featureTitles;
+        std::string fileName;
 };
 #endif // !defined(EA_EAE79B7B_5151_41cf_A08C_CE61651B7393__INCLUDED_)

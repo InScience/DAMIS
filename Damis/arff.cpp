@@ -4,6 +4,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <algorithm>
+#include "DataObject.h"
 
 ARFF::ARFF(){
     data.reserve(0);
@@ -17,9 +18,10 @@ ARFF::ARFF(const char* path){
     std::vector<std::string> tmp;
     std::vector<double> v;
     double d;
-    ReadSuccess = true;
+    ReadSuccess = false;
     if (file.is_open() != false)
     {
+        ReadSuccess = true;
         while (std::getline(file, line_from_file))
         {
             if (line_from_file.length() == 0)
@@ -43,13 +45,6 @@ ARFF::ARFF(const char* path){
                         attributes.push_back(tmp1);
                         data_types.push_back(tmp2);
                     }
-
-                    //if (tmp2 != "REAL"  && tmp2 != "INTEGER" && tmp2 != "DATETIME")
-                    //{
-                    //    tmp.push_back(tmp1);
-                    //    meta_data.push_back(tmp);
-                    //    tmp.clear();
-                    //}
                 }
                 else if (sub == "@DATA" || sub == "@RELATION")
                     continue;
@@ -75,12 +70,6 @@ ARFF::ARFF(const char* path){
                                 else
                                     v.push_back(atof(tmp[i].c_str()));                                
                             }
-                            //else if (data_types[i] != "DATETIME")
-                            //{
-                            //    d = StringToDouble(tmp[i], i);
-                            //    v.push_back(d);
-                            //}
-
                         }
                         if (ReadSuccess == false)
                             break;
@@ -93,9 +82,8 @@ ARFF::ARFF(const char* path){
                 }
             }
         }
+        file.close();
     }
-    else
-        ReadSuccess = false;
 }
 
 ARFF::~ARFF(){
@@ -105,10 +93,6 @@ ARFF::~ARFF(){
 
 std::vector<std::string> ARFF::GetAttributes(){
     return attributes;
-}
-
-std::vector<std::string> ARFF::GetAttributesTypes(){
-    return data_types;
 }
 
 std::vector<std::vector<double> > ARFF::GetData(){
@@ -130,44 +114,17 @@ std::vector<std::string> ARFF::split(const std::string& s, char delim){
     return elems;
 }
 
-double ARFF::StringToDouble(std::string str, int col)
+void ARFF::WriteData(const char* path, std::vector<DataObject> data)
 {
-    double to_return = 0;
-    int n = meta_data.size();
+    std::ofstream file (path);
+    int n = data.size();
     int k = 0;
-    std::vector<std::string> x;
-    double max = 0;
-    
     for (int i = 0; i < n; i++)
     {
-        if (meta_data[i].at(0) == attributes[col])
-        {
-            k = i;
-            for (int j=1; j < meta_data[i].size(); j++)
-            {
-                x = split(meta_data[i].at(j), ' ');
-                if (x[1] == str)
-                {
-                    to_return = atof(x[0].c_str());
-                    break;
-                }
-                else
-                {
-                    if (max < atof(x[0].c_str()))
-                        max = atof(x[0].c_str());
-                }
-            }
-        }      
+        k = data.at(i).getFeatureCount();
+        for (int j = 0; j < k - 1; j++)
+            file<<data.at(i).getItems().at(j)<<",";
+        file<<data.at(i).getItems().at(k - 1)<<std::endl;
     }
-    
-    if (to_return == 0)
-    {
-        to_return = max + 1;
-        std::ostringstream strs;
-        strs << to_return;
-        std::string str2 = strs.str();
-        meta_data[k].push_back(std::string(str2) + " " + str);
-    }
-    
-    return to_return;
+    file.close();
 }

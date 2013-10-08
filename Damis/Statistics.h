@@ -17,8 +17,8 @@ public:
     static double getCorrCoef(ObjectMatrix, int, int);
     static double getCovCoef(ObjectMatrix, int, int);
     static ObjectMatrix getCovMatrix(ObjectMatrix);
-    static double getRandom(double, double);
-    static double getRandom();
+    static double getRandom(double, double, int);
+    static double getRandom(int);
 };
 
 #endif	/* STATISTICS_H */

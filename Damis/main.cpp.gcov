@@ -1,0 +1,44 @@
+        -:    0:Source:main.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/main.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/main.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* 
+        -:    2: * File:   main.cpp
+        -:    3: * Author: mindaugas
+        -:    4: *
+        -:    5: * Created on August 28, 2013, 9:57 PM
+        -:    6: */
+        -:    7:
+        -:    8:#include <cstdlib>
+        -:    9:#include <vector>
+        -:   10:#include "arff.h"
+        -:   11:#include "Statistics.h"
+        -:   12:#include <iostream>
+        -:   13:#include "DistanceMetrics.h"
+        -:   14:#include "ObjectMatrix.h"
+        -:   15:#include "PCA.h"
+        -:   16:#include "MDS.h"
+        -:   17:
+        -:   18:using namespace std;
+        -:   19:
+        -:   20:void PrintToScreen(ObjectMatrix);
+        -:   21:
+        1:   22:int main(int argc, char** argv) {
+        -:   23:    
+        1:   24:    ObjectMatrix omx("tests/cpu.arff");
+        1:   25:    omx.loadDataMatrix();
+        -:   26:    
+        1:   27:    if (omx.getObjectCount() > 0)
+        -:   28:    {
+        1:   29:        PCA pca_test(omx, 2);
+        1:   30:        ObjectMatrix Y = pca_test.getY();
+        1:   31:        Y.saveDataMatrix(Y, "results.txt");
+        -:   32:    }    
+        1:   33:    ObjectMatrix omx2(10);
+        1:   34:    ObjectMatrix omx3(10, 7);
+        -:   35:    
+        1:   36:    MDS mds_test(0.001, 100, 2);
+        -:   37:    
+        1:   38:    return 0;
+        3:   39:}/*EOF*/

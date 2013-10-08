@@ -1,0 +1,34 @@
+        -:    0:Source:DataMatrix.h
+        -:    0:Graph:build/Debug/GNU-Linux-x86/MDS.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/MDS.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  DataMatrix.h
+        -:    3://  Implementation of the Interface DataMatrix
+        -:    4://  Created on:      07-Lie-2013 20:07:29
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:
+        -:    8:#if !defined(EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_)
+        -:    9:#define EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_
+        -:   10:
+        -:   11:#include "ObjectMatrix.h"
+        -:   12:
+        -:   13:class DataMatrix
+       41:   14:{
+        -:   15:
+        -:   16:public:
+        -:   17:	DataMatrix() {
+        -:   18:
+        -:   19:	}
+        -:   20:
+       80:   21:	virtual ~DataMatrix() {
+        -:   22:
+       80:   23:	}
+        -:   24:        
+        -:   25:	virtual void loadDataMatrix() =0;
+        -:   26:	//virtual void saveDataMatrix(ObjectMatrix, char) =0;
+        -:   27:
+        -:   28:};
+        -:   29:#endif // !defined(EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_)

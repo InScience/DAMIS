@@ -1,0 +1,123 @@
+        -:    0:Source:ObjectMatrix.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/ObjectMatrix.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/ObjectMatrix.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  ObjectMatrix.cpp
+        -:    3://  Implementation of the Class ObjectMatrix
+        -:    4://  Created on:      07-Lie-2013 20:07:30
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:
+        -:    8:#include "ObjectMatrix.h"
+        -:    9:#include <vector>
+        -:   10:#include "arff.h"
+        -:   11:#include "DataObject.h"
+        -:   12:
+       14:   13:ObjectMatrix::ObjectMatrix(){
+       14:   14:    DataObjects.reserve(5);    
+    #####:   15:}
+        -:   16:
+       80:   17:ObjectMatrix::~ObjectMatrix(){
+        -:   18:    //DataObjects.~vector();
+       80:   19:}
+        -:   20:
+        -:   21:/**
+        -:   22: * Constructor that reads object matrix from arff file
+        -:   23: */
+        6:   24:ObjectMatrix::ObjectMatrix(std::string file){
+        6:   25:    fileName = file;
+        6:   26:    objectCount = 0;
+        6:   27:}
+        -:   28:
+        -:   29:/**
+        -:   30: * Constructor that creates ObjectMAtrix for n objects
+        -:   31: */
+       16:   32:ObjectMatrix::ObjectMatrix(int count){
+       16:   33:    DataObjects.reserve(count);
+       16:   34:    objectCount = 0;
+       16:   35:}
+        -:   36:
+        -:   37:
+        -:   38:/**
+        -:   39: * Constructor that creates ObjectMAtrix for n objects, and m features
+        -:   40: */
+        3:   41:ObjectMatrix::ObjectMatrix(int m, int n){
+        3:   42:    DataObjects.reserve(m);
+        3:   43:    objectCount = 0;
+        3:   44:}
+        -:   45:
+        -:   46:
+        -:   47:/**
+        -:   48: * Constructor that creates m by n matrix that holds k features i.e. cube. Needed
+        -:   49: * by SOM algorithm.
+        -:   50: */
+    #####:   51:ObjectMatrix::ObjectMatrix(int m, int n, int k){
+        -:   52:    
+    #####:   53:}
+        -:   54:
+        -:   55:
+        -:   56:/**
+        -:   57: * Adds data object to ObjectMatrix
+        -:   58: */
+     3344:   59:void ObjectMatrix::addObject(DataObject object){
+     3344:   60:    DataObjects.push_back(object);
+     3344:   61:    objectCount = DataObjects.size();
+     3344:   62:}
+        -:   63:
+        -:   64:
+        -:   65:/**
+        -:   66: * Gets object at position
+        -:   67: */
+ 75654664:   68:DataObject ObjectMatrix::getObjectAt(int index){
+ 75654664:   69:    return  DataObjects.at(index);
+        -:   70:}
+        -:   71:
+        -:   72:
+        -:   73:/**
+        -:   74: * Gets object count
+        -:   75: */
+ 36516543:   76:int ObjectMatrix::getObjectCount(){
+ 36516543:   77:    return objectCount;
+        -:   78:}
+        -:   79:
+    #####:   80:std::vector<std::string> ObjectMatrix::getFeaturesTitle(){
+    #####:   81:    return featureTitles;
+        -:   82:}
+        -:   83:
+        -:   84:/**
+        -:   85: * Loads (deserializes) object matrix (reads arff file into an OdjectMatrix object)
+        -:   86: */
+        6:   87:void ObjectMatrix::loadDataMatrix(){
+        6:   88:    const char* path = fileName.c_str();
+        6:   89:    ARFF file(path);
+        6:   90:    if (file.ReadSuccess == true)
+        -:   91:    {
+        4:   92:        std::vector< std::vector<double> > data = file.GetData();  
+        4:   93:        featureTitles = file.GetAttributes();
+        4:   94:        std::vector< std::vector<double> >::iterator dataObjectIterator;
+        4:   95:        std::vector<double>::iterator featureIterator;
+        4:   96:        std::vector<double> dataObjectItems;
+        -:   97:
+        4:   98:        for(dataObjectIterator = data.begin();dataObjectIterator!=data.end();++dataObjectIterator)
+        -:   99:        {
+     6688:  100:            for(featureIterator = (*dataObjectIterator).begin();featureIterator!=(*dataObjectIterator).end();++featureIterator)
+     5852:  101:                dataObjectItems.push_back(*featureIterator);
+        -:  102:
+      836:  103:            DataObject tmp(dataObjectItems);
+      836:  104:            DataObjects.push_back(tmp);
+      836:  105:            dataObjectItems.clear();
+        -:  106:        }  
+        4:  107:        objectCount = DataObjects.size();
+        -:  108:        
+        -:  109:    }
+        -:  110:    else
+        2:  111:        objectCount = 0;
+        6:  112:}
+        -:  113:
+        -:  114:
+        1:  115:void ObjectMatrix::saveDataMatrix(ObjectMatrix om, const char* path){
+        1:  116:    ARFF file;
+        1:  117:    file.WriteData(path, om.DataObjects);
+        1:  118:}

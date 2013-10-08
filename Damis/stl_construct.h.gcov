@@ -1,0 +1,153 @@
+        -:    0:Source:/usr/include/c++/4.4/bits/stl_construct.h
+        -:    0:Graph:build/Debug/GNU-Linux-x86/MDS.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/MDS.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:// nonstandard construct and destroy functions -*- C++ -*-
+        -:    2:
+        -:    3:// Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009
+        -:    4:// Free Software Foundation, Inc.
+        -:    5://
+        -:    6:// This file is part of the GNU ISO C++ Library.  This library is free
+        -:    7:// software; you can redistribute it and/or modify it under the
+        -:    8:// terms of the GNU General Public License as published by the
+        -:    9:// Free Software Foundation; either version 3, or (at your option)
+        -:   10:// any later version.
+        -:   11:
+        -:   12:// This library is distributed in the hope that it will be useful,
+        -:   13:// but WITHOUT ANY WARRANTY; without even the implied warranty of
+        -:   14:// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        -:   15:// GNU General Public License for more details.
+        -:   16:
+        -:   17:// Under Section 7 of GPL version 3, you are granted additional
+        -:   18:// permissions described in the GCC Runtime Library Exception, version
+        -:   19:// 3.1, as published by the Free Software Foundation.
+        -:   20:
+        -:   21:// You should have received a copy of the GNU General Public License and
+        -:   22:// a copy of the GCC Runtime Library Exception along with this program;
+        -:   23:// see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+        -:   24:// <http://www.gnu.org/licenses/>.
+        -:   25:
+        -:   26:/*
+        -:   27: *
+        -:   28: * Copyright (c) 1994
+        -:   29: * Hewlett-Packard Company
+        -:   30: *
+        -:   31: * Permission to use, copy, modify, distribute and sell this software
+        -:   32: * and its documentation for any purpose is hereby granted without fee,
+        -:   33: * provided that the above copyright notice appear in all copies and
+        -:   34: * that both that copyright notice and this permission notice appear
+        -:   35: * in supporting documentation.  Hewlett-Packard Company makes no
+        -:   36: * representations about the suitability of this software for any
+        -:   37: * purpose.  It is provided "as is" without express or implied warranty.
+        -:   38: *
+        -:   39: *
+        -:   40: * Copyright (c) 1996,1997
+        -:   41: * Silicon Graphics Computer Systems, Inc.
+        -:   42: *
+        -:   43: * Permission to use, copy, modify, distribute and sell this software
+        -:   44: * and its documentation for any purpose is hereby granted without fee,
+        -:   45: * provided that the above copyright notice appear in all copies and
+        -:   46: * that both that copyright notice and this permission notice appear
+        -:   47: * in supporting documentation.  Silicon Graphics makes no
+        -:   48: * representations about the suitability of this software for any
+        -:   49: * purpose.  It is provided "as is" without express or implied warranty.
+        -:   50: */
+        -:   51:
+        -:   52:/** @file stl_construct.h
+        -:   53: *  This is an internal header file, included by other library headers.
+        -:   54: *  You should not attempt to use it directly.
+        -:   55: */
+        -:   56:
+        -:   57:#ifndef _STL_CONSTRUCT_H
+        -:   58:#define _STL_CONSTRUCT_H 1
+        -:   59:
+        -:   60:#include <new>
+        -:   61:
+        -:   62:_GLIBCXX_BEGIN_NAMESPACE(std)
+        -:   63:
+        -:   64:  /**
+        -:   65:   * Constructs an object in existing memory by invoking an allocated
+        -:   66:   * object's constructor with an initializer.
+        -:   67:   */
+        -:   68:  template<typename _T1, typename _T2>
+        -:   69:    inline void
+        -:   70:    _Construct(_T1* __p, const _T2& __value)
+        -:   71:    {
+        -:   72:      // _GLIBCXX_RESOLVE_LIB_DEFECTS
+        -:   73:      // 402. wrong new expression in [some_]allocator::construct
+        -:   74:      ::new(static_cast<void*>(__p)) _T1(__value);
+        -:   75:    }
+        -:   76:
+        -:   77:  /**
+        -:   78:   * Destroy the object pointed to by a pointer type.
+        -:   79:   */
+        -:   80:  template<typename _Tp>
+        -:   81:    inline void
+    #####:   82:    _Destroy(_Tp* __pointer)
+    #####:   83:    { __pointer->~_Tp(); }
+        -:   84:
+        -:   85:  template<bool>
+        -:   86:    struct _Destroy_aux
+        -:   87:    {
+        -:   88:      template<typename _ForwardIterator>
+        -:   89:        static void
+    #####:   90:        __destroy(_ForwardIterator __first, _ForwardIterator __last)
+        -:   91:	{
+    #####:   92:	  for (; __first != __last; ++__first)
+    #####:   93:	    std::_Destroy(&*__first);
+    #####:   94:	}
+        -:   95:    };
+        -:   96:
+        -:   97:  template<>
+        -:   98:    struct _Destroy_aux<true>
+        -:   99:    {
+        -:  100:      template<typename _ForwardIterator>
+        -:  101:        static void
+    #####:  102:        __destroy(_ForwardIterator, _ForwardIterator) { }
+        -:  103:    };
+        -:  104:
+        -:  105:  /**
+        -:  106:   * Destroy a range of objects.  If the value_type of the object has
+        -:  107:   * a trivial destructor, the compiler should optimize all of this
+        -:  108:   * away, otherwise the objects' destructors must be invoked.
+        -:  109:   */
+        -:  110:  template<typename _ForwardIterator>
+        -:  111:    inline void
+    #####:  112:    _Destroy(_ForwardIterator __first, _ForwardIterator __last)
+        -:  113:    {
+        -:  114:      typedef typename iterator_traits<_ForwardIterator>::value_type
+        -:  115:                       _Value_type;
+    #####:  116:      std::_Destroy_aux<__has_trivial_destructor(_Value_type)>::
+        -:  117:	__destroy(__first, __last);
+    #####:  118:    }
+        -:  119:
+        -:  120:  /**
+        -:  121:   * Destroy a range of objects using the supplied allocator.  For
+        -:  122:   * nondefault allocators we do not optimize away invocation of 
+        -:  123:   * destroy() even if _Tp has a trivial destructor.
+        -:  124:   */
+        -:  125:
+        -:  126:  template <typename _Tp> class allocator;
+        -:  127:
+        -:  128:  template<typename _ForwardIterator, typename _Allocator>
+        -:  129:    void
+        -:  130:    _Destroy(_ForwardIterator __first, _ForwardIterator __last,
+        -:  131:	     _Allocator& __alloc)
+        -:  132:    {
+        -:  133:      for (; __first != __last; ++__first)
+        -:  134:	__alloc.destroy(&*__first);
+        -:  135:    }
+        -:  136:
+        -:  137:  template<typename _ForwardIterator, typename _Tp>
+        -:  138:    inline void
+    #####:  139:    _Destroy(_ForwardIterator __first, _ForwardIterator __last,
+        -:  140:	     allocator<_Tp>&)
+        -:  141:    {
+    #####:  142:      _Destroy(__first, __last);
+    #####:  143:    }
+        -:  144:
+        -:  145:_GLIBCXX_END_NAMESPACE
+        -:  146:
+        -:  147:#endif /* _STL_CONSTRUCT_H */
+        -:  148:

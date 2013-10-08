@@ -23,20 +23,56 @@ void pcatestclass::setUp() {
 void pcatestclass::tearDown() {
 }
 
-void pcatestclass::testMethod() {
-    ObjectMatrix omx("cpu.arff");
+void pcatestclass::CorrectFile() {
+    ObjectMatrix omx("tests/cpu.arff");
+    omx.loadDataMatrix();
     int n = omx.getObjectCount();
     int d = 2;
     bool ats = false;
-    PCA pca_test(omx, d);
-    pca_test.toDataType();
-    ObjectMatrix Y = pca_test.getY();
-    if (Y.getObjectCount() == n && Y.getObjectAt(0).getItems().size() == d)
+    if (n > 0)
+    {
+        PCA pca_test(omx, d);
+        ObjectMatrix Y = pca_test.getY();
+        if (Y.getObjectCount() == n && Y.getObjectAt(0).getItems().size() == d)
+                ats = true;
+    }
+    CPPUNIT_ASSERT(ats);
+}
+void pcatestclass::NonExistingFile() {
+    ObjectMatrix omx("tests/cpuu.arff");
+    omx.loadDataMatrix();
+    bool ats = false;
+    if (omx.getObjectCount() == 0)
         ats = true;
+    
     CPPUNIT_ASSERT(ats);
 }
 
-void pcatestclass::testFailedMethod() {
-    CPPUNIT_ASSERT(true);
+void pcatestclass::InCorrectFile() {
+    ObjectMatrix omx("tests/cpu_.arff");
+    omx.loadDataMatrix();
+    bool ats = false;
+    if (omx.getObjectCount() == 0)
+        ats = true;
+    
+    CPPUNIT_ASSERT(ats);
 }
 
+void pcatestclass::CorrectConversion(){
+    ObjectMatrix X("tests/cpu.arff");
+    X.loadDataMatrix();
+    int m = X.getObjectCount();
+    int n = X.getObjectAt(0).getItems().size();
+    alglib::real_2d_array alglibX;
+    alglibX.setlength(m, n);
+
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            alglibX(i,j) = X.getObjectAt(i).getItems().at(j);
+    
+    for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            if (alglibX(i,j) - X.getObjectAt(i).getItems().at(j) > 0.001)
+                CPPUNIT_ASSERT(false);
+    CPPUNIT_ASSERT(true);
+}

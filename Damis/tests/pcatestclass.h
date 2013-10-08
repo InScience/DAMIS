@@ -13,8 +13,10 @@
 class pcatestclass : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(pcatestclass);
 
-    CPPUNIT_TEST(testMethod);
-    CPPUNIT_TEST(testFailedMethod);
+    CPPUNIT_TEST(CorrectFile);
+    CPPUNIT_TEST(NonExistingFile);
+    CPPUNIT_TEST(InCorrectFile);
+    CPPUNIT_TEST(CorrectConversion);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -25,8 +27,10 @@ public:
     void tearDown();
 
 private:
-    void testMethod();
-    void testFailedMethod();
+    void CorrectFile();
+    void NonExistingFile();
+    void InCorrectFile();
+    void CorrectConversion();
 };
 
 #endif	/* PCATESTCLASS_H */

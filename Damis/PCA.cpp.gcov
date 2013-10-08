@@ -1,0 +1,109 @@
+        -:    0:Source:PCA.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/PCA.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/PCA.gcda
+        -:    0:Runs:3
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  PCA.cpp
+        -:    3://  Implementation of the Class PCA
+        -:    4://  Created on:      07-Lie-2013 20:07:31
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:
+        -:    8:#include "PCA.h"
+        -:    9:#include "Statistics.h"
+        -:   10:#include "alglib/dataanalysis.h"
+        -:   11:
+    #####:   12:PCA::PCA(){
+        -:   13:
+    #####:   14:}
+        -:   15:
+        4:   16:PCA::~PCA(){
+        -:   17:
+        4:   18:}
+        -:   19:
+        -:   20:/**
+        -:   21: * Constructor that sets desired projection d
+        -:   22: */
+    #####:   23:PCA::PCA(int d){
+        -:   24:
+    #####:   25:}
+        -:   26:
+        -:   27:/**
+        -:   28: * Overloaded constructor when the part of retaining dispersion is passed to PCA
+        -:   29: * object
+        -:   30: */
+    #####:   31:PCA::PCA(float disp){
+        -:   32:
+    #####:   33:}
+        -:   34:
+        -:   35:
+        -:   36:/**
+        -:   37: * Overloaded constructor that accept object matrix that must be projected to d
+        -:   38: * dimension
+        -:   39: */
+        4:   40:PCA::PCA(ObjectMatrix objMatrix, int dim){
+        -:   41: 
+        4:   42:    setProjectionDimension(dim);
+        4:   43:    X = objMatrix;
+        4:   44:    PCA::toDataType();
+        4:   45:    PCA::getProjection();
+    #####:   46:}
+        -:   47:
+        4:   48:ObjectMatrix PCA::getProjection(){
+        4:   49:    int m = X.getObjectCount();
+        4:   50:    int n = X.getObjectAt(0).getItems().size();
+        4:   51:    double X_vid[n];
+       32:   52:    for (int i = 0; i < n; i++)
+       28:   53:        X_vid[i] = Statistics::getAverage(X, i);
+        -:   54:    alglib::ae_int_t info;
+        4:   55:    alglib::real_1d_array eigValues;
+        4:   56:    alglib::real_2d_array eigVectors;
+        4:   57:    pcabuildbasis(alglibX, m, n, info, eigValues, eigVectors);
+        4:   58:    initializeProjectionMatrix(m);
+        4:   59:    std::vector<double> tmp(d);
+        -:   60:
+        4:   61:    if (info == 1)
+        -:   62:    {
+        4:   63:        for (int i = 0; i < m; i++)
+        -:   64:        {
+     2508:   65:            for (int j = 0; j < d; j++)
+        -:   66:            {
+     1672:   67:                tmp[j] = 0.0;
+    13376:   68:                for (int k = 0; k < n; k++)
+    11704:   69:                    tmp[j] += (alglibX(i,k) - X_vid[k]) * eigVectors[k][j];
+        -:   70:            }
+      836:   71:            DataObject dd(tmp);
+      836:   72:            Y.addObject(dd);
+        -:   73:        }
+        -:   74:        
+        -:   75:    }
+        4:   76:    return Y;
+        -:   77: 
+        -:   78:}
+        -:   79:
+        4:   80:ObjectMatrix PCA::getY(){
+        4:   81:    return Y;
+        -:   82:}
+        -:   83:
+        -:   84:/**
+        -:   85: * Converts data object to datatype required by external method
+        -:   86: */
+        4:   87:void PCA::toDataType(){
+        4:   88:    int m = X.getObjectCount();
+        4:   89:    int n = X.getObjectAt(0).getItems().size();
+        4:   90:    alglibX.setlength(m, n);
+        -:   91:
+      840:   92:    for (int i = 0; i < m; i++)
+     6688:   93:        for (int j = 0; j < n; j++)
+     5852:   94:            alglibX(i,j) = X.getObjectAt(i).getItems().at(j);
+        4:   95:}
+        -:   96:
+        -:   97:
+        -:   98:/**
+        -:   99: * Converts to ObjectMatrix result that is provided by external library.
+        -:  100: */
+    #####:  101:void PCA::fromDataType(){
+        -:  102:    
+        -:  103:
+    #####:  104:}

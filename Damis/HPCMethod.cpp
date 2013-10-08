@@ -9,7 +9,9 @@
 
 
 HPCMethod::HPCMethod(){
-
+    std::string file_name = "/home/mindaugas/cpu.arff";
+    X = ObjectMatrix(file_name);
+    X.loadDataMatrix();
 }
 
 

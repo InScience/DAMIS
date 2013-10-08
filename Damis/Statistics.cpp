@@ -20,7 +20,7 @@ double Statistics::getCorrCoef(ObjectMatrix om, int k, int l)
     double to_return = 0.0;
     double avgFeatureK = Statistics::getAverage(om, k);
     double avgFeatureL = Statistics::getAverage(om, l);
-    double fractionTop, fractionBottom, tmp1 = 0.0, tmp2 = 0.0, diffK, diffL;
+    double fractionTop = 0.0, fractionBottom = 0.1, tmp1 = 0.0, tmp2 = 0.0, diffK, diffL;
     int n = om.getObjectCount();
     
     for (int i = 0; i < n; i++)
@@ -56,15 +56,15 @@ double Statistics::getCovCoef(ObjectMatrix om, int k, int l)
     return to_return;
 }
 
-double Statistics::getRandom()
+double Statistics::getRandom(int n)
 {
-    srand(time(NULL));
+    srand(time(NULL) + n);
     return (double)rand() / RAND_MAX;
 }
 
-double Statistics::getRandom(double min, double max)
+double Statistics::getRandom(double min, double max, int k)
 {
-    return min + Statistics::getRandom()*(max - min);
+    return min + Statistics::getRandom(k)*(max - min);
 }
 
 ObjectMatrix Statistics::getCovMatrix(ObjectMatrix om)

@@ -12,7 +12,7 @@
 #include "WebInterface.h"
 
 /**
- * Abstract class that aggregates ObjectMatrix X and ability tu send  SOAP mesage
+ * Abstract class that aggregates ObjectMatrix X and ability to send  SOAP message
  * with data about stress error value and method computation time
  */
 class HPCMethod : public WebInterface
@@ -21,7 +21,7 @@ class HPCMethod : public WebInterface
 public:
 	HPCMethod();
 	virtual ~HPCMethod();
-	ObjectMatrix *m_ObjectMatrix;
+	ObjectMatrix X;
 
 	virtual void sendMessage();
 
