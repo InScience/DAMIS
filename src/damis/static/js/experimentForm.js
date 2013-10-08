@@ -50,7 +50,7 @@
 					var form = $("#experiment-form");
 					var data = form.serialize();
 					console.log(data);
-					$.post("/x/experiment-formset/", data, function(resp) {
+					$.post(form.attr("action"), data, function(resp) {
 						if (resp === "OK") {
 							window.location = experimentsListUrl;
 							return;
