@@ -104,11 +104,18 @@ class BaseTaskFormset(BaseInlineFormSet):
         except IndexError:
             instance = None
             pk_value = hash(form.prefix)
+        pv_prefix = 'PV_%s' % pk_value
 
         data = self.data if self.data and index is not None else None
+        # Do not create PV formset if post data do not contain any elems with
+        # pv_value prefix.
+        if data and not [a for a in data.keys() if pv_prefix in a]:
+            form.parameter_values = []
+            return
+
         form.parameter_values = [ParameterValueFormset(data=data,
                                                       instance=instance,
-                                                      prefix='PV_%s' % pk_value)]
+                                                      prefix=pv_prefix)]
 
     def is_valid(self):
         result = super(BaseTaskFormset, self).is_valid()
