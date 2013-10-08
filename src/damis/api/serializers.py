@@ -26,4 +26,4 @@ class AlgorithmSerializer(serializers.HyperlinkedModelSerializer):
 class ExperimentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Experiment
-        fields = ('title', 'start', 'finish', 'user')
+        fields = ('title', 'start', 'finish', 'user', 'status')
