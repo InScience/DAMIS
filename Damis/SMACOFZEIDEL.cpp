@@ -22,8 +22,6 @@ SMACOFZEIDEL::~SMACOFZEIDEL(){
  */
 SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d){
     shufleEnum = shEnum;
-    getProjection();
-    Y.saveDataMatrix("tests/smacofZeidel.txt");
 }
 
 /**
@@ -37,10 +35,10 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
     double newStressError = 0.0;
     double tmpStressError = oldStressError;
     double sum = 0.0;
-    ObjectMatrix Gutman;
+    ObjectMatrix Gutman, Y_new;
     std::vector<int> shufledIndexes;
     shufledIndexes.reserve(n);
-    
+    Y_new = Y;
     while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
     {
         shufledIndexes = ShufleObjects::shufleObjectMatrix(shufleEnum, Y);
@@ -56,6 +54,7 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
                         sum += Gutman.getObjectAt(i).getItems().at(k) * Y.getObjectAt(k).getItems().at(j);
                 Y.getObjectAt(i).getItems().at(j) = sum / n;
             }
+            Gutman = getGutman();
         }
         newStressError = getStress();
         tmpStressError = newStressError;

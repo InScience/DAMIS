@@ -63,3 +63,22 @@ int DataObject::getFeatureCount(){
 void DataObject::setClassLabel(int class_Label){
     classLabel = class_Label;
 }
+
+void DataObject::UpdateValue(int i, double value)
+{
+    items[i] = value;
+}
+
+bool DataObject::IsIdentical(DataObject obj)
+{
+    bool ats = false;
+    int k = 0;
+    int n = obj.getFeatureCount();
+    for (int i = 0; i < n; i++)
+        if (this->items.at(i) == obj.getItems().at(i))
+            k++;
+    if (k == n)
+        ats = true;
+    
+    return ats;    
+}

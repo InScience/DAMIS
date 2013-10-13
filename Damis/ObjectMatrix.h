@@ -21,12 +21,15 @@ public:
 	ObjectMatrix();
 	virtual ~ObjectMatrix();
         std::vector<DataObject> DataObjects;
+        std::vector<std::vector<DataObject> > DataObjects2D;
 	ObjectMatrix(std::string);
 	ObjectMatrix(int count);
 	ObjectMatrix(int m, int n);
 	ObjectMatrix(int m, int n, int k);
 	void addObject(DataObject object);
+        void addObjectTo(int index, DataObject object);
 	DataObject getObjectAt(int index);
+        DataObject getObjectAt(int, int);
 	int getObjectCount();
 	void loadDataMatrix();
         std::vector<std::string> getFeaturesTitle();

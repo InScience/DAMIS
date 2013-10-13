@@ -8,7 +8,6 @@
 #include <string.h>
 
 #include "PSMACOF.h"
-#include "mpi.h"
 #include "Statistics.h"
 #include <sstream>
 #include <string>

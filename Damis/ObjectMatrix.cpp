@@ -49,7 +49,8 @@ ObjectMatrix::ObjectMatrix(int m, int n){
  * by SOM algorithm.
  */
 ObjectMatrix::ObjectMatrix(int m, int n, int k){
-    
+    DataObjects.reserve(m * n);
+    objectCount = 0;
 }
 
 
@@ -61,6 +62,10 @@ void ObjectMatrix::addObject(DataObject object){
     objectCount = DataObjects.size();
 }
 
+void ObjectMatrix::addObjectTo(int index, DataObject object){
+    DataObjects2D[index].push_back(object);
+    //objectCount = DataObjects.size();
+}
 
 /**
  * Gets object at position
@@ -69,6 +74,9 @@ DataObject ObjectMatrix::getObjectAt(int index){
     return  DataObjects.at(index);
 }
 
+DataObject ObjectMatrix::getObjectAt(int row_index, int col_index){
+    return  DataObjects2D[row_index].at(col_index);
+}
 
 /**
  * Gets object count

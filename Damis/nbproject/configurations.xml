@@ -16,8 +16,10 @@
       <itemPath>ObjectMatrix.h</itemPath>
       <itemPath>PCA.h</itemPath>
       <itemPath>PSMACOF.h</itemPath>
+      <itemPath>SAMANN.h</itemPath>
       <itemPath>SMACOF.h</itemPath>
       <itemPath>SMACOFZEIDEL.h</itemPath>
+      <itemPath>SOM.h</itemPath>
       <itemPath>ShufleEnum.h</itemPath>
       <itemPath>ShufleObjects.h</itemPath>
       <itemPath>Statistics.h</itemPath>
@@ -40,8 +42,10 @@
       <itemPath>ObjectMatrix.cpp</itemPath>
       <itemPath>PCA.cpp</itemPath>
       <itemPath>PSMACOF.cpp</itemPath>
+      <itemPath>SAMANN.cpp</itemPath>
       <itemPath>SMACOF.cpp</itemPath>
       <itemPath>SMACOFZEIDEL.cpp</itemPath>
+      <itemPath>SOM.cpp</itemPath>
       <itemPath>ShufleObjects.cpp</itemPath>
       <itemPath>Statistics.cpp</itemPath>
       <itemPath>arff.cpp</itemPath>
@@ -138,6 +142,10 @@
       </item>
       <item path="PSMACOF.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="SAMANN.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SAMANN.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="SMACOF.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SMACOF.h" ex="false" tool="3" flavor2="0">
@@ -145,6 +153,10 @@
       <item path="SMACOFZEIDEL.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SMACOFZEIDEL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOM.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SOM.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ShufleEnum.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -300,6 +312,10 @@
       </item>
       <item path="PSMACOF.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="SAMANN.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SAMANN.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="SMACOF.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SMACOF.h" ex="false" tool="3" flavor2="0">
@@ -307,6 +323,10 @@
       <item path="SMACOFZEIDEL.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SMACOFZEIDEL.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SOM.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SOM.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ShufleEnum.h" ex="false" tool="3" flavor2="0">
       </item>

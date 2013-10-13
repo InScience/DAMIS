@@ -74,8 +74,6 @@ std::vector<int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
 
 
 std::vector<int> ShufleObjects::shufleObjectMatrix(ShufleEnum shufleEnum, ObjectMatrix objectMatrix){
-
-    //ObjectMatrix toShufle;
     std::vector<int> shufled;
     
     if (shufleEnum == Random)

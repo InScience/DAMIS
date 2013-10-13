@@ -44,8 +44,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/ObjectMatrix.o \
 	${OBJECTDIR}/PCA.o \
 	${OBJECTDIR}/PSMACOF.o \
+	${OBJECTDIR}/SAMANN.o \
 	${OBJECTDIR}/SMACOF.o \
 	${OBJECTDIR}/SMACOFZEIDEL.o \
+	${OBJECTDIR}/SOM.o \
 	${OBJECTDIR}/ShufleObjects.o \
 	${OBJECTDIR}/Statistics.o \
 	${OBJECTDIR}/arff.o \
@@ -131,6 +133,11 @@ ${OBJECTDIR}/PSMACOF.o: PSMACOF.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/PSMACOF.o PSMACOF.cpp
 
+${OBJECTDIR}/SAMANN.o: SAMANN.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/SAMANN.o SAMANN.cpp
+
 ${OBJECTDIR}/SMACOF.o: SMACOF.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -140,6 +147,11 @@ ${OBJECTDIR}/SMACOFZEIDEL.o: SMACOFZEIDEL.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOFZEIDEL.o SMACOFZEIDEL.cpp
+
+${OBJECTDIR}/SOM.o: SOM.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOM.o SOM.cpp
 
 ${OBJECTDIR}/ShufleObjects.o: ShufleObjects.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -332,6 +344,19 @@ ${OBJECTDIR}/PSMACOF_nomain.o: ${OBJECTDIR}/PSMACOF.o PSMACOF.cpp
 	    ${CP} ${OBJECTDIR}/PSMACOF.o ${OBJECTDIR}/PSMACOF_nomain.o;\
 	fi
 
+${OBJECTDIR}/SAMANN_nomain.o: ${OBJECTDIR}/SAMANN.o SAMANN.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/SAMANN.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SAMANN_nomain.o SAMANN.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/SAMANN.o ${OBJECTDIR}/SAMANN_nomain.o;\
+	fi
+
 ${OBJECTDIR}/SMACOF_nomain.o: ${OBJECTDIR}/SMACOF.o SMACOF.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/SMACOF.o`; \
@@ -356,6 +381,19 @@ ${OBJECTDIR}/SMACOFZEIDEL_nomain.o: ${OBJECTDIR}/SMACOFZEIDEL.o SMACOFZEIDEL.cpp
 	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOFZEIDEL_nomain.o SMACOFZEIDEL.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SMACOFZEIDEL.o ${OBJECTDIR}/SMACOFZEIDEL_nomain.o;\
+	fi
+
+${OBJECTDIR}/SOM_nomain.o: ${OBJECTDIR}/SOM.o SOM.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/SOM.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOM_nomain.o SOM.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/SOM.o ${OBJECTDIR}/SOM_nomain.o;\
 	fi
 
 ${OBJECTDIR}/ShufleObjects_nomain.o: ${OBJECTDIR}/ShufleObjects.o ShufleObjects.cpp 

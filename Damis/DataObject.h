@@ -26,6 +26,8 @@ public:
 	int getFeatureCount();
 	void setClassLabel(int classLabel);
         std::vector<double> getItems();
+        void UpdateValue(int, double);
+        bool IsIdentical(DataObject);
 
 private:
 	int classLabel;
