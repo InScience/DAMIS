@@ -39,11 +39,12 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
     std::vector<int> shufledIndexes;
     shufledIndexes.reserve(n);
     Y_new = Y;
+    Gutman = getGutman();
     while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
     {
         shufledIndexes = ShufleObjects::shufleObjectMatrix(shufleEnum, Y);
         oldStressError = tmpStressError;
-        Gutman = getGutman();
+        
         for (int row=0; row < n; row++)
         {
             i = shufledIndexes.at(row);
@@ -52,7 +53,8 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
                 sum = 0.0;
                 for (int k = 0; k < n; k++)
                         sum += Gutman.getObjectAt(i).getItems().at(k) * Y.getObjectAt(k).getItems().at(j);
-                Y.getObjectAt(i).getItems().at(j) = sum / n;
+                Y.getObjectAt(i).UpdateValue(j, sum / n);
+                //Y.getObjectAt(i).getItems().at(j) = sum / n;
             }
             Gutman = getGutman();
         }
