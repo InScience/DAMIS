@@ -43,8 +43,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/MDS.o \
 	${OBJECTDIR}/ObjectMatrix.o \
 	${OBJECTDIR}/PCA.o \
-	${OBJECTDIR}/PSMACOF.o \
+	${OBJECTDIR}/Projection.o \
 	${OBJECTDIR}/SAMANN.o \
+	${OBJECTDIR}/SDS.o \
 	${OBJECTDIR}/SMACOF.o \
 	${OBJECTDIR}/SMACOFZEIDEL.o \
 	${OBJECTDIR}/SOM.o \
@@ -128,15 +129,20 @@ ${OBJECTDIR}/PCA.o: PCA.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/PCA.o PCA.cpp
 
-${OBJECTDIR}/PSMACOF.o: PSMACOF.cpp 
+${OBJECTDIR}/Projection.o: Projection.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/PSMACOF.o PSMACOF.cpp
+	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/Projection.o Projection.cpp
 
 ${OBJECTDIR}/SAMANN.o: SAMANN.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/SAMANN.o SAMANN.cpp
+
+${OBJECTDIR}/SDS.o: SDS.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/SDS.o SDS.cpp
 
 ${OBJECTDIR}/SMACOF.o: SMACOF.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -331,17 +337,17 @@ ${OBJECTDIR}/PCA_nomain.o: ${OBJECTDIR}/PCA.o PCA.cpp
 	    ${CP} ${OBJECTDIR}/PCA.o ${OBJECTDIR}/PCA_nomain.o;\
 	fi
 
-${OBJECTDIR}/PSMACOF_nomain.o: ${OBJECTDIR}/PSMACOF.o PSMACOF.cpp 
+${OBJECTDIR}/Projection_nomain.o: ${OBJECTDIR}/Projection.o Projection.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/PSMACOF.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Projection.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/PSMACOF_nomain.o PSMACOF.cpp;\
+	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Projection_nomain.o Projection.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/PSMACOF.o ${OBJECTDIR}/PSMACOF_nomain.o;\
+	    ${CP} ${OBJECTDIR}/Projection.o ${OBJECTDIR}/Projection_nomain.o;\
 	fi
 
 ${OBJECTDIR}/SAMANN_nomain.o: ${OBJECTDIR}/SAMANN.o SAMANN.cpp 
@@ -355,6 +361,19 @@ ${OBJECTDIR}/SAMANN_nomain.o: ${OBJECTDIR}/SAMANN.o SAMANN.cpp
 	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SAMANN_nomain.o SAMANN.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SAMANN.o ${OBJECTDIR}/SAMANN_nomain.o;\
+	fi
+
+${OBJECTDIR}/SDS_nomain.o: ${OBJECTDIR}/SDS.o SDS.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/SDS.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SDS_nomain.o SDS.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/SDS.o ${OBJECTDIR}/SDS_nomain.o;\
 	fi
 
 ${OBJECTDIR}/SMACOF_nomain.o: ${OBJECTDIR}/SMACOF.o SMACOF.cpp 

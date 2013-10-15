@@ -26,8 +26,9 @@ SMACOF::SMACOF(float eps, int maxIter, int d):MDS(eps, maxIter, d){
 /**
  * Constructor called from SMACOF class
  */
-SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix X, ObjectMatrix Y):MDS(eps, maxIter, d){
-
+SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix X_base, ObjectMatrix Y_base):MDS(eps, maxIter, d){
+    X = X_base;
+    Y = Y_base;
 }
 
 /**
@@ -58,7 +59,7 @@ ObjectMatrix SMACOF::getProjection(){
             {
                 sum = 0.0;
                 for (int k = 0; k < n; k++)
-                        sum += Gutman.getObjectAt(i).getItems().at(k) * Y.getObjectAt(k).getItems().at(j);
+                        sum += Gutman.getObjectAt(i).features.at(k) * Y.getObjectAt(k).features.at(j);
                 Y_newRow.push_back(sum / n);
                 //Y.getObjectAt(i).getItems().at(j) = sum / n;
             }

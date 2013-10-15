@@ -21,9 +21,8 @@ public:
 	static std::vector<int> shufleObjectMatrix(ShufleEnum shufleEnum, ObjectMatrix objectMatrix);
 
 private:
-	static ObjectMatrix byBubleSort(ObjectMatrix objectMatrix);
-	static ObjectMatrix byDispersion(ObjectMatrix objectMatrix);
-	static ObjectMatrix byPCA(ObjectMatrix objectMatrix);
+	static std::vector<int> byBubleSort(ObjectMatrix objectMatrix);
+        static std::vector<int> byBubleSortDsc(ObjectMatrix objectMatrix);
 	static std::vector<int> byRand(ObjectMatrix objectMatrix);
 
 };

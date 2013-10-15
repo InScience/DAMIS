@@ -10,10 +10,8 @@
 
 enum ShufleEnum
 {
-	Dispersion = 1,
-	PCA = 2,
-	Random = 3,
-	BubleSortAsc = 4,
-	BubleSortDsc = 5
+	RANDOM = 1,
+	BUBLESORTASC = 2,
+	BUBLESORTDSC = 3
 };
 #endif // !defined(EA_C3CB7627_859D_4eae_AB70_2DA1F95CFF65__INCLUDED_)

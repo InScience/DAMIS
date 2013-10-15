@@ -19,12 +19,10 @@ double DistanceMetrics::getDistance(DataObject obj1, DataObject obj2, DistanceMe
 double DistanceMetrics::getManhattan(DataObject obj1, DataObject obj2)
 {
     double to_return = 0.0;
-    std::vector<double> v1 = obj1.getItems();
-    std::vector<double> v2 = obj2.getItems();
     int n = obj1.getFeatureCount();
     
     for (int i = 0; i < n; i++)
-        to_return += fabs(v1[i] - v2[i]);
+        to_return += fabs(obj1.features.at(i) - obj2.features.at(i));
     
     return to_return;
 }
@@ -33,12 +31,10 @@ double DistanceMetrics::getEuclidean(DataObject obj1, DataObject obj2)
 {
     double to_return = 0.0;
     double s = 0.0;
-    std::vector<double> v1 = obj1.getItems();
-    std::vector<double> v2 = obj2.getItems();
     int n = obj1.getFeatureCount();
     
     for (int i = 0; i < n; i++)
-        s += std::pow((v1[i] - v2[i]), 2);
+        s += std::pow((obj1.features.at(i) - obj2.features.at(i)), 2);
     
     to_return = std::sqrt(s);
     
@@ -48,15 +44,12 @@ double DistanceMetrics::getEuclidean(DataObject obj1, DataObject obj2)
 double DistanceMetrics::getChebyshev(DataObject obj1, DataObject obj2)
 {
     double to_return = -1.0;   
-    
-    std::vector<double> v1 = obj1.getItems();
-    std::vector<double> v2 = obj2.getItems();
     int n = obj1.getFeatureCount();
     
     for (int i = 0; i < n; i++)
     {
-        if (fabs(v1[i] - v2[i]) > to_return)
-            to_return = fabs(v1[i] - v2[i]);
+        if (fabs(obj1.features.at(i) - obj2.features.at(i)) > to_return)
+            to_return = fabs(obj1.features.at(i) - obj2.features.at(i));
     }
     
     return to_return;

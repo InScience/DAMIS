@@ -22,6 +22,7 @@
 #include "SMACOFZEIDEL.h"
 #include "SOM.h"
 #include "mpi.h"
+#include "Projection.h"
 #include <sstream>
 
 using namespace std;
@@ -63,7 +64,7 @@ int main(int argc, char** argv) {
     MPI_Status status;
     
     if (pid == 0)
-    {
+    { 
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
         {
@@ -166,7 +167,7 @@ double** ObjectMatrixToDouble(ObjectMatrix matrix)
     
     for (int i = 0; i < numOfObjects; i++)
         for (int j = 0; j < numOfFeatures; j++)
-            matrixToReturn[i][j] = matrix.getObjectAt(i).getItems().at(j);
+            matrixToReturn[i][j] = matrix.getObjectAt(i).features.at(j);
     
     return matrixToReturn;
 }
@@ -197,7 +198,7 @@ void PrintY(ObjectMatrix matrix)
     for (int i = 0; i < numOfObjects; i++)
     {
         for (int j = 0; j < numOfFeatures; j++)
-            cout<<matrix.getObjectAt(i).getItems().at(j)<<" ";
+            cout<<matrix.getObjectAt(i).features.at(j)<<" ";
         cout<<endl;
     }
 }

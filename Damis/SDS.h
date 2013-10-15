@@ -1,0 +1,53 @@
+///////////////////////////////////////////////////////////
+//  SDS.h
+//  Implementation of the Class SDS
+//  Created on:      07-Lie-2013 20:07:31
+//  Original author: Povilas
+///////////////////////////////////////////////////////////
+
+#if !defined(EA_BD1F1D91_A491_4a5e_9B31_E250CAE201D5__INCLUDED_)
+#define EA_BD1F1D91_A491_4a5e_9B31_E250CAE201D5__INCLUDED_
+
+#include "ObjectMatrix.h"
+#include "PCA.h"
+#include "SMACOF.h"
+#include "ExternalMethods.h"
+#include "MDS.h"
+#include "DistanceMetricsEnum.h"
+#include "ProjectionEnum.h"
+
+class SDS : public MDS, public ExternalMethods
+{
+
+public:
+	SDS();
+	virtual ~SDS();
+	//PCA *m_PCA;
+	//SMACOF *m_SMACOF;
+
+	SDS(double eps, int maxIter, int d, ProjectionEnum baseVectInitt, int nofBaseVect, DistanceMetricsEnum distMetrics);
+	virtual void toDataType();
+	virtual void fromDataType();
+
+//protected:
+	virtual ObjectMatrix getProjection();
+	virtual double getStress();
+
+private:
+	/**
+	 * Base vector initialization method
+	 */
+	ProjectionEnum initMethod;
+	ObjectMatrix Y_new;
+        DistanceMetricsEnum distMethod;
+	/**
+	 * Number of base vectors
+	 */
+	int nb;
+	ObjectMatrix X_base;
+	ObjectMatrix X_new;
+
+	void getQN();
+
+};
+#endif // !defined(EA_BD1F1D91_A491_4a5e_9B31_E250CAE201D5__INCLUDED_)

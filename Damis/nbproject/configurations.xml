@@ -15,8 +15,10 @@
       <itemPath>MDS.h</itemPath>
       <itemPath>ObjectMatrix.h</itemPath>
       <itemPath>PCA.h</itemPath>
-      <itemPath>PSMACOF.h</itemPath>
+      <itemPath>Projection.h</itemPath>
+      <itemPath>ProjectionEnum.h</itemPath>
       <itemPath>SAMANN.h</itemPath>
+      <itemPath>SDS.h</itemPath>
       <itemPath>SMACOF.h</itemPath>
       <itemPath>SMACOFZEIDEL.h</itemPath>
       <itemPath>SOM.h</itemPath>
@@ -41,8 +43,9 @@
       <itemPath>MDS.cpp</itemPath>
       <itemPath>ObjectMatrix.cpp</itemPath>
       <itemPath>PCA.cpp</itemPath>
-      <itemPath>PSMACOF.cpp</itemPath>
+      <itemPath>Projection.cpp</itemPath>
       <itemPath>SAMANN.cpp</itemPath>
+      <itemPath>SDS.cpp</itemPath>
       <itemPath>SMACOF.cpp</itemPath>
       <itemPath>SMACOFZEIDEL.cpp</itemPath>
       <itemPath>SOM.cpp</itemPath>
@@ -138,13 +141,19 @@
       </item>
       <item path="PCA.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="PSMACOF.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Projection.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PSMACOF.h" ex="false" tool="3" flavor2="0">
+      <item path="Projection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProjectionEnum.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SAMANN.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SAMANN.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SDS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SDS.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SMACOF.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -308,13 +317,19 @@
       </item>
       <item path="PCA.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="PSMACOF.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Projection.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PSMACOF.h" ex="false" tool="3" flavor2="0">
+      <item path="Projection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProjectionEnum.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SAMANN.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SAMANN.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SDS.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SDS.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SMACOF.cpp" ex="false" tool="1" flavor2="0">
       </item>

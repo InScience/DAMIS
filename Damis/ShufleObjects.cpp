@@ -17,42 +17,65 @@ ShufleObjects::ShufleObjects(){
 
 }
 
-
-
 ShufleObjects::~ShufleObjects(){
 
 }
 
-
-
-
-
-ObjectMatrix ShufleObjects::byBubleSort(ObjectMatrix objectMatrix){
-
-	return  NULL;
+std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)   // didejimo tvarka
+{
+    int n = objectMatrix.getObjectCount();
+    int tmp_index = 0;
+    double tmp_disp = 0.0;
+    bool shufled = false;
+    std::vector<int> shufledIndexes;
+    shufledIndexes.reserve(n);
+    for (int i = 0; i < n; i++)
+        shufledIndexes.push_back(i);
+    
+    for (int k = 0; k < n; k++)
+    {
+        shufled = false;
+        for (int i = 0; i < n - 1; i++)
+        {
+            if (objectMatrix.getObjectAt(i).features.at(0) > objectMatrix.getObjectAt(i + 1).features.at(0))
+            {
+                tmp_disp = objectMatrix.getObjectAt(i).features.at(0);
+                tmp_index = i;
+                objectMatrix.getObjectAt(i).features[0] = objectMatrix.getObjectAt(i + 1).features.at(0);
+                objectMatrix.getObjectAt(i + 1).features[0] = tmp_disp;
+                shufledIndexes[i] = shufledIndexes.at(i + 1);
+                shufledIndexes[i + 1] = tmp_index;
+                shufled = true;
+            }
+        }
+        if (shufled == false)
+            break;
+    }
+    
+    return  shufledIndexes;
 }
 
-
-ObjectMatrix ShufleObjects::byDispersion(ObjectMatrix objectMatrix){
-
-	return  NULL;
+std::vector<int> ShufleObjects::byBubleSortDsc(ObjectMatrix objectMatrix)  // mazejimo tvarka
+{
+    std::vector<int> shufledIndexes = ShufleObjects::byBubleSort(objectMatrix);
+    std::vector<int> reverseIndexes;
+    reverseIndexes.reserve(objectMatrix.getObjectCount());
+    unsigned n = shufledIndexes.size();
+    
+    for (unsigned i = n - 1; i >= 0; i++)
+        reverseIndexes.push_back(shufledIndexes.at(i));
+    
+    return  reverseIndexes;
 }
-
-
-ObjectMatrix ShufleObjects::byPCA(ObjectMatrix objectMatrix){
-
-	return  NULL;
-}
-
 
 std::vector<int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
 
-    int n = objectMatrix.getObjectCount();
+    unsigned int n = objectMatrix.getObjectCount();
     std::vector<int> currentIndexes;
     std::vector<int> shufledIndexes;
     shufledIndexes.reserve(n);
     currentIndexes.reserve(n);
-    for (int i = 0; i < n; i++)
+    for (unsigned int i = 0; i < n; i++)
         currentIndexes.push_back(i);
     double r = 0.0;
     int index = 0;
@@ -76,8 +99,17 @@ std::vector<int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
 std::vector<int> ShufleObjects::shufleObjectMatrix(ShufleEnum shufleEnum, ObjectMatrix objectMatrix){
     std::vector<int> shufled;
     
-    if (shufleEnum == Random)
-        shufled = ShufleObjects::byRand(objectMatrix);
-    
+    switch (shufleEnum)
+    {
+        case 1: shufled = ShufleObjects::byRand(objectMatrix);
+                break;
+        case 2: shufled = ShufleObjects::byBubleSort(objectMatrix);
+                break;
+        case 3: shufled = ShufleObjects::byBubleSortDsc(objectMatrix);
+                break;
+        default: shufled = ShufleObjects::byRand(objectMatrix);
+                break;
+    }
+         
     return  shufled;
 }

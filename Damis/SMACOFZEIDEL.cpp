@@ -52,8 +52,8 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
             {
                 sum = 0.0;
                 for (int k = 0; k < n; k++)
-                        sum += Gutman.getObjectAt(i).getItems().at(k) * Y.getObjectAt(k).getItems().at(j);
-                Y.getObjectAt(i).UpdateValue(j, sum / n);
+                        sum += Gutman.getObjectAt(i).features.at(k) * Y.getObjectAt(k).features.at(j);
+                Y.getObjectAt(i).features[j] = sum / n;
                 //Y.getObjectAt(i).getItems().at(j) = sum / n;
             }
             Gutman = getGutman();

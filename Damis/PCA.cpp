@@ -22,8 +22,6 @@ PCA::~PCA(){
  */
 PCA::PCA(int dim){
     setProjectionDimension(dim);
-    PCA::toDataType();
-    Y = PCA::getProjection();
 }
 
 /**
@@ -43,13 +41,14 @@ PCA::PCA(ObjectMatrix objMatrix, int dim){
  
     setProjectionDimension(dim);
     X = objMatrix;
-    PCA::toDataType();
-    PCA::getProjection();
+    
+
 }
 
 ObjectMatrix PCA::getProjection(){
+    PCA::toDataType();
     int m = X.getObjectCount();
-    int n = X.getObjectAt(0).getItems().size();
+    int n = X.getObjectAt(0).getFeatureCount();
     double X_vid[n];
     for (int i = 0; i < n; i++)
         X_vid[i] = Statistics::getAverage(X, i);
@@ -79,21 +78,17 @@ ObjectMatrix PCA::getProjection(){
  
 }
 
-ObjectMatrix PCA::getY(){
-    return Y;
-}
-
 /**
  * Converts data object to datatype required by external method
  */
 void PCA::toDataType(){
     int m = X.getObjectCount();
-    int n = X.getObjectAt(0).getItems().size();
+    int n = X.getObjectAt(0).getFeatureCount();
     alglibX.setlength(m, n);
 
     for (int i = 0; i < m; i++)
         for (int j = 0; j < n; j++)
-            alglibX(i,j) = X.getObjectAt(i).getItems().at(j);
+            alglibX(i,j) = X.getObjectAt(i).features.at(j);
 }
 
 

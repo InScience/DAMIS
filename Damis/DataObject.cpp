@@ -28,8 +28,8 @@ DataObject::DataObject(int feature_count){
 }
 
 DataObject::DataObject(std::vector<double> vector){
-    items = vector;
-    featureCount = items.size();
+    features = vector;
+    featureCount = features.size();
 }
 
 /**
@@ -47,10 +47,6 @@ int DataObject::getClassLabel(){
 	return classLabel;
 }
 
-std::vector<double> DataObject::getItems(){
-    return items;
-}
-
 /**
  * Returns feature count
  */
@@ -64,21 +60,21 @@ void DataObject::setClassLabel(int class_Label){
     classLabel = class_Label;
 }
 
-void DataObject::UpdateValue(int i, double value)
-{
-    items[i] = value;
-}
-
 bool DataObject::IsIdentical(DataObject obj)
 {
     bool ats = false;
     int k = 0;
     int n = obj.getFeatureCount();
     for (int i = 0; i < n; i++)
-        if (this->items.at(i) == obj.getItems().at(i))
+        if (this->features.at(i) == obj.features.at(i))
             k++;
     if (k == n)
         ats = true;
     
     return ats;    
+}
+
+void DataObject::setNumOfFeatures(int n)
+{
+    features.reserve(n);
 }

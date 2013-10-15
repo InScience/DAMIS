@@ -25,9 +25,8 @@ public:
 	PCA(ObjectMatrix objMatrix, int d);
 	virtual void toDataType();
 	virtual void fromDataType();
-        ObjectMatrix getY();   // testavimui
 
-protected:
+//protected:
 	virtual ObjectMatrix getProjection();
 
 private:

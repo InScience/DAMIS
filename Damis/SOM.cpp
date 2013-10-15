@@ -90,8 +90,8 @@ ObjectMatrix SOM::getProjection(){
                         h = alpha / (alpha * eta + 1);
                         if (eta > Max(alpha * Max((double)k_x, (double)k_y), 1))
                             h = 0;
-                        tmp = M.getObjectAt(i, j).getItems().at(k) + h * (X.getObjectAt(l).getItems().at(k) - M.getObjectAt(i, j).getItems().at(k));
-                        M.getObjectAt(i, j).UpdateValue(k, tmp);
+                        tmp = M.getObjectAt(i, j).features.at(k) + h * (X.getObjectAt(l).features.at(k) - M.getObjectAt(i, j).features.at(k));
+                        M.getObjectAt(i, j).features[k] = tmp;
                     }
                 }
             }
@@ -139,7 +139,7 @@ double SOM::Max(double d1, double d2)
 double SOM::getQuantizationError(){
     int m = X.getObjectCount();
     int r = nWinner.getObjectCount();
-    double som_qe = 0.0, dist_li;
+    double som_qe = 0.0, dist_li = 0.0;
     
     for (int l = 0; l < m; l++)
     {

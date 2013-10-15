@@ -11,7 +11,7 @@
 #include "DataObject.h"
 
 ObjectMatrix::ObjectMatrix(){
-    DataObjects.reserve(5);    
+    DataObjects.reserve(1);    
 }
 
 ObjectMatrix::~ObjectMatrix(){
@@ -34,25 +34,30 @@ ObjectMatrix::ObjectMatrix(int count){
     objectCount = 0;
 }
 
-
 /**
  * Constructor that creates ObjectMAtrix for n objects, and m features
  */
-ObjectMatrix::ObjectMatrix(int m, int n){
-    DataObjects.reserve(m);
+ObjectMatrix::ObjectMatrix(int n, int m){
+    DataObjects.reserve(n);
+    for (int i = 0; i < n; i++)
+        DataObjects[i].setNumOfFeatures(m);
     objectCount = 0;
 }
-
 
 /**
  * Constructor that creates m by n matrix that holds k features i.e. cube. Needed
  * by SOM algorithm.
  */
 ObjectMatrix::ObjectMatrix(int m, int n, int k){
-    DataObjects.reserve(m * n);
+    DataObjects2D.reserve(m);
+    for (int i = 0; i < m; i++)
+    {
+        DataObjects2D[i].reserve(n);
+        for (int j = 0; j < n; j++)
+            DataObjects2D[i][j].setNumOfFeatures(k);
+    }
     objectCount = 0;
 }
-
 
 /**
  * Adds data object to ObjectMatrix
@@ -65,6 +70,7 @@ void ObjectMatrix::addObject(DataObject object){
 void ObjectMatrix::addObjectTo(int index, DataObject object){
     DataObjects2D[index].push_back(object);
     //objectCount = DataObjects.size();
+    objectCount++;
 }
 
 /**
@@ -112,14 +118,10 @@ void ObjectMatrix::loadDataMatrix(){
             DataObjects.push_back(tmp);
             dataObjectItems.clear();
         }  
-        objectCount = DataObjects.size();
-        
+        objectCount = DataObjects.size();        
     }
     else
-    {
         objectCount = 0;
-        ErrorMessage = "gaidys";
-    }
 }
 
 

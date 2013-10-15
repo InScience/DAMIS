@@ -17,7 +17,6 @@ ARFF::ARFF(const char* path){
     std::string tmp1, tmp2;
     std::vector<std::string> tmp;
     std::vector<double> v;
-    double d;
     ReadSuccess = false;
     if (file.is_open() != false)
     {
@@ -58,7 +57,7 @@ ARFF::ARFF(const char* path){
                     }
                     else
                     {
-                        for (int i = 0; i < tmp.size(); i++)
+                        for (unsigned int i = 0; i < tmp.size(); i++)
                         {
                             if (data_types[i] == "REAL" || data_types[i] == "INTEGER")
                             {
@@ -123,8 +122,8 @@ void ARFF::WriteData(const char* path, std::vector<DataObject> data)
     {
         k = data.at(i).getFeatureCount();
         for (int j = 0; j < k - 1; j++)
-            file<<data.at(i).getItems().at(j)<<",";
-        file<<data.at(i).getItems().at(k - 1)<<std::endl;
+            file<<data.at(i).features.at(j)<<",";
+        file<<data.at(i).features.at(k - 1)<<std::endl;
     }
     file.close();
 }

@@ -118,15 +118,15 @@ ObjectMatrix SAMANN::getProjection(){
                 {
                     tarp = 0.0;
                     for (int k = 0; k < n; k++)
-                        tarp = tarp + w1[j].at(k) * Xp.getObjectAt(miu).getItems().at(k);
-                    Y_pasl.getObjectAt(miu).UpdateValue(j, 1 / (1 + exp(-1 * tarp)));
+                        tarp = tarp + w1[j].at(k) * Xp.getObjectAt(miu).features.at(k);
+                    Y_pasl.getObjectAt(miu).features[j] = 1.0 / (1 + exp(-1 * tarp));
                 }
                 for (int j = 0; j < d; j++)
                 {
                     tarp = 0.0;
                     for (int k = 0; k < nNeurons; k++)
-                        tarp = tarp + w2[j].at(k) * Y_pasl.getObjectAt(miu).getItems().at(k);
-                    Y_is.getObjectAt(miu).UpdateValue(j, 1 / exp(-1 * tarp));
+                        tarp = tarp + w2[j].at(k) * Y_pasl.getObjectAt(miu).features.at(k);
+                    Y_is.getObjectAt(miu).features[j] = 1.0 / exp(-1 * tarp);
                 }
             }
         }
@@ -140,19 +140,19 @@ ObjectMatrix SAMANN::getProjection(){
                 {
                     distXp = DistanceMetrics::getDistance(Xp.getObjectAt(miu), Xp.getObjectAt(niu), Euclidean);
                     distY = DistanceMetrics::getDistance(Y.getObjectAt(miu), Y.getObjectAt(niu), Euclidean);
-                    tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Y_is.getObjectAt(miu).getItems().at(k) - Y_is.getObjectAt(niu).getItems().at(k));
-                    delta_L.getObjectAt(miu).UpdateValue(niu, tmp);
-                    ddelta_L[miu] = delta_L.getObjectAt(miu).getItems().at(niu) * (1 - Y_is.getObjectAt(miu).getItems().at(k)) * Y_is.getObjectAt(miu).getItems().at(k);
-                    ddelta_L[niu] = delta_L.getObjectAt(miu).getItems().at(niu) * (1 - Y_is.getObjectAt(niu).getItems().at(k)) * Y_is.getObjectAt(niu).getItems().at(k);
+                    tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Y_is.getObjectAt(miu).features.at(k) - Y_is.getObjectAt(niu).features.at(k));
+                    delta_L.getObjectAt(miu).features[niu] = tmp;
+                    ddelta_L[miu] = delta_L.getObjectAt(miu).features.at(niu) * (1 - Y_is.getObjectAt(miu).features.at(k)) * Y_is.getObjectAt(miu).features.at(k);
+                    ddelta_L[niu] = delta_L.getObjectAt(miu).features.at(niu) * (1 - Y_is.getObjectAt(niu).features.at(k)) * Y_is.getObjectAt(niu).features.at(k);
                     tarp1 = tarp1 + ddelta_L[miu];
                     tarp2 = tarp2 + ddelta_L[niu];
                     
                     for (int j = 0; j < nNeurons; j++)
                     {
-                        if (maxIteration == 1)
-                            w2[j][k] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getItems().at(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getItems().at(j));
+                        if (iter == 1)
+                            w2[j][k] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).features.at(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).features.at(j));
                         else
-                            w2[j][k] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getItems().at(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getItems().at(j)) - w2[k][j];
+                            w2[j][k] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).features.at(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).features.at(j)) - w2[k][j];
                     }
                 }
                 ddelta_suma[miu] = tarp1;
@@ -163,17 +163,17 @@ ObjectMatrix SAMANN::getProjection(){
                     {
                         delta_tarp[miu] = ddelta_suma.at(miu) * w2[j][k];
                         delta_tarp[niu] = ddelta_suma.at(niu) * w2[j][k];
-                    
-                    //for (int i = 0; i < n; i++)
-                    //{
-                        ddelta_tarp[miu] = delta_tarp[miu] * (1 - Y_pasl.getObjectAt(miu).getItems().at(j));
-                        ddelta_tarp[niu] = delta_tarp[niu] * (1 - Y_pasl.getObjectAt(niu).getItems().at(j));
-                        if (maxIteration == 1)
-                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getItems().at(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getItems().at(j));
-                        else
-                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getItems().at(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getItems().at(j)) -w2[j][k];
-                    //}
                     }
+                    
+                    for (int k = 0; k < n; k++)
+                    {
+                        ddelta_tarp[miu] = delta_tarp[miu] * (1 - Y_pasl.getObjectAt(miu).features.at(j));
+                        ddelta_tarp[niu] = delta_tarp[niu] * (1 - Y_pasl.getObjectAt(niu).features.at(j));
+                        if (iter == 1)
+                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).features.at(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).features.at(j));
+                        else
+                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).features.at(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).features.at(j)) -w2[j][k];
+                    }                    
                 }
             }            
         }
@@ -185,15 +185,15 @@ ObjectMatrix SAMANN::getProjection(){
         {
             tarp = 0.0;
             for (int k = 0; k < n; k++)
-                tarp += w1[j].at(k) * X.getObjectAt(miu).getItems().at(k);
-            Y_pasl.getObjectAt(miu).UpdateValue(j, (1 / (1 + exp(-1 * tarp))));              
+                tarp += w1[j].at(k) * X.getObjectAt(miu).features.at(k);
+            Y_pasl.getObjectAt(miu).features[j] = 1.0 / (1 + exp(-1 * tarp));              
         }
         for (int j = 0; j < d; j++)
         {
             tarp = 0.0;
             for (int k = 0; k < nNeurons; k++)
-                tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).getItems().at(k);
-            Y_is.getObjectAt(miu).UpdateValue(j, 1 / (1 + exp(-1 * tarp)));
+                tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).features.at(k);
+            Y_is.getObjectAt(miu).features[j] = 1.0 / (1 + exp(-1 * tarp));
         }
     }
     Y = Y_is;
@@ -207,8 +207,8 @@ double SAMANN::getMax()
     double max = -10000.0;
     for (int i = 0; i < n; i++)
         for (int j = 0; j < m; j++)
-            if (max < X.getObjectAt(i).getItems().at(j))
-                max = X.getObjectAt(i).getItems().at(j);
+            if (max < X.getObjectAt(i).features.at(j))
+                max = X.getObjectAt(i).features.at(j);
     return max; 
 }
 
@@ -224,8 +224,8 @@ void SAMANN::NormalizeX()
     {
         for (int j = 0; j < m; j++)
         {
-            value = X.getObjectAt(i).getItems().at(j) / max;
-            X.getObjectAt(i).UpdateValue(j, value);
+            value = X.getObjectAt(i).features.at(j) / max;
+            X.getObjectAt(i).features[j] = value;
         }
             //row.push_back(X.getObjectAt(i).getItems().at(j) / max)
         //X_Norm.addObject(DataObject(row));
@@ -265,7 +265,7 @@ bool SAMANN::isIdentical(DataObject obj)
     {
         k = 0;
         for (int j = 0; j < m; j++)
-            if (obj.getItems().at(j) == Xp.getObjectAt(i).getItems().at(j))
+            if (obj.features.at(j) == Xp.getObjectAt(i).features.at(j))
                 k++;
         if (k == m)
         {

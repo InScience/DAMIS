@@ -28,9 +28,10 @@ protected:
 	void setEpsilon(double eps);
 	void setMaxIteration(int maxIter);
 
-private:
+
 	double epsilon;
 	int maxIteration;
+private:
         double getWeight(int, int);
 };
 #endif // !defined(EA_CDF28449_1ACC_4a74_A6EB_47124922ACEA__INCLUDED_)
