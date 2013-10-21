@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>DMA.h</itemPath>
       <itemPath>DataMatrix.h</itemPath>
       <itemPath>DataObject.h</itemPath>
       <itemPath>DimReductionMethod.h</itemPath>
@@ -35,6 +36,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>DMA.cpp</itemPath>
       <itemPath>DataObject.cpp</itemPath>
       <itemPath>DimReductionMethod.cpp</itemPath>
       <itemPath>DistanceMetrics.cpp</itemPath>
@@ -103,6 +105,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="DMA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DMA.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="DataMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DataObject.cpp" ex="false" tool="1" flavor2="0">
@@ -279,6 +285,10 @@
           <commandLine>-L$HOME</commandLine>
         </linkerTool>
       </compileType>
+      <item path="DMA.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DMA.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="DataMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DataObject.cpp" ex="false" tool="1" flavor2="0">

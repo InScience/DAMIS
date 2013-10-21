@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/DMA.o \
 	${OBJECTDIR}/DataObject.o \
 	${OBJECTDIR}/DimReductionMethod.o \
 	${OBJECTDIR}/DistanceMetrics.o \
@@ -88,6 +89,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis: alglib/libalglib.so
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/damis ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/DMA.o: DMA.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/DMA.o DMA.cpp
 
 ${OBJECTDIR}/DataObject.o: DataObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -232,6 +238,19 @@ ${TESTDIR}/tests/ReadARFFtestrunner.o: tests/ReadARFFtestrunner.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g --coverage `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/ReadARFFtestrunner.o tests/ReadARFFtestrunner.cpp
 
+
+${OBJECTDIR}/DMA_nomain.o: ${OBJECTDIR}/DMA.o DMA.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/DMA.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DMA_nomain.o DMA.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/DMA.o ${OBJECTDIR}/DMA_nomain.o;\
+	fi
 
 ${OBJECTDIR}/DataObject_nomain.o: ${OBJECTDIR}/DataObject.o DataObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}
