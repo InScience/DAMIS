@@ -32,8 +32,8 @@ void pcatestclass::CorrectFile() {
     if (n > 0)
     {
         PCA pca_test(omx, d);
-        ObjectMatrix Y = pca_test.getY();
-        if (Y.getObjectCount() == n && Y.getObjectAt(0).getItems().size() == d)
+        ObjectMatrix Y = pca_test.getProjection();
+        if (Y.getObjectCount() == n && Y.getObjectAt(0).features.size() == d)
                 ats = true;
     }
     CPPUNIT_ASSERT(ats);
@@ -62,17 +62,17 @@ void pcatestclass::CorrectConversion(){
     ObjectMatrix X("tests/cpu.arff");
     X.loadDataMatrix();
     int m = X.getObjectCount();
-    int n = X.getObjectAt(0).getItems().size();
+    int n = X.getObjectAt(0).features.size();
     alglib::real_2d_array alglibX;
     alglibX.setlength(m, n);
 
     for (int i = 0; i < m; i++)
         for (int j = 0; j < n; j++)
-            alglibX(i,j) = X.getObjectAt(i).getItems().at(j);
+            alglibX(i,j) = X.getObjectAt(i).features.at(j);
     
     for (int i = 0; i < m; i++)
         for (int j = 0; j < n; j++)
-            if (alglibX(i,j) - X.getObjectAt(i).getItems().at(j) > 0.001)
+            if (alglibX(i,j) - X.getObjectAt(i).features.at(j) > 0.001)
                 CPPUNIT_ASSERT(false);
     CPPUNIT_ASSERT(true);
 }

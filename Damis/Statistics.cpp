@@ -10,7 +10,7 @@ double Statistics::getAverage(ObjectMatrix om, int k){
     int n = om.getObjectCount();
     double s = 0.0;
     for (int i = 0; i < n; i++)
-        s += om.DataObjects.at(i).features.at(k);
+        s += om.getObjectAt(i).getFeatureAt(k);
     average = s / n;
     return average;
 }
@@ -25,8 +25,8 @@ double Statistics::getCorrCoef(ObjectMatrix om, int k, int l)
     
     for (int i = 0; i < n; i++)
     {
-        diffK = om.DataObjects.at(i).features.at(k) - avgFeatureK;
-        diffL = om.DataObjects.at(i).features.at(l) - avgFeatureL;
+        diffK = om.getObjectAt(i).getFeatureAt(k) - avgFeatureK;
+        diffL = om.getObjectAt(i).getFeatureAt(l) - avgFeatureL;
         fractionTop += diffK * diffL;
         tmp1 += std::pow(diffK, 2);
         tmp2 += std::pow(diffL, 2);
@@ -47,13 +47,19 @@ double Statistics::getCovCoef(ObjectMatrix om, int k, int l)
 
     for (int i = 0; i < n; i++)
     {
-        diffK = om.DataObjects.at(i).features.at(k) - avgFeatureK;
-        diffL = om.DataObjects.at(i).features.at(l) - avgFeatureL;
+        diffK = om.getObjectAt(i).getFeatureAt(k) - avgFeatureK;
+        diffL = om.getObjectAt(i).getFeatureAt(l) - avgFeatureL;
         to_return += diffK * diffL;
     }
     
     to_return = to_return / (n - 1);
     return to_return;
+}
+
+double Statistics::getRandom(double min, double max)
+{
+    srand(0);
+    return min + ((double)rand() / RAND_MAX) * (max -min);
 }
 
 double Statistics::getRandom(int n)
@@ -71,7 +77,7 @@ ObjectMatrix Statistics::getCovMatrix(ObjectMatrix om)
 {
     double tmp = 0.0;
     std::vector<double> dd;
-    int n = om.DataObjects.at(0).getFeatureCount();
+    int n = om.getObjectAt(0).getFeatureCount();
     ObjectMatrix cov(n);
     for (int i = 0; i < n; i++)
     {

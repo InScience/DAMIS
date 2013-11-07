@@ -39,6 +39,10 @@ double MDS::getEpsilon(){
     return epsilon;
 }
 
+double MDS::getFinalEpsilon(){
+    return finalEpsilon;
+}
+
 ObjectMatrix MDS::getGutman(){
     int n = X.getObjectCount();
     ObjectMatrix GutmanMatrix(n);
@@ -49,7 +53,6 @@ ObjectMatrix MDS::getGutman(){
     GutmanMatrixRow.reserve(n);
     for (int i = 0; i < n; i++)
         GutmanMatrixRow.push_back(0);
-    
     
     for (int i = 0; i < n; i++)
     {
@@ -83,11 +86,58 @@ ObjectMatrix MDS::getGutman(){
     return  GutmanMatrix;
 }
 
+ObjectMatrix MDS::getGutman(ObjectMatrix Y_new){
+    int n = X.getObjectCount();
+    ObjectMatrix GutmanMatrix(n);
+    double distXij;
+    double distYij;
+    
+    std::vector<double> GutmanMatrixRow;
+    GutmanMatrixRow.reserve(n);
+    for (int i = 0; i < n; i++)
+        GutmanMatrixRow.push_back(0);
+    
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            distYij = DistanceMetrics::getDistance(Y_new.getObjectAt(i), Y_new.getObjectAt(j), Euclidean);
+            if (i != j &&  distYij != 0)
+            {
+                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), Euclidean);
+                GutmanMatrixRow.at(j) = -1 * distXij/distYij;
+            }
+            else if (i != j && distYij == 0)
+                GutmanMatrixRow.at(j) = 0;
+        }
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j)
+            {
+                GutmanMatrixRow.at(i) = 0;
+                for (int k = 0; k < n; k++)
+                    if (i != k)
+                        GutmanMatrixRow.at(i) += GutmanMatrixRow.at(k);
+                GutmanMatrixRow.at(i) = -1 * GutmanMatrixRow.at(i);
+                break;
+            }
+                
+        }
+        GutmanMatrix.addObject(DataObject(GutmanMatrixRow));
+    }
+    
+    return  GutmanMatrix;
+}
+
 /**
  * Gets max iteration
  */
 int MDS::getMaxIteration(){
     return maxIteration;
+}
+
+int MDS::getIteration(){
+    return iteration;
 }
 
 /**

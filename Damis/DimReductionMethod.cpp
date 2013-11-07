@@ -12,8 +12,6 @@
 
 DimReductionMethod::DimReductionMethod(){
     d = 2;
-    int n = X.getObjectCount();
-    DimReductionMethod::initializeProjectionMatrix(n);
 }
 
 DimReductionMethod::~DimReductionMethod(){
@@ -30,7 +28,8 @@ int DimReductionMethod::getProjectionDimension(){
 /**
  * Initializes Y matrix acording to dimension d and fills it with data.
  */
-void DimReductionMethod::initializeProjectionMatrix(int n){
+void DimReductionMethod::initializeProjectionMatrix(){
+    int n = X.getObjectCount();
     Y = ObjectMatrix(n);
     std::vector<double> DataObjectItem;
     double r = 0.0;
@@ -41,8 +40,8 @@ void DimReductionMethod::initializeProjectionMatrix(int n){
     {
         for (int j = 0; j < d; j++)
         {
-            r = Statistics::getRandom(-1.0, 1.0, (i + j * 5));
-            DataObjectItem.at(j) = r;
+            r = Statistics::getRandom(-0.1, 0.1, (i + j * 5));
+            DataObjectItem[j] = r;
         }
         Y.addObject(DataObject(DataObjectItem));
     }

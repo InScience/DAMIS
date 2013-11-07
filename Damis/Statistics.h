@@ -19,6 +19,7 @@ public:
     static ObjectMatrix getCovMatrix(ObjectMatrix);
     static double getRandom(double, double, int);
     static double getRandom(int);
+    static double getRandom(double, double);   // testavimui, vienodu matricu generavimui
 };
 
 #endif	/* STATISTICS_H */

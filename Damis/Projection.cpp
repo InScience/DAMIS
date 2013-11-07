@@ -40,7 +40,7 @@ ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix){
     {
         tmp = 0.0;
         for (int i = 0; i < n; i++)
-            tmp += std::pow((objectMatrix.getObjectAt(i).features.at(j) - average.at(j)), 2);
+            tmp += std::pow((objectMatrix.getObjectAt(i).getFeatureAt(j) - average.at(j)), 2);
         dispersion.push_back(std::sqrt((1.0 / (n - 1)) * tmp));
     }
         
@@ -54,7 +54,7 @@ ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix){
     
     for (int i = 0; i < n; i++)
     {
-        feature.push_back(objectMatrix.getObjectAt(i).features.at(maxDispersionCol));
+        feature.push_back(objectMatrix.getObjectAt(i).getFeatureAt(maxDispersionCol));
         projection.addObject(DataObject(feature));
         feature.clear();
     }

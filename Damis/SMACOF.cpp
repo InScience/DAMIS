@@ -7,6 +7,10 @@
 
 #include "SMACOF.h"
 #include "ShufleObjects.h"
+#include <string>
+#include <sstream>
+#include <vector>
+#include "DataObject.h"
 
 SMACOF::SMACOF(){
 
@@ -20,7 +24,7 @@ SMACOF::~SMACOF(){
  * Constructor for SMACOF object
  */
 SMACOF::SMACOF(float eps, int maxIter, int d):MDS(eps, maxIter, d){
-    
+    initializeProjectionMatrix();
 }
 
 /**
@@ -29,6 +33,10 @@ SMACOF::SMACOF(float eps, int maxIter, int d):MDS(eps, maxIter, d){
 SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix X_base, ObjectMatrix Y_base):MDS(eps, maxIter, d){
     X = X_base;
     Y = Y_base;
+}
+
+SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix initialY):MDS(eps, maxIter, d){
+    Y = initialY;
 }
 
 /**
@@ -49,9 +57,10 @@ ObjectMatrix SMACOF::getProjection(){
 
     while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
     {
-        Y_new.DataObjects.clear();
+        Y_new.clearDataObjects();
         oldStressError = tmpStressError;
         Gutman = getGutman();
+
         for (int i=0; i < n; i++)
         {
             Y_newRow.clear();
@@ -59,28 +68,30 @@ ObjectMatrix SMACOF::getProjection(){
             {
                 sum = 0.0;
                 for (int k = 0; k < n; k++)
-                        sum += Gutman.getObjectAt(i).features.at(k) * Y.getObjectAt(k).features.at(j);
-                Y_newRow.push_back(sum / n);
-                //Y.getObjectAt(i).getItems().at(j) = sum / n;
+                        sum += Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+                Y_newRow.push_back(sum / n);                
             }
             Y_new.addObject(DataObject(Y_newRow));
         }
         Y = Y_new;
+        //std::stringstream ss;
+        //ss << iteration;
+        //std::string str = "test_ " + ss.str();
+        //Y.saveDataMatrix(str.c_str());
         newStressError = getStress();
         tmpStressError = newStressError;
         iteration++;
     }
-    //iteration = getMaxIteration();
-    stress = oldStressError - newStressError;
+    finalEpsilon = oldStressError - newStressError;
     return Y;
 }
 
-ObjectMatrix SMACOF::getX()
+double SMACOF::getStress()
 {
-    return X;
+    return MDS::getStress();
 }
 
-//double SMACOF::getStress()
-//{
-//    return 100.0009;
-//}
+ObjectMatrix SMACOF::getGutmanMatrix()
+{
+    return MDS::getGutman();
+}

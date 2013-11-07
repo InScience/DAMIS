@@ -20,10 +20,11 @@ public:
 	virtual ~SMACOFZEIDEL();
 
 	SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum);
+        SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix initProjection);
 
 //protected:
 	virtual ObjectMatrix getProjection();
-
+        double getStress();
 private:
         ShufleEnum shufleEnum;
 

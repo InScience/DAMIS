@@ -23,13 +23,15 @@ public:
 	int getClassLabel();
 	int getFeatureCount();
 	void setClassLabel(int classLabel);
-        std::vector<double> features;
+        double getFeatureAt(int index);
         void setNumOfFeatures(int);
         bool IsIdentical(DataObject);
+        void updateFeature(int featureIndex, double newValue);
 
 private:
 	int classLabel;
 	int featureCount;
 	int index;
+        std::vector<double> features;
 };
 #endif // !defined(EA_2E0FA64E_418E_4162_A9CF_9091C3861ED8__INCLUDED_)

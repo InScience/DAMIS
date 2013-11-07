@@ -20,8 +20,6 @@ class ObjectMatrix : public DataMatrix
 public:
 	ObjectMatrix();
 	virtual ~ObjectMatrix();
-        std::vector<DataObject> DataObjects;
-        std::vector<std::vector<DataObject> > DataObjects2D;
 	ObjectMatrix(std::string);
 	ObjectMatrix(int count);
 	ObjectMatrix(int m, int n);
@@ -34,8 +32,13 @@ public:
 	void loadDataMatrix();
         std::vector<std::string> getFeaturesTitle();
 	void saveDataMatrix(const char*);
+        void clearDataObjects();
         std::string ErrorMessage;
+        void updateDataObject(int objectIndex, int featureIndex, double newValue);
+        void updateDataObject(int rowIndex, int colIndex, int featureIndex, double newValue);
 private:
+        std::vector<DataObject> DataObjects;
+        std::vector<std::vector<DataObject> > DataObjects2D;
 	int objectCount;
         std::vector<std::string> featureTitles;
         std::string fileName;

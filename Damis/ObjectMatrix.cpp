@@ -73,6 +73,16 @@ void ObjectMatrix::addObjectTo(int index, DataObject object){
     objectCount++;
 }
 
+void ObjectMatrix::updateDataObject(int objectIndex, int featureIndex, double newValue)
+{
+    this->DataObjects.at(objectIndex).updateFeature(featureIndex, newValue);
+}
+
+void ObjectMatrix::updateDataObject(int rowIndex, int colIndex, int featureIndex, double newValue)
+{
+    this->DataObjects2D[rowIndex].at(colIndex).updateFeature(featureIndex, newValue);
+}
+
 /**
  * Gets object at position
  */
@@ -128,4 +138,9 @@ void ObjectMatrix::loadDataMatrix(){
 void ObjectMatrix::saveDataMatrix(const char* path){
     ARFF file;
     file.WriteData(path, this->DataObjects);
+}
+
+void ObjectMatrix::clearDataObjects()
+{
+    DataObjects.clear();
 }

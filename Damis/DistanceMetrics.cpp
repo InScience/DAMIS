@@ -22,7 +22,7 @@ double DistanceMetrics::getManhattan(DataObject obj1, DataObject obj2)
     int n = obj1.getFeatureCount();
     
     for (int i = 0; i < n; i++)
-        to_return += fabs(obj1.features.at(i) - obj2.features.at(i));
+        to_return += fabs(obj1.getFeatureAt(i) - obj2.getFeatureAt(i));
     
     return to_return;
 }
@@ -34,7 +34,7 @@ double DistanceMetrics::getEuclidean(DataObject obj1, DataObject obj2)
     int n = obj1.getFeatureCount();
     
     for (int i = 0; i < n; i++)
-        s += std::pow((obj1.features.at(i) - obj2.features.at(i)), 2);
+        s += std::pow((obj1.getFeatureAt(i) - obj2.getFeatureAt(i)), 2);
     
     to_return = std::sqrt(s);
     
@@ -48,8 +48,8 @@ double DistanceMetrics::getChebyshev(DataObject obj1, DataObject obj2)
     
     for (int i = 0; i < n; i++)
     {
-        if (fabs(obj1.features.at(i) - obj2.features.at(i)) > to_return)
-            to_return = fabs(obj1.features.at(i) - obj2.features.at(i));
+        if (fabs(obj1.getFeatureAt(i) - obj2.getFeatureAt(i)) > to_return)
+            to_return = fabs(obj1.getFeatureAt(i) - obj2.getFeatureAt(i));
     }
     
     return to_return;

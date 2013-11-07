@@ -122,8 +122,8 @@ void ARFF::WriteData(const char* path, std::vector<DataObject> data)
     {
         k = data.at(i).getFeatureCount();
         for (int j = 0; j < k - 1; j++)
-            file<<data.at(i).features.at(j)<<",";
-        file<<data.at(i).features.at(k - 1)<<std::endl;
+            file<<data.at(i).getFeatureAt(j)<<",";
+        file<<data.at(i).getFeatureAt(k - 1)<<std::endl;
     }
     file.close();
 }

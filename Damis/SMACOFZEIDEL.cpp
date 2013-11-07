@@ -22,6 +22,13 @@ SMACOFZEIDEL::~SMACOFZEIDEL(){
  */
 SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d){
     shufleEnum = shEnum;
+    initializeProjectionMatrix();
+}
+
+SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix initProjection):SMACOF(eps, maxIter, d)
+{
+    shufleEnum = shEnum;
+    Y = initProjection;
 }
 
 /**
@@ -29,17 +36,18 @@ SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum):SMA
  */
 ObjectMatrix SMACOFZEIDEL::getProjection(){
 
-    int iteration = 0, i;
+    int i;
     int n = X.getObjectCount();
     double oldStressError = getStress();
     double newStressError = 0.0;
     double tmpStressError = oldStressError;
     double sum = 0.0;
-    ObjectMatrix Gutman, Y_new;
+    ObjectMatrix Gutman, Y_new(n);
     std::vector<int> shufledIndexes;
     shufledIndexes.reserve(n);
     Y_new = Y;
     Gutman = getGutman();
+    iteration = 0;
     while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
     {
         shufledIndexes = ShufleObjects::shufleObjectMatrix(shufleEnum, Y);
@@ -52,15 +60,21 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
             {
                 sum = 0.0;
                 for (int k = 0; k < n; k++)
-                        sum += Gutman.getObjectAt(i).features.at(k) * Y.getObjectAt(k).features.at(j);
-                Y.getObjectAt(i).features[j] = sum / n;
-                //Y.getObjectAt(i).getItems().at(j) = sum / n;
+                        sum += Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+                Y_new.updateDataObject(i, j, (sum / n));
             }
-            Gutman = getGutman();
+            Gutman = getGutman(Y_new);
         }
+        Y = Y_new;
         newStressError = getStress();
         tmpStressError = newStressError;
-        iteration++;
+        iteration++;       
     }
+    finalEpsilon = oldStressError - newStressError;
     return Y;
+}
+
+double SMACOFZEIDEL::getStress()
+{
+    return MDS::getStress();
 }

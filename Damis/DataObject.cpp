@@ -78,3 +78,13 @@ void DataObject::setNumOfFeatures(int n)
 {
     features.reserve(n);
 }
+
+double DataObject::getFeatureAt(int index)
+{
+    return features.at(index);
+}
+
+void DataObject::updateFeature(int featureIndex, double newValue)
+{
+    features.at(featureIndex) = newValue;
+}

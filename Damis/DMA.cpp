@@ -13,15 +13,9 @@ DMA::DMA(){
 
 }
 
-
-
 DMA::~DMA(){
 
 }
-
-
-
-
 
 /**
  * Constructor for DMA object
@@ -29,7 +23,6 @@ DMA::~DMA(){
 DMA::DMA(float eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
 }
-
 
 /**
  * Gets neighbour
@@ -40,7 +33,6 @@ int DMA::getNeighbours(){
 
 	return neighbourNumber;
 }
-
 
 /**
  * Pure virtual method that calculates the projection
@@ -74,13 +66,13 @@ ObjectMatrix DMA::getProjection(){
             if (k > 0 && k < m)
             {
                 if (k != i)
-                    vMatrix.getObjectAt(i).features[k] = -1.0;
+                    vMatrix.updateDataObject(i, k, -1.0);
                 else if (i <= neighbourNumber)
-                    vMatrix.getObjectAt(i).features[i] = neighbourNumber + i;
+                    vMatrix.updateDataObject(i, i, neighbourNumber + i);
                 else if (i > neighbourNumber)
-                    vMatrix.getObjectAt(i).features[i] = 2 * neighbourNumber - (m - i);
+                    vMatrix.updateDataObject(i, i, 2 * neighbourNumber - (m - i));
                 else
-                    vMatrix.getObjectAt(i).features[i] = 2 * neighbourNumber;
+                    vMatrix.updateDataObject(i, i, 2 * neighbourNumber);
             }
         }
     }
@@ -93,7 +85,7 @@ ObjectMatrix DMA::getProjection(){
         Gutman = getGutman();
         for (int i = 0; i < m; i++)
             for (int j = 0; j < m; j++)
-                Gutman.getObjectAt(i).features[j] = Gutman.getObjectAt(i).features.at(j) - vMatrix.getObjectAt(i).features.at(j);
+                Gutman.updateDataObject(i, j, Gutman.getObjectAt(i).getFeatureAt(j) - vMatrix.getObjectAt(i).getFeatureAt(j));
         
         for (int i = 0; i < m; i++)
         {
@@ -102,8 +94,8 @@ ObjectMatrix DMA::getProjection(){
                 sum = 0.0;
                 for (int k = (i - neighbourNumber); k < (i + neighbourNumber); k++)
                     if (k > 0 && k < m)
-                        sum = sum + Gutman.getObjectAt(i).features.at(k) * Y.getObjectAt(k).features.at(j);
-                vMatrixObject.push_back(Y.getObjectAt(i).features.at(j) + 0.5 * sum / vMatrix.getObjectAt(i).features.at(i));
+                        sum = sum + Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+                vMatrixObject.push_back(Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / vMatrix.getObjectAt(i).getFeatureAt(i));
             }
             Y_new.addObject(DataObject(vMatrixObject));
             vMatrixObject.clear();

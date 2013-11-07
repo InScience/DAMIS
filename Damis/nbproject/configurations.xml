@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>AdditionalMethods.h</itemPath>
       <itemPath>DMA.h</itemPath>
       <itemPath>DataMatrix.h</itemPath>
       <itemPath>DataObject.h</itemPath>
@@ -36,6 +37,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>AdditionalMethods.cpp</itemPath>
       <itemPath>DMA.cpp</itemPath>
       <itemPath>DataObject.cpp</itemPath>
       <itemPath>DimReductionMethod.cpp</itemPath>
@@ -60,10 +62,11 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
-      <logicalFolder name="f3" displayName="MDSTest" projectFiles="true" kind="TEST">
-        <itemPath>tests/MDStestclass.cpp</itemPath>
-        <itemPath>tests/MDStestclass.h</itemPath>
-        <itemPath>tests/MDStestrunner.cpp</itemPath>
+      <logicalFolder name="f6"
+                     displayName="gutmanTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/gutmanTest.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="pcatest" projectFiles="true" kind="TEST">
         <itemPath>tests/pcatestclass.cpp</itemPath>
@@ -76,6 +79,24 @@
         <itemPath>tests/ReadARFFtestrunner.cpp</itemPath>
         <itemPath>tests/cpu.arff</itemPath>
         <itemPath>tests/cpu_.arff</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4"
+                     displayName="smacofTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/smacofTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5"
+                     displayName="smacofTestParallel"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/smacofTestParallel.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3"
+                     displayName="smacofZeidelTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/smacofZeidelTest.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -105,6 +126,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="AdditionalMethods.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AdditionalMethods.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="DMA.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="DMA.h" ex="false" tool="3" flavor2="0">
@@ -220,9 +245,15 @@
       </folder>
       <folder path="TestFiles/f3">
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
@@ -232,13 +263,52 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/MDStestclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/MDStestclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/MDStestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/ReadARFFtestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -250,11 +320,19 @@
       </item>
       <item path="tests/cpu_.arff" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="tests/gutmanTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/pcatestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/pcatestclass.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/pcatestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/smacofTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/smacofTestParallel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/smacofZeidelTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -285,6 +363,10 @@
           <commandLine>-L$HOME</commandLine>
         </linkerTool>
       </compileType>
+      <item path="AdditionalMethods.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AdditionalMethods.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="DMA.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="DMA.h" ex="false" tool="3" flavor2="0">
@@ -400,9 +482,15 @@
       </folder>
       <folder path="TestFiles/f3">
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
@@ -412,13 +500,52 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/MDStestclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/MDStestclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/MDStestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/ReadARFFtestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -430,11 +557,19 @@
       </item>
       <item path="tests/cpu_.arff" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="tests/gutmanTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/pcatestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/pcatestclass.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/pcatestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/smacofTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/smacofTestParallel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/smacofZeidelTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

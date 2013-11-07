@@ -23,22 +23,12 @@
 #include "SOM.h"
 #include "mpi.h"
 #include "Projection.h"
+#include "AdditionalMethods.h"
 #include <sstream>
 
 using namespace std;
 
-double** ObjectMatrixToDouble(ObjectMatrix);            // konvertavimas is ObjectMatrix i 2D double masyva
-ObjectMatrix DoubleToObjectMatrix(double**, int, int);  // konvertavimas is 2D double masyvo i ObjectMatrix
-void PrintY(ObjectMatrix);                              // Y atvaizdavimas ekrane (testavimui)
-
-double **Array2D(int rows, int cols)                    // 2D double istisines matricos kurimas
-{
-    double *data = (double *)malloc(rows*cols*sizeof(double));
-    double **array= (double **)malloc(rows*sizeof(double*));
-    for (int i=0; i<rows; i++)
-        array[i] = &(data[cols*i]);
-    return array;
-}
+void PrintY(ObjectMatrix);                      // Y atvaizdavimas ekrane (testavimui)
 
 int main(int argc, char** argv) {
     
@@ -68,8 +58,8 @@ int main(int argc, char** argv) {
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
         {
-            //SMACOFZEIDEL smcf (0.001, 5, 2, Random);
-            SMACOF smcf (epsilon, maxIter, d);
+            SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
+            //SMACOF smcf (epsilon, maxIter, d);
             Y = smcf.getProjection();
             PrintY(Y);
             //Y.saveDataMatrix("tests/new_test7.txt");           
@@ -81,7 +71,7 @@ int main(int argc, char** argv) {
             Y = smcf.getProjection();
             int n = Y.getObjectCount();
             int m = Y.getObjectAt(0).getFeatureCount();
-            stressErrors[0] = smcf.stress;
+            stressErrors[0] = smcf.getStress();
             for (int i = 1; i < numOfProcs; i++)
             {
                 MPI_Recv(&receivedStress, 1, MPI_DOUBLE, i, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimama paklaida is kiekvieno proceso
@@ -123,10 +113,10 @@ int main(int argc, char** argv) {
                         MPI_Send(&send, 1, MPI_INT, i, 0, MPI_COMM_WORLD);  // siunciamas pranesimas, kad nesiustu Y
                     }
                 
-                receiveArray = Array2D(n, m);
+                receiveArray = AdditionalMethods::Array2D(n, m);
 
                 MPI_Recv(&(receiveArray[0][0]), m * n, MPI_DOUBLE, min_rank, MPI_ANY_TAG, MPI_COMM_WORLD, &status);   // priimama Y
-                Y = DoubleToObjectMatrix(receiveArray, n, m);
+                Y = AdditionalMethods::DoubleToObjectMatrix(receiveArray, n, m);
                 PrintY(Y);
                 //Y.saveDataMatrix("result.arff");
             }         
@@ -138,16 +128,16 @@ int main(int argc, char** argv) {
     {
         SMACOF smcf (epsilon, maxIter, d);
         Y = smcf.getProjection();
-        
-        MPI_Send(&smcf.stress, 1, MPI_DOUBLE, 0, pid, MPI_COMM_WORLD);  // siunciama paklaida teviniam procesui
+        double stress = smcf.getStress();
+        MPI_Send(&stress, 1, MPI_DOUBLE, 0, pid, MPI_COMM_WORLD);  // siunciama paklaida teviniam procesui
         MPI_Recv(&send, 1, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimamas pranesimas ar siusti Y
         
         if (send == 1)          // siusti, jei send = 1, nesiusti, jei send = 0
         {
             int n = Y.getObjectCount();
             int m = Y.getObjectAt(0).getFeatureCount();
-            sendArray = Array2D(n, m);
-            sendArray = ObjectMatrixToDouble(Y);
+            sendArray = AdditionalMethods::Array2D(n, m);
+            sendArray = AdditionalMethods::ObjectMatrixToDouble(Y);
             MPI_Send(&(sendArray[0][0]), m * n, MPI_DOUBLE, 0, pid, MPI_COMM_WORLD);  // siunciama Y
         }    
     }    
@@ -155,38 +145,6 @@ int main(int argc, char** argv) {
     MPI_Finalize();    
     
     return 0;
-}
-
-double** ObjectMatrixToDouble(ObjectMatrix matrix)
-{
-    int numOfObjects = matrix.getObjectCount();
-    int numOfFeatures = matrix.getObjectAt(0).getFeatureCount();
-    double **matrixToReturn;
-    matrixToReturn = Array2D(numOfObjects, numOfFeatures);
-    
-    
-    for (int i = 0; i < numOfObjects; i++)
-        for (int j = 0; j < numOfFeatures; j++)
-            matrixToReturn[i][j] = matrix.getObjectAt(i).features.at(j);
-    
-    return matrixToReturn;
-}
-
-ObjectMatrix DoubleToObjectMatrix(double** matrix, int rows, int cols)
-{
-    std::vector<double> v;
-    v.reserve(cols);
-    ObjectMatrix toReturn(rows);
-    
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < cols; j++)
-            v.push_back(matrix[i][j]);
-        toReturn.addObject(DataObject(v));
-        v.clear();
-    }
-    
-    return toReturn;
 }
 
 void PrintY(ObjectMatrix matrix)
@@ -198,7 +156,7 @@ void PrintY(ObjectMatrix matrix)
     for (int i = 0; i < numOfObjects; i++)
     {
         for (int j = 0; j < numOfFeatures; j++)
-            cout<<matrix.getObjectAt(i).features.at(j)<<" ";
+            cout<<matrix.getObjectAt(i).getFeatureAt(j)<<" ";
         cout<<endl;
     }
 }

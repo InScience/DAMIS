@@ -49,33 +49,27 @@ ObjectMatrix PCA::getProjection(){
     PCA::toDataType();
     int m = X.getObjectCount();
     int n = X.getObjectAt(0).getFeatureCount();
-    double X_vid[n];
+    double X_vid[n], tmp = 0.0;
     for (int i = 0; i < n; i++)
         X_vid[i] = Statistics::getAverage(X, i);
     alglib::ae_int_t info;
     alglib::real_1d_array eigValues;
     alglib::real_2d_array eigVectors;
     pcabuildbasis(alglibX, m, n, info, eigValues, eigVectors);
-    initializeProjectionMatrix(m);
-    std::vector<double> tmp(d);
+    initializeProjectionMatrix();
 
     if (info == 1)
     {
         for (int i = 0; i < m; i++)
-        {
             for (int j = 0; j < d; j++)
             {
-                tmp[j] = 0.0;
+                tmp = 0.0;
                 for (int k = 0; k < n; k++)
-                    tmp[j] += (alglibX(i,k) - X_vid[k]) * eigVectors[k][j];
-            }
-            DataObject dd(tmp);
-            Y.addObject(dd);
-        }
-        
+                    tmp += (alglibX(i,k) - X_vid[k]) * eigVectors[k][j];
+                Y.updateDataObject(i, j, tmp);
+            }        
     }
-    return Y;
- 
+    return Y; 
 }
 
 /**
@@ -88,7 +82,7 @@ void PCA::toDataType(){
 
     for (int i = 0; i < m; i++)
         for (int j = 0; j < n; j++)
-            alglibX(i,j) = X.getObjectAt(i).features.at(j);
+            alglibX(i,j) = X.getObjectAt(i).getFeatureAt(j);
 }
 
 

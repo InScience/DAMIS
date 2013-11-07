@@ -19,17 +19,20 @@ public:
 	virtual ~MDS();
 
 	MDS(double eps, int maxIter, int d);
-
+        double getFinalEpsilon();
+        int getIteration();
 protected:
 	double getEpsilon();
 	ObjectMatrix getGutman();
+        ObjectMatrix getGutman(ObjectMatrix Y_new);
 	int getMaxIteration();
 	virtual double getStress();
 	void setEpsilon(double eps);
 	void setMaxIteration(int maxIter);
 
-
+        double finalEpsilon;
 	double epsilon;
+        int iteration;
 	int maxIteration;
 private:
         double getWeight(int, int);

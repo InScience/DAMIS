@@ -51,5 +51,6 @@ private:
 	void getQN();
         void Initialize();
         void E_SDS(const alglib::real_1d_array &x, double &func, alglib::real_1d_array &grad, void *ptr);
+        
 };
 #endif // !defined(EA_BD1F1D91_A491_4a5e_9B31_E250CAE201D5__INCLUDED_)

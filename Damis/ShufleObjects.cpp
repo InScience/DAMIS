@@ -37,12 +37,12 @@ std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)   // dide
         shufled = false;
         for (int i = 0; i < n - 1; i++)
         {
-            if (objectMatrix.getObjectAt(i).features.at(0) > objectMatrix.getObjectAt(i + 1).features.at(0))
+            if (objectMatrix.getObjectAt(i).getFeatureAt(0) > objectMatrix.getObjectAt(i + 1).getFeatureAt(0))
             {
-                tmp_disp = objectMatrix.getObjectAt(i).features.at(0);
+                tmp_disp = objectMatrix.getObjectAt(i).getFeatureAt(0);
                 tmp_index = i;
-                objectMatrix.getObjectAt(i).features[0] = objectMatrix.getObjectAt(i + 1).features.at(0);
-                objectMatrix.getObjectAt(i + 1).features[0] = tmp_disp;
+                objectMatrix.updateDataObject(i, 0, objectMatrix.getObjectAt(i + 1).getFeatureAt(0));
+                objectMatrix.updateDataObject(i + 1, 0, tmp_disp);
                 shufledIndexes[i] = shufledIndexes.at(i + 1);
                 shufledIndexes[i + 1] = tmp_index;
                 shufled = true;
@@ -57,15 +57,36 @@ std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)   // dide
 
 std::vector<int> ShufleObjects::byBubleSortDsc(ObjectMatrix objectMatrix)  // mazejimo tvarka
 {
-    std::vector<int> shufledIndexes = ShufleObjects::byBubleSort(objectMatrix);
-    std::vector<int> reverseIndexes;
-    reverseIndexes.reserve(objectMatrix.getObjectCount());
-    unsigned n = shufledIndexes.size();
+    int n = objectMatrix.getObjectCount();
+    int tmp_index = 0;
+    double tmp_disp = 0.0;
+    bool shufled = false;
+    std::vector<int> shufledIndexes;
+    shufledIndexes.reserve(n);
+    for (int i = 0; i < n; i++)
+        shufledIndexes.push_back(i);
     
-    for (unsigned i = n - 1; i >= 0; i++)
-        reverseIndexes.push_back(shufledIndexes.at(i));
+    for (int k = 0; k < n; k++)
+    {
+        shufled = false;
+        for (int i = 0; i < n - 1; i++)
+        {
+            if (objectMatrix.getObjectAt(i).getFeatureAt(0) < objectMatrix.getObjectAt(i + 1).getFeatureAt(0))
+            {
+                tmp_disp = objectMatrix.getObjectAt(i).getFeatureAt(0);
+                tmp_index = i;
+                objectMatrix.updateDataObject(i, 0, objectMatrix.getObjectAt(i + 1).getFeatureAt(0));
+                objectMatrix.updateDataObject(i + 1, 0, tmp_disp);
+                shufledIndexes[i] = shufledIndexes.at(i + 1);
+                shufledIndexes[i + 1] = tmp_index;
+                shufled = true;
+            }
+        }
+        if (shufled == false)
+            break;
+    }
     
-    return  reverseIndexes;
+    return  shufledIndexes;
 }
 
 std::vector<int> ShufleObjects::byRand(ObjectMatrix objectMatrix){

@@ -90,8 +90,8 @@ ObjectMatrix SOM::getProjection(){
                         h = alpha / (alpha * eta + 1);
                         if (eta > Max(alpha * Max((double)k_x, (double)k_y), 1))
                             h = 0;
-                        tmp = M.getObjectAt(i, j).features.at(k) + h * (X.getObjectAt(l).features.at(k) - M.getObjectAt(i, j).features.at(k));
-                        M.getObjectAt(i, j).features[k] = tmp;
+                        tmp = M.getObjectAt(i, j).getFeatureAt(k) + h * (X.getObjectAt(l).getFeatureAt(k) - M.getObjectAt(i, j).getFeatureAt(k));
+                        M.updateDataObject(i, j, k, tmp);
                     }
                 }
             }
