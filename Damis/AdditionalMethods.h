@@ -22,6 +22,7 @@ class AdditionalMethods
             static ObjectMatrix DoubleToObjectMatrix(double** matrix, int rows, int cols);   // konvertavimas is 2D double masyvo i ObjectMatrix
             static double** Array2D(int rows, int cols);    // 2D double istisines matricos kurimas
             static alglib::real_1d_array ObjectMatrixTo1DArray(ObjectMatrix matrix);
+            static ObjectMatrix alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount);
 };
 
 #endif	/* ADDITIONALMETHODS_H */

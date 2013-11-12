@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include "AdditionalMethods.h"
 #include "ObjectMatrix.h"
+#include "DataObject.h"
 
 ///////////////////////////////////////////////////////////
 //  Projection.cpp
@@ -69,4 +70,22 @@ alglib::real_1d_array AdditionalMethods::ObjectMatrixTo1DArray(ObjectMatrix matr
             toReturn(n * i + j) = matrix.getObjectAt(i).getFeatureAt(j);
     
     return toReturn;    
+}
+
+ObjectMatrix AdditionalMethods::alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount)
+{
+    int m = array.length() / featureCount;
+    ObjectMatrix toReturn(m);
+    std::vector<double> dataObjectFeatures;
+    dataObjectFeatures.reserve(featureCount);
+    
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < featureCount; j++)
+            dataObjectFeatures.push_back(array(featureCount * i + j));
+        toReturn.addObject(DataObject(dataObjectFeatures));
+        dataObjectFeatures.clear();
+    }
+
+    return toReturn;
 }

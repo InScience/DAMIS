@@ -146,10 +146,11 @@ int MDS::getIteration(){
 double MDS::getStress(){
     double stress = 0.0;
     int n = X.getObjectCount();
+    int m = Y.getObjectCount();
     double distX = 0.0;
     double distY = 0.0;
     
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         for (int j = i + 1; j < n; j++)
         {

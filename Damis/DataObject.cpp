@@ -51,7 +51,7 @@ int DataObject::getClassLabel(){
  * Returns feature count
  */
 int DataObject::getFeatureCount(){
-
+    //return features.size();
     return featureCount;
 }
 

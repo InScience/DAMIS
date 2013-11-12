@@ -60,7 +60,7 @@ ObjectMatrix SAMANN::getProjection(){
     std::vector<double> matrixRow, ddelta_L(mTrain), ddelta_suma(mTrain), delta_tarp(mTrain), ddelta_tarp(mTrain);
     ObjectMatrix Y_pasl(m), Y_is(m), delta_L(mTrain - 1);    
     double tarp = 0.0, tarp1 = 0.0, tarp2 = 0.0, lambda, tmp, distXp, distY;
-    
+
     for (int i = 0; i < mTrain - 1; i++)
     {
         ddelta_L.push_back(0.1);
@@ -82,7 +82,7 @@ ObjectMatrix SAMANN::getProjection(){
         for (int j = 0; j < d; j++)
             matrixRow.push_back(1.0);
         Y_is.addObject(DataObject(matrixRow));
-        for (int j = d; j < nNeurons; j++)
+        for (int j = 0; j < nNeurons; j++)
             matrixRow.push_back(1.0);
         Y_pasl.addObject(DataObject(matrixRow));        
         matrixRow.clear();        
@@ -105,12 +105,20 @@ ObjectMatrix SAMANN::getProjection(){
     }
     
     NormalizeX();
+    
+    for (int i = 0; i < m; i++)
+    {
+        X.updateDataObject(i, 0, 1.0);
+        Y_pasl.updateDataObject(i, 0, 1.0);
+        Y_is.updateDataObject(i, 0, 1.0);
+    }
+    
     getXp();
     lambda = getLambda();
         
     for (int iter = 0; iter < maxIteration; iter++)
     {
-        for (int miu = 1; miu < mTrain - 1; miu++)
+        for (int miu = 0; miu < mTrain - 1; miu++)
         {
             for (int niu = miu + 1; niu < mTrain; niu++)
             {
@@ -121,6 +129,7 @@ ObjectMatrix SAMANN::getProjection(){
                         tarp = tarp + w1[j].at(k) * Xp.getObjectAt(miu).getFeatureAt(k);
                     Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
                 }
+
                 for (int j = 0; j < d; j++)
                 {
                     tarp = 0.0;
@@ -130,7 +139,8 @@ ObjectMatrix SAMANN::getProjection(){
                 }
             }
         }
-        for (int miu = 1; miu < mTrain - 1; miu++)
+        
+        for (int miu = 0; miu < mTrain - 1; miu++)
         {
             for (int niu = miu + 1; niu < mTrain; niu++)
             {
@@ -240,7 +250,8 @@ void SAMANN::getXp()
     double r = 0.0;
     DataObject dObject;
 
-    while (i < nNeurons)
+    while (i < mTrain)
+    //while (i < nNeurons)
     {
         r = Statistics::getRandom(0, n, k);
         index = static_cast<int>(r);
@@ -272,8 +283,7 @@ bool SAMANN::isIdentical(DataObject obj)
             ats = true;
             break;
         }
-    }
-    
+    }    
     return ats;
 }
 

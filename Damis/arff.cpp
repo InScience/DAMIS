@@ -118,6 +118,12 @@ void ARFF::WriteData(const char* path, std::vector<DataObject> data)
     std::ofstream file (path);
     int n = data.size();
     int k = 0;
+    int featureCount = data.at(0).getFeatureCount();
+    for (int i = 0; i < featureCount; i++)
+        file<<"@ATTRIBUTE attr_"<<(i + 1)<<" REAL"<<std::endl;
+    
+    file<<"@DATA"<<std::endl;
+        
     for (int i = 0; i < n; i++)
     {
         k = data.at(i).getFeatureCount();

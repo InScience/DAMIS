@@ -14,6 +14,7 @@
 #include "DistanceMetrics.h"
 #include "AdditionalMethods.h"
 #include <float.h>
+#include <fstream>
 #include <cmath>
 
 SDS::SDS(){
@@ -42,13 +43,12 @@ SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInitt, int nof
  */
 ObjectMatrix SDS::getProjection(){
     int m = X.getObjectCount();
-    int n = X.getObjectAt(0).getFeatureCount();
     int step = 0, rest = 0;
-    X_base = ObjectMatrix(nb, n);
-    X_new = ObjectMatrix(m - nb, n);
-    Y_base = ObjectMatrix(nb, d);
-    Y_new = ObjectMatrix(m - nb, d);
-    ObjectMatrix proj(m, 1);
+    X_base = ObjectMatrix(nb);
+    X_new = ObjectMatrix(m - nb);
+    Y_base = ObjectMatrix(nb);
+    Y_new = ObjectMatrix(m - nb);
+    ObjectMatrix proj(m);
     std::vector<int> index;
     index.reserve(m);
     
@@ -56,7 +56,7 @@ ObjectMatrix SDS::getProjection(){
     {
         case 1: proj = Projection::projectMatrix(DISPERSION, X);
                 index = ShufleObjects::shufleObjectMatrix(BUBLESORTDSC, proj);
-                step = m % nb;
+                step = m / nb;
                 for (int i = 0; i < nb; i++)
                 {
                     rest = index.at(i);
@@ -66,7 +66,7 @@ ObjectMatrix SDS::getProjection(){
                 break;
         case 2: proj = Projection::projectMatrix(PCA, X);
                 index = ShufleObjects::shufleObjectMatrix(BUBLESORTDSC, proj);
-                step = m % nb;
+                step = m / nb;
                 for (int i = 0; i < nb; i++)
                 {
                     rest = index.at(i);
@@ -81,7 +81,7 @@ ObjectMatrix SDS::getProjection(){
     
     for (int i = 0; i < m; i++)
     {
-        if (i <= nb)
+        if (i < nb)
             X_base.addObject(X.getObjectAt(index.at(i)));
         else
             X_new.addObject(X.getObjectAt(index.at(i)));
@@ -114,18 +114,27 @@ void SDS::getQN(){
     int m = Y_new.getObjectCount();
     alglib::minlbfgsstate state;
     alglib::minlbfgsreport rep;
-    double epsg = 0.0001;
+    double epsg = epsilon;
     double epsf = 0;
     double epsx = 0;
-    alglib::ae_int_t maxits = 10;
+    alglib::ae_int_t maxits = maxIteration;
     alglib::real_1d_array Ynew;
-    Ynew = AdditionalMethods::ObjectMatrixTo1DArray(Y_new);      
+    Ynew = AdditionalMethods::ObjectMatrixTo1DArray(Y_new);
+      
+    X_new.saveDataMatrix("xnew.arff");
+    X_base.saveDataMatrix("xbase.arff");
+    Y_base.saveDataMatrix("ybase.arff");
+    Y_new.saveDataMatrix("ynew.arff");
     alglib::minlbfgscreate(m, Ynew, state);
     alglib::minlbfgssetcond(state, epsg, epsf, epsx, maxits);
-    alglib::minlbfgsoptimize(state,  (void(*)(const alglib::real_1d_array&, double&, alglib::real_1d_array&, void*))&SDS::E_SDS, NULL, NULL);
+    alglib::minlbfgsoptimize(state,  E_SDS, NULL, NULL);
     alglib::minlbfgsresults(state, Ynew, rep);
     
-    // Ynew -> Y_new
+    std::ofstream f("test.txt");
+    f<<Ynew(0)<< " "<<Ynew(1)<<std::endl;    
+    f.close();
+    
+    Y_new = AdditionalMethods::alglib1DArrayToObjectMatrix(Ynew, d);
 }
 
 /**
@@ -158,7 +167,15 @@ double SDS::getStress(){
 void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d_array &grad, void *ptr)
 {
     double f1 = 0.0, f2 = 0.0, distX = 0.0, distY = 0.0;
-    int sm = X_new.getObjectCount();
+    ObjectMatrix Xnew("xnew.arff");
+    Xnew.loadDataMatrix();
+    ObjectMatrix Xbase("xbase.arff");
+    Xbase.loadDataMatrix();
+    ObjectMatrix Ybase("ybase.arff");
+    Ybase.loadDataMatrix();
+    int d = Ybase.getObjectAt(0).getFeatureCount();
+    int sm = Xnew.getObjectCount();
+    int nb = Xbase.getObjectCount();
     std::vector<double> items;
     items.reserve(d);
     DataObject dd[sm];
@@ -175,7 +192,7 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
     {   
         for (int j = i + 1; j < sm; j++)
         {
-            distX = DistanceMetrics::getDistance(X_new.getObjectAt(i), X_new.getObjectAt(j), Euclidean);
+            distX = DistanceMetrics::getDistance(Xnew.getObjectAt(i), Xnew.getObjectAt(j), Euclidean);
             distY = DistanceMetrics::getDistance(dd[i], dd[j], Euclidean);
             f1 += std::pow(distX - distY, 2);
         }
@@ -185,8 +202,8 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
     {
         for (int j = 0; j < sm; j++)
         {
-            distX = DistanceMetrics::getDistance(X_base.getObjectAt(i), X_new.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(Y_base.getObjectAt(i), dd[j], Euclidean);
+            distX = DistanceMetrics::getDistance(Xbase.getObjectAt(i), Xnew.getObjectAt(j), Euclidean);
+            distY = DistanceMetrics::getDistance(Ybase.getObjectAt(i), dd[j], Euclidean);
             f2 += std::pow(distX - distY, 2);
         }
     }
@@ -198,9 +215,10 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
         grad[i] = 0.0;
         for (int j = i + 1; j < sm; j++)
         {
-            distX = DistanceMetrics::getDistance(X_new.getObjectAt(i), X_new.getObjectAt(j), Euclidean);
+            distX = DistanceMetrics::getDistance(Xnew.getObjectAt(i), Xnew.getObjectAt(j), Euclidean);
             distY = DistanceMetrics::getDistance(dd[i], dd[j], Euclidean);
-            grad[i] += (distX - distY) / distY;
+            if (distY != 0)
+                grad[i] += (distX - distY) / distY;
         }
     }
     
@@ -208,31 +226,12 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
     {
         for (int j = 0; j < sm; j++)
         {
-            distX = DistanceMetrics::getDistance(X_base.getObjectAt(i), X_new.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(Y_base.getObjectAt(i), dd[j], Euclidean);
-            grad[j] += (distX - distY) / distY;
+            distX = DistanceMetrics::getDistance(Xbase.getObjectAt(i), Xnew.getObjectAt(j), Euclidean);
+            distY = DistanceMetrics::getDistance(Ybase.getObjectAt(i), dd[j], Euclidean);
+            if (distY != 0)
+                grad[j] += (distX - distY) / distY;
         }
     }
-    
-    //func = 100*pow(Ynew[0]+3,4) + pow(Ynew[1]-3,4);
-    //grad[0] = 400*pow(Ynew[0]+3,3);
-    //grad[1] = 4*pow(Ynew[1]-3,3);
-}
-
-/**
- * Converts data object to datatype required by external method
- */
-void SDS::toDataType(){
-    
-
-}
-
-
-/**
- * Converts to ObjectMatrix result that is provided by external library.
- */
-void SDS::fromDataType(){
-
 }
 
 void SDS::Initialize()
@@ -245,6 +244,7 @@ void SDS::Initialize()
     for (int i = 0; i < m - nb; i++)
     {
         min_dist = DBL_MAX;
+        closest_base = 0;
         for (int j = 0; j < nb; j++)
         {
             dist_ij = DistanceMetrics::getDistance(X_base.getObjectAt(j), X_new.getObjectAt(i), Euclidean);
@@ -254,6 +254,6 @@ void SDS::Initialize()
                 closest_base = j;
             }
         }
-        Y_new.addObject(X_base.getObjectAt(closest_base));
+        Y_new.addObject(Y_base.getObjectAt(closest_base));
     }
 }

@@ -16,6 +16,8 @@
 #include "DistanceMetricsEnum.h"
 #include "ProjectionEnum.h"
 
+
+
 class SDS : public MDS, public ExternalMethods
 {
 
@@ -26,13 +28,11 @@ public:
 	//SMACOF *m_SMACOF;
 
 	SDS(double eps, int maxIter, int d, ProjectionEnum baseVectInitt, int nofBaseVect, DistanceMetricsEnum distMetrics);
-	virtual void toDataType();
-	virtual void fromDataType();
 
-//protected:
+
 	virtual ObjectMatrix getProjection();
-	virtual double getStress();
-
+	virtual double getStress();        
+        
 private:
 	/**
 	 * Base vector initialization method
@@ -47,10 +47,10 @@ private:
 	int nb;
 	ObjectMatrix X_base;
 	ObjectMatrix X_new;
-
+        
 	void getQN();
         void Initialize();
-        void E_SDS(const alglib::real_1d_array &x, double &func, alglib::real_1d_array &grad, void *ptr);
+        static void E_SDS(const alglib::real_1d_array &x, double &func, alglib::real_1d_array &grad, void *ptr);
         
 };
 #endif // !defined(EA_BD1F1D91_A491_4a5e_9B31_E250CAE201D5__INCLUDED_)

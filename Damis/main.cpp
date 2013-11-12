@@ -20,7 +20,9 @@
 #include "SMACOF.h"
 #include "SAMANN.h"
 #include "SMACOFZEIDEL.h"
+#include "SDS.h"
 #include "SOM.h"
+#include "DMA.h"
 #include "mpi.h"
 #include "Projection.h"
 #include "AdditionalMethods.h"
@@ -28,7 +30,7 @@
 
 using namespace std;
 
-void PrintY(ObjectMatrix);                      // Y atvaizdavimas ekrane (testavimui)
+void PrintMatrix(ObjectMatrix);                      // Y atvaizdavimas ekrane (testavimui)
 
 int main(int argc, char** argv) {
     
@@ -44,8 +46,8 @@ int main(int argc, char** argv) {
     double epsilon;                             // skaiciavimu tikslumas
     int maxIter, d;                             // (maxIter) leistinas iteraciju kiekis, (d) mazinimo dimensija
     
-    epsilon = 0.01;
-    maxIter = 10;
+    epsilon = 0.1;
+    maxIter = 2;
     d = 2;
     
     MPI::Init(argc, argv);
@@ -58,10 +60,14 @@ int main(int argc, char** argv) {
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
         {
-            SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
+            SDS smcf(epsilon, maxIter, d, DISPERSION, 50, Euclidean);
+            //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
             //SMACOF smcf (epsilon, maxIter, d);
+            //SAMANN smcf(100, 10, 1.0, 10);
+            //DMA smcf(epsilon, 10, 2, 10);
             Y = smcf.getProjection();
-            PrintY(Y);
+            
+            PrintMatrix(Y);
             //Y.saveDataMatrix("tests/new_test7.txt");           
         }
         else
@@ -96,7 +102,7 @@ int main(int argc, char** argv) {
                 send = 0;
                 for (int i = 1; i < numOfProcs; i++)
                     MPI_Send(&send, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
-                PrintY(Y);
+                PrintMatrix(Y);
                 //Y.saveDataMatrix("result.arff");
             }
             else
@@ -117,7 +123,7 @@ int main(int argc, char** argv) {
 
                 MPI_Recv(&(receiveArray[0][0]), m * n, MPI_DOUBLE, min_rank, MPI_ANY_TAG, MPI_COMM_WORLD, &status);   // priimama Y
                 Y = AdditionalMethods::DoubleToObjectMatrix(receiveArray, n, m);
-                PrintY(Y);
+                PrintMatrix(Y);
                 //Y.saveDataMatrix("result.arff");
             }         
             
@@ -147,7 +153,7 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-void PrintY(ObjectMatrix matrix)
+void PrintMatrix(ObjectMatrix matrix)
 {
     int numOfObjects = matrix.getObjectCount();
     int numOfFeatures = matrix.getObjectAt(0).getFeatureCount();

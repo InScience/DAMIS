@@ -22,6 +22,7 @@ DMA::~DMA(){
  */
 DMA::DMA(float eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
+    initializeProjectionMatrix();
 }
 
 /**
@@ -42,15 +43,52 @@ ObjectMatrix DMA::getProjection(){
     int iteration = 0;
     double oldStressError = getStress();
     double newStressError = 0.0, sum = 0.0;
-    double tmpStressError = oldStressError;
-    vMatrix = ObjectMatrix(m, m);
+    double tmpStressError = oldStressError;    
     ObjectMatrix Gutman;
-    ObjectMatrix Y_new(m, d);
-    Gutman = ObjectMatrix(m, m);
-    std::vector<double> vMatrixObject;
+    ObjectMatrix Y_new(m);
+    Gutman = ObjectMatrix(m);
+    vMatrix = ObjectMatrix(m);    
     std::vector<int> shufledIndexes;
     shufledIndexes.reserve(m);
+    std::vector<double> vMatrixObject;
+    Y_new = Y;
+    getV();
+      
+    while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
+    {
+        iteration = iteration + 1;
+        shufledIndexes = ShufleObjects::shufleObjectMatrix(RANDOM, Y);
+        oldStressError = tmpStressError;
+        Gutman = getGutman();
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < m; j++)
+                Gutman.updateDataObject(i, j, Gutman.getObjectAt(i).getFeatureAt(j) - vMatrix.getObjectAt(i).getFeatureAt(j));
+        
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < d; j++)
+            {
+                sum = 0.0;
+                for (int k = (i - neighbourNumber); k < (i + neighbourNumber); k++)
+                    if (k >= 0 && k < m)
+                        sum += Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+                Y_new.updateDataObject(i, j, Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / vMatrix.getObjectAt(i).getFeatureAt(i));
+            }
+        }
+        Y = Y_new;
+        newStressError = getStress();
+        tmpStressError = newStressError;
+    }
     
+    return  Y;
+}
+
+/**
+ * Calculates V matrix
+ */
+void DMA::getV(){   
+    int m = X.getObjectCount();
+    std::vector<double> vMatrixObject;
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < m; j++)
@@ -77,42 +115,6 @@ ObjectMatrix DMA::getProjection(){
         }
     }
     
-    while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
-    {
-        iteration = iteration + 1;
-        shufledIndexes = ShufleObjects::shufleObjectMatrix(RANDOM, Y);
-        oldStressError = tmpStressError;
-        Gutman = getGutman();
-        for (int i = 0; i < m; i++)
-            for (int j = 0; j < m; j++)
-                Gutman.updateDataObject(i, j, Gutman.getObjectAt(i).getFeatureAt(j) - vMatrix.getObjectAt(i).getFeatureAt(j));
-        
-        for (int i = 0; i < m; i++)
-        {
-            for (int j = 0; j < d; j++)
-            {
-                sum = 0.0;
-                for (int k = (i - neighbourNumber); k < (i + neighbourNumber); k++)
-                    if (k > 0 && k < m)
-                        sum = sum + Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
-                vMatrixObject.push_back(Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / vMatrix.getObjectAt(i).getFeatureAt(i));
-            }
-            Y_new.addObject(DataObject(vMatrixObject));
-            vMatrixObject.clear();
-        }
-        Y = Y_new;
-        newStressError = getStress();
-        tmpStressError = newStressError;
-    }
-    
-    return  Y;
-}
-
-/**
- * Calculates V matrix
- */
-void DMA::getV(){
-
 }
 
 /**

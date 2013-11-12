@@ -26,7 +26,7 @@ ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix){
     int m = objectMatrix.getObjectAt(0).getFeatureCount();
     int maxDispersionCol = 0;
     double tmp = 0.0, maxDispersion = 0.0;
-    ObjectMatrix projection(n, 1);
+    ObjectMatrix projection(n);
     std::vector<double> dispersion;
     std::vector<double> average;
     std::vector<double> feature;
@@ -65,7 +65,7 @@ ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix){
 
 ObjectMatrix Projection::byPCA(ObjectMatrix objectMatrix){
     int n = objectMatrix.getObjectCount();
-    ObjectMatrix projection(n, 1);
+    ObjectMatrix projection(n);
 
     PCA::PCA pca(objectMatrix, 1);
     projection = pca.getProjection();    
