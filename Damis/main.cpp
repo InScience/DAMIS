@@ -60,10 +60,10 @@ int main(int argc, char** argv) {
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
         {
-            SDS smcf(epsilon, maxIter, d, DISPERSION, 50, Euclidean);
+            //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, Euclidean);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
             //SMACOF smcf (epsilon, maxIter, d);
-            //SAMANN smcf(100, 10, 1.0, 10);
+            SAMANN smcf(50, 10, 2.0, 1);
             //DMA smcf(epsilon, 10, 2, 10);
             Y = smcf.getProjection();
             

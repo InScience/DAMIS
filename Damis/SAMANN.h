@@ -49,11 +49,19 @@ private:
 	 * Matrix represents SAMAN algorithm training set.
 	 */
 	ObjectMatrix Xp;
+        ObjectMatrix Y_pasl;
+        ObjectMatrix Y_is;
+        ObjectMatrix delta_L;
+        std::vector<std::vector<double> > w1;
+        std::vector<std::vector<double> > w2;
 
 	double getLambda();
 	double getStress();
 	virtual void getTrainingSet();
 	void updateWeights();
+        void initializeWeights();         // initializes w1 and w2
+        void initializeExitMatrixes();    // initializes Y_is and Y_pasl
+        void initializeDeltaL();          // initialize delta_L
         double getMax();
         void NormalizeX();
         void getXp();

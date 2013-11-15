@@ -125,6 +125,7 @@ void SDS::getQN(){
     X_base.saveDataMatrix("xbase.arff");
     Y_base.saveDataMatrix("ybase.arff");
     Y_new.saveDataMatrix("ynew.arff");
+    
     alglib::minlbfgscreate(m, Ynew, state);
     alglib::minlbfgssetcond(state, epsg, epsf, epsx, maxits);
     alglib::minlbfgsoptimize(state,  E_SDS, NULL, NULL);

@@ -30,6 +30,7 @@ SAMANN::SAMANN(int m1, int nl, double e, int maxIter){
     nNeurons = nl;
     eta = e;
     maxIteration = maxIter;
+    initializeProjectionMatrix();
 }
 
 
@@ -43,9 +44,9 @@ double SAMANN::getLambda(){
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = i + 1; j < n; j++)
-            temp = temp + 1 / DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), Euclidean);
+            temp = temp + 1.0 / DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), Euclidean);
     }
-    return 1 / temp;
+    return 1.0 / temp;
 }
 
 
@@ -56,66 +57,31 @@ ObjectMatrix SAMANN::getProjection(){
 
     int n = X.getObjectAt(0).getFeatureCount();
     int m = X.getObjectCount();
-    std::vector<std::vector<double> > w1, w2;
-    std::vector<double> matrixRow, ddelta_L(mTrain), ddelta_suma(mTrain), delta_tarp(mTrain), ddelta_tarp(mTrain);
-    ObjectMatrix Y_pasl(m), Y_is(m), delta_L(mTrain - 1);    
+    double ddelta_L[mTrain];
+    double ddelta_suma[mTrain];
+    double delta_tarp[mTrain];
+    double ddelta_tarp[mTrain];
     double tarp = 0.0, tarp1 = 0.0, tarp2 = 0.0, lambda, tmp, distXp, distY;
 
-    for (int i = 0; i < mTrain - 1; i++)
-    {
-        ddelta_L.push_back(0.1);
-        ddelta_suma.push_back(0.0);
-        delta_tarp.push_back(0.0);
-        ddelta_tarp.push_back(0.0);
-        for (int j = 0; j < mTrain; j++)
-            matrixRow.push_back(0.1);
-        delta_L.addObject(DataObject(matrixRow));        
-        matrixRow.clear();
-    }
-    ddelta_L.push_back(0.1);
-    ddelta_suma.push_back(0.0);
-    delta_tarp.push_back(0.0);
-    ddelta_tarp.push_back(0.0);
+    initializeWeights();   // w1, w2
+    initializeExitMatrixes();   // Y_pasl, Y_is
+    initializeDeltaL();   // delta_L
+    NormalizeX(); 
     
     for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < d; j++)
-            matrixRow.push_back(1.0);
-        Y_is.addObject(DataObject(matrixRow));
-        for (int j = 0; j < nNeurons; j++)
-            matrixRow.push_back(1.0);
-        Y_pasl.addObject(DataObject(matrixRow));        
-        matrixRow.clear();        
-    }
-    
-    for (int i = 0; i < nNeurons; i++)
-    {
-        for (int j = 0; j < n; j++)
-            matrixRow.push_back(Statistics::getRandom(-0.1, 0.1, (i + 5 * j)));
-        w1.push_back(matrixRow);
-        matrixRow.clear();
-    }
-    
-    for (int i = 0; i < d; i++)
-    {
-        for (int j = 0; j < nNeurons; j++)
-            matrixRow.push_back(Statistics::getRandom(-0.1, 0.1, (i + 5 * j)));
-        w2.push_back(matrixRow);
-        matrixRow.clear();
-    }
-    
-    NormalizeX();
-    
-    for (int i = 0; i < m; i++)
-    {
         X.updateDataObject(i, 0, 1.0);
-        Y_pasl.updateDataObject(i, 0, 1.0);
-        Y_is.updateDataObject(i, 0, 1.0);
-    }
     
     getXp();
     lambda = getLambda();
-        
+
+    for (int i = 0; i < mTrain; i++)
+    {
+        ddelta_L[i] = 0.0;
+        ddelta_suma[i] = 0.0;
+        delta_tarp[i] = 0.0;
+        ddelta_tarp[i] = 0.0;
+    }
+
     for (int iter = 0; iter < maxIteration; iter++)
     {
         for (int miu = 0; miu < mTrain - 1; miu++)
@@ -137,13 +103,7 @@ ObjectMatrix SAMANN::getProjection(){
                         tarp = tarp + w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
                     Y_is.updateDataObject(miu, j, 1.0 / exp(-1 * tarp));
                 }
-            }
-        }
-        
-        for (int miu = 0; miu < mTrain - 1; miu++)
-        {
-            for (int niu = miu + 1; niu < mTrain; niu++)
-            {
+               
                 tarp1 = 0.0;
                 tarp2 = 0.0;
                 for (int k = 0; k < d; k++)
@@ -159,35 +119,39 @@ ObjectMatrix SAMANN::getProjection(){
                     
                     for (int j = 0; j < nNeurons; j++)
                     {
-                        if (iter == 1)
-                            w2[j][k] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
+                        if (iter == 0)
+                            w2[k][j] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
                         else
-                            w2[j][k] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) - w2[k][j];
+                            w2[k][j] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) - w2[k][j];
                     }
                 }
                 ddelta_suma[miu] = tarp1;
                 ddelta_suma[niu] = tarp2;
+                
                 for (int j = 0; j < nNeurons; j++)
                 {
                     for (int k = 0; k < d; k++)
                     {
-                        delta_tarp[miu] = ddelta_suma.at(miu) * w2[j][k];
-                        delta_tarp[niu] = ddelta_suma.at(niu) * w2[j][k];
+                        delta_tarp[miu] = ddelta_suma[miu] * w2[k][j];
+                        delta_tarp[niu] = ddelta_suma[niu] * w2[k][j];
                     }
                     
                     for (int k = 0; k < n; k++)
                     {
                         ddelta_tarp[miu] = delta_tarp[miu] * (1 - Y_pasl.getObjectAt(miu).getFeatureAt(j));
                         ddelta_tarp[niu] = delta_tarp[niu] * (1 - Y_pasl.getObjectAt(niu).getFeatureAt(j));
-                        if (iter == 1)
+                        if (iter == 0)
                             w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
                         else
-                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) -w2[j][k];
-                    }                    
+                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) -w1[j][k];
+                    }                       
                 }
-            }            
-        }
+            } 
+             
+        }        
     }  // iteraciju pabaiga
+    
+    //Y_pasl.saveDataMatrix("ypasl.arff");
     
     for (int miu = 0; miu < m; miu++)
     {
@@ -206,8 +170,8 @@ ObjectMatrix SAMANN::getProjection(){
             Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
         }
     }
-    Y = Y_is;
-    return  Y;
+
+    return  Y_is;
 }
 
 double SAMANN::getMax()
@@ -247,6 +211,7 @@ void SAMANN::NormalizeX()
 void SAMANN::getXp()
 {
     int n = X.getObjectCount(), i = 0, k = 0, index = 0;
+    Xp = ObjectMatrix(nNeurons);
     double r = 0.0;
     DataObject dObject;
 
@@ -328,4 +293,68 @@ void SAMANN::train(){
  */
 void SAMANN::updateWeights(){
 
+}
+
+void SAMANN::initializeWeights()
+{
+    int n = X.getObjectAt(0).getFeatureCount();
+    std::vector<double> w1Row, w2Row;
+    w1Row.reserve(n);
+    w2Row.reserve(nNeurons);
+    
+    for (int i = 0; i < nNeurons; i++)
+    {
+        for (int j = 0; j < n; j++)
+            w1Row.push_back(Statistics::getRandom(-0.1, 0.1, (i + 5 * j)));
+        w1.push_back(w1Row);
+        w1Row.clear();
+    }
+    
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < nNeurons; j++)
+            w2Row.push_back(Statistics::getRandom(-0.1, 0.1, (i + 5 * j)));
+        w2.push_back(w2Row);
+        w2Row.clear();
+    }
+}
+
+void SAMANN::initializeExitMatrixes()
+{
+    int m = X.getObjectCount();
+    Y_is = ObjectMatrix(m);
+    Y_pasl = ObjectMatrix(m);
+    std::vector<double> YisRow, YpaslRow;
+    YisRow.reserve(d);
+    YpaslRow.reserve(nNeurons);
+    
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < d; j++)
+            YisRow.push_back(1.0);
+        Y_is.addObject(DataObject(YisRow));
+        
+        for (int j = 0; j < nNeurons; j++)
+            YpaslRow.push_back(1.0);
+        Y_pasl.addObject(DataObject(YpaslRow));   
+        
+        YisRow.clear();
+        YpaslRow.clear();
+    }   
+}
+
+void SAMANN::initializeDeltaL()
+{
+    delta_L = ObjectMatrix(mTrain - 1);
+
+    std::vector<double> deltaLRow;
+    deltaLRow.reserve(mTrain);
+    
+    for (int i = 0; i < mTrain - 1; i++)
+    {
+        for (int j = 0; j < mTrain; j++)
+            deltaLRow.push_back(0.1);
+        delta_L.addObject(DataObject(deltaLRow));        
+        deltaLRow.clear();
+    }   
 }
