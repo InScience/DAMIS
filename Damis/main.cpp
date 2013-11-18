@@ -61,16 +61,20 @@ int main(int argc, char** argv) {
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
         {
+            ARFF file ("arff_files/random100K.arff");
+            if (file.getFileReadStatus() == 0)
+                cout << file.getReason()<<std::endl;
+            
             //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, Euclidean);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
             //SMACOF smcf (epsilon, maxIter, d);
             //SAMANN smcf(50, 10, 2.0, 1);
-            DMA smcf(epsilon, 10, 2, 10);
+            //DMA smcf(epsilon, 10, 2, 10);
             //SOM smcf(100, 3, 5);
             //SOMMDS smcf(epsilon, maxIter, d, 100, 3, 5);
-            Y = smcf.getProjection();
+            //Y = smcf.getProjection();
             
-            PrintMatrix(Y);           
+            //PrintMatrix(Y);           
         }
         else
         {

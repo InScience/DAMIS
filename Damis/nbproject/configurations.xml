@@ -64,35 +64,20 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1" displayName="arffTest" projectFiles="true" kind="TEST">
+        <itemPath>tests/arffTest.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f6"
                      displayName="gutmanTest"
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/gutmanTest.cpp</itemPath>
       </logicalFolder>
-      <logicalFolder name="f1" displayName="pcatest" projectFiles="true" kind="TEST">
-        <itemPath>tests/pcatestclass.cpp</itemPath>
-        <itemPath>tests/pcatestclass.h</itemPath>
-        <itemPath>tests/pcatestrunner.cpp</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f2" displayName="ReadARFF" projectFiles="true" kind="TEST">
-        <itemPath>tests/ReadARFFtestclass.cpp</itemPath>
-        <itemPath>tests/ReadARFFtestclass.h</itemPath>
-        <itemPath>tests/ReadARFFtestrunner.cpp</itemPath>
-        <itemPath>tests/cpu.arff</itemPath>
-        <itemPath>tests/cpu_.arff</itemPath>
-      </logicalFolder>
       <logicalFolder name="f4"
                      displayName="smacofTest"
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/smacofTest.cpp</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f5"
-                     displayName="smacofTestParallel"
-                     projectFiles="true"
-                     kind="TEST">
-        <itemPath>tests/smacofTestParallel.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f3"
                      displayName="smacofZeidelTest"
@@ -222,9 +207,15 @@
       </item>
       <folder path="TestFiles/f1">
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
@@ -316,27 +307,11 @@
       </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/ReadARFFtestclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/ReadARFFtestclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/ReadARFFtestrunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/cpu.arff" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/cpu_.arff" ex="false" tool="3" flavor2="0">
+      <item path="tests/arffTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/gutmanTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/pcatestclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/pcatestclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/pcatestrunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="tests/smacofTest.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/smacofTestParallel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/smacofZeidelTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -463,9 +438,15 @@
       </item>
       <folder path="TestFiles/f1">
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
@@ -557,27 +538,11 @@
       </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/ReadARFFtestclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/ReadARFFtestclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/ReadARFFtestrunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/cpu.arff" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/cpu_.arff" ex="false" tool="3" flavor2="0">
+      <item path="tests/arffTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/gutmanTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/pcatestclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/pcatestclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/pcatestrunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="tests/smacofTest.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/smacofTestParallel.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/smacofZeidelTest.cpp" ex="false" tool="1" flavor2="0">
       </item>

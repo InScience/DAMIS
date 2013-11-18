@@ -40,6 +40,10 @@ SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix initialY):MDS(eps, ma
     Y = initialY;
 }
 
+SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix largeX, int betkas):MDS(eps, maxIter, d, largeX){
+    initializeProjectionMatrix();
+}
+
 /**
  * Pure virtual method that calculates the projection
  */

@@ -21,6 +21,7 @@ public:
 	SMACOF(float eps, int maxIter, int d);
 	SMACOF(float eps, int maxIter, int d, ObjectMatrix X, ObjectMatrix Y);
         SMACOF(float eps, int maxIter, int d, ObjectMatrix initialY);
+        SMACOF(float eps, int maxIter, int d, ObjectMatrix X, int betkas);
 
 //protected:
 	virtual ObjectMatrix getProjection();

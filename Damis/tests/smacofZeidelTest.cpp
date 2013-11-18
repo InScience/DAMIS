@@ -41,18 +41,14 @@ void TestMatrixYDimmension(ObjectMatrix Y, int d) {
 void TestMethodConvergence(SMACOFZEIDEL s, int k, double e)
 {
     std::cout << "-- Checking if Method is Converging --" << std::endl;
+    ObjectMatrix Y = s.getProjection();
     std::vector<double> stressErrors = s.getStressErrors();
     int n = stressErrors.size();
     bool isConverging = true;
-    std::vector<double> diffOfErrors;
-    diffOfErrors.reserve(n - 1);
     
     for (int i = 0; i < n - 1; i++)
-        diffOfErrors.push_back(stressErrors.at(i) - stressErrors.at(i + 1));
-    
-    for (int i = 0; i < n - 2; i++)
     {
-        if (diffOfErrors.at(i) < diffOfErrors.at(i + 1))
+        if (stressErrors.at(i) < stressErrors.at(i + 1))
         {
             isConverging = false;
             break;
@@ -65,33 +61,9 @@ void TestMethodConvergence(SMACOFZEIDEL s, int k, double e)
         std::cout << "%TEST_FAILED% time=0 testname=TestMethodConvergence (smacofZeidelTest) message=Test Failed!!!" << std::endl;
 }
 
-void TestResultsOfShuffleStrategies(ObjectMatrix random, ObjectMatrix asc, ObjectMatrix dsc, double error, int dim)
-{
-    std::cout << "-- Checking difference of results returned using different shuffle strategies --" << std::endl;
-    int n = random.getObjectCount();
-    int k = 0, t;
-    
-    for (int i = 0; i < n; i++)
-    {
-        t = 0;
-        for (int j = 0; j < dim; j++)
-            if (fabs(random.getObjectAt(i).getFeatureAt(j) - asc.getObjectAt(i).getFeatureAt(j)) <= 0.01 && fabs(dsc.getObjectAt(i).getFeatureAt(j) - asc.getObjectAt(i).getFeatureAt(j)) <= 0.1)
-                t++;
-        if (t == dim)
-            k++;
-        else
-            break;
-    }
-    
-    if (k == n)
-        std::cout << "Test passed." << std::endl;
-    else
-        std::cout << "%TEST_FAILED% time=0 testname=TestResultsOfShuffleStrategies (smacofZeidelTest) message=Test Failed!!!" << std::endl;
-}
-
 int main(int argc, char** argv) {
-    int d = 2, iter = 50;
-    double error = 0.001;
+    int d = 2, iter = 5;
+    double error = 0.01;
     
     std::cout << std::endl;
     std::cout << "%SUITE_STARTING% smacofZeidelTest" << std::endl;
@@ -118,13 +90,13 @@ int main(int argc, char** argv) {
     TestMethodConvergence(smf_rand, iter, error);
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (smacofZeidelTest)" << std::endl;
     
-    SMACOFZEIDEL smf_bubbleasc(error, iter, d, BUBLESORTASC);
-    ObjectMatrix Y_bubbleasc = smf_bubbleasc.getProjection();
-    X = smf_bubbleasc.X;
-    
     std::cout << std::endl;
     std::cout << "Testing SMACOFZEIDEL with parameters: epsilon="<< error<<", max iterations="<<iter<<", dimmension="<<d
               << ", shuffle - bubble sort ascending" << std::endl; 
+    
+    SMACOFZEIDEL smf_bubbleasc(error, iter, d, BUBLESORTASC);
+    ObjectMatrix Y_bubbleasc = smf_bubbleasc.getProjection();
+    X = smf_bubbleasc.X;    
     
     std::cout << "%TEST_STARTED% TestNumOfRowsOfMatrixY shuffled bubble sort asc (smacofZeidelTest)" << std::endl;
     TestNumOfRowsOfMatrixY(X, Y_bubbleasc);
@@ -138,15 +110,13 @@ int main(int argc, char** argv) {
     TestMethodConvergence(smf_bubbleasc, iter, error);   
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (smacofZeidelTest)" << std::endl;
     
+    std::cout << "Testing SMACOFZEIDEL with parameters: epsilon="<< error<<", max iterations="<<iter<<", dimmension="<<d
+              << ", shuffle - bubble sort descending" << std::endl;
     
     SMACOFZEIDEL smf_bubbledsc(error, iter, d, BUBLESORTDSC);
     ObjectMatrix Y_bubbledsc = smf_bubbledsc.getProjection();
-    Y_bubbledsc.saveDataMatrix("dsc.arff");
     X = smf_bubbledsc.X;
-    std::cout << std::endl;
-
-    std::cout << "Testing SMACOFZEIDEL with parameters: epsilon="<< error<<", max iterations="<<iter<<", dimmension="<<d
-              << ", shuffle - bubble sort descending" << std::endl; 
+    std::cout << std::endl; 
     
     std::cout << "%TEST_STARTED% TestNumOfRowsOfMatrixY shuffled bubble sort desc (smacofZeidelTest)" << std::endl;
     TestNumOfRowsOfMatrixY(X, Y_bubbledsc);
@@ -159,38 +129,6 @@ int main(int argc, char** argv) {
     std::cout << "%TEST_STARTED% TestMethodConvergence shuffled bubble sort desc (smacofZeidelTest)\n" << std::endl;
     TestMethodConvergence(smf_bubbledsc, iter, error);   
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (smacofZeidelTest)" << std::endl;
-    
-    ObjectMatrix Y(n);
-    std::vector<double> DataObjectItem;
-    double r = 0.0;
-    for (int j = 0; j < d; j++)
-        DataObjectItem.push_back(0.0);
-    
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < d; j++)
-        {
-            r = Statistics::getRandom(-0.1, 0.1, (i + j * 5));
-            DataObjectItem[j] = r;
-        }
-        Y.addObject(DataObject(DataObjectItem));
-    }
-    
-    std::cout<<"Testing results gathered using different shufle strategy, but the same initial projection matrix"<<std::endl;
-    
-    smf_rand = SMACOFZEIDEL(error, iter, d, RANDOM, Y);
-    Y_rand = smf_rand.getProjection();
-    Y_rand.saveDataMatrix("rand.arff");
-    smf_bubbleasc = SMACOFZEIDEL(error, iter, d, BUBLESORTASC, Y);
-    Y_bubbleasc = smf_bubbleasc.getProjection();
-    Y_bubbleasc.saveDataMatrix("asc.arff");
-    smf_bubbledsc = SMACOFZEIDEL(error, iter, d, BUBLESORTDSC, Y);
-    Y_bubbledsc = smf_bubbledsc.getProjection();
-    Y_bubbledsc.saveDataMatrix("dsc.arff");
-    
-    std::cout << "%TEST_STARTED% TestResultsOfShuffleStrategies (smacofZeidelTest)\n" << std::endl;
-    TestResultsOfShuffleStrategies(Y_rand, Y_bubbleasc, Y_bubbledsc, error, d);  
-    std::cout << "%TEST_FINISHED% time=0 TestResultsOfShuffleStrategies (smacofZeidelTest)" << std::endl;
     
     std::cout << "%SUITE_FINISHED% time=0" << std::endl << std::endl;
 

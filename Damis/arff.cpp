@@ -11,25 +11,34 @@ ARFF::ARFF(){
     attributes.reserve(0);
 }
 
-ARFF::ARFF(const char* path){   
+ARFF::ARFF(const char* path){ 
+    reason = "";
+    std::stringstream s;
     std::ifstream file (path);
     std::string line_from_file;
     std::string tmp1, tmp2;
     std::vector<std::string> tmp;
     std::vector<double> v;
-    ReadSuccess = false;
+    readSuccess = false;
+    int line_no = 1;
     if (file.is_open() != false)
     {
-        ReadSuccess = true;
+        readSuccess = true;
         while (std::getline(file, line_from_file))
         {
             if (line_from_file.length() == 0)
+            {
+                line_no++;
                 continue;
+            }
             std::istringstream iss(line_from_file);		
             std::string sub;
             iss >> sub;
-            if (sub == "%")		
+            if (sub == "%")	
+            {
+                line_no++;
                 continue;
+            }
             else
             {
                 std::transform(sub.begin(), sub.end(), sub.begin(), ::toupper);
@@ -46,13 +55,18 @@ ARFF::ARFF(const char* path){
                     }
                 }
                 else if (sub == "@DATA" || sub == "@RELATION")
+                {
+                    line_no++;
                     continue;
+                }
                 else
                 {
                     tmp = split(line_from_file, ',');
                     if (tmp.size() != attributes.size())
                     {
-                        ReadSuccess = false;
+                        readSuccess = false;
+                        s<< "Number of features at line " << line_no << " does not match number of attributes";
+                        reason = s.str();
                         break;
                     }
                     else
@@ -63,15 +77,32 @@ ARFF::ARFF(const char* path){
                             {
                                 if (tmp[i] == "?" || tmp[i] == "")
                                 {
-                                    ReadSuccess = false;
+                                    readSuccess = false;
+                                    s << "Unexpected symbol found at " << line_no << " line";                                    
+                                    reason = s.str();
                                     break;
                                 }
                                 else
-                                    v.push_back(atof(tmp[i].c_str()));                                
+                                {
+                                    try
+                                    {
+                                        v.push_back(atof(tmp[i].c_str()));
+                                    }
+                                    catch (int x)
+                                    {
+                                        s << "Unexpected symbol found at " << line_no << " line";
+                                        reason = s.str();
+                                        break;
+                                    }
+                                }
                             }
                         }
-                        if (ReadSuccess == false)
+                        if (readSuccess == false)
+                        {
+                            s << "Unexpected symbol found at " << line_no << " line";
+                            reason = s.str();
                             break;
+                        }
                         else
                         {
                             data.push_back(v);
@@ -80,9 +111,12 @@ ARFF::ARFF(const char* path){
                     }
                 }
             }
+            line_no++;
         }
         file.close();
     }
+    else
+        reason = "Cannot open file!!!";
 }
 
 ARFF::~ARFF(){
@@ -132,4 +166,17 @@ void ARFF::WriteData(const char* path, std::vector<DataObject> data)
         file<<data.at(i).getFeatureAt(k - 1)<<std::endl;
     }
     file.close();
+}
+
+std::string ARFF::getReason()
+{
+    return reason;
+}
+
+int ARFF::getFileReadStatus()
+{
+    if (readSuccess == true)
+        return 1;
+    else
+        return 0;
 }

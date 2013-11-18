@@ -32,6 +32,13 @@ MDS::MDS(double eps, int maxIter, int dimension){
     d = dimension;
 }
 
+MDS::MDS(double eps, int maxIter, int dimension, ObjectMatrix x){
+    epsilon = eps;
+    maxIteration = maxIter;
+    d = dimension;
+    X = x;
+}
+
 /**
  * Gets eps value
  */
@@ -138,7 +145,6 @@ int MDS::getMaxIteration(){
 double MDS::getStress(){
     double stress = 0.0;
     int n = X.getObjectCount();
-    int m = Y.getObjectCount();
     double distX = 0.0;
     double distY = 0.0;
     

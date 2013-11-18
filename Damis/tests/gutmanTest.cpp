@@ -21,7 +21,7 @@
 
 void testGutmanDimmension(ObjectMatrix gutman, int rowCount) {
     bool ans = true;
-    std::cout << "Testing if Gutman matrix is " <<rowCount<<"x"<<rowCount <<" matrix." << std::endl;
+    std::cout << "-- Testing if Gutman matrix is " <<rowCount<<"x"<<rowCount <<" matrix --" << std::endl;
     if (gutman.getObjectCount() == rowCount)
     {
         for (int i = 0; i < rowCount; i++)
@@ -40,7 +40,7 @@ void testGutmanDimmension(ObjectMatrix gutman, int rowCount) {
 }
 
 void testSumOfGutmanElements(ObjectMatrix gMatrix, int rowCount) {
-    std::cout << "Testing if [i][i] element is the sum of the remainder elements in the i-th row." << std::endl;
+    std::cout << "-- Testing if [i][i] element is the sum of the remainder elements in the i-th row --" << std::endl;
     bool ats = true;
     double sum = 0.0;
     
@@ -66,16 +66,16 @@ void testSumOfGutmanElements(ObjectMatrix gMatrix, int rowCount) {
 
 void testValuesOfIdenticalObjects(ObjectMatrix gMatrix, ObjectMatrix Y, int rowCount)
 {
-    std::cout << "Testing if elements are 0 in the i-th row if objects i and j are identical" << std::endl;
+    std::cout << "-- Testing if elements are 0 in the i-th row if objects i and j are identical --" << std::endl;
     bool ats = true;
-    double sum = 0.0, distYij = 0.0;
+    double distYij = 0.0;
     
     for (int i = 0; i < rowCount; i++)
         for (int j = 0; j < rowCount; j++)
             if (i != j)
             {
                 distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), Euclidean);
-                if (distYij = 0.0)
+                if (distYij == 0.0)
                 {
                     for (int k = 0; k < rowCount; k++)
                         if (fabs(gMatrix.getObjectAt(i).getFeatureAt(k)) > 0.00000001)
@@ -92,9 +92,25 @@ void testValuesOfIdenticalObjects(ObjectMatrix gMatrix, ObjectMatrix Y, int rowC
         std::cout << "%TEST_FAILED% time=0 testname=testValuesOfIdenticalObjects (gutmanTest) message=Test failed!!!" << std::endl;
 }
 
+void TestConstructionOfLargeGutmanMatrix(SMACOF smacof){
+    std::cout << "-- Testing construction of large Gutman matrix --" << std::endl;
+    int n = smacof.X.getObjectCount();
+    ObjectMatrix gutman = smacof.getGutmanMatrix();
+    int m = gutman.getObjectCount();
+    if (n == m)
+    {
+        if (gutman.getObjectAt(0).getFeatureCount() == n)
+            std::cout << "Test passed." <<std::endl;
+        else
+            std::cout << "%TEST_FAILED% time=0 testname=TestConstructionOfLargeGutmanMatrix (gutmanTest) message=Test failed!!!" << std::endl;
+    }
+    else
+        std::cout << "%TEST_FAILED% time=0 testname=TestConstructionOfLargeGutmanMatrix (gutmanTest) message=Test failed!!!" << std::endl;
+}
+
 int main(int argc, char** argv) {
     double epsilon = 0.001;
-    int maxIter = 20, d = 2;
+    int maxIter = 10, d = 2;
     std::cout << "%SUITE_STARTING% gutmanTest" << std::endl;
     std::cout << "%SUITE_STARTED%" << std::endl;
     SMACOF smcf(epsilon, maxIter, d);
@@ -142,6 +158,13 @@ int main(int argc, char** argv) {
     std::cout << "%TEST_STARTED% testValuesOfIdenticalObjects (gutmanTest)\n" << std::endl;
     testValuesOfIdenticalObjects(gMatrix, Y, n);
     std::cout << "%TEST_FINISHED% time=0 testValuesOfIdenticalObjects (gutmanTest)" << std::endl;
+    
+    ObjectMatrix large("arff_files/random_10K.arff");
+    large.loadDataMatrix();
+    smcf = SMACOF(epsilon, maxIter, d, large, 1);
+    std::cout << "%TEST_STARTED% TestConstructionOfLargeGutmanMatrix (gutmanTest)\n" << std::endl;
+    TestConstructionOfLargeGutmanMatrix(smcf);
+    std::cout << "%TEST_FINISHED% time=0 TestConstructionOfLargeGutmanMatrix (gutmanTest)" << std::endl;
     
     std::cout << "%SUITE_FINISHED% time=0" << std::endl;
 

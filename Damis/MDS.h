@@ -19,7 +19,7 @@ public:
 	virtual ~MDS();
 
 	MDS(double eps, int maxIter, int d);
-        double getFinalEpsilon();
+        MDS(double eps, int maxIter, int d, ObjectMatrix x);   // for testing
         int getIteration();
 protected:
 	double getEpsilon();

@@ -62,11 +62,9 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/f6 \
 	${TESTDIR}/TestFiles/f1 \
-	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f6 \
 	${TESTDIR}/TestFiles/f4 \
-	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f3
 
 # C Compiler Flags
@@ -205,29 +203,27 @@ ${OBJECTDIR}/main.o: main.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
-${TESTDIR}/TestFiles/f6: ${TESTDIR}/tests/gutmanTest.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f6 $^ ${LDLIBSOPTIONS} 
-
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/pcatestclass.o ${TESTDIR}/tests/pcatestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/arffTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
 
-${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/ReadARFFtestclass.o ${TESTDIR}/tests/ReadARFFtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f6: ${TESTDIR}/tests/gutmanTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f6 $^ ${LDLIBSOPTIONS} 
 
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/smacofTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} 
 
-${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/smacofTestParallel.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS} 
-
 ${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/smacofZeidelTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+
+${TESTDIR}/tests/arffTest.o: tests/arffTest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. --coverage `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/arffTest.o tests/arffTest.cpp
 
 
 ${TESTDIR}/tests/gutmanTest.o: tests/gutmanTest.cpp 
@@ -236,40 +232,10 @@ ${TESTDIR}/tests/gutmanTest.o: tests/gutmanTest.cpp
 	$(COMPILE.cc) -g -I. --coverage -MMD -MP -MF $@.d -o ${TESTDIR}/tests/gutmanTest.o tests/gutmanTest.cpp
 
 
-${TESTDIR}/tests/pcatestclass.o: tests/pcatestclass.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -g --coverage `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/pcatestclass.o tests/pcatestclass.cpp
-
-
-${TESTDIR}/tests/pcatestrunner.o: tests/pcatestrunner.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -g --coverage `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/pcatestrunner.o tests/pcatestrunner.cpp
-
-
-${TESTDIR}/tests/ReadARFFtestclass.o: tests/ReadARFFtestclass.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -g --coverage `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/ReadARFFtestclass.o tests/ReadARFFtestclass.cpp
-
-
-${TESTDIR}/tests/ReadARFFtestrunner.o: tests/ReadARFFtestrunner.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -g --coverage `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/ReadARFFtestrunner.o tests/ReadARFFtestrunner.cpp
-
-
 ${TESTDIR}/tests/smacofTest.o: tests/smacofTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. --coverage -MMD -MP -MF $@.d -o ${TESTDIR}/tests/smacofTest.o tests/smacofTest.cpp
-
-
-${TESTDIR}/tests/smacofTestParallel.o: tests/smacofTestParallel.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. --coverage -MMD -MP -MF $@.d -o ${TESTDIR}/tests/smacofTestParallel.o tests/smacofTestParallel.cpp
 
 
 ${TESTDIR}/tests/smacofZeidelTest.o: tests/smacofZeidelTest.cpp 
@@ -555,11 +521,9 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
-	    ${TESTDIR}/TestFiles/f6 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
-	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f6 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
-	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	else  \
 	    ./${TEST} || true; \

@@ -39,18 +39,14 @@ void TestMatrixYDimmension(ObjectMatrix Y, int d) {
 void TestMethodConvergence(SMACOF s, int k, double e)
 {
     std::cout << "-- Checking if Method is Converging --" << std::endl;
+    ObjectMatrix Y = s.getProjection();
     std::vector<double> stressErrors = s.getStressErrors();
     int n = stressErrors.size();
     bool isConverging = true;
-    std::vector<double> diffOfErrors;
-    diffOfErrors.reserve(n - 1);
     
     for (int i = 0; i < n - 1; i++)
-        diffOfErrors.push_back(stressErrors.at(i) - stressErrors.at(i + 1));
-    
-    for (int i = 0; i < n - 2; i++)
     {
-        if (diffOfErrors.at(i) < diffOfErrors.at(i + 1))
+        if (stressErrors.at(i) < stressErrors.at(i + 1))
         {
             isConverging = false;
             break;
@@ -61,6 +57,40 @@ void TestMethodConvergence(SMACOF s, int k, double e)
         std::cout << "Test passed." << std::endl;
     else
         std::cout << "%TEST_FAILED% time=0 testname=TestMethodConvergence (smacofTest) message=Test Failed!!!" << std::endl;
+}
+
+void TestMethodWithLargeXMatrix(SMACOF smacof){
+    std::cout << "-- Checking if Method is Working on Large Set of Data --" << std::endl;
+    int n = smacof.X.getObjectCount();
+    int m = smacof.getProjection().getObjectCount();
+
+    if (n == m)
+        std::cout << "Test passed." << std::endl;
+    else
+        std::cout << "%TEST_FAILED% time=0 testname=TestMethodWithLargeXMatrix (smacofTest) message=Test Failed!!!" << std::endl; 
+    
+}
+
+void TestMethodConvergenceWithLargeXMatrix(SMACOF smacof){
+    std::cout << "-- Checking if method is converging then working on large set of data --" << std::endl;
+    ObjectMatrix Y = smacof.getProjection();
+    std::vector<double> stressErrors = smacof.getStressErrors();
+    int n = stressErrors.size();
+    bool isConverging = true;
+    
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (stressErrors.at(i) < stressErrors.at(i + 1))
+        {
+            isConverging = false;
+            break;
+        }
+    }
+    
+    if (isConverging == true)
+        std::cout << "Test passed." << std::endl;
+    else
+        std::cout << "%TEST_FAILED% time=0 testname=TestMethodConvergenceWithLargeXMatrix (smacofTest) message=Test Failed!!!" << std::endl;
 }
 
 int main(int argc, char** argv) {
@@ -86,6 +116,18 @@ int main(int argc, char** argv) {
     std::cout << "%TEST_STARTED% TestMethodConvergence (smacofTest)\n" << std::endl;
     TestMethodConvergence(smf, iter, error);
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (smacofTest)" << std::endl;
+    
+    ObjectMatrix large("arff_files/random_10K.arff");
+    large.loadDataMatrix();
+    smf = SMACOF(error, iter, d, large, 1);
+    
+    std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (smacofTest)\n" << std::endl;
+    TestMethodWithLargeXMatrix(smf);
+    std::cout << "%TEST_FINISHED% time=0 TestMethodWithLargeXMatrix (smacofTest)" << std::endl;
+    
+    std::cout << "%TEST_STARTED% TestMethodConvergenceWithLargeXMatrix (smacofTest)\n" << std::endl;
+    TestMethodConvergenceWithLargeXMatrix(smf);
+    std::cout << "%TEST_FINISHED% time=0 TestMethodConvergenceWithLargeXMatrix (smacofTest)" << std::endl;
     
     std::cout << "%SUITE_FINISHED% time=0" << std::endl << std::endl;
 
