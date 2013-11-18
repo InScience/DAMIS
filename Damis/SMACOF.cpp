@@ -11,6 +11,7 @@
 #include <sstream>
 #include <vector>
 #include "DataObject.h"
+#include <float.h>
 
 SMACOF::SMACOF(){
 
@@ -43,22 +44,20 @@ SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix initialY):MDS(eps, ma
  * Pure virtual method that calculates the projection
  */
 ObjectMatrix SMACOF::getProjection(){
-
-    iteration = 0;
+    stressErrors.reserve(maxIteration);
+    int iteration = 0;
     int n = X.getObjectCount();
-    double oldStressError = getStress();
-    double newStressError = 0.0;
-    double tmpStressError = oldStressError;
+    stressErrors.push_back(getStress());
     double sum = 0.0;
+    double Epsilon = DBL_MAX;
     ObjectMatrix Gutman;
     ObjectMatrix Y_new(n);
     std::vector<double> Y_newRow;
     Y_newRow.reserve(d);
 
-    while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
+    while (iteration < maxIteration && Epsilon > epsilon)
     {
         Y_new.clearDataObjects();
-        oldStressError = tmpStressError;
         Gutman = getGutman();
 
         for (int i=0; i < n; i++)
@@ -74,15 +73,11 @@ ObjectMatrix SMACOF::getProjection(){
             Y_new.addObject(DataObject(Y_newRow));
         }
         Y = Y_new;
-        //std::stringstream ss;
-        //ss << iteration;
-        //std::string str = "test_ " + ss.str();
-        //Y.saveDataMatrix(str.c_str());
-        newStressError = getStress();
-        tmpStressError = newStressError;
+        
+        stressErrors.push_back(getStress());        
         iteration++;
+        Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
     }
-    finalEpsilon = oldStressError - newStressError;
     return Y;
 }
 
@@ -94,4 +89,9 @@ double SMACOF::getStress()
 ObjectMatrix SMACOF::getGutmanMatrix()
 {
     return MDS::getGutman();
+}
+
+std::vector<double> SMACOF::getStressErrors()
+{
+    return stressErrors;
 }

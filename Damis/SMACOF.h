@@ -26,5 +26,8 @@ public:
 	virtual ObjectMatrix getProjection();
         double getStress();
         ObjectMatrix getGutmanMatrix();
+        std::vector<double> getStressErrors();   // testams
+private:
+        std::vector<double> stressErrors;  
 };
 #endif // !defined(EA_33C383A8_AABC_4498_9E97_8D153E43A6A7__INCLUDED_)

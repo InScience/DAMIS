@@ -49,13 +49,10 @@ ObjectMatrix::ObjectMatrix(int n, int m){
  * by SOM algorithm.
  */
 ObjectMatrix::ObjectMatrix(int m, int n, int k){
-    DataObjects2D.reserve(m);
-    for (int i = 0; i < m; i++)
-    {
-        DataObjects2D[i].reserve(n);
-        for (int j = 0; j < n; j++)
-            DataObjects2D[i][j].setNumOfFeatures(k);
-    }
+    std::vector<double> initialFeatures;
+    initialFeatures.resize(k, 1.0);
+    DataObject initial(initialFeatures);
+    DataObjects2D.resize(m, std::vector<DataObject>( n, initial) );
     objectCount = 0;
 }
 
@@ -69,7 +66,6 @@ void ObjectMatrix::addObject(DataObject object){
 
 void ObjectMatrix::addObjectTo(int index, DataObject object){
     DataObjects2D[index].push_back(object);
-    //objectCount = DataObjects.size();
     objectCount++;
 }
 

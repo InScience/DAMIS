@@ -9,6 +9,7 @@
 #include "Statistics.h"
 #include "DistanceMetrics.h"
 #include "math.h"
+#include "AdditionalMethods.h"
 
 
 SAMANN::SAMANN(){
@@ -30,6 +31,7 @@ SAMANN::SAMANN(int m1, int nl, double e, int maxIter){
     nNeurons = nl;
     eta = e;
     maxIteration = maxIter;
+    d = 2;
     initializeProjectionMatrix();
 }
 
@@ -71,6 +73,9 @@ ObjectMatrix SAMANN::getProjection(){
     for (int i = 0; i < m; i++)
         X.updateDataObject(i, 0, 1.0);
     
+    double** Ypasl = AdditionalMethods::ObjectMatrixToDouble(Y_pasl);
+    double** Yis = AdditionalMethods::ObjectMatrixToDouble(Y_is);
+    
     getXp();
     lambda = getLambda();
 
@@ -92,37 +97,45 @@ ObjectMatrix SAMANN::getProjection(){
                 {
                     tarp = 0.0;
                     for (int k = 0; k < n; k++)
-                        tarp = tarp + w1[j].at(k) * Xp.getObjectAt(miu).getFeatureAt(k);
-                    Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+                        tarp += w1[j].at(k) * Xp.getObjectAt(miu).getFeatureAt(k);
+                    Ypasl[miu][j] = 1.0 / (1 + exp(-1 * tarp));
+                    //Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
                 }
 
                 for (int j = 0; j < d; j++)
                 {
                     tarp = 0.0;
                     for (int k = 0; k < nNeurons; k++)
-                        tarp = tarp + w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
-                    Y_is.updateDataObject(miu, j, 1.0 / exp(-1 * tarp));
+                        //tarp = tarp + w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
+                        tarp += w2[j].at(k) * Ypasl[miu][k];
+                    Yis[miu][j] = 1.0 / exp(-1 * tarp);
+                    //Y_is.updateDataObject(miu, j, 1.0 / exp(-1 * tarp));
                 }
-               
+                
                 tarp1 = 0.0;
                 tarp2 = 0.0;
                 for (int k = 0; k < d; k++)
                 {
                     distXp = DistanceMetrics::getDistance(Xp.getObjectAt(miu), Xp.getObjectAt(niu), Euclidean);
                     distY = DistanceMetrics::getDistance(Y.getObjectAt(miu), Y.getObjectAt(niu), Euclidean);
-                    tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Y_is.getObjectAt(miu).getFeatureAt(k) - Y_is.getObjectAt(niu).getFeatureAt(k));
+                    //tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Y_is.getObjectAt(miu).getFeatureAt(k) - Y_is.getObjectAt(niu).getFeatureAt(k));
+                    tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Yis[miu][k] - Yis[niu][k]);
                     delta_L.updateDataObject(miu, niu, tmp);
-                    ddelta_L[miu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(miu).getFeatureAt(k)) * Y_is.getObjectAt(miu).getFeatureAt(k);
-                    ddelta_L[niu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(niu).getFeatureAt(k)) * Y_is.getObjectAt(niu).getFeatureAt(k);
+                    //ddelta_L[miu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(miu).getFeatureAt(k)) * Y_is.getObjectAt(miu).getFeatureAt(k);
+                    ddelta_L[miu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Yis[miu][k]) * Yis[miu][k];
+                    //ddelta_L[niu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(niu).getFeatureAt(k)) * Y_is.getObjectAt(niu).getFeatureAt(k);//
+                    ddelta_L[niu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Yis[niu][k]) * Yis[niu][k];
                     tarp1 = tarp1 + ddelta_L[miu];
                     tarp2 = tarp2 + ddelta_L[niu];
                     
                     for (int j = 0; j < nNeurons; j++)
                     {
                         if (iter == 0)
-                            w2[k][j] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
+                           // w2[k][j] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
+                        w2[k][j] = -1 * eta * (ddelta_L[miu] * Ypasl[miu][j] - ddelta_L[niu] * Ypasl[niu][j]);
                         else
-                            w2[k][j] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) - w2[k][j];
+                            //w2[k][j] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) - w2[k][j];
+                        w2[k][j] = -1 * eta * (ddelta_L[miu] * Ypasl[miu][j] - ddelta_L[niu] * Ypasl[niu][j]) - w2[k][j];
                     }
                 }
                 ddelta_suma[miu] = tarp1;
@@ -138,12 +151,16 @@ ObjectMatrix SAMANN::getProjection(){
                     
                     for (int k = 0; k < n; k++)
                     {
-                        ddelta_tarp[miu] = delta_tarp[miu] * (1 - Y_pasl.getObjectAt(miu).getFeatureAt(j));
-                        ddelta_tarp[niu] = delta_tarp[niu] * (1 - Y_pasl.getObjectAt(niu).getFeatureAt(j));
+                        //ddelta_tarp[miu] = delta_tarp[miu] * (1 - Y_pasl.getObjectAt(miu).getFeatureAt(j));
+                        //ddelta_tarp[niu] = delta_tarp[niu] * (1 - Y_pasl.getObjectAt(niu).getFeatureAt(j));
+                        ddelta_tarp[miu] = delta_tarp[miu] * (1 - Ypasl[miu][j]);
+                        ddelta_tarp[niu] = delta_tarp[niu] * (1 - Ypasl[niu][j]);
                         if (iter == 0)
-                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
+                            //w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
+                        w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Ypasl[miu][j] - ddelta_tarp[niu] * Ypasl[niu][j]);
                         else
-                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) -w1[j][k];
+                           // w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) -w1[j][k];
+                        w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Ypasl[miu][j] - ddelta_tarp[niu] * Ypasl[niu][j]) -w1[j][k];
                     }                       
                 }
             } 
@@ -160,18 +177,22 @@ ObjectMatrix SAMANN::getProjection(){
             tarp = 0.0;
             for (int k = 0; k < n; k++)
                 tarp += w1[j].at(k) * X.getObjectAt(miu).getFeatureAt(k);
-            Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));              
+           // Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));  
+           Ypasl[miu][j] = 1.0 / (1 + exp(-1 * tarp));            
         }
         for (int j = 0; j < d; j++)
         {
             tarp = 0.0;
             for (int k = 0; k < nNeurons; k++)
-                tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
-            Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+                //tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
+            tarp += w2[j].at(k) * Ypasl[miu][k];
+            //Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+            Yis[miu][j] = 1.0 / (1 + exp(-1 * tarp));
         }
     }
-
-    return  Y_is;
+    Y = AdditionalMethods::DoubleToObjectMatrix(Yis, m, 2);
+    //return  Y_is;
+    return  Y;
 }
 
 double SAMANN::getMax()

@@ -30,9 +30,7 @@ protected:
 	void setEpsilon(double eps);
 	void setMaxIteration(int maxIter);
 
-        double finalEpsilon;
 	double epsilon;
-        int iteration;
 	int maxIteration;
 private:
         double getWeight(int, int);

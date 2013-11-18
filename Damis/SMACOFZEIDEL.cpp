@@ -7,6 +7,7 @@
 
 #include "SMACOFZEIDEL.h"
 #include "ShufleObjects.h"
+#include <float.h>
 
 
 SMACOFZEIDEL::SMACOFZEIDEL(){
@@ -36,22 +37,22 @@ SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, Obj
  */
 ObjectMatrix SMACOFZEIDEL::getProjection(){
 
+    stressErrors.reserve(maxIteration);
     int i;
     int n = X.getObjectCount();
-    double oldStressError = getStress();
-    double newStressError = 0.0;
-    double tmpStressError = oldStressError;
+    stressErrors.push_back(getStress());
     double sum = 0.0;
+    double Epsilon = DBL_MAX;
     ObjectMatrix Gutman, Y_new(n);
     std::vector<int> shufledIndexes;
     shufledIndexes.reserve(n);
     Y_new = Y;
     Gutman = getGutman();
-    iteration = 0;
-    while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
+    int iteration = 0;
+    
+    while (iteration < maxIteration && Epsilon > epsilon)
     {
         shufledIndexes = ShufleObjects::shufleObjectMatrix(shufleEnum, Y);
-        oldStressError = tmpStressError;
         
         for (int row=0; row < n; row++)
         {
@@ -66,15 +67,21 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
             Gutman = getGutman(Y_new);
         }
         Y = Y_new;
-        newStressError = getStress();
-        tmpStressError = newStressError;
-        iteration++;       
+        
+        iteration++;    
+        stressErrors.push_back(getStress());        
+        Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
     }
-    finalEpsilon = oldStressError - newStressError;
+
     return Y;
 }
 
 double SMACOFZEIDEL::getStress()
 {
     return MDS::getStress();
+}
+
+std::vector<double> SMACOFZEIDEL::getStressErrors()
+{
+    return stressErrors;
 }

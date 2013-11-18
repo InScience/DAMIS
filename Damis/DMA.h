@@ -28,7 +28,7 @@ public:
 private:
 	int neighbourNumber;
 	ObjectMatrix vMatrix;
-
+        std::vector<double> stressErrors;
 	void getV();
 
 };

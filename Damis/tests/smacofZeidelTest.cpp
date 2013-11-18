@@ -38,13 +38,31 @@ void TestMatrixYDimmension(ObjectMatrix Y, int d) {
         std::cout << "%TEST_FAILED% time=0 testname=TestMatrixYDimmension (smacofZeidelTest) message=Test Failed!!!" << std::endl;
 }
 
-void TestFinishCondition(SMACOFZEIDEL s, int k, double e)
+void TestMethodConvergence(SMACOFZEIDEL s, int k, double e)
 {
-    std::cout << "-- Checking if calculations are stopped after meeting stop criterias --" << std::endl;
-    if (s.getFinalEpsilon() <= e || s.getIteration() == k)
+    std::cout << "-- Checking if Method is Converging --" << std::endl;
+    std::vector<double> stressErrors = s.getStressErrors();
+    int n = stressErrors.size();
+    bool isConverging = true;
+    std::vector<double> diffOfErrors;
+    diffOfErrors.reserve(n - 1);
+    
+    for (int i = 0; i < n - 1; i++)
+        diffOfErrors.push_back(stressErrors.at(i) - stressErrors.at(i + 1));
+    
+    for (int i = 0; i < n - 2; i++)
+    {
+        if (diffOfErrors.at(i) < diffOfErrors.at(i + 1))
+        {
+            isConverging = false;
+            break;
+        }
+    }
+    
+    if (isConverging == true)
         std::cout << "Test passed." << std::endl;
     else
-        std::cout << "%TEST_FAILED% time=0 testname=TestFinishCondition (smacofZeidelTest) message=Test Failed!!!" << std::endl;
+        std::cout << "%TEST_FAILED% time=0 testname=TestMethodConvergence (smacofZeidelTest) message=Test Failed!!!" << std::endl;
 }
 
 void TestResultsOfShuffleStrategies(ObjectMatrix random, ObjectMatrix asc, ObjectMatrix dsc, double error, int dim)
@@ -96,9 +114,9 @@ int main(int argc, char** argv) {
     TestMatrixYDimmension(Y_rand, d);
     std::cout << "%TEST_FINISHED% time=0 TestMatrixYDimmension (smacofZeidelTest)" << std::endl;
 
-    std::cout << "%TEST_STARTED% TestFinishCondition shuffled randomly (smacofZeidelTest)\n" << std::endl;
-    TestFinishCondition(smf_rand, iter, error);
-    std::cout << "%TEST_FINISHED% time=0 TestFinishCondition (smacofZeidelTest)" << std::endl;
+    std::cout << "%TEST_STARTED% TestMethodConvergence shuffled randomly (smacofZeidelTest)\n" << std::endl;
+    TestMethodConvergence(smf_rand, iter, error);
+    std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (smacofZeidelTest)" << std::endl;
     
     SMACOFZEIDEL smf_bubbleasc(error, iter, d, BUBLESORTASC);
     ObjectMatrix Y_bubbleasc = smf_bubbleasc.getProjection();
@@ -116,9 +134,9 @@ int main(int argc, char** argv) {
     TestMatrixYDimmension(Y_bubbleasc, d);
     std::cout << "%TEST_FINISHED% time=0 TestMatrixYDimmension (smacofZeidelTest)" << std::endl;
 
-    std::cout << "%TEST_STARTED% TestFinishCondition shuffled bubble sort asc (smacofZeidelTest)\n" << std::endl;
-    TestFinishCondition(smf_bubbleasc, iter, error);   
-    std::cout << "%TEST_FINISHED% time=0 TestFinishCondition (smacofZeidelTest)" << std::endl;
+    std::cout << "%TEST_STARTED% TestMethodConvergence shuffled bubble sort asc (smacofZeidelTest)\n" << std::endl;
+    TestMethodConvergence(smf_bubbleasc, iter, error);   
+    std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (smacofZeidelTest)" << std::endl;
     
     
     SMACOFZEIDEL smf_bubbledsc(error, iter, d, BUBLESORTDSC);
@@ -138,9 +156,9 @@ int main(int argc, char** argv) {
     TestMatrixYDimmension(Y_bubbledsc, d);
     std::cout << "%TEST_FINISHED% time=0 TestMatrixYDimmension (smacofZeidelTest)" << std::endl;
 
-    std::cout << "%TEST_STARTED% TestFinishCondition shuffled bubble sort desc (smacofZeidelTest)\n" << std::endl;
-    TestFinishCondition(smf_bubbledsc, iter, error);   
-    std::cout << "%TEST_FINISHED% time=0 TestFinishCondition (smacofZeidelTest)" << std::endl;
+    std::cout << "%TEST_STARTED% TestMethodConvergence shuffled bubble sort desc (smacofZeidelTest)\n" << std::endl;
+    TestMethodConvergence(smf_bubbledsc, iter, error);   
+    std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (smacofZeidelTest)" << std::endl;
     
     ObjectMatrix Y(n);
     std::vector<double> DataObjectItem;

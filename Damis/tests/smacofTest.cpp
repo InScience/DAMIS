@@ -36,13 +36,31 @@ void TestMatrixYDimmension(ObjectMatrix Y, int d) {
         std::cout << "%TEST_FAILED% time=0 testname=TestMatrixYDimmension (smacofTest) message=Test Failed!!!" << std::endl;
 }
 
-void TestFinishCondition(SMACOF s, int k, double e)
+void TestMethodConvergence(SMACOF s, int k, double e)
 {
-    std::cout << "-- Checking if calculations are stopped after meeting stop criterias --" << std::endl;
-    if (s.getFinalEpsilon() <= e || s.getIteration() == k)
+    std::cout << "-- Checking if Method is Converging --" << std::endl;
+    std::vector<double> stressErrors = s.getStressErrors();
+    int n = stressErrors.size();
+    bool isConverging = true;
+    std::vector<double> diffOfErrors;
+    diffOfErrors.reserve(n - 1);
+    
+    for (int i = 0; i < n - 1; i++)
+        diffOfErrors.push_back(stressErrors.at(i) - stressErrors.at(i + 1));
+    
+    for (int i = 0; i < n - 2; i++)
+    {
+        if (diffOfErrors.at(i) < diffOfErrors.at(i + 1))
+        {
+            isConverging = false;
+            break;
+        }
+    }
+    
+    if (isConverging == true)
         std::cout << "Test passed." << std::endl;
     else
-        std::cout << "%TEST_FAILED% time=0 testname=TestFinishCondition (smacofTest) message=Test Failed!!!" << std::endl;
+        std::cout << "%TEST_FAILED% time=0 testname=TestMethodConvergence (smacofTest) message=Test Failed!!!" << std::endl;
 }
 
 int main(int argc, char** argv) {
@@ -65,9 +83,9 @@ int main(int argc, char** argv) {
     TestMatrixYDimmension(Y, d);
     std::cout << "%TEST_FINISHED% time=0 TestMatrixYDimmension (smacofTest)" << std::endl;
 
-    std::cout << "%TEST_STARTED% TestFinishCondition (smacofTest)\n" << std::endl;
-    TestFinishCondition(smf, iter, error);
-    std::cout << "%TEST_FINISHED% time=0 TestFinishCondition (smacofTest)" << std::endl;
+    std::cout << "%TEST_STARTED% TestMethodConvergence (smacofTest)\n" << std::endl;
+    TestMethodConvergence(smf, iter, error);
+    std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (smacofTest)" << std::endl;
     
     std::cout << "%SUITE_FINISHED% time=0" << std::endl << std::endl;
 

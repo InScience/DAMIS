@@ -39,10 +39,6 @@ double MDS::getEpsilon(){
     return epsilon;
 }
 
-double MDS::getFinalEpsilon(){
-    return finalEpsilon;
-}
-
 ObjectMatrix MDS::getGutman(){
     int n = X.getObjectCount();
     ObjectMatrix GutmanMatrix(n);
@@ -134,10 +130,6 @@ ObjectMatrix MDS::getGutman(ObjectMatrix Y_new){
  */
 int MDS::getMaxIteration(){
     return maxIteration;
-}
-
-int MDS::getIteration(){
-    return iteration;
 }
 
 /**

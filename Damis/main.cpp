@@ -22,6 +22,7 @@
 #include "SMACOFZEIDEL.h"
 #include "SDS.h"
 #include "SOM.h"
+#include "SOMMDS.h"
 #include "DMA.h"
 #include "mpi.h"
 #include "Projection.h"
@@ -63,12 +64,13 @@ int main(int argc, char** argv) {
             //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, Euclidean);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
             //SMACOF smcf (epsilon, maxIter, d);
-            SAMANN smcf(50, 10, 2.0, 1);
-            //DMA smcf(epsilon, 10, 2, 10);
+            //SAMANN smcf(50, 10, 2.0, 1);
+            DMA smcf(epsilon, 10, 2, 10);
+            //SOM smcf(100, 3, 5);
+            //SOMMDS smcf(epsilon, maxIter, d, 100, 3, 5);
             Y = smcf.getProjection();
             
-            PrintMatrix(Y);
-            //Y.saveDataMatrix("tests/new_test7.txt");           
+            PrintMatrix(Y);           
         }
         else
         {

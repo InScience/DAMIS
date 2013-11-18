@@ -51,6 +51,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/SMACOF.o \
 	${OBJECTDIR}/SMACOFZEIDEL.o \
 	${OBJECTDIR}/SOM.o \
+	${OBJECTDIR}/SOMMDS.o \
 	${OBJECTDIR}/ShufleObjects.o \
 	${OBJECTDIR}/Statistics.o \
 	${OBJECTDIR}/arff.o \
@@ -173,6 +174,11 @@ ${OBJECTDIR}/SOM.o: SOM.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOM.o SOM.cpp
+
+${OBJECTDIR}/SOMMDS.o: SOMMDS.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g --coverage -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOMMDS.o SOMMDS.cpp
 
 ${OBJECTDIR}/ShufleObjects.o: ShufleObjects.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -478,6 +484,19 @@ ${OBJECTDIR}/SOM_nomain.o: ${OBJECTDIR}/SOM.o SOM.cpp
 	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOM_nomain.o SOM.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SOM.o ${OBJECTDIR}/SOM_nomain.o;\
+	fi
+
+${OBJECTDIR}/SOMMDS_nomain.o: ${OBJECTDIR}/SOMMDS.o SOMMDS.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/SOMMDS.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g --coverage -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOMMDS_nomain.o SOMMDS.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/SOMMDS.o ${OBJECTDIR}/SOMMDS_nomain.o;\
 	fi
 
 ${OBJECTDIR}/ShufleObjects_nomain.o: ${OBJECTDIR}/ShufleObjects.o ShufleObjects.cpp 

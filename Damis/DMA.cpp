@@ -8,6 +8,7 @@
 #include "DMA.h"
 #include "ShufleEnum.h"
 #include "ShufleObjects.h"
+#include <float.h>
 
 DMA::DMA(){
 
@@ -39,11 +40,12 @@ int DMA::getNeighbours(){
  * Pure virtual method that calculates the projection
  */
 ObjectMatrix DMA::getProjection(){
+    stressErrors.reserve(maxIteration);
     int m = X.getObjectCount();
     int iteration = 0;
-    double oldStressError = getStress();
-    double newStressError = 0.0, sum = 0.0;
-    double tmpStressError = oldStressError;    
+    stressErrors.push_back(getStress());
+    double Epsilon = DBL_MAX;
+    double sum = 0.0;   
     ObjectMatrix Gutman;
     ObjectMatrix Y_new(m);
     Gutman = ObjectMatrix(m);
@@ -54,11 +56,9 @@ ObjectMatrix DMA::getProjection(){
     Y_new = Y;
     getV();
       
-    while (iteration < getMaxIteration() && (oldStressError - newStressError) > getEpsilon())
+    while (iteration < maxIteration && Epsilon > epsilon)
     {
-        iteration = iteration + 1;
         shufledIndexes = ShufleObjects::shufleObjectMatrix(RANDOM, Y);
-        oldStressError = tmpStressError;
         Gutman = getGutman();
         for (int i = 0; i < m; i++)
             for (int j = 0; j < m; j++)
@@ -76,8 +76,9 @@ ObjectMatrix DMA::getProjection(){
             }
         }
         Y = Y_new;
-        newStressError = getStress();
-        tmpStressError = newStressError;
+        iteration++;        
+        stressErrors.push_back(MDS::getStress());        
+        Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
     }
     
     return  Y;

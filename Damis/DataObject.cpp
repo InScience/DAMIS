@@ -86,5 +86,5 @@ double DataObject::getFeatureAt(int index)
 
 void DataObject::updateFeature(int featureIndex, double newValue)
 {
-    features.at(featureIndex) = newValue;
+    features[featureIndex] = newValue;
 }
