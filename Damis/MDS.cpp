@@ -61,10 +61,10 @@ ObjectMatrix MDS::getGutman(){
     {
         for (int j = 0; j < n; j++)
         {
-            distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), Euclidean);
+            distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
             if (i != j &&  distYij != 0)
             {
-                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), Euclidean);
+                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
                 GutmanMatrixRow.at(j) = -1 * distXij/distYij;
             }
             else if (i != j && distYij == 0)
@@ -104,10 +104,10 @@ ObjectMatrix MDS::getGutman(ObjectMatrix Y_new){
     {
         for (int j = 0; j < n; j++)
         {
-            distYij = DistanceMetrics::getDistance(Y_new.getObjectAt(i), Y_new.getObjectAt(j), Euclidean);
+            distYij = DistanceMetrics::getDistance(Y_new.getObjectAt(i), Y_new.getObjectAt(j), EUCLIDEAN);
             if (i != j &&  distYij != 0)
             {
-                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), Euclidean);
+                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
                 GutmanMatrixRow.at(j) = -1 * distXij/distYij;
             }
             else if (i != j && distYij == 0)
@@ -152,8 +152,8 @@ double MDS::getStress(){
     {
         for (int j = i + 1; j < n; j++)
         {
-            distX = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), Euclidean);
+            distX = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
             stress += getWeight(i, j) * std::pow(distX - distY, 2);
         }
     }
@@ -167,7 +167,7 @@ double MDS::getWeight(int i, int j)
     int n = X.getObjectCount();
     
     for (int j = i + 1; j < n; j++)
-        weight += std::pow(DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), Euclidean), 2);
+        weight += std::pow(DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN), 2);
     return 1 / weight;
 }
 

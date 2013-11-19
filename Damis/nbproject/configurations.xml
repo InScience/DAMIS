@@ -103,13 +103,24 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
         <ccTool>
           <commandlineTool>mpic++</commandlineTool>
-          <commandLine>--coverage</commandLine>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
           <linkerLibItems>
             <linkerLibFileItem>alglib/libalglib.so</linkerLibFileItem>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -226,20 +237,6 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <folder path="TestFiles/f2">
-        <cTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </cTool>
-        <ccTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f2</output>
-          <linkerLibItems>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
       <folder path="TestFiles/f3">
         <cTool>
           <incDir>
@@ -273,21 +270,6 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f5">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f5</output>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f6">
@@ -326,10 +308,18 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
           <commandlineTool>mpic++</commandlineTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -338,8 +328,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
           <linkerLibItems>
             <linkerLibFileItem>libalglib.so</linkerLibFileItem>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
           <commandLine>-L$HOME</commandLine>
         </linkerTool>
@@ -457,20 +449,6 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <folder path="TestFiles/f2">
-        <cTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </cTool>
-        <ccTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f2</output>
-          <linkerLibItems>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
       <folder path="TestFiles/f3">
         <cTool>
           <incDir>
@@ -504,21 +482,6 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f5">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f5</output>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f6">

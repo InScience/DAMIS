@@ -9,7 +9,7 @@
 #define	DISTANCEMETRICSENUM_H
 
 enum DistanceMetricsEnum {
-    Manhattan = 1, Euclidean = 2, Chebyshev = 3
+    MANHATTAN = 1, EUCLIDEAN = 2, CHEBYSHEV = 3
 };
 
 #endif	/* DISTANCEMETRICSENUM_H */

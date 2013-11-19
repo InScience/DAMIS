@@ -10,6 +10,7 @@
 #include "DistanceMetrics.h"
 #include "math.h"
 #include "AdditionalMethods.h"
+#include <fstream>
 
 
 SAMANN::SAMANN(){
@@ -46,7 +47,7 @@ double SAMANN::getLambda(){
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = i + 1; j < n; j++)
-            temp = temp + 1.0 / DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), Euclidean);
+            temp = temp + 1.0 / DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
     }
     return 1.0 / temp;
 }
@@ -64,7 +65,9 @@ ObjectMatrix SAMANN::getProjection(){
     double delta_tarp[mTrain];
     double ddelta_tarp[mTrain];
     double tarp = 0.0, tarp1 = 0.0, tarp2 = 0.0, lambda, tmp, distXp, distY;
-
+    std::ofstream file("Y_is.txt");
+    std::ofstream file2("Y_pasl.txt");
+    
     initializeWeights();   // w1, w2
     initializeExitMatrixes();   // Y_pasl, Y_is
     initializeDeltaL();   // delta_L
@@ -78,7 +81,9 @@ ObjectMatrix SAMANN::getProjection(){
     
     getXp();
     lambda = getLambda();
-
+    
+    Xp.saveDataMatrix("xp.arff");
+    
     for (int i = 0; i < mTrain; i++)
     {
         ddelta_L[i] = 0.0;
@@ -96,8 +101,13 @@ ObjectMatrix SAMANN::getProjection(){
                 for (int j = 0; j < nNeurons; j++)
                 {
                     tarp = 0.0;
+                    file2 <<"miu:" <<miu<<", niu: "<<niu <<", j: " << j << ", w1: ";
                     for (int k = 0; k < n; k++)
+                    {
                         tarp += w1[j].at(k) * Xp.getObjectAt(miu).getFeatureAt(k);
+                        file2 <<w1[j].at(k)<<", ";
+                    }
+                    file2<<std::endl;
                     Ypasl[miu][j] = 1.0 / (1 + exp(-1 * tarp));
                     //Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
                 }
@@ -105,9 +115,14 @@ ObjectMatrix SAMANN::getProjection(){
                 for (int j = 0; j < d; j++)
                 {
                     tarp = 0.0;
+                    file << "miu: " << miu <<", niu: "<< niu<< " Y_pasl: ";
                     for (int k = 0; k < nNeurons; k++)
+                    {
                         //tarp = tarp + w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
+                        file <<Ypasl[miu][k]<<", ";
                         tarp += w2[j].at(k) * Ypasl[miu][k];
+                    }
+                    file << " tarp: " << tarp <<std::endl;
                     Yis[miu][j] = 1.0 / exp(-1 * tarp);
                     //Y_is.updateDataObject(miu, j, 1.0 / exp(-1 * tarp));
                 }
@@ -116,8 +131,8 @@ ObjectMatrix SAMANN::getProjection(){
                 tarp2 = 0.0;
                 for (int k = 0; k < d; k++)
                 {
-                    distXp = DistanceMetrics::getDistance(Xp.getObjectAt(miu), Xp.getObjectAt(niu), Euclidean);
-                    distY = DistanceMetrics::getDistance(Y.getObjectAt(miu), Y.getObjectAt(niu), Euclidean);
+                    distXp = DistanceMetrics::getDistance(Xp.getObjectAt(miu), Xp.getObjectAt(niu), EUCLIDEAN);
+                    distY = DistanceMetrics::getDistance(Y.getObjectAt(miu), Y.getObjectAt(niu), EUCLIDEAN);
                     //tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Y_is.getObjectAt(miu).getFeatureAt(k) - Y_is.getObjectAt(niu).getFeatureAt(k));
                     tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Yis[miu][k] - Yis[niu][k]);
                     delta_L.updateDataObject(miu, niu, tmp);
@@ -145,8 +160,8 @@ ObjectMatrix SAMANN::getProjection(){
                 {
                     for (int k = 0; k < d; k++)
                     {
-                        delta_tarp[miu] = ddelta_suma[miu] * w2[k][j];
-                        delta_tarp[niu] = ddelta_suma[niu] * w2[k][j];
+                        delta_tarp[miu] += ddelta_suma[miu] * w2[k][j];
+                        delta_tarp[niu] += ddelta_suma[niu] * w2[k][j];
                     }
                     
                     for (int k = 0; k < n; k++)
@@ -192,6 +207,8 @@ ObjectMatrix SAMANN::getProjection(){
     }
     Y = AdditionalMethods::DoubleToObjectMatrix(Yis, m, 2);
     //return  Y_is;
+    file.close();
+    file2.close();
     return  Y;
 }
 
@@ -283,8 +300,8 @@ double SAMANN::getStress(){
     {
         for (int niu = miu + 1; niu < m; niu++)
         {
-            distX = DistanceMetrics::getDistance(X.getObjectAt(miu), X.getObjectAt(niu), Euclidean);
-            distY = DistanceMetrics::getDistance(Y.getObjectAt(miu), Y.getObjectAt(niu), Euclidean);
+            distX = DistanceMetrics::getDistance(X.getObjectAt(miu), X.getObjectAt(niu), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(Y.getObjectAt(miu), Y.getObjectAt(niu), EUCLIDEAN);
             tarp1 += 1 / distX;
             tarp2 += pow(distX - distY, 2) / distX;
         }

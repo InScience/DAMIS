@@ -13,9 +13,21 @@
 #include "alglib/optimization.h"
 #include "DistanceMetrics.h"
 #include "AdditionalMethods.h"
+#include "ObjectMatrix.h"
 #include <float.h>
 #include <fstream>
 #include <cmath>
+
+class StaticData {
+public:
+    static ObjectMatrix X_base;
+    static ObjectMatrix Y_base;
+    static ObjectMatrix X_new;
+};
+
+ObjectMatrix StaticData::X_base;
+ObjectMatrix StaticData::Y_base;
+ObjectMatrix StaticData::X_new;
 
 SDS::SDS(){
 
@@ -44,9 +56,9 @@ SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInitt, int nof
 ObjectMatrix SDS::getProjection(){
     int m = X.getObjectCount();
     int step = 0, rest = 0;
-    X_base = ObjectMatrix(nb);
-    X_new = ObjectMatrix(m - nb);
-    Y_base = ObjectMatrix(nb);
+    StaticData::X_base = ObjectMatrix(nb);
+    StaticData::X_new = ObjectMatrix(m - nb);
+    StaticData::Y_base = ObjectMatrix(nb);
     Y_new = ObjectMatrix(m - nb);
     ObjectMatrix proj(m);
     std::vector<int> index;
@@ -82,15 +94,15 @@ ObjectMatrix SDS::getProjection(){
     for (int i = 0; i < m; i++)
     {
         if (i < nb)
-            X_base.addObject(X.getObjectAt(index.at(i)));
+            StaticData::X_base.addObject(X.getObjectAt(index.at(i)));
         else
-            X_new.addObject(X.getObjectAt(index.at(i)));
+            StaticData::X_new.addObject(X.getObjectAt(index.at(i)));
     }
     
-    PCA::PCA pca(X_base, d);
-    Y_base = pca.getProjection();
-    SMACOF smcf(epsilon, maxIteration, d, X_base, Y_base);
-    Y_base = smcf.getProjection();
+    PCA::PCA pca(StaticData::X_base, d);
+    StaticData::Y_base = pca.getProjection();
+    SMACOF smcf(epsilon, maxIteration, d, StaticData::X_base, StaticData::Y_base);
+    StaticData::Y_base = smcf.getProjection();
     
     Initialize();
     
@@ -99,7 +111,7 @@ ObjectMatrix SDS::getProjection(){
     Y.clearDataObjects();
     
     for (int i = 0; i < nb; i++)
-        Y.addObject(Y_base.getObjectAt(i));
+        Y.addObject(StaticData::Y_base.getObjectAt(i));
         
     for (int i = 0; i < m - nb; i++)
         Y.addObject(Y_new.getObjectAt(i));
@@ -121,19 +133,15 @@ void SDS::getQN(){
     alglib::real_1d_array Ynew;
     Ynew = AdditionalMethods::ObjectMatrixTo1DArray(Y_new);
       
-    X_new.saveDataMatrix("xnew.arff");
-    X_base.saveDataMatrix("xbase.arff");
-    Y_base.saveDataMatrix("ybase.arff");
-    Y_new.saveDataMatrix("ynew.arff");
+    //X_new.saveDataMatrix("xnew.arff");
+    //X_base.saveDataMatrix("xbase.arff");
+    //Y_base.saveDataMatrix("ybase.arff");
+    //Y_new.saveDataMatrix("ynew.arff");
     
     alglib::minlbfgscreate(m, Ynew, state);
     alglib::minlbfgssetcond(state, epsg, epsf, epsx, maxits);
     alglib::minlbfgsoptimize(state,  E_SDS, NULL, NULL);
     alglib::minlbfgsresults(state, Ynew, rep);
-    
-    std::ofstream f("test.txt");
-    f<<Ynew(0)<< " "<<Ynew(1)<<std::endl;    
-    f.close();
     
     Y_new = AdditionalMethods::alglib1DArrayToObjectMatrix(Ynew, d);
 }
@@ -149,16 +157,16 @@ double SDS::getStress(){
     for (int i = 0; i < m - nb; i++)
         for (int j = i + 1; j < m - nb; j++)
         {
-            distX = DistanceMetrics::getDistance(X_new.getObjectAt(i), X_new.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(Y_new.getObjectAt(i), Y_new.getObjectAt(j), Euclidean);
+            distX = DistanceMetrics::getDistance(StaticData::X_new.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(Y_new.getObjectAt(i), Y_new.getObjectAt(j), EUCLIDEAN);
             dist1 += pow(distX - distY, 2);
         }
     
     for (int i = 0; i < nb; i++)
         for (int j = 0; j < m - nb; j++)
         {
-            distX = DistanceMetrics::getDistance(X_base.getObjectAt(i), X_new.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(Y_base.getObjectAt(i), Y_new.getObjectAt(j), Euclidean);
+            distX = DistanceMetrics::getDistance(StaticData::X_base.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(StaticData::Y_base.getObjectAt(i), Y_new.getObjectAt(j), EUCLIDEAN);
             dist2 += pow(distX - distY, 2);
         }
     
@@ -168,15 +176,15 @@ double SDS::getStress(){
 void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d_array &grad, void *ptr)
 {
     double f1 = 0.0, f2 = 0.0, distX = 0.0, distY = 0.0;
-    ObjectMatrix Xnew("xnew.arff");
-    Xnew.loadDataMatrix();
-    ObjectMatrix Xbase("xbase.arff");
-    Xbase.loadDataMatrix();
-    ObjectMatrix Ybase("ybase.arff");
-    Ybase.loadDataMatrix();
-    int d = Ybase.getObjectAt(0).getFeatureCount();
-    int sm = Xnew.getObjectCount();
-    int nb = Xbase.getObjectCount();
+    //ObjectMatrix Xnew("xnew.arff");
+    //Xnew.loadDataMatrix();
+    //ObjectMatrix Xbase("xbase.arff");
+    //Xbase.loadDataMatrix();
+    //ObjectMatrix Ybase("ybase.arff");
+    //Ybase.loadDataMatrix();
+    int d = StaticData::Y_base.getObjectAt(0).getFeatureCount();
+    int sm = StaticData::X_new.getObjectCount();
+    int nb = StaticData::X_base.getObjectCount();
     std::vector<double> items;
     items.reserve(d);
     DataObject dd[sm];
@@ -193,8 +201,8 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
     {   
         for (int j = i + 1; j < sm; j++)
         {
-            distX = DistanceMetrics::getDistance(Xnew.getObjectAt(i), Xnew.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(dd[i], dd[j], Euclidean);
+            distX = DistanceMetrics::getDistance(StaticData::X_new.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(dd[i], dd[j], EUCLIDEAN);
             f1 += std::pow(distX - distY, 2);
         }
     }    
@@ -203,8 +211,8 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
     {
         for (int j = 0; j < sm; j++)
         {
-            distX = DistanceMetrics::getDistance(Xbase.getObjectAt(i), Xnew.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(Ybase.getObjectAt(i), dd[j], Euclidean);
+            distX = DistanceMetrics::getDistance(StaticData::X_base.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(StaticData::Y_base.getObjectAt(i), dd[j], EUCLIDEAN);
             f2 += std::pow(distX - distY, 2);
         }
     }
@@ -216,8 +224,8 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
         grad[i] = 0.0;
         for (int j = i + 1; j < sm; j++)
         {
-            distX = DistanceMetrics::getDistance(Xnew.getObjectAt(i), Xnew.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(dd[i], dd[j], Euclidean);
+            distX = DistanceMetrics::getDistance(StaticData::X_new.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(dd[i], dd[j], EUCLIDEAN);
             if (distY != 0)
                 grad[i] += (distX - distY) / distY;
         }
@@ -227,8 +235,8 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
     {
         for (int j = 0; j < sm; j++)
         {
-            distX = DistanceMetrics::getDistance(Xbase.getObjectAt(i), Xnew.getObjectAt(j), Euclidean);
-            distY = DistanceMetrics::getDistance(Ybase.getObjectAt(i), dd[j], Euclidean);
+            distX = DistanceMetrics::getDistance(StaticData::X_base.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(StaticData::Y_base.getObjectAt(i), dd[j], EUCLIDEAN);
             if (distY != 0)
                 grad[j] += (distX - distY) / distY;
         }
@@ -248,13 +256,13 @@ void SDS::Initialize()
         closest_base = 0;
         for (int j = 0; j < nb; j++)
         {
-            dist_ij = DistanceMetrics::getDistance(X_base.getObjectAt(j), X_new.getObjectAt(i), Euclidean);
+            dist_ij = DistanceMetrics::getDistance(StaticData::X_base.getObjectAt(j), StaticData::X_new.getObjectAt(i), EUCLIDEAN);
             if (dist_ij < min_dist)
             {
                 min_dist = dist_ij;
                 closest_base = j;
             }
         }
-        Y_new.addObject(Y_base.getObjectAt(closest_base));
+        Y_new.addObject(StaticData::Y_base.getObjectAt(closest_base));
     }
 }

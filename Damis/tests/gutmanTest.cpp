@@ -74,7 +74,7 @@ void testValuesOfIdenticalObjects(ObjectMatrix gMatrix, ObjectMatrix Y, int rowC
         for (int j = 0; j < rowCount; j++)
             if (i != j)
             {
-                distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), Euclidean);
+                distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
                 if (distYij == 0.0)
                 {
                     for (int k = 0; k < rowCount; k++)

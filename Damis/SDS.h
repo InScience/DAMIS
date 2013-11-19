@@ -32,21 +32,21 @@ public:
 
 	virtual ObjectMatrix getProjection();
 	virtual double getStress();        
-        
+        //tatic ObjectMatrix Y_base;
 private:
 	/**
 	 * Base vector initialization method
 	 */
 	ProjectionEnum initMethod;
 	ObjectMatrix Y_new;
-        ObjectMatrix Y_base;
+        
         DistanceMetricsEnum distMethod;
 	/**
 	 * Number of base vectors
 	 */
 	int nb;
-	ObjectMatrix X_base;
-	ObjectMatrix X_new;
+	//static ObjectMatrix X_base;
+	//static ObjectMatrix X_new;
         
 	void getQN();
         void Initialize();

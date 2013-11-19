@@ -21,11 +21,12 @@ public:
 	virtual ~PCA();
 
 	PCA(int d);
-	PCA(float disp);
+	PCA(double disp);
 	PCA(ObjectMatrix objMatrix, int d);
 	virtual void toDataType();
 	virtual void fromDataType();
-
+        int getDimension();
+        double getDispersionPart();
 //protected:
 	virtual ObjectMatrix getProjection();
 
@@ -33,8 +34,8 @@ private:
 	/**
 	 * Dispersion part to retain in resulting projection
 	 */
-	float dispPart;
+	double dispPart;
         alglib::real_2d_array alglibX;
-
+        void ProjectXMatrix();
 };
 #endif // !defined(EA_137C79B9_5330_4edc_A6BF_D6D076823555__INCLUDED_)

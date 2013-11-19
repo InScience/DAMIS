@@ -13,7 +13,6 @@
 #include <iostream>
 #include "DistanceMetrics.h"
 #include "ObjectMatrix.h"
-#include "PCA.h"
 #include "MDS.h"
 #include "HPCMethod.h"
 #include "DimReductionMethod.h"
@@ -26,6 +25,7 @@
 #include "DMA.h"
 #include "mpi.h"
 #include "Projection.h"
+#include "PCA.h"
 #include "AdditionalMethods.h"
 #include <sstream>
 
@@ -60,21 +60,18 @@ int main(int argc, char** argv) {
     { 
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
-        {
-            ARFF file ("arff_files/random100K.arff");
-            if (file.getFileReadStatus() == 0)
-                cout << file.getReason()<<std::endl;
-            
-            //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, Euclidean);
+        {        
+            //PCA::PCA smcf(d);
+            //PCA::PCA smcf(0.5);
+            //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
             //SMACOF smcf (epsilon, maxIter, d);
             //SAMANN smcf(50, 10, 2.0, 1);
             //DMA smcf(epsilon, 10, 2, 10);
             //SOM smcf(100, 3, 5);
             //SOMMDS smcf(epsilon, maxIter, d, 100, 3, 5);
-            //Y = smcf.getProjection();
-            
-            //PrintMatrix(Y);           
+            Y = smcf.getProjection();
+            PrintMatrix(Y);           
         }
         else
         {

@@ -93,3 +93,26 @@ ObjectMatrix Statistics::getCovMatrix(ObjectMatrix om)
     
     return cov;
 }
+
+double Statistics::getDispersion(ObjectMatrix matrix, int columnIndex)
+{
+    int n = matrix.getObjectCount();
+    double dispersion = 0.0;
+    double sum = 0.0;
+    double average = Statistics::getAverage(matrix, columnIndex);
+    for (int i = 0; i < n; i++)
+        sum += std::pow((matrix.getObjectAt(i).getFeatureAt(columnIndex) - average), 2);
+    dispersion = std::sqrt((1.0 / n) * sum);
+    return dispersion;
+}
+
+double Statistics::getSum(ObjectMatrix matrix, int columnIndex)
+{
+    int n = matrix.getObjectCount();
+    double sum = 0.0;
+    
+    for (int i = 0; i < n; i++)
+        sum += matrix.getObjectAt(i).getFeatureAt(columnIndex);
+    
+    return sum;
+}

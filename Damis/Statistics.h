@@ -20,6 +20,8 @@ public:
     static double getRandom(double, double, int);
     static double getRandom(int);
     static double getRandom(double, double);   // testavimui, vienodu matricu generavimui
+    static double getDispersion(ObjectMatrix, int);
+    static double getSum(ObjectMatrix, int);
 };
 
 #endif	/* STATISTICS_H */

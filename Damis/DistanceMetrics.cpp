@@ -6,11 +6,11 @@
 
 double DistanceMetrics::getDistance(DataObject obj1, DataObject obj2, DistanceMetricsEnum dme){
     double to_return = 0.0;
-    if (dme == Manhattan)
+    if (dme == MANHATTAN)
         to_return = DistanceMetrics::getManhattan(obj1, obj2);
-    else if (dme == Euclidean)
+    else if (dme == EUCLIDEAN)
         to_return = DistanceMetrics::getEuclidean(obj1, obj2);
-    else if (dme == Chebyshev)
+    else if (dme == CHEBYSHEV)
         to_return = DistanceMetrics::getChebyshev(obj1, obj2);
     
     return to_return;
@@ -43,7 +43,7 @@ double DistanceMetrics::getEuclidean(DataObject obj1, DataObject obj2)
 
 double DistanceMetrics::getChebyshev(DataObject obj1, DataObject obj2)
 {
-    double to_return = -1.0;   
+    double to_return = -1.0;
     int n = obj1.getFeatureCount();
     
     for (int i = 0; i < n; i++)

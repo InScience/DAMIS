@@ -75,7 +75,7 @@ ObjectMatrix SOM::getProjection(){
             {
                 for (int j = 0; j < k_y; j++)
                 {
-                    dist_ij = DistanceMetrics::getDistance(M.getObjectAt(i, j), X.getObjectAt(l), Euclidean);
+                    dist_ij = DistanceMetrics::getDistance(M.getObjectAt(i, j), X.getObjectAt(l), EUCLIDEAN);
                     if (dist_ij < win_dist)
                     {
                         win_dist = dist_ij;
@@ -113,7 +113,7 @@ ObjectMatrix SOM::getProjection(){
         {
             for (int j = 0; j < k_y; j++)
             {
-                dist_ij = DistanceMetrics::getDistance(M.getObjectAt(i, j), X.getObjectAt(l), Euclidean);
+                dist_ij = DistanceMetrics::getDistance(M.getObjectAt(i, j), X.getObjectAt(l), EUCLIDEAN);
                 if (dist_ij < win_dist)
                 {
                     win_dist = dist_ij;
@@ -148,7 +148,7 @@ double SOM::getQuantizationError(){
     for (int l = 0; l < m; l++)
     {
         for (int i = 0; i < r; i++)
-            dist_li = DistanceMetrics::getDistance(nWinner.getObjectAt(i), X.getObjectAt(l), Euclidean);
+            dist_li = DistanceMetrics::getDistance(nWinner.getObjectAt(i), X.getObjectAt(l), EUCLIDEAN);
         som_qe += dist_li;          
     }
     
