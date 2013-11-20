@@ -107,7 +107,8 @@
             } else {
                 // Otherwise, use the last form in the formset; this works much better if you've got
                 // extra (>= 1) forms (thnaks to justhamade for pointing this out):
-                template = $('.' + options.formCssClass + ':last').clone(true).removeAttr('id');
+                /// G.G: changed from last to first due to custom requirements
+                template = $('.' + options.formCssClass + ':first').clone(true).removeAttr('id');
                 template.find('input:hidden[id $= "-DELETE"]').remove();
                 template.find('input,select,textarea,label').each(function() {
                     var elem = $(this);
@@ -132,8 +133,10 @@
                 addButton.parents('tr').addClass(options.formCssClass + '-add');
             } else {
                 // Otherwise, insert it immediately after the last form:
-                $$.filter(':last').after('<a class="' + options.addCssClass + '" href="javascript:void(0)">' + options.addText + '</a>');
-                addButton = $$.filter(':last').next();
+                // G.G: changed last to first, so inserting immediately after
+                // the first form
+                $$.filter(':first').after('<a class="' + options.addCssClass + '" href="javascript:void(0)">' + options.addText + '</a>');
+                addButton = $$.filter(':first').next();
             }
             addButton.click(function() {
                 var formCount = parseInt($('#id_' + options.prefix + '-TOTAL_FORMS').val()),
