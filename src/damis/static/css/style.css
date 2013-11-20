@@ -66,6 +66,10 @@ body {
     list-style-type: none;
 }
 
+.error-message {
+    padding: 20px; margin-bottom: 20px; border: 1px solid #EEE; -moz-border-radius:4px; border-radius:4px; color: #A60000; 
+}
+
 /* ---- Footer ---- */
 .footer {
     width: 600px;

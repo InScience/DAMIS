@@ -2,8 +2,15 @@
 {% get_current_language as lang %}
 
 <form id="experiment-form" action="." method="post">{% csrf_token %}
-    <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" style="font-size:16pt; height:16pt;">
-    <button class="btn btn-primary offset1"
+
+    {% if experiment_form.errors %}
+        <div class="error-message">
+            {% trans "Form contains errors" %}
+        </div>
+    {% endif %}
+    <input id="id_title" type="text" name="title" maxlength="255"
+    placeholder="{% trans "Title" %}" style="margin-bottom:0">
+    <button class="btn btn-primary"
             type="button" id="execute-btn">{% trans "Execute" %}</button>
     {{ task_formset.management_form }}
     <div style="display: none;">

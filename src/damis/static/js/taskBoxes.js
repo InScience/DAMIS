@@ -90,12 +90,33 @@
 				"opoints": opoints
 			}
 		},
-		createTaskFormDialog: function(newTaskForm, formWindowId) {
+        
+        // Loads parameters for the selected algorithm
+		loadAlgorithmParameters: function() {
+			$.ajax({
+				url: parametersUrl,
+				data: {
+					algorithm_id: $(this).val(),
+					prefix: $(this).attr('name')
+				},
+				context: $(this)
+			}).done(function(resp) {
+				var formWindow = $(this).closest('.task').parent();
+				formWindow.find(".parameter-values").html(resp);
+				window.taskBoxes.handleAlgorithmChange(formWindow);
+			});
+		},
+        
+		createTaskFormDialog: function(taskForm, existingParameters, formWindowId) {
 			var taskFormContainer = $("<div></div>");
 			taskFormContainer.attr("id", formWindowId);
 			taskFormContainer.addClass("task-window");
-			taskFormContainer.append(newTaskForm);
-			taskFormContainer.append("<div class=\"parameter-values\"></div>");
+			taskFormContainer.append(taskForm);
+			if (existingParameters) {
+				taskFormContainer.append(existingParameters);
+			} else {
+				taskFormContainer.append("<div class=\"parameter-values\"></div>");
+			}
 			taskFormContainer.dialog({
 				autoOpen: false,
 				appendTo: "#task-forms",
@@ -110,10 +131,11 @@
 				}]
 			});
 		},
+
 		// Initialize a new task box to accept double click events 
 		initTaskBox: function(ev, ui, taskContainer) {
-            // drop the task where it was dragged
-            var taskBox = $("<div>New task</div>");
+			// drop the task where it was dragged
+			var taskBox = $("<div>New task</div>");
 			taskBox.appendTo(taskContainer);
 			taskBox.css("left", ui.position.left + "px");
 			taskBox.css("top", ui.position.top + "px");
@@ -132,7 +154,8 @@
 
 			// get generated form
 			var taskForm = addTaskBtn.prev();
-			window.taskBoxes.createTaskFormDialog(taskForm, window.taskBoxes.getFormWindowId(taskBox));
+			taskForm.find(".algorithm-selection select").change(window.taskBoxes.loadAlgorithmParameters);
+			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox));
 
 			taskBox.on('dblclick', function(ev) {
 				var formWindowId = window.taskBoxes.getFormWindowId($(ev.currentTarget));

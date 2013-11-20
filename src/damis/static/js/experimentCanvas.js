@@ -7,7 +7,7 @@
 		getConnectorPaintStyle: function() {
 			return {
 				lineWidth: 4,
-				strokeStyle: "#deea18",
+				strokeStyle: "#cccccc",
 				joinstyle: "round",
 				outlineColor: "#eaedef",
 				outlineWidth: 2
@@ -35,7 +35,7 @@
 			return {
 				endpoint: "Dot",
 				paintStyle: {
-					fillStyle: "#1e8151",
+					fillStyle: "#346789", 
 					radius: 11
 				},
 				isSource: true,
@@ -59,7 +59,7 @@
 			return {
 				endpoint: "Dot",
 				paintStyle: {
-					strokeStyle: "#1e8151",
+					strokeStyle: "#346789",
 					fillStyle: "transparent",
 					radius: 7,
 					lineWidth: 2

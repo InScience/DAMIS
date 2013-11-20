@@ -2,86 +2,39 @@
 }
 
 #toolbox {
-    padding: 20px;    
-    border: 1px solid #cccccc;
-    -moz-border-radius:0.5em;
-    border-radius:0.5em;
+    padding: 20px; border: 1px solid #cccccc; -moz-border-radius:4px; border-radius:4px;
 }
 
 #canvas {
-    margin-top: 20px;
-    border: 1px solid #cccccc;
-    -moz-border-radius:0.5em;
-    border-radius:0.5em;
-    padding: 50px 70px;
+    margin-top: 20px; border: 1px solid #cccccc; -moz-border-radius:4px; border-radius:4px; padding: 50px 70px;
 }
+
 /* #canvas during .prototype-box dragging */
 .active-canvas {
-   border: 1px solid #eee;
-   -moz-border-radius:0.5em;
-   border-radius:0.5em;
+   border: 1px solid #eee; -moz-border-radius:4px; border-radius:4px;
 }
 
 #flowchart-container {
-    position: relative;
-    margin-top: 50px;
-    min-height: 400px;
+    position: relative; margin-top: 50px; min-height: 400px;
 }
 
 .task-box, .prototype-box {
-    border:1px solid #346789;
-    box-shadow: 2px 2px 19px #aaa;
-    -o-box-shadow: 2px 2px 19px #aaa;
-    -webkit-box-shadow: 2px 2px 19px #aaa;
-    -moz-box-shadow: 2px 2px 19px #aaa;
-    -moz-border-radius:0.5em;
-    border-radius:0.5em;
-    opacity:0.8;
-    filter:alpha(opacity=80);
-    width:5em; height:5em;
-    line-height:5em;
-    text-align:center;
-    z-index:20;
-    position:absolute;
-    background-color:#eeeeef;
-    color:black;
-    font-family:helvetica;padding:0.5em;
-    font-size:0.9em;
+    border:1px solid #346789; box-shadow: 2px 2px 19px #aaa; -o-box-shadow: 2px 2px 19px #aaa; -webkit-box-shadow: 2px 2px 19px #aaa; -moz-box-shadow: 2px 2px 19px #aaa; -moz-border-radius:4px; border-radius:4px; opacity:0.8; filter:alpha(opacity=80); width:5em; height:5em; line-height:5em; text-align:center; z-index:20; position:absolute; background-color:#eeeeef; color:#346789; font-family:helvetica;padding:0.5em; font-size:0.9em;
 }
 
 .data-box, .prototype-data-box {
-    border:1px solid #346789;
-    box-shadow: 2px 2px 19px #aaa;
-    -o-box-shadow: 2px 2px 19px #aaa;
-    -webkit-box-shadow: 2px 2px 19px #aaa;
-    -moz-box-shadow: 2px 2px 19px #aaa;
-    -moz-border-radius:0.5em;
-    border-radius:3.5em;
-    opacity:0.8;
-    filter:alpha(opacity=80);
-    width:5em; height:5em;
-    line-height:5em;
-    text-align:center;
-    z-index:20;
-    position:absolute;
-    background-color:#eeeeef;
-    color:black;
-    font-family:helvetica;padding:0.5em;
-    font-size:0.9em;
-}
-
-.prototype-box, .prototype-data-box {
-    position: relative; /* to be contained inside #toolbar */
-    display: inline-block;
-}
+    border:1px solid #346789; box-shadow: 2px 2px 19px #aaa; -o-box-shadow: 2px 2px 19px #aaa; -webkit-box-shadow: 2px 2px 19px #aaa; -moz-box-shadow: 2px 2px 19px #aaa; -moz-border-radius:4px; border-radius:4px; opacity:0.8; filter:alpha(opacity=80); width:5em; height:5em; line-height:5em; text-align:center; z-index:20; position:absolute; background-color:#eeeeef; color:#346789; font-family:helvetica;padding:0.5em; font-size:0.9em; } .prototype-box, .prototype-data-box { position: relative; /* to be contained inside #toolbar */ display: inline-block; } 
 
 .task-box:hover, .prototype-box:hover, .prototype-data-box:hover, .data-box:hover {
-    box-shadow: 2px 2px 19px #444;
-   -o-box-shadow: 2px 2px 19px #444;
-   -webkit-box-shadow: 2px 2px 19px #444;
-   -moz-box-shadow: 2px 2px 19px #444;
-    opacity:0.6;
-    filter:alpha(opacity=60);
+    box-shadow: 2px 2px 19px #444; -o-box-shadow: 2px 2px 19px #444; -webkit-box-shadow: 2px 2px 19px #444; -moz-box-shadow: 2px 2px 19px #444; opacity:0.6; filter:alpha(opacity=60);
+}
+
+.task-box.error {
+    border:1px solid #A60000; box-shadow: 2px 2px 19px #D4A3A3; -o-box-shadow: 2px 2px 19px #D4A3A3; -webkit-box-shadow: 2px 2px 19px #D4A3A3; -moz-box-shadow: 2px 2px 19px #D4A3A3; background-color:#eeeeef; color: #A60000;
+}
+
+.task-box.error:hover {
+    box-shadow: 2px 2px 19px #6D2E2E; -o-box-shadow: 2px 2px 19px #6D2E2E; -webkit-box-shadow: 2px 2px 19px #6D2E2E; -moz-box-shadow: 2px 2px 19px #6D2E2E; opacity:0.6; filter:alpha(opacity=60);
 }
 
 /* target endpoint during connection dragging */
@@ -102,20 +55,11 @@
 ._jsPlumb_dragging { z-index:4000; }
 
 .aLabel {
-    background-color:white; 
-    padding:0.4em; 
-    font:12px sans-serif; 
-    color:#444;
-    z-index:21;
-    border:1px dotted gray;
-    opacity:0.8;
-    filter:alpha(opacity=80);
-    cursor: pointer;
+    background-color:white; padding:0.4em; font:12px sans-serif; color:#444; z-index:21; border:1px dotted gray; opacity:0.8; filter:alpha(opacity=80); cursor: pointer; 
 }
+
 .aLabel._jsPlumb_hover {
-    background-color:#5C96BC;
-    color:white;	
-    border:1px solid white;
+    background-color:#5C96BC; color:white;	border:1px solid white;
 }
 
 /* Remove button inside task form */

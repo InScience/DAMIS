@@ -16,8 +16,8 @@
         <div class="tab-content">
             <div>
                 <form id="experiment-form" action="." method="post">{% csrf_token %}
-                    <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" style="font-size:16pt; height:16pt;">
-                    <button class="btn btn-primary offset1"
+                    <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" style="margin-bottom:0">
+                    <button class="btn btn-primary"
                             type="button" id="execute-btn">{% trans "Execute" %}</button>
                     {{ task_formset.management_form }}
                     <div style="display: none;">
@@ -74,28 +74,24 @@
 {% block javascript %}
     {{ block.super }}
     <script src="/static/js/jquery.formset.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        // initialize experiment form
-        $(function() {
-            $('.inline').formset({
-                prefix: "{{ task_formset.prefix }}",
-                extraClasses: ['task-form'],
-            });
-        })
-    </script>
 {% endblock %}
 
 {% block javascript_footer %}
     {{ block.super }}
     <script type="text/javascript">
-        window.experimentForm.init("{% url 'parameters-form' %}", 
-                "{% url 'gen-parameter-prefixes' %}", 
-                "{% url 'experiment-list' %}");
+        window.experimentForm.init({
+            parametersUrl:"{% url 'parameters-form' %}",
+            parameterPrefixesUrl: "{% url 'gen-parameter-prefixes' %}", 
+            experimentsListUrl: "{% url 'experiment-list' %}",
+            taskFormPrefix: "{{ task_formset.prefix }}"});
                 
-                jsPlumb.ready(function() {
-                    experimentCanvas.init({id: "flowchart-container"});
-                }); 
-                window.toolBox.init({task: ".prototype-box",
-                        data: ".prototype-data-box", canvas: "#flowchart-container"});
+        jsPlumb.ready(function() {
+            experimentCanvas.init({id: "flowchart-container"});
+        }); 
+
+        window.toolBox.init({
+            task: ".prototype-box",
+            data: ".prototype-data-box", 
+            canvas: "#flowchart-container"});
     </script>
 {% endblock %}
