@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-30 08:03+0000\n"
+"POT-Creation-Date: 2013-11-20 17:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,8 +42,9 @@ msgstr "Atviri pagal http://opendatacommons.org/licenses/pddl/"
 
 #: forms.py:49 models.py:32 models.py:60
 #: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:22
-#: templates/damis/experiment_create.html:20
+#: templates/damis/experiment_create.html:19
 #: templates/damis/experiment_list.html:21
+#: templates/dynamic/experiment_formset.html:9
 msgid "Title"
 msgstr "Pavadinimas"
 
@@ -108,11 +109,11 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: templates/base.html:69
+#: templates/base.html:72
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:72
+#: templates/base.html:75
 msgid "API"
 msgstr "API"
 
@@ -259,18 +260,14 @@ msgstr "Naujas eksperimentas"
 #: templates/damis/experiment_create.html:21
 #: templates/damis/experiment_detail.html:18
 #: templates/damis/experiment_form.html:43
+#: templates/dynamic/experiment_formset.html:11
 msgid "Execute"
 msgstr "Vykdyti"
 
-#: templates/damis/experiment_create.html:27
+#: templates/damis/experiment_create.html:25
+#: templates/dynamic/experiment_formset.html:15
 msgid "Task"
 msgstr "Užduotis"
-
-#: templates/damis/experiment_create.html:46
-#: templates/damis/experiment_form.html:24
-#: templates/dynamic/parameter_form.html:6
-msgid "parameters"
-msgstr "Parametrai"
 
 #: templates/damis/experiment_detail.html:14
 msgid "Confirm "
@@ -296,9 +293,18 @@ msgstr "algoritmą."
 msgid "Tasks"
 msgstr "Užduotys"
 
+#: templates/damis/experiment_form.html:24
+#: templates/dynamic/parameter_form.html:6
+msgid "parameters"
+msgstr "Parametrai"
+
 #: templates/damis/experiment_list.html:23
 msgid "Results"
 msgstr "Rezultatai"
+
+#: templates/dynamic/experiment_formset.html:7
+msgid "Form contains errors"
+msgstr "Formoje yra klaidų"
 
 #~ msgid "Dataset"
 #~ msgstr "Duomenys"
