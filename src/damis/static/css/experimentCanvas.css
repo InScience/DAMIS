@@ -72,5 +72,5 @@
 .delete-row {
     display: none;
 }
-.endpointTooltip {color:#346789;}
+.endpointTooltip {color:#346789; z-index: 50;}
 
