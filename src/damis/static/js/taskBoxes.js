@@ -1,4 +1,3 @@
-;
 (function() {
 	window.taskBoxes = {
 		countBoxes: 0,
@@ -65,6 +64,7 @@
 			$.each(parameters.find('div'), function(idx) {
 				var isIn = $(this).find("input[id$='is_input']").val();
 				var isOut = $(this).find("input[id$='is_output']").val();
+				var paramName = "<span>" + $(this).find("span").text() + "</span>";
 
 				if (isIn === "True") {
 					//add input endpoint
@@ -74,7 +74,12 @@
 							iParamNo: idx,
 							// parameter form idx
 							iTaskBoxId: taskBoxId
-						}
+						},
+						overlays: [["Label", {
+							location: [ - 2, 0.5],
+							label: paramName,
+							cssClass: "endpointTooltip"
+						}]]
 					});
 					ipoints.push(x);
 					iIdx++;
@@ -86,7 +91,12 @@
 							oParamNo: idx,
 							// parameter form idx
 							oTaskBoxId: taskBoxId
-						}
+						},
+						overlays: [["Label", {
+							location: [2, 0.5],
+							label: paramName,
+							cssClass: "endpointTooltip"
+						}]]
 					});
 					opoints.push(y);
 					oIdx++;
