@@ -47,7 +47,7 @@
 
 			// Add new endpoints for input/output parameters
 			var taskBox = $("#" + taskBoxId);
-			taskBox.html(formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text());
+			taskBox.html("<div>"+formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text()+"</div>");
 			var parameters = formWindow.find('.parameter-values');
 
 			var outAnchors = ["RightMiddle", [1, 0, 1, 1], [1, 1, 1, 1]];
@@ -152,7 +152,7 @@
 		// Initialize a new task box to accept double click events 
 		initTaskBox: function(ev, ui, taskContainer) {
 			// drop the task where it was dragged
-			var taskBox = $("<div>New task</div>");
+			var taskBox = $("<div><div>New task</div></div>");
 			taskBox.appendTo(taskContainer);
 			taskBox.css("left", ui.position.left + "px");
 			taskBox.css("top", ui.position.top + "px");
