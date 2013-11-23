@@ -9,15 +9,18 @@
 		// remove all endpoints of a task box
 		removeEndpoints: function(taskBoxId) {
 			var epoints = window.taskBoxes.taskBoxesToEndpoints[taskBoxId];
-			if (epoints && epoints.ipoints) {
-				$.each(epoints.ipoints, function(idx, e) {
-					jsPlumb.deleteEndpoint(e);
-				});
-			}
-			if (epoints && epoints.opoints) {
-				$.each(epoints.opoints, function(idx, e) {
-					jsPlumb.deleteEndpoint(e);
-				})
+			if (epoints) {
+				if (epoints.ipoints) { // remove input endpoints
+					$.each(epoints.ipoints, function(idx, e) {
+						jsPlumb.deleteEndpoint(e);
+					});
+				}
+				if (epoints.opoints) { // remove output endpoints
+					$.each(epoints.opoints, function(idx, e) {
+						jsPlumb.deleteEndpoint(e);
+					});
+				}
+				delete window.taskBoxes.taskBoxesToEndpoints[taskBoxId];
 			}
 		},
 
@@ -26,13 +29,13 @@
 			if (ev.button == 2) {
 				var taskBox = $(ev.target);
 				var formWindow = $("#" + window.taskBoxes.getFormWindowId(taskBox));
-				jsPlumb.detachAllConnections(taskBox); // remove connections
-				// TODO: reset values in the forms corresponding to this
-				// connection
 				formWindow.find(".delete-row").click(); // remove task form
 				formWindow.remove(); // remove the window
-				taskBox.remove(); // remove task box
+				// all connections are automatically detached
+				// so this box outgoing connections input parameters are
+				// reset by "connectionDetached" event handler
 				window.taskBoxes.removeEndpoints(taskBox.attr("id"));
+				taskBox.remove(); // remove task box
 			}
 		},
 
@@ -56,10 +59,10 @@
 			var ipoints = []
 			var opoints = []
 
-			$.each(parameters.find('div'), function() {
-				var valId = $(this).find("input[id$='-value']").attr("id");
-				var parameterFormPrefix = valId.replace("-value", "");
-
+			// inspect each parameter form
+			// each form has one "value" field and
+			// indicator fields: "is_input", "is_output"
+			$.each(parameters.find('div'), function(idx) {
 				var isIn = $(this).find("input[id$='is_input']").val();
 				var isOut = $(this).find("input[id$='is_output']").val();
 
@@ -68,7 +71,9 @@
 					var x = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getTargetEndpoint(), {
 						anchor: inAnchors[iIdx],
 						parameters: {
-							inParam: valId
+							iParamNo: idx,
+							// parameter form idx
+							iTaskBoxId: taskBoxId
 						}
 					});
 					ipoints.push(x);
@@ -78,7 +83,9 @@
 					var y = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {
 						anchor: outAnchors[oIdx],
 						parameters: {
-							outParam: parameterFormPrefix
+							oParamNo: idx,
+							// parameter form idx
+							oTaskBoxId: taskBoxId
 						}
 					});
 					opoints.push(y);
@@ -90,8 +97,8 @@
 				"opoints": opoints
 			}
 		},
-        
-        // Loads parameters for the selected algorithm
+
+		// Loads parameters for the selected algorithm
 		loadAlgorithmParameters: function() {
 			$.ajax({
 				url: parametersUrl,
@@ -106,7 +113,7 @@
 				window.taskBoxes.handleAlgorithmChange(formWindow);
 			});
 		},
-        
+
 		createTaskFormDialog: function(taskForm, existingParameters, formWindowId) {
 			var taskFormContainer = $("<div></div>");
 			taskFormContainer.attr("id", formWindowId);
@@ -174,9 +181,18 @@
 			return formWindow.attr("id").replace("-form", "");
 		},
 
-		//generates task form id from the provided task box
+		// generates task form id from the provided task box
 		getFormWindowId: function(taskBox) {
-			return taskBox.attr("id") + "-form";
+			return taskBox instanceof $ ? taskBox.attr("id") + "-form": taskBox + "-form";
+		},
+
+		// returns parameter value field, given 
+		// parameter number in the formset
+		// and task box id
+		getParameter: function(parameterNum, taskBoxId) {
+			var taskFormWindow = $("#" + window.taskBoxes.getFormWindowId(taskBoxId));
+			var parameter = $(taskFormWindow.find(".parameter-values").find("div")[parameterNum]);
+			return parameter.find("input[id$=-value]");
 		},
 	}
 

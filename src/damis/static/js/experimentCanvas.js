@@ -104,21 +104,26 @@
 				}]]
 			});
 
-			// listen for new connections; initialise them the same way we initialise the connections at startup.
-			jsPlumb.bind("connection", function(connection, originalEvent) {
-				var conn = connection.connection;
+            jsPlumb.bind("connectionDetached", function(info, originalEvent) {
+                // Clear the input parameter value and display it as input field
+                var conn = info.connection;
+                var params = conn.getParameters();
+                var input = window.taskBoxes.getParameter(paramNo, taskBoxId);
+                input.val("");
+                input.attr("type", "text");
+            });
+
+            // maps task box to its output endpoint connection
+            // stores output parameter address into input parameter
+			jsPlumb.bind("connection", function(info, originalEvent) {
+				var conn = info.connection;
 				var params = conn.getParameters();
 
                 if ($(conn.source).hasClass("task-box")) {
 				    //display disabled field to the user
-				    var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
-				    input.val(params.outParam);
-				    // input.attr("disabled", "disabled");
+                    var input = window.taskBoxes.getParameter(params.iParamNo, params.iTaskBoxId);
+				    input.val(params.oParamNo + "," + params.oTaskBoxId);
 				    input.attr("type", "hidden");
-
-				    // save input parameter form prefix and id for server side processing
-				    input = $("#" + params.inParam).closest("div").find("input[id$='source_label']");
-				    input.val(params.outParam);
                 } else if ($(conn.source).hasClass("data-box")) {
 				    var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
                     input.val(params.outParam);
