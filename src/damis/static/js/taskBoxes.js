@@ -26,7 +26,7 @@
 		// Right-click on task box
 		taskBoxRightClick: function(ev) {
 			if (ev.button == 2) {
-				var taskBox = $(ev.target);
+				var taskBox = $(ev.target).hasClass("task-box") ? $(ev.target) : $(ev.target).closest(".task-box");
 				var formWindow = $("#" + window.taskBoxes.getFormWindowId(taskBox));
 				formWindow.find(".delete-row").click(); // remove task form
 				formWindow.remove(); // remove the window
@@ -47,7 +47,7 @@
 
 			// Add new endpoints for input/output parameters
 			var taskBox = $("#" + taskBoxId);
-			taskBox.html("<div>"+formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text()+"</div>");
+			taskBox.html("<div>" + formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text() + "</div>");
 			var parameters = formWindow.find('.parameter-values');
 
 			var outAnchors = ["RightMiddle", [1, 0, 1, 1], [1, 1, 1, 1]];
