@@ -108,9 +108,13 @@
                 // Clear the input parameter value and display it as input field
                 var conn = info.connection;
                 var params = conn.getParameters();
-                var input = window.taskBoxes.getParameter(params.iParamNo, params.iTaskBoxId);
-                input.val("");
-                input.attr("type", "text");
+                var param = window.taskBoxes.getParameter(params.iParamNo, params.iTaskBoxId);
+                var srcRefField = window.taskBoxes.getParameterSourceRef(param);
+                srcRefField.val("");
+                
+                // show literal value field
+                var valField = window.taskBoxes.getParameterValue(param);
+                valField.attr("type", "text");
             });
 
             // maps task box to its output endpoint connection
@@ -121,9 +125,14 @@
 
                 if ($(conn.source).hasClass("task-box")) {
 				    //display disabled field to the user
-                    var input = window.taskBoxes.getParameter(params.iParamNo, params.iTaskBoxId);
-				    input.val(params.oParamNo + "," + params.oTaskBoxId);
-				    input.attr("type", "hidden");
+                    var param = window.taskBoxes.getParameter(params.iParamNo, params.iTaskBoxId);
+                    var srcRefField= window.taskBoxes.getParameterSourceRef(param);
+				    srcRefField.val(params.oParamNo + "," + params.oTaskBoxId);
+
+                    //clear literal value field and hide it
+                    var valField = window.taskBoxes.getParameterValue(param);
+                    valField.val("");
+                    valField.attr("type", "hidden");
                 } else if ($(conn.source).hasClass("data-box")) {
 				    var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
                     input.val(params.outParam);

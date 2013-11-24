@@ -196,14 +196,24 @@
 			return taskBox instanceof $ ? taskBox.attr("id") + "-form": taskBox + "-form";
 		},
 
-		// returns parameter value field, given 
+		// returns parameter form, given 
 		// parameter number in the formset
 		// and task box id
 		getParameter: function(parameterNum, taskBoxId) {
 			var taskFormWindow = $("#" + window.taskBoxes.getFormWindowId(taskBoxId));
-			var parameter = $(taskFormWindow.find(".parameter-values").find("div")[parameterNum]);
-			return parameter.find("input[id$=-value]");
+			var paramForm = $(taskFormWindow.find(".parameter-values").find("div")[parameterNum]);
+		    return paramForm;
 		},
+
+        //returns parameter value field in parameter form
+        getParameterValue: function(paramForm) {
+			return paramForm.find("input[id$=value]");
+        },
+
+        //returns parameter source_ref field in parameter form
+        getParameterSourceRef: function(paramForm) {
+			return paramForm.find("input[id$=source_ref]");
+        }
 	}
 
 })();

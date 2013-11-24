@@ -8,17 +8,14 @@
 		// representation
 		bindingToServer: function() {
 			$.each($(".task-window input[id$=is_input]"), function() {
-				if ($(this).val() === "True") {
-					var iParamField = $(this).closest("div").find("input[id$=value]");
-					var oParamAddr = $(iParamField).val();
+				if ($(this).val() === "True") { // inspect each input parameter
+					var srcRefField = $(this).closest("div").find("input[id$=source_ref]");
+					var oParamAddr = $(srcRefField).val();
 					if (oParamAddr) {
 						var parts = oParamAddr.split(",");
-                        // TODO: remove this check when different fields are used
-                        // to pass value and reference
-                        if (parts.length > 1) {
-						    var oParam = window.taskBoxes.getParameter(parts[0], parts[1]);
-						    iParamField.val(oParam.attr("id"));
-                        }
+						var oParam = window.taskBoxes.getParameter(parts[0], parts[1]);
+                        var oParamField = window.taskBoxes.getParameterValue(oParam);
+						srcRefField.val(oParam.attr("id"));
 					}
 				}
 			});
@@ -28,17 +25,13 @@
 		// representation
 		bindingToClient: function(taskForm, taskBox) {
 			$.each(taskForm.find("input[id$=is_input]"), function() {
-				if ($(this).val() === "True") {
-					var iParamField = $(this).closest("div").find("input[id$=value]");
-					var oParamId = $(iParamField).val();
+				if ($(this).val() === "True") { // inspect each input parameter
+					var srcRefField = $(this).closest("div").find("input[id$=source_ref]");
+					var oParamId = $(srcRefField).val();
 					if (oParamId) {
-                        // TODO: remove this check when different fields are used
-                        // to pass value and reference
-                        if (oParamId.match(/PV_\d+/)) {
-						    var oParam = $("#" + oParamId);
-						    var oParent = oParam.closest("div");
-						    iParamField.val(oParent.index() + "," + taskBox.attr("id"));
-                        }
+					    var oParam = $("#" + oParamId);
+					    var oParent = oParam.closest("div");
+					    srcRefField.val(oParent.index() + "," + taskBox.attr("id"));
 					}
 				}
 			});
