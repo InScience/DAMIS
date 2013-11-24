@@ -108,7 +108,7 @@
                 // Clear the input parameter value and display it as input field
                 var conn = info.connection;
                 var params = conn.getParameters();
-                var input = window.taskBoxes.getParameter(paramNo, taskBoxId);
+                var input = window.taskBoxes.getParameter(params.iParamNo, params.iTaskBoxId);
                 input.val("");
                 input.attr("type", "text");
             });
