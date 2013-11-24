@@ -45,3 +45,8 @@ double SOMMDS::getMDSStressError()
 {
     return mds_error;
 }
+
+ObjectMatrix SOMMDS::getX()
+{
+    return SMACOF::X;
+}

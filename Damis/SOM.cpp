@@ -56,10 +56,7 @@ ObjectMatrix SOM::getProjection(){
         for (int j = 0; j < k_y; j++)
         {
             for (int k = 0; k < n; k++)
-                M.updateDataObject(i, j, k, Statistics::getRandom(-1.0, 1.0, (i + j + 5 * k)));
-                //M_Matrix_Row.push_back(Statistics::getRandom(-1.0, 1.0, (i + j + 5 * k)));
-            //M.addObjectTo(i, DataObject(M_Matrix_Row));
-            //M_Matrix_Row.clear();
+                M.updateDataObject(i, j, k, Statistics::getRandom(-1.0, 1.0, (i + j + 5 * k)));;
         }
     }
 

@@ -18,7 +18,8 @@ public:
 	DMA();
 	virtual ~DMA();
 
-	DMA(float eps, int maxIter, int d, int neighbours);
+        DMA(double eps, int maxIter, int d, int neighbours, ObjectMatrix x);
+	DMA(double eps, int maxIter, int d, int neighbours);
 	int getNeighbours();
 	void setNeighbours(int neighbours);
 
@@ -28,7 +29,6 @@ public:
 private:
 	int neighbourNumber;
 	ObjectMatrix vMatrix;
-        std::vector<double> stressErrors;
 	void getV();
 
 };

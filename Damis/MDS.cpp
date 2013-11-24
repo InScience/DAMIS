@@ -178,7 +178,11 @@ void MDS::setEpsilon(double eps){
     epsilon = eps;
 }
 
-
 void MDS::setMaxIteration(int maxIter){
     maxIteration = maxIter;
+}
+
+std::vector<double> MDS::getStressErrors()
+{
+    return stressErrors;
 }

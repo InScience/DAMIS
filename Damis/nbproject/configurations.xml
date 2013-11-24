@@ -73,6 +73,15 @@
                      kind="TEST">
         <itemPath>tests/gutmanTest.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f7"
+                     displayName="methodsTesting"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/methodsTest.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="pcatest" projectFiles="true" kind="TEST">
+        <itemPath>tests/pcatest.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f4"
                      displayName="smacofTest"
                      projectFiles="true"
@@ -106,12 +115,14 @@
         <cTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
           <commandlineTool>mpic++</commandlineTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -237,6 +248,21 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f3">
         <cTool>
           <incDir>
@@ -272,6 +298,21 @@
           <output>${TESTDIR}/TestFiles/f4</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f6">
         <cTool>
           <incDir>
@@ -287,11 +328,30 @@
           <output>${TESTDIR}/TestFiles/f6</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/arffTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/gutmanTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/methodsTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/pcatest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/smacofTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -310,6 +370,7 @@
           <developmentMode>5</developmentMode>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
@@ -317,6 +378,7 @@
           <developmentMode>5</developmentMode>
           <commandlineTool>mpic++</commandlineTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -449,6 +511,21 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f3">
         <cTool>
           <incDir>
@@ -484,6 +561,21 @@
           <output>${TESTDIR}/TestFiles/f4</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+        </linkerTool>
+      </folder>
       <folder path="TestFiles/f6">
         <cTool>
           <incDir>
@@ -499,11 +591,30 @@
           <output>${TESTDIR}/TestFiles/f6</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/arffTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/gutmanTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/methodsTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/pcatest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/smacofTest.cpp" ex="false" tool="1" flavor2="0">
       </item>

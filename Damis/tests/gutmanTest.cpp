@@ -70,21 +70,19 @@ void testValuesOfIdenticalObjects(ObjectMatrix gMatrix, ObjectMatrix Y, int rowC
     bool ats = true;
     double distYij = 0.0;
     
-    for (int i = 0; i < rowCount; i++)
-        for (int j = 0; j < rowCount; j++)
-            if (i != j)
+    for (int i = 0; i < rowCount - 1; i++)
+        for (int j = i + 1; j < rowCount; j++)
+        {
+            distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+            if (distYij == 0.0)
             {
-                distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
-                if (distYij == 0.0)
+                if (fabs(gMatrix.getObjectAt(i).getFeatureAt(j)) > 0.00000001)
                 {
-                    for (int k = 0; k < rowCount; k++)
-                        if (fabs(gMatrix.getObjectAt(i).getFeatureAt(k)) > 0.00000001)
-                        {
-                            ats = false;
-                            break;
-                        }
+                    ats = false;
+                    break;
                 }
             }
+        }
         
     if (ats == true)
         std::cout<<"Test passed."<<std::endl;

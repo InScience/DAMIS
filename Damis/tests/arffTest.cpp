@@ -79,6 +79,7 @@ void WriteObjectMatrixToARFF(ObjectMatrix X) {
 
 
 int main(int argc, char** argv) {
+    std::cout << std::endl;
     std::cout << "%SUITE_STARTING% arffTest" << std::endl;
     std::cout << "%SUITE_STARTED%" << std::endl;
 

@@ -21,6 +21,7 @@ public:
 	MDS(double eps, int maxIter, int d);
         MDS(double eps, int maxIter, int d, ObjectMatrix x);   // for testing
         int getIteration();
+        std::vector<double> getStressErrors();
 protected:
 	double getEpsilon();
 	ObjectMatrix getGutman();
@@ -32,6 +33,7 @@ protected:
 
 	double epsilon;
 	int maxIteration;
+        std::vector<double> stressErrors;
 private:
         double getWeight(int, int);
 };

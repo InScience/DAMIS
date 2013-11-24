@@ -25,10 +25,7 @@ public:
 //protected:
 	virtual ObjectMatrix getProjection();
         double getStress();
-        std::vector<double> getStressErrors();   // testams
 private:
         ShufleEnum shufleEnum;
-        std::vector<double> stressErrors;
-
 };
 #endif // !defined(EA_34DB7616_0626_448c_8715_73AF0B10FB46__INCLUDED_)

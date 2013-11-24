@@ -81,7 +81,3 @@ double SMACOFZEIDEL::getStress()
     return MDS::getStress();
 }
 
-std::vector<double> SMACOFZEIDEL::getStressErrors()
-{
-    return stressErrors;
-}

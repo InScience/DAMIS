@@ -21,8 +21,14 @@ DMA::~DMA(){
 /**
  * Constructor for DMA object
  */
-DMA::DMA(float eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
+DMA::DMA(double eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
+    initializeProjectionMatrix();
+}
+
+DMA::DMA(double eps, int maxIter, int d, int neighbours, ObjectMatrix x):MDS(eps, maxIter, d){
+    neighbourNumber = neighbours;
+    X = x;
     initializeProjectionMatrix();
 }
 

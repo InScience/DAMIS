@@ -11,6 +11,7 @@
 #include "math.h"
 #include "AdditionalMethods.h"
 #include <fstream>
+#include <iomanip>
 
 
 SAMANN::SAMANN(){
@@ -47,7 +48,7 @@ double SAMANN::getLambda(){
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = i + 1; j < n; j++)
-            temp = temp + 1.0 / DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+            temp = temp + DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
     }
     return 1.0 / temp;
 }
@@ -60,14 +61,19 @@ ObjectMatrix SAMANN::getProjection(){
 
     int n = X.getObjectAt(0).getFeatureCount();
     int m = X.getObjectCount();
-    double ddelta_L[mTrain];
-    double ddelta_suma[mTrain];
+    double T1[nNeurons];
+    double T2[nNeurons];
+    double t1[nNeurons];
+    double t2[nNeurons];
+    double TT1[d];
+    double TT2[d];
+    double tt1[d];
+    double tt2[d];
+    double ddelta_L[mTrain][d];
     double delta_tarp[mTrain];
     double ddelta_tarp[mTrain];
-    double tarp = 0.0, tarp1 = 0.0, tarp2 = 0.0, lambda, tmp, distXp, distY;
-    std::ofstream file("Y_is.txt");
-    std::ofstream file2("Y_pasl.txt");
-    
+    double tarp = 0.0, tarp2 = 0.0, lambda, tmp, distXp, distYis;
+    std::ofstream file("report.txt");
     initializeWeights();   // w1, w2
     initializeExitMatrixes();   // Y_pasl, Y_is
     initializeDeltaL();   // delta_L
@@ -76,18 +82,13 @@ ObjectMatrix SAMANN::getProjection(){
     for (int i = 0; i < m; i++)
         X.updateDataObject(i, 0, 1.0);
     
-    double** Ypasl = AdditionalMethods::ObjectMatrixToDouble(Y_pasl);
-    double** Yis = AdditionalMethods::ObjectMatrixToDouble(Y_is);
-    
     getXp();
     lambda = getLambda();
     
-    Xp.saveDataMatrix("xp.arff");
-    
     for (int i = 0; i < mTrain; i++)
     {
-        ddelta_L[i] = 0.0;
-        ddelta_suma[i] = 0.0;
+        for (int j = 0; j < d; j++)
+            ddelta_L[i][j] = 0.0;
         delta_tarp[i] = 0.0;
         ddelta_tarp[i] = 0.0;
     }
@@ -98,93 +99,199 @@ ObjectMatrix SAMANN::getProjection(){
         {
             for (int niu = miu + 1; niu < mTrain; niu++)
             {
+                file <<"--------------------------------------------------------------------------------"<<std::endl<<std::endl;
+                file<<"w1:"<<std::endl;
+                for (int k = 0; k < nNeurons; k++)
+                {
+                    for (int j = 0; j < n; j++)
+                        file<<w1[k][j]<<", ";
+                    file << std::endl;
+                }
+                file << std::endl;
+                
+                file <<"Xp[miu] (miu = " << miu <<"): "; 
+                for (int j = 0; j < n; j++)
+                    file << Xp.getObjectAt(miu).getFeatureAt(j)<<", ";
+                file<<std::endl;
+                file <<"Xp[niu] (niu = " << niu <<"): "; 
+                for (int j = 0; j < n; j++)
+                    file << Xp.getObjectAt(niu).getFeatureAt(j)<<", ";
+                file<<std::endl;
+                file<<std::endl;
+                
                 for (int j = 0; j < nNeurons; j++)
                 {
                     tarp = 0.0;
-                    file2 <<"miu:" <<miu<<", niu: "<<niu <<", j: " << j << ", w1: ";
+                    tarp2 = 0.0;
                     for (int k = 0; k < n; k++)
                     {
                         tarp += w1[j].at(k) * Xp.getObjectAt(miu).getFeatureAt(k);
-                        file2 <<w1[j].at(k)<<", ";
+                        tarp2 += w1[j].at(k) * Xp.getObjectAt(niu).getFeatureAt(k);
                     }
-                    file2<<std::endl;
-                    Ypasl[miu][j] = 1.0 / (1 + exp(-1 * tarp));
-                    //Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+                    T1[j] = tarp;
+                    T2[j] = tarp2;
+                    t1[j] = 1.0 / (1 + exp(-1 * tarp));
+                    t2[j] = 1.0 / (1 + exp(-1 * tarp2));
+                    //t1[j] = 1.0 / (1 + exp(-1 * tarp));
+                    //t2[j] = 1.0 / (1 + exp(-1 * tarp2));
+                    Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+                    Y_pasl.updateDataObject(niu, j, 1.0 / (1 + exp(-1 * tarp2)));
                 }
-
+                
+                file << "tarp: ";
+                for (int j = 0; j < nNeurons; j++)
+                    file << T1[j] << ", ";
+                file << std::endl;
+                
+                file << "(1.0 / (1 + exp(-1 * tarp))): ";
+                for (int j = 0; j < nNeurons; j++)
+                    file << t1[j] << ", ";
+                file << std::endl;
+                
+                file << "tarp2: ";
+                for (int j = 0; j < nNeurons; j++)
+                    file << T2[j] << ", ";
+                file << std::endl;
+                
+                file << "(1.0 / (1 + exp(-1 * tarp2))): ";
+                for (int j = 0; j < nNeurons; j++)
+                    file << t2[j] << ", ";
+                file << std::endl;
+                file << std::endl;
+                
+                file<<"Y_pasl[miu] (miu = " << miu <<"): "; 
+                for (int j = 0; j < nNeurons; j++)
+                    file << Y_pasl.getObjectAt(miu).getFeatureAt(j)<<", ";
+                file<<std::endl;
+                
+                file<<"Y_pasl[niu] (niu = " << niu <<"): ";
+                for (int j = 0; j < nNeurons; j++)
+                    file << Y_pasl.getObjectAt(niu).getFeatureAt(j)<<", ";
+                file<<std::endl;
+                file<<std::endl;
+                
                 for (int j = 0; j < d; j++)
                 {
                     tarp = 0.0;
-                    file << "miu: " << miu <<", niu: "<< niu<< " Y_pasl: ";
+                    tarp2 = 0.0;
                     for (int k = 0; k < nNeurons; k++)
                     {
-                        //tarp = tarp + w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
-                        file <<Ypasl[miu][k]<<", ";
-                        tarp += w2[j].at(k) * Ypasl[miu][k];
+                        tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
+                        tarp2 += w2[j].at(k) * Y_pasl.getObjectAt(niu).getFeatureAt(k);
                     }
-                    file << " tarp: " << tarp <<std::endl;
-                    Yis[miu][j] = 1.0 / exp(-1 * tarp);
-                    //Y_is.updateDataObject(miu, j, 1.0 / exp(-1 * tarp));
+                    TT1[j] = tarp;
+                    TT2[j] = tarp2;
+                    tt1[j] = exp(-1 * 100 * tarp);
+                    tt2[j] = exp(-1 * 100 * tarp2);
+                    Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+                    Y_is.updateDataObject(niu, j, 1.0 / (1 + exp(-1 * tarp2)));
                 }
                 
-                tarp1 = 0.0;
-                tarp2 = 0.0;
+                file<<"w2:"<<std::endl;
                 for (int k = 0; k < d; k++)
                 {
-                    distXp = DistanceMetrics::getDistance(Xp.getObjectAt(miu), Xp.getObjectAt(niu), EUCLIDEAN);
-                    distY = DistanceMetrics::getDistance(Y.getObjectAt(miu), Y.getObjectAt(niu), EUCLIDEAN);
-                    //tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Y_is.getObjectAt(miu).getFeatureAt(k) - Y_is.getObjectAt(niu).getFeatureAt(k));
-                    tmp = -2 * lambda * ((distXp - distY) / (distXp * distY)) * (Yis[miu][k] - Yis[niu][k]);
+                    for (int j = 0; j < nNeurons; j++)
+                        file<<w2[k][j]<<", ";
+                    file << std::endl;
+                }
+                file << std::endl;
+                
+                file << "tarp: ";
+                for (int j = 0; j < d; j++)
+                    file << TT1[j] << ", ";
+                file << std::endl;
+                
+                file << "(1.0 / (1 + exp(-1 * tarp))): ";
+                for (int j = 0; j < d; j++)
+                    file << tt1[j] << ", ";
+                file << std::endl;
+                
+                file << "tarp2: ";
+                for (int j = 0; j < d; j++)
+                    file << TT2[j] << ", ";
+                file << std::endl;
+                
+                file << "(1.0 / (1 + exp(-1 * tarp2))): ";
+                for (int j = 0; j < d; j++)
+                    file << tt2[j] << ", ";
+                file << std::endl;
+                file << std::endl;
+                
+                file<<"Y_is[miu] (miu = " << miu <<"): "; 
+                for (int j = 0; j < d; j++)
+                    file << Y_is.getObjectAt(miu).getFeatureAt(j)<<", ";
+                file<<std::endl;
+                
+                
+                
+                file<<"Y_is[niu] (niu = " << niu <<"): ";
+                for (int j = 0; j < d; j++)
+                    file << Y_is.getObjectAt(niu).getFeatureAt(j)<<", ";
+                file<<std::endl;
+                file<<std::endl;
+                
+                distXp = DistanceMetrics::getDistance(Xp.getObjectAt(miu), Xp.getObjectAt(niu), EUCLIDEAN);
+                distYis = DistanceMetrics::getDistance(Y_is.getObjectAt(miu), Y_is.getObjectAt(niu), EUCLIDEAN);
+                file << "dist(Y_is[miu], Y_is[niu]) -> " << distYis <<std::endl;
+                for (int k = 0; k < d; k++)
+                {            
+                    tmp = -2 * lambda * ((distXp - distYis) / (distXp * distYis)) * (Y_is.getObjectAt(miu).getFeatureAt(k) - Y_is.getObjectAt(niu).getFeatureAt(k));
                     delta_L.updateDataObject(miu, niu, tmp);
-                    //ddelta_L[miu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(miu).getFeatureAt(k)) * Y_is.getObjectAt(miu).getFeatureAt(k);
-                    ddelta_L[miu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Yis[miu][k]) * Yis[miu][k];
-                    //ddelta_L[niu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(niu).getFeatureAt(k)) * Y_is.getObjectAt(niu).getFeatureAt(k);//
-                    ddelta_L[niu] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Yis[niu][k]) * Yis[niu][k];
-                    tarp1 = tarp1 + ddelta_L[miu];
-                    tarp2 = tarp2 + ddelta_L[niu];
+                    ddelta_L[miu][k] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(miu).getFeatureAt(k)) * Y_is.getObjectAt(miu).getFeatureAt(k);
+                    ddelta_L[niu][k] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(niu).getFeatureAt(k)) * Y_is.getObjectAt(niu).getFeatureAt(k);
                     
                     for (int j = 0; j < nNeurons; j++)
                     {
                         if (iter == 0)
-                           // w2[k][j] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
-                        w2[k][j] = -1 * eta * (ddelta_L[miu] * Ypasl[miu][j] - ddelta_L[niu] * Ypasl[niu][j]);
+                            w2[k][j] = -1 * eta * (ddelta_L[miu][k] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu][k] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
                         else
-                            //w2[k][j] = -1 * eta * (ddelta_L[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) - w2[k][j];
-                        w2[k][j] = -1 * eta * (ddelta_L[miu] * Ypasl[miu][j] - ddelta_L[niu] * Ypasl[niu][j]) - w2[k][j];
+                            w2[k][j] = -1 * eta * (ddelta_L[miu][k] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu][k] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) + w2[k][j];
                     }
                 }
-                ddelta_suma[miu] = tarp1;
-                ddelta_suma[niu] = tarp2;
+                
+                file<<"ddelta_L[miu]: ";
+                for (int k = 0; k < d; k++)
+                    file<<ddelta_L[miu][k]<<", ";
+                file << std::endl;
+                
+                file<<"ddelta_L:[niu]: ";
+                for (int k = 0; k < d; k++)
+                    file<<ddelta_L[niu][k]<<", ";
+                file << std::endl;
+                file << std::endl;
+                
+                
                 
                 for (int j = 0; j < nNeurons; j++)
                 {
+                    delta_tarp[miu] = 0;
+                    delta_tarp[niu] = 0;
+                    
                     for (int k = 0; k < d; k++)
                     {
-                        delta_tarp[miu] += ddelta_suma[miu] * w2[k][j];
-                        delta_tarp[niu] += ddelta_suma[niu] * w2[k][j];
+                        delta_tarp[miu] += ddelta_L[miu][k] * w2[k][j];
+                        delta_tarp[niu] += ddelta_L[niu][k] * w2[k][j];
                     }
                     
+                    ddelta_tarp[miu] = delta_tarp[miu] * (1 - Y_pasl.getObjectAt(miu).getFeatureAt(j)) * Y_pasl.getObjectAt(miu).getFeatureAt(j);
+                    ddelta_tarp[niu] = delta_tarp[niu] * (1 - Y_pasl.getObjectAt(niu).getFeatureAt(j)) * Y_pasl.getObjectAt(niu).getFeatureAt(j);
+                    
                     for (int k = 0; k < n; k++)
-                    {
-                        //ddelta_tarp[miu] = delta_tarp[miu] * (1 - Y_pasl.getObjectAt(miu).getFeatureAt(j));
-                        //ddelta_tarp[niu] = delta_tarp[niu] * (1 - Y_pasl.getObjectAt(niu).getFeatureAt(j));
-                        ddelta_tarp[miu] = delta_tarp[miu] * (1 - Ypasl[miu][j]);
-                        ddelta_tarp[niu] = delta_tarp[niu] * (1 - Ypasl[niu][j]);
+                    {                        
                         if (iter == 0)
-                            //w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j));
-                        w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Ypasl[miu][j] - ddelta_tarp[niu] * Ypasl[niu][j]);
+                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Xp.getObjectAt(miu).getFeatureAt(k) - ddelta_tarp[niu] * Xp.getObjectAt(niu).getFeatureAt(k));
                         else
-                           // w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_tarp[niu] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) -w1[j][k];
-                        w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Ypasl[miu][j] - ddelta_tarp[niu] * Ypasl[niu][j]) -w1[j][k];
+                            w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Xp.getObjectAt(miu).getFeatureAt(k) - ddelta_tarp[niu] * Xp.getObjectAt(niu).getFeatureAt(k)) + w1[j][k];
                     }                       
                 }
-            } 
-             
+                
+                
+            }             
         }        
     }  // iteraciju pabaiga
-    
-    //Y_pasl.saveDataMatrix("ypasl.arff");
-    
+    file.close();
+    //Y_is.saveDataMatrix("yis.txt");
+    //Y_pasl.saveDataMatrix("ypasl.txt");
     for (int miu = 0; miu < m; miu++)
     {
         for (int j = 0; j < nNeurons; j++)
@@ -192,24 +299,17 @@ ObjectMatrix SAMANN::getProjection(){
             tarp = 0.0;
             for (int k = 0; k < n; k++)
                 tarp += w1[j].at(k) * X.getObjectAt(miu).getFeatureAt(k);
-           // Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));  
-           Ypasl[miu][j] = 1.0 / (1 + exp(-1 * tarp));            
+            Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));              
         }
         for (int j = 0; j < d; j++)
         {
             tarp = 0.0;
             for (int k = 0; k < nNeurons; k++)
-                //tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
-            tarp += w2[j].at(k) * Ypasl[miu][k];
-            //Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
-            Yis[miu][j] = 1.0 / (1 + exp(-1 * tarp));
+                tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
+            Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
         }
     }
-    Y = AdditionalMethods::DoubleToObjectMatrix(Yis, m, 2);
-    //return  Y_is;
-    file.close();
-    file2.close();
-    return  Y;
+    return  Y_is;
 }
 
 double SAMANN::getMax()
@@ -254,7 +354,6 @@ void SAMANN::getXp()
     DataObject dObject;
 
     while (i < mTrain)
-    //while (i < nNeurons)
     {
         r = Statistics::getRandom(0, n, k);
         index = static_cast<int>(r);

@@ -22,7 +22,7 @@ public:
 	SOMMDS(float eps, int max_iter, int d, int kx, int ky, int e_hat);
         double getSOMQuantizationError();
         double getMDSStressError();
-
+        ObjectMatrix getX();
 //protected:
 	virtual ObjectMatrix getProjection();
 private:

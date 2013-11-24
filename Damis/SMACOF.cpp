@@ -94,8 +94,3 @@ ObjectMatrix SMACOF::getGutmanMatrix()
 {
     return MDS::getGutman();
 }
-
-std::vector<double> SMACOF::getStressErrors()
-{
-    return stressErrors;
-}
