@@ -16,6 +16,7 @@ from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.forms.models import modelformset_factory
 from django.forms.models import inlineformset_factory
+from django.core.context_processors import csrf
 
 from damis.forms import LoginForm
 from damis.forms import DatasetForm
@@ -212,6 +213,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super(ExperimentCreate, self).get_context_data(**kwargs)
         context['dataset_form'] = DatasetSelectForm()
+        context.update(csrf(self.request))
         return context
 
     def post(self, request, *args, **kwargs):
