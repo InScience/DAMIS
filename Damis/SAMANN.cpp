@@ -61,19 +61,10 @@ ObjectMatrix SAMANN::getProjection(){
 
     int n = X.getObjectAt(0).getFeatureCount();
     int m = X.getObjectCount();
-    double T1[nNeurons];
-    double T2[nNeurons];
-    double t1[nNeurons];
-    double t2[nNeurons];
-    double TT1[d];
-    double TT2[d];
-    double tt1[d];
-    double tt2[d];
     double ddelta_L[mTrain][d];
     double delta_tarp[mTrain];
     double ddelta_tarp[mTrain];
     double tarp = 0.0, tarp2 = 0.0, lambda, tmp, distXp, distYis;
-    std::ofstream file("report.txt");
     initializeWeights();   // w1, w2
     initializeExitMatrixes();   // Y_pasl, Y_is
     initializeDeltaL();   // delta_L
@@ -98,27 +89,7 @@ ObjectMatrix SAMANN::getProjection(){
         for (int miu = 0; miu < mTrain - 1; miu++)
         {
             for (int niu = miu + 1; niu < mTrain; niu++)
-            {
-                file <<"--------------------------------------------------------------------------------"<<std::endl<<std::endl;
-                file<<"w1:"<<std::endl;
-                for (int k = 0; k < nNeurons; k++)
-                {
-                    for (int j = 0; j < n; j++)
-                        file<<w1[k][j]<<", ";
-                    file << std::endl;
-                }
-                file << std::endl;
-                
-                file <<"Xp[miu] (miu = " << miu <<"): "; 
-                for (int j = 0; j < n; j++)
-                    file << Xp.getObjectAt(miu).getFeatureAt(j)<<", ";
-                file<<std::endl;
-                file <<"Xp[niu] (niu = " << niu <<"): "; 
-                for (int j = 0; j < n; j++)
-                    file << Xp.getObjectAt(niu).getFeatureAt(j)<<", ";
-                file<<std::endl;
-                file<<std::endl;
-                
+            {                
                 for (int j = 0; j < nNeurons; j++)
                 {
                     tarp = 0.0;
@@ -128,47 +99,10 @@ ObjectMatrix SAMANN::getProjection(){
                         tarp += w1[j].at(k) * Xp.getObjectAt(miu).getFeatureAt(k);
                         tarp2 += w1[j].at(k) * Xp.getObjectAt(niu).getFeatureAt(k);
                     }
-                    T1[j] = tarp;
-                    T2[j] = tarp2;
-                    t1[j] = 1.0 / (1 + exp(-1 * tarp));
-                    t2[j] = 1.0 / (1 + exp(-1 * tarp2));
-                    //t1[j] = 1.0 / (1 + exp(-1 * tarp));
-                    //t2[j] = 1.0 / (1 + exp(-1 * tarp2));
+
                     Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
                     Y_pasl.updateDataObject(niu, j, 1.0 / (1 + exp(-1 * tarp2)));
                 }
-                
-                file << "tarp: ";
-                for (int j = 0; j < nNeurons; j++)
-                    file << T1[j] << ", ";
-                file << std::endl;
-                
-                file << "(1.0 / (1 + exp(-1 * tarp))): ";
-                for (int j = 0; j < nNeurons; j++)
-                    file << t1[j] << ", ";
-                file << std::endl;
-                
-                file << "tarp2: ";
-                for (int j = 0; j < nNeurons; j++)
-                    file << T2[j] << ", ";
-                file << std::endl;
-                
-                file << "(1.0 / (1 + exp(-1 * tarp2))): ";
-                for (int j = 0; j < nNeurons; j++)
-                    file << t2[j] << ", ";
-                file << std::endl;
-                file << std::endl;
-                
-                file<<"Y_pasl[miu] (miu = " << miu <<"): "; 
-                for (int j = 0; j < nNeurons; j++)
-                    file << Y_pasl.getObjectAt(miu).getFeatureAt(j)<<", ";
-                file<<std::endl;
-                
-                file<<"Y_pasl[niu] (niu = " << niu <<"): ";
-                for (int j = 0; j < nNeurons; j++)
-                    file << Y_pasl.getObjectAt(niu).getFeatureAt(j)<<", ";
-                file<<std::endl;
-                file<<std::endl;
                 
                 for (int j = 0; j < d; j++)
                 {
@@ -179,60 +113,16 @@ ObjectMatrix SAMANN::getProjection(){
                         tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
                         tarp2 += w2[j].at(k) * Y_pasl.getObjectAt(niu).getFeatureAt(k);
                     }
-                    TT1[j] = tarp;
-                    TT2[j] = tarp2;
-                    tt1[j] = exp(-1 * 100 * tarp);
-                    tt2[j] = exp(-1 * 100 * tarp2);
+
                     Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
                     Y_is.updateDataObject(niu, j, 1.0 / (1 + exp(-1 * tarp2)));
                 }
-                
-                file<<"w2:"<<std::endl;
-                for (int k = 0; k < d; k++)
-                {
-                    for (int j = 0; j < nNeurons; j++)
-                        file<<w2[k][j]<<", ";
-                    file << std::endl;
-                }
-                file << std::endl;
-                
-                file << "tarp: ";
-                for (int j = 0; j < d; j++)
-                    file << TT1[j] << ", ";
-                file << std::endl;
-                
-                file << "(1.0 / (1 + exp(-1 * tarp))): ";
-                for (int j = 0; j < d; j++)
-                    file << tt1[j] << ", ";
-                file << std::endl;
-                
-                file << "tarp2: ";
-                for (int j = 0; j < d; j++)
-                    file << TT2[j] << ", ";
-                file << std::endl;
-                
-                file << "(1.0 / (1 + exp(-1 * tarp2))): ";
-                for (int j = 0; j < d; j++)
-                    file << tt2[j] << ", ";
-                file << std::endl;
-                file << std::endl;
-                
-                file<<"Y_is[miu] (miu = " << miu <<"): "; 
-                for (int j = 0; j < d; j++)
-                    file << Y_is.getObjectAt(miu).getFeatureAt(j)<<", ";
-                file<<std::endl;
-                
-                
-                
-                file<<"Y_is[niu] (niu = " << niu <<"): ";
-                for (int j = 0; j < d; j++)
-                    file << Y_is.getObjectAt(niu).getFeatureAt(j)<<", ";
-                file<<std::endl;
-                file<<std::endl;
-                
+
                 distXp = DistanceMetrics::getDistance(Xp.getObjectAt(miu), Xp.getObjectAt(niu), EUCLIDEAN);
                 distYis = DistanceMetrics::getDistance(Y_is.getObjectAt(miu), Y_is.getObjectAt(niu), EUCLIDEAN);
-                file << "dist(Y_is[miu], Y_is[niu]) -> " << distYis <<std::endl;
+                if (distXp == 0)
+                    distXp = 0.001;
+                
                 for (int k = 0; k < d; k++)
                 {            
                     tmp = -2 * lambda * ((distXp - distYis) / (distXp * distYis)) * (Y_is.getObjectAt(miu).getFeatureAt(k) - Y_is.getObjectAt(niu).getFeatureAt(k));
@@ -248,19 +138,6 @@ ObjectMatrix SAMANN::getProjection(){
                             w2[k][j] = -1 * eta * (ddelta_L[miu][k] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu][k] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) + w2[k][j];
                     }
                 }
-                
-                file<<"ddelta_L[miu]: ";
-                for (int k = 0; k < d; k++)
-                    file<<ddelta_L[miu][k]<<", ";
-                file << std::endl;
-                
-                file<<"ddelta_L:[niu]: ";
-                for (int k = 0; k < d; k++)
-                    file<<ddelta_L[niu][k]<<", ";
-                file << std::endl;
-                file << std::endl;
-                
-                
                 
                 for (int j = 0; j < nNeurons; j++)
                 {
@@ -289,9 +166,7 @@ ObjectMatrix SAMANN::getProjection(){
             }             
         }        
     }  // iteraciju pabaiga
-    file.close();
-    //Y_is.saveDataMatrix("yis.txt");
-    //Y_pasl.saveDataMatrix("ypasl.txt");
+
     for (int miu = 0; miu < m; miu++)
     {
         for (int j = 0; j < nNeurons; j++)
@@ -330,8 +205,7 @@ void SAMANN::NormalizeX()
     double value;
     int n = X.getObjectCount();
     int m = X.getObjectAt(0).getFeatureCount();
-    //ObjectMatrix X_Norm(n);
-    //std::vector<double> row;
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -339,31 +213,35 @@ void SAMANN::NormalizeX()
             value = X.getObjectAt(i).getFeatureAt(j) / max;
             X.updateDataObject(i, j, value);
         }
-            //row.push_back(X.getObjectAt(i).getItems().at(j) / max)
-        //X_Norm.addObject(DataObject(row));
-        //row.clear();
     }
-    //X = X_Norm;
 }
 
 void SAMANN::getXp()
 {
     int n = X.getObjectCount(), i = 0, k = 0, index = 0;
     Xp = ObjectMatrix(nNeurons);
-    double r = 0.0;
-    DataObject dObject;
-
+    double r = Statistics::getRandom(0, n, k);
+    DataObject dObject; 
+    index = static_cast<int>(r);
+    
     while (i < mTrain)
-    {
-        r = Statistics::getRandom(0, n, k);
-        index = static_cast<int>(r);
+    {       
         dObject = X.getObjectAt(index);
         if (isIdentical(dObject) == false)
         {
             Xp.addObject(dObject);
             i++;
         }
+        
+        index = (index + 1) % n;
         k++;
+        
+        if (k >= n && i < mTrain)
+        {
+            dObject = X.getObjectAt(index);
+            Xp.addObject(dObject);
+            i++;
+        }
     }
 }
 
@@ -400,7 +278,7 @@ double SAMANN::getStress(){
         for (int niu = miu + 1; niu < m; niu++)
         {
             distX = DistanceMetrics::getDistance(X.getObjectAt(miu), X.getObjectAt(niu), EUCLIDEAN);
-            distY = DistanceMetrics::getDistance(Y.getObjectAt(miu), Y.getObjectAt(niu), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(Y_is.getObjectAt(miu), Y_is.getObjectAt(niu), EUCLIDEAN);
             tarp1 += 1 / distX;
             tarp2 += pow(distX - distY, 2) / distX;
         }

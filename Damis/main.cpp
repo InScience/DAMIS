@@ -28,8 +28,9 @@
 #include "PCA.h"
 #include "AdditionalMethods.h"
 #include <sstream>
-
 using namespace std;
+
+int AdditionalMethods::PID;    //  seed for random numbers generator
 
 void PrintMatrix(ObjectMatrix);                      // Y atvaizdavimas ekrane (testavimui)
 
@@ -53,6 +54,7 @@ int main(int argc, char** argv) {
     
     MPI::Init(argc, argv);
     pid = MPI::COMM_WORLD.Get_rank();
+    AdditionalMethods::PID = pid;
     numOfProcs = MPI::COMM_WORLD.Get_size();
     MPI_Status status;
     
@@ -62,13 +64,15 @@ int main(int argc, char** argv) {
         if (numOfProcs == 1)
         {        
             //PCA::PCA smcf(d);
-            //PCA::PCA smcf(1.0);
+            PCA::PCA smcf(1.0);
             //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
+            //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTASC);
+            //SMACOFZEIDEL smcf (epsilon, maxIter, d, RANDOM);
             //SMACOF smcf (epsilon, maxIter, d);
             //SAMANN smcf(50, 10, 2.0, 1);
             //DMA smcf(epsilon, 10, 2, 10);
-            SOM smcf(100, 3, 5);
+            //SOM smcf(100, 3, 5);
             //SOMMDS smcf(epsilon, maxIter, d, 100, 3, 5);
             Y = smcf.getProjection();
             PrintMatrix(Y);           

@@ -23,6 +23,7 @@ class AdditionalMethods
             static double** Array2D(int rows, int cols);    // 2D double istisines matricos kurimas
             static alglib::real_1d_array ObjectMatrixTo1DArray(ObjectMatrix matrix);
             static ObjectMatrix alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount);
+            static int PID;
 };
 
 #endif	/* ADDITIONALMETHODS_H */

@@ -37,19 +37,15 @@ PCA::PCA(double disp){
     int dd = 0;
     PCA pca(X, m);
     ObjectMatrix Y_visi = pca.getProjection();
-    std::vector<double> sum;
-    sum.reserve(m);
+    this->eigValues = pca.getEigenValues();
     double wholeSum = 0.0, tempSum = 0.0;
     
     for (int i = 0; i < m; i++)
-        sum.push_back(Statistics::getSum(Y_visi, i));
-    
-    for (int i = 0; i < m; i++)
-        wholeSum += sum.at(i);
+        wholeSum += eigValues(i);
     
     for (int i = 0; i < m; i++)
     {
-        tempSum += sum.at(i);
+        tempSum += eigValues(i);
         dd++;
         if ((tempSum / wholeSum) > disp)
             break;           
@@ -104,7 +100,7 @@ void PCA::ProjectXMatrix()
     for (int i = 0; i < n; i++)
         X_vid[i] = Statistics::getAverage(X, i);
     alglib::ae_int_t info;
-    alglib::real_1d_array eigValues;
+    //alglib::real_1d_array eigValues;
     alglib::real_2d_array eigVectors;
     pcabuildbasis(alglibX, m, n, info, eigValues, eigVectors);
     
@@ -150,4 +146,9 @@ int PCA::getDimension()
 double PCA::getDispersionPart()
 {
     return dispPart;
+}
+
+alglib::real_1d_array PCA::getEigenValues()
+{
+    return eigValues;
 }

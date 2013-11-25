@@ -21,6 +21,7 @@ public:
 
 	SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum);
         SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix initProjection);
+        SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix largeX, int betkas);
 
 //protected:
 	virtual ObjectMatrix getProjection();

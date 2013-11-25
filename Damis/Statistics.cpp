@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "Statistics.h"
+#include "AdditionalMethods.h"
 #include "DataObject.h"
 #include <time.h>
 #include <stdlib.h>
@@ -64,7 +65,7 @@ double Statistics::getRandom(double min, double max)
 
 double Statistics::getRandom(int n)
 {
-    srand(time(NULL) + n);
+    srand(time(NULL) + n + AdditionalMethods::PID);
     return (double)rand() / RAND_MAX;
 }
 

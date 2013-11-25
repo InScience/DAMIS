@@ -32,6 +32,11 @@ SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, Obj
     Y = initProjection;
 }
 
+SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix largeX, int betkas):SMACOF(eps, maxIter, d, largeX, betkas)
+{
+    shufleEnum = shEnum;
+}
+
 /**
  * Our virtual method that calculates the projection
  */

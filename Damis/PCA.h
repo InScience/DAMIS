@@ -27,6 +27,8 @@ public:
 	virtual void fromDataType();
         int getDimension();
         double getDispersionPart();
+        alglib::real_1d_array getEigenValues();
+        
 //protected:
 	virtual ObjectMatrix getProjection();
 
@@ -37,5 +39,6 @@ private:
 	double dispPart;
         alglib::real_2d_array alglibX;
         void ProjectXMatrix();
+        alglib::real_1d_array eigValues;
 };
 #endif // !defined(EA_137C79B9_5330_4edc_A6BF_D6D076823555__INCLUDED_)

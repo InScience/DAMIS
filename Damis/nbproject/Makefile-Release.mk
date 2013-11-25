@@ -64,10 +64,7 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 TESTFILES= \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f6 \
-	${TESTDIR}/TestFiles/f7 \
-	${TESTDIR}/TestFiles/f2 \
-	${TESTDIR}/TestFiles/f4 \
-	${TESTDIR}/TestFiles/f3
+	${TESTDIR}/TestFiles/f7
 
 # C Compiler Flags
 CFLAGS=`cppunit-config --cflags` 
@@ -83,122 +80,122 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=libalglib.so `cppunit-config --libs`  
+LDLIBSOPTIONS=libalglib.so `cppunit-config --libs` `cppunit-config --libs`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f5
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f4
 
-${TESTDIR}/TestFiles/f5: libalglib.so
+${TESTDIR}/TestFiles/f4: libalglib.so
 
-${TESTDIR}/TestFiles/f5: ${OBJECTFILES}
+${TESTDIR}/TestFiles/f4: ${OBJECTFILES}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc} -o ${TESTDIR}/TestFiles/f5 ${OBJECTFILES} ${LDLIBSOPTIONS} -L$HOME
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f4 ${OBJECTFILES} ${LDLIBSOPTIONS} -L$HOME
 
 ${OBJECTDIR}/AdditionalMethods.o: AdditionalMethods.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/AdditionalMethods.o AdditionalMethods.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/AdditionalMethods.o AdditionalMethods.cpp
 
 ${OBJECTDIR}/DMA.o: DMA.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DMA.o DMA.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DMA.o DMA.cpp
 
 ${OBJECTDIR}/DataObject.o: DataObject.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DataObject.o DataObject.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DataObject.o DataObject.cpp
 
 ${OBJECTDIR}/DimReductionMethod.o: DimReductionMethod.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DimReductionMethod.o DimReductionMethod.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DimReductionMethod.o DimReductionMethod.cpp
 
 ${OBJECTDIR}/DistanceMetrics.o: DistanceMetrics.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DistanceMetrics.o DistanceMetrics.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DistanceMetrics.o DistanceMetrics.cpp
 
 ${OBJECTDIR}/Feature.o: Feature.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/Feature.o Feature.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/Feature.o Feature.cpp
 
 ${OBJECTDIR}/HPCMethod.o: HPCMethod.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/HPCMethod.o HPCMethod.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/HPCMethod.o HPCMethod.cpp
 
 ${OBJECTDIR}/MDS.o: MDS.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/MDS.o MDS.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/MDS.o MDS.cpp
 
 ${OBJECTDIR}/ObjectMatrix.o: ObjectMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/ObjectMatrix.o ObjectMatrix.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/ObjectMatrix.o ObjectMatrix.cpp
 
 ${OBJECTDIR}/PCA.o: PCA.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/PCA.o PCA.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/PCA.o PCA.cpp
 
 ${OBJECTDIR}/Projection.o: Projection.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/Projection.o Projection.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/Projection.o Projection.cpp
 
 ${OBJECTDIR}/SAMANN.o: SAMANN.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SAMANN.o SAMANN.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SAMANN.o SAMANN.cpp
 
 ${OBJECTDIR}/SDS.o: SDS.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SDS.o SDS.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SDS.o SDS.cpp
 
 ${OBJECTDIR}/SMACOF.o: SMACOF.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOF.o SMACOF.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOF.o SMACOF.cpp
 
 ${OBJECTDIR}/SMACOFZEIDEL.o: SMACOFZEIDEL.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOFZEIDEL.o SMACOFZEIDEL.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOFZEIDEL.o SMACOFZEIDEL.cpp
 
 ${OBJECTDIR}/SOM.o: SOM.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOM.o SOM.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOM.o SOM.cpp
 
 ${OBJECTDIR}/SOMMDS.o: SOMMDS.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOMMDS.o SOMMDS.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOMMDS.o SOMMDS.cpp
 
 ${OBJECTDIR}/ShufleObjects.o: ShufleObjects.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShufleObjects.o ShufleObjects.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShufleObjects.o ShufleObjects.cpp
 
 ${OBJECTDIR}/Statistics.o: Statistics.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/Statistics.o Statistics.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/Statistics.o Statistics.cpp
 
 ${OBJECTDIR}/arff.o: arff.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/arff.o arff.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/arff.o arff.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -217,53 +214,23 @@ ${TESTDIR}/TestFiles/f7: ${TESTDIR}/tests/methodsTest.o ${OBJECTFILES:%.o=%_noma
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS} 
 
-${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/pcatest.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} 
-
-${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/smacofTest.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} 
-
-${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/smacofZeidelTest.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
-
 
 ${TESTDIR}/tests/arffTest.o: tests/arffTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/arffTest.o tests/arffTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/arffTest.o tests/arffTest.cpp
 
 
 ${TESTDIR}/tests/gutmanTest.o: tests/gutmanTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/gutmanTest.o tests/gutmanTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/gutmanTest.o tests/gutmanTest.cpp
 
 
 ${TESTDIR}/tests/methodsTest.o: tests/methodsTest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/methodsTest.o tests/methodsTest.cpp
-
-
-${TESTDIR}/tests/pcatest.o: tests/pcatest.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/pcatest.o tests/pcatest.cpp
-
-
-${TESTDIR}/tests/smacofTest.o: tests/smacofTest.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/smacofTest.o tests/smacofTest.cpp
-
-
-${TESTDIR}/tests/smacofZeidelTest.o: tests/smacofZeidelTest.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. -I. -I. -I. `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/smacofZeidelTest.o tests/smacofZeidelTest.cpp
+	$(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/methodsTest.o tests/methodsTest.cpp
 
 
 ${OBJECTDIR}/AdditionalMethods_nomain.o: ${OBJECTDIR}/AdditionalMethods.o AdditionalMethods.cpp 
@@ -274,7 +241,7 @@ ${OBJECTDIR}/AdditionalMethods_nomain.o: ${OBJECTDIR}/AdditionalMethods.o Additi
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/AdditionalMethods_nomain.o AdditionalMethods.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/AdditionalMethods_nomain.o AdditionalMethods.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/AdditionalMethods.o ${OBJECTDIR}/AdditionalMethods_nomain.o;\
 	fi
@@ -287,7 +254,7 @@ ${OBJECTDIR}/DMA_nomain.o: ${OBJECTDIR}/DMA.o DMA.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DMA_nomain.o DMA.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DMA_nomain.o DMA.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/DMA.o ${OBJECTDIR}/DMA_nomain.o;\
 	fi
@@ -300,7 +267,7 @@ ${OBJECTDIR}/DataObject_nomain.o: ${OBJECTDIR}/DataObject.o DataObject.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DataObject_nomain.o DataObject.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DataObject_nomain.o DataObject.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/DataObject.o ${OBJECTDIR}/DataObject_nomain.o;\
 	fi
@@ -313,7 +280,7 @@ ${OBJECTDIR}/DimReductionMethod_nomain.o: ${OBJECTDIR}/DimReductionMethod.o DimR
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DimReductionMethod_nomain.o DimReductionMethod.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DimReductionMethod_nomain.o DimReductionMethod.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/DimReductionMethod.o ${OBJECTDIR}/DimReductionMethod_nomain.o;\
 	fi
@@ -326,7 +293,7 @@ ${OBJECTDIR}/DistanceMetrics_nomain.o: ${OBJECTDIR}/DistanceMetrics.o DistanceMe
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DistanceMetrics_nomain.o DistanceMetrics.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DistanceMetrics_nomain.o DistanceMetrics.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/DistanceMetrics.o ${OBJECTDIR}/DistanceMetrics_nomain.o;\
 	fi
@@ -339,7 +306,7 @@ ${OBJECTDIR}/Feature_nomain.o: ${OBJECTDIR}/Feature.o Feature.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Feature_nomain.o Feature.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Feature_nomain.o Feature.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Feature.o ${OBJECTDIR}/Feature_nomain.o;\
 	fi
@@ -352,7 +319,7 @@ ${OBJECTDIR}/HPCMethod_nomain.o: ${OBJECTDIR}/HPCMethod.o HPCMethod.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/HPCMethod_nomain.o HPCMethod.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/HPCMethod_nomain.o HPCMethod.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/HPCMethod.o ${OBJECTDIR}/HPCMethod_nomain.o;\
 	fi
@@ -365,7 +332,7 @@ ${OBJECTDIR}/MDS_nomain.o: ${OBJECTDIR}/MDS.o MDS.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/MDS_nomain.o MDS.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/MDS_nomain.o MDS.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/MDS.o ${OBJECTDIR}/MDS_nomain.o;\
 	fi
@@ -378,7 +345,7 @@ ${OBJECTDIR}/ObjectMatrix_nomain.o: ${OBJECTDIR}/ObjectMatrix.o ObjectMatrix.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/ObjectMatrix_nomain.o ObjectMatrix.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/ObjectMatrix_nomain.o ObjectMatrix.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/ObjectMatrix.o ${OBJECTDIR}/ObjectMatrix_nomain.o;\
 	fi
@@ -391,7 +358,7 @@ ${OBJECTDIR}/PCA_nomain.o: ${OBJECTDIR}/PCA.o PCA.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/PCA_nomain.o PCA.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/PCA_nomain.o PCA.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/PCA.o ${OBJECTDIR}/PCA_nomain.o;\
 	fi
@@ -404,7 +371,7 @@ ${OBJECTDIR}/Projection_nomain.o: ${OBJECTDIR}/Projection.o Projection.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Projection_nomain.o Projection.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Projection_nomain.o Projection.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Projection.o ${OBJECTDIR}/Projection_nomain.o;\
 	fi
@@ -417,7 +384,7 @@ ${OBJECTDIR}/SAMANN_nomain.o: ${OBJECTDIR}/SAMANN.o SAMANN.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SAMANN_nomain.o SAMANN.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SAMANN_nomain.o SAMANN.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SAMANN.o ${OBJECTDIR}/SAMANN_nomain.o;\
 	fi
@@ -430,7 +397,7 @@ ${OBJECTDIR}/SDS_nomain.o: ${OBJECTDIR}/SDS.o SDS.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SDS_nomain.o SDS.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SDS_nomain.o SDS.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SDS.o ${OBJECTDIR}/SDS_nomain.o;\
 	fi
@@ -443,7 +410,7 @@ ${OBJECTDIR}/SMACOF_nomain.o: ${OBJECTDIR}/SMACOF.o SMACOF.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOF_nomain.o SMACOF.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOF_nomain.o SMACOF.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SMACOF.o ${OBJECTDIR}/SMACOF_nomain.o;\
 	fi
@@ -456,7 +423,7 @@ ${OBJECTDIR}/SMACOFZEIDEL_nomain.o: ${OBJECTDIR}/SMACOFZEIDEL.o SMACOFZEIDEL.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOFZEIDEL_nomain.o SMACOFZEIDEL.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SMACOFZEIDEL_nomain.o SMACOFZEIDEL.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SMACOFZEIDEL.o ${OBJECTDIR}/SMACOFZEIDEL_nomain.o;\
 	fi
@@ -469,7 +436,7 @@ ${OBJECTDIR}/SOM_nomain.o: ${OBJECTDIR}/SOM.o SOM.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOM_nomain.o SOM.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOM_nomain.o SOM.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SOM.o ${OBJECTDIR}/SOM_nomain.o;\
 	fi
@@ -482,7 +449,7 @@ ${OBJECTDIR}/SOMMDS_nomain.o: ${OBJECTDIR}/SOMMDS.o SOMMDS.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOMMDS_nomain.o SOMMDS.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/SOMMDS_nomain.o SOMMDS.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/SOMMDS.o ${OBJECTDIR}/SOMMDS_nomain.o;\
 	fi
@@ -495,7 +462,7 @@ ${OBJECTDIR}/ShufleObjects_nomain.o: ${OBJECTDIR}/ShufleObjects.o ShufleObjects.
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShufleObjects_nomain.o ShufleObjects.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/ShufleObjects_nomain.o ShufleObjects.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/ShufleObjects.o ${OBJECTDIR}/ShufleObjects_nomain.o;\
 	fi
@@ -508,7 +475,7 @@ ${OBJECTDIR}/Statistics_nomain.o: ${OBJECTDIR}/Statistics.o Statistics.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Statistics_nomain.o Statistics.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Statistics_nomain.o Statistics.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Statistics.o ${OBJECTDIR}/Statistics_nomain.o;\
 	fi
@@ -521,7 +488,7 @@ ${OBJECTDIR}/arff_nomain.o: ${OBJECTDIR}/arff.o arff.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/arff_nomain.o arff.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/arff_nomain.o arff.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/arff.o ${OBJECTDIR}/arff_nomain.o;\
 	fi
@@ -534,7 +501,7 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/main_nomain.o main.cpp;\
+	    $(COMPILE.cc) -O2 -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/main_nomain.o main.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
 	fi
@@ -546,9 +513,6 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	    ${TESTDIR}/TestFiles/f6 || true; \
 	    ${TESTDIR}/TestFiles/f7 || true; \
-	    ${TESTDIR}/TestFiles/f2 || true; \
-	    ${TESTDIR}/TestFiles/f4 || true; \
-	    ${TESTDIR}/TestFiles/f3 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi
@@ -556,7 +520,7 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${TESTDIR}/TestFiles/f5
+	${RM} ${TESTDIR}/TestFiles/f4
 
 # Subprojects
 .clean-subprojects:
