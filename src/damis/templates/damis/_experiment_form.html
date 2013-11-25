@@ -2,7 +2,7 @@
 {% get_current_language as lang %}
 
 <form id="experiment-form" action="." method="post" autocomplete="off">{% csrf_token %}
-    <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" value="{{ experiment_form.title.value }}" style="margin-bottom:0"/>
+    <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" value="{% if experiment_form.title.value %}{{ experiment_form.title.value }}{% endif %}" style="margin-bottom:0"/>
     <button class="btn btn-primary"
             type="button" id="execute-btn">{% trans "Execute" %}</button>
     {{ task_formset.management_form }}
