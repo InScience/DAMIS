@@ -84,8 +84,7 @@ class ParameterValueForm(forms.ModelForm):
             self.fields['value'].label = str(kwargs['instance'].parameter)
         if self.data:
             parameter_id = self.data.get(self.prefix + '-parameter')
-            if parameter_id:
-                self.fields['value'].label = str(Parameter.objects.get(pk=parameter_id))
+            self.initial = {'parameter': Parameter.objects.get(pk=parameter_id)}
 
     class Meta:
         model = ParameterValue

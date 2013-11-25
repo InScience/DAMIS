@@ -1,0 +1,54 @@
+{% load i18n %}
+{% get_current_language as lang %}
+
+<form id="experiment-form" action="." method="post">{% csrf_token %}
+    <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" style="margin-bottom:0">
+    <button class="btn btn-primary"
+            type="button" id="execute-btn">{% trans "Execute" %}</button>
+    {{ task_formset.management_form }}
+    <div style="display: none;">
+        {% for task in task_formset.forms %}
+        {% trans 'Task' %}
+        <div class="inline task">
+            <div>
+                {{ task.non_field_errors }}
+                {% for field in task.visible_fields %}
+                    <p>{{ field.errors}}
+                    {{ field.label }}:<br/>
+                    {% if field.name == 'algorithm' %} 
+                    <span class='algorithm-selection'>{{ field }}</span>
+                    {% else %}
+                    {{ field }}
+                    {% endif %}
+                    </p>
+                {% endfor %}
+                {% for field in task.hidden_fields %}
+                    {{ field }}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="parameter-values">
+            {% for param_formset in task.parameter_values %}
+                {{ param_formset.management_form }}
+                {% for form in param_formset.forms %}
+                    <div>
+                        <span>{{ form.initial.parameter }}</span>
+                        {% for field in form.visible_fields %}
+                            {% if field.name == 'value' %}
+                                {{ field.errors }}
+                                {{ field }}
+                            {% endif %}
+                        {% endfor %}
+                        <input id="{{ form.prefix }}-is_input" type="hidden" value="{{ form.initial.parameter.is_input }}" name="{{ form.prefix }}-is_input">
+                        <input id="{{ form.prefix }}-is_output" type="hidden" value="{{ form.initial.parameter.is_output }}" name="{{ form.prefix }}-is_output">
+                        {{ form.source_ref }}<br/>
+                        {{ form.parameter }}<br/>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div> 
+    <div id="data-input-container" style="display:none;">{{ dataset_form.as_p }}</div>
+    <div id="task-forms"></div>
+</form>

@@ -237,7 +237,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         return HttpResponse('OK')
 
     def form_invalid(self, experiment_form, task_formset):
-        return render_to_response('dynamic/experiment_formset.html',
+        return render_to_response('damis/_experiment_form.html',
                         self.get_context_data(
                             experiment=task_formset.instance,
                             task_formset=task_formset,
