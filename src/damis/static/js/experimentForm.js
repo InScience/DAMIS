@@ -15,7 +15,7 @@
 						var parts = oParamAddr.split(",");
 						var oParam = window.taskBoxes.getParameter(parts[0], parts[1]);
                         var oParamField = window.taskBoxes.getParameterValue(oParam);
-						srcRefField.val(oParam.attr("id"));
+						srcRefField.val(oParamField.attr("name"));
 					}
 				}
 			});
