@@ -23,15 +23,15 @@
 
 		// translate parameter binding from server to client
 		// representation
-		bindingToClient: function(taskForm, taskBox) {
-			$.each(taskForm.find("input[id$=is_input]"), function() {
+		bindingToClient: function(parameterFormset, taskBox) {
+			$.each(parameterFormset.find("input[id$=is_input]"), function() {
 				if ($(this).val() === "True") { // inspect each input parameter
 					var srcRefField = $(this).closest("div").find("input[id$=source_ref]");
-					var oParamId = $(srcRefField).val();
-					if (oParamId) {
-					    var oParam = $("#" + oParamId);
+					var oParamName = $(srcRefField).val();
+					if (oParamName) {
+					    var oParam = $("input[name=" + oParamName + "]");
 					    var oParent = oParam.closest("div");
-					    srcRefField.val(oParent.index() + "," + taskBox.attr("id"));
+					    srcRefField.val(oParent.index() + "," + $(taskBox).attr("id"));
 					}
 				}
 			});
@@ -106,13 +106,18 @@
 						taskForm.find(".algorithm-selection select").change(window.taskBoxes.loadAlgorithmParameters);
 
 						//restore parameter bindings from server to client representation
-						window.experimentForm.bindingToClient(taskForm, taskBox);
+						window.experimentForm.bindingToClient(parameterFormset, taskBox);
 					});
 
 					window.experimentForm.init(window.experimentForm.initParams);
 				});
 			});
 		},
+
+        save: function() {
+        
+        },
+
 		init: function(params) {
 			//store parameter for reinitializing after failed form submission 
 			window.experimentForm.initParams = params
@@ -129,8 +134,14 @@
 
 			//assign form submit handler
 			$('#execute-btn').click(function(ev) {
-				window.experimentForm.handleSubmit(parameterPrefixesUrl, experimentsListUrl)
+				window.experimentForm.handleSubmit(parameterPrefixesUrl, experimentsListUrl);
 			});
+
+			//assign form submit handler
+			$('#save-btn').click(function(ev) {
+				window.experimentForm.save();
+			});
+            
 		}
 	}
 })();
