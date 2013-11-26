@@ -98,6 +98,7 @@ class Experiment(models.Model):
     status = models.CharField(_('Status'), max_length=50, null=True, blank=True,
                               choices=STATUSES, default='CREATED')
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
+    workflow_state = models.TextField(blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('experiment-list')
