@@ -130,6 +130,6 @@ class TaskFile(models.Model):
 
 class ParameterValue(models.Model):
     parameter = models.ForeignKey('Parameter')
-    value = models.CharField(max_length=255)
+    value = models.CharField(max_length=255, blank=True)
     task = models.ForeignKey('Task', related_name='parameter_values')
     source = models.ForeignKey('ParameterValue', null=True, blank=True)

@@ -1,5 +1,6 @@
 #! coding: utf-8
 from django import forms
+from django.forms.util import ErrorList
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
 
@@ -84,7 +85,28 @@ class ParameterValueForm(forms.ModelForm):
             self.fields['value'].label = str(kwargs['instance'].parameter)
         if self.data:
             parameter_id = self.data.get(self.prefix + '-parameter')
-            self.initial = {'parameter': Parameter.objects.get(pk=parameter_id)}
+            if parameter_id:
+                self.initial = {'parameter': Parameter.objects.get(pk=parameter_id)}
+
+    def is_valid(self):
+        valid = super(ParameterValueForm, self).is_valid()
+        if not valid:
+            return valid
+
+        value = self.cleaned_data['value']
+        source_ref = self.cleaned_data['source_ref']
+        if value or source_ref:
+            return True
+        errors = self._errors.setdefault('value', ErrorList())
+        errors.append(u'Parameter value must be specified')
+        return False
+
+    def source_ref_to_obj(self, pv_prefix_to_obj):
+        source_ref = self.cleaned_data['source_ref']
+        if source_ref:
+            obj = pv_prefix_to_obj[source_ref.split('-value')[0]]
+            self.instance.source = obj
+            self.instance.save()
 
     class Meta:
         model = ParameterValue
@@ -151,11 +173,20 @@ class BaseTaskFormset(BaseInlineFormSet):
         if not commit:
             self.save_m2m()
 
+        pv_prefix_to_obj = {}
         for form in set(self.initial_forms + self.saved_forms):
             if self.should_delete(form):
                 continue
             for pv in form.parameter_values:
                 pv.save(commit=commit)
+                for f in pv.forms:
+                    pv_prefix_to_obj[f.prefix] = f.instance
+
+        for form in set(self.initial_forms + self.saved_forms):
+            for pv in form.parameter_values:
+                for f in pv.forms:
+                    f.source_ref_to_obj(pv_prefix_to_obj)
+
 
     def should_delete(self, form):
         if self.can_delete:
