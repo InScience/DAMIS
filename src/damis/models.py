@@ -133,3 +133,6 @@ class ParameterValue(models.Model):
     value = models.CharField(max_length=255, blank=True)
     task = models.ForeignKey('Task', related_name='parameter_values')
     source = models.ForeignKey('ParameterValue', null=True, blank=True)
+
+    def __unicode__(self):
+        return '%s: %s' % (self.task.algorithm, self.value)
