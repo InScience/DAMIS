@@ -1,7 +1,7 @@
 ;
 (function() {
 	window.experimentForm = {
-        // parameters for window.experimentForm initialization
+		// parameters for window.experimentForm initialization
 		initParams: {},
 
 		// translate parameter binding from client to server
@@ -14,7 +14,7 @@
 					if (oParamAddr) {
 						var parts = oParamAddr.split(",");
 						var oParam = window.taskBoxes.getParameter(parts[0], parts[1]);
-                        var oParamField = window.taskBoxes.getParameterValue(oParam);
+						var oParamField = window.taskBoxes.getParameterValue(oParam);
 						srcRefField.val(oParamField.attr("name"));
 					}
 				}
@@ -23,24 +23,28 @@
 
 		// translate parameter binding from server to client
 		// representation
-		bindingToClient: function(parameterFormset, taskBox) {
+        // parameterFormset - target box parameters
+		bindingToClient: function(parameterFormset) {
 			$.each(parameterFormset.find("input[id$=is_input]"), function() {
 				if ($(this).val() === "True") { // inspect each input parameter
 					var srcRefField = $(this).closest("div").find("input[id$=source_ref]");
 					var oParamName = $(srcRefField).val();
 					if (oParamName) {
-					    var oParam = $("input[name=" + oParamName + "]");
-					    var oParent = oParam.closest("div");
-					    srcRefField.val(oParent.index() + "," + $(taskBox).attr("id"));
+						var oParam = $("input[name=" + oParamName + "]");
+                        var sourceForm = oParam.closest(".task-window");
+                        var sourceBoxId = window.taskBoxes.getBoxId(sourceForm);
+
+						var oParent = oParam.closest("div");
+                        var paramNo = oParent.index();
+						srcRefField.val(paramNo + "," + sourceBoxId); 
 					}
 				}
 			});
 		},
 
-		// handles submission of experiment form
-		// refresh form data before submition
-		// recreate modal windows in case of validation errors
-		handleSubmit: function(parameterPrefixesUrl, experimentsListUrl) {
+		// refresh parameter formset prefixes before submition
+		// call the callback after prefixes refresh
+		updatePrefixes: function(parameterPrefixesUrl, callback, params) {
 			// pass current task forms prefixes to get parameter
 			// formsets prefixes
 			var taskFormPrefixes = []
@@ -73,54 +77,65 @@
 						}
 					});
 				});
-
-				// translate parameter bindings from client to server
-				// representation
-				window.experimentForm.bindingToServer();
-
-				var form = $("#experiment-form");
-				var data = form.serialize();
-				$.post(form.attr("action"), data, function(resp) {
-					if (resp === "OK") {
-						window.location = experimentsListUrl;
-						return;
-					}
-
-					//reinitialize the form 
-					$("#experiment-form").remove();
-					$("#workflow-editor-container").before(resp);
-
-					// recreate modal windows
-					// iterate through existing task boxes
-					// in the order of creation (asume, it is reflected
-					// in DOM order)
-					var updatedForms = $("#experiment-form .inline");
-					$.each($(".task-box"), function(taskBoxId, taskBox) {
-						taskForm = $(updatedForms[taskBoxId + 1]);
-						parameterFormset = $(taskForm.next(".parameter-values"));
-						// mark the task box as conataining errors
-						if (parameterFormset.find(".errorlist").length > 0) {
-							$(taskBox).addClass("error");
-						}
-						window.taskBoxes.createTaskFormDialog(taskForm, parameterFormset, window.taskBoxes.getFormWindowId($(taskBox)));
-						taskForm.find(".algorithm-selection select").change(window.taskBoxes.loadAlgorithmParameters);
-
-						//restore parameter bindings from server to client representation
-						window.experimentForm.bindingToClient(parameterFormset, taskBox);
-					});
-
-					window.experimentForm.init(window.experimentForm.initParams);
-				});
+				callback(params);
 			});
 		},
 
-        save: function() {
-        
-        },
+		// Create form modal windows, assign them to boxes 
+		reinitExperimentForm: function() {
 
+			// recreate modal windows
+			// iterate through existing task boxes
+			// in the order of creation (asume, it is reflected
+			// in DOM order)
+			var updatedForms = $("#experiment-form .inline");
+			$.each($(".task-box"), function(taskBoxId, taskBox) {
+				taskForm = $(updatedForms[taskBoxId + 1]);
+				parameterFormset = $(taskForm.next(".parameter-values"));
+				// mark the task box as conataining errors
+				if (parameterFormset.find(".errorlist").length > 0) {
+					$(taskBox).addClass("error");
+				} else {
+					$(taskBox).removeClass("error");
+                }
+				window.taskBoxes.createTaskFormDialog(taskForm, parameterFormset, window.taskBoxes.getFormWindowId($(taskBox)));
+				window.taskBoxes.addTaskBoxEventHandlers($(taskBox));
+			});
+			$.each($(".task-box"), function(taskBoxId, taskBox) {
+				//restore parameter bindings from server to client representation
+				taskForm = $(updatedForms[taskBoxId + 1]);
+				parameterFormset = $(taskForm.next(".parameter-values"));
+				window.experimentForm.bindingToClient(parameterFormset);
+            });
+		},
+
+		// Submits the experiment form and reinitializes it
+		submitForValidation: function(params) {
+			// translate parameter bindings from client to server
+			// representation
+			window.experimentForm.bindingToServer();
+
+			var form = $("#experiment-form");
+			var data = form.serialize();
+			$.post(form.attr("action"), data, function(resp) {
+				if (resp === "OK") {
+					window.location = params["experimentsListUrl"];
+					return;
+				}
+				//replace the existing form with the validated one
+				$("#experiment-form").remove();
+				$("#workflow-editor-container").before(resp);
+
+				//run standard initialization
+				window.experimentForm.init(window.experimentForm.initParams);
+				window.experimentForm.reinitExperimentForm();
+			});
+		},
+
+		// init formset plugin and form submit handlers
 		init: function(params) {
 			//store parameter for reinitializing after failed form submission 
-			window.experimentForm.initParams = params
+			this.initParams = params
 			parametersUrl = params['parametersUrl'];
 			parameterPrefixesUrl = params['parameterPrefixesUrl'];
 			experimentsListUrl = params['experimentsListUrl'];
@@ -134,14 +149,16 @@
 
 			//assign form submit handler
 			$('#execute-btn').click(function(ev) {
-				window.experimentForm.handleSubmit(parameterPrefixesUrl, experimentsListUrl);
+				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submitForValidation, {
+					experimentsListUrl: experimentsListUrl
+				});
 			});
 
 			//assign form submit handler
 			$('#save-btn').click(function(ev) {
-				window.experimentForm.save();
+				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.persistWorkflow.persist, {});
 			});
-            
+
 		}
 	}
 })();

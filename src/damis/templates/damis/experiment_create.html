@@ -40,15 +40,15 @@
 {% block javascript_footer %}
     {{ block.super }}
     <script type="text/javascript">
+        jsPlumb.ready(function() {
+            experimentCanvas.init({id: "flowchart-container"});
+        }); 
+
         window.experimentForm.init({
             parametersUrl:"{% url 'parameters-form' %}",
             parameterPrefixesUrl: "{% url 'gen-parameter-prefixes' %}", 
             experimentsListUrl: "{% url 'experiment-list' %}",
             taskFormPrefix: "{{ task_formset.prefix }}"});
-                
-        jsPlumb.ready(function() {
-            experimentCanvas.init({id: "flowchart-container"});
-        }); 
 
         window.toolBox.init({
             task: ".prototype-box",

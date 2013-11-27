@@ -17,7 +17,7 @@
 				accept: spec.task + ","+ spec.data,
 				drop: function(ev, ui) {
                     if ($(ui.draggable).hasClass(spec.task.replace(".", ""))) {
-				        window.taskBoxes.initTaskBox(ev, ui, spec.canvas);
+				        window.taskBoxes.createTaskBox(ev, ui, spec.canvas);
                         return;
                     } 
                     if ($(ui.draggable).hasClass(spec.data.replace(".", ""))) {
