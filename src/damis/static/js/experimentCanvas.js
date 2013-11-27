@@ -108,12 +108,12 @@
                 // Clear the input parameter value and display it as input field
                 var conn = info.connection;
                 var params = conn.getParameters();
-                var param = window.taskBoxes.getParameter(params.iParamNo, params.iTaskBoxId);
-                var srcRefField = window.taskBoxes.getParameterSourceRef(param);
+                var param = window.experimentForm.getParameter(params.iParamNo, params.iTaskBoxId);
+                var srcRefField = window.experimentForm.getParameterSourceRef(param);
                 srcRefField.val("");
                 
                 // show literal value field
-                var valField = window.taskBoxes.getParameterValue(param);
+                var valField = window.experimentForm.getParameterValue(param);
                 valField.attr("type", "text");
             });
 
@@ -125,12 +125,12 @@
 
                 if ($(conn.source).hasClass("task-box")) {
 				    //display disabled field to the user
-                    var param = window.taskBoxes.getParameter(params.iParamNo, params.iTaskBoxId);
-                    var srcRefField= window.taskBoxes.getParameterSourceRef(param);
+                    var param = window.experimentForm.getParameter(params.iParamNo, params.iTaskBoxId);
+                    var srcRefField= window.experimentForm.getParameterSourceRef(param);
 				    srcRefField.val(params.oParamNo + "," + params.oTaskBoxId);
 
                     //clear literal value field and hide it
-                    var valField = window.taskBoxes.getParameterValue(param);
+                    var valField = window.experimentForm.getParameterValue(param);
                     valField.val("");
                     valField.attr("type", "hidden");
                 } else if ($(conn.source).hasClass("data-box")) {

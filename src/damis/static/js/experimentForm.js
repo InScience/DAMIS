@@ -13,8 +13,8 @@
 					var oParamAddr = $(srcRefField).val();
 					if (oParamAddr) {
 						var parts = oParamAddr.split(",");
-						var oParam = window.taskBoxes.getParameter(parts[0], parts[1]);
-						var oParamField = window.taskBoxes.getParameterValue(oParam);
+						var oParam = window.experimentForm.getParameter(parts[0], parts[1]);
+						var oParamField = window.experimentForm.getParameterValue(oParam);
 						srcRefField.val(oParamField.attr("name"));
 					}
 				}
@@ -159,7 +159,27 @@
 				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.persistWorkflow.persist, {});
 			});
 
-		}
+		},
+
+		// returns parameter form, given 
+		// parameter number in the formset
+		// and task box id
+		getParameter: function(parameterNum, taskBoxId) {
+			var taskFormWindow = $("#" + window.taskBoxes.getFormWindowId(taskBoxId));
+			var paramForm = $(taskFormWindow.find(".parameter-values").find("div")[parameterNum]);
+		    return paramForm;
+		},
+
+        //returns parameter value field in parameter form
+        getParameterValue: function(paramForm) {
+			return paramForm.find("input[id$=value]");
+        },
+
+        //returns parameter source_ref field in parameter form
+        getParameterSourceRef: function(paramForm) {
+			return paramForm.find("input[id$=source_ref]");
+        }
+
 	}
 })();
 
