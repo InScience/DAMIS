@@ -19,6 +19,7 @@ urlpatterns = patterns('',
 
 urlpatterns += i18n_patterns('',
     url(r'^$', index_view, name='home'),
+    url(r'^about/$', about_view, name='home'),
     url(r'^login/$', login_view, name='login'),
     url(r'^logout/$', logout_view, name='logout'),
     url(r'^datasets/$', DatasetList.as_view(), name='dataset-list'),
