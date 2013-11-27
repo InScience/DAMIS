@@ -4,6 +4,7 @@
 <form id="experiment-form" action="." method="post" autocomplete="off">{% csrf_token %}
     <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" value="{% if experiment_form.title.value %}{{ experiment_form.title.value }}{% endif %}" style="margin-bottom:0"/>
     <input id="id_workflow_state" type="hidden" name="workflow_state" value="{% if experiment_form.workflow_state.value %}{{ experiment_form.workflow_state.value }}{% endif %}" />
+    <button class="btn" type="button" id="save-btn">{% trans "Save" %}</button>
     <button class="btn btn-primary"
             type="button" id="execute-btn">{% trans "Execute" %}</button>
     {{ task_formset.management_form }}
@@ -30,22 +31,7 @@
         </div>
         <div class="parameter-values">
             {% for param_formset in task.parameter_values %}
-                {{ param_formset.management_form }}
-                {% for form in param_formset.forms %}
-                    <div>
-                        <span>{{ form.initial.parameter }}</span>
-                        {% for field in form.visible_fields %}
-                            {% if field.name == 'value' %}
-                                {{ field.errors }}
-                                {{ field }}
-                            {% endif %}
-                        {% endfor %}
-                        <input id="{{ form.prefix }}-is_input" type="hidden" value="{{ form.initial.parameter.is_input }}" name="{{ form.prefix }}-is_input"/>
-                        <input id="{{ form.prefix }}-is_output" type="hidden" value="{{ form.initial.parameter.is_output }}" name="{{ form.prefix }}-is_output"/>
-                        {{ form.source_ref }}<br/>
-                        {{ form.parameter }}<br/>
-                    </div>
-                {% endfor %}
+                {% include 'dynamic/parameter_form.html' with formset=param_formset %}
             {% endfor %}
         </div>
         {% endfor %}
