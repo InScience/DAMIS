@@ -2,6 +2,11 @@
 {% get_current_language as lang %}
 
 <form id="experiment-form" action="." method="post" autocomplete="off">{% csrf_token %}
+    {% if experiment_form.errors %}
+        <div class="error-message">
+            {% trans "Form contains errors" %}
+        </div>
+    {% endif %}
     <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" value="{% if experiment_form.title.value %}{{ experiment_form.title.value }}{% endif %}" style="margin-bottom:0"/>
     <input id="id_workflow_state" type="hidden" name="workflow_state" value="{% if experiment_form.workflow_state.value %}{{ experiment_form.workflow_state.value }}{% endif %}" />
     <button class="btn" type="button" id="save-btn">{% trans "Save" %}</button>
