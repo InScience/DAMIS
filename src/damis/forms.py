@@ -70,6 +70,7 @@ ParameterFormset = inlineformset_factory(Algorithm, Parameter, extra=1, form=Par
 
 class ExperimentForm(forms.ModelForm):
     workflow_state = forms.CharField(widget=forms.HiddenInput(), required=False)
+    skip_validation = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = Experiment

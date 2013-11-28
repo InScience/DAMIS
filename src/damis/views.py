@@ -236,14 +236,24 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
 
         experiment_form = ExperimentForm(self.request.POST)
         task_formset = CreateExperimentFormset(self.request.POST)
+
+        skip_validation = self.request.POST.get('skip_validation')
+        if skip_validation:
+            experiment_form.full_clean()
+            exp_data = experiment_form.cleaned_data
+            exp_data.pop('skip_validation')
+            exp= Experiment(**exp_data)
+            exp.save()
+            return reverse_lazy('experiment-update', kwargs={'pk': exp.pk})
+
         if experiment_form.is_valid() and task_formset.is_valid():
             return self.form_valid(experiment_form, task_formset)
         else:
             return self.form_invalid(experiment_form, task_formset)
 
     def form_valid(self, experiment_form, task_formset):
-        experiment = experiment_form.save()
-        self.object = task_formset.save_all(experiment=experiment)
+        exp = experiment_form.save()
+        self.object = task_formset.save_all(experiment=exp)
 
         # run_exp_cmd = "bin/fab run_experiment:%s -H %s@uosis.mif.vu.lt -p %s" % (
         #         experiment.pk,
@@ -251,7 +261,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         #         self.request.session['password'])
         # shell_response = Popen(run_exp_cmd, shell=True)
 
-        return HttpResponse('OK')
+        return reverse_lazy('experiment-update', kwargs={'pk': exp.pk})
 
     def form_invalid(self, experiment_form, task_formset):
         return render_to_response('damis/_experiment_form.html',
