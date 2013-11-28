@@ -244,7 +244,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             exp_data.pop('skip_validation')
             exp= Experiment(**exp_data)
             exp.save()
-            return reverse_lazy('experiment-update', kwargs={'pk': exp.pk})
+            return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
 
         if experiment_form.is_valid() and task_formset.is_valid():
             return self.form_valid(experiment_form, task_formset)
@@ -261,7 +261,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         #         self.request.session['password'])
         # shell_response = Popen(run_exp_cmd, shell=True)
 
-        return reverse_lazy('experiment-update', kwargs={'pk': exp.pk})
+        return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
 
     def form_invalid(self, experiment_form, task_formset):
         return render_to_response('damis/_experiment_form.html',
