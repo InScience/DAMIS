@@ -36,14 +36,14 @@
 			var boxesStr = JSON.stringify(boxes);
 			var connectionsStr = JSON.stringify(connections);
 			var persistedStr = boxesStr + "***" + connectionsStr;
-			console.log(persistedStr);
 			return persistedStr;
 		},
 
 		// params is an empty JSON, as this function is a callback
 		persist: function(params) {
-			window.persistWorkflow.persistJsPlumbEntities();
-			// TODO: submit form without validation
+			var persistedStr = window.persistWorkflow.persistJsPlumbEntities();
+            $("#experiment-form input[name=workflow_state]").val(persistedStr);
+            window.experimentForm.submit({"skipValidation": true});
 		},
 
 		restoreJsPlumbEntities: function(persistedStr) {
@@ -93,8 +93,6 @@
 					target: x
 				});
 			});
-
-            console.log(window.taskBoxes.taskBoxesToEndpoints);
 		},
 
 		restore: function(persistedStr) {

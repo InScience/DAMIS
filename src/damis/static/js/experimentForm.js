@@ -111,16 +111,20 @@
 		},
 
 		// Submits the experiment form and reinitializes it
-		submitForValidation: function(params) {
+		submit: function(params) {
 			// translate parameter bindings from client to server
 			// representation
 			window.experimentForm.bindingToServer();
 
 			var form = $("#experiment-form");
+            if (params["skipValidation"]) {
+                form.find("input[name=skip_validation]").val("True");
+            }
 			var data = form.serialize();
 			$.post(form.attr("action"), data, function(resp) {
-				if (resp === "OK") {
-					window.location = params["experimentsListUrl"];
+				if (!/<[a-z][\s\S]*>/i.test(resp)) {
+                    // non-html string is returned, which is a redirec url 
+					window.location = resp;
 					return;
 				}
 				//replace the existing form with the validated one
@@ -139,7 +143,6 @@
 
             parametersUrl = params['parametersUrl'];
 			parameterPrefixesUrl = params['parameterPrefixesUrl'];
-			experimentsListUrl = params['experimentsListUrl'];
 			taskFormPrefix = params['taskFormPrefix'];
 
 			//initialize the jQuery formset plugin
@@ -150,9 +153,7 @@
 
 			//assign form submit handler
 			$('#execute-btn').click(function(ev) {
-				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submitForValidation, {
-					experimentsListUrl: experimentsListUrl
-				});
+				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});
 			});
 
 			//assign form submit handler
