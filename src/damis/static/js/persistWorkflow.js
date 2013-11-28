@@ -53,9 +53,8 @@
 
 			// restore boxes 
 			$.each(boxes, function(idx, box) {
-				var taskBox = $("<div><div>New task</div></div>");
+		        var taskBox = $(window.taskBoxes.assembleBoxHTML(""));
 				taskBox.attr("id", box['boxId']);
-				taskBox.addClass("task-box");
 				taskBox.appendTo($("#flowchart-container"));
 				taskBox.css("left", box['x'] + "px");
 				taskBox.css("top", box['y'] + "px");
