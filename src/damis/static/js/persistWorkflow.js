@@ -35,19 +35,19 @@
 			});
 			var boxesStr = JSON.stringify(boxes);
 			var connectionsStr = JSON.stringify(connections);
-            var persistedStr = boxesStr + "***" + connectionsStr;
-            console.log(persistedStr);
-            return persistedStr;
+			var persistedStr = boxesStr + "***" + connectionsStr;
+			console.log(persistedStr);
+			return persistedStr;
 		},
 
-        // params is an empty JSON, as this function is a callback
-        persist: function(params) {
-            window.persistWorkflow.persistJsPlumbEntities();
-            // TODO: submit form without validation
-        },
+		// params is an empty JSON, as this function is a callback
+		persist: function(params) {
+			window.persistWorkflow.persistJsPlumbEntities();
+			// TODO: submit form without validation
+		},
 
 		restoreJsPlumbEntities: function(persistedStr) {
-            var parts = persistedStr.split("***");
+			var parts = persistedStr.split("***");
 			var boxes = JSON.parse(parts[0]);
 			var connections = JSON.parse(parts[1]);
 
@@ -61,12 +61,13 @@
 				taskBox.css("top", box['y'] + "px");
 			});
 
+			window.taskBoxes.taskBoxesToEndpoints = {};
+
 			// recreate connections 
 			$.each(connections, function(idx, conn) {
 				var sourceBox = $("#" + conn.sourceBoxId);
 				var targetBox = $("#" + conn.targetBoxId);
 
-                console.log(conn.targetAnchor);
 				var x = jsPlumb.addEndpoint(targetBox, window.experimentCanvas.getTargetEndpoint(), {
 					anchor: conn.targetAnchor.type,
 					parameters: {
@@ -83,19 +84,24 @@
 						oTaskBoxId: conn.params['oTaskBoxId'],
 					}
 				});
+				// reconstruct window.taskBoxes.taskBoxesToEndpoints
+				window.taskBoxes.storeEndpoint(conn.targetBoxId, true, x);
+				window.taskBoxes.storeEndpoint(conn.sourceBoxId, false, y);
+
 				var conn = jsPlumb.connect({
 					source: y,
 					target: x
 				});
-                // TODO: reconstruct window.taskBoxesToEndpoints
 			});
+
+            console.log(window.taskBoxes.taskBoxesToEndpoints);
 		},
-        
-        restore : function(persistedStr) {
-            this.restoreJsPlumbEntities(persistedStr);
-		    window.experimentForm.init();
-		    window.experimentForm.reinitExperimentForm();
-        },
+
+		restore: function(persistedStr) {
+			this.restoreJsPlumbEntities(persistedStr);
+			window.experimentForm.init();
+			window.experimentForm.reinitExperimentForm();
+		},
 	}
 })();
 

@@ -5,6 +5,16 @@
 		// Maps task boxes to their endpoints
 		taskBoxesToEndpoints: {},
 
+		storeEndpoint: function(boxId, isInput, epoint) {
+			var points = window.taskBoxes.taskBoxesToEndpoints[boxId];
+			if (!points) {
+				window.taskBoxes.taskBoxesToEndpoints[boxId] = {};
+				window.taskBoxes.taskBoxesToEndpoints[boxId]["ipoints"] = [];
+				window.taskBoxes.taskBoxesToEndpoints[boxId]["opoints"] = [];
+			}
+			window.taskBoxes.taskBoxesToEndpoints[boxId][isInput ? "ipoints": "opoints"].push(epoint);
+		},
+
 		// remove all endpoints of a task box
 		removeEndpoints: function(taskBoxId) {
 			var epoints = window.taskBoxes.taskBoxesToEndpoints[taskBoxId];
