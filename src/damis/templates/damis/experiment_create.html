@@ -18,12 +18,21 @@
                 {% include "damis/_experiment_form.html" %}
                 <div id="workflow-editor-container">
                     <div id="toolbox">
-                        <div class="prototype-box">New task</div>
-                        <div class="prototype-data-box">Dataset</div>
+                        <div id="tools-padding">
+                            <div class="prototype-box"><img src="/static/img/algorithm-ico.png" alt="Algoritmas" width="50px" height="50px" /><div
+                                    class="desc"><div>New task</div></div></div><div
+                                class="prototype-box"><img
+                                src="/static/img/algorithm-ico.png"
+                                alt="Algoritmas" width="50px" height="50px"
+                                /><div class="desc"><div>Nauja užduotis</div></div></div><div
+                                class="prototype-box last"><img
+                                src="/static/img/algorithm-ico.png"
+                                alt="Algoritmas" width="50px" height="50px"
+                                /><div class="desc"><div>Nauja užduotis</div></div></div>
+                        </div>
                     </div>
                     <div id="canvas">
-                        <div id="flowchart-container" >
-                        </div>
+                        <div id="flowchart-container" />
                     </div>
                 </div>
             </div>
@@ -49,7 +58,6 @@
             window.experimentForm.params = { 
                     parametersUrl:"{% url 'parameters-form' %}",
                     parameterPrefixesUrl: "{% url 'gen-parameter-prefixes' %}", 
-                    experimentsListUrl: "{% url 'experiment-list' %}",
                     taskFormPrefix: "{{ task_formset.prefix }}"};
 
             //decide if an empty canvas or a persisted worklow should be

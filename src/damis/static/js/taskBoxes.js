@@ -1,5 +1,9 @@
 (function() {
 	window.taskBoxes = {
+		assembleBoxHTML: function(boxName) {
+			return '<div class="task-box"><img src=\"/static/img/algorithm-ico.png\" width=\"50px\" height=\"50px\" /><div class=\"desc\"><div>' + boxName + '</div></div></div>';
+		},
+
 		countBoxes: 0,
 
 		// Maps task boxes to their endpoints
@@ -37,39 +41,39 @@
 		taskBoxRightClick: function(ev) {
 			if (ev.button == 2) {
 				var taskBox = $(ev.target).hasClass("task-box") ? $(ev.target) : $(ev.target).closest(".task-box");
-                window.taskBoxes.removeTaskBox(taskBox);
+				window.taskBoxes.removeTaskBox(taskBox);
 			}
 		},
 
-        removeTaskBox : function(taskBox) {
-	        var formWindow = $("#" + window.taskBoxes.getFormWindowId(taskBox));
-	        formWindow.find(".delete-row").click(); // remove task form
-	        formWindow.remove(); // remove the window
-	        // all connections are automatically detached
-	        // so this box outgoing connections input parameters are
-	        // reset by "connectionDetached" event handler
-	        window.taskBoxes.removeEndpoints(taskBox.attr("id"));
-	        taskBox.remove(); // remove task box
-        },
+		removeTaskBox: function(taskBox) {
+			var formWindow = $("#" + window.taskBoxes.getFormWindowId(taskBox));
+			formWindow.find(".delete-row").click(); // remove task form
+			formWindow.remove(); // remove the window
+			// all connections are automatically detached
+			// so this box outgoing connections input parameters are
+			// reset by "connectionDetached" event handler
+			window.taskBoxes.removeEndpoints(taskBox.attr("id"));
+			taskBox.remove(); // remove task box
+		},
 
-        // modify box name according to algorithm selection
-        setBoxName: function(taskBoxId) {
+		// modify box name according to algorithm selection
+		setBoxName: function(taskBoxId) {
 			var formWindow = $("#" + window.taskBoxes.getFormWindowId(taskBoxId));
-			var taskBox = $("#" + taskBoxId);
-			taskBox.html("<div>" + formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text() + "</div>");
-        },
-        
+			var nameContainer= $("#" + taskBoxId).find(".desc div");
+            nameContainer.html(formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text());
+		},
+
 		// delete existing endpoints and create new ones to reflect the
-        // selected algorithm
+		// selected algorithm
 		recreateEndpoints: function(taskBoxId, formWindow) {
-            // Remove old endpoints
+			// Remove old endpoints
 			window.taskBoxes.removeEndpoints(taskBoxId);
 			// Add new endpoints for input/output parameters
-            var parameters = formWindow.find('.parameter-values');
+			var parameters = formWindow.find('.parameter-values');
 
-			var outAnchors = ["RightMiddle", [1, 0, 1, 1], [1, 1, 1, 1]];
+			var outAnchors = [[1, 0, 1, 1], [1, 1, 1, 1], "RightMiddle"];
 			var oIdx = 0;
-			var inAnchors = ["LeftMiddle", [0, 0, - 1, - 1], [0, 1, - 1, - 1]];
+			var inAnchors = [[0, 0, - 1, - 1], [0, 1, - 1, - 1], "LeftMiddle"];
 			var iIdx = 0;
 
 			var ipoints = []
@@ -127,18 +131,18 @@
 				},
 				context: $(this)
 			}).done(function(resp) {
-                // replace old parameter formset with a new one
+				// replace old parameter formset with a new one
 				var formWindow = $(this).closest('.task').parent();
 				formWindow.find(".parameter-values").html(resp);
-                
-                // rename the box
-			    var taskBoxId = window.taskBoxes.getBoxId(formWindow);
-		        window.taskBoxes.setBoxName(taskBoxId);
+
+				// rename the box
+				var taskBoxId = window.taskBoxes.getBoxId(formWindow);
+				window.taskBoxes.setBoxName(taskBoxId);
 				window.taskBoxes.recreateEndpoints(taskBoxId, formWindow);
 			});
 		},
 
-        // create modal window and assign algorithm change handler
+		// create modal window and assign algorithm change handler
 		createTaskFormDialog: function(taskForm, existingParameters, formWindowId) {
 			var taskFormContainer = $("<div></div>");
 			taskFormContainer.attr("id", formWindowId);
@@ -168,7 +172,8 @@
 		// create a new task box and modal window, assign event handlers 
 		createTaskBox: function(ev, ui, taskContainer) {
 			// drop the task where it was dragged
-			var taskBox = $("<div><div>New task</div></div>");
+			var currentName = ui.draggable.text();
+			var taskBox = $(window.taskBoxes.assembleBoxHTML(currentName));
 			taskBox.appendTo(taskContainer);
 			taskBox.css("left", ui.position.left + "px");
 			taskBox.css("top", ui.position.top + "px");
@@ -187,19 +192,19 @@
 			// create modal window for the form
 			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox));
 
-            this.addTaskBoxEventHandlers(taskBox);
+			this.addTaskBoxEventHandlers(taskBox);
 		},
 
-        //adds task box event handlers: dbclick, mousedown, and makes it
-        //draggable
-        addTaskBoxEventHandlers: function(taskBox) {
-            
-            // delete task box on right-click
-            taskBox.off("mousedown");
+		//adds task box event handlers: dbclick, mousedown, and makes it
+		//draggable
+		addTaskBoxEventHandlers: function(taskBox) {
+
+			// delete task box on right-click
+			taskBox.off("mousedown");
 			taskBox.on("mousedown", this.taskBoxRightClick);
 
-            // open dialog on dbclick
-            taskBox.off("dbclick");
+			// open dialog on dbclick
+			taskBox.off("dbclick");
 			taskBox.on("dblclick", function(ev) {
 				var formWindowId = window.taskBoxes.getFormWindowId($(ev.currentTarget));
 				$("#" + formWindowId).dialog('open');
@@ -210,7 +215,7 @@
 				grid: [20, 20],
 				containment: "parent"
 			});
-        },
+		},
 
 		//generates task box id from the provided task form 
 		getBoxId: function(formWindow) {

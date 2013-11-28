@@ -36,7 +36,7 @@
 				endpoint: "Dot",
 				paintStyle: {
 					fillStyle: "#346789", 
-					radius: 11
+					radius: 7 
 				},
 				isSource: true,
 				connector: ["StateMachine", {
@@ -61,7 +61,7 @@
 				paintStyle: {
 					strokeStyle: "#346789",
 					fillStyle: "transparent",
-					radius: 7,
+					radius: 5,
 					lineWidth: 2
 				},
 				hoverPaintStyle: this.getEndpointHoverStyle(),
