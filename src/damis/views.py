@@ -214,6 +214,11 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
 
         experiment_form = ExperimentForm(instance=experiment)
         task_formset = CreateExperimentFormset(instance=experiment)
+
+        # Move one extra empty task formset to the begining of forms
+        form_count = len(task_formset.forms)
+        task_formset.forms.insert(0, task_formset.forms.pop(form_count - 1))
+
         return self.render_to_response(self.get_context_data(
                     experiment=task_formset.instance,
                     task_formset=task_formset,
