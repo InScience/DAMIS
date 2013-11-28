@@ -205,8 +205,14 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
 
     def get(self, request, *args, **kwargs):
         self.object = None
-        experiment = Experiment()
-        experiment_form = ExperimentForm()
+
+        experiment_pk = self.kwargs.get('pk')
+        if experiment_pk:
+            experiment = Experiment.objects.get(pk=experiment_pk)
+        else:
+            experiment = Experiment()
+
+        experiment_form = ExperimentForm(instance=experiment)
         task_formset = CreateExperimentFormset(instance=experiment)
         return self.render_to_response(self.get_context_data(
                     experiment=task_formset.instance,

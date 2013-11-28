@@ -35,8 +35,9 @@
 			});
 			var boxesStr = JSON.stringify(boxes);
 			var connectionsStr = JSON.stringify(connections);
-            var persisted = {boxesStr: boxesStr, connectionsStr: connectionsStr}
-            return JSON.stringify(persisted);
+            var persistedStr = boxesStr + "***" + connectionsStr;
+            console.log(persistedStr);
+            return persistedStr;
 		},
 
         // params is an empty JSON, as this function is a callback
@@ -46,10 +47,9 @@
         },
 
 		restoreJsPlumbEntities: function(persistedStr) {
-            var persisted = JSON.parse(persistedStr);
-            
-			var boxes = JSON.parse(persisted["boxesStr"]);
-			var connections = JSON.parse(persisted["connectionsStr"]);
+            var parts = persistedStr.split("***");
+			var boxes = JSON.parse(parts[0]);
+			var connections = JSON.parse(parts[1]);
 
 			// restore boxes 
 			$.each(boxes, function(idx, box) {
@@ -91,11 +91,10 @@
 			});
 		},
         
-        restore : function() {
-            // TODO: select hidden form field containing persistedStr
+        restore : function(persistedStr) {
             this.restoreJsPlumbEntities(persistedStr);
-		    window.experimentForm.init(window.experimentForm.initParams);
-		    window.init.reinitExperimentForm();
+		    window.experimentForm.init();
+		    window.experimentForm.reinitExperimentForm();
         },
 	}
 })();

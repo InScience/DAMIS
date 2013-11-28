@@ -2,7 +2,7 @@
 (function() {
 	window.experimentForm = {
 		// parameters for window.experimentForm initialization
-		initParams: {},
+		params : {},
 
 		// translate parameter binding from client to server
 		// representation
@@ -100,6 +100,7 @@
                 }
 				window.taskBoxes.createTaskFormDialog(taskForm, parameterFormset, window.taskBoxes.getFormWindowId($(taskBox)));
 				window.taskBoxes.addTaskBoxEventHandlers($(taskBox));
+                window.taskBoxes.setBoxName($(taskBox).attr("id"));
 			});
 			$.each($(".task-box"), function(taskBoxId, taskBox) {
 				//restore parameter bindings from server to client representation
@@ -127,16 +128,16 @@
 				$("#workflow-editor-container").before(resp);
 
 				//run standard initialization
-				window.experimentForm.init(window.experimentForm.initParams);
+				window.experimentForm.init();
 				window.experimentForm.reinitExperimentForm();
 			});
 		},
 
 		// init formset plugin and form submit handlers
-		init: function(params) {
-			//store parameter for reinitializing after failed form submission 
-			this.initParams = params
-			parametersUrl = params['parametersUrl'];
+		init: function() {
+			var params = window.experimentForm.params;
+
+            parametersUrl = params['parametersUrl'];
 			parameterPrefixesUrl = params['parameterPrefixesUrl'];
 			experimentsListUrl = params['experimentsListUrl'];
 			taskFormPrefix = params['taskFormPrefix'];

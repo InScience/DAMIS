@@ -41,18 +41,31 @@
     {{ block.super }}
     <script type="text/javascript">
         jsPlumb.ready(function() {
-            experimentCanvas.init({id: "flowchart-container"});
+            // jsPlumb initialization
+            experimentCanvas.init({
+                id: "flowchart-container",
+            });
+
+            window.experimentForm.params = { 
+                    parametersUrl:"{% url 'parameters-form' %}",
+                    parameterPrefixesUrl: "{% url 'gen-parameter-prefixes' %}", 
+                    experimentsListUrl: "{% url 'experiment-list' %}",
+                    taskFormPrefix: "{{ task_formset.prefix }}"};
+
+            //decide if an empty canvas or a persisted worklow should be
+            //displayed
+            var persistedStr = $("#id_workflow_state").val();
+            if (persistedStr) {
+                window.persistWorkflow.restore(persistedStr);
+            } else {
+                window.experimentForm.init();
+            }
+
+            window.toolBox.init({
+                task: ".prototype-box",
+                data: ".prototype-data-box", 
+                canvas: "#flowchart-container"});
         }); 
 
-        window.experimentForm.init({
-            parametersUrl:"{% url 'parameters-form' %}",
-            parameterPrefixesUrl: "{% url 'gen-parameter-prefixes' %}", 
-            experimentsListUrl: "{% url 'experiment-list' %}",
-            taskFormPrefix: "{{ task_formset.prefix }}"});
-
-        window.toolBox.init({
-            task: ".prototype-box",
-            data: ".prototype-data-box", 
-            canvas: "#flowchart-container"});
     </script>
 {% endblock %}
