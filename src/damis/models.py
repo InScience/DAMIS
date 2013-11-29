@@ -85,11 +85,8 @@ class Parameter(models.Model):
 
 class Experiment(models.Model):
     STATUSES = (
-        ('CREATED', 'Created'),
-        ('UPLOADING', 'Uploading files'),
-        ('SHEDULED', 'Sheduled'),
+        ('SAVED', 'Saved'),
         ('RUNNING', 'Running'),
-        ('RETRIEVING_RESULTS', 'Retrieving results'),
         ('FINISHED', 'Finished'),
     )
     title = models.CharField(_('Experiment title'), max_length=255, null=True)
