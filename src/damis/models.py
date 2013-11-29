@@ -80,7 +80,7 @@ class Parameter(models.Model):
     is_input = models.BooleanField(blank=True, default=False)
 
     def __unicode__(self):
-        return '%s <%s>' % (self.name, self.type)
+        return '%s (%s)' % (self.name, self.type)
 
 
 class Experiment(models.Model):
