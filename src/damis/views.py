@@ -231,20 +231,49 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         context.update(csrf(self.request))
         return context
 
+    def skip_validation(self, experiment_form, task_formset):
+        experiment_form.full_clean()
+        exp_data = experiment_form.cleaned_data
+        exp_data.pop('skip_validation')
+        exp = Experiment.objects.create(**exp_data)
+
+        task_formset.full_clean()
+        sources = {}
+        for task_form in task_formset.forms:
+            data = task_form.cleaned_data
+            data['experiment'] = exp
+            if data.get('algorithm'):
+                task = Task.objects.create(**data)
+
+                pv_formset = task_form.parameter_values[0]
+                pv_formset.instance = task
+                pv_formset.full_clean()
+
+                for pv_form in pv_formset.forms:
+                    data = {}
+                    data['parameter'] = pv_form.cleaned_data['parameter']
+                    data['value'] = pv_form.cleaned_data['value']
+                    data['task'] = task
+                    pv_form.instance = ParameterValue.objects.create(**data)
+                    sources[pv_form.prefix] = pv_form.instance
+
+                for pv_form in pv_formset.forms:
+                    source_ref = pv_form.cleaned_data['source_ref']
+                    if source_ref:
+                        source_ref = source_ref.split('-value')[0]
+                        pv_form.instance.source = sources[source_ref]
+                        pv_form.instance.save()
+
+        return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
+
     def post(self, request, *args, **kwargs):
         self.object = None
 
         experiment_form = ExperimentForm(self.request.POST)
         task_formset = CreateExperimentFormset(self.request.POST)
 
-        skip_validation = self.request.POST.get('skip_validation')
-        if skip_validation:
-            experiment_form.full_clean()
-            exp_data = experiment_form.cleaned_data
-            exp_data.pop('skip_validation')
-            exp= Experiment(**exp_data)
-            exp.save()
-            return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
+        if self.request.POST.get('skip_validation'):
+            return self.skip_validation(experiment_form, task_formset)
 
         if experiment_form.is_valid() and task_formset.is_valid():
             return self.form_valid(experiment_form, task_formset)

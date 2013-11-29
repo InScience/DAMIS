@@ -88,7 +88,9 @@ class ParameterValueForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ParameterValueForm, self).__init__(*args, **kwargs)
         if self.instance and self.instance.source:
-            self.initial.update({'source_ref': 'PV_PK_%s' % (self.instance.source.pk,)})
+            pks = self.instance.source.task.algorithm.parameters.values_list('pk', flat=True)
+            index = tuple(pks).index(self.instance.source.parameter.pk)
+            self.initial.update({'source_ref': 'PV_%s-%s' % (self.instance.source.task.pk, index)})
         if kwargs.get('instance'):
             self.fields['value'].label = str(kwargs['instance'].parameter)
         if self.data:
@@ -130,11 +132,10 @@ class BaseTaskFormset(BaseInlineFormSet):
         try:
             instance = self.get_queryset()[index]
             pk_value = instance.pk
-            pv_prefix = 'PV_PK_%s' % pk_value
         except IndexError:
             instance = None
             pk_value = hash(form.prefix)
-            pv_prefix = 'PV_%s' % pk_value
+        pv_prefix = 'PV_%s' % pk_value
 
         data = self.data if self.data and index is not None else None
         # Do not create PV formset if post data do not contain any elems with
