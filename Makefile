@@ -28,3 +28,7 @@ clean:
 
 test:
 	bin/django test algorithms
+
+graph:
+	bin/django graph_models --group-models --all-applications -o var/graph.svg
+	xdg-open var/graph.svg
