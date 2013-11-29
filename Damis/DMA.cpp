@@ -9,6 +9,7 @@
 #include "ShufleEnum.h"
 #include "ShufleObjects.h"
 #include <float.h>
+#include <fstream>
 
 DMA::DMA(){
 
@@ -19,13 +20,16 @@ DMA::~DMA(){
 }
 
 /**
- * Constructor for DMA object
+ * Constructor for DMA object. Input: epsilon, no. of iterations, dimension, no. of neighbors
  */
 DMA::DMA(double eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
     initializeProjectionMatrix();
 }
 
+/**
+ * Overloaded constructor for DMA object. Input: epsilon, no. of iterations, dimension, no. of neighbors, initial object matrix
+ */
 DMA::DMA(double eps, int maxIter, int d, int neighbours, ObjectMatrix x):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
     X = x;
@@ -33,13 +37,10 @@ DMA::DMA(double eps, int maxIter, int d, int neighbours, ObjectMatrix x):MDS(eps
 }
 
 /**
- * Gets neighbour
- * neighbour
- * Gets neighbour quantity
+ * Returns neighbors quantity
  */
 int DMA::getNeighbours(){
-
-	return neighbourNumber;
+    return neighbourNumber;
 }
 
 /**
@@ -52,41 +53,36 @@ ObjectMatrix DMA::getProjection(){
     stressErrors.push_back(getStress());
     double Epsilon = DBL_MAX;
     double sum = 0.0;   
-    ObjectMatrix Gutman;
     ObjectMatrix Y_new(m);
-    Gutman = ObjectMatrix(m);
-    vMatrix = ObjectMatrix(m);    
-    std::vector<int> shufledIndexes;
-    shufledIndexes.reserve(m);
-    std::vector<double> vMatrixObject;
+    ObjectMatrix gutman;      
     Y_new = Y;
     getV();
-      
-    while (iteration < maxIteration && Epsilon > epsilon)
+    
+    while (iteration < maxIteration) // && Epsilon > epsilon)
     {
-        shufledIndexes = ShufleObjects::shufleObjectMatrix(RANDOM, Y);
-        Gutman = getGutman();
+        shuffleX();
+        gutman = getGutman();
+
         for (int i = 0; i < m; i++)
             for (int j = 0; j < m; j++)
-                Gutman.updateDataObject(i, j, Gutman.getObjectAt(i).getFeatureAt(j) - vMatrix.getObjectAt(i).getFeatureAt(j));
-        
+                gutman.updateDataObject(i, j, gutman.getObjectAt(i).getFeatureAt(j) - vMatrix.getObjectAt(i).getFeatureAt(j));
+
         for (int i = 0; i < m; i++)
-        {
+        {            
             for (int j = 0; j < d; j++)
             {
                 sum = 0.0;
-                for (int k = (i - neighbourNumber); k < (i + neighbourNumber); k++)
+                for (int k = (i - neighbourNumber); k <= (i + neighbourNumber); k++)
                     if (k >= 0 && k < m)
-                        sum += Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+                        sum += gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
                 Y_new.updateDataObject(i, j, Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / vMatrix.getObjectAt(i).getFeatureAt(i));
             }
         }
         Y = Y_new;
         iteration++;        
-        stressErrors.push_back(MDS::getStress());        
+        stressErrors.push_back(getStress());        
         Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
     }
-    
     return  Y;
 }
 
@@ -95,7 +91,10 @@ ObjectMatrix DMA::getProjection(){
  */
 void DMA::getV(){   
     int m = X.getObjectCount();
+    vMatrix = ObjectMatrix(m); 
     std::vector<double> vMatrixObject;
+    vMatrixObject.reserve(m);
+            
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < m; j++)
@@ -106,27 +105,50 @@ void DMA::getV(){
     
     for (int i = 0; i < m; i++)
     {
-        for (int k = (i - neighbourNumber); k < (i + neighbourNumber); k++)
+        for (int k = (i - neighbourNumber); k <= (i + neighbourNumber); k++)
         {
-            if (k > 0 && k < m)
+            if (k >= 0 && k < m)
             {
                 if (k != i)
                     vMatrix.updateDataObject(i, k, -1.0);
                 else if (i <= neighbourNumber)
                     vMatrix.updateDataObject(i, i, neighbourNumber + i);
-                else if (i > neighbourNumber)
-                    vMatrix.updateDataObject(i, i, 2 * neighbourNumber - (m - i));
+                else if (i >= (m - neighbourNumber))
+                    vMatrix.updateDataObject(i, i, 2 * neighbourNumber - (neighbourNumber + 1 - (m - i)));
                 else
                     vMatrix.updateDataObject(i, i, 2 * neighbourNumber);
             }
         }
     }
-    
 }
 
 /**
- * Sets neighbour quantity
+ * Sets neighbors quantity
  */
 void DMA::setNeighbours(int neighbours){
     neighbourNumber = neighbours;
+}
+
+void DMA::shuffleX()
+{
+    int m = X.getObjectCount();
+    int j = 0;
+    ObjectMatrix Xshuffled(m);
+    ObjectMatrix Yshuffled(m);
+    std::vector<int> shufledIndexes;
+    shufledIndexes.reserve(m);
+    shufledIndexes = ShufleObjects::shufleObjectMatrix(RANDOM, Y);
+    for (int i = 0; i < m; i++)
+    {
+        j = shufledIndexes.at(i);
+        Xshuffled.addObject(X.getObjectAt(j));
+    }
+    X = Xshuffled;
+    
+    for (int i = 0; i < m; i++)
+    {
+        j = shufledIndexes.at(i);
+        Yshuffled.addObject(Y.getObjectAt(j));
+    }
+    Y = Yshuffled;
 }

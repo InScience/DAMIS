@@ -7,10 +7,11 @@
 
 #include <cstdlib>
 #include <vector>
-#include "arff.h"
+#include <iostream>
+#include <fstream>
+#include "ARFF.h"
 #include "Statistics.h"
 #include "ShufleEnum.h"
-#include <iostream>
 #include "DistanceMetrics.h"
 #include "ObjectMatrix.h"
 #include "MDS.h"
@@ -49,7 +50,7 @@ int main(int argc, char** argv) {
     int maxIter, d;                             // (maxIter) leistinas iteraciju kiekis, (d) mazinimo dimensija
     
     epsilon = 0.1;
-    maxIter = 2;
+    maxIter = 10;
     d = 2;
     
     MPI::Init(argc, argv);
@@ -62,20 +63,30 @@ int main(int argc, char** argv) {
     { 
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
-        {        
+        {   
+            //ARFF om("arff_files/cpu.arff");
+            //cout << om.getFailReason();
+            //if (om.)
             //PCA::PCA smcf(d);
-            PCA::PCA smcf(1.0);
+            //PCA::PCA smcf(1.0);
             //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTASC);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, RANDOM);
             //SMACOF smcf (epsilon, maxIter, d);
-            //SAMANN smcf(50, 10, 2.0, 1);
-            //DMA smcf(epsilon, 10, 2, 10);
+            //SAMANN smcf(70, 10, 5.0, 3000);
+            DMA smcf(epsilon, maxIter, d, 20);
             //SOM smcf(100, 3, 5);
             //SOMMDS smcf(epsilon, maxIter, d, 100, 3, 5);
             Y = smcf.getProjection();
-            PrintMatrix(Y);           
+            //Y.saveDataMatrix("Y_samann.txt");
+            vector<double> errors = smcf.getStressErrors();
+            //ofstream file ("errors.txt");
+            for (int i = 0; i < errors.size(); i++)
+                cout << errors.at(i) << endl;
+            //file.close();
+            //PrintMatrix(Y);
+            
         }
         else
         {

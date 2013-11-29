@@ -7,7 +7,7 @@
 
 #include "ObjectMatrix.h"
 #include <vector>
-#include "arff.h"
+#include "ARFF.h"
 #include "DataObject.h"
 
 ObjectMatrix::ObjectMatrix(){
@@ -107,10 +107,10 @@ std::vector<std::string> ObjectMatrix::getFeaturesTitle(){
 void ObjectMatrix::loadDataMatrix(){
     const char* path = fileName.c_str();
     ARFF file(path);
-    if (file.getFileReadStatus() == 1)   // successful read
+    if (file.isCorrectlyFormated() == true)   // successful read
     {
-        std::vector< std::vector<double> > data = file.GetData();  
-        featureTitles = file.GetAttributes();
+        std::vector< std::vector<double> > data = file.getData();  
+        featureTitles = file.getAttributes();
         std::vector< std::vector<double> >::iterator dataObjectIterator;
         std::vector<double>::iterator featureIterator;
         std::vector<double> dataObjectItems;
@@ -133,7 +133,7 @@ void ObjectMatrix::loadDataMatrix(){
 
 void ObjectMatrix::saveDataMatrix(const char* path){
     ARFF file;
-    file.WriteData(path, this->DataObjects);
+    file.writeData(path, this->DataObjects);
 }
 
 void ObjectMatrix::clearDataObjects()

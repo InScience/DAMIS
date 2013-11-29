@@ -1,5 +1,5 @@
-
 #include <cstdlib>
+#include <sstream>
 #include "AdditionalMethods.h"
 #include "ObjectMatrix.h"
 #include "DataObject.h"
@@ -11,6 +11,10 @@
 //  Original author: Mindaugas
 ///////////////////////////////////////////////////////////
 
+/*! \class AdditionalMethods
+    \brief A class of static methods for data conversion and static members.
+ */
+
 AdditionalMethods::AdditionalMethods(){
     
 }
@@ -19,6 +23,9 @@ AdditionalMethods::~AdditionalMethods(){
     
 }
 
+/**
+ * Converts ObjectMatrix to 2D array of doubles.
+ */
 double** AdditionalMethods::ObjectMatrixToDouble(ObjectMatrix matrix){
     int numOfObjects = matrix.getObjectCount();
     int numOfFeatures = matrix.getObjectAt(0).getFeatureCount();
@@ -33,6 +40,9 @@ double** AdditionalMethods::ObjectMatrixToDouble(ObjectMatrix matrix){
     return matrixToReturn;
 }
 
+/**
+ * Converts 2D array of doubles to ObjectMatrix
+ */
 ObjectMatrix AdditionalMethods::DoubleToObjectMatrix(double** matrix, int rows, int cols){
     std::vector<double> v;
     v.reserve(cols);
@@ -49,6 +59,9 @@ ObjectMatrix AdditionalMethods::DoubleToObjectMatrix(double** matrix, int rows, 
     return toReturn;
 }
 
+/**
+ * Initializes and allocates in continuous space 2D array of doubles. Used for passing data between CPUs
+ */
 double** AdditionalMethods::Array2D(int rows, int cols)      
 {
     double *data = (double *)malloc(rows*cols*sizeof(double));
@@ -58,6 +71,9 @@ double** AdditionalMethods::Array2D(int rows, int cols)
     return array;
 }
 
+/**
+ * Converts ObjectMatrix to 1D alglib array of reals
+ */
 alglib::real_1d_array AdditionalMethods::ObjectMatrixTo1DArray(ObjectMatrix matrix)
 {
     alglib::real_1d_array toReturn;
@@ -72,6 +88,9 @@ alglib::real_1d_array AdditionalMethods::ObjectMatrixTo1DArray(ObjectMatrix matr
     return toReturn;    
 }
 
+/**
+ * Converts alglib 1D array of reals to ObjectMatrix
+ */
 ObjectMatrix AdditionalMethods::alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount)
 {
     int m = array.length() / featureCount;
@@ -88,4 +107,21 @@ ObjectMatrix AdditionalMethods::alglib1DArrayToObjectMatrix(alglib::real_1d_arra
     }
 
     return toReturn;
+}
+
+std::vector<std::string> AdditionalMethods::split(const std::string &s, char delim, std::vector<std::string> &elems)
+{
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, delim)) {
+        elems.push_back(item);
+    }
+    return elems;
+}
+    
+std::vector<std::string> AdditionalMethods::split(const std::string& s, char delim)
+{
+    std::vector<std::string> elems;
+    AdditionalMethods::split(s, delim, elems);
+    return elems;
 }

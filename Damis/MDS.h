@@ -33,8 +33,9 @@ protected:
 
 	double epsilon;
 	int maxIteration;
-        std::vector<double> stressErrors;
+        std::vector<double> stressErrors;        
 private:
         double getWeight(int, int);
+        ObjectMatrix gutman;
 };
 #endif // !defined(EA_CDF28449_1ACC_4a74_A6EB_47124922ACEA__INCLUDED_)

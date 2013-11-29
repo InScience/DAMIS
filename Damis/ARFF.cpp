@@ -1,4 +1,5 @@
-#include "arff.h"
+#include "ARFF.h"
+#include "AdditionalMethods.h"
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -6,13 +7,17 @@
 #include <algorithm>
 #include "DataObject.h"
 
+/*! \class ARFF
+ *  \brief A class for reading data from or writing data to an arff file.
+ */
+
 ARFF::ARFF(){
     data.reserve(0);
     attributes.reserve(0);
 }
 
 ARFF::ARFF(const char* path){ 
-    reason = "";
+    failReason = "";
     std::stringstream s;
     std::ifstream file (path);
     std::string line_from_file;
@@ -51,7 +56,7 @@ ARFF::ARFF(const char* path){
                     if (tmp2 == "REAL"  || tmp2 == "INTEGER")
                     {
                         attributes.push_back(tmp1);
-                        data_types.push_back(tmp2);
+                        attributesTypes.push_back(tmp2);
                     }
                 }
                 else if (sub == "@DATA" || sub == "@RELATION")
@@ -61,25 +66,25 @@ ARFF::ARFF(const char* path){
                 }
                 else
                 {
-                    tmp = split(line_from_file, ',');
+                    tmp = AdditionalMethods::split(line_from_file, ' ');
                     if (tmp.size() != attributes.size())
                     {
                         readSuccess = false;
                         s<< "Number of features at line " << line_no << " does not match number of attributes";
-                        reason = s.str();
+                        failReason = s.str();
                         break;
                     }
                     else
                     {
                         for (unsigned int i = 0; i < tmp.size(); i++)
                         {
-                            if (data_types[i] == "REAL" || data_types[i] == "INTEGER")
+                            if (attributesTypes[i] == "REAL" || attributesTypes[i] == "INTEGER")
                             {
                                 if (tmp[i] == "?" || tmp[i] == "")
                                 {
                                     readSuccess = false;
                                     s << "Unexpected symbol found at " << line_no << " line";                                    
-                                    reason = s.str();
+                                    failReason = s.str();
                                     break;
                                 }
                                 else
@@ -91,7 +96,7 @@ ARFF::ARFF(const char* path){
                                     catch (int x)
                                     {
                                         s << "Unexpected symbol found at " << line_no << " line";
-                                        reason = s.str();
+                                        failReason = s.str();
                                         break;
                                     }
                                 }
@@ -100,7 +105,7 @@ ARFF::ARFF(const char* path){
                         if (readSuccess == false)
                         {
                             s << "Unexpected symbol found at " << line_no << " line";
-                            reason = s.str();
+                            failReason = s.str();
                             break;
                         }
                         else
@@ -116,7 +121,7 @@ ARFF::ARFF(const char* path){
         file.close();
     }
     else
-        reason = "Cannot open file!!!";
+        failReason = "Cannot open file!!!";
 }
 
 ARFF::~ARFF(){
@@ -124,30 +129,15 @@ ARFF::~ARFF(){
     attributes.clear();
 }
 
-std::vector<std::string> ARFF::GetAttributes(){
+std::vector<std::string> ARFF::getAttributes(){
     return attributes;
 }
 
-std::vector<std::vector<double> > ARFF::GetData(){
+std::vector<std::vector<double> > ARFF::getData(){
     return data;
 }
 
-std::vector<std::string> ARFF::split(const std::string &s, char delim, std::vector<std::string> &elems){
-    std::stringstream ss(s);
-    std::string item;
-    while (std::getline(ss, item, delim)) {
-        elems.push_back(item);
-    }
-    return elems;
-}
-    
-std::vector<std::string> ARFF::split(const std::string& s, char delim){
-    std::vector<std::string> elems;
-    split(s, delim, elems);
-    return elems;
-}
-
-void ARFF::WriteData(const char* path, std::vector<DataObject> data)
+void ARFF::writeData(const char* path, std::vector<DataObject> data)
 {
     std::ofstream file (path);
     int n = data.size();
@@ -168,15 +158,12 @@ void ARFF::WriteData(const char* path, std::vector<DataObject> data)
     file.close();
 }
 
-std::string ARFF::getReason()
+std::string ARFF::getFailReason()
 {
-    return reason;
+    return failReason;
 }
 
-int ARFF::getFileReadStatus()
+bool ARFF::isCorrectlyFormated()
 {
-    if (readSuccess == true)
-        return 1;
-    else
-        return 0;
+    return readSuccess;
 }

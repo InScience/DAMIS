@@ -135,12 +135,13 @@ int main(int argc, char** argv) {
     TestMethodConvergence(dma.getStressErrors(), "DMA");
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (DMA) (methodsTest)" << std::endl;
     
+    /*
     dma = DMA(epsilon, 1, d, 1000, X);
     Y = dma.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (DMA) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(X, Y, d, "DMA");
     std::cout << "%TEST_FINISHED% time=0 TestMethodWithLargeXMatrix (DMA) (methodsTest)" << std::endl;
-    
+    */
     Y = pca.getProjection();
     std::cout << "%TEST_STARTED% TestNumOfRowsOfMatrixY (PCA -> d as parameter) (methodsTest)" << std::endl;
     TestNumOfRowsOfMatrixY(pca.X, Y, "PCA_d");
@@ -168,9 +169,9 @@ int main(int argc, char** argv) {
     
     pca_disp = PCA::PCA(X, dispPart);
     Y = pca_disp.getProjection();
-    n = pca_disp.X.getObjectAt(0).getFeatureCount();
+    n = X.getObjectAt(0).getFeatureCount();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (PCA -> disp as parameter) (methodsTest)" << std::endl;
-    TestMethodWithLargeXMatrix(pca_disp.X, Y, n, "PCA_disp");
+    TestMethodWithLargeXMatrix(X, Y, n, "PCA_disp");
     std::cout << "%TEST_FINISHED% time=0 TestMethodWithLargeXMatrix (PCA) (methodsTest)" << std::endl;
     
     Y = smnn.getProjection();
@@ -212,13 +213,13 @@ int main(int argc, char** argv) {
     std::cout << "%TEST_STARTED% TestMethodConvergence (SMACOF) (methodsTest)" << std::endl;
     TestMethodConvergence(smcf.getStressErrors(), "SMACOF");
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (SMACOF) (methodsTest)" << std::endl;
-    
+    /*
     smcf = SMACOF(epsilon, 1, d, X, 1);
     Y = smcf.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (SMACOF) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(X, Y, d, "SMACOF");
     std::cout << "%TEST_FINISHED% time=0 TestMethodWithLargeXMatrix (SMACOF) (methodsTest)" << std::endl;
-    
+    */
     Y = smcfz_dsc.getProjection();
     std::cout << "%TEST_STARTED% TestNumOfRowsOfMatrixY (SMACOFZEIDEL -> Descending) (methodsTest)" << std::endl;
     TestNumOfRowsOfMatrixY(smcfz_dsc.X, Y, "SMACOFZEIDEL_desc");
@@ -231,13 +232,13 @@ int main(int argc, char** argv) {
     std::cout << "%TEST_STARTED% TestMethodConvergence (SMACOFZEIDEL -> Descending) (methodsTest)" << std::endl;
     TestMethodConvergence(smcfz_dsc.getStressErrors(), "SMACOFZEIDEL_desc");
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (SMACOFZEIDEL) (methodsTest)" << std::endl;
-    
+    /*
     smcfz_dsc = SMACOFZEIDEL (epsilon, 1, d, BUBLESORTDSC, X, 1);
     Y = smcfz_dsc.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Descending) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(X, Y, d, "SMACOFZEIDEL_desc");
     std::cout << "%TEST_FINISHED% time=0 TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Descending) (methodsTest)" << std::endl;
-    
+    */
     Y = smcfz_asc.getProjection();
     std::cout << "%TEST_STARTED% TestNumOfRowsOfMatrixY (SMACOFZEIDEL -> Ascending) (methodsTest)" << std::endl;
     TestNumOfRowsOfMatrixY(smcfz_asc.X, Y, "SMACOFZEIDEL_asc");
@@ -250,13 +251,13 @@ int main(int argc, char** argv) {
     std::cout << "%TEST_STARTED% TestMethodConvergence (SMACOFZEIDEL -> Ascending) (methodsTest)" << std::endl;
     TestMethodConvergence(smcfz_asc.getStressErrors(), "SMACOFZEIDEL_asc");
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (SMACOFZEIDEL) (methodsTest)" << std::endl;
-    
+    /*
     smcfz_asc = SMACOFZEIDEL (epsilon, 1, d, BUBLESORTASC, X, 1);
     Y = smcfz_asc.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Ascending) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(X, Y, d, "SMACOFZEIDEL_asc");
     std::cout << "%TEST_FINISHED% time=0 TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Ascending) (methodsTest)" << std::endl;
-    
+    */
     Y = smcfz_rndm.getProjection();
     std::cout << "%TEST_STARTED% TestNumOfRowsOfMatrixY (SMACOFZEIDEL -> Random) (methodsTest)" << std::endl;
     TestNumOfRowsOfMatrixY(smcfz_rndm.X, Y, "SMACOFZEIDEL_rand");
@@ -269,13 +270,13 @@ int main(int argc, char** argv) {
     std::cout << "%TEST_STARTED% TestMethodConvergence (SMACOFZEIDEL -> Random) (methodsTest)" << std::endl;
     TestMethodConvergence(smcfz_rndm.getStressErrors(), "SMACOFZEIDEL_rand");
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (SMACOFZEIDEL) (methodsTest)" << std::endl;
-    
+    /*
     smcfz_rndm = SMACOFZEIDEL (epsilon, 1, d, RANDOM, X, 1);
     Y = smcfz_rndm.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Random) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(X, Y, d, "SMACOFZEIDEL_rand");
     std::cout << "%TEST_FINISHED% time=0 TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Random) (methodsTest)" << std::endl;
-    
+    */
     Y = som.getProjection();
     std::cout << "%TEST_STARTED% TestNumOfRowsOfMatrixY (SOM) (methodsTest)" << std::endl;
     TestNumOfRowsOfMatrixY_SOM(som.X, Y, "SOM");

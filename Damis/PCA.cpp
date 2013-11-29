@@ -56,6 +56,42 @@ PCA::PCA(double disp){
 
     for (int i = 0; i < n; i++)
     {
+        for (int j = 0; j < dd; j++)
+            Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));       
+    } 
+}
+
+/**
+ * Overloaded constructor when the object matrix and the part of retaining dispersion is passed to PCA
+ * object
+ */
+PCA::PCA(ObjectMatrix Xmatrix, double disp){
+    X = Xmatrix;
+    dispPart = disp;
+    int n = X.getObjectCount();
+    int m = X.getObjectAt(0).getFeatureCount();
+    int dd = 0;
+    PCA pca(X, m);
+    ObjectMatrix Y_visi = pca.getProjection();
+    this->eigValues = pca.getEigenValues();
+    double wholeSum = 0.0, tempSum = 0.0;
+    
+    for (int i = 0; i < m; i++)
+        wholeSum += eigValues(i);
+    
+    for (int i = 0; i < m; i++)
+    {
+        tempSum += eigValues(i);
+        dd++;
+        if ((tempSum / wholeSum) > disp)
+            break;           
+    }
+    d = dd;
+    setProjectionDimension(d);
+    initializeProjectionMatrix();
+
+    for (int i = 0; i < n; i++)
+    {
         for (int j = 0; j < d; j++)
             Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));       
     } 
@@ -72,6 +108,9 @@ PCA::PCA(ObjectMatrix objMatrix, int dim){
     ProjectXMatrix();
 }
 
+/**
+ * Returns the projection matrix
+ */
 ObjectMatrix PCA::getProjection(){
     
     return Y; 
@@ -90,6 +129,9 @@ void PCA::toDataType(){
             alglibX(i,j) = X.getObjectAt(i).getFeatureAt(j);
 }
 
+/**
+ * Calculates the projection matrix
+ */
 void PCA::ProjectXMatrix()
 {
     PCA::toDataType();
@@ -100,7 +142,6 @@ void PCA::ProjectXMatrix()
     for (int i = 0; i < n; i++)
         X_vid[i] = Statistics::getAverage(X, i);
     alglib::ae_int_t info;
-    //alglib::real_1d_array eigValues;
     alglib::real_2d_array eigVectors;
     pcabuildbasis(alglibX, m, n, info, eigValues, eigVectors);
     
@@ -138,16 +179,25 @@ void PCA::fromDataType(){
 
 }
 
+/**
+ * Returns the dimension of the projection matrix
+ */
 int PCA::getDimension()
 {
     return d;
 }
 
+/**
+ * Returns the dispersion part of eigenvalues of projection matrix
+ */
 double PCA::getDispersionPart()
 {
     return dispPart;
 }
 
+/**
+ * Returns the eigenvalues of the projection matrix
+ */
 alglib::real_1d_array PCA::getEigenValues()
 {
     return eigValues;

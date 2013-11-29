@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/ARFF.o \
 	${OBJECTDIR}/AdditionalMethods.o \
 	${OBJECTDIR}/DMA.o \
 	${OBJECTDIR}/DataObject.o \
@@ -54,7 +55,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/SOMMDS.o \
 	${OBJECTDIR}/ShufleObjects.o \
 	${OBJECTDIR}/Statistics.o \
-	${OBJECTDIR}/arff.o \
 	${OBJECTDIR}/main.o
 
 # Test Directory
@@ -91,6 +91,11 @@ ${TESTDIR}/TestFiles/f4: alglib/libalglib.so
 ${TESTDIR}/TestFiles/f4: ${OBJECTFILES}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -o ${TESTDIR}/TestFiles/f4 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/ARFF.o: ARFF.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/ARFF.o ARFF.cpp
 
 ${OBJECTDIR}/AdditionalMethods.o: AdditionalMethods.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -187,11 +192,6 @@ ${OBJECTDIR}/Statistics.o: Statistics.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/Statistics.o Statistics.cpp
 
-${OBJECTDIR}/arff.o: arff.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/arff.o arff.cpp
-
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -232,6 +232,19 @@ ${TESTDIR}/tests/methodsTest.o: tests/methodsTest.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/methodsTest.o tests/methodsTest.cpp
 
+
+${OBJECTDIR}/ARFF_nomain.o: ${OBJECTDIR}/ARFF.o ARFF.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/ARFF.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/ARFF_nomain.o ARFF.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/ARFF.o ${OBJECTDIR}/ARFF_nomain.o;\
+	fi
 
 ${OBJECTDIR}/AdditionalMethods_nomain.o: ${OBJECTDIR}/AdditionalMethods.o AdditionalMethods.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -478,19 +491,6 @@ ${OBJECTDIR}/Statistics_nomain.o: ${OBJECTDIR}/Statistics.o Statistics.cpp
 	    $(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Statistics_nomain.o Statistics.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Statistics.o ${OBJECTDIR}/Statistics_nomain.o;\
-	fi
-
-${OBJECTDIR}/arff_nomain.o: ${OBJECTDIR}/arff.o arff.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/arff.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/arff_nomain.o arff.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/arff.o ${OBJECTDIR}/arff_nomain.o;\
 	fi
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 

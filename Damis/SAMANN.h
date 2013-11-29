@@ -20,6 +20,7 @@ public:
 
 	SAMANN(int m1, int nl, double eta, int maxIter);
 	void train();
+        std::vector<double> getStressErrors();
 
 //protected:
 	virtual ObjectMatrix getProjection();
@@ -54,6 +55,7 @@ private:
         ObjectMatrix delta_L;
         std::vector<std::vector<double> > w1;
         std::vector<std::vector<double> > w2;
+        std::vector<double> stressErrors;
 
 	double getLambda();
 	double getStress();
@@ -66,5 +68,6 @@ private:
         void NormalizeX();
         void getXp();
         bool isIdentical(DataObject);
+        void addObjectOfOnes();
 };
 #endif // !defined(EA_F0DCD72D_78A3_4631_BA37_85170CEDA2B0__INCLUDED_)

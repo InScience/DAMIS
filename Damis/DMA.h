@@ -30,6 +30,6 @@ private:
 	int neighbourNumber;
 	ObjectMatrix vMatrix;
 	void getV();
-
+        void shuffleX();
 };
 #endif // !defined(EA_3155AA55_4FD7_44fa_8149_A99119949EDB__INCLUDED_)

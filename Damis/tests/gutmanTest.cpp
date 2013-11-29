@@ -50,8 +50,8 @@ void testSumOfGutmanElements(ObjectMatrix gMatrix, int rowCount) {
         for (int j = 0; j < rowCount; j++)
             if (i != j)
                 sum += gMatrix.getObjectAt(i).getFeatureAt(j);
-        sum = (-1) * sum;
-        if (fabs(sum - gMatrix.getObjectAt(i).getFeatureAt(i)) > 0.01)
+
+        if (fabs(sum) - fabs(gMatrix.getObjectAt(i).getFeatureAt(i)) > 0.0001)
         {
             ats = false;
             break;

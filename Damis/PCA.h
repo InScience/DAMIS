@@ -22,6 +22,7 @@ public:
 
 	PCA(int d);
 	PCA(double disp);
+        PCA(ObjectMatrix objMatrix, double disp);
 	PCA(ObjectMatrix objMatrix, int d);
 	virtual void toDataType();
 	virtual void fromDataType();

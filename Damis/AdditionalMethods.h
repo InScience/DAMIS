@@ -18,11 +18,19 @@ class AdditionalMethods
             AdditionalMethods();
             virtual ~AdditionalMethods();
             
-            static double** ObjectMatrixToDouble(ObjectMatrix matrix);   // konvertavimas is ObjectMatrix i 2D double masyva
-            static ObjectMatrix DoubleToObjectMatrix(double** matrix, int rows, int cols);   // konvertavimas is 2D double masyvo i ObjectMatrix
-            static double** Array2D(int rows, int cols);    // 2D double istisines matricos kurimas
+            /*! \fn double** ObjectMatrixToDouble(ObjectMatrix matrix);
+             *  \brief Converts ObjectMatrix to 2D array of doubles.
+             *  \param matrix - an ObjectMatrix that needs to be converted to array of doubles.
+             *  \return array - a two-dimensional array of doubles. 
+             */
+            static double** ObjectMatrixToDouble(ObjectMatrix matrix);
+            
+            static ObjectMatrix DoubleToObjectMatrix(double** matrix, int rows, int cols);  
+            static double** Array2D(int rows, int cols); 
             static alglib::real_1d_array ObjectMatrixTo1DArray(ObjectMatrix matrix);
             static ObjectMatrix alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount);
+            static std::vector<std::string> split(const std::string &s, char delim);
+            static std::vector<std::string> split(const std::string &s, char delim, std::vector<std::string> &elems);
             static int PID;
 };
 

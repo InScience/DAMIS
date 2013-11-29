@@ -27,6 +27,10 @@ DataObject::DataObject(int feature_count){
     featureCount = feature_count;
 }
 
+/**
+ * Overloaded constructor that constructs an object and sets object feature count.
+ * Parameter: vector of doubles
+ */
 DataObject::DataObject(std::vector<double> vector){
     features = vector;
     featureCount = features.size();
@@ -41,7 +45,9 @@ DataObject::DataObject(int feature_count, int class_label){
     classLabel = class_label;
 }
 
-
+/**
+ * Returns the label of class
+ */
 int DataObject::getClassLabel(){
 
 	return classLabel;
@@ -55,11 +61,16 @@ int DataObject::getFeatureCount(){
     return featureCount;
 }
 
-
+/**
+ * Sets the class label 
+ */
 void DataObject::setClassLabel(int class_Label){
     classLabel = class_Label;
 }
 
+/*
+ * Checks if DataObjects are identical
+ */
 bool DataObject::IsIdentical(DataObject obj)
 {
     bool ats = false;
@@ -74,16 +85,25 @@ bool DataObject::IsIdentical(DataObject obj)
     return ats;    
 }
 
+/*
+ * Set the number of features
+ */
 void DataObject::setNumOfFeatures(int n)
 {
     features.reserve(n);
 }
 
+/*
+ * Returns specified feature
+ */
 double DataObject::getFeatureAt(int index)
 {
     return features.at(index);
 }
 
+/*
+ * Updates the value of a feature
+ */
 void DataObject::updateFeature(int featureIndex, double newValue)
 {
     features[featureIndex] = newValue;
