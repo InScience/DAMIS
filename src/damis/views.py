@@ -292,6 +292,7 @@ def algorithm_parameter_form(request):
     parameter_formset = ParameterValueFormset(instance=None, prefix=prefix)
     for parameter, form in zip(algorithm.parameters.all(), parameter_formset.forms):
         form.initial = {'parameter': parameter}
+        form.fields['value'].label = unicode(parameter)
 
     return render_to_response('dynamic/parameter_form.html', {
         'formset': parameter_formset,

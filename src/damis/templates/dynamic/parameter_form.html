@@ -4,9 +4,9 @@
 {% trans 'parameters' %}
 {% for form in formset.forms %}
     <div>
-        <span>{{ form.initial.parameter }}</span><br />
         {% for field in form.visible_fields %}
             {% if field.name == 'value' %}
+                <span>{{ field.label }}</span><br />
                 {{ field.errors }}
                 {{ field }}
             {% endif %}
