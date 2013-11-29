@@ -82,14 +82,19 @@ class ParameterValueForm(forms.ModelForm):
                                        widget=forms.HiddenInput())
     source_ref = forms.CharField(max_length=255, widget=forms.HiddenInput(), required=False)
 
+
+    # Inicializuoti source_ref lauk1, pagal ParameterValue.source_id.
+    # Paimti ParameterValue objekta, susieta su sia forma.
     def __init__(self, *args, **kwargs):
         super(ParameterValueForm, self).__init__(*args, **kwargs)
+        if self.instance and self.instance.source:
+            self.initial.update({'source_ref': 'PV_PK_%s' % (self.instance.source.pk,)})
         if kwargs.get('instance'):
             self.fields['value'].label = str(kwargs['instance'].parameter)
         if self.data:
             parameter_id = self.data.get(self.prefix + '-parameter')
             if parameter_id:
-                self.initial = {'parameter': Parameter.objects.get(pk=parameter_id)}
+                self.initial.update({'parameter': Parameter.objects.get(pk=parameter_id)})
 
     def is_valid(self):
         valid = super(ParameterValueForm, self).is_valid()
@@ -125,10 +130,11 @@ class BaseTaskFormset(BaseInlineFormSet):
         try:
             instance = self.get_queryset()[index]
             pk_value = instance.pk
+            pv_prefix = 'PV_PK_%s' % pk_value
         except IndexError:
             instance = None
             pk_value = hash(form.prefix)
-        pv_prefix = 'PV_%s' % pk_value
+            pv_prefix = 'PV_%s' % pk_value
 
         data = self.data if self.data and index is not None else None
         # Do not create PV formset if post data do not contain any elems with
