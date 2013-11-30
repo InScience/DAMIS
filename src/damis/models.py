@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 # from django.contrib.contenttypes.models import ContentType
 
 
-class DatasetLicense(models.Model):
+class License(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(_('Description'), blank=True, null=True)
     url = models.URLField(null=True, blank=True)
@@ -30,7 +30,7 @@ def get_dataset_upload_path(instance, filename):
 
 class Dataset(models.Model):
     title = models.CharField(_('Title'), max_length=255)
-    license = models.ForeignKey('DatasetLicense', blank=True, null=True, verbose_name=_('Dataset License'))
+    license = models.ForeignKey('License', blank=True, null=True, verbose_name=_('Dataset License'))
     file = models.FileField(upload_to=get_dataset_upload_path)
     description = models.TextField(_('Description'), blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'))
@@ -59,6 +59,7 @@ def get_algorithm_file_upload_path(instance, filename):
 class Algorithm(models.Model):
     title = models.CharField(_('Title'), max_length=255, null=True, blank=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'))
+    license = models.ForeignKey('License', blank=True, null=True, verbose_name=_('Source Code License'))
     file = models.FileField(upload_to=get_algorithm_file_upload_path)
     executable_file = models.CharField(_('Executable'), max_length=255, null=True, blank=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
