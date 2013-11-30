@@ -132,10 +132,11 @@ class BaseTaskFormset(BaseInlineFormSet):
         try:
             instance = self.get_queryset()[index]
             pk_value = instance.pk
+            pv_prefix = 'PV_PK%s' % pk_value
         except IndexError:
             instance = None
             pk_value = hash(form.prefix)
-        pv_prefix = 'PV_%s' % pk_value
+            pv_prefix = 'PV_%s' % pk_value
 
         data = self.data if self.data and index is not None else None
         # Do not create PV formset if post data do not contain any elems with
