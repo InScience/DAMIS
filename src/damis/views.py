@@ -32,7 +32,7 @@ from damis.utils import slugify
 from damis.models import Algorithm
 from damis.models import Parameter, ParameterValue
 from damis.models import Dataset
-from damis.models import DatasetLicense
+from damis.models import License
 from damis.models import Experiment
 from damis.models import Task
 
@@ -329,8 +329,8 @@ def algorithm_parameter_form(request):
 
 
 
-class DatasetLicenseCreate(LoginRequiredMixin, CreateView):
-    model = DatasetLicense
+class LicenseCreate(LoginRequiredMixin, CreateView):
+    model = License
     template_name = 'damis/obj_form.html'
 
 
