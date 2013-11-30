@@ -122,10 +122,6 @@ class Task(models.Model):
     def __unicode__(self):
         return '%s %s' % (self.sequence, self.algorithm.title)
 
-class TaskFile(models.Model):
-    file = models.FileField(upload_to=get_algorithm_file_upload_path)
-    task = models.ForeignKey('Task', related_name='files')
-
 class ParameterValue(models.Model):
     parameter = models.ForeignKey('Parameter')
     value = models.CharField(max_length=255, blank=True)
