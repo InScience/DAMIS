@@ -48,15 +48,20 @@
 			// pass current task forms prefixes to get parameter
 			// formsets prefixes
 			var taskFormPrefixes = []
+			var taskIds = []
 			$.each($(".task-window .task-form"), function(taskBoxIdx, taskForm) {
 				var name = $(taskForm).find("input,select,textarea,label").attr("name");
 				var taskFormPrefix = /tasks-\d+/g;
 				taskFormPrefixes.push(taskFormPrefix.exec(name)[0]);
+
+                var taskId = $(taskForm).find("input[id$=id]").val();
+                taskIds.push(taskId ? taskId : "-");
 			});
 			$.ajax({
 				url: parameterPrefixesUrl,
 				data: {
-					prefixes: taskFormPrefixes
+					prefixes: taskFormPrefixes,
+                    taskIds: taskIds
 				},
 				context: $(this)
 			}).done(function(parameterFormsetPrefixes) {
