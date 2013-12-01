@@ -6,35 +6,19 @@
 
 		countBoxes: 0,
 
-		// Maps task boxes to their endpoints
-		taskBoxesToEndpoints: {},
-
-		storeEndpoint: function(boxId, isInput, epoint) {
-			var points = window.taskBoxes.taskBoxesToEndpoints[boxId];
-			if (!points) {
-				window.taskBoxes.taskBoxesToEndpoints[boxId] = {};
-				window.taskBoxes.taskBoxesToEndpoints[boxId]["ipoints"] = [];
-				window.taskBoxes.taskBoxesToEndpoints[boxId]["opoints"] = [];
-			}
-			window.taskBoxes.taskBoxesToEndpoints[boxId][isInput ? "ipoints": "opoints"].push(epoint);
-		},
-
 		// remove all endpoints of a task box
 		removeEndpoints: function(taskBoxId) {
-			var epoints = window.taskBoxes.taskBoxesToEndpoints[taskBoxId];
-			if (epoints) {
-				if (epoints.ipoints) { // remove input endpoints
-					$.each(epoints.ipoints, function(idx, e) {
-						jsPlumb.deleteEndpoint(e);
-					});
-				}
-				if (epoints.opoints) { // remove output endpoints
-					$.each(epoints.opoints, function(idx, e) {
-						jsPlumb.deleteEndpoint(e);
-					});
-				}
-				delete window.taskBoxes.taskBoxesToEndpoints[taskBoxId];
-			}
+            var epoints = jsPlumb.getEndpoints(taskBoxId);
+            var epoints2 = [];
+            if (epoints) {
+                $.each(epoints, function(idx, e) {
+                    epoints2.push(e);
+                });
+                var len = epoints2.length; 
+                while (len--) {
+                    jsPlumb.deleteEndpoint(epoints2[len]);
+                }
+            }
 		},
 
 		// Right-click on task box
@@ -71,13 +55,10 @@
 			// Add new endpoints for input/output parameters
 			var parameters = formWindow.find('.parameter-values');
 
-			var outAnchors = ["TopRight", [1, 0, 1, 1], [1, 1, 1, 1]];
+			var outAnchors = ["TopRight", "Right", "BottomRight", "TopCenter"];
 			var oIdx = 0;
-			var inAnchors = ["TopLeft", [0, 0, - 1, - 1], [0, 1, - 1, - 1]];
+			var inAnchors = ["TopLeft", "Left", "BottomLeft", "BottomCenter"];
 			var iIdx = 0;
-
-			var ipoints = []
-			var opoints = []
 
 			var taskBox = $("#" + taskBoxId);
 
@@ -99,8 +80,7 @@
 							iTaskBoxId: taskBoxId
 						},
 					});
-					ipoints.push(x);
-					iIdx++;
+                    iIdx++;
 				} else if (isOut === "True") {
 					//add output endpoint
 					var y = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {
@@ -111,14 +91,9 @@
 							oTaskBoxId: taskBoxId
 						}
 					});
-					opoints.push(y);
-					oIdx++;
+                    oIdx++;
 				}
 			});
-			window.taskBoxes.taskBoxesToEndpoints[taskBoxId] = {
-				"ipoints": ipoints,
-				"opoints": opoints
-			}
 		},
 
 		// Loads parameters for the selected algorithm

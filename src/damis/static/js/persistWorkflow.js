@@ -2,16 +2,33 @@
 (function() {
 	window.persistWorkflow = {
 
+		// persists jsPlumb entities to a string
 		persistJsPlumbEntities: function() {
-			var boxes = [];
-			$.each($(".task-box"), function(taskBoxId, box) {
+
+			// persist boxes together with their endpoints
+			var boxes = {};
+			$.each($(".task-box"), function(idx, box) {
 				var $box = $(box);
-				boxes.push({
-					boxId: $box.attr("id"),
+				var boxId = $box.attr("id");
+
+				var endpoints = [];
+				$.each(jsPlumb.getEndpoints(boxId), function(eIdx, e) {
+					endpoints.push({
+						parameters: e.getParameters(),
+						anchor: e.anchor.type,
+						isTarget: e.isTarget,
+					});
+				});
+
+				boxes[boxId] = {
+					boxId: boxId,
 					x: parseInt($box.css("left"), 10),
 					y: parseInt($box.css("top"), 10),
-				});
+					endpoints: endpoints
+				};
 			});
+
+			// persist connections
 			var connections = [];
 			$.each(jsPlumb.getConnections(), function(idx, connection) {
 				var sourceId = connection.sourceId;
@@ -42,10 +59,13 @@
 		// params is an empty JSON, as this function is a callback
 		persist: function(params) {
 			var persistedStr = window.persistWorkflow.persistJsPlumbEntities();
-            $("#experiment-form input[name=workflow_state]").val(persistedStr);
-            window.experimentForm.submit({"skipValidation": true});
+			$("#experiment-form input[name=workflow_state]").val(persistedStr);
+			window.experimentForm.submit({
+				"skipValidation": true
+			});
 		},
 
+		// restores jsPlumb entities from a string 
 		restoreJsPlumbEntities: function(persistedStr) {
 			var parts = persistedStr.split("***");
 			var boxes = JSON.parse(parts[0]);
@@ -53,20 +73,19 @@
 
 			// restore boxes 
 			$.each(boxes, function(idx, box) {
-		        var taskBox = $(window.taskBoxes.assembleBoxHTML(""));
+				var taskBox = $(window.taskBoxes.assembleBoxHTML(""));
 				taskBox.attr("id", box['boxId']);
 				taskBox.appendTo($("#flowchart-container"));
 				taskBox.css("left", box['x'] + "px");
 				taskBox.css("top", box['y'] + "px");
 			});
 
-			window.taskBoxes.taskBoxesToEndpoints = {};
-
 			// recreate connections 
 			$.each(connections, function(idx, conn) {
 				var sourceBox = $("#" + conn.sourceBoxId);
 				var targetBox = $("#" + conn.targetBoxId);
 
+				// add endpoints that participate in a connection
 				var x = jsPlumb.addEndpoint(targetBox, window.experimentCanvas.getTargetEndpoint(), {
 					anchor: conn.targetAnchor.type,
 					parameters: {
@@ -83,21 +102,48 @@
 						oTaskBoxId: conn.params['oTaskBoxId'],
 					}
 				});
-				// reconstruct window.taskBoxes.taskBoxesToEndpoints
-				window.taskBoxes.storeEndpoint(conn.targetBoxId, true, x);
-				window.taskBoxes.storeEndpoint(conn.sourceBoxId, false, y);
+
+				// remove endpoints that participate in a connection from the
+				// list of endpoints to be recreated 
+				window.persistWorkflow.removeConnectedEndpoints(boxes[conn.targetBoxId]['endpoints'], conn, true);
+				window.persistWorkflow.removeConnectedEndpoints(boxes[conn.sourceBoxId]['endpoints'], conn, false);
 
 				var conn = jsPlumb.connect({
 					source: y,
 					target: x
 				});
 			});
+
+			// add remaining unconnected endpoints
+			$.each(boxes, function(idx, box) {
+				$.each(box.endpoints, function(eIdx, e) {
+					var x = jsPlumb.addEndpoint(box['boxId'], e.isTarget ? window.experimentCanvas.getTargetEndpoint() : window.experimentCanvas.getSourceEndpoint(), {
+						anchor: e.anchor,
+						parameters: e.parameters
+					});
+				});
+			});
+		},
+
+		// remove endpoint from the array if it matches the connection endpoint
+		// by the parameters
+		removeConnectedEndpoints: function(epoints, conn, isTarget) {
+			var len = epoints.length;
+			while (len--) {
+				var e = epoints[len];
+				var match = isTarget ? e.parameters["iParamNo"] == conn.params["iParamNo"] : e.parameters["oParamNo"] == conn.params["oParamNo"];
+				if (match) {
+					epoints.splice(len, 1);
+				}
+			}
 		},
 
 		restore: function(persistedStr) {
+			jsPlumb.setSuspendDrawing(true);
 			this.restoreJsPlumbEntities(persistedStr);
 			window.experimentForm.init();
 			window.experimentForm.reinitExperimentForm();
+			jsPlumb.setSuspendDrawing(false, true);
 		},
 	}
 })();
