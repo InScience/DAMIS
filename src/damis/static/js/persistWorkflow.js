@@ -52,7 +52,7 @@
 			});
 			var boxesStr = JSON.stringify(boxes);
 			var connectionsStr = JSON.stringify(connections);
-			var persistedStr = boxesStr + "***" + connectionsStr;
+			var persistedStr = boxesStr + "***" + connectionsStr + "***" + window.taskBoxes.countBoxes;
 			return persistedStr;
 		},
 
@@ -70,6 +70,7 @@
 			var parts = persistedStr.split("***");
 			var boxes = JSON.parse(parts[0]);
 			var connections = JSON.parse(parts[1]);
+			window.taskBoxes.countBoxes = parseInt(parts[2]);
 
 			// restore boxes 
 			$.each(boxes, function(idx, box) {
