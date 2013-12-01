@@ -90,7 +90,7 @@ class ParameterValueForm(forms.ModelForm):
         if self.instance and self.instance.source:
             pks = self.instance.source.task.algorithm.parameters.values_list('pk', flat=True)
             index = tuple(pks).index(self.instance.source.parameter.pk)
-            self.initial.update({'source_ref': 'PV_%s-%s' % (self.instance.source.task.pk, index)})
+            self.initial.update({'source_ref': 'PV_PK%s-%s' % (self.instance.source.task.pk, index)})
         if kwargs.get('instance'):
             self.fields['value'].label = str(kwargs['instance'].parameter)
         if self.data:

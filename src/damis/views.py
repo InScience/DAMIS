@@ -303,8 +303,14 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
 
 def gen_parameter_prefixes(request):
     prefixes = request.GET.getlist('prefixes[]')
+    task_ids = request.GET.getlist('taskIds[]')
     task_prefixes = [re.findall('(tasks-\d+)', prefix)[0] for prefix in prefixes]
-    pv_prefixes = ['PV_' + str(hash(prefix)) for prefix in task_prefixes]
+    pv_prefixes = []
+    for task_id, task_prefix in zip(task_ids, task_prefixes):
+        if task_id and task_id != '-':
+            pv_prefixes.append('PV_PK%s' % (task_id,))
+        else:
+            pv_prefixes.append('PV_%s' % (str(hash(task_prefix)),))
     return HttpResponse(",".join(pv_prefixes))
 
 def algorithm_parameter_form(request):
