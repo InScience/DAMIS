@@ -106,8 +106,7 @@
 
             jsPlumb.bind("connectionDetached", function(info, originalEvent) {
                 // Clear the input parameter value and display it as input field
-                var conn = info.connection;
-                var params = conn.getParameters();
+                var params = info.targetEndpoint.getParameters();
                 var param = window.experimentForm.getParameter(params.iParamNo, params.iTaskBoxId);
                 var srcRefField = window.experimentForm.getParameterSourceRef(param);
                 srcRefField.val("");
