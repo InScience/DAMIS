@@ -11,14 +11,13 @@
 #include "ObjectMatrix.h"
 #include "PCA.h"
 #include "SMACOF.h"
-#include "ExternalMethods.h"
 #include "MDS.h"
 #include "DistanceMetricsEnum.h"
 #include "ProjectionEnum.h"
 
 
 
-class SDS : public MDS, public ExternalMethods
+class SDS : public MDS
 {
 
 public:

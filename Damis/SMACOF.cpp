@@ -24,23 +24,23 @@ SMACOF::~SMACOF(){
 /**
  * Constructor for SMACOF object
  */
-SMACOF::SMACOF(float eps, int maxIter, int d):MDS(eps, maxIter, d){
+SMACOF::SMACOF(double eps, int maxIter, int d):MDS(eps, maxIter, d){
     initializeProjectionMatrix();
 }
 
 /**
  * Constructor called from SMACOF class
  */
-SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix X_base, ObjectMatrix Y_base):MDS(eps, maxIter, d){
+SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix X_base, ObjectMatrix Y_base):MDS(eps, maxIter, d){
     X = X_base;
     Y = Y_base;
 }
 
-SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix initialY):MDS(eps, maxIter, d){
+SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix initialY):MDS(eps, maxIter, d){
     Y = initialY;
 }
 
-SMACOF::SMACOF(float eps, int maxIter, int d, ObjectMatrix largeX, int betkas):MDS(eps, maxIter, d, largeX){
+SMACOF::SMACOF(ObjectMatrix largeX, double eps, int maxIter, int d):MDS(largeX, eps, maxIter, d){
     initializeProjectionMatrix();
 }
 

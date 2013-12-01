@@ -60,10 +60,10 @@ public:
      */
     std::string getFailReason();
     /*! \fn bool isCorrectlyFormated();
-     *  \brief A method that returns the state of file reading.
+     *  \brief A method that returns the indicator value of successful file reading.
      *  \return readSuccess - boolean value.
      */
-    bool isCorrectlyFormated();
+    bool isSuccessfullyRead();
     
 private:
     /*! \var vector<vector<double> > data;
@@ -83,7 +83,7 @@ private:
      */
     std::string failReason;
     /*! \var bool readSuccess;
-     *  \brief The state of the file read.
+     *  \brief The indicator of the successful file read.
      * If it's value is \a true, the file is successfully read, if \a false, the file is not successfully read.
      */
     bool readSuccess;    

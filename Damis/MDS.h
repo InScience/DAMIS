@@ -15,19 +15,60 @@ class MDS : public DimReductionMethod
 {
 
 public:
+        /**
+        * A default constructor.
+        */
 	MDS();
+        /**
+        * A destructor.
+        */
 	virtual ~MDS();
-
+        /**
+        * An overloaded constructor that accepts the epsilon, number of iterations and dimension.
+        */
 	MDS(double eps, int maxIter, int d);
-        MDS(double eps, int maxIter, int d, ObjectMatrix x);   // for testing
+        /**
+        * An overloaded constructor that accepts the initial matrix, epsilon, number of iterations and dimension.
+        */
+        MDS(ObjectMatrix initialMatrix, double eps, int maxIter, int d);
+        /** \fn int getIteration();
+         *  \brief Returns the number of iterations performed.
+         * \return iteration - the number of iterations performed.
+         */
         int getIteration();
+        /** \fn vector<double> getStressErrors();
+         *  \brief Returns the list of stress errors.
+         * \return stressErrors - the list of the stress errors.
+         */
         std::vector<double> getStressErrors();
 protected:
+        /** \fn double getEpsilon();
+         *  \brief Returns the value of the \a epsilon. 
+         *  \return epsilon
+         */
 	double getEpsilon();
+        /** \fn double getGutman();
+         *  \brief Calculates the matrix of the Gutman. 
+         *  \return gutman - an object of the class \a ObjectMatrix.
+         */
 	ObjectMatrix getGutman();
+        /** \fn ObjectMatrix getGutman(ObjectMatrix Y_new);
+         *  \brief Calculates the matrix of the Gutman.
+         *  \param Y_new - projection matrix.
+         *  \return gutman - an object of the class \a ObjectMatrix.
+         */
         ObjectMatrix getGutman(ObjectMatrix Y_new);
+        /** \fn int getMaxIteration();
+         *  \brief Returns the maximum number of iterations.
+         * \return maxIteration - the maximum number of iterations.
+         */
 	int getMaxIteration();
+        /** \fn virtual double getStress();
+         *  \brief Returns the stress error value.
+         *  \return error - the stress error value.
+         */
 	virtual double getStress();
+        
 	void setEpsilon(double eps);
 	void setMaxIteration(int maxIter);
 

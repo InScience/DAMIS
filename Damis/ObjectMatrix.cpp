@@ -107,7 +107,7 @@ std::vector<std::string> ObjectMatrix::getFeaturesTitle(){
 void ObjectMatrix::loadDataMatrix(){
     const char* path = fileName.c_str();
     ARFF file(path);
-    if (file.isCorrectlyFormated() == true)   // successful read
+    if (file.isSuccessfullyRead() == true)   // successful read
     {
         std::vector< std::vector<double> > data = file.getData();  
         featureTitles = file.getAttributes();

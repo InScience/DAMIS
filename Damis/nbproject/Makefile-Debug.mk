@@ -41,7 +41,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/DataObject.o \
 	${OBJECTDIR}/DimReductionMethod.o \
 	${OBJECTDIR}/DistanceMetrics.o \
-	${OBJECTDIR}/Feature.o \
 	${OBJECTDIR}/HPCMethod.o \
 	${OBJECTDIR}/MDS.o \
 	${OBJECTDIR}/ObjectMatrix.o \
@@ -121,11 +120,6 @@ ${OBJECTDIR}/DistanceMetrics.o: DistanceMetrics.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/DistanceMetrics.o DistanceMetrics.cpp
-
-${OBJECTDIR}/Feature.o: Feature.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${OBJECTDIR}/Feature.o Feature.cpp
 
 ${OBJECTDIR}/HPCMethod.o: HPCMethod.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -309,19 +303,6 @@ ${OBJECTDIR}/DistanceMetrics_nomain.o: ${OBJECTDIR}/DistanceMetrics.o DistanceMe
 	    $(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/DistanceMetrics_nomain.o DistanceMetrics.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/DistanceMetrics.o ${OBJECTDIR}/DistanceMetrics_nomain.o;\
-	fi
-
-${OBJECTDIR}/Feature_nomain.o: ${OBJECTDIR}/Feature.o Feature.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/Feature.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -I. -I. -I. -I. -I. -I. `cppunit-config --cflags` -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Feature_nomain.o Feature.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/Feature.o ${OBJECTDIR}/Feature_nomain.o;\
 	fi
 
 ${OBJECTDIR}/HPCMethod_nomain.o: ${OBJECTDIR}/HPCMethod.o HPCMethod.cpp 

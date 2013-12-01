@@ -19,10 +19,21 @@ class HPCMethod : public WebInterface
 {
 
 public:
+        /**
+        * A default constructor.
+        */
 	HPCMethod();
+        /**
+        * A destructor.
+        */
 	virtual ~HPCMethod();
+        /** \var ObjectMatrix X
+         *  \brief Initial data matrix.
+         */
 	ObjectMatrix X;
-
+        /** \fn virtual void sendMessage();
+         *  \brief Sends a message to Web interface.
+         */
 	virtual void sendMessage();
 
 };

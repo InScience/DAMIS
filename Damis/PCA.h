@@ -9,11 +9,10 @@
 #define EA_137C79B9_5330_4edc_A6BF_D6D076823555__INCLUDED_
 
 #include "ObjectMatrix.h"
-#include "ExternalMethods.h"
 #include "DimReductionMethod.h"
 #include "alglib/ap.h"
 
-class PCA : public DimReductionMethod, public ExternalMethods
+class PCA : public DimReductionMethod
 {
 
 public:

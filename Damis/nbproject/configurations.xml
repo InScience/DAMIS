@@ -12,8 +12,6 @@
       <itemPath>DimReductionMethod.h</itemPath>
       <itemPath>DistanceMetrics.h</itemPath>
       <itemPath>DistanceMetricsEnum.h</itemPath>
-      <itemPath>ExternalMethods.h</itemPath>
-      <itemPath>Feature.h</itemPath>
       <itemPath>HPCMethod.h</itemPath>
       <itemPath>MDS.h</itemPath>
       <itemPath>ObjectMatrix.h</itemPath>
@@ -44,7 +42,6 @@
       <itemPath>DataObject.cpp</itemPath>
       <itemPath>DimReductionMethod.cpp</itemPath>
       <itemPath>DistanceMetrics.cpp</itemPath>
-      <itemPath>Feature.cpp</itemPath>
       <itemPath>HPCMethod.cpp</itemPath>
       <itemPath>MDS.cpp</itemPath>
       <itemPath>ObjectMatrix.cpp</itemPath>
@@ -156,12 +153,6 @@
       <item path="DistanceMetrics.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DistanceMetricsEnum.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="ExternalMethods.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Feature.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Feature.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="HPCMethod.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -357,12 +348,6 @@
       <item path="DistanceMetrics.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="DistanceMetricsEnum.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="ExternalMethods.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Feature.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Feature.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="HPCMethod.cpp" ex="false" tool="1" flavor2="0">
       </item>

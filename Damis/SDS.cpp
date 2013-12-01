@@ -101,7 +101,7 @@ ObjectMatrix SDS::getProjection(){
     
     PCA::PCA pca(StaticData::X_base, d);
     StaticData::Y_base = pca.getProjection();
-    SMACOF smcf(epsilon, maxIteration, d, StaticData::X_base, StaticData::Y_base);
+    SMACOF::SMACOF smcf(epsilon, maxIteration, d, StaticData::X_base, StaticData::Y_base);
     StaticData::Y_base = smcf.getProjection();
     
     Initialize();

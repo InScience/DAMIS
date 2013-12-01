@@ -60,7 +60,7 @@ ObjectMatrix DMA::getProjection(){
     
     while (iteration < maxIteration) // && Epsilon > epsilon)
     {
-        shuffleX();
+        shuffle();
         gutman = getGutman();
 
         for (int i = 0; i < m; i++)
@@ -129,7 +129,7 @@ void DMA::setNeighbours(int neighbours){
     neighbourNumber = neighbours;
 }
 
-void DMA::shuffleX()
+void DMA::shuffle()
 {
     int m = X.getObjectCount();
     int j = 0;

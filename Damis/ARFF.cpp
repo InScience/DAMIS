@@ -163,7 +163,7 @@ std::string ARFF::getFailReason()
     return failReason;
 }
 
-bool ARFF::isCorrectlyFormated()
+bool ARFF::isSuccessfullyRead()
 {
     return readSuccess;
 }

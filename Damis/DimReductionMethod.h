@@ -15,7 +15,13 @@ class DimReductionMethod : public HPCMethod
 {
 
 public:
+        /**
+        * A default constructor.
+        */
 	DimReductionMethod();
+        /**
+        * A destructor.
+        */
 	virtual ~DimReductionMethod();
 
 protected:
@@ -27,10 +33,25 @@ protected:
 	 * Projection Matrix
 	 */
 	ObjectMatrix Y;
-
+        /** \fn ObjectMatrix getProjection();
+         *  \brief A pure virtual function that returns the projection matrix.
+         *  \return Y - an object of ObjectMatrix class.
+         */
 	virtual ObjectMatrix getProjection() =0;
+        /** \fn int getProjectionDimension();
+         *  \brief Returns the dimension of the projection.
+         *  \return d - a dimension projection.
+         */
 	int getProjectionDimension();
+        /** \fn void initializeProjectionMatrix();
+         *  \brief Initializes the projection matrix.
+         */
 	void initializeProjectionMatrix();
+        /** \fn void setProjectionDimension(int dimension);
+         *  \brief Sets the projection dimension.
+         *  \param dimension - a value assigned to \a d.
+         * 
+         */
 	void setProjectionDimension(int dimension);
 
 };

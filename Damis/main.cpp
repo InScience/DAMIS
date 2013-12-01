@@ -70,12 +70,12 @@ int main(int argc, char** argv) {
             //PCA::PCA smcf(d);
             //PCA::PCA smcf(1.0);
             //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
-            //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
+            SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTASC);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, RANDOM);
             //SMACOF smcf (epsilon, maxIter, d);
             //SAMANN smcf(70, 10, 5.0, 3000);
-            DMA smcf(epsilon, maxIter, d, 20);
+            //DMA smcf(epsilon, maxIter, d, 20);
             //SOM smcf(100, 3, 5);
             //SOMMDS smcf(epsilon, maxIter, d, 100, 3, 5);
             Y = smcf.getProjection();
