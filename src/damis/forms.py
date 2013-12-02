@@ -103,8 +103,8 @@ class ParameterValueForm(forms.ModelForm):
         if not valid:
             return valid
 
-        value = self.cleaned_data['value']
-        source_ref = self.cleaned_data['source_ref']
+        value = self.cleaned_data.get('value')
+        source_ref = self.cleaned_data.get('source_ref')
         if value or source_ref:
             return True
         errors = self._errors.setdefault('value', ErrorList())

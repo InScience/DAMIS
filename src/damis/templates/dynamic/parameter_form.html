@@ -11,9 +11,12 @@
                 {{ field }}
             {% endif %}
         {% endfor %}
-        <input id="{{ form.prefix }}-is_input" type="hidden" value="{{ form.initial.parameter.is_input }}" name="{{ form.prefix }}-is_input"/>
-        <input id="{{ form.prefix }}-is_output" type="hidden" value="{{ form.initial.parameter.is_output }}" name="{{ form.prefix }}-is_output"/>
-        {{ form.source_ref }}<br/>
+        {% for field in form.hidden_fields %}
+            {{ field }}
+        {% endfor %}
+        <input id="{{ form.prefix }}-is_input" type="hidden" value="{% firstof form.initial.parameter.is_input form.instance.parameter.is_input %}" name="{{ form.prefix }}-is_input"/>
+        <input id="{{ form.prefix }}-is_output" type="hidden" value="{% firstof form.initial.parameter.is_output form.instance.parameter.is_output %}" name="{{ form.prefix }}-is_output"/>
+        <br/>
         {{ form.parameter }}<br/>
     </div>
 {% endfor %}

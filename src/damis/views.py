@@ -235,7 +235,10 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         experiment_form.full_clean()
         exp_data = experiment_form.cleaned_data
         exp_data.pop('skip_validation')
-        exp = Experiment.objects.create(**exp_data)
+        if experiment_form.instance and experiment_form.instance.pk:
+            exp = experiment_form.instance
+        else:
+            exp = Experiment.objects.create(**exp_data)
 
         task_formset.full_clean()
         sources = {}
@@ -269,8 +272,14 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
     def post(self, request, *args, **kwargs):
         self.object = None
 
-        experiment_form = ExperimentForm(self.request.POST)
-        task_formset = CreateExperimentFormset(self.request.POST)
+        experiment_pk = self.kwargs.get('pk')
+        if experiment_pk:
+            experiment = Experiment.objects.get(pk=experiment_pk)
+        else:
+            experiment = Experiment()
+
+        experiment_form = ExperimentForm(self.request.POST, instance=experiment)
+        task_formset = CreateExperimentFormset(self.request.POST, instance=experiment)
 
         if self.request.POST.get('skip_validation'):
             return self.skip_validation(experiment_form, task_formset)
