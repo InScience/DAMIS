@@ -23,7 +23,7 @@
 }
 
 .task-box, .prototype-box {
-    opacity:0.8; filter:alpha(opacity=80); width:50px; height:auto; text-align:center; z-index:20; color:#346789; font-size:0.8em;
+    opacity:0.8; filter:alpha(opacity=80); width:50px; height:auto; text-align:center; z-index:20; color:#346789; font-size:0.6em;
 }
 
 .task-box {

@@ -229,6 +229,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         context = super(ExperimentCreate, self).get_context_data(**kwargs)
         context['dataset_form'] = DatasetSelectForm()
         context.update(csrf(self.request))
+        context['algorithms'] = Algorithm.objects.all()
         return context
 
     def skip_validation(self, experiment_form, task_formset):
