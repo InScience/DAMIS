@@ -44,7 +44,7 @@ class LoginRequiredMixin(object):
     #     return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 def index_view(request):
-    return HttpResponseRedirect(reverse_lazy('experiment-list'))
+    return HttpResponseRedirect(reverse_lazy('experiment-new'))
 
 def about_view(request):
     return render(request, 'index.html', {})
