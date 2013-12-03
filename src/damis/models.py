@@ -2,23 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
-# from django.contrib.contenttypes import generic
-# from django.contrib.contenttypes.models import ContentType
-
-
-class License(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField(_('Description'), blank=True, null=True)
-    url = models.URLField(null=True, blank=True)
-    summary = models.TextField()
-    updated = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True)
-
-    def get_absolute_url(self):
-        return reverse('dataset-list')
-
-    def __unicode__(self):
-        return self.title
 
 
 def get_dataset_upload_path(instance, filename):
@@ -30,7 +13,6 @@ def get_dataset_upload_path(instance, filename):
 
 class Dataset(models.Model):
     title = models.CharField(_('Title'), max_length=255)
-    license = models.ForeignKey('License', blank=True, null=True, verbose_name=_('Dataset License'))
     file = models.FileField(upload_to=get_dataset_upload_path)
     description = models.TextField(_('Description'), blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'))
@@ -51,13 +33,6 @@ def get_algorithm_file_upload_path(instance, filename):
         username = instance.user.username
     return  '%s/algorithms/%s' % (username, filename)
 
-
-#class File(models.Model):
-#    file = models.FileField(upload_to=get_algorithm_file_upload_path)
-#    algorithm = models.ForeignKey('Algorithm', related_name='files')
-#
-# Kurie nulai ir varcharus suvienodinti.
-# Experimento statusas, pavadinimai turime nurodyti.
 
 class Algorithm(models.Model):
     CATEGORIES= (

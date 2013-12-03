@@ -32,7 +32,6 @@ from damis.utils import slugify
 from damis.models import Algorithm
 from damis.models import Parameter, ParameterValue
 from damis.models import Dataset
-from damis.models import License
 from damis.models import Experiment
 from damis.models import Task
 
@@ -347,13 +346,6 @@ def algorithm_parameter_form(request):
         })
 
 
-
-class LicenseCreate(LoginRequiredMixin, CreateView):
-    model = License
-    template_name = 'damis/obj_form.html'
-
-
-## User views
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)

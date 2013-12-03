@@ -17,7 +17,7 @@ from django.forms.formsets import DELETION_FIELD_NAME
 class DatasetForm(forms.ModelForm):
     class Meta:
         model = Dataset
-        fields = ('title', 'license', 'file', 'description')
+        fields = ('title', 'file', 'description')
 
 
 class DatasetSelectForm(forms.Form):
@@ -41,15 +41,10 @@ class LoginForm(forms.Form):
         cleaned_data['user'] = user
         return cleaned_data
 
-DATA_LICENSES = (
-    ('private', _('Private')),
-    ('open', _('Open under http://opendatacommons.org/licenses/pddl/')),
-)
 
 class DataFileUploadForm(forms.Form):
     title = forms.CharField(label=_('Title'))
     data_file = forms.FileField(label=_('Dataset file'))
-    license = forms.ChoiceField(label=_('License'), choices=DATA_LICENSES)
     comment = forms.CharField(label=_('Description'),
             widget=forms.Textarea(attrs={'rows':'5', 'cols': '25'}),
             required=False)
@@ -82,9 +77,6 @@ class ParameterValueForm(forms.ModelForm):
                                        widget=forms.HiddenInput())
     source_ref = forms.CharField(max_length=255, widget=forms.HiddenInput(), required=False)
 
-
-    # Inicializuoti source_ref lauk1, pagal ParameterValue.source_id.
-    # Paimti ParameterValue objekta, susieta su sia forma.
     def __init__(self, *args, **kwargs):
         super(ParameterValueForm, self).__init__(*args, **kwargs)
         if self.instance and self.instance.source:
@@ -205,7 +197,6 @@ class BaseTaskFormset(BaseInlineFormSet):
             should_delete = form.fields[DELETION_FIELD_NAME].clean(raw_delete_value)
             return should_delete
         return False
-
 
 
 class TaskForm(forms.ModelForm):

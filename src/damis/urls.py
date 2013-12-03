@@ -27,7 +27,6 @@ urlpatterns += i18n_patterns('',
     url(r'^datasets/(?P<pk>\d*)/$', DatasetDetail.as_view(), name='dataset-detail'),
     url(r'^datasets/(?P<pk>\d*)/edit/$', DatasetUpdate.as_view(), name='dataset-update'),
     url(r'^datasets/(?P<pk>\d*)/delete/$', DatasetDelete.as_view(), name='dataset-delete'),
-    url(r'^datasets/licenses/create/$', LicenseCreate.as_view(), name='license-new'),
     url(r'^help/$', help_view, name='help'),
 
     url(r'^algorithms/$', AlgorithmList.as_view(), name='algorithm-list'),

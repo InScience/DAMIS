@@ -12,7 +12,6 @@
   <ul class="nav nav-tabs" id="myTab2">
       <li class="active"><a href="{% url 'dataset-list' %}">{% trans "Dataset list" %}</a></li>
       <li><a href="{% url 'dataset-new' %}">{% trans "Upload dataset" %}</a></li>
-      <li><a href="{% url 'license-new' %}">{% trans "Add license" %}</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
@@ -20,7 +19,6 @@
           <thead>
               <tr>
                   <th>{% trans "Title" %}</th>
-                  <th>{% trans "Licence" %}</th>
                   <th>{% trans "Size" %}</th>
                   <th>{% trans "Actions" %}</th>
                   <th>{% trans "Download" %}</th>
@@ -30,7 +28,6 @@
             {% for dataset in object_list %}
               <tr>
                   <td>{{ dataset.title }}</td>
-                  <td>{{ dataset.license }}</td>
                   <td>-</td>
                   <td>
                       <div class="btn-group" >
