@@ -55,6 +55,9 @@ def get_algorithm_file_upload_path(instance, filename):
 #class File(models.Model):
 #    file = models.FileField(upload_to=get_algorithm_file_upload_path)
 #    algorithm = models.ForeignKey('Algorithm', related_name='files')
+#
+# Kurie nulai ir varcharus suvienodinti.
+# Experimento statusas, pavadinimai turime nurodyti.
 
 class Algorithm(models.Model):
     CATEGORIES= (
@@ -101,7 +104,7 @@ class Experiment(models.Model):
     title = models.CharField(_('Experiment title'), max_length=255, null=True)
     start = models.DateTimeField(_('Start'), blank=True, null=True)
     finish = models.DateTimeField(_('Finish'), blank=True, null=True)
-    status = models.CharField(_('Status'), max_length=50, null=True, blank=True,
+    status = models.CharField(_('Status'), max_length=255, null=True, blank=True,
                               choices=STATUSES, default='CREATED')
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
     workflow_state = models.TextField(blank=True, null=True)
