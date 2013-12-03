@@ -57,9 +57,17 @@ def get_algorithm_file_upload_path(instance, filename):
 #    algorithm = models.ForeignKey('Algorithm', related_name='files')
 
 class Algorithm(models.Model):
+    CATEGORIES= (
+        ('DATA', _('Upload data')),
+        ('PREPROCESSING', _('Preprocessing')),
+        ('STAT_PRIMITIVES', _('Statistical primitives')),
+        ('DIMENSIONALITY_REDUCTION', _('Dimensionality reduction')),
+        ('DATA_MINING',_('Data mining')),
+        ('RESULTS', _('View results')),
+    )
     title = models.CharField(_('Title'), max_length=255, null=True, blank=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'))
-    license = models.ForeignKey('License', blank=True, null=True, verbose_name=_('Source Code License'))
+    category = models.CharField(_('Category'), max_length=255, null=True, blank=True, choices=CATEGORIES)
     file = models.FileField(upload_to=get_algorithm_file_upload_path)
     executable_file = models.CharField(_('Executable'), max_length=255, null=True, blank=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
