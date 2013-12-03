@@ -75,6 +75,7 @@ class Experiment(models.Model):
     STATUSES = (
         ('SAVED', 'Saved'),
         ('RUNNING', 'Running'),
+        ('ERROR', 'Error'),
         ('FINISHED', 'Finished'),
     )
     title = models.CharField(_('Experiment title'), max_length=255, null=True)
