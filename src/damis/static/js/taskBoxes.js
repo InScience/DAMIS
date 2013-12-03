@@ -1,7 +1,7 @@
 (function() {
 	window.taskBoxes = {
 		assembleBoxHTML: function(boxName) {
-			return '<div class="task-box"><img src=\"/static/img/algorithm-ico.png\" width=\"50px\" height=\"50px\" /><div class=\"desc\"><div>' + boxName + '</div></div></div>';
+			return '<div class="task-box"><img src=\"/static/img/algorithm-ico.png\" width=\"64px\" height=\"64px\" /><div class=\"desc\"><div>' + boxName + '</div></div></div>';
 		},
 
 		countBoxes: 0,

@@ -3,11 +3,11 @@
 }
 
 #toolbox {
-    width: 24%; min-height: inherit; float:left; border: 1px solid #cccccc; -moz-border-radius:4px; border-radius:4px;
+    width: 28%; min-height: inherit; float:left; 
 }
 
-#tools-padding {
-    width: 164px;
+.tools-padding {
+    width: 202px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 12px;
@@ -15,7 +15,7 @@
 }
 
 #canvas {
-    width:75%; min-height: inherit; float:left; margin-left: 4px; border: 1px solid #cccccc; -moz-border-radius:4px; border-radius:4px; 
+    width:70%; min-height: inherit; float:left; margin-left: 4px; border: 1px solid #cccccc; -moz-border-radius:4px; border-radius:4px; 
 }
 
 #flowchart-container {
@@ -23,7 +23,7 @@
 }
 
 .task-box, .prototype-box {
-    opacity:0.8; filter:alpha(opacity=80); width:50px; height:auto; text-align:center; z-index:20; color:#346789; font-size:0.6em;
+    opacity:0.8; filter:alpha(opacity=80); width:64px; height:auto; text-align:center; z-index:20; color:black; font-size:0.6em; line-height: 1.5em;
 }
 
 .task-box {
@@ -42,11 +42,11 @@
     box-shadow: 2px 2px 19px #6D2E2E; -o-box-shadow: 2px 2px 19px #6D2E2E; -webkit-box-shadow: 2px 2px 19px #6D2E2E; -moz-box-shadow: 2px 2px 19px #6D2E2E; opacity:0.6; filter:alpha(opacity=60);
 }
 
-.prototype-box { position: relative; /* to be contained inside #toolbar */ display: inline-block; margin-right: 4px; vertical-align: top;} 
+.prototype-box { position: relative; /* to be contained inside #toolbar */ display: inline-block; margin-right: 4px; vertical-align: top; padding-bottom: 4px;} 
 .prototype-box.last { margin-right: 0px;} 
 
 .desc {display: table; word-wrap: break-word; width: 100%;}
-    .desc div{display:table-cell; vertical-align:middle; max-width:50px;}
+    .desc div{display:table-cell; vertical-align:middle; max-width:64px;}
 
 /* target endpoint during connection dragging */
 .active-target {

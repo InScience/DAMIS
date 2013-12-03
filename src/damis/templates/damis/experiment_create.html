@@ -15,29 +15,29 @@
                 {% include "damis/_experiment_form.html" %}
                 <div id="workflow-editor-container">
                     <div id="toolbox">
-                        <div id="tools-padding">
                             {% spaceless %}
                             {% for cat_name, algorithms in alg_categories %}
                                 <h3>{{ cat_name }}</h3>
-                                <div>
-                                {% for algorithm in algorithms %}
-                                    {% if forloop.counter|divisibleby:"3" %}
-			                           <div class="prototype-box last"><img
-                                           src="/static/img/algorithm-ico.png"
-                                           width="64px" height="64px" /><div
-                                               class="desc"><div>{{ algorithm.title }}</div></div></div>
-                                    {% else %}
-			                            <div class="prototype-box"><img
-                                            src="/static/img/algorithm-ico.png"
-                                            width="64px" height="64px" /><div
-                                                class="desc"><div>{{ algorithm.title }}</div></div></div>
-                                    {% endif %}
+                                <div style="padding: 0;">
+                                    <div class="tools-padding">
+                                    {% for algorithm in algorithms %}
+                                        {% if forloop.counter|divisibleby:"3" %}
+			                               <div class="prototype-box last"><img
+                                               src="/static/img/algorithm-ico.png"
+                                               width="64px" height="64px" /><div
+                                                   class="desc"><div>{{ algorithm.title }}</div></div></div>
+                                        {% else %}
+			                                <div class="prototype-box"><img
+                                                src="/static/img/algorithm-ico.png"
+                                                width="64px" height="64px" /><div
+                                                    class="desc"><div>{{ algorithm.title }}</div></div></div>
+                                        {% endif %}
 
-                                {% endfor %}
+                                    {% endfor %}
+                                    </div>
                                 </div>
                             {% endfor %}
                             {% endspaceless %}
-                        </div>
                     </div>
                     <div id="canvas">
                         <div id="flowchart-container" />
@@ -81,6 +81,9 @@
                 task: ".prototype-box",
                 data: ".prototype-data-box", 
                 canvas: "#flowchart-container"});
+            $("#toolbox").accordion({
+                heightStyle: "content",
+            });
         }); 
 
     </script>

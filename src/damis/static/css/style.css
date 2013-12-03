@@ -82,3 +82,8 @@ body {
 .attribution {
     text-align: center;
 }
+
+h3 {
+    font-size: 1em;
+    line-height: 2em;
+}
