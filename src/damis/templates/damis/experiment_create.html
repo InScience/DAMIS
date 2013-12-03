@@ -21,18 +21,14 @@
                                 <div style="padding: 0;">
                                     <div class="tools-padding">
                                     {% for algorithm in algorithms %}
-                                        {% if forloop.counter|divisibleby:"3" %}
-			                               <div class="prototype-box last"><img
-                                               src="/static/img/algorithm-ico.png"
-                                               width="64px" height="64px" /><div
-                                                   class="desc"><div>{{ algorithm.title }}</div></div></div>
-                                        {% else %}
-			                                <div class="prototype-box"><img
-                                                src="/static/img/algorithm-ico.png"
-                                                width="64px" height="64px" /><div
-                                                    class="desc"><div>{{ algorithm.title }}</div></div></div>
-                                        {% endif %}
-
+                                       <div class="prototype-box {% if forloop.counter|divisibleby:"3" %}last{% endif %}"><img
+                                           {% if algorithm.icon %}
+                                           src="{{ algorithm.icon.url }}"
+                                           {% else %}
+                                           src="/static/img/algorithm-ico.png"
+                                           {% endif %}
+                                           width="64px" height="64px" /><div
+                                               class="desc"><div>{{ algorithm.title }}</div></div></div>
                                     {% endfor %}
                                     </div>
                                 </div>
