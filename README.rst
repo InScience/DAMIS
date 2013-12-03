@@ -8,6 +8,7 @@ Programuotojams
 Aplinkos paruošimas::
     sudo apt-get install python-numpy python-scipy python-matplotlib ipython
     sudo apt-get install sshpass gettext python-setuptools python-pip
+    sudo apt-get install python-imaging
     sudo pip install ipdb
     sudo python ez_setup.py   # Jeigu pasenusi python-setuptools versija
     make
