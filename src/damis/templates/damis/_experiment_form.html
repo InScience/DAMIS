@@ -8,14 +8,16 @@
         </div>
     {% endif %}
 
-    {% for field in  experiment_form.visible_fields %}
-        {{ field.errors }}
-        <p>{{ field.label }}:<br/> {{ field }}</p>
-    {% endfor %}
-    {% for field in experiment_form.hidden_fields %}
-        {{ field.errors }}
-        {{ field }}
-    {% endfor %}
+    <div style="display:none;">
+      {% for field in  experiment_form.visible_fields %}
+          {{ field.errors }}
+          <p>{{ field.label }}:<br/> {{ field }}</p>
+      {% endfor %}
+      {% for field in experiment_form.hidden_fields %}
+          {{ field.errors }}
+          {{ field }}
+      {% endfor %}
+    </div>
 
     {{ task_formset.management_form }}
     <div style="display: none;">
