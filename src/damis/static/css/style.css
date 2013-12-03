@@ -87,3 +87,7 @@ h3 {
     font-size: 1em;
     line-height: 2em;
 }
+
+.row-fluid .span12 {
+    margin-left: 0;
+}

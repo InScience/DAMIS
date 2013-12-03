@@ -10,9 +10,6 @@
     <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" value="{% if experiment_form.title.value %}{{ experiment_form.title.value }}{% endif %}" style="margin-bottom:0"/>
     {{ experiment_form.skip_validation }}
     {{ experiment_form.workflow_state }}
-    <button class="btn" type="button" id="save-btn">{% trans "Save" %}</button>
-    <button class="btn btn-primary"
-            type="button" id="execute-btn">{% trans "Execute" %}</button>
     {{ task_formset.management_form }}
     <div style="display: none;">
         {% for task in task_formset.forms %}
