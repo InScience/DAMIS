@@ -1,6 +1,6 @@
 {% load i18n %}
 
 <ul class="nav nav-tabs" id="myTab2">
-    <li class="{% if active == 'experiment-new' %}active{% endif %}"><a href="{% url 'experiment-new' %}">{% trans "Experiment creation" %}</a></li>
+    <li class="{% if active == 'experiment-new' %}active{% endif %}"><a href="{% url 'experiment-new' %}">{% trans "Experiment editing" %}</a></li>
     <li class="{% if active == 'experiment-list' %}active{% endif %}"><a href="{% url 'experiment-list' %}">{% trans "Experiment history" %}</a></li>
 </ul>

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-03 12:25+0000\n"
+"POT-Creation-Date: 2013-12-03 17:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,10 +40,10 @@ msgstr "Privatūs"
 msgid "Open under http://opendatacommons.org/licenses/pddl/"
 msgstr "Atviri pagal http://opendatacommons.org/licenses/pddl/"
 
-#: forms.py:50 models.py:32 models.py:68
+#: forms.py:50 models.py:32 models.py:71
 #: templates/damis/_experiment_form.html:10
 #: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:22
-#: templates/damis/experiment_list.html:21
+#: templates/damis/experiment_list.html:18
 msgid "Title"
 msgstr "Pavadinimas"
 
@@ -64,67 +64,67 @@ msgstr "Aprašymas"
 msgid "Dataset License"
 msgstr "Duomenų licencija"
 
-#: models.py:36 models.py:69 models.py:105
+#: models.py:36 models.py:72 models.py:109
 msgid "User"
 msgstr "Naudotojas"
 
-#: models.py:37 models.py:73 templates/damis/dataset_detail.html:15
+#: models.py:37 models.py:76 templates/damis/dataset_detail.html:15
 msgid "Updated"
 msgstr "Atnaujinta"
 
-#: models.py:38 models.py:74 templates/damis/dataset_detail.html:16
+#: models.py:38 models.py:77 templates/damis/dataset_detail.html:16
 msgid "Created"
 msgstr "Sukurta"
 
-#: models.py:61
+#: models.py:64
 msgid "Upload data"
 msgstr "Duomenų įkėlimas"
 
-#: models.py:62
+#: models.py:65
 msgid "Preprocessing"
 msgstr "Pirminis apdorojimas"
 
-#: models.py:63
+#: models.py:66
 msgid "Statistical primitives"
 msgstr "Statistiniai primityvai"
 
-#: models.py:64
+#: models.py:67
 msgid "Dimensionality reduction"
 msgstr "Dimensiškumo mažinimas"
 
-#: models.py:65
+#: models.py:68
 msgid "Data mining"
 msgstr "Duomenų analizė"
 
-#: models.py:66
+#: models.py:69
 msgid "View results"
 msgstr "Rezultatų peržiūra"
 
-#: models.py:70
+#: models.py:73
 msgid "Category"
 msgstr "Kategorija"
 
-#: models.py:72
+#: models.py:75
 msgid "Executable"
 msgstr "Vykdomasis"
 
-#: models.py:83
+#: models.py:87
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:100
+#: models.py:104
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:101
+#: models.py:105
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:102
+#: models.py:106
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:103 templates/damis/experiment_list.html:22
+#: models.py:107 templates/damis/experiment_list.html:19
 msgid "Status"
 msgstr "Statusas"
 
@@ -143,6 +143,14 @@ msgstr "Išeities kodas"
 #: templates/base.html:76
 msgid "API"
 msgstr "API"
+
+#: templates/experiment_menu.html:4
+msgid "Experiment editor"
+msgstr "Eksperimento kūrimas"
+
+#: templates/experiment_menu.html:5
+msgid "Experiment history"
+msgstr "Eksperimentų istorija"
 
 #: templates/index.html:13
 msgid ""
@@ -176,9 +184,10 @@ msgstr ""
 msgid "Login"
 msgstr "Prisijungti"
 
-#: templates/menu.html:8
-msgid "Analysis"
-msgstr "Analizės"
+#: templates/menu.html:8 templates/damis/experiment_detail.html:9
+#: templates/damis/experiment_form.html:13
+msgid "Experiments"
+msgstr "Eksperimentai"
 
 #: templates/menu.html:9
 msgid "Datasets"
@@ -289,17 +298,8 @@ msgstr "ARFF"
 msgid "XML"
 msgstr "XML"
 
-#: templates/damis/experiment_create.html:13
-#: templates/damis/experiment_detail.html:9
-#: templates/damis/experiment_form.html:13
-#: templates/damis/experiment_list.html:13
-msgid "Experiments"
-msgstr "Eksperimentai"
-
-#: templates/damis/experiment_create.html:14
 #: templates/damis/experiment_detail.html:10
 #: templates/damis/experiment_form.html:14
-#: templates/damis/experiment_list.html:14
 msgid "New experiment"
 msgstr "Naujas eksperimentas"
 
@@ -332,9 +332,12 @@ msgstr "Užduotys"
 msgid "parameters"
 msgstr "Parametrai"
 
-#: templates/damis/experiment_list.html:23
+#: templates/damis/experiment_list.html:20
 msgid "Results"
 msgstr "Rezultatai"
+
+#~ msgid "Analysis"
+#~ msgstr "Analizės"
 
 #~ msgid "Dataset"
 #~ msgstr "Duomenys"
