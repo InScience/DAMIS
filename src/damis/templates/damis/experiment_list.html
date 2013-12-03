@@ -9,10 +9,7 @@
 {% block content %}
 <div class="span12">
 <div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs" id="myTab2">
-      <li class="active"><a href="{% url 'experiment-list' %}">{% trans "Experiments" %}</a></li>
-      <li><a href="{% url 'experiment-new' %}">{% trans "New experiment" %}</a></li>
-  </ul>
+  {% include 'experiment_menu.html' with active='experiment-list' %}
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
       <table class="table table-hover">

@@ -9,10 +9,7 @@
 {% block content %}
 <div class="span12">
     <div class="tabbable"> <!-- Only required for left/right tabs -->
-        <ul class="nav nav-tabs" id="myTab2">
-            <li><a href="{% url 'experiment-list' %}">{% trans "Experiments" %}</a></li>
-            <li class="active"><a href="{% url 'experiment-new' %}">{% trans "New experiment" %}</a></li>
-        </ul>
+        {% include 'experiment_menu.html' with active='experiment-new' %}
         <div class="tab-content">
             <div>
                 {% include "damis/_experiment_form.html" %}
