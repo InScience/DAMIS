@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-27 00:28+0000\n"
+"POT-Creation-Date: 2013-12-03 12:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,8 +40,8 @@ msgstr "Privatūs"
 msgid "Open under http://opendatacommons.org/licenses/pddl/"
 msgstr "Atviri pagal http://opendatacommons.org/licenses/pddl/"
 
-#: forms.py:50 models.py:32 models.py:60
-#: templates/damis/_experiment_form.html:5
+#: forms.py:50 models.py:32 models.py:68
+#: templates/damis/_experiment_form.html:10
 #: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:22
 #: templates/damis/experiment_list.html:21
 msgid "Title"
@@ -64,39 +64,67 @@ msgstr "Aprašymas"
 msgid "Dataset License"
 msgstr "Duomenų licencija"
 
-#: models.py:36 models.py:61 models.py:100
+#: models.py:36 models.py:69 models.py:105
 msgid "User"
 msgstr "Naudotojas"
 
-#: models.py:37 models.py:64 templates/damis/dataset_detail.html:15
+#: models.py:37 models.py:73 templates/damis/dataset_detail.html:15
 msgid "Updated"
 msgstr "Atnaujinta"
 
-#: models.py:38 models.py:65 templates/damis/dataset_detail.html:16
+#: models.py:38 models.py:74 templates/damis/dataset_detail.html:16
 msgid "Created"
 msgstr "Sukurta"
 
+#: models.py:61
+msgid "Upload data"
+msgstr "Duomenų įkėlimas"
+
+#: models.py:62
+msgid "Preprocessing"
+msgstr "Pirminis apdorojimas"
+
 #: models.py:63
+msgid "Statistical primitives"
+msgstr "Statistiniai primityvai"
+
+#: models.py:64
+msgid "Dimensionality reduction"
+msgstr "Dimensiškumo mažinimas"
+
+#: models.py:65
+msgid "Data mining"
+msgstr "Duomenų analizė"
+
+#: models.py:66
+msgid "View results"
+msgstr "Rezultatų peržiūra"
+
+#: models.py:70
+msgid "Category"
+msgstr "Kategorija"
+
+#: models.py:72
 msgid "Executable"
 msgstr "Vykdomasis"
 
-#: models.py:75
+#: models.py:83
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:95
+#: models.py:100
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:96
+#: models.py:101
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:97
+#: models.py:102
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:98 templates/damis/experiment_list.html:22
+#: models.py:103 templates/damis/experiment_list.html:22
 msgid "Status"
 msgstr "Statusas"
 
@@ -108,11 +136,11 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: templates/base.html:72
+#: templates/base.html:73
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:75
+#: templates/base.html:76
 msgid "API"
 msgstr "API"
 
@@ -168,13 +196,23 @@ msgstr "(Atsijungti)"
 msgid "Log in"
 msgstr "Prisijungti"
 
-#: templates/damis/_experiment_form.html:8
+#: templates/damis/_experiment_form.html:7
+msgid "Form contains errors"
+msgstr "Formoje yra klaidų"
+
+#: templates/damis/_experiment_form.html:13
+#: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
+#: templates/damis/obj_form.html:20
+msgid "Save"
+msgstr "Išsaugoti"
+
+#: templates/damis/_experiment_form.html:15
 #: templates/damis/experiment_detail.html:18
 #: templates/damis/experiment_form.html:43
 msgid "Execute"
 msgstr "Vykdyti"
 
-#: templates/damis/_experiment_form.html:12
+#: templates/damis/_experiment_form.html:19
 msgid "Task"
 msgstr "Užduotis"
 
@@ -191,11 +229,6 @@ msgstr "Algoritmai"
 #: templates/damis/algorithm_list.html:11
 msgid "Upload algorithm"
 msgstr "Įkelti algoritmą"
-
-#: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
-#: templates/damis/obj_form.html:20
-msgid "Save"
-msgstr "Išsaugoti"
 
 #: templates/damis/dataset_confirm_delete.html:13
 msgid "Are you sure you want to delete dataset"
@@ -295,16 +328,13 @@ msgid "Tasks"
 msgstr "Užduotys"
 
 #: templates/damis/experiment_form.html:24
-#: templates/dynamic/parameter_form.html:6
+#: templates/dynamic/parameter_form.html:4
 msgid "parameters"
 msgstr "Parametrai"
 
 #: templates/damis/experiment_list.html:23
 msgid "Results"
 msgstr "Rezultatai"
-
-#~ msgid "Form contains errors"
-#~ msgstr "Formoje yra klaidų"
 
 #~ msgid "Dataset"
 #~ msgstr "Duomenys"
