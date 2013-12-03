@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:32
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \class ShufleObjects
+    \brief A class of static methods for shuffling the DataObjects in ObjectMatrix.
+ */
 #include "ShufleObjects.h"
 #include "DataObject.h"
 #include "Statistics.h"

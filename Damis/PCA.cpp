@@ -5,6 +5,10 @@
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
 
+/*! \class PCA
+    \brief A class of methods and attributes for PCA algorithm.
+ */
+
 #include "PCA.h"
 #include "Statistics.h"
 #include "alglib/dataanalysis.h"
@@ -17,19 +21,12 @@ PCA::~PCA(){
 
 }
 
-/**
- * Constructor that sets desired projection d
- */
 PCA::PCA(int dim){
     setProjectionDimension(dim);
     initializeProjectionMatrix();
     ProjectXMatrix();
 }
 
-/**
- * Overloaded constructor when the part of retaining dispersion is passed to PCA
- * object
- */
 PCA::PCA(double disp){
     dispPart = disp;
     int n = X.getObjectCount();
@@ -61,10 +58,6 @@ PCA::PCA(double disp){
     } 
 }
 
-/**
- * Overloaded constructor when the object matrix and the part of retaining dispersion is passed to PCA
- * object
- */
 PCA::PCA(ObjectMatrix Xmatrix, double disp){
     X = Xmatrix;
     dispPart = disp;
@@ -97,10 +90,6 @@ PCA::PCA(ObjectMatrix Xmatrix, double disp){
     } 
 }
 
-/**
- * Overloaded constructor that accept object matrix that must be projected to d
- * dimension
- */
 PCA::PCA(ObjectMatrix objMatrix, int dim){ 
     setProjectionDimension(dim);
     X = objMatrix;
@@ -108,17 +97,11 @@ PCA::PCA(ObjectMatrix objMatrix, int dim){
     ProjectXMatrix();
 }
 
-/**
- * Returns the projection matrix
- */
 ObjectMatrix PCA::getProjection(){
     
     return Y; 
 }
 
-/**
- * Converts data object to datatype required by external method
- */
 void PCA::toDataType(){
     int m = X.getObjectCount();
     int n = X.getObjectAt(0).getFeatureCount();
@@ -129,9 +112,6 @@ void PCA::toDataType(){
             alglibX(i,j) = X.getObjectAt(i).getFeatureAt(j);
 }
 
-/**
- * Calculates the projection matrix
- */
 void PCA::ProjectXMatrix()
 {
     PCA::toDataType();
@@ -166,9 +146,6 @@ void PCA::ProjectXMatrix()
     }
 }
 
-/**
- * Converts to ObjectMatrix result that is provided by external library.
- */
 void PCA::fromDataType(){
     int m = X.getObjectCount();
     int n = X.getObjectAt(0).getFeatureCount();
@@ -179,25 +156,16 @@ void PCA::fromDataType(){
 
 }
 
-/**
- * Returns the dimension of the projection matrix
- */
 int PCA::getDimension()
 {
     return d;
 }
 
-/**
- * Returns the dispersion part of eigenvalues of projection matrix
- */
 double PCA::getDispersionPart()
 {
     return dispPart;
 }
 
-/**
- * Returns the eigenvalues of the projection matrix
- */
 alglib::real_1d_array PCA::getEigenValues()
 {
     return eigValues;

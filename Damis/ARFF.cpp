@@ -66,7 +66,7 @@ ARFF::ARFF(const char* path){
                 }
                 else
                 {
-                    tmp = AdditionalMethods::split(line_from_file, ' ');
+                    tmp = AdditionalMethods::split(line_from_file, ',');
                     if (tmp.size() != attributes.size())
                     {
                         readSuccess = false;

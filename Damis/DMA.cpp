@@ -10,6 +10,13 @@
 #include "ShufleObjects.h"
 #include <float.h>
 #include <fstream>
+#include "DistanceMetrics.h"
+#include "DistanceMetricsEnum.h"
+#include <cmath>
+
+/*! \class DMA
+    \brief A class of methods and attributes for DMA algorithm.
+ */
 
 DMA::DMA(){
 
@@ -19,36 +26,24 @@ DMA::~DMA(){
 
 }
 
-/**
- * Constructor for DMA object. Input: epsilon, no. of iterations, dimension, no. of neighbors
- */
 DMA::DMA(double eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
     initializeProjectionMatrix();
 }
 
-/**
- * Overloaded constructor for DMA object. Input: epsilon, no. of iterations, dimension, no. of neighbors, initial object matrix
- */
 DMA::DMA(double eps, int maxIter, int d, int neighbours, ObjectMatrix x):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
     X = x;
     initializeProjectionMatrix();
 }
 
-/**
- * Returns neighbors quantity
- */
 int DMA::getNeighbours(){
     return neighbourNumber;
 }
 
-/**
- * Pure virtual method that calculates the projection
- */
 ObjectMatrix DMA::getProjection(){
     stressErrors.reserve(maxIteration);
-    int m = X.getObjectCount();
+    m = X.getObjectCount();
     int iteration = 0;
     stressErrors.push_back(getStress());
     double Epsilon = DBL_MAX;
@@ -56,16 +51,11 @@ ObjectMatrix DMA::getProjection(){
     ObjectMatrix Y_new(m);
     ObjectMatrix gutman;      
     Y_new = Y;
-    getV();
-    
-    while (iteration < maxIteration) // && Epsilon > epsilon)
+
+    while (iteration < maxIteration && Epsilon > epsilon)
     {
         shuffle();
-        gutman = getGutman();
-
-        for (int i = 0; i < m; i++)
-            for (int j = 0; j < m; j++)
-                gutman.updateDataObject(i, j, gutman.getObjectAt(i).getFeatureAt(j) - vMatrix.getObjectAt(i).getFeatureAt(j));
+        gutman = getGutman(neighbourNumber);
 
         for (int i = 0; i < m; i++)
         {            
@@ -75,7 +65,7 @@ ObjectMatrix DMA::getProjection(){
                 for (int k = (i - neighbourNumber); k <= (i + neighbourNumber); k++)
                     if (k >= 0 && k < m)
                         sum += gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
-                Y_new.updateDataObject(i, j, Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / vMatrix.getObjectAt(i).getFeatureAt(i));
+                Y_new.updateDataObject(i, j, Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / getV(i));
             }
         }
         Y = Y_new;
@@ -86,45 +76,17 @@ ObjectMatrix DMA::getProjection(){
     return  Y;
 }
 
-/**
- * Calculates V matrix
- */
-void DMA::getV(){   
-    int m = X.getObjectCount();
-    vMatrix = ObjectMatrix(m); 
-    std::vector<double> vMatrixObject;
-    vMatrixObject.reserve(m);
-            
-    for (int i = 0; i < m; i++)
-    {
-        for (int j = 0; j < m; j++)
-            vMatrixObject.push_back(0.0);
-        vMatrix.addObject(DataObject(vMatrixObject));    
-        vMatrixObject.clear();
-    }
-    
-    for (int i = 0; i < m; i++)
-    {
-        for (int k = (i - neighbourNumber); k <= (i + neighbourNumber); k++)
-        {
-            if (k >= 0 && k < m)
-            {
-                if (k != i)
-                    vMatrix.updateDataObject(i, k, -1.0);
-                else if (i <= neighbourNumber)
-                    vMatrix.updateDataObject(i, i, neighbourNumber + i);
-                else if (i >= (m - neighbourNumber))
-                    vMatrix.updateDataObject(i, i, 2 * neighbourNumber - (neighbourNumber + 1 - (m - i)));
-                else
-                    vMatrix.updateDataObject(i, i, 2 * neighbourNumber);
-            }
-        }
-    }
+int DMA::getV(int i)
+{
+    int k1 = i - neighbourNumber;
+    int k2 = i + neighbourNumber;
+    if (k1 < 0)
+        k1 = 0;
+    if (k2 >= m)
+        k2 = m - 1;
+    return k2 - k1;
 }
 
-/**
- * Sets neighbors quantity
- */
 void DMA::setNeighbours(int neighbours){
     neighbourNumber = neighbours;
 }
@@ -151,4 +113,25 @@ void DMA::shuffle()
         Yshuffled.addObject(Y.getObjectAt(j));
     }
     Y = Yshuffled;
+    
+}
+
+double DMA::getStress(){
+    double sum1 = 0.0, sum2 = 0.0, stress = 0.0;
+    int m = X.getObjectCount();
+    double distX = 0.0;
+    double distY = 0.0;
+    
+    for (int i = 0; i < m - 1; i++)
+    {
+        for (int j = i + 1; j < m; j++)
+        {
+            distX = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+            distY = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+            sum1 += std::pow(distX - distY, 2);
+            sum2 += std::pow(distX, 2);
+        }
+    }
+    stress = std::sqrt(sum1 / sum2);
+    return stress;
 }

@@ -4,7 +4,9 @@
  *
  * Created on September 1, 2013, 11:15 PM
  */
-
+/*! \file DistanceMetrics class
+    \brief A class of static methods for calculating distance between DataObjects.
+ */
 #ifndef DISTANCEMETRICS_H
 #define	DISTANCEMETRICS_H
 

@@ -109,7 +109,7 @@ int main(int argc, char** argv) {
     SAMANN smnn(mTrain, nNeurons, eta, iter);
     SDS sds_disp(epsilon, iter, d, DISPERSION, 50, EUCLIDEAN);
     SDS sds_pca(epsilon, iter, d, PCA, 50, EUCLIDEAN);
-    SMACOF smcf(epsilon, iter, d);
+    SMACOF::SMACOF smcf(epsilon, iter, d);
     SMACOFZEIDEL smcfz_dsc(epsilon, iter, d, BUBLESORTDSC);
     SMACOFZEIDEL smcfz_asc(epsilon, iter, d, BUBLESORTASC);
     SMACOFZEIDEL smcfz_rndm(epsilon, iter, d, RANDOM);
@@ -233,7 +233,7 @@ int main(int argc, char** argv) {
     TestMethodConvergence(smcfz_dsc.getStressErrors(), "SMACOFZEIDEL_desc");
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (SMACOFZEIDEL) (methodsTest)" << std::endl;
     /*
-    smcfz_dsc = SMACOFZEIDEL (epsilon, 1, d, BUBLESORTDSC, X, 1);
+    smcfz_dsc = SMACOFZEIDEL (X, epsilon, 1, d, BUBLESORTDSC);
     Y = smcfz_dsc.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Descending) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(X, Y, d, "SMACOFZEIDEL_desc");
@@ -252,7 +252,7 @@ int main(int argc, char** argv) {
     TestMethodConvergence(smcfz_asc.getStressErrors(), "SMACOFZEIDEL_asc");
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (SMACOFZEIDEL) (methodsTest)" << std::endl;
     /*
-    smcfz_asc = SMACOFZEIDEL (epsilon, 1, d, BUBLESORTASC, X, 1);
+    smcfz_asc = SMACOFZEIDEL (X, epsilon, 1, d, BUBLESORTASC);
     Y = smcfz_asc.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Ascending) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(X, Y, d, "SMACOFZEIDEL_asc");
@@ -271,7 +271,7 @@ int main(int argc, char** argv) {
     TestMethodConvergence(smcfz_rndm.getStressErrors(), "SMACOFZEIDEL_rand");
     std::cout << "%TEST_FINISHED% time=0 TestMethodConvergence (SMACOFZEIDEL) (methodsTest)" << std::endl;
     /*
-    smcfz_rndm = SMACOFZEIDEL (epsilon, 1, d, RANDOM, X, 1);
+    smcfz_rndm = SMACOFZEIDEL (X, epsilon, 1, d, RANDOM);
     Y = smcfz_rndm.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (SMACOFZEIDEL -> Random) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(X, Y, d, "SMACOFZEIDEL_rand");

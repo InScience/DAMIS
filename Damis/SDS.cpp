@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:32
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \class SDS
+    \brief A class of methods and attributes for SDS algorithm.
+ */
 #include "SDS.h"
 #include "ShufleObjects.h"
 #include "Projection.h"
@@ -18,6 +20,9 @@
 #include <fstream>
 #include <cmath>
 
+/** \class StaticData
+ *  \brief A class of static attributes for passing data to alglib's static method.
+ */
 class StaticData {
 public:
     static ObjectMatrix X_base;
@@ -37,9 +42,6 @@ SDS::~SDS(){
 
 }
 
-/**
- * Constructor
- */
 SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInitt, int nofBaseVect, DistanceMetricsEnum distMetrics){
     epsilon = eps;
     maxIteration = maxIter;
@@ -49,10 +51,6 @@ SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInitt, int nof
     distMethod = distMetrics;
 }
 
-
-/**
- * Pure virtual method that calculates the projection
- */
 ObjectMatrix SDS::getProjection(){
     int m = X.getObjectCount();
     int step = 0, rest = 0;
@@ -119,9 +117,6 @@ ObjectMatrix SDS::getProjection(){
     return  Y;
 }
 
-/**
- * Computes Quasi Newton in external method library
- */
 void SDS::getQN(){
     int m = Y_new.getObjectCount();
     alglib::minlbfgsstate state;
@@ -132,11 +127,6 @@ void SDS::getQN(){
     alglib::ae_int_t maxits = maxIteration;
     alglib::real_1d_array Ynew;
     Ynew = AdditionalMethods::ObjectMatrixTo1DArray(Y_new);
-      
-    //X_new.saveDataMatrix("xnew.arff");
-    //X_base.saveDataMatrix("xbase.arff");
-    //Y_base.saveDataMatrix("ybase.arff");
-    //Y_new.saveDataMatrix("ynew.arff");
     
     alglib::minlbfgscreate(m, Ynew, state);
     alglib::minlbfgssetcond(state, epsg, epsf, epsx, maxits);
@@ -146,9 +136,6 @@ void SDS::getQN(){
     Y_new = AdditionalMethods::alglib1DArrayToObjectMatrix(Ynew, d);
 }
 
-/**
- * Computes MDS stress function
- */
 double SDS::getStress(){
     int m = X.getObjectCount();
     double dist1 = 0.0, dist2 = 0.0; 
@@ -176,12 +163,6 @@ double SDS::getStress(){
 void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d_array &grad, void *ptr)
 {
     double f1 = 0.0, f2 = 0.0, distX = 0.0, distY = 0.0;
-    //ObjectMatrix Xnew("xnew.arff");
-    //Xnew.loadDataMatrix();
-    //ObjectMatrix Xbase("xbase.arff");
-    //Xbase.loadDataMatrix();
-    //ObjectMatrix Ybase("ybase.arff");
-    //Ybase.loadDataMatrix();
     int d = StaticData::Y_base.getObjectAt(0).getFeatureCount();
     int sm = StaticData::X_new.getObjectCount();
     int nb = StaticData::X_base.getObjectCount();

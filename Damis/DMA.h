@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:30
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \file DMA class
+    \brief A class of methods and attributes for DMA algorithm.
+ */
 #if !defined(EA_3155AA55_4FD7_44fa_8149_A99119949EDB__INCLUDED_)
 #define EA_3155AA55_4FD7_44fa_8149_A99119949EDB__INCLUDED_
 
@@ -38,30 +40,34 @@ public:
          *  \param neighbours - the number of neighbours.
         */ 
 	void setNeighbours(int neighbours);
-
-//protected:
         /** \fn virtual ObjectMatrix getProjection();
          *  \brief Returns the projection Y of matrix X.
          *  \return ObjectMatrix - an object of projected matrix.
          */
 	virtual ObjectMatrix getProjection();
-
+        /** \fn virtual double getStress();
+         *  \brief Returns the stress error value.
+         *  \return error - The stress error value.
+         */
+        virtual double getStress();
 private:
         /** \var int neighbourNumber;
          *  \brief A number of neighbours.
          */
 	int neighbourNumber;
-        /** \var ObjectMatrix vMatrix;
-         *  \brief An object of matrix V.
-         */
-	ObjectMatrix vMatrix;
-        /** \fn getV();
-         *  \brief Initializes and calculates the matrix V.
-         */
-	void getV();
         /** \fn void shuffle();
          *  \brief Shuffles the initial matrix X and projection matrix Y.
          */
         void shuffle();
+        /** \fn int getV(int i);
+         *  \brief Calculates the number of neighbours around a point [i][i].
+         *  \param i - The diagonal point index.
+         *  \return neighbours - The number of neighbours.
+         */
+        int getV(int i);
+        /** \var int m;
+         *  \brief The number of DataObjects in matrix X.
+         */
+        int m;
 };
 #endif // !defined(EA_3155AA55_4FD7_44fa_8149_A99119949EDB__INCLUDED_)

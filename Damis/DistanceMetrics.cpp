@@ -1,8 +1,13 @@
+/*! \class DistanceMetrics
+    \brief A class of static methods for calculating distance between DataObjects.
+ */
 #include <cstdlib>
 
 #include "DistanceMetrics.h"
 #include "DistanceMetricsEnum.h"
 #include <cmath>
+
+
 
 double DistanceMetrics::getDistance(DataObject obj1, DataObject obj2, DistanceMetricsEnum dme){
     double to_return = 0.0;

@@ -4,7 +4,9 @@
  *
  * Created on October 24, 2013, 12:12 PM
  */
-
+/*! \file AdditionalMethods class
+    \brief A class of static methods for data conversion and static members.
+ */
 #ifndef ADDITIONALMETHODS_H
 #define	ADDITIONALMETHODS_H
 

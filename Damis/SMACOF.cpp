@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:32
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \class SMACOF
+    \brief A class of methods and attributes for SMACOF algorithm.
+ */
 #include "SMACOF.h"
 #include "ShufleObjects.h"
 #include <string>
@@ -21,32 +23,23 @@ SMACOF::~SMACOF(){
 
 }
 
-/**
- * Constructor for SMACOF object
- */
 SMACOF::SMACOF(double eps, int maxIter, int d):MDS(eps, maxIter, d){
     initializeProjectionMatrix();
 }
 
-/**
- * Constructor called from SMACOF class
- */
 SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix X_base, ObjectMatrix Y_base):MDS(eps, maxIter, d){
     X = X_base;
     Y = Y_base;
 }
 
-SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix initialY):MDS(eps, maxIter, d){
+SMACOF::SMACOF(ObjectMatrix initialY, double eps, int maxIter, int d):MDS(eps, maxIter, d){
     Y = initialY;
 }
 
-SMACOF::SMACOF(ObjectMatrix largeX, double eps, int maxIter, int d):MDS(largeX, eps, maxIter, d){
+SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix initialX):MDS(eps, maxIter, d, initialX){
     initializeProjectionMatrix();
 }
 
-/**
- * Pure virtual method that calculates the projection
- */
 ObjectMatrix SMACOF::getProjection(){
     stressErrors.reserve(maxIteration);
     int iteration = 0;

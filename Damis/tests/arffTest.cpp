@@ -20,7 +20,7 @@ void ReadCorrectFile(ARFF file) {
     
     std::cout<<"-- Testing the read of existing correctly formated data file --"<< std::endl;
     
-    if (file.isCorrectlyFormated() == true)
+    if (file.isSuccessfullyRead() == true)
         std::cout << "Test passed." << std::endl;
     else
         std::cout << "%TEST_FAILED% time=0 testname=ReadCorrectFile (arffTest) message=Test Failed." << std::endl;
@@ -29,7 +29,7 @@ void ReadCorrectFile(ARFF file) {
 void ReadUncorrectFile(ARFF file) {
     std::cout<<"-- Testing the read of existing uncorrectly formated data file --"<< std::endl;
     
-    if (file.isCorrectlyFormated() == false)
+    if (file.isSuccessfullyRead() == false)
         std::cout << "Test passed." << std::endl;
     else
         std::cout << "%TEST_FAILED% time=0 testname=ReadUncorrectFile (arffTest) message=Test Failed." << std::endl;
@@ -37,7 +37,7 @@ void ReadUncorrectFile(ARFF file) {
 
 void ReadNonExistingFile(ARFF file) {
     std::cout<<"-- Testing the case of trying to read the non existing file --"<<std::endl;
-    if (file.isCorrectlyFormated() == false)
+    if (file.isSuccessfullyRead() == false)
         std::cout << "Test passed." << std::endl;
     else
         std::cout << "%TEST_FAILED% time=0 testname=ReadNonExistingFile (arffTest) message=Test Failed." << std::endl;
@@ -45,7 +45,7 @@ void ReadNonExistingFile(ARFF file) {
 
 void ReadLargeFile(ARFF file) {
     std::cout<<"-- Testing the capability to read large file --"<<std::endl;
-    if (file.isCorrectlyFormated() == true)
+    if (file.isSuccessfullyRead() == true)
         std::cout << "Test passed." << std::endl;
     else
         std::cout << "%TEST_FAILED% time=0 testname=ReadLargeFile (arffTest) message=Test Failed." << std::endl;
@@ -53,7 +53,7 @@ void ReadLargeFile(ARFF file) {
 
 void ReadMediumLargeFile(ARFF file) {
     std::cout<<"-- Testing the capability to read medium large file --"<<std::endl;
-    if (file.isCorrectlyFormated() == 1)
+    if (file.isSuccessfullyRead() == true)
         std::cout << "Test passed." << std::endl;
     else
         std::cout << "%TEST_FAILED% time=0 testname=ReadMediumLargeFile (arffTest) message=Test Failed." << std::endl;
@@ -61,7 +61,7 @@ void ReadMediumLargeFile(ARFF file) {
 
 void ReadVeryLargeFile(ARFF file) {
     std::cout<<"-- Testing the capability to read very large file --"<<std::endl;
-    if (file.isCorrectlyFormated() == true)
+    if (file.isSuccessfullyRead() == true)
         std::cout << "Test passed." << std::endl;
     else
         std::cout << "%TEST_FAILED% time=0 testname=ReadVeryLargeFile (arffTest) message=Test Failed." << std::endl;
@@ -71,7 +71,7 @@ void WriteObjectMatrixToARFF(ObjectMatrix X) {
     std::cout << "-- Testing write data to arff file --" << std::endl;
     X.saveDataMatrix("arff_files/test.arff");
     ARFF arff("arff_files/test.arff");
-    if (arff.isCorrectlyFormated() == true)
+    if (arff.isSuccessfullyRead() == true)
         std::cout << "Test passed." << std::endl;
     else
         std::cout << "%TEST_FAILED% time=0 testname=WriteObjectMatrixToARFF (arffTest) message=Test Failed." << std::endl;

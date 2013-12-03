@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:32
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \class SMACOFZEIDEL
+    \brief A class of methods and attributes for SMACOFZEIDEL algorithm.
+ */
 #include "SMACOFZEIDEL.h"
 #include "ShufleObjects.h"
 #include <float.h>
@@ -18,28 +20,22 @@ SMACOFZEIDEL::~SMACOFZEIDEL(){
 
 }
 
-/**
- * Constructor of the class
- */
-SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d){
+SMACOFZEIDEL::SMACOFZEIDEL(double eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d){
     shufleEnum = shEnum;
     initializeProjectionMatrix();
 }
 
-SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix initProjection):SMACOF(eps, maxIter, d)
+SMACOFZEIDEL::SMACOFZEIDEL(ObjectMatrix initProjection, double eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d)
 {
     shufleEnum = shEnum;
     Y = initProjection;
 }
 
-SMACOFZEIDEL::SMACOFZEIDEL(float eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix largeX, int betkas):SMACOF(eps, maxIter, d, largeX, betkas)
+SMACOFZEIDEL::SMACOFZEIDEL(double eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix initialX):SMACOF(eps, maxIter, d, initialX)
 {
     shufleEnum = shEnum;
 }
 
-/**
- * Our virtual method that calculates the projection
- */
 ObjectMatrix SMACOFZEIDEL::getProjection(){
 
     stressErrors.reserve(maxIteration);
@@ -85,4 +81,3 @@ double SMACOFZEIDEL::getStress()
 {
     return MDS::getStress();
 }
-

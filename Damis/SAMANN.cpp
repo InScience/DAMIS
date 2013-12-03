@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:31
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \class SAMANN
+    \brief A class of methods and attributes for SAMANN algorithm.
+ */
 #include "SAMANN.h"
 #include "Statistics.h"
 #include "DistanceMetrics.h"
@@ -22,10 +24,6 @@ SAMANN::~SAMANN(){
 
 }
 
-/**
- * Constructor that takes, no of learning elements, no of neurons in hidden layer,
- * learning speed value, and number of max training iterations.
- */
 SAMANN::SAMANN(int m1, int nl, double e, int maxIter){
     mTrain = m1;
     nNeurons = nl;
@@ -36,9 +34,6 @@ SAMANN::SAMANN(int m1, int nl, double e, int maxIter){
     stressErrors.reserve(maxIter);
 }
 
-/**
- * Calculates Lambda value for SAMAN projection
- */
 double SAMANN::getLambda(){
 
     double temp = 0.0;
@@ -51,10 +46,6 @@ double SAMANN::getLambda(){
     return 1.0 / temp;
 }
 
-
-/**
- * Pure virtual method that calculates the projection
- */
 ObjectMatrix SAMANN::getProjection(){
 
     int n = X.getObjectAt(0).getFeatureCount();
@@ -66,18 +57,10 @@ ObjectMatrix SAMANN::getProjection(){
     initializeWeights();   // w1, w2
     initializeExitMatrixes();   // Y_pasl, Y_is
     initializeDeltaL();   // delta_L
-    std::ofstream file ("debug.txt");
         
     NormalizeX(); 
     
-    //for (int i = 0; i < m; i++)
-    //    X.updateDataObject(i, 0, 1.0);
-    
-    //getXp();
-    //addObjectOfOnes();
-    
     lambda = getLambda();
-    file << lambda << std::endl;
     for (int i = 0; i < mTrain + 1; i++)
     {
         for (int j = 0; j < d + 1; j++)
@@ -209,7 +192,6 @@ ObjectMatrix SAMANN::getProjection(){
         stressErrors.push_back(getStress());
     }  // iteraciju pabaiga
     
-    file.close();
     for (int miu = 1; miu < m + 1; miu++)
     {
         for (int j = 1; j < nNeurons + 1; j++)
@@ -227,7 +209,19 @@ ObjectMatrix SAMANN::getProjection(){
             Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
         }
     }
-        
+    /*
+    Y = ObjectMatrix(m);
+    std::vector<double> Yrow;
+    Yrow.reserve(d);
+    for (int i = 1; i < m + 1; i++)
+    {
+        for (int j = 1; j <= d; j++)
+            Yrow.push_back(Y_is.getObjectAt(i).getFeatureAt(j));
+        Y.addObject(DataObject(Yrow));
+        Yrow.clear();
+    }
+    return Y;
+     */
     return  Y_is;
 }
 
@@ -235,12 +229,7 @@ double SAMANN::getMax()
 {
     int m = X.getObjectCount();
     double max = DBL_MIN, dist;
-    /*
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < m; j++)
-            if (max < X.getObjectAt(i).getFeatureAt(j))
-                max = X.getObjectAt(i).getFeatureAt(j);
-       */ 
+
     for (int i = 0; i < m - 1; i++)
     {
         for (int j = i + 1; j < m; j++)
@@ -249,8 +238,7 @@ double SAMANN::getMax()
             if (dist > max)
                 max = dist;
         }
-    }
-    
+    }    
     return max; 
 }
 
@@ -282,8 +270,6 @@ void SAMANN::NormalizeX()
     X = Xtmp;
 }
 
-
-
 void SAMANN::getXp()
 {
     int m = X.getObjectCount(), i = 0, k = 0, index = 0;
@@ -310,8 +296,7 @@ void SAMANN::getXp()
             Xp.addObject(dObject);
             i++;
         }
-    }
-    
+    }    
 }
 
 bool SAMANN::isIdentical(DataObject obj)
@@ -336,47 +321,23 @@ bool SAMANN::isIdentical(DataObject obj)
     return ats;
 }
 
-/**
- * calculates SAMAN stress
- */
 double SAMANN::getStress(){
     double tarp1 = 0.0, tarp2 = 0.0, distX, distY;
     int m = X.getObjectCount();
+    
     for (int miu = 1; miu < m - 1; miu++)
     {
         for (int niu = miu + 1; niu < m; niu++)
         {
             distX = DistanceMetrics::getDistance(X.getObjectAt(miu), X.getObjectAt(niu), EUCLIDEAN);
             distY = DistanceMetrics::getDistance(Y_is.getObjectAt(miu), Y_is.getObjectAt(niu), EUCLIDEAN);
-            tarp1 += 1 / distX;
+            tarp1 += distX;
+            if (distX == 0)
+                distX = 0.000001;
             tarp2 += pow(distX - distY, 2) / distX;
         }
     }
-    return tarp1 * tarp2;
-}
-
-
-/**
- * Function forms set of training objects (uses Preprocess class function)
- */
-void SAMANN::getTrainingSet(){
-
-}
-
-
-/**
- * Public function trains SAMAN network
- */
-void SAMANN::train(){
-
-}
-
-
-/**
- * Function updates last and hidden layer neuron weights
- */
-void SAMANN::updateWeights(){
-
+    return (1.0 / tarp1) * tarp2;
 }
 
 void SAMANN::initializeWeights()
@@ -441,36 +402,6 @@ void SAMANN::initializeDeltaL()
         delta_L.addObject(DataObject(deltaLRow));        
         deltaLRow.clear();
     }   
-}
-
-void SAMANN::addObjectOfOnes()
-{
-    int m = X.getObjectCount();
-    int n = X.getObjectAt(0).getFeatureCount();
-    ObjectMatrix Xtmp(m + 1);
-    std::vector<double> XtmpObject;
-    XtmpObject.reserve(n);
-    for (int i = 0; i < n; i++)
-        XtmpObject.push_back(1.0);
-    Xtmp.addObject(DataObject(XtmpObject));
-    XtmpObject.clear();
-
-    for (int i = 0; i < m; i++)
-        Xtmp.addObject(X.getObjectAt(i));    
-    X = Xtmp;
-    /*
-    m = Xp.getObjectCount();
-    n = Xp.getObjectAt(0).getFeatureCount();
-    
-    XtmpObject.reserve(n);
-    for (int i = 0; i < n; i++)
-        XtmpObject.push_back(1.0);
-    Xtmp = ObjectMatrix(m + 1);
-    Xtmp.addObject(DataObject(XtmpObject));
-    for (int i = 0; i < m; i++)
-        Xtmp.addObject(Xp.getObjectAt(i));    
-    Xp = Xtmp;
-    */
 }
 
 std::vector<double> SAMANN::getStressErrors()

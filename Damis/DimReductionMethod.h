@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:29
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \file DimReductionMethod class
+    \brief A class of methods and attributes for initialization of projection matrix.
+ */
 #if !defined(EA_DC369997_8613_4bb3_AA07_8B266375AA92__INCLUDED_)
 #define EA_DC369997_8613_4bb3_AA07_8B266375AA92__INCLUDED_
 

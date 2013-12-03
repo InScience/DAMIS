@@ -5,6 +5,10 @@
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
 
+/** \class DataMatrix
+ *  \brief A class of pure virtual methods for manipulating the Objectmatrix.
+ */
+
 #if !defined(EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_)
 #define EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_
 

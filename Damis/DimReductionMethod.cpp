@@ -5,6 +5,10 @@
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
 
+/*! \class DimReductionMethod
+    \brief A class of methods and attributes for initialization of projection matrix.
+ */
+
 #include "DimReductionMethod.h"
 #include "PCA.h"
 #include "Statistics.h"
@@ -18,16 +22,10 @@ DimReductionMethod::~DimReductionMethod(){
 
 }
 
-/**
- * Returns d
- */
 int DimReductionMethod::getProjectionDimension(){
 	return d;
 }
 
-/**
- * Initializes Y matrix acording to dimension d and fills it with data.
- */
 void DimReductionMethod::initializeProjectionMatrix(){
     int n = X.getObjectCount();
     Y = ObjectMatrix(n);
@@ -47,14 +45,10 @@ void DimReductionMethod::initializeProjectionMatrix(){
     }
 }
 
-/**
- * Sets the desired projection dimension
- */
 void DimReductionMethod::setProjectionDimension(int dimension){
     d = dimension;
 }
 
-ObjectMatrix DimReductionMethod::getProjection()
-{
+ObjectMatrix DimReductionMethod::getProjection(){
     return Y;
 }

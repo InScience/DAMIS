@@ -5,6 +5,9 @@
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
 
+/*! \class ObjectMatrix
+    \brief A class of methods and attributes for manipulating matrices.
+ */
 #include "ObjectMatrix.h"
 #include <vector>
 #include "ARFF.h"
@@ -15,28 +18,18 @@ ObjectMatrix::ObjectMatrix(){
 }
 
 ObjectMatrix::~ObjectMatrix(){
-    //DataObjects.clear();
 }
 
-/**
- * Constructor that reads object matrix from arff file
- */
 ObjectMatrix::ObjectMatrix(std::string file){
     fileName = file;
     objectCount = 0;
 }
 
-/**
- * Constructor that creates ObjectMAtrix for n objects
- */
 ObjectMatrix::ObjectMatrix(int count){
     DataObjects.reserve(count);
     objectCount = 0;
 }
 
-/**
- * Constructor that creates ObjectMAtrix for n objects, and m features
- */
 ObjectMatrix::ObjectMatrix(int n, int m){
     DataObjects.reserve(n);
     for (int i = 0; i < n; i++)
@@ -44,10 +37,6 @@ ObjectMatrix::ObjectMatrix(int n, int m){
     objectCount = 0;
 }
 
-/**
- * Constructor that creates m by n matrix that holds k features i.e. cube. Needed
- * by SOM algorithm.
- */
 ObjectMatrix::ObjectMatrix(int m, int n, int k){
     std::vector<double> initialFeatures;
     initialFeatures.resize(k, 1.0);
@@ -56,9 +45,6 @@ ObjectMatrix::ObjectMatrix(int m, int n, int k){
     objectCount = 0;
 }
 
-/**
- * Adds data object to ObjectMatrix
- */
 void ObjectMatrix::addObject(DataObject object){
     DataObjects.push_back(object);
     objectCount = DataObjects.size();
@@ -79,9 +65,6 @@ void ObjectMatrix::updateDataObject(int rowIndex, int colIndex, int featureIndex
     this->DataObjects2D[rowIndex].at(colIndex).updateFeature(featureIndex, newValue);
 }
 
-/**
- * Gets object at position
- */
 DataObject ObjectMatrix::getObjectAt(int index){
     return  DataObjects.at(index);
 }
@@ -90,9 +73,6 @@ DataObject ObjectMatrix::getObjectAt(int row_index, int col_index){
     return  DataObjects2D[row_index].at(col_index);
 }
 
-/**
- * Gets object count
- */
 int ObjectMatrix::getObjectCount(){
     return objectCount;
 }
@@ -101,9 +81,6 @@ std::vector<std::string> ObjectMatrix::getFeaturesTitle(){
     return featureTitles;
 }
 
-/**
- * Loads (deserializes) object matrix (reads arff file into an OdjectMatrix object)
- */
 void ObjectMatrix::loadDataMatrix(){
     const char* path = fileName.c_str();
     ARFF file(path);

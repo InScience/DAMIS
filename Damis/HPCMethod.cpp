@@ -5,6 +5,11 @@
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
 
+/*! \class HPCMethod
+ *   \brief Abstract class that aggregates ObjectMatrix X and ability to send  SOAP message
+ * with data about stress error value and method computation time.
+ */
+
 #include "HPCMethod.h"
 
 
@@ -19,10 +24,6 @@ HPCMethod::~HPCMethod(){
 
 }
 
-/**
- * Sends SOAP message. The message must include such data about each completed
- * algorithm: algorithm stress error, computation time
- */
 void HPCMethod::sendMessage(){
 
 }

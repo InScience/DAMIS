@@ -5,6 +5,10 @@
 //  Original author: Mindaugas
 ///////////////////////////////////////////////////////////
 
+/*! \class Projection
+    \brief A class of static methods for projecting the initial projection matrix.
+ */
+
 #include "DataObject.h"
 #include "Statistics.h"
 #include "ObjectMatrix.h"

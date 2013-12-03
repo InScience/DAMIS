@@ -8,10 +8,13 @@
 #ifndef PROJECTIONENUM_H
 #define	PROJECTIONENUM_H
 
+/** \file ProjectionEnum
+ *  \brief Projection enum.
+ */
 enum ProjectionEnum
 {
-	DISPERSION = 1,
-	PCA = 2,
+	DISPERSION = 1, /*!< Enum value DISPERSION. */
+	PCA = 2, /*!< Enum value PCA. */
 };
 
 #endif	/* PROJECTIONENUM_H */

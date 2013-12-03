@@ -7,8 +7,8 @@
 
 #ifndef DISTANCEMETRICSENUM_H
 #define	DISTANCEMETRICSENUM_H
-/**
- * \brief Distance metrics enum.
+/** \file DistanceMetricsEnum
+ *  \brief Distance metrics enum.
  */
 enum DistanceMetricsEnum {
     MANHATTAN = 1, /*!< Enum value MANHATTAN. */

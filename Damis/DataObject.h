@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:29
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \file DataObject class
+    \brief A class of methods and attributes for manipulating features in data vectors.
+ */
 #if !defined(EA_2E0FA64E_418E_4162_A9CF_9091C3861ED8__INCLUDED_)
 #define EA_2E0FA64E_418E_4162_A9CF_9091C3861ED8__INCLUDED_
 

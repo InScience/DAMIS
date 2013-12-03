@@ -111,7 +111,7 @@ int main(int argc, char** argv) {
     int maxIter = 10, d = 2;
     std::cout << "%SUITE_STARTING% gutmanTest" << std::endl;
     std::cout << "%SUITE_STARTED%" << std::endl;
-    SMACOF smcf(epsilon, maxIter, d);
+    SMACOF::SMACOF smcf(epsilon, maxIter, d);
     ObjectMatrix gMatrix = smcf.getGutmanMatrix();
     int n = smcf.X.getObjectCount();
     
@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
     {
         for (int j = 0; j < d; j++)
         {
-            r = Statistics::getRandom(-0.1, 0.1);
+            r = Statistics::getRandom(-0.1, 0.1, 0);
             DataObjectItem[j] = r;
         }
         Y.addObject(DataObject(DataObjectItem));
@@ -150,7 +150,7 @@ int main(int argc, char** argv) {
         Y.addObject(DataObject(DataObjectItem));
     }
     
-    smcf = SMACOF(epsilon, maxIter, d, Y);
+    smcf = SMACOF::SMACOF(Y, epsilon, maxIter, d);
     gMatrix = smcf.getGutmanMatrix();
     
     std::cout << "%TEST_STARTED% testValuesOfIdenticalObjects (gutmanTest)\n" << std::endl;
@@ -159,7 +159,7 @@ int main(int argc, char** argv) {
     
     ObjectMatrix large("arff_files/random_10K.arff");
     large.loadDataMatrix();
-    smcf = SMACOF(epsilon, maxIter, d, large, 1);
+    smcf = SMACOF::SMACOF(large, epsilon, maxIter, d);
     std::cout << "%TEST_STARTED% TestConstructionOfLargeGutmanMatrix (gutmanTest)\n" << std::endl;
     TestConstructionOfLargeGutmanMatrix(smcf);
     std::cout << "%TEST_FINISHED% time=0 TestConstructionOfLargeGutmanMatrix (gutmanTest)" << std::endl;

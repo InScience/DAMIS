@@ -11,10 +11,11 @@
 #include "ObjectMatrix.h"
 #include "WebInterface.h"
 
-/**
- * Abstract class that aggregates ObjectMatrix X and ability to send  SOAP message
- * with data about stress error value and method computation time
+/*! \file HPCMethod class
+ *   \brief Abstract class that aggregates ObjectMatrix X and ability to send  SOAP message
+ * with data about stress error value and method computation time.
  */
+
 class HPCMethod : public WebInterface
 {
 

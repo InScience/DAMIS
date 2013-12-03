@@ -5,6 +5,10 @@
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
 
+/*! \class MDS
+    \brief A class of methods and attributes for MDS algorithms.
+ */
+
 #include "MDS.h"
 #include "ARFF.h"
 #include "string"
@@ -23,9 +27,6 @@ MDS::~MDS(){
 
 }
 
-/**
- * Constructor for MDS type object
- */
 MDS::MDS(double eps, int maxIter, int dimension){
     epsilon = eps;
     maxIteration = maxIter;
@@ -42,16 +43,13 @@ MDS::MDS(double eps, int maxIter, int dimension){
         gutman.addObject(DataObject(gutmanRow));
 }
 
-MDS::MDS(ObjectMatrix initialMatrix, double eps, int maxIter, int dimension){
+MDS::MDS(double eps, int maxIter, int dimension, ObjectMatrix initialMatrix){
     epsilon = eps;
     maxIteration = maxIter;
     d = dimension;
     X = initialMatrix;
 }
 
-/**
- * Gets eps value
- */
 double MDS::getEpsilon(){
     return epsilon;
 }
@@ -95,6 +93,48 @@ ObjectMatrix MDS::getGutman(){
     return  gutman;
 }
 
+ObjectMatrix MDS::getGutman(int neighbour){
+    int m = X.getObjectCount();
+    double distXij;
+    double distYij;
+    double sum = 0.0;
+       
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < m; j++)
+            gutman.updateDataObject(i, j, 0.0);
+        
+        for (int j = (i - neighbour); j <= (i + neighbour); j++)
+        {
+            if (j >= 0 && j != i && j < m)
+            {
+                distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+                if (distYij > 0)
+                {
+                    distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+                    gutman.updateDataObject(i, j, -1.0 * distXij/distYij + 1.0);
+                }
+                else
+                    gutman.updateDataObject(i, j, 1.0);
+            }
+        }
+    }
+    
+    for (int i = 0; i < m; i++)
+    {
+        sum = 0.0;
+        for (int j = 0; j < i; j++)
+            sum += gutman.getObjectAt(i).getFeatureAt(j);
+        
+        for (int j = i + 1; j < m; j++)
+            sum += gutman.getObjectAt(i).getFeatureAt(j);
+    
+        gutman.updateDataObject(i, i, -1 * sum);
+    }
+
+    return  gutman;
+}
+
 ObjectMatrix MDS::getGutman(ObjectMatrix Ynew){
     int m = X.getObjectCount();
     double distXij;
@@ -134,16 +174,10 @@ ObjectMatrix MDS::getGutman(ObjectMatrix Ynew){
     return  gutman;
 }
 
-/**
- * Gets max iteration
- */
 int MDS::getMaxIteration(){
     return maxIteration;
 }
 
-/**
- * Computes MDS stress function
- */
 double MDS::getStress(){
     double stress = 0.0;
     int m = X.getObjectCount();
@@ -175,9 +209,6 @@ double MDS::getWeight(int i, int j)
     return 1.0;
 }
 
-/**
- * Sets epsilon
- */
 void MDS::setEpsilon(double eps){
     epsilon = eps;
 }

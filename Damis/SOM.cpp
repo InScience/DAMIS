@@ -4,7 +4,9 @@
 //  Created on:      07-Lie-2013 20:07:32
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
-
+/*! \class SOM
+    \brief A class of methods and attributes for SOM algorithm.
+ */
 #include "SOM.h"
 #include "Statistics.h"
 #include "DistanceMetrics.h"
@@ -20,18 +22,12 @@ SOM::~SOM(){
 
 }
 
-/**
- * Constructs SOM object. Passed are k_x, k_y, e_hat
- */
 SOM::SOM(int rows, int columns, int ehat){
     k_x = rows;
     k_y = columns;
     eHat = ehat;
 }
 
-/**
- * Constructor called from SOMMDS
- */
 SOM::SOM(int rows, int columns, int ehat, ObjectMatrix x){
     k_x = rows;
     k_y = columns;
@@ -39,9 +35,6 @@ SOM::SOM(int rows, int columns, int ehat, ObjectMatrix x){
     X = x;
 }
 
-/**
- * Pure virtual method that calculates the projection
- */
 ObjectMatrix SOM::getProjection(){
     int n = X.getObjectAt(0).getFeatureCount();
     int m = X.getObjectCount();
@@ -133,10 +126,6 @@ double SOM::Max(double d1, double d2)
         return d2;
 }
 
-/**
- * Calculates SOM quantization error. Passed parameters are initial ObjectMAtrix
- * and neuron winner object matrix
- */
 double SOM::getQuantizationError(){
     int m = X.getObjectCount();
     int r = nWinner.getObjectCount();

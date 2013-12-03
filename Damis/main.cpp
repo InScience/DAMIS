@@ -70,21 +70,21 @@ int main(int argc, char** argv) {
             //PCA::PCA smcf(d);
             //PCA::PCA smcf(1.0);
             //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
-            SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
+            //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTASC);
             //SMACOFZEIDEL smcf (epsilon, maxIter, d, RANDOM);
             //SMACOF smcf (epsilon, maxIter, d);
-            //SAMANN smcf(70, 10, 5.0, 3000);
-            //DMA smcf(epsilon, maxIter, d, 20);
+            SAMANN smcf(70, 10, 5.0, 3000);
+            //DMA smcf(epsilon, 10, d, 15);
             //SOM smcf(100, 3, 5);
             //SOMMDS smcf(epsilon, maxIter, d, 100, 3, 5);
             Y = smcf.getProjection();
-            //Y.saveDataMatrix("Y_samann.txt");
+            Y.saveDataMatrix("Y_samann.txt");
             vector<double> errors = smcf.getStressErrors();
-            //ofstream file ("errors.txt");
+            ofstream file ("errors.txt");
             for (int i = 0; i < errors.size(); i++)
-                cout << errors.at(i) << endl;
-            //file.close();
+                file << errors.at(i) << endl;
+            file.close();
             //PrintMatrix(Y);
             
         }
