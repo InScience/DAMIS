@@ -166,6 +166,10 @@
 				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.persistWorkflow.persist, {});
 			});
 
+			//assign new experiment handler
+			$('#new-experiment-btn').click(function(ev) {
+                window.location = params['experimentNewUrl'];
+			});
 		},
 
 		// returns parameter form, given 

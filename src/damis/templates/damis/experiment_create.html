@@ -68,6 +68,7 @@
             window.experimentForm.params = { 
                     parametersUrl:"{% url 'parameters-form' %}",
                     parameterPrefixesUrl: "{% url 'gen-parameter-prefixes' %}", 
+                    experimentNewUrl: "{% url 'experiment-new' %}", 
                     taskFormPrefix: "{{ task_formset.prefix }}"};
 
             //decide if an empty canvas or a persisted worklow should be
