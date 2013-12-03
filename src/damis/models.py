@@ -75,6 +75,7 @@ class Algorithm(models.Model):
     executable_file = models.CharField(_('Executable'), max_length=255, null=True, blank=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
+    icon = models.ImageField(upload_to='icons', blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('algorithm-list')
