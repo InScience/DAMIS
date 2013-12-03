@@ -78,6 +78,10 @@ class Experiment(models.Model):
         ('ERROR', 'Error'),
         ('FINISHED', 'Finished'),
     )
+    CLUSTERS = (
+            ('MII-CLUSTER', _('MII cluster, http://cluster.mii.lt')),   # http://cluster.mii.lt/ganglia/
+            ('MIF-SK2', _('MIF VU SK2, http://mif.vu.lt/cluster/')),    # http://k007.mif.vu.lt/ganglia2/
+    )
     title = models.CharField(_('Experiment title'), max_length=255, null=True)
     start = models.DateTimeField(_('Start'), blank=True, null=True)
     finish = models.DateTimeField(_('Finish'), blank=True, null=True)
@@ -85,6 +89,12 @@ class Experiment(models.Model):
                               choices=STATUSES, default='CREATED')
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
     workflow_state = models.TextField(blank=True, null=True)
+
+    max_calc_time = models.TimeField(default="2:00", null=True)
+    p = models.IntegerField(default=1, null=True)
+    cluster = models.CharField(_('Cluster'), max_length=255, null=True,
+                              choices=CLUSTERS, default='MII-CLUSTER')
+
 
     def get_absolute_url(self):
         return reverse('experiment-list')
