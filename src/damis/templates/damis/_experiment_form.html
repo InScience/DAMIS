@@ -7,9 +7,16 @@
             {% trans "Form contains errors" %}
         </div>
     {% endif %}
-    <input id="id_title" type="text" name="title" maxlength="255" placeholder="{% trans "Title" %}" value="{% if experiment_form.title.value %}{{ experiment_form.title.value }}{% endif %}" style="margin-bottom:0"/>
-    {{ experiment_form.skip_validation }}
-    {{ experiment_form.workflow_state }}
+
+    {% for field in  experiment_form.visible_fields %}
+        {{ field.errors }}
+        <p>{{ field.label }}:<br/> {{ field }}</p>
+    {% endfor %}
+    {% for field in experiment_form.hidden_fields %}
+        {{ field.errors }}
+        {{ field }}
+    {% endfor %}
+
     {{ task_formset.management_form }}
     <div style="display: none;">
         {% for task in task_formset.forms %}
@@ -18,7 +25,7 @@
             <div>
                 {{ task.non_field_errors }}
                 {% for field in task.visible_fields %}
-                    <p>{{ field.errors}}
+                    <p>{{ field.errors }}
                     {{ field.label }}:<br/>
                     {% if field.name == 'algorithm' %} 
                     <span class='algorithm-selection'>{{ field }}</span>
