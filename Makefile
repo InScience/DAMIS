@@ -18,7 +18,8 @@ tags:
 
 start_database:
 	mkdir var || touch var/db
-	bin/django syncdb --noinput --all
+	bin/django syncdb --noinput
+	bin/django migrate damis
 
 messages:
 	bin/django compilemessages
