@@ -1,7 +1,7 @@
 (function() {
 	window.taskBoxes = {
-		assembleBoxHTML: function(boxName) {
-			return '<div class="task-box"><img src=\"/static/img/algorithm-ico.png\" width=\"64px\" height=\"64px\" /><div class=\"desc\"><div>' + boxName + '</div></div></div>';
+		assembleBoxHTML: function(boxName, icoUrl) {
+			return '<div class="task-box"><img src=\"' + icoUrl +  '\" width=\"64px\" height=\"64px\" /><div class=\"desc\"><div>' + boxName + '</div></div></div>';
 		},
 
 		countBoxes: 0,
@@ -148,7 +148,8 @@
 		createTaskBox: function(ev, ui, taskContainer) {
 			// drop the task where it was dragged
 			var currentName = ui.draggable.text();
-			var taskBox = $(window.taskBoxes.assembleBoxHTML(currentName));
+            var icoUrl = $(ui.draggable).find("img").attr("src");
+			var taskBox = $(window.taskBoxes.assembleBoxHTML(currentName, icoUrl));
 			taskBox.appendTo(taskContainer);
 			taskBox.css("left", ui.position.left + "px");
 			taskBox.css("top", ui.position.top + "px");

@@ -24,6 +24,7 @@
 					boxId: boxId,
 					x: parseInt($box.css("left"), 10),
 					y: parseInt($box.css("top"), 10),
+                    icoUrl: $box.find("img").attr("src"),
 					endpoints: endpoints
 				};
 			});
@@ -74,7 +75,7 @@
 
 			// restore boxes 
 			$.each(boxes, function(idx, box) {
-				var taskBox = $(window.taskBoxes.assembleBoxHTML(""));
+				var taskBox = $(window.taskBoxes.assembleBoxHTML("", box['icoUrl']));
 				taskBox.attr("id", box['boxId']);
 				taskBox.appendTo($("#flowchart-container"));
 				taskBox.css("left", box['x'] + "px");
