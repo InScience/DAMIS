@@ -32,3 +32,6 @@ test:
 graph:
 	bin/django graph_models --group-models --all-applications -o var/graph.svg
 	xdg-open var/graph.svg
+
+load_data:
+	bin/django loaddata initial_data.json

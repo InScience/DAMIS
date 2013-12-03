@@ -1,0 +1,210 @@
+[
+{
+    "pk": 1, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-03T12:16:44.621", 
+        "title": "PCA", 
+        "created": "2013-12-01T17:08:18.458", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_8.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 2, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-03T12:34:06.246", 
+        "title": "SMACOF", 
+        "created": "2013-12-01T17:12:09.444", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_9.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 3, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-03T12:33:52.595", 
+        "title": "DMA", 
+        "created": "2013-12-01T17:17:07.181", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_10.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 4, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-03T12:33:38.577", 
+        "title": "SDS", 
+        "created": "2013-12-01T17:20:31.364", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_11.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 5, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-03T12:33:24.824", 
+        "title": "SAMANN", 
+        "created": "2013-12-01T17:23:45.256", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_12.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 6, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA_MINING", 
+        "updated": "2013-12-03T12:33:10.573", 
+        "title": "SOM", 
+        "created": "2013-12-01T17:26:44.550", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_13.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 7, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-03T12:31:24.317", 
+        "title": "SOMMDS", 
+        "created": "2013-12-01T17:30:10.885", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_14.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 8, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA_MINING", 
+        "updated": "2013-12-03T12:31:07.368", 
+        "title": "DSP", 
+        "created": "2013-12-01T17:34:03.463", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_15.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 9, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA_MINING", 
+        "updated": "2013-12-03T12:30:54.169", 
+        "title": "C45", 
+        "created": "2013-12-01T17:36:23.101", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_16.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 10, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA_MINING", 
+        "updated": "2013-12-03T12:30:36.840", 
+        "title": "KMEANS", 
+        "created": "2013-12-01T17:39:00.977", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_17.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 11, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "STAT_PRIMITIVES", 
+        "updated": "2013-12-03T12:30:17.851", 
+        "title": "STAT PRIMITIVES", 
+        "created": "2013-12-01T17:41:08.651", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_18.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 12, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-03T12:30:02.665", 
+        "title": "CLEAN DATA", 
+        "created": "2013-12-01T17:42:35.946", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_19.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 13, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-03T12:29:47.484", 
+        "title": "FILTER DATA", 
+        "created": "2013-12-01T17:45:17.719", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_20.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 14, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-03T12:29:34.394", 
+        "title": "SCATTER DATA", 
+        "created": "2013-12-02T07:59:59.597", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_21.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 15, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-03T12:29:19.765", 
+        "title": "TRANSPOSE DATA", 
+        "created": "2013-12-02T08:01:41.650", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_22.py", 
+        "executable_file": "kmeans.py"
+    }
+},
+{
+    "pk": 16, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-03T12:29:04.026", 
+        "title": "TRANSFORM DATA", 
+        "created": "2013-12-02T08:03:22.174", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_23.py", 
+        "executable_file": "kmeans.py"
+    }
+}
+]
