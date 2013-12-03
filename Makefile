@@ -35,4 +35,4 @@ graph:
 	xdg-open var/graph.svg
 
 load_data:
-	bin/django loaddata initial_data.json
+	bin/django loaddata initial_algorithms.json
