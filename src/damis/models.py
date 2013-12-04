@@ -120,7 +120,6 @@ def get_result_file_upload_path(instance, filename):
 class Task(models.Model):
     experiment = models.ForeignKey('Experiment', related_name='tasks', null=True)
     algorithm = models.ForeignKey('Algorithm')
-    is_workflow_start = models.BooleanField(blank=True, default=False)
 
     def __unicode__(self):
         return '%s %s' % (self.sequence, self.algorithm.title)

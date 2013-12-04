@@ -328,14 +328,15 @@ def algorithm_parameter_form(request):
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
     prefix = 'PV_%s' % hash(task_form_prefix)
 
+    val_params = algorithm.parameters.filter(connection_type="INPUT_VALUE")
     ParameterValueFormset = inlineformset_factory(Task,
                                 ParameterValue,
                                 form=ParameterValueForm,
-                                extra=len(algorithm.parameters.all()),
+                                extra=len(val_params),
                                 can_delete=False
                             )
     parameter_formset = ParameterValueFormset(instance=None, prefix=prefix)
-    for parameter, form in zip(algorithm.parameters.all(), parameter_formset.forms):
+    for parameter, form in zip(val_params, parameter_formset.forms):
         form.initial = {'parameter': parameter}
         form.fields['value'].label = unicode(parameter)
 
