@@ -18,6 +18,7 @@ from django.forms.models import modelformset_factory
 from django.forms.models import inlineformset_factory
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Q
 
 from damis.forms import LoginForm, RegisterForm
 from damis.forms import DatasetForm
@@ -328,7 +329,7 @@ def algorithm_parameter_form(request):
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
     prefix = 'PV_%s' % hash(task_form_prefix)
 
-    val_params = algorithm.parameters.all()
+    val_params = algorithm.parameters.filter(~Q(connection_type="OUTPUT_VALUE"))
     ParameterValueFormset = inlineformset_factory(Task,
                                 ParameterValue,
                                 form=ParameterValueForm,
