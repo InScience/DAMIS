@@ -46,11 +46,8 @@ class LoginRequiredMixin(object):
 def index_view(request):
     return HttpResponseRedirect(reverse_lazy('experiment-new'))
 
-def about_view(request):
-    return render(request, 'index.html', {})
-
-def help_view(request):
-    return render(request, 'base.html', {})
+def static_page_view(request, template):
+    return render(request, template, {})
 
 class DatasetCreate(LoginRequiredMixin, CreateView):
     model = Dataset

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='help' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="offset1 span9">
+
+    <h2>{% blocktrans %}Simple DAMIS use-case{% endblocktrans %}</h2>
+<p>{% blocktrans %}Here should be image with its comments.{% endblocktrans %}</p>
+
+    <h2>{% blocktrans %}Workflow components and their descriptions{% endblocktrans %}</h2>
+<p>{% blocktrans %}Each available workflow component should be described here.{% endblocktrans %}</p>
+
+</div>
+
+{% endblock %}

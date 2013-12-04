@@ -19,7 +19,9 @@ urlpatterns = patterns('',
 
 urlpatterns += i18n_patterns('',
     url(r'^$', index_view, name='home'),
-    url(r'^about/$', about_view, name='home'),
+    url(r'^about/$', static_page_view, name='home', kwargs={'template': 'index.html'}),
+    url(r'^help/$', static_page_view, name='help', kwargs={'template': 'help.html'}),
+    url(r'^faq/$', static_page_view, name='faq', kwargs={'template': 'faq.html'}),
 
     url(r'^login/$', login_view, name='login'),
     url(r'^register/$', register_view, name='register'),
@@ -32,7 +34,6 @@ urlpatterns += i18n_patterns('',
     url(r'^datasets/(?P<pk>\d*)/$', DatasetDetail.as_view(), name='dataset-detail'),
     url(r'^datasets/(?P<pk>\d*)/edit/$', DatasetUpdate.as_view(), name='dataset-update'),
     url(r'^datasets/(?P<pk>\d*)/delete/$', DatasetDelete.as_view(), name='dataset-delete'),
-    url(r'^help/$', help_view, name='help'),
 
     url(r'^algorithms/$', AlgorithmList.as_view(), name='algorithm-list'),
     url(r'^algorithms/new/$', AlgorithmCreate.as_view(), name='algorithm-new'),

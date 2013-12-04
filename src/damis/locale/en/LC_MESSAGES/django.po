@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-03 12:25+0000\n"
+"POT-Creation-Date: 2013-12-04 14:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:28
+#: forms.py:29 forms.py:45
 msgid "Username"
 msgstr ""
 
-#: forms.py:29
-msgid "@uosis.mif.vu.lt"
-msgstr ""
-
-#: forms.py:30
+#: forms.py:30 forms.py:46
 msgid "Password"
 msgstr ""
 
@@ -33,100 +29,118 @@ msgstr ""
 msgid "Username or password is incorrect"
 msgstr ""
 
-#: forms.py:45
-msgid "Private"
+#: forms.py:48
+msgid "Repeat Password"
 msgstr ""
 
-#: forms.py:46
-msgid "Open under http://opendatacommons.org/licenses/pddl/"
-msgstr ""
-
-#: forms.py:50 models.py:32 models.py:68
-#: templates/damis/_experiment_form.html:10
-#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:22
-#: templates/damis/experiment_list.html:21
-msgid "Title"
+#: forms.py:50
+msgid "First name"
 msgstr ""
 
 #: forms.py:51
+msgid "Last name"
+msgstr ""
+
+#: forms.py:52
+msgid "E-mail"
+msgstr ""
+
+#: forms.py:53
+msgid "Phone"
+msgstr ""
+
+#: forms.py:63 models.py:15 models.py:46
+#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:21
+#: templates/damis/experiment_list.html:18
+msgid "Title"
+msgstr ""
+
+#: forms.py:64
 msgid "Dataset file"
 msgstr ""
 
-#: forms.py:52 templates/damis/dataset_detail.html:11
-msgid "License"
-msgstr ""
-
-#: forms.py:53 models.py:11 models.py:35
-#: templates/damis/dataset_detail.html:13
+#: forms.py:65 models.py:17 templates/damis/dataset_detail.html:12
 msgid "Description"
 msgstr ""
 
-#: models.py:33
-msgid "Dataset License"
-msgstr ""
-
-#: models.py:36 models.py:69 models.py:105
+#: models.py:18 models.py:47 models.py:98
 msgid "User"
 msgstr ""
 
-#: models.py:37 models.py:73 templates/damis/dataset_detail.html:15
+#: models.py:19 models.py:51 templates/damis/dataset_detail.html:14
 msgid "Updated"
 msgstr ""
 
-#: models.py:38 models.py:74 templates/damis/dataset_detail.html:16
+#: models.py:20 models.py:52 templates/damis/dataset_detail.html:15
 msgid "Created"
 msgstr ""
 
-#: models.py:61
+#: models.py:39
 msgid "Upload data"
 msgstr ""
 
-#: models.py:62
+#: models.py:40
 msgid "Preprocessing"
 msgstr ""
 
-#: models.py:63
+#: models.py:41
 msgid "Statistical primitives"
 msgstr ""
 
-#: models.py:64
+#: models.py:42
 msgid "Dimensionality reduction"
 msgstr ""
 
-#: models.py:65
+#: models.py:43
 msgid "Data mining"
 msgstr ""
 
-#: models.py:66
+#: models.py:44
 msgid "View results"
 msgstr ""
 
-#: models.py:70
+#: models.py:48
 msgid "Category"
 msgstr ""
 
-#: models.py:72
+#: models.py:50
 msgid "Executable"
 msgstr ""
 
-#: models.py:83
+#: models.py:69
 msgid "Option"
 msgstr ""
 
-#: models.py:100
+#: models.py:75
+msgid "Connection type"
+msgstr ""
+
+#: models.py:90
+msgid "MII cluster, http://cluster.mii.lt"
+msgstr ""
+
+#: models.py:91
+msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
+msgstr ""
+
+#: models.py:93
 msgid "Experiment title"
 msgstr ""
 
-#: models.py:101
+#: models.py:94
 msgid "Start"
 msgstr ""
 
-#: models.py:102
+#: models.py:95
 msgid "Finish"
 msgstr ""
 
-#: models.py:103 templates/damis/experiment_list.html:22
+#: models.py:96 templates/damis/experiment_list.html:19
 msgid "Status"
+msgstr ""
+
+#: models.py:103
+msgid "Cluster"
 msgstr ""
 
 #: settings.py:46
@@ -143,6 +157,61 @@ msgstr ""
 
 #: templates/base.html:76
 msgid "API"
+msgstr ""
+
+#: templates/experiment_menu.html:4
+msgid "Experiment editor"
+msgstr ""
+
+#: templates/experiment_menu.html:5
+msgid "Experiment history"
+msgstr ""
+
+#: templates/faq.html:13 templates/tmp.html:13
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: templates/faq.html:15 templates/tmp.html:15
+msgid "How to use uploaded data file in experiment workflow?"
+msgstr ""
+
+#: templates/faq.html:16 templates/tmp.html:17
+msgid ""
+"Component \"EXISTING DATA\" is used for this purpose.\n"
+"    Firstly you have to drag this component to the experiment workflow, "
+"double\n"
+"    click on it and choose your uploaded file from dropdown menu. Now you "
+"can\n"
+"    construct rest of your experiment."
+msgstr ""
+
+#: templates/faq.html:21 templates/tmp.html:26
+msgid "How to see experiment results after experiment execution?"
+msgstr ""
+
+#: templates/faq.html:22 templates/tmp.html:27
+msgid ""
+"You have to join one of \"VIEW RESULTS\" component to the\n"
+"    ending of your experiment workflow. When experiment finishes its\n"
+"    execution \"VIEW RESULTS\" components become active, if you double click "
+"on\n"
+"    them results will be displayed.  "
+msgstr ""
+
+#: templates/help.html:13
+msgid "Simple DAMIS use-case"
+msgstr ""
+
+#: templates/help.html:14
+msgid "Here should be image with its comments."
+msgstr ""
+
+#: templates/help.html:16
+msgid "Wrokflow components and their descriptions"
+msgstr ""
+
+#: templates/help.html:17
+msgid "Each available workflow component should be described here."
 msgstr ""
 
 #: templates/index.html:13
@@ -165,12 +234,9 @@ msgid ""
 "business arise."
 msgstr ""
 
-#: templates/login.html:13
-msgid "Login"
-msgstr ""
-
-#: templates/menu.html:8
-msgid "Analysis"
+#: templates/menu.html:8 templates/damis/experiment_detail.html:9
+#: templates/damis/experiment_form.html:13
+msgid "Experiments"
 msgstr ""
 
 #: templates/menu.html:9
@@ -181,31 +247,65 @@ msgstr ""
 msgid "Algorithms"
 msgstr ""
 
-#: templates/menu.html:16
+#: templates/menu.html:13
+msgid "Help"
+msgstr ""
+
+#: templates/menu.html:14
+msgid "FAQ"
+msgstr ""
+
+#: templates/menu.html:17
 msgid "(Logout)"
 msgstr ""
 
-#: templates/menu.html:19
+#: templates/menu.html:20
 msgid "Log in"
+msgstr ""
+
+#: templates/tmp.html:16
+msgid "Kaip eksperimente panaudoti prieš tai įkeltą duomenų failą?"
+msgstr ""
+
+#: templates/tmp.html:21
+msgid ""
+"Tam skirta \"EXISTING DATA\" komponentė. Pirmiausia šią komponentę "
+"nutempkite į eksperimento\n"
+"užduočių seką, du kartus paspaudę pasirinkite įkeltąjį failą, tada šią\n"
+"komponentę galite naudoti užduočių sekai sudaryti."
+msgstr ""
+
+#: templates/tmp.html:25
+msgid "Kaip pamatyti eksperimento vykdymo rezultatus?"
+msgstr ""
+
+#: templates/tmp.html:31
+msgid ""
+"Prie eksperimento scenarijaus pabaigos reikia priejungti vieną iš rezultatų\n"
+"pavaizdavimo komponenčių. Kai eksperimentas yra įvykdomas, pavaizdavimo\n"
+"komponentės tampa aktyvios, ant jų paspaudus du kartus galima pamatyti "
+"vykdymo\n"
+"rezultatus."
+msgstr ""
+
+#: templates/accounts/login.html:13
+msgid "Login"
+msgstr ""
+
+#: templates/accounts/login.html:15
+msgid ""
+"Do not have an account? You can <b><a href='/register/'>register here</a></b>"
+msgstr ""
+
+#: templates/accounts/register.html:13
+msgid "Register"
 msgstr ""
 
 #: templates/damis/_experiment_form.html:7
 msgid "Form contains errors"
 msgstr ""
 
-#: templates/damis/_experiment_form.html:13
-#: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
-#: templates/damis/obj_form.html:20
-msgid "Save"
-msgstr ""
-
-#: templates/damis/_experiment_form.html:15
-#: templates/damis/experiment_detail.html:18
-#: templates/damis/experiment_form.html:43
-msgid "Execute"
-msgstr ""
-
-#: templates/damis/_experiment_form.html:19
+#: templates/damis/_experiment_form.html:25
 msgid "Task"
 msgstr ""
 
@@ -223,20 +323,21 @@ msgstr ""
 msgid "Upload algorithm"
 msgstr ""
 
+#: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
+#: templates/damis/experiment_create.html:45 templates/damis/obj_form.html:19
+msgid "Save"
+msgstr ""
+
 #: templates/damis/dataset_confirm_delete.html:13
 msgid "Are you sure you want to delete dataset"
 msgstr ""
 
-#: templates/damis/dataset_detail.html:12
+#: templates/damis/dataset_detail.html:11
 msgid "File"
 msgstr ""
 
-#: templates/damis/dataset_detail.html:14
+#: templates/damis/dataset_detail.html:13
 msgid "Author"
-msgstr ""
-
-#: templates/damis/dataset_form.html:19 templates/damis/dataset_new.html:26
-msgid "Add"
 msgstr ""
 
 #: templates/damis/dataset_list.html:13 templates/damis/dataset_new.html:12
@@ -245,55 +346,44 @@ msgid "Dataset list"
 msgstr ""
 
 #: templates/damis/dataset_list.html:14 templates/damis/dataset_new.html:13
-#: templates/damis/dataset_new.html:34 templates/damis/obj_form.html:13
+#: templates/damis/dataset_new.html:29 templates/damis/obj_form.html:13
 msgid "Upload dataset"
 msgstr ""
 
-#: templates/damis/dataset_list.html:15 templates/damis/dataset_new.html:14
-#: templates/damis/obj_form.html:14
-msgid "Add license"
-msgstr ""
-
-#: templates/damis/dataset_list.html:23
-msgid "Licence"
-msgstr ""
-
-#: templates/damis/dataset_list.html:24
+#: templates/damis/dataset_list.html:22
 msgid "Size"
 msgstr ""
 
-#: templates/damis/dataset_list.html:25
+#: templates/damis/dataset_list.html:23
 msgid "Actions"
 msgstr ""
 
-#: templates/damis/dataset_list.html:26
+#: templates/damis/dataset_list.html:24
 msgid "Download"
 msgstr ""
 
-#: templates/damis/dataset_list.html:50
+#: templates/damis/dataset_list.html:47
 msgid "CSV"
 msgstr ""
 
-#: templates/damis/dataset_list.html:51
+#: templates/damis/dataset_list.html:48
 msgid "ARFF"
 msgstr ""
 
-#: templates/damis/dataset_list.html:52
+#: templates/damis/dataset_list.html:49
 msgid "XML"
 msgstr ""
 
-#: templates/damis/experiment_create.html:13
-#: templates/damis/experiment_detail.html:9
-#: templates/damis/experiment_form.html:13
-#: templates/damis/experiment_list.html:13
-msgid "Experiments"
-msgstr ""
-
-#: templates/damis/experiment_create.html:14
+#: templates/damis/experiment_create.html:44
 #: templates/damis/experiment_detail.html:10
 #: templates/damis/experiment_form.html:14
-#: templates/damis/experiment_list.html:14
 msgid "New experiment"
+msgstr ""
+
+#: templates/damis/experiment_create.html:47
+#: templates/damis/experiment_detail.html:18
+#: templates/damis/experiment_form.html:43
+msgid "Execute"
 msgstr ""
 
 #: templates/damis/experiment_detail.html:14
@@ -325,6 +415,6 @@ msgstr ""
 msgid "parameters"
 msgstr ""
 
-#: templates/damis/experiment_list.html:23
+#: templates/damis/experiment_list.html:20
 msgid "Results"
 msgstr ""

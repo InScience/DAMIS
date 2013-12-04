@@ -10,7 +10,8 @@
             <li class="{% if active == "algorithms" %}active{% endif %}"><a href="{% url 'algorithm-list' %}">{% trans "Algorithms" %}</a></li>
         </ul>
         <ul class="nav pull-right">
-            <li class="{% if active == "help" %}active{% endif %}"><a href="{% url 'help' %}"><i class="icon-question-sign"></i></a></li>
+            <li class="{% if active == "help" %}active{% endif %}"><a href="{% url 'help' %}">{% trans "Help" %}</a></li>
+            <li class="{% if active == "faq" %}active{% endif %}"><a href="{% url 'faq' %}">{% trans "FAQ" %}</a></li>
             
             {% if user.is_authenticated %}
                 <li><a href="/{{ lang }}/logout/">{{ user }} <span class="helptext">{% trans "(Logout)" %}</span></a></li>

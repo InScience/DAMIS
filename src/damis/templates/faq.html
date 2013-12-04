@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='faq' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="offset1 span9">
+
+    <h2>{% blocktrans %}Frequently Asked Questions{% endblocktrans %}</h2>
+
+    <h4>{% blocktrans %}How to use uploaded data file in experiment workflow?{% endblocktrans %}</h4>
+    <p>{% blocktrans %}Component "EXISTING DATA" is used for this purpose.
+    Firstly you have to drag this component to the experiment workflow, double
+    click on it and choose your uploaded file from dropdown menu. Now you can
+    construct rest of your experiment.{% endblocktrans %}</p>
+
+    <h4>{% blocktrans %}How to see experiment results after experiment execution?{% endblocktrans %}</h4>
+    <p>{% blocktrans %}You have to join one of "VIEW RESULTS" component to the
+    ending of your experiment workflow. When experiment finishes its
+    execution "VIEW RESULTS" components become active, if you double click on
+    them results will be displayed.  {% endblocktrans %}</p>
+
+</div>
+
+{% endblock %}

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-04 07:38+0000\n"
+"POT-Creation-Date: 2013-12-04 14:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr "Duomenų failas"
 msgid "Description"
 msgstr "Aprašymas"
 
-#: models.py:18 models.py:47 models.py:90
+#: models.py:18 models.py:47 models.py:98
 msgid "User"
 msgstr "Naudotojas"
 
@@ -106,35 +106,39 @@ msgstr "Kategorija"
 msgid "Executable"
 msgstr "Vykdomasis"
 
-#: models.py:63
+#: models.py:69
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:82
+#: models.py:75
+msgid "Connection type"
+msgstr "Jungties tipas"
+
+#: models.py:90
 msgid "MII cluster, http://cluster.mii.lt"
 msgstr "MII klusteris, http://cluster.mii.lt"
 
-#: models.py:83
+#: models.py:91
 msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
 msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
 
-#: models.py:85
+#: models.py:93
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:86
+#: models.py:94
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:87
+#: models.py:95
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:88 templates/damis/experiment_list.html:19
+#: models.py:96 templates/damis/experiment_list.html:19
 msgid "Status"
 msgstr "Statusas"
 
-#: models.py:95
+#: models.py:103
 msgid "Cluster"
 msgstr "Klusteris"
 
@@ -161,6 +165,60 @@ msgstr "Eksperimento kūrimas"
 #: templates/experiment_menu.html:5
 msgid "Experiment history"
 msgstr "Eksperimentų istorija"
+
+#: templates/faq.html:13 templates/tmp.html:13
+msgid "Frequently Asked Questions"
+msgstr "Dažnai užduodami klausimai"
+
+#: templates/faq.html:15 templates/tmp.html:15
+msgid "How to use uploaded data file in experiment workflow?"
+msgstr "Kaip eksperimente panaudoti prieš tai įkeltą duomenų failą?"
+
+#: templates/faq.html:16 templates/tmp.html:17
+msgid ""
+"Component \"EXISTING DATA\" is used for this purpose.\n"
+"    Firstly you have to drag this component to the experiment workflow, "
+"double\n"
+"    click on it and choose your uploaded file from dropdown menu. Now you "
+"can\n"
+"    construct rest of your experiment."
+msgstr ""
+"Tam skirta \"EXISTING DATA\" komponentė.\n"
+"Pirmiausia šią komponentę nutempkite į eksperimento užduočių seką, du kartus paspaudę pasirinkite\n"
+"įkeltąjį failą, tada šią komponentę galite naudoti užduočių sekai sudaryti.\n"
+
+#: templates/faq.html:21 templates/tmp.html:26
+msgid "How to see experiment results after experiment execution?"
+msgstr "Kaip pamatyti eksperimento vykdymo rezultatus?"
+
+#: templates/faq.html:22 templates/tmp.html:27
+msgid ""
+"You have to join one of \"VIEW RESULTS\" component to the\n"
+"    ending of your experiment workflow. When experiment finishes its\n"
+"    execution \"VIEW RESULTS\" components become active, if you double click "
+"on\n"
+"    them results will be displayed.  "
+msgstr ""
+"Prie eksperimento scenarijaus pabaigos reikia priejungti vieną iš rezultatų "
+"pavaizdavimo komponenčių. Kai eksperimentas yra įvykdomas, pavaizdavimo "
+"komponentės tampa aktyvios, ant jų paspaudus du kartus galima pamatyti vykdymo "
+"rezultatus."
+
+#: templates/help.html:13
+msgid "Simple DAMIS use-case"
+msgstr "Paprastas DAMIS panaudos scenarijus"
+
+#: templates/help.html:14
+msgid "Here should be image with its comments."
+msgstr "Čia turėtų būti paveikslėlis ir jo komentarai."
+
+#: templates/help.html:16
+msgid "Workflow components and their descriptions"
+msgstr "Komponentės ir jų aprašymai"
+
+#: templates/help.html:17
+msgid "Each available workflow component should be described here."
+msgstr "Visų prieinamų komponenčių sąrašas ir kiekvienos iš jų aprašymas."
 
 #: templates/index.html:13
 msgid ""
@@ -203,11 +261,19 @@ msgstr "Duomenys"
 msgid "Algorithms"
 msgstr "Algoritmai"
 
-#: templates/menu.html:16
+#: templates/menu.html:13
+msgid "Help"
+msgstr "Pagalba"
+
+#: templates/menu.html:14
+msgid "FAQ"
+msgstr "DUK"
+
+#: templates/menu.html:17
 msgid "(Logout)"
 msgstr "(Atsijungti)"
 
-#: templates/menu.html:19
+#: templates/menu.html:20
 msgid "Log in"
 msgstr "Prisijungti"
 
@@ -218,7 +284,9 @@ msgstr "Prisijungti"
 #: templates/accounts/login.html:15
 msgid ""
 "Do not have an account? You can <b><a href='/register/'>register here</a></b>"
-msgstr "Neturite paskyros? Galite <b><a href='/register/'>prisiregistruoti čia</a></b>"
+msgstr ""
+"Neturite paskyros? Galite <b><a href='/register/'>prisiregistruoti čia</a></"
+"b>"
 
 #: templates/accounts/register.html:13
 msgid "Register"
