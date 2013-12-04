@@ -55,9 +55,9 @@
 			// Add new endpoints for input/output parameters
 			var parameters = formWindow.find('.parameter-values');
 
-			var outAnchors = ["TopRight", "Right", "BottomRight", "TopCenter"];
+			var outAnchors = ["Right", "BottomRight", "TopCenter"];
 			var oIdx = 0;
-			var inAnchors = ["TopLeft", "Left", "BottomLeft", "BottomCenter"];
+			var inAnchors = ["Left", "BottomLeft", "BottomCenter"];
 			var iIdx = 0;
 
 			var taskBox = $("#" + taskBoxId);
