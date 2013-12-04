@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-03 17:38+0000\n"
+"POT-Creation-Date: 2013-12-04 07:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:28
+#: forms.py:29 forms.py:45
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:29
-msgid "@uosis.mif.vu.lt"
-msgstr "@uosis.mif.vu.lt"
-
-#: forms.py:30
+#: forms.py:30 forms.py:46
 msgid "Password"
 msgstr "Slaptažodis"
 
@@ -32,101 +28,115 @@ msgstr "Slaptažodis"
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:45
-msgid "Private"
-msgstr "Privatūs"
+#: forms.py:48
+msgid "Repeat Password"
+msgstr "Pakartokite slaptažodį"
 
-#: forms.py:46
-msgid "Open under http://opendatacommons.org/licenses/pddl/"
-msgstr "Atviri pagal http://opendatacommons.org/licenses/pddl/"
+#: forms.py:50
+msgid "First name"
+msgstr "Vardas"
 
-#: forms.py:50 models.py:32 models.py:71
-#: templates/damis/_experiment_form.html:10
-#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:22
+#: forms.py:51
+msgid "Last name"
+msgstr "Pavardė"
+
+#: forms.py:52
+msgid "E-mail"
+msgstr "el. paštas"
+
+#: forms.py:53
+msgid "Phone"
+msgstr "Telefono numeris"
+
+#: forms.py:63 models.py:15 models.py:46
+#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:21
 #: templates/damis/experiment_list.html:18
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:51
+#: forms.py:64
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:52 templates/damis/dataset_detail.html:11
-msgid "License"
-msgstr "Licencija"
-
-#: forms.py:53 models.py:11 models.py:35
-#: templates/damis/dataset_detail.html:13
+#: forms.py:65 models.py:17 templates/damis/dataset_detail.html:12
 msgid "Description"
 msgstr "Aprašymas"
 
-#: models.py:33
-msgid "Dataset License"
-msgstr "Duomenų licencija"
-
-#: models.py:36 models.py:72 models.py:109
+#: models.py:18 models.py:47 models.py:90
 msgid "User"
 msgstr "Naudotojas"
 
-#: models.py:37 models.py:76 templates/damis/dataset_detail.html:15
+#: models.py:19 models.py:51 templates/damis/dataset_detail.html:14
 msgid "Updated"
 msgstr "Atnaujinta"
 
-#: models.py:38 models.py:77 templates/damis/dataset_detail.html:16
+#: models.py:20 models.py:52 templates/damis/dataset_detail.html:15
 msgid "Created"
 msgstr "Sukurta"
 
-#: models.py:64
+#: models.py:39
 msgid "Upload data"
 msgstr "Duomenų įkėlimas"
 
-#: models.py:65
+#: models.py:40
 msgid "Preprocessing"
 msgstr "Pirminis apdorojimas"
 
-#: models.py:66
+#: models.py:41
 msgid "Statistical primitives"
 msgstr "Statistiniai primityvai"
 
-#: models.py:67
+#: models.py:42
 msgid "Dimensionality reduction"
 msgstr "Dimensiškumo mažinimas"
 
-#: models.py:68
+#: models.py:43
 msgid "Data mining"
 msgstr "Duomenų analizė"
 
-#: models.py:69
+#: models.py:44
 msgid "View results"
 msgstr "Rezultatų peržiūra"
 
-#: models.py:73
+#: models.py:48
 msgid "Category"
 msgstr "Kategorija"
 
-#: models.py:75
+#: models.py:50
 msgid "Executable"
 msgstr "Vykdomasis"
 
-#: models.py:87
+#: models.py:63
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:104
+#: models.py:82
+msgid "MII cluster, http://cluster.mii.lt"
+msgstr "MII klusteris, http://cluster.mii.lt"
+
+#: models.py:83
+msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
+msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
+
+#: models.py:85
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:105
+#: models.py:86
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:106
+#: models.py:87
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:107 templates/damis/experiment_list.html:19
+#: models.py:88 templates/damis/experiment_list.html:19
 msgid "Status"
 msgstr "Statusas"
+
+#: models.py:95
+msgid "Cluster"
+msgstr "Klusteris"
 
 #: settings.py:46
 msgid "Lithuanian"
@@ -180,10 +190,6 @@ msgstr ""
 "sukurti idealią nišą <b>skaičiuojamąjam</b> bei <b>mokslo taikomąjam</b> "
 "verslui kurtis."
 
-#: templates/login.html:13
-msgid "Login"
-msgstr "Prisijungti"
-
 #: templates/menu.html:8 templates/damis/experiment_detail.html:9
 #: templates/damis/experiment_form.html:13
 msgid "Experiments"
@@ -205,23 +211,24 @@ msgstr "(Atsijungti)"
 msgid "Log in"
 msgstr "Prisijungti"
 
+#: templates/accounts/login.html:13
+msgid "Login"
+msgstr "Prisijungti"
+
+#: templates/accounts/login.html:15
+msgid ""
+"Do not have an account? You can <b><a href='/register/'>register here</a></b>"
+msgstr "Neturite paskyros? Galite <b><a href='/register/'>prisiregistruoti čia</a></b>"
+
+#: templates/accounts/register.html:13
+msgid "Register"
+msgstr "Registruotis"
+
 #: templates/damis/_experiment_form.html:7
 msgid "Form contains errors"
 msgstr "Formoje yra klaidų"
 
-#: templates/damis/_experiment_form.html:13
-#: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
-#: templates/damis/obj_form.html:20
-msgid "Save"
-msgstr "Išsaugoti"
-
-#: templates/damis/_experiment_form.html:15
-#: templates/damis/experiment_detail.html:18
-#: templates/damis/experiment_form.html:43
-msgid "Execute"
-msgstr "Vykdyti"
-
-#: templates/damis/_experiment_form.html:19
+#: templates/damis/_experiment_form.html:25
 msgid "Task"
 msgstr "Užduotis"
 
@@ -239,21 +246,22 @@ msgstr "Algoritmai"
 msgid "Upload algorithm"
 msgstr "Įkelti algoritmą"
 
+#: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
+#: templates/damis/experiment_create.html:45 templates/damis/obj_form.html:19
+msgid "Save"
+msgstr "Išsaugoti"
+
 #: templates/damis/dataset_confirm_delete.html:13
 msgid "Are you sure you want to delete dataset"
 msgstr "Ar tikrai norite pašalinti duomenų rinkinį"
 
-#: templates/damis/dataset_detail.html:12
+#: templates/damis/dataset_detail.html:11
 msgid "File"
 msgstr "Failas"
 
-#: templates/damis/dataset_detail.html:14
+#: templates/damis/dataset_detail.html:13
 msgid "Author"
 msgstr "Autorius"
-
-#: templates/damis/dataset_form.html:19 templates/damis/dataset_new.html:26
-msgid "Add"
-msgstr "Pridėti"
 
 #: templates/damis/dataset_list.html:13 templates/damis/dataset_new.html:12
 #: templates/damis/obj_form.html:12
@@ -261,47 +269,45 @@ msgid "Dataset list"
 msgstr "Rinkmenų sąrašas"
 
 #: templates/damis/dataset_list.html:14 templates/damis/dataset_new.html:13
-#: templates/damis/dataset_new.html:34 templates/damis/obj_form.html:13
+#: templates/damis/dataset_new.html:29 templates/damis/obj_form.html:13
 msgid "Upload dataset"
 msgstr "Įkelti duomenis"
 
-#: templates/damis/dataset_list.html:15 templates/damis/dataset_new.html:14
-#: templates/damis/obj_form.html:14
-msgid "Add license"
-msgstr "Įkelti licenciją"
-
-#: templates/damis/dataset_list.html:23
-msgid "Licence"
-msgstr "Licencija"
-
-#: templates/damis/dataset_list.html:24
+#: templates/damis/dataset_list.html:22
 msgid "Size"
 msgstr "Dydis"
 
-#: templates/damis/dataset_list.html:25
+#: templates/damis/dataset_list.html:23
 msgid "Actions"
 msgstr "Veiksmai"
 
-#: templates/damis/dataset_list.html:26
+#: templates/damis/dataset_list.html:24
 msgid "Download"
 msgstr "Atsisiųsti"
 
-#: templates/damis/dataset_list.html:50
+#: templates/damis/dataset_list.html:47
 msgid "CSV"
 msgstr "CSV"
 
-#: templates/damis/dataset_list.html:51
+#: templates/damis/dataset_list.html:48
 msgid "ARFF"
 msgstr "ARFF"
 
-#: templates/damis/dataset_list.html:52
+#: templates/damis/dataset_list.html:49
 msgid "XML"
 msgstr "XML"
 
+#: templates/damis/experiment_create.html:44
 #: templates/damis/experiment_detail.html:10
 #: templates/damis/experiment_form.html:14
 msgid "New experiment"
 msgstr "Naujas eksperimentas"
+
+#: templates/damis/experiment_create.html:47
+#: templates/damis/experiment_detail.html:18
+#: templates/damis/experiment_form.html:43
+msgid "Execute"
+msgstr "Vykdyti"
 
 #: templates/damis/experiment_detail.html:14
 msgid "Confirm "
@@ -335,6 +341,30 @@ msgstr "Parametrai"
 #: templates/damis/experiment_list.html:20
 msgid "Results"
 msgstr "Rezultatai"
+
+#~ msgid "@uosis.mif.vu.lt"
+#~ msgstr "@uosis.mif.vu.lt"
+
+#~ msgid "Private"
+#~ msgstr "Privatūs"
+
+#~ msgid "Open under http://opendatacommons.org/licenses/pddl/"
+#~ msgstr "Atviri pagal http://opendatacommons.org/licenses/pddl/"
+
+#~ msgid "License"
+#~ msgstr "Licencija"
+
+#~ msgid "Dataset License"
+#~ msgstr "Duomenų licencija"
+
+#~ msgid "Add"
+#~ msgstr "Pridėti"
+
+#~ msgid "Add license"
+#~ msgstr "Įkelti licenciją"
+
+#~ msgid "Licence"
+#~ msgstr "Licencija"
 
 #~ msgid "Analysis"
 #~ msgstr "Analizės"
