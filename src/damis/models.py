@@ -72,7 +72,7 @@ class Parameter(models.Model):
     default = models.CharField(max_length=255, null=True, blank=True)
     is_output = models.BooleanField(blank=True, default=False)
     is_input = models.BooleanField(blank=True, default=False)
-    connection_type= models.CharField(_('Connection type'), max_length=255, null=True, blank=True,
+    connection_type = models.CharField(_('Connection type'), max_length=255, null=True, blank=True,
                               choices=CONNECTION_TYPES, default='INPUT_VALUE')
 
     def __unicode__(self):
