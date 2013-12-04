@@ -59,6 +59,12 @@ class Algorithm(models.Model):
         return str(self.title)
 
 class Parameter(models.Model):
+    CONNECTION_TYPES = (
+        ('INPUT_VALUE', 'Input value'),
+        ('INPUT_CONNECTION', 'Input connection'),
+        ('OUTPUT_VALUE', 'Output value'),
+        ('OUTPUT_CONNECTION', 'Output connection'),
+    )
     algorithm = models.ForeignKey(Algorithm, related_name='parameters', null=True, blank=True)
     name = models.CharField(_('Option'), max_length=255, null=True)
     type = models.CharField(max_length=255, null=True, blank=True)
@@ -66,6 +72,8 @@ class Parameter(models.Model):
     default = models.CharField(max_length=255, null=True, blank=True)
     is_output = models.BooleanField(blank=True, default=False)
     is_input = models.BooleanField(blank=True, default=False)
+    connection_type= models.CharField(_('Connection type'), max_length=255, null=True, blank=True,
+                              choices=CONNECTION_TYPES, default='INPUT_VALUE')
 
     def __unicode__(self):
         return '%s (%s)' % (self.name, self.type)
@@ -86,7 +94,7 @@ class Experiment(models.Model):
     start = models.DateTimeField(_('Start'), blank=True, null=True)
     finish = models.DateTimeField(_('Finish'), blank=True, null=True)
     status = models.CharField(_('Status'), max_length=255, null=True, blank=True,
-                              choices=STATUSES, default='CREATED')
+                              choices=STATUSES, default='SAVED')
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
     workflow_state = models.TextField(blank=True, null=True)
 
