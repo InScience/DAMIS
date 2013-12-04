@@ -3,7 +3,6 @@
 
 {% trans 'parameters' %}
 {% for form in formset.forms %}
-{% if form.initial.parameter %}
     {% if form.initial.parameter %}
         {% with form.initial.parameter as parameter %}
         <div class="" style="{% if parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}"
