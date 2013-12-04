@@ -185,7 +185,7 @@ msgid ""
 msgstr ""
 "Tam skirta \"EXISTING DATA\" komponentė.\n"
 "Pirmiausia šią komponentę nutempkite į eksperimento užduočių seką, du kartus paspaudę pasirinkite\n"
-"įkeltąjį failą, tada šią komponentę galite naudoti užduočių sekai sudaryti.\n"
+"įkeltąjį failą, tada šią komponentę galite naudoti užduočių sekai sudaryti."
 
 #: templates/faq.html:21 templates/tmp.html:26
 msgid "How to see experiment results after experiment execution?"
