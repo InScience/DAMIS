@@ -40,7 +40,11 @@ public:
          *  \return Y - the projection matrix.
          */
 	virtual ObjectMatrix getProjection();
-
+        /** \fn double getStress();
+         *  \brief Returns the stress error value
+         *  \return stressError - The stress error value.
+         */
+	double getStress();
 private:
 	/**
 	 * Learning speed value
@@ -78,8 +82,13 @@ private:
          *  \brief Exit layer matrix.
          */
         ObjectMatrix delta_L;
-        
+        /** \var vector<vector<double> > w1;
+         *  \brief The weights of the first hidden layer.
+         */
         std::vector<std::vector<double> > w1;
+        /** \var vector<vector<double> > w2;
+         *  \brief The weights of the second hidden layer.
+         */
         std::vector<std::vector<double> > w2;
         /** \var vector<double> stressErrors;
          *  \brief The list of stress errors calculated after each iteration.
@@ -90,11 +99,6 @@ private:
          *  \return lambda 
          */
 	double getLambda();
-        /** \fn double getStress();
-         *  \brief Returns the stress error value
-         *  \return stressError - The stress error value.
-         */
-	double getStress();
         /** \fn void initializeWeights();
          *  \brief Initializes weights \a w1 and \a w2.
          */

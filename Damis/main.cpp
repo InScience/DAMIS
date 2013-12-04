@@ -59,43 +59,35 @@ int main(int argc, char** argv) {
     numOfProcs = MPI::COMM_WORLD.Get_size();
     MPI_Status status;
     
+    //PCA::PCA mthd(d);
+    //PCA::PCA mthd(1.0);
+    //SDS mthd(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
+    //SMACOFZEIDEL mthd (epsilon, maxIter, d, BUBLESORTDSC);
+    //SMACOFZEIDEL mthd (epsilon, maxIter, d, BUBLESORTASC);
+    //SMACOFZEIDEL mthd (epsilon, maxIter, d, RANDOM);
+    //SMACOF mthd (epsilon, maxIter, d);
+    SAMANN mthd(70, 10, 5.0, 30);
+    //DMA mthd(epsilon, 10, d, 15);
+    //SOM mthd(100, 3, 5);
+    //SOMMDS mthd(epsilon, maxIter, d, 100, 3, 5);
+    
     if (pid == 0)
     { 
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
-        {   
-            //ARFF om("arff_files/cpu.arff");
-            //cout << om.getFailReason();
-            //if (om.)
-            //PCA::PCA smcf(d);
-            //PCA::PCA smcf(1.0);
-            //SDS smcf(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
-            //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTDSC);
-            //SMACOFZEIDEL smcf (epsilon, maxIter, d, BUBLESORTASC);
-            //SMACOFZEIDEL smcf (epsilon, maxIter, d, RANDOM);
-            //SMACOF smcf (epsilon, maxIter, d);
-            SAMANN smcf(70, 10, 5.0, 3000);
-            //DMA smcf(epsilon, 10, d, 15);
-            //SOM smcf(100, 3, 5);
-            //SOMMDS smcf(epsilon, maxIter, d, 100, 3, 5);
-            Y = smcf.getProjection();
-            Y.saveDataMatrix("Y_samann.txt");
-            vector<double> errors = smcf.getStressErrors();
-            ofstream file ("errors.txt");
-            for (int i = 0; i < errors.size(); i++)
-                file << errors.at(i) << endl;
-            file.close();
-            //PrintMatrix(Y);
+        {               
+            Y = mthd.getProjection();
+            t_end = MPI_Wtime();
+            PrintMatrix(Y);
             
         }
         else
         {
             stressErrors = new double[numOfProcs];     // surinktu paklaidu masyvas (testavimui)       
-            SMACOF smcf (epsilon, maxIter, d);
-            Y = smcf.getProjection();
+            Y = mthd.getProjection();
             int n = Y.getObjectCount();
             int m = Y.getObjectAt(0).getFeatureCount();
-            stressErrors[0] = smcf.getStress();
+            stressErrors[0] = mthd.getStress();
             for (int i = 1; i < numOfProcs; i++)
             {
                 MPI_Recv(&receivedStress, 1, MPI_DOUBLE, i, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimama paklaida is kiekvieno proceso
@@ -121,7 +113,6 @@ int main(int argc, char** argv) {
                 for (int i = 1; i < numOfProcs; i++)
                     MPI_Send(&send, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
                 PrintMatrix(Y);
-                //Y.saveDataMatrix("result.arff");
             }
             else
             {
@@ -142,17 +133,14 @@ int main(int argc, char** argv) {
                 MPI_Recv(&(receiveArray[0][0]), m * n, MPI_DOUBLE, min_rank, MPI_ANY_TAG, MPI_COMM_WORLD, &status);   // priimama Y
                 Y = AdditionalMethods::DoubleToObjectMatrix(receiveArray, n, m);
                 PrintMatrix(Y);
-                //Y.saveDataMatrix("result.arff");
-            }         
-            
-            cout<<"Calculation time: "<<t_end - t_start<<" s."<<endl;
+            }                    
         }
+        cout<<"Calculation time: "<<t_end - t_start<<" s."<<endl;
     }
     else
     {
-        SMACOF smcf (epsilon, maxIter, d);
-        Y = smcf.getProjection();
-        double stress = smcf.getStress();
+        Y = mthd.getProjection();
+        double stress = mthd.getStress();
         MPI_Send(&stress, 1, MPI_DOUBLE, 0, pid, MPI_COMM_WORLD);  // siunciama paklaida teviniam procesui
         MPI_Recv(&send, 1, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimamas pranesimas ar siusti Y
         
