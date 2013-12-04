@@ -285,7 +285,7 @@ msgstr "Prisijungti"
 msgid ""
 "Do not have an account? You can <b><a href='/register/'>register here</a></b>"
 msgstr ""
-"Neturite paskyros? Galite <b><a href='/register/'>prisiregistruoti čia</a></"
+"Neturite paskyros? Galite <b><a href='/register/'>registruotis čia</a></"
 "b>"
 
 #: templates/accounts/register.html:13
