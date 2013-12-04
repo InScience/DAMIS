@@ -20,8 +20,13 @@ urlpatterns = patterns('',
 urlpatterns += i18n_patterns('',
     url(r'^$', index_view, name='home'),
     url(r'^about/$', about_view, name='home'),
+
     url(r'^login/$', login_view, name='login'),
+    url(r'^register/$', register_view, name='register'),
+    url(r'^profile/$', profile_settings_view, name='profile-settings'),
+    url(r'^reset-password/$', reset_password_view, name='reset-password'),
     url(r'^logout/$', logout_view, name='logout'),
+
     url(r'^datasets/$', DatasetList.as_view(), name='dataset-list'),
     url(r'^datasets/new/$', DatasetCreate.as_view(), name='dataset-new'),
     url(r'^datasets/(?P<pk>\d*)/$', DatasetDetail.as_view(), name='dataset-detail'),

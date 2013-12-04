@@ -3,6 +3,7 @@ from django import forms
 from django.forms.util import ErrorList
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
 from damis.models import Dataset
 from damis.models import Algorithm
@@ -25,8 +26,7 @@ class DatasetSelectForm(forms.Form):
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label=_('Username'), max_length=100,
-                               help_text=_('@uosis.mif.vu.lt'))
+    username = forms.CharField(label=_('Username'), max_length=100,)
     password = forms.CharField(label=_('Password'), max_length=128,
                         widget=forms.PasswordInput(render_value=False))
 
@@ -40,6 +40,23 @@ class LoginForm(forms.Form):
             raise forms.ValidationError(_('Username or password is incorrect'))
         cleaned_data['user'] = user
         return cleaned_data
+
+class RegisterForm(forms.Form):
+    username = forms.CharField(label=_('Username'), max_length=100,)
+    password = forms.CharField(label=_('Password'), max_length=128,
+                        widget=forms.PasswordInput(render_value=False))
+    password_repeat = forms.CharField(label=_('Repeat Password'),
+            max_length=128, widget=forms.PasswordInput(render_value=False))
+    first_name = forms.CharField(label=_('First name'), max_length=100,)
+    last_name = forms.CharField(label=_('Last name'), max_length=100,)
+    email = forms.EmailField(label=_('E-mail'), max_length=100)
+    phone = forms.CharField(label=_('Phone'), max_length=100, required=False)
+
+    def save(self):
+        data = self.cleaned_data
+        data.pop('password_repeat')
+        data.pop('phone')
+        return User.objects.create(**self.cleaned_data)
 
 
 class DataFileUploadForm(forms.Form):

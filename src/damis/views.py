@@ -17,8 +17,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.forms.models import modelformset_factory
 from django.forms.models import inlineformset_factory
 from django.core.context_processors import csrf
+from django.contrib.auth.forms import UserCreationForm
 
-from damis.forms import LoginForm
+from damis.forms import LoginForm, RegisterForm
 from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
 from damis.forms import ParameterForm, ParameterFormset
@@ -346,19 +347,42 @@ def algorithm_parameter_form(request):
         })
 
 
+def register_view(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            if user is not None and user.is_active:
+                login(request, user)
+                user = form.cleaned_data['user']
+                return HttpResponseRedirect(reverse_lazy('home'))
+    else:
+        form = RegisterForm()
+    return render(request, 'accounts/register.html', {
+        'form': form,
+    })
+
+
+def profile_settings_view(request):
+    pass
+
+def reset_password_view(request):
+    pass
+
+
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             user = form.cleaned_data['user']
             if user is not None and user.is_active:
-                request.session['password'] = form.cleaned_data['password']
+                # request.session['password'] = form.cleaned_data['password']
                 login(request, user)
                 return HttpResponseRedirect(reverse_lazy('home'))
     else:
         form = LoginForm()
 
-    return render(request, 'login.html', {
+    return render(request, 'accounts/login.html', {
             'form': form,
         })
 
