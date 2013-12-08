@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-08 17:08+0000\n"
+"POT-Creation-Date: 2013-12-08 17:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,6 +113,22 @@ msgstr "Parinktis"
 #: models.py:75
 msgid "Connection type"
 msgstr "Jungties tipas"
+
+#: models.py:84
+msgid "Saved"
+msgstr "Išsaugota"
+
+#: models.py:85
+msgid "Running"
+msgstr "Vykdoma"
+
+#: models.py:86
+msgid "Error"
+msgstr "Klaida"
+
+#: models.py:87
+msgid "Finished"
+msgstr "Įvykdyta"
 
 #: models.py:90
 msgid "MII cluster, http://cluster.mii.lt"
@@ -392,7 +408,6 @@ msgid "Tasks"
 msgstr "Užduotys"
 
 #: templates/damis/experiment_form.html:24
-#: templates/dynamic/parameter_form.html:4
 msgid "parameters"
 msgstr "Parametrai"
 
@@ -400,8 +415,8 @@ msgstr "Parametrai"
 msgid "Results"
 msgstr "Rezultatai"
 
-#: templates/dynamic/parameter_form.html:21
-#: templates/dynamic/parameter_form.html:25
+#: templates/dynamic/parameter_form.html:20
+#: templates/dynamic/parameter_form.html:24
 msgid "Comes from Connection"
 msgstr "Jungties įėjimas"
 

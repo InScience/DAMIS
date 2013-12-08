@@ -81,10 +81,10 @@ class Parameter(models.Model):
 
 class Experiment(models.Model):
     STATUSES = (
-        ('SAVED', 'Saved'),
-        ('RUNNING', 'Running'),
-        ('ERROR', 'Error'),
-        ('FINISHED', 'Finished'),
+        ('SAVED', _('Saved')),
+        ('RUNNING', _('Running')),
+        ('ERROR', _('Error')),
+        ('FINISHED', _('Finished')),
     )
     CLUSTERS = (
             ('MII-CLUSTER', _('MII cluster, http://cluster.mii.lt')),   # http://cluster.mii.lt/ganglia/
