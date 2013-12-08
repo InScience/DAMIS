@@ -1,15 +1,1588 @@
 [
 {
     "pk": 1, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 2, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 3, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "disp", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": true, 
+        "type": "double"
+    }
+},
+{
+    "pk": 4, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 5, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 6, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 7, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 8, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 9, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 10, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 11, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 12, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eps", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": true, 
+        "type": "double"
+    }
+},
+{
+    "pk": 13, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "zeidel", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": true, 
+        "type": "boolean"
+    }
+},
+{
+    "pk": 14, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "p", 
+        "algorithm": 2, 
+        "default": "1", 
+        "required": false, 
+        "type": "int"
+    }
+},
+{
+    "pk": 15, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 16, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 17, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 18, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 19, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 20, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 21, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 22, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eps", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": true, 
+        "type": "double"
+    }
+},
+{
+    "pk": 23, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "neighbour", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 24, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 25, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 26, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 27, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 28, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 29, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 30, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 31, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eps", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": true, 
+        "type": "double"
+    }
+},
+{
+    "pk": 32, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "noOfBaseVectors", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 33, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "selStrategy", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": false, 
+        "type": "int"
+    }
+},
+{
+    "pk": 34, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 35, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 36, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 37, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 38, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 39, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 40, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 41, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "mTrain", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 42, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "nNeurons", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 43, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eta", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "type": "double"
+    }
+},
+{
+    "pk": 44, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "p", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 45, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 46, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 47, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 48, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 49, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 50, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "rows", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 51, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "columns", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 52, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eHat", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 53, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "p", 
+        "algorithm": 6, 
+        "default": "1", 
+        "required": false, 
+        "type": "int"
+    }
+},
+{
+    "pk": 54, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 55, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 56, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 57, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 58, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 59, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "rows", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 60, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "columns", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 61, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eHat", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 62, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "mdsIteration", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 63, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 64, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 65, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 66, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmErrorQuantization", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 67, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmErrorMDS", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 68, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 69, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "hidenPerceptrons", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": true, 
+        "type": "string"
+    }
+},
+{
+    "pk": 70, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 71, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dl", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 72, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dt", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 73, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dv", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 74, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "p", 
+        "algorithm": 8, 
+        "default": "1", 
+        "required": false, 
+        "type": "int"
+    }
+},
+{
+    "pk": 75, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 76, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 77, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 78, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 79, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 80, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "q", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": true, 
+        "type": "double"
+    }
+},
+{
+    "pk": 81, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 82, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dl", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 83, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dt", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 84, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 85, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 86, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": false, 
+        "type": "double"
+    }
+},
+{
+    "pk": 87, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 10, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 88, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 10, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 89, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "kMax", 
+        "algorithm": 10, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 90, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 10, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 91, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 10, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 92, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 10, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 93, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "kBest", 
+        "algorithm": 10, 
+        "default": "", 
+        "required": false, 
+        "type": "int"
+    }
+},
+{
+    "pk": 94, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 11, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 95, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 11, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 96, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 11, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 97, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 11, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 98, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 99, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "fillMissingValues", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "type": "boolean"
+    }
+},
+{
+    "pk": 100, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 101, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 102, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 103, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 13, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 104, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "c", 
+        "algorithm": 13, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 105, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "filterType", 
+        "algorithm": 13, 
+        "default": "", 
+        "required": true, 
+        "type": "string"
+    }
+},
+{
+    "pk": 106, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "resultType", 
+        "algorithm": 13, 
+        "default": "", 
+        "required": true, 
+        "type": "string"
+    }
+},
+{
+    "pk": 107, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 13, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 108, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 13, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 109, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 13, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 110, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 14, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 111, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "methodTyle", 
+        "algorithm": 14, 
+        "default": "", 
+        "required": true, 
+        "type": "string"
+    }
+},
+{
+    "pk": 112, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "s", 
+        "algorithm": 14, 
+        "default": "", 
+        "required": false, 
+        "type": "int"
+    }
+},
+{
+    "pk": 113, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "n", 
+        "algorithm": 14, 
+        "default": "", 
+        "required": false, 
+        "type": "int"
+    }
+},
+{
+    "pk": 114, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 14, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 115, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 14, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 116, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 14, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 117, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 15, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 118, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "c", 
+        "algorithm": 15, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 119, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 15, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 120, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 15, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 121, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 15, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 122, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 16, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 123, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "c", 
+        "algorithm": 16, 
+        "default": "", 
+        "required": true, 
+        "type": "int"
+    }
+},
+{
+    "pk": 124, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxCalcTime", 
+        "algorithm": 16, 
+        "default": "", 
+        "required": true, 
+        "type": "time"
+    }
+},
+{
+    "pk": 125, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 16, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 126, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 16, 
+        "default": "", 
+        "required": false, 
+        "type": "time"
+    }
+},
+{
+    "pk": 127, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 17, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 128, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 18, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 129, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 19, 
+        "default": "", 
+        "required": false, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 130, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 20, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 131, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 21, 
+        "default": "", 
+        "required": true, 
+        "type": "dataset"
+    }
+},
+{
+    "pk": 1, 
     "model": "damis.algorithm", 
     "fields": {
         "category": "DIMENSIONALITY_REDUCTION", 
-        "updated": "2013-12-03T12:16:44.621", 
+        "updated": "2013-12-04T14:24:02.590", 
         "title": "PCA", 
         "created": "2013-12-01T17:08:18.458", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_8.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico.jpg"
     }
 },
 {
@@ -17,12 +1590,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DIMENSIONALITY_REDUCTION", 
-        "updated": "2013-12-03T12:34:06.246", 
+        "updated": "2013-12-04T14:24:36.716", 
         "title": "SMACOF", 
         "created": "2013-12-01T17:12:09.444", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_9.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_1.jpg"
     }
 },
 {
@@ -30,12 +1604,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DIMENSIONALITY_REDUCTION", 
-        "updated": "2013-12-03T12:33:52.595", 
+        "updated": "2013-12-04T14:25:46.473", 
         "title": "DMA", 
         "created": "2013-12-01T17:17:07.181", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_10.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_2.jpg"
     }
 },
 {
@@ -43,12 +1618,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DIMENSIONALITY_REDUCTION", 
-        "updated": "2013-12-03T12:33:38.577", 
+        "updated": "2013-12-04T14:26:21.141", 
         "title": "SDS", 
         "created": "2013-12-01T17:20:31.364", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_11.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_4.jpg"
     }
 },
 {
@@ -56,12 +1632,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DIMENSIONALITY_REDUCTION", 
-        "updated": "2013-12-03T12:33:24.824", 
+        "updated": "2013-12-04T14:26:45.406", 
         "title": "SAMANN", 
         "created": "2013-12-01T17:23:45.256", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_12.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_5.jpg"
     }
 },
 {
@@ -69,12 +1646,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DATA_MINING", 
-        "updated": "2013-12-03T12:33:10.573", 
+        "updated": "2013-12-04T14:27:30.916", 
         "title": "SOM", 
         "created": "2013-12-01T17:26:44.550", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_13.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/som-ico.png"
     }
 },
 {
@@ -82,12 +1660,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DIMENSIONALITY_REDUCTION", 
-        "updated": "2013-12-03T12:31:24.317", 
+        "updated": "2013-12-04T14:28:11.612", 
         "title": "SOMMDS", 
         "created": "2013-12-01T17:30:10.885", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_14.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_6.jpg"
     }
 },
 {
@@ -95,12 +1674,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DATA_MINING", 
-        "updated": "2013-12-03T12:31:07.368", 
-        "title": "DSP", 
+        "updated": "2013-12-04T14:28:38.968", 
+        "title": "MLP", 
         "created": "2013-12-01T17:34:03.463", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_15.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/mlp-ico.png"
     }
 },
 {
@@ -108,12 +1688,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DATA_MINING", 
-        "updated": "2013-12-03T12:30:54.169", 
+        "updated": "2013-12-04T14:29:07.068", 
         "title": "C45", 
         "created": "2013-12-01T17:36:23.101", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_16.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/C45-ico.png"
     }
 },
 {
@@ -121,12 +1702,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "DATA_MINING", 
-        "updated": "2013-12-03T12:30:36.840", 
+        "updated": "2013-12-04T14:30:59.696", 
         "title": "KMEANS", 
         "created": "2013-12-01T17:39:00.977", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_17.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/kmeans-ico_1.png"
     }
 },
 {
@@ -134,12 +1716,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "STAT_PRIMITIVES", 
-        "updated": "2013-12-03T12:30:17.851", 
+        "updated": "2013-12-04T14:31:53.156", 
         "title": "STAT PRIMITIVES", 
         "created": "2013-12-01T17:41:08.651", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_18.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/statistical-primitives-icon.png"
     }
 },
 {
@@ -147,12 +1730,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "PREPROCESSING", 
-        "updated": "2013-12-03T12:30:02.665", 
+        "updated": "2013-12-04T14:33:27.888", 
         "title": "CLEAN DATA", 
         "created": "2013-12-01T17:42:35.946", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_19.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/clean-data-ico.jpeg"
     }
 },
 {
@@ -160,12 +1744,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "PREPROCESSING", 
-        "updated": "2013-12-03T12:29:47.484", 
+        "updated": "2013-12-04T14:34:05.161", 
         "title": "FILTER DATA", 
         "created": "2013-12-01T17:45:17.719", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_20.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/filter-data-ico_1.png"
     }
 },
 {
@@ -173,12 +1758,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "PREPROCESSING", 
-        "updated": "2013-12-03T12:29:34.394", 
-        "title": "SCATTER DATA", 
+        "updated": "2013-12-03T21:04:00.733", 
+        "title": "SPLIT DATA", 
         "created": "2013-12-02T07:59:59.597", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_21.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/split-data-ico.png"
     }
 },
 {
@@ -186,12 +1772,13 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "PREPROCESSING", 
-        "updated": "2013-12-03T12:29:19.765", 
+        "updated": "2013-12-04T14:34:24.129", 
         "title": "TRANSPOSE DATA", 
         "created": "2013-12-02T08:01:41.650", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_22.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/transpose-data-ico.jpg"
     }
 },
 {
@@ -199,12 +1786,83 @@
     "model": "damis.algorithm", 
     "fields": {
         "category": "PREPROCESSING", 
-        "updated": "2013-12-03T12:29:04.026", 
+        "updated": "2013-12-04T14:35:07.796", 
         "title": "TRANSFORM DATA", 
         "created": "2013-12-02T08:03:22.174", 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_23.py", 
-        "executable_file": "kmeans.py"
+        "executable_file": "kmeans.py", 
+        "icon": "icons/transform-data-ico.png"
+    }
+},
+{
+    "pk": 17, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA", 
+        "updated": "2013-12-03T21:05:36.842", 
+        "title": "UPLOAD FILE", 
+        "created": "2013-12-03T20:29:16.228", 
+        "user": null, 
+        "file": "anonymous/algorithms/upload-file-ico.png", 
+        "executable_file": "upload-file-ico.png", 
+        "icon": "icons/upload-file-ico.png"
+    }
+},
+{
+    "pk": 18, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA", 
+        "updated": "2013-12-03T20:34:33.310", 
+        "title": "EXISTING FILE", 
+        "created": "2013-12-03T20:34:33.310", 
+        "user": null, 
+        "file": "anonymous/algorithms/existing-file-ico.png", 
+        "executable_file": "existing-file-ico.png", 
+        "icon": "icons/existing-file-ico.png"
+    }
+},
+{
+    "pk": 19, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA", 
+        "updated": "2013-12-03T20:36:37.572", 
+        "title": "MIDAS FILE", 
+        "created": "2013-12-03T20:36:37.573", 
+        "user": null, 
+        "file": "anonymous/algorithms/midas-file.png", 
+        "executable_file": "midas-file.png", 
+        "icon": "icons/midas-file.png"
+    }
+},
+{
+    "pk": 20, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "RESULTS", 
+        "updated": "2013-12-03T20:46:11.468", 
+        "title": "TECHNICAL DETAILS", 
+        "created": "2013-12-03T20:45:44.993", 
+        "user": null, 
+        "file": "anonymous/algorithms/technical-details-ico.png", 
+        "executable_file": "technical-details-ico.png", 
+        "icon": "icons/technical-details-ico.png"
+    }
+},
+{
+    "pk": 21, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "RESULTS", 
+        "updated": "2013-12-03T20:46:52.722", 
+        "title": "CHART", 
+        "created": "2013-12-03T20:46:52.722", 
+        "user": null, 
+        "file": "anonymous/algorithms/chart-ico.png", 
+        "executable_file": "chart-ico.png", 
+        "icon": "icons/chart-ico.png"
     }
 }
 ]

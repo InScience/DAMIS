@@ -1,6 +1,6 @@
 .PHONY: install run static tags
 
-all: install start_database messages
+all: install start_database messages load_data
 
 install:
 	python bootstrap.py
