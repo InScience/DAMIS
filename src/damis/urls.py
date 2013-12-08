@@ -11,10 +11,6 @@ urlpatterns = patterns('',
     (r'^api/', include('damis.api.urls')),
     (r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^api-token-auth/', 'rest_framework.authtoken.views.obtain_auth_token'),
-
-    # Dynamic urls
-    url(r'^x/algorithm-parameter-form/$', algorithm_parameter_form, name='parameters-form'),
-    url(r'^x/gen-parameter-prefixes/$', gen_parameter_prefixes, name='gen-parameter-prefixes'),
 )
 
 urlpatterns += i18n_patterns('',
@@ -46,6 +42,11 @@ urlpatterns += i18n_patterns('',
     url(r'^experiments/(?P<pk>\d*)/delete/$', ExperimentDelete.as_view(), name='experiment-delete'),
 
     url(r'^experiments/(?P<pk>\d*)/confirm/$', ExperimentDetail.as_view(), name='experiment-confirm'),
+
+    # Dynamic urls
+    url(r'^x/algorithm-parameter-form/$', algorithm_parameter_form, name='parameters-form'),
+    url(r'^x/gen-parameter-prefixes/$', gen_parameter_prefixes, name='gen-parameter-prefixes'),
+
 )
 
 urlpatterns += staticfiles_urlpatterns()
