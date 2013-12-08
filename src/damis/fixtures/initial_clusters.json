@@ -1,0 +1,20 @@
+[
+{
+    "pk": 1, 
+    "model": "damis.cluster", 
+    "fields": {
+        "url": "http://mif.vu.lt/cluster/", 
+        "workload_url": "http://k007.mif.vu.lt/ganglia2/", 
+        "title": "MIF VU SK2"
+    }
+},
+{
+    "pk": 2, 
+    "model": "damis.cluster", 
+    "fields": {
+        "url": "http://cluster.mii.lt/", 
+        "workload_url": "http://cluster.mii.lt/ganglia/", 
+        "title": "MII Cluster"
+    }
+}
+]

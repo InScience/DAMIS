@@ -42,3 +42,4 @@ graph:
 
 load_data:
 	bin/django loaddata initial_algorithms.json
+	bin/django loaddata initial_clusters.json 
