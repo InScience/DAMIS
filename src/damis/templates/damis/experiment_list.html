@@ -25,7 +25,7 @@
                 {% for obj in object_list %}
                 <tr>
                     <td> {{ obj.title }}</td>
-                    <td> {{ obj.status }}</td>
+                    <td> {{ obj.get_status_display }}</td>
                     <td>
                         <a href="{% url 'experiment-update' obj.id %}">
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
