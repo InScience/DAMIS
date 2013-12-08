@@ -2,6 +2,14 @@
     min-height: 500px;
 }
 
+#toolbox-container {
+    width: 240px; min-height: inherit; float:left; 
+}
+
+#cluster-tabs {
+   margin-bottom: 4px;
+}
+
 #toolbox {
     width: 240px; min-height: inherit; float:left; 
 }
@@ -17,7 +25,7 @@
 .ui-accordion .ui-accordion-header.first {margin-top: 0}
 
 #canvas {
-    width:614px; min-height: inherit; float:left; margin-left: 4px; border: 1px solid #cccccc; -moz-border-radius:4px; border-radius:4px; 
+    width:614px; min-height: inherit; float:left; margin-left: 4px; border: 1px solid #ddd; -moz-border-radius:4px; border-radius:4px; 
 }
 
 #flowchart-container {

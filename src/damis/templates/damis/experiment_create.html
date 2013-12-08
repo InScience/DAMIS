@@ -14,32 +14,38 @@
             <div>
                 {% include "damis/_experiment_form.html" %}
                 <div id="workflow-editor-container">
-                    <div id="toolbox">
-                            {% spaceless %}
-                            {% for cat_name, algorithms in alg_categories %}
-                                {% if forloop.first %}
-                                    <h3 class="first">{{ cat_name }}</h3>
-                                {% else %}
-                                    <h3>{{ cat_name }}</h3>
-                                {% endif %}
+                    <div id="toolbox-container">
+                        <ul class="nav nav-tabs" id="cluster-tabs">
+                            <li class="active"><a href="#">VU MII</a></li>
+                            <li class=""><a href="#">VU MIF</a></li>
+                        </ul>
+                        <div id="toolbox">
+                                {% spaceless %}
+                                {% for cat_name, algorithms in alg_categories %}
+                                    {% if forloop.first %}
+                                        <h3 class="first">{{ cat_name }}</h3>
+                                    {% else %}
+                                        <h3>{{ cat_name }}</h3>
+                                    {% endif %}
 
-                                <div style="padding: 0;">
-                                    <div class="tools-padding">
-                                    {% for algorithm in algorithms %}
-                                       <div class="prototype-box {% if forloop.counter|divisibleby:"3" %}last{% endif %}"><img
-                                           {% if algorithm.icon %}
-                                           src="{{ algorithm.icon.url }}"
-                                           {% else %}
-                                           src="/static/img/algorithm-ico.png"
-                                           {% endif %}
-                                           width="64px" height="64px" /><div
-                                               class="desc"><div>{{ algorithm.title }}</div></div></div>
-                                    {% endfor %}
+                                    <div style="padding: 0;">
+                                        <div class="tools-padding">
+                                        {% for algorithm in algorithms %}
+                                           <div class="prototype-box {% if forloop.counter|divisibleby:"3" %}last{% endif %}"><img
+                                               {% if algorithm.icon %}
+                                               src="{{ algorithm.icon.url }}"
+                                               {% else %}
+                                               src="/static/img/algorithm-ico.png"
+                                               {% endif %}
+                                               width="64px" height="64px" /><div
+                                                   class="desc"><div>{{ algorithm.title }}</div></div></div>
+                                        {% endfor %}
+                                        </div>
                                     </div>
-                                </div>
-                            {% endfor %}
-                            {% endspaceless %}
-                    </div>
+                                {% endfor %}
+                                {% endspaceless %}
+                        </div> <!-- toolbox -->
+                    </div> <!-- toolbox-container -->
                     <div id="canvas">
                         <div id="flowchart-container" />
                     </div>
