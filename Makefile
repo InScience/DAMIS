@@ -21,7 +21,13 @@ start_database:
 	bin/django syncdb --noinput
 	bin/django migrate damis
 
+change_db:
+	bin/django schemamigration damis --auto
+	bin/django migrate damis
+
 messages:
+	#../../bin/django makemessages --all
+	#vim locale/lt/LC_MESSAGES/django.po
 	bin/django compilemessages
 
 clean:
