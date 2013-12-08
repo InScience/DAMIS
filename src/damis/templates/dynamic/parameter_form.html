@@ -8,8 +8,6 @@
     <div style="{% if form.instance.parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}">
     {% endif %}
 
-{% if parameter.connection_type == 'INPUT_CONNECTION' %}disabled="disabled"{% endif %}
-
         {% for field in form.visible_fields %}
             {% if field.name == 'value' %}
                 <span>{{ field.label }}</span><br />
@@ -28,8 +26,7 @@
         {% for field in form.hidden_fields %}
             {{ field }}
         {% endfor %}
-        <input id="{{ form.prefix }}-is_input" type="hidden" value="{% firstof form.initial.parameter.is_input form.instance.parameter.is_input %}" name="{{ form.prefix }}-is_input"/>
-        <input id="{{ form.prefix }}-is_output" type="hidden" value="{% firstof form.initial.parameter.is_output form.instance.parameter.is_output %}" name="{{ form.prefix }}-is_output"/>
+        <input id="{{ form.prefix }}-connection_type" type="hidden" value="{% firstof form.initial.parameter.connection_type form.instance.parameter.connection_type %}" name="{{ form.prefix }}-connection_type"/>
         <br/>
         {{ form.parameter }}<br/>
     </div>

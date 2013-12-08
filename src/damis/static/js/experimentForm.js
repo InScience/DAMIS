@@ -7,8 +7,8 @@
 		// translate parameter binding from client to server
 		// representation
 		bindingToServer: function() {
-			$.each($(".task-window input[id$=is_input]"), function() {
-				if ($(this).val() === "True") { // inspect each input parameter
+			$.each($(".task-window input[id$=connection_type]"), function() {
+				if ($(this).val() === "INPUT_CONNECTION") { // inspect each input parameter
 					var srcRefField = $(this).closest("div").find("input[id$=source_ref]");
 					var oParamAddr = $(srcRefField).val();
 					if (oParamAddr) {
@@ -25,8 +25,8 @@
 		// representation
         // parameterFormset - target box parameters
 		bindingToClient: function(parameterFormset) {
-			$.each(parameterFormset.find("input[id$=is_input]"), function() {
-				if ($(this).val() === "True") { // inspect each input parameter
+			$.each(parameterFormset.find("input[id$=connection_type]"), function() {
+				if ($(this).val() === "INPUT_CONNECTION") { // inspect each input parameter
 					var srcRefField = $(this).closest("div").find("input[id$=source_ref]");
 					var oParamName = $(srcRefField).val();
 					if (oParamName) {

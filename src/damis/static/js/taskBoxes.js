@@ -64,13 +64,12 @@
 
 			// inspect each parameter form
 			// each form has one "value" field and
-			// indicator fields: "is_input", "is_output"
+			// an indicator field: "connection_type"
 			$.each(parameters.find('div'), function(idx) {
-				var isIn = $(this).find("input[id$='is_input']").val();
-				var isOut = $(this).find("input[id$='is_output']").val();
+				var connectionType = $(this).find("input[id$='connection_type']").val();
 				var paramName = "<span>" + $(this).find("span").text() + "</span>";
 
-				if (isIn === "True") {
+				if (connectionType === "INPUT_CONNECTION") {
 					//add input endpoint
 					var x = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getTargetEndpoint(), {
 						anchor: inAnchors[iIdx],
@@ -81,7 +80,7 @@
 						},
 					});
                     iIdx++;
-				} else if (isOut === "True") {
+				} else if (connectionType === "OUTPUT_CONNECTION") {
 					//add output endpoint
 					var y = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {
 						anchor: outAnchors[oIdx],

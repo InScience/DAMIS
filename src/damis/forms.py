@@ -75,7 +75,7 @@ class AlgorithmForm(forms.ModelForm):
 class ParameterForm(forms.ModelForm):
     class Meta:
         model = Parameter
-        fields = ['name', 'type', 'connection_type', 'required', 'default', 'is_input', 'is_output']
+        fields = ['name', 'type', 'connection_type', 'required', 'default']
 
 ParameterFormset = inlineformset_factory(Algorithm, Parameter, extra=1, form=ParameterForm, can_delete=False)
 
