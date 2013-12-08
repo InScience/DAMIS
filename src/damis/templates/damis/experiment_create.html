@@ -17,7 +17,12 @@
                     <div id="toolbox">
                             {% spaceless %}
                             {% for cat_name, algorithms in alg_categories %}
-                                <h3>{{ cat_name }}</h3>
+                                {% if forloop.first %}
+                                    <h3 class="first">{{ cat_name }}</h3>
+                                {% else %}
+                                    <h3>{{ cat_name }}</h3>
+                                {% endif %}
+
                                 <div style="padding: 0;">
                                     <div class="tools-padding">
                                     {% for algorithm in algorithms %}
