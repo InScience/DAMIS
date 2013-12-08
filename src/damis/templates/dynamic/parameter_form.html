@@ -1,7 +1,6 @@
 {% load i18n %}
 {% load disable from damis %}
 
-{% trans 'parameters' %}
 {% for form in formset.forms %}
     {% if form.initial.parameter %}
     <div style="{% if form.initial.parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}">
