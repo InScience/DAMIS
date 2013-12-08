@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% get_current_language as lang %}
+{% load paginate from pagination %}
 
 {% block menu %}
     {% include 'menu.html' with active='experiments' %}
@@ -12,34 +12,40 @@
   {% include 'experiment_menu.html' with active='experiment-list' %}
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
+      <button><i class="icon-trash"></i></button>
       <table class="table table-hover">
           <thead>
               <tr>
+                  <th><input type='checkbox'/></th>
                   <th>{% trans "Title" %}</th>
                   <th>{% trans "Status" %}</th>
-                  <th>{% trans "Results" %}</th>
+                  <th>{% trans "Actions" %}</th>
               </tr>
           </thead>
           <tbody>
 
                 {% for obj in object_list %}
                 <tr>
+                    <td><input type='checkbox'/> </td>
                     <td> {{ obj.title }}</td>
                     <td> {{ obj.get_status_display }}</td>
                     <td>
                         <a href="{% url 'experiment-update' obj.id %}">
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
                         </a>
-                        <button type="button" class="btn btn-small"><i class="icon-th-list"></i></button>
+                        <button type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
                         <form method='POST' action="{% url 'experiment-delete' obj.pk %}" style="display: inline;">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-small"><i class="icon-trash"></i></button>
                         </form>
                     </td>
                 </tr>
                 {% endfor %}
           </tbody>
       </table>
+
+      <hr/>
+      {% paginate request paginator page_obj %}
+
     </div>
   </div>
 </div>

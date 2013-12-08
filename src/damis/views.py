@@ -156,6 +156,12 @@ class AlgorithmDelete(LoginRequiredMixin, DeleteView):
 
 class ExperimentList(LoginRequiredMixin, ListView):
     model = Experiment
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super(ExperimentList, self).get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
 
 class ExperimentDetail(LoginRequiredMixin, DetailView):
     model = Experiment
