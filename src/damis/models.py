@@ -77,16 +77,21 @@ class Parameter(models.Model):
         return '%s (%s)' % (self.name, self.type)
 
 
+class Cluster(models.Model):
+    title = models.CharField(_('Title'), max_length=255, null=True)
+    url = models.URLField(_('Cluster home page'), max_length=255, null=True, blank=True)
+    workload_url = models.URLField(_('Workload page'), max_length=255, null=True)
+
+    def __unicode__(self):
+        return self.title
+
+
 class Experiment(models.Model):
     STATUSES = (
         ('SAVED', _('Saved')),
         ('RUNNING', _('Running')),
         ('ERROR', _('Error')),
         ('FINISHED', _('Finished')),
-    )
-    CLUSTERS = (
-            ('MII-CLUSTER', _('MII cluster, http://cluster.mii.lt')),   # http://cluster.mii.lt/ganglia/
-            ('MIF-SK2', _('MIF VU SK2, http://mif.vu.lt/cluster/')),    # http://k007.mif.vu.lt/ganglia2/
     )
     title = models.CharField(_('Experiment title'), max_length=255, null=True)
     start = models.DateTimeField(_('Start'), blank=True, null=True)
@@ -98,9 +103,6 @@ class Experiment(models.Model):
 
     max_calc_time = models.TimeField(default="2:00", null=True)
     p = models.IntegerField(default=1, null=True)
-    cluster = models.CharField(_('Cluster'), max_length=255, null=True,
-                              choices=CLUSTERS, default='MII-CLUSTER')
-
 
     def get_absolute_url(self):
         return reverse('experiment-list')
