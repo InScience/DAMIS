@@ -12,7 +12,9 @@
   {% include 'experiment_menu.html' with active='experiment-list' %}
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
-      <button><i class="icon-trash"></i></button>
+        <form id='experiment-action-form' method='POST' action=''>{% csrf_token %}
+      <input type="hidden" value="delete" name="action"/>
+      <button class="btn" type="submit"><i class="icon-trash"></i></button>
       <table class="table table-hover">
           <thead>
               <tr>
@@ -26,22 +28,22 @@
 
                 {% for obj in object_list %}
                 <tr>
-                    <td><input type='checkbox'/> </td>
+                    <td><input type='checkbox' value="{{ obj.pk }}" name="experiment"/></td>
                     <td> {{ obj.title }}</td>
                     <td> {{ obj.get_status_display }}</td>
                     <td>
                         <a href="{% url 'experiment-update' obj.id %}">
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
                         </a>
-                        <button type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
-                        <form method='POST' action="{% url 'experiment-delete' obj.pk %}" style="display: inline;">
-                            {% csrf_token %}
-                        </form>
+                        <a href="{% url 'experiment-update' obj.id %}">
+                            <button type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}
           </tbody>
-      </table>
+        </table>
+      </form>
 
       <hr/>
       {% paginate request paginator page_obj %}

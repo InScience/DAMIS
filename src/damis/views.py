@@ -163,6 +163,14 @@ class ExperimentList(LoginRequiredMixin, ListView):
         context['request'] = self.request
         return context
 
+    def post(self, request, *args, **kwargs):
+        action = request.POST.get('action')
+        if action == 'delete':
+            for exp_pk in request.POST.getlist('experiment'):
+                exp = Experiment.objects.get(pk=exp_pk)
+                exp.delete()
+        return HttpResponseRedirect(reverse_lazy('experiment-list'))
+
 class ExperimentDetail(LoginRequiredMixin, DetailView):
     model = Experiment
 
