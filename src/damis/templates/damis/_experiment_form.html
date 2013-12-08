@@ -8,7 +8,7 @@
         </div>
     {% endif %}
 
-    <div style="display:none;">
+    <div id="exec-dialog" style="display:none;">
       {% for field in  experiment_form.visible_fields %}
           {{ field.errors }}
           <p>{{ field.label }}:<br/> {{ field }}</p>

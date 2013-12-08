@@ -2,7 +2,7 @@
 (function() {
 	window.experimentForm = {
 		// parameters for window.experimentForm initialization
-		params : {},
+		params: {},
 
 		// translate parameter binding from client to server
 		// representation
@@ -23,7 +23,7 @@
 
 		// translate parameter binding from server to client
 		// representation
-        // parameterFormset - target box parameters
+		// parameterFormset - target box parameters
 		bindingToClient: function(parameterFormset) {
 			$.each(parameterFormset.find("input[id$=connection_type]"), function() {
 				if ($(this).val() === "INPUT_CONNECTION") { // inspect each input parameter
@@ -31,12 +31,12 @@
 					var oParamName = $(srcRefField).val();
 					if (oParamName) {
 						var oParam = $("input[name=" + oParamName + "]");
-                        var sourceForm = oParam.closest(".task-window");
-                        var sourceBoxId = window.taskBoxes.getBoxId(sourceForm);
+						var sourceForm = oParam.closest(".task-window");
+						var sourceBoxId = window.taskBoxes.getBoxId(sourceForm);
 
 						var oParent = oParam.closest("div");
-                        var paramNo = oParent.index();
-						srcRefField.val(paramNo + "," + sourceBoxId); 
+						var paramNo = oParent.index();
+						srcRefField.val(paramNo + "," + sourceBoxId);
 					}
 				}
 			});
@@ -54,14 +54,14 @@
 				var taskFormPrefix = /tasks-\d+/g;
 				taskFormPrefixes.push(taskFormPrefix.exec(name)[0]);
 
-                var taskId = $(taskForm).find("input[id$=id]").val();
-                taskIds.push(taskId ? taskId : "-");
+				var taskId = $(taskForm).find("input[id$=id]").val();
+				taskIds.push(taskId ? taskId: "-");
 			});
 			$.ajax({
 				url: parameterPrefixesUrl,
 				data: {
 					prefixes: taskFormPrefixes,
-                    taskIds: taskIds
+					taskIds: taskIds
 				},
 				context: $(this)
 			}).done(function(parameterFormsetPrefixes) {
@@ -102,17 +102,17 @@
 					$(taskBox).addClass("error");
 				} else {
 					$(taskBox).removeClass("error");
-                }
+				}
 				window.taskBoxes.createTaskFormDialog(taskForm, parameterFormset, window.taskBoxes.getFormWindowId($(taskBox)));
 				window.taskBoxes.addTaskBoxEventHandlers($(taskBox));
-                window.taskBoxes.setBoxName($(taskBox).attr("id"));
+				window.taskBoxes.setBoxName($(taskBox).attr("id"));
 			});
 			$.each($(".task-box"), function(taskBoxId, taskBox) {
 				//restore parameter bindings from server to client representation
 				taskForm = $(updatedForms[taskBoxId + 1]);
 				parameterFormset = $(taskForm.next(".parameter-values"));
 				window.experimentForm.bindingToClient(parameterFormset);
-            });
+			});
 		},
 
 		// Submits the experiment form and reinitializes it
@@ -122,13 +122,13 @@
 			window.experimentForm.bindingToServer();
 
 			var form = $("#experiment-form");
-            if (params["skipValidation"]) {
-                form.find("input[name=skip_validation]").val("True");
-            }
+			if (params["skipValidation"]) {
+				form.find("input[name=skip_validation]").val("True");
+			}
 			var data = form.serialize();
 			$.post(form.attr("action"), data, function(resp) {
 				if (!/<[a-z][\s\S]*>/i.test(resp)) {
-                    // non-html string is returned, which is a redirec url 
+					// non-html string is returned, which is a redirec url 
 					window.location = resp;
 					return;
 				}
@@ -146,7 +146,7 @@
 		init: function() {
 			var params = window.experimentForm.params;
 
-            parametersUrl = params['parametersUrl'];
+			parametersUrl = params['parametersUrl'];
 			parameterPrefixesUrl = params['parameterPrefixesUrl'];
 			taskFormPrefix = params['taskFormPrefix'];
 
@@ -157,19 +157,41 @@
 			});
 
 			//assign form submit handler
-			$('#execute-btn').click(function(ev) {
-				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});
-			});
-
-			//assign form submit handler
 			$('#save-btn').click(function(ev) {
 				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.persistWorkflow.persist, {});
 			});
 
 			//assign new experiment handler
 			$('#new-experiment-btn').click(function(ev) {
-                window.location = params['experimentNewUrl'];
+				window.location = params['experimentNewUrl'];
 			});
+
+			// open execute dialog
+			$('#execute-btn').click(function(ev) {
+                var dialog = $("#exec-dialog");
+                if (!dialog.hasClass("ui-dialog-content")) {
+				    dialog.dialog({
+				    	modal: true,
+                        appendTo: "#experiment-form",
+				    	buttons: [{
+				    		text: 'Cancel',
+				    		click: function(ev) {
+				    			$(this).dialog("close");
+				    		}
+				    	},
+				    	{
+				    		text: 'Continue',
+				    		click: function(ev) {
+				    			$(this).dialog("close");
+				    			window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});
+				    		}
+				    	}]
+				    });
+                } else {
+                    dialog.dialog("open");
+                }
+			});
+
 		},
 
 		// returns parameter form, given 
@@ -178,18 +200,18 @@
 		getParameter: function(parameterNum, taskBoxId) {
 			var taskFormWindow = $("#" + window.taskBoxes.getFormWindowId(taskBoxId));
 			var paramForm = $(taskFormWindow.find(".parameter-values").find("div")[parameterNum]);
-		    return paramForm;
+			return paramForm;
 		},
 
-        //returns parameter value field in parameter form
-        getParameterValue: function(paramForm) {
+		//returns parameter value field in parameter form
+		getParameterValue: function(paramForm) {
 			return paramForm.find("input[id$=value]");
-        },
+		},
 
-        //returns parameter source_ref field in parameter form
-        getParameterSourceRef: function(paramForm) {
+		//returns parameter source_ref field in parameter form
+		getParameterSourceRef: function(paramForm) {
 			return paramForm.find("input[id$=source_ref]");
-        }
+		}
 
 	}
 })();
