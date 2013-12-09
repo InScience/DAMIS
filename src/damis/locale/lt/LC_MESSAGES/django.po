@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-09 12:18+0000\n"
+"POT-Creation-Date: 2013-12-09 18:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,17 +48,17 @@ msgstr "el. paštas"
 msgid "Phone"
 msgstr "Telefono numeris"
 
-#: forms.py:63 models.py:15 models.py:46 models.py:81
+#: forms.py:84 models.py:15 models.py:46 models.py:81
 #: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:21
 #: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:64
+#: forms.py:85
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:65 models.py:17 templates/damis/dataset_detail.html:12
+#: forms.py:86 models.py:17 templates/damis/dataset_detail.html:12
 msgid "Description"
 msgstr "Aprašymas"
 
@@ -266,9 +266,9 @@ msgstr ""
 msgid "Experiments"
 msgstr "Eksperimentai"
 
-#: templates/menu.html:9
-msgid "Datasets"
-msgstr "Duomenys"
+#: templates/menu.html:9 templates/damis/dataset_list.html:13
+msgid "File list"
+msgstr "Failų sąrašas"
 
 #: templates/menu.html:12
 msgid "Help"
@@ -341,15 +341,9 @@ msgstr "Failas"
 msgid "Author"
 msgstr "Autorius"
 
-#: templates/damis/dataset_list.html:13 templates/damis/dataset_new.html:12
-#: templates/damis/obj_form.html:12
-msgid "Dataset list"
-msgstr "Rinkmenų sąrašas"
-
-#: templates/damis/dataset_list.html:14 templates/damis/dataset_new.html:13
-#: templates/damis/dataset_new.html:29 templates/damis/obj_form.html:13
-msgid "Upload dataset"
-msgstr "Įkelti duomenis"
+#: templates/damis/dataset_list.html:14
+msgid "Upload file"
+msgstr "Įkelti failą"
 
 #: templates/damis/dataset_list.html:22
 msgid "Size"
@@ -375,6 +369,15 @@ msgstr "ARFF"
 #: templates/damis/dataset_list.html:49
 msgid "XML"
 msgstr "XML"
+
+#: templates/damis/dataset_new.html:12 templates/damis/obj_form.html:12
+msgid "Dataset list"
+msgstr "Rinkmenų sąrašas"
+
+#: templates/damis/dataset_new.html:13 templates/damis/dataset_new.html:29
+#: templates/damis/obj_form.html:13
+msgid "Upload dataset"
+msgstr "Įkelti duomenis"
 
 #: templates/damis/experiment_create.html:57
 #: templates/damis/experiment_detail.html:10
@@ -428,6 +431,9 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankst"
+
+#~ msgid "Datasets"
+#~ msgstr "Duomenys"
 
 #~ msgid "MII cluster, http://cluster.mii.lt"
 #~ msgstr "MII klusteris, http://cluster.mii.lt"

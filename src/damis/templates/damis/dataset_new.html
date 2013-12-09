@@ -8,10 +8,7 @@
 
 {% block content %}
 <div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs" id="myTab2">
-      <li><a href="{% url 'dataset-list' %}">{% trans "Dataset list" %}</a></li>
-      <li class="active"><a href="{% url 'dataset-new' %}">{% trans "Upload dataset" %}</a></li>
-  </ul>
+  {% include 'files_menu.html' with active='dataset-new' %}
   <div class="tab-content">
     <div class="offset3">
       <form method='POST' action='{% url 'dataset-new' %}' enctype="multipart/form-data">{% csrf_token %}
