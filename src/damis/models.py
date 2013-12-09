@@ -13,7 +13,7 @@ def get_dataset_upload_path(instance, filename):
 
 class Dataset(models.Model):
     title = models.CharField(_('Title'), max_length=255)
-    file = models.FileField(upload_to=get_dataset_upload_path)
+    file = models.FileField(_('File'), upload_to=get_dataset_upload_path)
     description = models.TextField(_('Description'), blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'))
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
@@ -46,11 +46,11 @@ class Algorithm(models.Model):
     title = models.CharField(_('Title'), max_length=255, null=True, blank=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'))
     category = models.CharField(_('Category'), max_length=255, null=True, blank=True, choices=CATEGORIES)
-    file = models.FileField(upload_to=get_algorithm_file_upload_path)
+    file = models.FileField(_('File'), upload_to=get_algorithm_file_upload_path)
     executable_file = models.CharField(_('Executable'), max_length=255, null=True, blank=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
-    icon = models.ImageField(upload_to='icons', blank=True, null=True)
+    icon = models.ImageField(_('Icon'), upload_to='icons', blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('algorithm-list')
@@ -65,11 +65,13 @@ class Parameter(models.Model):
         ('OUTPUT_VALUE', 'Output value'),
         ('OUTPUT_CONNECTION', 'Output connection'),
     )
-    algorithm = models.ForeignKey(Algorithm, related_name='parameters', null=True, blank=True)
+    algorithm = models.ForeignKey(Algorithm, related_name='parameters',
+                                  null=True, blank=True,
+                                  verbose_name=_('Algorithm'))
     name = models.CharField(_('Option'), max_length=255, null=True)
-    type = models.CharField(max_length=255, null=True, blank=True)
-    required = models.BooleanField(blank=True)
-    default = models.CharField(max_length=255, null=True, blank=True)
+    type = models.CharField(_('Type'), max_length=255, null=True, blank=True)
+    required = models.BooleanField(_('Required'), blank=True)
+    default = models.CharField(_('Default'), max_length=255, null=True, blank=True)
     connection_type = models.CharField(_('Connection type'), max_length=255, null=True, blank=True,
                               choices=CONNECTION_TYPES, default='INPUT_VALUE')
 
@@ -99,10 +101,11 @@ class Experiment(models.Model):
     status = models.CharField(_('Status'), max_length=255, null=True, blank=True,
                               choices=STATUSES, default='SAVED')
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'), related_name='experiments')
-    workflow_state = models.TextField(blank=True, null=True)
+    workflow_state = models.TextField(_('Workflow state'), blank=True, null=True)
 
-    max_calc_time = models.TimeField(default="2:00", null=True)
-    p = models.IntegerField(default=1, null=True)
+    max_calc_time = models.TimeField(_('Maximum calculation time'),
+                                     default="2:00", null=True)
+    p = models.IntegerField(_('Processor number'), default=1, null=True)
 
     def get_absolute_url(self):
         return reverse('experiment-list')
@@ -118,17 +121,20 @@ def get_result_file_upload_path(instance, filename):
     return  '%s/result/%s' % (username, filename)
 
 class Task(models.Model):
-    experiment = models.ForeignKey('Experiment', related_name='tasks', null=True)
-    algorithm = models.ForeignKey('Algorithm')
+    experiment = models.ForeignKey('Experiment', related_name='tasks',
+                                   null=True, verbose_name=_('Experiment'))
+    algorithm = models.ForeignKey('Algorithm', verbose_name=_('Algorithm'))
 
     def __unicode__(self):
         return '%s %s' % (self.sequence, self.algorithm.title)
 
 class ParameterValue(models.Model):
-    parameter = models.ForeignKey('Parameter')
+    parameter = models.ForeignKey('Parameter', verbose_name=_('Parameter'))
     value = models.CharField(max_length=255, blank=True)
-    task = models.ForeignKey('Task', related_name='parameter_values')
-    source = models.ForeignKey('ParameterValue', null=True, blank=True)
+    task = models.ForeignKey('Task', related_name='parameter_values',
+                                                verbose_name=_('Task'))
+    source = models.ForeignKey('ParameterValue', null=True, blank=True,
+                                                verbose_name=_('Source'))
 
     def __unicode__(self):
         return '%s: %s' % (self.task.algorithm, self.value)
