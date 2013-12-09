@@ -68,6 +68,20 @@ class DatasetList(LoginRequiredMixin, ListView):
         qs = super(DatasetList, self).get_queryset()
         return qs.order_by('-created')
 
+    def get_context_data(self, **kwargs):
+        context = super(DatasetList, self).get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
+
+    def post(self, request, *args, **kwargs):
+        action = request.POST.get('action')
+        if action == 'delete':
+            for dataset_pk in request.POST.getlist('dataset'):
+                dataset = Dataset.objects.get(pk=dataset_pk)
+                dataset.delete()
+        return HttpResponseRedirect(reverse_lazy('dataset-list'))
+
+
 class DatasetUpdate(LoginRequiredMixin, UpdateView):
     model = Dataset
 
@@ -278,8 +292,8 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
 
                 for pv_form in pv_formset.forms:
                     data = {}
-                    data['parameter'] = pv_form.cleaned_data['parameter']
-                    data['value'] = pv_form.cleaned_data['value']
+                    data['parameter'] = pv_form.cleaned_data.get('parameter')
+                    data['value'] = pv_form.cleaned_data.get('value')
                     data['task'] = task
                     pv_form.instance = ParameterValue.objects.create(**data)
                     sources[pv_form.prefix] = pv_form.instance
