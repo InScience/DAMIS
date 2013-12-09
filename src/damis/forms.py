@@ -41,7 +41,7 @@ class LoginForm(forms.Form):
         cleaned_data['user'] = user
         return cleaned_data
 
-class RegisterForm(forms.Form):
+class RegistrationForm(forms.Form):
     username = forms.CharField(label=_('Username'), max_length=100,)
     password = forms.CharField(label=_('Password'), max_length=128,
                         widget=forms.PasswordInput(render_value=False))
@@ -51,6 +51,27 @@ class RegisterForm(forms.Form):
     last_name = forms.CharField(label=_('Last name'), max_length=100,)
     email = forms.EmailField(label=_('E-mail'), max_length=100)
     phone = forms.CharField(label=_('Phone'), max_length=100, required=False)
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.exists(username=username):
+            raise forms.ValidationError('This username is already taken.')
+        return username
+
+    def is_valid(self):
+        valid = super(RegistrationForm, self).is_valid()
+        if not valid:
+            return valid
+
+        first_password = self.cleaned_data.get('password')
+        repeat_password = self.cleaned_data.get('password_repeat')
+
+        if first_password == repeat_password:
+            return True
+        errors = self._errors.setdefault('password_repeat', ErrorList())
+        errors.append(u'Passwords do not match')
+        return False
+
 
     def save(self):
         data = self.cleaned_data

@@ -20,7 +20,7 @@ from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 
-from damis.forms import LoginForm, RegisterForm
+from damis.forms import LoginForm, RegistrationForm
 from damis.forms import DatasetForm
 from damis.forms import AlgorithmForm
 from damis.forms import ParameterForm, ParameterFormset
@@ -362,7 +362,7 @@ def algorithm_parameter_form(request):
 
 def register_view(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
             if user is not None and user.is_active:
@@ -370,7 +370,7 @@ def register_view(request):
                 user = form.cleaned_data['user']
                 return HttpResponseRedirect(reverse_lazy('home'))
     else:
-        form = RegisterForm()
+        form = RegistrationForm()
     return render(request, 'accounts/register.html', {
         'form': form,
     })
