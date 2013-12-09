@@ -24,7 +24,7 @@
         {% for task in task_formset.forms %}
         {% trans 'Task' %}
         <div class="inline task">
-            <div>
+            <div style="display:none">
                 {{ task.non_field_errors }}
                 {% for field in task.visible_fields %}
                     <p>{{ field.errors }}

@@ -96,27 +96,25 @@
 		},
 
 		// Loads parameters for the selected algorithm
-		loadAlgorithmParameters: function() {
+		loadAlgorithmParameters: function(algorithmInput) {
 			$.ajax({
 				url: parametersUrl,
 				data: {
-					algorithm_id: $(this).val(),
-					prefix: $(this).attr('name')
+					algorithm_id: algorithmInput.val(),
+					prefix: algorithmInput.attr('name')
 				},
 				context: $(this)
 			}).done(function(resp) {
 				// replace old parameter formset with a new one
-				var formWindow = $(this).closest('.task').parent();
+				var formWindow = algorithmInput.closest('.task').parent();
 				formWindow.find(".parameter-values").html(resp);
 
-				// rename the box
 				var taskBoxId = window.taskBoxes.getBoxId(formWindow);
-				window.taskBoxes.setBoxName(taskBoxId);
 				window.taskBoxes.recreateEndpoints(taskBoxId, formWindow);
 			});
 		},
 
-		// create modal window and assign algorithm change handler
+		// create modal window
 		createTaskFormDialog: function(taskForm, existingParameters, formWindowId) {
 			var taskFormContainer = $("<div></div>");
 			taskFormContainer.attr("id", formWindowId);
@@ -140,7 +138,6 @@
 					}
 				}]
 			});
-			taskForm.find(".algorithm-selection select").change(window.taskBoxes.loadAlgorithmParameters);
 		},
 
 		// create a new task box and modal window, assign event handlers 
@@ -168,6 +165,15 @@
 			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox));
 
 			this.addTaskBoxEventHandlers(taskBox);
+            
+			//set algorithm ID into the task form
+            var algorithmId = $(ui.draggable).find("input").val();
+            var algorithmInput = taskForm.find(".algorithm-selection select");
+
+            algorithmInput.find(".algorithm-selection select option[selected=selected]").removeAttr("selected");
+            algorithmInput.find("option[value=" + algorithmId + "]").attr("selected", "selected");
+
+            window.taskBoxes.loadAlgorithmParameters(algorithmInput);
 		},
 
 		//adds task box event handlers: dbclick, mousedown, and makes it
