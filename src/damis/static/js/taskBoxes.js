@@ -1,31 +1,24 @@
 (function() {
 	window.taskBoxes = {
 		assembleBoxHTML: function(boxName, icoUrl) {
-			return '<div class="task-box"><img src=\"' + icoUrl +  '\" width=\"64px\" height=\"64px\" /><div class=\"desc\"><div>' + boxName + '</div></div></div>';
+			var closeIco = '<a href="#"><i class="component-tooltip icon-remove"></i></a>';
+			return '<div class="task-box"><img src=\"' + icoUrl + '\" width=\"64px\" height=\"64px\" />' + closeIco + '<div class=\"desc\"><div>' + boxName + '</div></div></div>';
 		},
 
 		countBoxes: 0,
 
 		// remove all endpoints of a task box
 		removeEndpoints: function(taskBoxId) {
-            var epoints = jsPlumb.getEndpoints(taskBoxId);
-            var epoints2 = [];
-            if (epoints) {
-                $.each(epoints, function(idx, e) {
-                    epoints2.push(e);
-                });
-                var len = epoints2.length; 
-                while (len--) {
-                    jsPlumb.deleteEndpoint(epoints2[len]);
-                }
-            }
-		},
-
-		// Right-click on task box
-		taskBoxRightClick: function(ev) {
-			if (ev.button == 2) {
-				var taskBox = $(ev.target).hasClass("task-box") ? $(ev.target) : $(ev.target).closest(".task-box");
-				window.taskBoxes.removeTaskBox(taskBox);
+			var epoints = jsPlumb.getEndpoints(taskBoxId);
+			var epoints2 = [];
+			if (epoints) {
+				$.each(epoints, function(idx, e) {
+					epoints2.push(e);
+				});
+				var len = epoints2.length;
+				while (len--) {
+					jsPlumb.deleteEndpoint(epoints2[len]);
+				}
 			}
 		},
 
@@ -43,8 +36,8 @@
 		// modify box name according to algorithm selection
 		setBoxName: function(taskBoxId) {
 			var formWindow = $("#" + window.taskBoxes.getFormWindowId(taskBoxId));
-			var nameContainer= $("#" + taskBoxId).find(".desc div");
-            nameContainer.html(formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text());
+			var nameContainer = $("#" + taskBoxId).find(".desc div");
+			nameContainer.html(formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text());
 		},
 
 		// delete existing endpoints and create new ones to reflect the
@@ -79,7 +72,7 @@
 							iTaskBoxId: taskBoxId
 						},
 					});
-                    iIdx++;
+					iIdx++;
 				} else if (connectionType === "OUTPUT_CONNECTION") {
 					//add output endpoint
 					var y = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {
@@ -90,7 +83,7 @@
 							oTaskBoxId: taskBoxId
 						}
 					});
-                    oIdx++;
+					oIdx++;
 				}
 			});
 		},
@@ -144,7 +137,7 @@
 		createTaskBox: function(ev, ui, taskContainer) {
 			// drop the task where it was dragged
 			var currentName = ui.draggable.text();
-            var icoUrl = $(ui.draggable).find("img").attr("src");
+			var icoUrl = $(ui.draggable).find("img").attr("src");
 			var taskBox = $(window.taskBoxes.assembleBoxHTML(currentName, icoUrl));
 			taskBox.appendTo(taskContainer);
 			taskBox.css("left", ui.position.left + "px");
@@ -165,25 +158,29 @@
 			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox));
 
 			this.addTaskBoxEventHandlers(taskBox);
-            
+
 			//set algorithm ID into the task form
-            var algorithmId = $(ui.draggable).find("input").val();
-            var algorithmInput = taskForm.find(".algorithm-selection select");
+			var algorithmId = $(ui.draggable).find("input").val();
+			var algorithmInput = taskForm.find(".algorithm-selection select");
 
-            algorithmInput.find(".algorithm-selection select option[selected=selected]").removeAttr("selected");
-            algorithmInput.find("option[value=" + algorithmId + "]").attr("selected", "selected");
+			algorithmInput.find("option[selected=selected]").removeAttr("selected");
+			algorithmInput.find("option[value=" + algorithmId + "]").attr("selected", "selected");
 
-            window.taskBoxes.loadAlgorithmParameters(algorithmInput);
+			window.taskBoxes.loadAlgorithmParameters(algorithmInput);
 		},
 
-		//adds task box event handlers: dbclick, mousedown, and makes it
+		//adds task box event handlers: delete task box, dbclick, and makes it
 		//draggable
 		addTaskBoxEventHandlers: function(taskBox) {
 
 			// delete task box on right-click
-			taskBox.off("mousedown");
-			taskBox.on("mousedown", this.taskBoxRightClick);
-
+			var closeIco = taskBox.find(".icon-remove");
+            closeIco.off("click");
+			closeIco.on("click", function(ev) {
+				var taskBox = $(ev.target).closest(".task-box");
+				window.taskBoxes.removeTaskBox(taskBox);
+            });
+                    
 			// open dialog on dbclick
 			taskBox.off("dbclick");
 			taskBox.on("dblclick", function(ev) {
