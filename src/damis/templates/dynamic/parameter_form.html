@@ -27,7 +27,6 @@
             {{ field }}
         {% endfor %}
         <input id="{{ form.prefix }}-connection_type" type="hidden" value="{% firstof form.initial.parameter.connection_type form.instance.parameter.connection_type %}" name="{{ form.prefix }}-connection_type"/>
-        {{ form.parameter }}
     </div>
 {% endfor %}
 {{ formset.management_form }}
