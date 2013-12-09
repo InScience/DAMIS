@@ -78,6 +78,14 @@ class DatasetDelete(LoginRequiredMixin, DeleteView):
     model = Dataset
     success_url = reverse_lazy('dataset-list')
 
+def dataset_download_view(request, pk, file_format):
+    dataset = Dataset.objects.get(pk=pk)
+    file = dataset.file
+    response = HttpResponse(mimetype='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=%s.csv' % (file,)
+    response.write(file.read())
+    return response
+
 
 class AlgorithmCreate(LoginRequiredMixin, CreateView):
     model = Algorithm

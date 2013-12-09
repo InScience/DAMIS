@@ -28,6 +28,7 @@ urlpatterns += i18n_patterns('',
     url(r'^datasets/$', DatasetList.as_view(), name='dataset-list'),
     url(r'^datasets/new/$', DatasetCreate.as_view(), name='dataset-new'),
     url(r'^datasets/(?P<pk>\d*)/$', DatasetDetail.as_view(), name='dataset-detail'),
+    url(r'^datasets/(?P<pk>\d*)/download/(?P<file_format>\w*)/$', dataset_download_view, name='dataset-download'),
     url(r'^datasets/(?P<pk>\d*)/edit/$', DatasetUpdate.as_view(), name='dataset-update'),
     url(r'^datasets/(?P<pk>\d*)/delete/$', DatasetDelete.as_view(), name='dataset-delete'),
 

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load sizify from damis %}
 {% get_current_language as lang %}
 
 {% block menu %}
@@ -17,33 +18,31 @@
               <tr>
                   <th>{% trans "Title" %}</th>
                   <th>{% trans "Size" %}</th>
-                  <th>{% trans "Actions" %}</th>
-                  <th>{% trans "Download" %}</th>
+                  <th>{% trans "Description" %}</th>
+                  <th style='text-align: center;'>{% trans "Actions" %}</th>
               </tr>
           </thead>
           <tbody>
             {% for dataset in object_list %}
               <tr>
                   <td>{{ dataset.title }}</td>
-                  <td>-</td>
+                  <td>{{ dataset.file.size|sizify }}</td>
+                  <td>{{ dataset.description }}</td>
                   <td>
-                      <div class="btn-group" >
-                          <a href="{% url 'dataset-detail' dataset.pk %}">
-                              <button type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
+                      <a href="{% url 'dataset-update' dataset.pk %}">
+                          <button type="button" class="btn btn-small" style="margin-right: 30px;"><i class="icon-pencil"></i></button>
+                      </a>
+
+                      <div class="btn-group">
+                          <a href="{% url 'dataset-download' dataset.pk 'CSV' %}">
+                              <button type="button" class="btn btn-small">{% trans "CSV" %}</button>
                           </a>
-                          <a href="{% url 'dataset-update' dataset.pk %}">
-                              <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
+                          <a href="{% url 'dataset-download' dataset.pk 'ARFF' %}">
+                              <button type="button" class="btn btn-small">{% trans "ARFF" %}</button>
                           </a>
-                          <a href="{% url 'dataset-delete' dataset.pk %}">
-                              <button type="button" class="btn btn-small"><i class="icon-trash"></i></button>
+                          <a href="{% url 'dataset-download' dataset.pk 'XML' %}">
+                              <button type="button" class="btn btn-small">{% trans "XML" %}</button>
                           </a>
-                      </div>
-                  </td>
-                  <td>
-                      <div class="btn-group" >
-                          <button type="button" class="btn btn-small">{% trans "CSV" %}</button>
-                          <button type="button" class="btn btn-small">{% trans "ARFF" %}</button>
-                          <button type="button" class="btn btn-small">{% trans "XML" %}</button>
                       </div>
                   </td>
               </tr>
