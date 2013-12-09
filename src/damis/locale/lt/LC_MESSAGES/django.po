@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-08 17:35+0000\n"
+"POT-Creation-Date: 2013-12-09 12:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,9 +48,9 @@ msgstr "el. paštas"
 msgid "Phone"
 msgstr "Telefono numeris"
 
-#: forms.py:63 models.py:15 models.py:46
+#: forms.py:63 models.py:15 models.py:46 models.py:81
 #: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:21
-#: templates/damis/experiment_list.html:18
+#: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
 
@@ -62,7 +62,7 @@ msgstr "Duomenų failas"
 msgid "Description"
 msgstr "Aprašymas"
 
-#: models.py:18 models.py:47 models.py:98
+#: models.py:18 models.py:47 models.py:101
 msgid "User"
 msgstr "Naudotojas"
 
@@ -110,53 +110,49 @@ msgstr "Vykdomasis"
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:75
+#: models.py:73
 msgid "Connection type"
 msgstr "Jungties tipas"
 
-#: models.py:84
+#: models.py:82
+msgid "Cluster home page"
+msgstr "Skaičiavimo telkinio namų puslapis"
+
+#: models.py:83
+msgid "Workload page"
+msgstr "Apkrovimo puslapis"
+
+#: models.py:91
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: models.py:85
+#: models.py:92
 msgid "Running"
 msgstr "Vykdoma"
 
-#: models.py:86
+#: models.py:93
 msgid "Error"
 msgstr "Klaida"
 
-#: models.py:87
+#: models.py:94
 msgid "Finished"
 msgstr "Įvykdyta"
 
-#: models.py:90
-msgid "MII cluster, http://cluster.mii.lt"
-msgstr "MII klusteris, http://cluster.mii.lt"
-
-#: models.py:91
-msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
-msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
-
-#: models.py:93
+#: models.py:96
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:94
+#: models.py:97
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:95
+#: models.py:98
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:96 templates/damis/experiment_list.html:19
+#: models.py:99 templates/damis/experiment_list.html:23
 msgid "Status"
 msgstr "Statusas"
-
-#: models.py:103
-msgid "Cluster"
-msgstr "Klusteris"
 
 #: settings.py:46
 msgid "Lithuanian"
@@ -166,11 +162,11 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: templates/base.html:73
+#: templates/base.html:74
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:76
+#: templates/base.html:77
 msgid "API"
 msgstr "API"
 
@@ -294,6 +290,14 @@ msgstr "Prisijungti"
 msgid "Login"
 msgstr "Prisijungti"
 
+#: templates/accounts/login.html:15
+msgid "Do not have an account? You can"
+msgstr "Neturite paskyros? Galite"
+
+#: templates/accounts/login.html:15
+msgid "register here"
+msgstr "registruotis čia"
+
 #: templates/accounts/register.html:13
 msgid "Register"
 msgstr "Registruotis"
@@ -321,7 +325,7 @@ msgid "Upload algorithm"
 msgstr "Įkelti algoritmą"
 
 #: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
-#: templates/damis/experiment_create.html:45 templates/damis/obj_form.html:19
+#: templates/damis/experiment_create.html:58 templates/damis/obj_form.html:19
 msgid "Save"
 msgstr "Išsaugoti"
 
@@ -352,6 +356,7 @@ msgid "Size"
 msgstr "Dydis"
 
 #: templates/damis/dataset_list.html:23
+#: templates/damis/experiment_list.html:24
 msgid "Actions"
 msgstr "Veiksmai"
 
@@ -371,13 +376,13 @@ msgstr "ARFF"
 msgid "XML"
 msgstr "XML"
 
-#: templates/damis/experiment_create.html:44
+#: templates/damis/experiment_create.html:57
 #: templates/damis/experiment_detail.html:10
 #: templates/damis/experiment_form.html:14
 msgid "New experiment"
 msgstr "Naujas eksperimentas"
 
-#: templates/damis/experiment_create.html:47
+#: templates/damis/experiment_create.html:60
 #: templates/damis/experiment_detail.html:18
 #: templates/damis/experiment_form.html:43
 msgid "Execute"
@@ -411,14 +416,30 @@ msgstr "Užduotys"
 msgid "parameters"
 msgstr "Parametrai"
 
-#: templates/damis/experiment_list.html:20
-msgid "Results"
-msgstr "Rezultatai"
-
-#: templates/dynamic/parameter_form.html:20
-#: templates/dynamic/parameter_form.html:24
+#: templates/dynamic/parameter_form.html:18
+#: templates/dynamic/parameter_form.html:22
 msgid "Comes from Connection"
 msgstr "Jungties įėjimas"
+
+#: templatetags/pagination.py:79
+msgid "Next"
+msgstr "Sekantis"
+
+#: templatetags/pagination.py:84
+msgid "Prev"
+msgstr "Ankst"
+
+#~ msgid "MII cluster, http://cluster.mii.lt"
+#~ msgstr "MII klusteris, http://cluster.mii.lt"
+
+#~ msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
+#~ msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
+
+#~ msgid "Cluster"
+#~ msgstr "Klusteris"
+
+#~ msgid "Results"
+#~ msgstr "Rezultatai"
 
 #~ msgid "Algorithms"
 #~ msgstr "Algoritmai"
