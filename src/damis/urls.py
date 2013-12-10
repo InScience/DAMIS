@@ -25,6 +25,8 @@ urlpatterns += i18n_patterns('',
     url(r'^reset-password/$', reset_password_view, name='reset-password'),
     url(r'^logout/$', logout_view, name='logout'),
 
+    url(r'^users/$', UserList.as_view(), name='user-list'),
+
     url(r'^datasets/$', DatasetList.as_view(), name='dataset-list'),
     url(r'^datasets/new/$', DatasetCreate.as_view(), name='dataset-new'),
     url(r'^datasets/(?P<pk>\d*)/$', DatasetDetail.as_view(), name='dataset-detail'),

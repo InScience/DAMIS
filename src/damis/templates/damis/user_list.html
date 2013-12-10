@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load paginate from pagination %}
+
+{% block menu %}
+    {% include 'menu.html' with active='experiments' %}
+{% endblock %}
+
+{% block content %}
+<div class="span12">
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  {% include 'experiment_menu.html' with active='experiment-list' %}
+  <div class="tab-content">
+    <div class="tab-pane active" id="data-list">
+        <form id='experiment-action-form' method='POST' action=''>{% csrf_token %}
+      <input type="hidden" value="delete" name="action"/>
+      <button class="btn" type="submit"><i class="icon-trash"></i></button>
+      <table class="table table-hover">
+          <thead>
+              <tr>
+                  <th><input class="select-all" type="checkbox"></th>
+                  <th>{% trans "User" %}</th>
+              </tr>
+          </thead>
+          <tbody>
+
+                {% for obj in object_list %}
+                <tr>
+                    <td><input type='checkbox' value="{{ obj.pk }}" name="pk"/></td>
+                    <td> {{ obj }}</td>
+                </tr>
+                {% endfor %}
+          </tbody>
+        </table>
+      </form>
+
+      <hr/>
+      {% paginate request paginator page_obj %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}
