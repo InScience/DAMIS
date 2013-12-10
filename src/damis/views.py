@@ -164,6 +164,10 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
     form_class = UserUpdateForm
     template_name = 'damis/user_update.html'
 
+    def get_success_url(self):
+        return reverse_lazy('user-list')
+
+
 class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
     model = Algorithm
     form_class = AlgorithmForm
