@@ -51,6 +51,13 @@
                       </div>
                   </td>
               </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" style="text-align:center;">
+                    {% trans "No files were uploaded yet. You can upload one " %}
+                    <a href='{% url 'dataset-new' %}'>{% trans "here" %}</a>.
+                </td>
+            </tr>
             {% endfor %}
           </tbody>
       </table>

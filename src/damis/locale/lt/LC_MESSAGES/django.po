@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-10 19:41+0000\n"
+"POT-Creation-Date: 2013-12-10 21:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgid "Phone"
 msgstr "Telefono numeris"
 
 #: forms.py:87 models.py:15 models.py:37 models.py:53
-#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:23
+#: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:23
 #: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
@@ -219,11 +219,11 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: templates/base.html:74
+#: templates/base.html:76
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:77
+#: templates/base.html:79
 msgid "API"
 msgstr "API"
 
@@ -380,20 +380,34 @@ msgid "Are you sure you want to delete algorithm"
 msgstr "Ar tikrai norite pašalinti algoritmą"
 
 #: templates/damis/algorithm_form.html:8
-#: templates/damis/algorithm_list.html:10
+#: templates/damis/algorithm_list.html:11
 msgid "Algorithm list"
 msgstr "Algoritmai"
 
 #: templates/damis/algorithm_form.html:9
-#: templates/damis/algorithm_list.html:11
+#: templates/damis/algorithm_list.html:12
 msgid "Upload algorithm"
 msgstr "Įkelti algoritmą"
 
-#: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
+#: templates/damis/algorithm_form.html:30
 #: templates/damis/experiment_create.html:64 templates/damis/obj_form.html:19
 #: templates/damis/user_update.html:13
 msgid "Save"
 msgstr "Išsaugoti"
+
+#: templates/damis/algorithm_list.html:24 templates/damis/dataset_list.html:26
+#: templates/damis/experiment_list.html:24 templates/damis/user_list.html:25
+msgid "Actions"
+msgstr "Veiksmai"
+
+#: templates/damis/algorithm_list.html:42
+msgid "No algorithms were uploaded yet. You can upload one "
+msgstr "Kol kas nėra įkeltų algoritmų. Jūs tai galite padaryti "
+
+#: templates/damis/algorithm_list.html:43 templates/damis/dataset_list.html:58
+#: templates/damis/experiment_list.html:47 templates/damis/user_list.html:49
+msgid "here"
+msgstr "čia"
 
 #: templates/damis/dataset_confirm_delete.html:13
 msgid "Are you sure you want to delete dataset"
@@ -403,14 +417,14 @@ msgstr "Ar tikrai norite pašalinti duomenų rinkinį"
 msgid "Author"
 msgstr "Autorius"
 
+#: templates/damis/dataset_form.html:26 templates/damis/dataset_new.html:26
+#: templates/damis/obj_form.html:13
+msgid "Upload dataset"
+msgstr "Įkelti duomenis"
+
 #: templates/damis/dataset_list.html:24
 msgid "Size"
 msgstr "Dydis"
-
-#: templates/damis/dataset_list.html:26
-#: templates/damis/experiment_list.html:24 templates/damis/user_list.html:25
-msgid "Actions"
-msgstr "Veiksmai"
 
 #: templates/damis/dataset_list.html:43
 msgid "CSV"
@@ -424,9 +438,9 @@ msgstr "ARFF"
 msgid "XML"
 msgstr "XML"
 
-#: templates/damis/dataset_new.html:26 templates/damis/obj_form.html:13
-msgid "Upload dataset"
-msgstr "Įkelti duomenis"
+#: templates/damis/dataset_list.html:57
+msgid "No files were uploaded yet. You can upload one "
+msgstr "Kol kas nėra įkeltų failų. Įkelti failą galite "
 
 #: templates/damis/experiment_create.html:63
 #: templates/damis/experiment_detail.html:10
@@ -468,6 +482,10 @@ msgstr "Užduotys"
 msgid "parameters"
 msgstr "Parametrai"
 
+#: templates/damis/experiment_list.html:46
+msgid "No experiments were created yet. You can create one "
+msgstr "Nėra sukurtų eksperimentų. Eksperimentus kurti galite "
+
 #: templates/damis/obj_form.html:12
 msgid "Dataset list"
 msgstr "Rinkmenų sąrašas"
@@ -479,6 +497,10 @@ msgstr "Vardas pavardė"
 #: templates/damis/user_list.html:24
 msgid "Is active"
 msgstr "Aktyvus"
+
+#: templates/damis/user_list.html:48
+msgid "No users were created yet. You can register "
+msgstr "Kol kas nėra sukurtų naudotojų. Registruotis galite "
 
 #: templates/dynamic/parameter_form.html:18
 #: templates/dynamic/parameter_form.html:22

@@ -39,10 +39,8 @@
                 {% empty %}
                 <tr>
                     <td colspan="3" style="text-align:center;">
-                    {% blocktrans %}
-                    No algorithms were uploaded. If you want to upload one, you
-                    can do it{% endblocktrans %} <a href='{% url 'algorithm-new' %}'>here{% blocktrans %}</a>.
-                    {% endblocktrans %}
+                        {% trans "No algorithms were uploaded yet. You can upload one " %}
+                        <a href='{% url 'algorithm-new' %}'>{% trans "here" %}</a>.
                     </td>
                 </tr>
                 {% endfor %}

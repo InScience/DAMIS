@@ -40,6 +40,13 @@
                         </a>
                     </td>
                 </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" style="text-align:center;">
+                        {% trans "No experiments were created yet. You can create one " %}
+                        <a href='{% url 'experiment-new' %}'>{% trans "here" %}</a>.
+                    </td>
+                </tr>
                 {% endfor %}
           </tbody>
         </table>
