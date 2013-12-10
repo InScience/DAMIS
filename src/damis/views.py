@@ -42,10 +42,9 @@ from damis.models import Cluster
 
 
 class LoginRequiredMixin(object):
-    pass
-    # @method_decorator(login_required(login_url=reverse_lazy('login')))
-    # def dispatch(self, *args, **kwargs):
-    #     return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
+    def dispatch(self, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
 class SuperUserRequiredMixin(object):
     @method_decorator(login_required(login_url=reverse_lazy('login')))
