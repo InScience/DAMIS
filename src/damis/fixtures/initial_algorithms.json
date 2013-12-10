@@ -1885,5 +1885,320 @@
         "icon": "icons/chart-ico.png",
         "cluster": "1"
     }
+},
+{
+    "pk": 22, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-04T14:24:02.590", 
+        "title": "PCA", 
+        "created": "2013-12-01T17:08:18.458", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_8.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico.jpg",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 23, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-04T14:24:36.716", 
+        "title": "SMACOF", 
+        "created": "2013-12-01T17:12:09.444", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_9.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_1.jpg",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 24, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-04T14:25:46.473", 
+        "title": "DMA", 
+        "created": "2013-12-01T17:17:07.181", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_10.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_2.jpg",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 25, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-04T14:26:21.141", 
+        "title": "SDS", 
+        "created": "2013-12-01T17:20:31.364", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_11.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_4.jpg",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 26, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-04T14:26:45.406", 
+        "title": "SAMANN", 
+        "created": "2013-12-01T17:23:45.256", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_12.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_5.jpg",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 27, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA_MINING", 
+        "updated": "2013-12-04T14:27:30.916", 
+        "title": "SOM", 
+        "created": "2013-12-01T17:26:44.550", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_13.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/som-ico.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 28, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DIMENSIONALITY_REDUCTION", 
+        "updated": "2013-12-04T14:28:11.612", 
+        "title": "SOMMDS", 
+        "created": "2013-12-01T17:30:10.885", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_14.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/dimensionality-reduction-ico_6.jpg",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 29, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA_MINING", 
+        "updated": "2013-12-04T14:28:38.968", 
+        "title": "MLP", 
+        "created": "2013-12-01T17:34:03.463", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_15.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/mlp-ico.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 30, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA_MINING", 
+        "updated": "2013-12-04T14:29:07.068", 
+        "title": "C45", 
+        "created": "2013-12-01T17:36:23.101", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_16.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/C45-ico.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 31, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA_MINING", 
+        "updated": "2013-12-04T14:30:59.696", 
+        "title": "KMEANS", 
+        "created": "2013-12-01T17:39:00.977", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_17.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/kmeans-ico_1.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 32, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "STAT_PRIMITIVES", 
+        "updated": "2013-12-04T14:31:53.156", 
+        "title": "STAT PRIMITIVES", 
+        "created": "2013-12-01T17:41:08.651", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_18.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/statistical-primitives-icon.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 33, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-04T14:33:27.888", 
+        "title": "CLEAN DATA", 
+        "created": "2013-12-01T17:42:35.946", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_19.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/clean-data-ico.jpeg",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 34, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-04T14:34:05.161", 
+        "title": "FILTER DATA", 
+        "created": "2013-12-01T17:45:17.719", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_20.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/filter-data-ico_1.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 35, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-03T21:04:00.733", 
+        "title": "SPLIT DATA", 
+        "created": "2013-12-02T07:59:59.597", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_21.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/split-data-ico.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 36, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-04T14:34:24.129", 
+        "title": "TRANSPOSE DATA", 
+        "created": "2013-12-02T08:01:41.650", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_22.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/transpose-data-ico.jpg",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 37, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-04T14:35:07.796", 
+        "title": "TRANSFORM DATA", 
+        "created": "2013-12-02T08:03:22.174", 
+        "user": null, 
+        "file": "anonymous/algorithms/kmeans_23.py", 
+        "executable_file": "kmeans.py", 
+        "icon": "icons/transform-data-ico.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 38, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA", 
+        "updated": "2013-12-03T21:05:36.842", 
+        "title": "UPLOAD FILE", 
+        "created": "2013-12-03T20:29:16.228", 
+        "user": null, 
+        "file": "anonymous/algorithms/upload-file-ico.png", 
+        "executable_file": "upload-file-ico.png", 
+        "icon": "icons/upload-file-ico.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 39, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA", 
+        "updated": "2013-12-03T20:34:33.310", 
+        "title": "EXISTING FILE", 
+        "created": "2013-12-03T20:34:33.310", 
+        "user": null, 
+        "file": "anonymous/algorithms/existing-file-ico.png", 
+        "executable_file": "existing-file-ico.png", 
+        "icon": "icons/existing-file-ico.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 40, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "DATA", 
+        "updated": "2013-12-03T20:36:37.572", 
+        "title": "MIDAS FILE", 
+        "created": "2013-12-03T20:36:37.573", 
+        "user": null, 
+        "file": "anonymous/algorithms/midas-file.png", 
+        "executable_file": "midas-file.png", 
+        "icon": "icons/midas-file.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 41, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "RESULTS", 
+        "updated": "2013-12-03T20:46:11.468", 
+        "title": "TECHNICAL DETAILS", 
+        "created": "2013-12-03T20:45:44.993", 
+        "user": null, 
+        "file": "anonymous/algorithms/technical-details-ico.png", 
+        "executable_file": "technical-details-ico.png", 
+        "icon": "icons/technical-details-ico.png",
+        "cluster": "2"
+    }
+},
+{
+    "pk": 42, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "RESULTS", 
+        "updated": "2013-12-03T20:46:52.722", 
+        "title": "CHART", 
+        "created": "2013-12-03T20:46:52.722", 
+        "user": null, 
+        "file": "anonymous/algorithms/chart-ico.png", 
+        "executable_file": "chart-ico.png", 
+        "icon": "icons/chart-ico.png",
+        "cluster": "2"
+    }
 }
 ]
