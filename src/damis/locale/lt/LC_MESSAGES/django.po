@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-09 19:01+0000\n"
+"POT-Creation-Date: 2013-12-10 14:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: constants.py:5
+msgid "MII cluster, http://cluster.mii.lt"
+msgstr "MII klusteris, http://cluster.mii.lt"
+
+#: constants.py:6
+msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
+msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
 
 #: forms.py:29 forms.py:45
 msgid "Username"
@@ -48,8 +56,8 @@ msgstr "el. paštas"
 msgid "Phone"
 msgstr "Telefono numeris"
 
-#: forms.py:84 models.py:15 models.py:46 models.py:83
-#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:18
+#: forms.py:84 models.py:15 models.py:37 models.py:53
+#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:23
 #: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
@@ -59,150 +67,156 @@ msgid "Dataset file"
 msgstr "Duomenų failas"
 
 #: forms.py:86 models.py:17 templates/damis/dataset_detail.html:12
+#: templates/damis/dataset_list.html:25
 msgid "Description"
 msgstr "Aprašymas"
 
-#: models.py:16 models.py:49 templates/damis/dataset_detail.html:11
+#: models.py:16 models.py:56 templates/damis/dataset_detail.html:11
 msgid "File"
 msgstr "Failas"
 
-#: models.py:18 models.py:47 models.py:103
+#: models.py:18 models.py:54 models.py:101
 msgid "User"
 msgstr "Naudotojas"
 
-#: models.py:19 models.py:51 templates/damis/dataset_detail.html:14
+#: models.py:19 models.py:58 templates/damis/dataset_detail.html:14
 msgid "Updated"
 msgstr "Atnaujinta"
 
-#: models.py:20 models.py:52 templates/damis/dataset_detail.html:15
+#: models.py:20 models.py:59 templates/damis/dataset_detail.html:15
 msgid "Created"
 msgstr "Sukurta"
 
-#: models.py:39
-msgid "Upload data"
-msgstr "Duomenų įkėlimas"
-
-#: models.py:40
-msgid "Preprocessing"
-msgstr "Pirminis apdorojimas"
-
-#: models.py:41
-msgid "Statistical primitives"
-msgstr "Statistiniai primityvai"
-
-#: models.py:42
-msgid "Dimensionality reduction"
-msgstr "Dimensijos mažinimas"
-
-#: models.py:43
-msgid "Data mining"
-msgstr "Duomenų analizė"
-
-#: models.py:44
-msgid "View results"
-msgstr "Rezultatų peržiūra"
-
-#: models.py:48
-msgid "Category"
-msgstr "Kategorija"
-
-#: models.py:50
-msgid "Executable"
-msgstr "Vykdomasis"
-
-#: models.py:53
-msgid "Icon"
-msgstr "Ikona"
-
-#: models.py:70 models.py:126
-msgid "Algorithm"
-msgstr "Algoritmas"
-
-#: models.py:71
-msgid "Option"
-msgstr "Parinktis"
-
-#: models.py:72
-msgid "Type"
-msgstr "Tipas"
-
-#: models.py:73
-msgid "Required"
-msgstr "Būtinas"
-
-#: models.py:74
-msgid "Default"
-msgstr "Standartinė reikšmė"
-
-#: models.py:75
-msgid "Connection type"
-msgstr "Jungties tipas"
-
-#: models.py:84
+#: models.py:38
 msgid "Cluster home page"
 msgstr "Skaičiavimo telkinio namų puslapis"
 
-#: models.py:85
+#: models.py:39
 msgid "Workload page"
 msgstr "Apkrovimo puslapis"
 
-#: models.py:93
+#: models.py:46
+msgid "Upload data"
+msgstr "Duomenų įkėlimas"
+
+#: models.py:47
+msgid "Preprocessing"
+msgstr "Pirminis apdorojimas"
+
+#: models.py:48
+msgid "Statistical primitives"
+msgstr "Statistiniai primityvai"
+
+#: models.py:49
+#, fuzzy
+msgid "Dimension reduction"
+msgstr "Dimensijos mažinimas"
+
+#: models.py:50
+msgid "Data mining"
+msgstr "Duomenų analizė"
+
+#: models.py:51
+msgid "View results"
+msgstr "Rezultatų peržiūra"
+
+#: models.py:55
+msgid "Category"
+msgstr "Kategorija"
+
+#: models.py:57
+msgid "Executable"
+msgstr "Vykdomasis"
+
+#: models.py:60
+msgid "Icon"
+msgstr "Ikona"
+
+#: models.py:61
+msgid "Cluster"
+msgstr "Klusteris"
+
+#: models.py:78 models.py:124
+msgid "Algorithm"
+msgstr "Algoritmas"
+
+#: models.py:79
+msgid "Option"
+msgstr "Parinktis"
+
+#: models.py:80
+msgid "Type"
+msgstr "Tipas"
+
+#: models.py:81
+msgid "Required"
+msgstr "Būtinas"
+
+#: models.py:82
+msgid "Default"
+msgstr "Standartinė reikšmė"
+
+#: models.py:83
+msgid "Connection type"
+msgstr "Jungties tipas"
+
+#: models.py:91
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: models.py:94
+#: models.py:92
 msgid "Running"
 msgstr "Vykdoma"
 
-#: models.py:95
+#: models.py:93
 msgid "Error"
 msgstr "Klaida"
 
-#: models.py:96
+#: models.py:94
 msgid "Finished"
 msgstr "Įvykdyta"
 
-#: models.py:98
+#: models.py:96
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:99
+#: models.py:97
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:100
+#: models.py:98
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:101 templates/damis/experiment_list.html:23
+#: models.py:99 templates/damis/experiment_list.html:23
 msgid "Status"
 msgstr "Statusas"
 
-#: models.py:104
+#: models.py:102
 msgid "Workflow state"
 msgstr "Scenarijaus būsena"
 
-#: models.py:106
+#: models.py:104
 msgid "Maximum calculation time"
 msgstr "Maksimali skaičiavimo trukmė"
 
-#: models.py:108
+#: models.py:106
 msgid "Processor number"
 msgstr "Procesorių skaičius"
 
-#: models.py:125
+#: models.py:123
 msgid "Experiment"
 msgstr "Eksperimentas"
 
-#: models.py:132
+#: models.py:130
 msgid "Parameter"
 msgstr "Parametras"
 
-#: models.py:135 templates/damis/_experiment_form.html:25
+#: models.py:133 templates/damis/_experiment_form.html:25
 msgid "Task"
 msgstr "Užduotis"
 
-#: models.py:137
+#: models.py:135
 msgid "Source"
 msgstr "Išeities kodas"
 
@@ -377,7 +391,7 @@ msgid "Upload algorithm"
 msgstr "Įkelti algoritmą"
 
 #: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
-#: templates/damis/experiment_create.html:58 templates/damis/obj_form.html:19
+#: templates/damis/experiment_create.html:64 templates/damis/obj_form.html:19
 msgid "Save"
 msgstr "Išsaugoti"
 
@@ -389,28 +403,24 @@ msgstr "Ar tikrai norite pašalinti duomenų rinkinį"
 msgid "Author"
 msgstr "Autorius"
 
-#: templates/damis/dataset_list.html:19
+#: templates/damis/dataset_list.html:24
 msgid "Size"
 msgstr "Dydis"
 
-#: templates/damis/dataset_list.html:20
+#: templates/damis/dataset_list.html:26
 #: templates/damis/experiment_list.html:24
 msgid "Actions"
 msgstr "Veiksmai"
 
-#: templates/damis/dataset_list.html:21
-msgid "Download"
-msgstr "Atsisiųsti"
-
-#: templates/damis/dataset_list.html:44
+#: templates/damis/dataset_list.html:43
 msgid "CSV"
 msgstr "CSV"
 
-#: templates/damis/dataset_list.html:45
+#: templates/damis/dataset_list.html:46
 msgid "ARFF"
 msgstr "ARFF"
 
-#: templates/damis/dataset_list.html:46
+#: templates/damis/dataset_list.html:49
 msgid "XML"
 msgstr "XML"
 
@@ -418,13 +428,13 @@ msgstr "XML"
 msgid "Upload dataset"
 msgstr "Įkelti duomenis"
 
-#: templates/damis/experiment_create.html:57
+#: templates/damis/experiment_create.html:63
 #: templates/damis/experiment_detail.html:10
 #: templates/damis/experiment_form.html:14
 msgid "New experiment"
 msgstr "Naujas eksperimentas"
 
-#: templates/damis/experiment_create.html:60
+#: templates/damis/experiment_create.html:66
 #: templates/damis/experiment_detail.html:18
 #: templates/damis/experiment_form.html:43
 msgid "Execute"
@@ -475,17 +485,11 @@ msgstr "Sekantis"
 msgid "Prev"
 msgstr "Ankst"
 
+#~ msgid "Download"
+#~ msgstr "Atsisiųsti"
+
 #~ msgid "Datasets"
 #~ msgstr "Duomenys"
-
-#~ msgid "MII cluster, http://cluster.mii.lt"
-#~ msgstr "MII klusteris, http://cluster.mii.lt"
-
-#~ msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
-#~ msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
-
-#~ msgid "Cluster"
-#~ msgstr "Klusteris"
 
 #~ msgid "Results"
 #~ msgstr "Rezultatai"

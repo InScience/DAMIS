@@ -1575,7 +1575,7 @@
     "pk": 1, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:24:02.590", 
         "title": "PCA", 
         "created": "2013-12-01T17:08:18.458", 
@@ -1590,7 +1590,7 @@
     "pk": 2, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:24:36.716", 
         "title": "SMACOF", 
         "created": "2013-12-01T17:12:09.444", 
@@ -1605,7 +1605,7 @@
     "pk": 3, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:25:46.473", 
         "title": "DMA", 
         "created": "2013-12-01T17:17:07.181", 
@@ -1620,7 +1620,7 @@
     "pk": 4, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:26:21.141", 
         "title": "SDS", 
         "created": "2013-12-01T17:20:31.364", 
@@ -1635,7 +1635,7 @@
     "pk": 5, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:26:45.406", 
         "title": "SAMANN", 
         "created": "2013-12-01T17:23:45.256", 
@@ -1665,7 +1665,7 @@
     "pk": 7, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:28:11.612", 
         "title": "SOMMDS", 
         "created": "2013-12-01T17:30:10.885", 
@@ -1890,7 +1890,7 @@
     "pk": 22, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:24:02.590", 
         "title": "PCA", 
         "created": "2013-12-01T17:08:18.458", 
@@ -1905,7 +1905,7 @@
     "pk": 23, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:24:36.716", 
         "title": "SMACOF", 
         "created": "2013-12-01T17:12:09.444", 
@@ -1920,7 +1920,7 @@
     "pk": 24, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:25:46.473", 
         "title": "DMA", 
         "created": "2013-12-01T17:17:07.181", 
@@ -1935,7 +1935,7 @@
     "pk": 25, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:26:21.141", 
         "title": "SDS", 
         "created": "2013-12-01T17:20:31.364", 
@@ -1950,7 +1950,7 @@
     "pk": 26, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:26:45.406", 
         "title": "SAMANN", 
         "created": "2013-12-01T17:23:45.256", 
@@ -1980,7 +1980,7 @@
     "pk": 28, 
     "model": "damis.algorithm", 
     "fields": {
-        "category": "DIMENSIONALITY_REDUCTION", 
+        "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:28:11.612", 
         "title": "SOMMDS", 
         "created": "2013-12-01T17:30:10.885", 

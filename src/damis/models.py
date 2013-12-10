@@ -46,7 +46,7 @@ class Algorithm(models.Model):
         ('DATA', _('Upload data')),
         ('PREPROCESSING', _('Preprocessing')),
         ('STAT_PRIMITIVES', _('Statistical primitives')),
-        ('DIMENSIONALITY_REDUCTION', _('Dimensionality reduction')),
+        ('DIMENSION_REDUCTION', _('Dimension reduction')),
         ('DATA_MINING',_('Data mining')),
         ('RESULTS', _('View results')),
     )
