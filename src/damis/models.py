@@ -33,6 +33,13 @@ def get_algorithm_file_upload_path(instance, filename):
         username = instance.user.username
     return  '%s/algorithms/%s' % (username, filename)
 
+class Cluster(models.Model):
+    title = models.CharField(_('Title'), max_length=255, null=True)
+    url = models.URLField(_('Cluster home page'), max_length=255, null=True, blank=True)
+    workload_url = models.URLField(_('Workload page'), max_length=255, null=True)
+
+    def __unicode__(self):
+        return self.title
 
 class Algorithm(models.Model):
     CATEGORIES= (
@@ -51,6 +58,7 @@ class Algorithm(models.Model):
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
     icon = models.ImageField(_('Icon'), upload_to='icons', blank=True, null=True)
+    cluster = models.ForeignKey('Cluster', related_name='tasks', null=True, verbose_name=_('Cluster'))
 
     def get_absolute_url(self):
         return reverse('algorithm-list')
@@ -77,16 +85,6 @@ class Parameter(models.Model):
 
     def __unicode__(self):
         return '%s (%s)' % (self.name, self.type)
-
-
-class Cluster(models.Model):
-    title = models.CharField(_('Title'), max_length=255, null=True)
-    url = models.URLField(_('Cluster home page'), max_length=255, null=True, blank=True)
-    workload_url = models.URLField(_('Workload page'), max_length=255, null=True)
-
-    def __unicode__(self):
-        return self.title
-
 
 class Experiment(models.Model):
     STATUSES = (

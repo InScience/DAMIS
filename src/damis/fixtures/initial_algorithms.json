@@ -1582,7 +1582,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_8.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico.jpg"
+        "icon": "icons/dimensionality-reduction-ico.jpg",
+        "cluster": "1"
     }
 },
 {
@@ -1596,7 +1597,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_9.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_1.jpg"
+        "icon": "icons/dimensionality-reduction-ico_1.jpg",
+        "cluster": "1"
     }
 },
 {
@@ -1610,7 +1612,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_10.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_2.jpg"
+        "icon": "icons/dimensionality-reduction-ico_2.jpg",
+        "cluster": "1"
     }
 },
 {
@@ -1624,7 +1627,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_11.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_4.jpg"
+        "icon": "icons/dimensionality-reduction-ico_4.jpg",
+        "cluster": "1"
     }
 },
 {
@@ -1638,7 +1642,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_12.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_5.jpg"
+        "icon": "icons/dimensionality-reduction-ico_5.jpg",
+        "cluster": "1"
     }
 },
 {
@@ -1652,7 +1657,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_13.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/som-ico.png"
+        "icon": "icons/som-ico.png",
+        "cluster": "1"
     }
 },
 {
@@ -1666,7 +1672,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_14.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_6.jpg"
+        "icon": "icons/dimensionality-reduction-ico_6.jpg",
+        "cluster": "1"
     }
 },
 {
@@ -1680,7 +1687,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_15.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/mlp-ico.png"
+        "icon": "icons/mlp-ico.png",
+        "cluster": "1"
     }
 },
 {
@@ -1694,7 +1702,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_16.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/C45-ico.png"
+        "icon": "icons/C45-ico.png",
+        "cluster": "1"
     }
 },
 {
@@ -1708,7 +1717,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_17.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/kmeans-ico_1.png"
+        "icon": "icons/kmeans-ico_1.png",
+        "cluster": "1"
     }
 },
 {
@@ -1722,7 +1732,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_18.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/statistical-primitives-icon.png"
+        "icon": "icons/statistical-primitives-icon.png",
+        "cluster": "1"
     }
 },
 {
@@ -1736,7 +1747,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_19.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/clean-data-ico.jpeg"
+        "icon": "icons/clean-data-ico.jpeg",
+        "cluster": "1"
     }
 },
 {
@@ -1750,7 +1762,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_20.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/filter-data-ico_1.png"
+        "icon": "icons/filter-data-ico_1.png",
+        "cluster": "1"
     }
 },
 {
@@ -1764,7 +1777,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_21.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/split-data-ico.png"
+        "icon": "icons/split-data-ico.png",
+        "cluster": "1"
     }
 },
 {
@@ -1778,7 +1792,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_22.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/transpose-data-ico.jpg"
+        "icon": "icons/transpose-data-ico.jpg",
+        "cluster": "1"
     }
 },
 {
@@ -1792,7 +1807,8 @@
         "user": null, 
         "file": "anonymous/algorithms/kmeans_23.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/transform-data-ico.png"
+        "icon": "icons/transform-data-ico.png",
+        "cluster": "1"
     }
 },
 {
@@ -1806,7 +1822,8 @@
         "user": null, 
         "file": "anonymous/algorithms/upload-file-ico.png", 
         "executable_file": "upload-file-ico.png", 
-        "icon": "icons/upload-file-ico.png"
+        "icon": "icons/upload-file-ico.png",
+        "cluster": "1"
     }
 },
 {
@@ -1820,7 +1837,8 @@
         "user": null, 
         "file": "anonymous/algorithms/existing-file-ico.png", 
         "executable_file": "existing-file-ico.png", 
-        "icon": "icons/existing-file-ico.png"
+        "icon": "icons/existing-file-ico.png",
+        "cluster": "1"
     }
 },
 {
@@ -1834,7 +1852,8 @@
         "user": null, 
         "file": "anonymous/algorithms/midas-file.png", 
         "executable_file": "midas-file.png", 
-        "icon": "icons/midas-file.png"
+        "icon": "icons/midas-file.png",
+        "cluster": "1"
     }
 },
 {
@@ -1848,7 +1867,8 @@
         "user": null, 
         "file": "anonymous/algorithms/technical-details-ico.png", 
         "executable_file": "technical-details-ico.png", 
-        "icon": "icons/technical-details-ico.png"
+        "icon": "icons/technical-details-ico.png",
+        "cluster": "1"
     }
 },
 {
@@ -1862,7 +1882,8 @@
         "user": null, 
         "file": "anonymous/algorithms/chart-ico.png", 
         "executable_file": "chart-ico.png", 
-        "icon": "icons/chart-ico.png"
+        "icon": "icons/chart-ico.png",
+        "cluster": "1"
     }
 }
 ]
