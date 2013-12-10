@@ -143,16 +143,6 @@
 			jsPlumb.bind("click", function(conn, originalEvent) {
 				jsPlumb.detach(conn);
 			});
-
-			// delete connections on right click
-			jsPlumb.bind("contextmenu", function(conn, originalEvent) {
-				if (conn.connector) {
-					jsPlumb.detach(conn);
-				}
-			});
-			$(document).on("contextmenu", function() {
-				return false
-			});
 		},
 	};
 })();
