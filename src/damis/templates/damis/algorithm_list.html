@@ -12,34 +12,41 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
+      <form id='algorithm-action-form' method='POST' action=''>{% csrf_token %}
+      <input type="hidden" value="delete" name="action"/>
+      <button class="btn" type="submit"><i class="icon-trash"></i></button>
       <table class="table table-hover">
           <thead>
               <tr>
+                  <th><input class="select-all" type="checkbox"></th>
                   <th>{% trans "Title" %}</th>
               </tr>
           </thead>
           <tbody>
 
                 {% for obj in object_list %}
-                <tr><td> {{ obj }}</td>
-                <td> 
-                    <a href="{{ obj.file.url }}">
-                          <button type="button" class="btn btn-small"><i class="icon-arrow-down"></i></button>
-                    </a>&nbsp;
-                    {{ obj.file.name|filename }}
-                </td>
-                <td>
+                <tr>
+                    <td><input type='checkbox' value="{{ obj.pk }}" name="pk"/></td>
+                    <td> {{ obj }}</td>
+                    <td> 
+                        <a href="{{ obj.file.url }}">
+                              <button type="button" class="btn btn-small"><i class="icon-arrow-down"></i></button>
+                        </a>&nbsp;
+                        {{ obj.file.name|filename }}
+                    </td>
+                    <td>
                         <a href="{% url 'algorithm-update' obj.pk %}">
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
                         </a>
                         <a href="{% url 'algorithm-delete' obj.pk %}">
                             <button type="button" class="btn btn-small"><i class="icon-trash"></i></button>
                         </a>
-                </td>
+                    </td>
                 </tr>
                 {% endfor %}
           </tbody>
-      </table>
+        </table>
+      </form>
     </div>
   </div>
 </div>

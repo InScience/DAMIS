@@ -151,8 +151,10 @@ class AlgorithmCreate(LoginRequiredMixin, CreateView):
             parameter_form=parameter_form))
 
 
-class AlgorithmList(LoginRequiredMixin, ListView):
+class AlgorithmList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Algorithm
+    paginate_by = 30
+    success_url = reverse_lazy('algorithm-list')
 
 
 class UserList(ListDeleteMixin, SuperUserRequiredMixin, ListView):
