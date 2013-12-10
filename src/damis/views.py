@@ -36,6 +36,7 @@ from damis.models import Parameter, ParameterValue
 from damis.models import Dataset
 from damis.models import Experiment
 from damis.models import Task
+from damis.models import Cluster
 
 
 class LoginRequiredMixin(object):
@@ -263,10 +264,30 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         context = super(ExperimentCreate, self).get_context_data(**kwargs)
         context['dataset_form'] = DatasetSelectForm()
         context.update(csrf(self.request))
-        alg_categories = []
-        for cat, cat_name in Algorithm.CATEGORIES:
-            alg_categories.append([cat_name, Algorithm.objects.filter(category=cat)])
-        context['alg_categories'] = alg_categories
+
+        # assign algorithms to clusters by category 
+        algorithms = Algorithm.objects.all()
+        clusters = dict()
+        for algorithm in algorithms:
+            if not algorithm.cluster in clusters:
+                clusters[algorithm.cluster] = dict()
+            cat_name = algorithm.get_category_display()
+            if not cat_name in clusters[algorithm.cluster]:
+                clusters[algorithm.cluster][cat_name] = []
+            clusters[algorithm.cluster][cat_name].append(algorithm)
+
+        # sort algorithms by clusters and categories
+        all_clusters = Cluster.objects.all()
+        sorted_clusters = []
+        for cluster in all_clusters:
+            b = []
+            for cat, cat_name in Algorithm.CATEGORIES:
+                if cluster in clusters and cat_name in clusters[cluster]:
+                    b.append([cat_name, clusters[cluster][cat_name]]);
+            a = [cluster, b]
+            sorted_clusters.append(a);
+
+        context['clusters'] = sorted_clusters
         return context
 
     def skip_validation(self, experiment_form, task_formset):

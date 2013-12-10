@@ -16,12 +16,18 @@
                 <div id="workflow-editor-container">
                     <div id="toolbox-container">
                         <ul class="nav nav-tabs" id="cluster-tabs">
-                            <li class="active"><a href="#">VU MII</a></li>
-                            <li class=""><a href="#">VU MIF</a></li>
+                            {% for cluster, cluster_algorithms in clusters %}
+                                <li id="cluster-{{ cluster.pk }}-tab" {% if forloop.first %}class="active"{% endif %}>
+                                    <a href="#">{{ cluster.title }}</a>
+                                    <span><a href="#"><i class="component-tooltip icon-info-sign"></i></a></span>
+                                </li>
+                            {% endfor %}
                         </ul>
                         <div id="toolbox">
+                            {% for cluster, cluster_algorithms in clusters %}
+                            <div id="cluster-{{ cluster.pk }}-panel" {% if not forloop.first %}style="display:none"{% endif %}>
+                            {% for cat_name, algorithms in cluster_algorithms %}
                                 {% spaceless %}
-                                {% for cat_name, algorithms in alg_categories %}
                                     {% if forloop.first %}
                                         <h3 class="first">{{ cat_name }}</h3>
                                     {% else %}
@@ -42,8 +48,10 @@
                                         {% endfor %}
                                         </div>
                                     </div>
-                                {% endfor %}
                                 {% endspaceless %}
+                            {% endfor %}
+                            </div>
+                            {% endfor %}
                         </div> <!-- toolbox -->
                     </div> <!-- toolbox-container -->
                     <div id="canvas">
@@ -95,8 +103,18 @@
                 task: ".prototype-box",
                 data: ".prototype-data-box", 
                 canvas: "#flowchart-container"});
-            $("#toolbox").accordion({
+            $("#toolbox > div").accordion({
                 heightStyle: "content",
+            });
+
+            $("#cluster-tabs li").click(function(){
+                $("#cluster-tabs .active").removeClass("active");
+                $("#toolbox div[id$=panel]").hide();
+
+                $(this).addClass("active");
+                var clusterId = /\d+/g.exec($(this).attr("id"));
+                var activePanel = $("#cluster-"+ clusterId +"-panel");
+                activePanel.show();
             });
         }); 
 

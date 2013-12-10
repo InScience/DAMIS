@@ -6,9 +6,8 @@
     width: 240px; min-height: inherit; float:left; 
 }
 
-#cluster-tabs {
-   margin-bottom: 4px;
-}
+#cluster-tabs { margin-bottom: 4px; }
+    #cluster-tabs li { position: relative; }
 
 #toolbox {
     width: 240px; min-height: inherit; float:left; 
