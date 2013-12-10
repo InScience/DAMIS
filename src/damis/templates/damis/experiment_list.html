@@ -28,7 +28,7 @@
 
                 {% for obj in object_list %}
                 <tr>
-                    <td><input type='checkbox' value="{{ obj.pk }}" name="experiment"/></td>
+                    <td><input type='checkbox' value="{{ obj.pk }}" name="pk"/></td>
                     <td> {{ obj.title }}</td>
                     <td> {{ obj.get_status_display }}</td>
                     <td>

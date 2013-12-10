@@ -5,20 +5,21 @@ from os.path import join, exists, getsize, splitext
 from os import makedirs, listdir
 from subprocess import Popen, PIPE
 
+from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-from django.shortcuts import render, get_object_or_404, render_to_response
-from django.http import HttpResponseRedirect, HttpResponse
+from django.core.context_processors import csrf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.db.models import Q
+from django.shortcuts import render, get_object_or_404, render_to_response
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.forms.models import modelformset_factory
 from django.forms.models import inlineformset_factory
-from django.core.context_processors import csrf
-from django.contrib.auth.forms import UserCreationForm
-from django.db.models import Q
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from damis.forms import LoginForm, RegistrationForm
 from damis.forms import DatasetForm
@@ -45,6 +46,28 @@ class LoginRequiredMixin(object):
     # def dispatch(self, *args, **kwargs):
     #     return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
 
+class SuperUserRequiredMixin(object):
+    @method_decorator(login_required(login_url=reverse_lazy('login')))
+    def dispatch(self, *args, **kwargs):
+        # If user is not superuser redirect to login page.
+        return super(SuperUserRequiredMixin, self).dispatch(*args, **kwargs)
+
+class ListDeleteMixin(object):
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, **kwargs):
+        context = super(ListDeleteMixin, self).get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
+
+    def post(self, request, *args, **kwargs):
+        action = request.POST.get('action')
+        if action == 'delete':
+            for pk in request.POST.getlist('pk'):
+                obj = self.model.objects.get(pk=pk)
+                obj.delete()
+        return HttpResponseRedirect(self.success_url)
+
 def index_view(request):
     return HttpResponseRedirect(reverse_lazy('experiment-new'))
 
@@ -60,27 +83,16 @@ class DatasetCreate(LoginRequiredMixin, CreateView):
         form.instance.slug = slugify(form.instance.title)
         return super(DatasetCreate, self).form_valid(form)
 
-class DatasetList(LoginRequiredMixin, ListView):
+
+class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Dataset
     paginate_by = 50
     template_name = 'damis/dataset_list.html'
+    success_url = reverse_lazy('dataset-list')
 
     def get_queryset(self):
         qs = super(DatasetList, self).get_queryset()
         return qs.order_by('-created')
-
-    def get_context_data(self, **kwargs):
-        context = super(DatasetList, self).get_context_data(**kwargs)
-        context['request'] = self.request
-        return context
-
-    def post(self, request, *args, **kwargs):
-        action = request.POST.get('action')
-        if action == 'delete':
-            for dataset_pk in request.POST.getlist('dataset'):
-                dataset = Dataset.objects.get(pk=dataset_pk)
-                dataset.delete()
-        return HttpResponseRedirect(reverse_lazy('dataset-list'))
 
 
 class DatasetUpdate(LoginRequiredMixin, UpdateView):
@@ -139,6 +151,14 @@ class AlgorithmCreate(LoginRequiredMixin, CreateView):
 class AlgorithmList(LoginRequiredMixin, ListView):
     model = Algorithm
 
+
+class UserList(ListDeleteMixin, SuperUserRequiredMixin, ListView):
+    model = User
+    template_name = 'damis/user_list.html'
+    paginate_by = 30
+    success_url = reverse_lazy('user-list')
+
+
 class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
     model = Algorithm
     form_class = AlgorithmForm
@@ -177,22 +197,10 @@ class AlgorithmDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('algorithm-list')
 
 
-class ExperimentList(LoginRequiredMixin, ListView):
+class ExperimentList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Experiment
     paginate_by = 10
-
-    def get_context_data(self, **kwargs):
-        context = super(ExperimentList, self).get_context_data(**kwargs)
-        context['request'] = self.request
-        return context
-
-    def post(self, request, *args, **kwargs):
-        action = request.POST.get('action')
-        if action == 'delete':
-            for exp_pk in request.POST.getlist('experiment'):
-                exp = Experiment.objects.get(pk=exp_pk)
-                exp.delete()
-        return HttpResponseRedirect(reverse_lazy('experiment-list'))
+    success_url = reverse_lazy('experiment-list')
 
 class ExperimentDetail(LoginRequiredMixin, DetailView):
     model = Experiment
@@ -433,7 +441,6 @@ def login_view(request):
         if form.is_valid():
             user = form.cleaned_data['user']
             if user is not None and user.is_active:
-                # request.session['password'] = form.cleaned_data['password']
                 login(request, user)
                 return HttpResponseRedirect(reverse_lazy('home'))
     else:

@@ -29,7 +29,7 @@
           <tbody>
             {% for dataset in object_list %}
               <tr>
-                  <td><input type='checkbox' value="{{ dataset.pk }}" name="dataset"/></td>
+                  <td><input type='checkbox' value="{{ dataset.pk }}" name="pk"/></td>
                   <td>{{ dataset.title }}</td>
                   <td>{{ dataset.file.size|sizify }}</td>
                   <td>{{ dataset.description }}</td>
