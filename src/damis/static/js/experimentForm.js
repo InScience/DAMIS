@@ -168,28 +168,31 @@
 
 			// open execute dialog
 			$('#execute-btn').click(function(ev) {
-                var dialog = $("#exec-dialog");
-                if (!dialog.hasClass("ui-dialog-content")) {
-				    dialog.dialog({
-				    	modal: true,
-                        appendTo: "#experiment-form",
-				    	buttons: [{
-				    		text: gettext('Cancel'),
-				    		click: function(ev) {
-				    			$(this).dialog("close");
-				    		}
-				    	},
-				    	{
-				    		text: gettext('Continue'),
-				    		click: function(ev) {
-				    			$(this).dialog("close");
-				    			window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});
-				    		}
-				    	}]
-				    });
-                } else {
-                    dialog.dialog("open");
-                }
+				var dialog = $("#exec-dialog");
+				if (!dialog.hasClass("ui-dialog-content")) {
+					dialog.dialog({
+						modal: true,
+						appendTo: "#experiment-form",
+						buttons: [{
+							text: gettext('Cancel'),
+							click: function(ev) {
+								$(this).dialog("close");
+							}
+						},
+						{
+							text: gettext('Continue'),
+							click: function(ev) {
+								$(this).dialog("close");
+								window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});
+							}
+						}],
+						open: function() {
+							$(this).closest(".ui-dialog").find("button").addClass('btn');
+						}
+					});
+				} else {
+					dialog.dialog("open");
+				}
 			});
 
 		},

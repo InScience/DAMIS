@@ -129,7 +129,10 @@
 					click: function(ev) {
 						$(this).dialog("close");
 					}
-				}]
+				}],
+				open: function() {
+					$(this).closest(".ui-dialog").find("button").addClass('btn');
+				}
 			});
 		},
 
@@ -175,12 +178,12 @@
 
 			// delete task box on right-click
 			var closeIco = taskBox.find(".icon-remove");
-            closeIco.off("click");
+			closeIco.off("click");
 			closeIco.on("click", function(ev) {
 				var taskBox = $(ev.target).closest(".task-box");
 				window.taskBoxes.removeTaskBox(taskBox);
-            });
-                    
+			});
+
 			// open dialog on dbclick
 			taskBox.off("dbclick");
 			taskBox.on("dblclick", function(ev) {
