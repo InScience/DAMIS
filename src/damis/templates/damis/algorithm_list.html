@@ -2,6 +2,7 @@
 {% load i18n %}
 {% get_current_language as lang %}
 {% load filename from damis %}
+{% load paginate from pagination %}
 
 {% block content %}
 <div class="span12">
@@ -20,6 +21,7 @@
               <tr>
                   <th><input class="select-all" type="checkbox"></th>
                   <th>{% trans "Title" %}</th>
+                  <th>{% trans "Actions" %}</th>
               </tr>
           </thead>
           <tbody>
@@ -29,24 +31,26 @@
                     <td><input type='checkbox' value="{{ obj.pk }}" name="pk"/></td>
                     <td> {{ obj }}</td>
                     <td> 
-                        <a href="{{ obj.file.url }}">
-                              <button type="button" class="btn btn-small"><i class="icon-arrow-down"></i></button>
-                        </a>&nbsp;
-                        {{ obj.file.name|filename }}
-                    </td>
-                    <td>
                         <a href="{% url 'algorithm-update' obj.pk %}">
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
                         </a>
-                        <a href="{% url 'algorithm-delete' obj.pk %}">
-                            <button type="button" class="btn btn-small"><i class="icon-trash"></i></button>
-                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" style="text-align:center;">
+                    {% blocktrans %}
+                    No algorithms were uploaded. If you want to upload one, you
+                    can do it{% endblocktrans %} <a href='{% url 'algorithm-new' %}'>here{% blocktrans %}</a>.
+                    {% endblocktrans %}
                     </td>
                 </tr>
                 {% endfor %}
           </tbody>
         </table>
       </form>
+    <hr/>
+    {% paginate request paginator page_obj %}
     </div>
   </div>
 </div>
