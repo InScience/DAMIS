@@ -27,7 +27,9 @@ change_db:
 
 messages:
 	#../../bin/django makemessages --all
-	#vim locale/lt/LC_MESSAGES/django.po
+	#../../bin/django makemessages -d djangojs --all
+	# vim locale/lt/LC_MESSAGES/django.po
+	# vim locale/lt/LC_MESSAGES/djangojs.po
 	bin/django compilemessages
 
 clean:

@@ -125,7 +125,7 @@
 				// Cancel button should return the box to a previous state, but
 				// that is too complicated for now, so no Cancel button
 				buttons: [{
-					text: "Close",
+					text: gettext("Close"),
 					click: function(ev) {
 						$(this).dialog("close");
 					}

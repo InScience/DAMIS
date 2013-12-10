@@ -174,13 +174,13 @@
 				    	modal: true,
                         appendTo: "#experiment-form",
 				    	buttons: [{
-				    		text: 'Cancel',
+				    		text: gettext('Cancel'),
 				    		click: function(ev) {
 				    			$(this).dialog("close");
 				    		}
 				    	},
 				    	{
-				    		text: 'Continue',
+				    		text: gettext('Continue'),
 				    		click: function(ev) {
 				    			$(this).dialog("close");
 				    			window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});

@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += i18n_patterns('',
+    (r'^jsi18n/$', 'django.views.i18n.javascript_catalog', {'domain': 'djangojs', 'packages': ('damis',), }, ),
     url(r'^$', index_view, name='home'),
     url(r'^about/$', static_page_view, name='home', kwargs={'template': 'index.html'}),
     url(r'^help/$', static_page_view, name='help', kwargs={'template': 'help.html'}),
