@@ -15,11 +15,11 @@ from damis.models import Task
 from django.forms.models import inlineformset_factory, BaseInlineFormSet
 from django.forms.formsets import DELETION_FIELD_NAME
 
+
 class DatasetForm(forms.ModelForm):
     class Meta:
         model = Dataset
         fields = ('title', 'file', 'description')
-
 
 class DatasetSelectForm(forms.Form):
     dataset = forms.ModelChoiceField(queryset=Dataset.objects.all())

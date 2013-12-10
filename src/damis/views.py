@@ -100,6 +100,7 @@ class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
 
 class DatasetUpdate(LoginRequiredMixin, UpdateView):
     model = Dataset
+    form_class = DatasetForm
 
 class DatasetDetail(LoginRequiredMixin, DetailView):
     model = Dataset

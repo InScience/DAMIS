@@ -7,23 +7,26 @@
 {% endblock %}
 
 {% block content %}
-<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
-    {% for error in form.non_field_errors %}
-        <div class="alert alert-error">{{ error }}</div>
-    {% endfor %}
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  {% include 'files_menu.html' with active='dataset-list' %}
+  <div class="tab-content">
+    <div class="offset3">
+      <form method='POST' action='{% url 'dataset-new' %}' enctype="multipart/form-data">{% csrf_token %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-error">{{ error }}</div>
+        {% endfor %}
 
-    {% for field in form.visible_fields %}
-        {{ field.errors }}
-        {{ field.name }}
-        {% if field.name == 'Title' %}
-        <p>{{ field }}</p>
-        {% else %}
-            <p>{{ field }}</p>
-        {% endif %}
-    {% endfor %}
-    {% for hidden in form.hidden_fields %}
-        {{ hidden }}
-    {% endfor %}
-    <button class="btn" type='submit'>{% trans "Save" %}</button>
-</form>
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            <p>{{ field.label }}:<br/> {{ field }}</p>
+        {% endfor %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
+    </form>
+
+    </div>
+  </div>
+</div>
 {% endblock %}
