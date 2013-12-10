@@ -92,7 +92,7 @@ msgstr "Statistiniai primityvai"
 
 #: models.py:42
 msgid "Dimensionality reduction"
-msgstr "Dimensiškumo mažinimas"
+msgstr "Dimensijos mažinimas"
 
 #: models.py:43
 msgid "Data mining"
