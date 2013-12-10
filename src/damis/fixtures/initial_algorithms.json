@@ -36,18 +36,6 @@
     }
 },
 {
-    "pk": 4, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 1, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
-    }
-},
-{
     "pk": 5, 
     "model": "damis.parameter", 
     "fields": {
@@ -168,18 +156,6 @@
     }
 },
 {
-    "pk": 15, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 2, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
-    }
-},
-{
     "pk": 16, 
     "model": "damis.parameter", 
     "fields": {
@@ -273,18 +249,6 @@
         "default": "", 
         "required": true, 
         "type": "int"
-    }
-},
-{
-    "pk": 24, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 3, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
     }
 },
 {
@@ -393,18 +357,6 @@
         "default": "", 
         "required": false, 
         "type": "int"
-    }
-},
-{
-    "pk": 34, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 4, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
     }
 },
 {
@@ -528,18 +480,6 @@
     }
 },
 {
-    "pk": 45, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 5, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
-    }
-},
-{
     "pk": 46, 
     "model": "damis.parameter", 
     "fields": {
@@ -636,18 +576,6 @@
     }
 },
 {
-    "pk": 54, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 6, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
-    }
-},
-{
     "pk": 55, 
     "model": "damis.parameter", 
     "fields": {
@@ -741,18 +669,6 @@
         "default": "", 
         "required": true, 
         "type": "int"
-    }
-},
-{
-    "pk": 63, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 7, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
     }
 },
 {
@@ -888,18 +804,6 @@
     }
 },
 {
-    "pk": 75, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 8, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
-    }
-},
-{
     "pk": 76, 
     "model": "damis.parameter", 
     "fields": {
@@ -957,18 +861,6 @@
         "default": "", 
         "required": true, 
         "type": "double"
-    }
-},
-{
-    "pk": 81, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 9, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
     }
 },
 {
@@ -1068,18 +960,6 @@
     }
 },
 {
-    "pk": 90, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 10, 
-        "default": "", 
-        "required": false, 
-        "type": "time"
-    }
-},
-{
     "pk": 91, 
     "model": "damis.parameter", 
     "fields": {
@@ -1128,18 +1008,6 @@
     }
 },
 {
-    "pk": 95, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 11, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
-    }
-},
-{
     "pk": 96, 
     "model": "damis.parameter", 
     "fields": {
@@ -1185,18 +1053,6 @@
         "default": "", 
         "required": true, 
         "type": "boolean"
-    }
-},
-{
-    "pk": 100, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 12, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
     }
 },
 {
@@ -1272,18 +1128,6 @@
     }
 },
 {
-    "pk": 107, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 13, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
-    }
-},
-{
     "pk": 108, 
     "model": "damis.parameter", 
     "fields": {
@@ -1356,18 +1200,6 @@
     }
 },
 {
-    "pk": 114, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 14, 
-        "default": "", 
-        "required": false, 
-        "type": "time"
-    }
-},
-{
     "pk": 115, 
     "model": "damis.parameter", 
     "fields": {
@@ -1416,18 +1248,6 @@
     }
 },
 {
-    "pk": 119, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 15, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
-    }
-},
-{
     "pk": 120, 
     "model": "damis.parameter", 
     "fields": {
@@ -1473,18 +1293,6 @@
         "default": "", 
         "required": true, 
         "type": "int"
-    }
-},
-{
-    "pk": 124, 
-    "model": "damis.parameter", 
-    "fields": {
-        "connection_type": "INPUT_VALUE", 
-        "name": "maxCalcTime", 
-        "algorithm": 16, 
-        "default": "", 
-        "required": true, 
-        "type": "time"
     }
 },
 {
