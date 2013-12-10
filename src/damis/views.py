@@ -50,7 +50,9 @@ class LoginRequiredMixin(object):
 class SuperUserRequiredMixin(object):
     @method_decorator(login_required(login_url=reverse_lazy('login')))
     def dispatch(self, *args, **kwargs):
-        # If user is not superuser redirect to login page.
+        user = self.request.user
+        if not user.is_superuser:
+            return HttpResponseRedirect(reverse_lazy('login'))
         return super(SuperUserRequiredMixin, self).dispatch(*args, **kwargs)
 
 class ListDeleteMixin(object):
