@@ -404,6 +404,7 @@ def algorithm_parameter_form(request):
 
 
 def register_view(request):
+    form = RegistrationForm()
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -414,7 +415,6 @@ def register_view(request):
             if user is not None and user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse_lazy('home'))
-        form = RegistrationForm()
     return render(request, 'accounts/register.html', {
         'form': form,
     })
