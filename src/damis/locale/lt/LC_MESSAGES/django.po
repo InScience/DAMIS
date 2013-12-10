@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-10 14:29+0000\n"
+"POT-Creation-Date: 2013-12-10 19:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,15 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: constants.py:5
-msgid "MII cluster, http://cluster.mii.lt"
-msgstr "MII klusteris, http://cluster.mii.lt"
-
-#: constants.py:6
-msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
-msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
-
-#: forms.py:29 forms.py:45
+#: forms.py:29 forms.py:45 templates/damis/user_list.html:22
 msgid "Username"
 msgstr "Naudotojo vardas"
 
@@ -48,7 +40,7 @@ msgstr "Vardas"
 msgid "Last name"
 msgstr "Pavardė"
 
-#: forms.py:52
+#: forms.py:52 templates/damis/user_list.html:23
 msgid "E-mail"
 msgstr "el. paštas"
 
@@ -56,17 +48,17 @@ msgstr "el. paštas"
 msgid "Phone"
 msgstr "Telefono numeris"
 
-#: forms.py:84 models.py:15 models.py:37 models.py:53
+#: forms.py:87 models.py:15 models.py:37 models.py:53
 #: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:23
 #: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:85
+#: forms.py:88
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:86 models.py:17 templates/damis/dataset_detail.html:12
+#: forms.py:89 models.py:17 templates/damis/dataset_detail.html:12
 #: templates/damis/dataset_list.html:25
 msgid "Description"
 msgstr "Aprašymas"
@@ -108,7 +100,6 @@ msgid "Statistical primitives"
 msgstr "Statistiniai primityvai"
 
 #: models.py:49
-#, fuzzy
 msgid "Dimension reduction"
 msgstr "Dimensijos mažinimas"
 
@@ -340,19 +331,27 @@ msgstr ""
 msgid "Experiments"
 msgstr "Eksperimentai"
 
+#: templates/menu.html:11
+msgid "Algorithms"
+msgstr "Algoritmai"
+
 #: templates/menu.html:12
+msgid "Users"
+msgstr "Naudotojai"
+
+#: templates/menu.html:16
 msgid "Help"
 msgstr "Pagalba"
 
-#: templates/menu.html:13
+#: templates/menu.html:17
 msgid "FAQ"
 msgstr "DUK"
 
-#: templates/menu.html:16
+#: templates/menu.html:20
 msgid "(Logout)"
 msgstr "(Atsijungti)"
 
-#: templates/menu.html:19
+#: templates/menu.html:23
 msgid "Log in"
 msgstr "Prisijungti"
 
@@ -392,6 +391,7 @@ msgstr "Įkelti algoritmą"
 
 #: templates/damis/algorithm_form.html:30 templates/damis/dataset_form.html:27
 #: templates/damis/experiment_create.html:64 templates/damis/obj_form.html:19
+#: templates/damis/user_update.html:13
 msgid "Save"
 msgstr "Išsaugoti"
 
@@ -408,7 +408,7 @@ msgid "Size"
 msgstr "Dydis"
 
 #: templates/damis/dataset_list.html:26
-#: templates/damis/experiment_list.html:24
+#: templates/damis/experiment_list.html:24 templates/damis/user_list.html:25
 msgid "Actions"
 msgstr "Veiksmai"
 
@@ -472,6 +472,14 @@ msgstr "Parametrai"
 msgid "Dataset list"
 msgstr "Rinkmenų sąrašas"
 
+#: templates/damis/user_list.html:21
+msgid "Name Surname"
+msgstr "Vardas pavardė"
+
+#: templates/damis/user_list.html:24
+msgid "Is active"
+msgstr "Aktyvus"
+
 #: templates/dynamic/parameter_form.html:18
 #: templates/dynamic/parameter_form.html:22
 msgid "Comes from Connection"
@@ -484,6 +492,12 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankst"
+
+#~ msgid "MII cluster, http://cluster.mii.lt"
+#~ msgstr "MII klusteris, http://cluster.mii.lt"
+
+#~ msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
+#~ msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
 
 #~ msgid "Download"
 #~ msgstr "Atsisiųsti"
