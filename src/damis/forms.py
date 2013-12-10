@@ -54,7 +54,7 @@ class RegistrationForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
-        if User.objects.exists(username=username):
+        if User.objects.filter(username=username).exists():
             raise forms.ValidationError('This username is already taken.')
         return username
 
@@ -72,12 +72,15 @@ class RegistrationForm(forms.Form):
         errors.append(u'Passwords do not match')
         return False
 
-
     def save(self):
         data = self.cleaned_data
+        password = data.pop('password')
         data.pop('password_repeat')
         data.pop('phone')
-        return User.objects.create(**self.cleaned_data)
+        user = User.objects.create(**self.cleaned_data)
+        user.set_password(password)
+        user.save()
+        return user
 
 
 class DataFileUploadForm(forms.Form):

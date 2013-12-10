@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.decorators import method_decorator
@@ -407,12 +407,13 @@ def register_view(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
             user = form.save()
+            user = authenticate(username=username, password=password)
             if user is not None and user.is_active:
                 login(request, user)
-                user = form.cleaned_data['user']
                 return HttpResponseRedirect(reverse_lazy('home'))
-    else:
         form = RegistrationForm()
     return render(request, 'accounts/register.html', {
         'form': form,
