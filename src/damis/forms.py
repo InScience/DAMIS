@@ -113,6 +113,12 @@ class ExperimentForm(forms.ModelForm):
         exclude = ['user', 'start', 'finish', 'status']
 
 
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+
 class ParameterValueForm(forms.ModelForm):
     parameter = forms.ModelChoiceField(queryset=Parameter.objects.all(),
                                        widget=forms.HiddenInput())

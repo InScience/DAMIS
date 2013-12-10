@@ -26,6 +26,7 @@ urlpatterns += i18n_patterns('',
     url(r'^logout/$', logout_view, name='logout'),
 
     url(r'^users/$', UserList.as_view(), name='user-list'),
+    url(r'^user/(?P<pk>\d*)/edit/$', UserUpdate.as_view(), name='user-edit'),
 
     url(r'^datasets/$', DatasetList.as_view(), name='dataset-list'),
     url(r'^datasets/new/$', DatasetCreate.as_view(), name='dataset-new'),

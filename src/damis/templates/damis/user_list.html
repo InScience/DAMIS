@@ -9,7 +9,6 @@
 {% block content %}
 <div class="span12">
 <div class="tabbable"> <!-- Only required for left/right tabs -->
-  {% include 'experiment_menu.html' with active='experiment-list' %}
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
         <form id='experiment-action-form' method='POST' action=''>{% csrf_token %}
@@ -19,15 +18,25 @@
           <thead>
               <tr>
                   <th><input class="select-all" type="checkbox"></th>
-                  <th>{% trans "User" %}</th>
+                  <th>{% trans "Name Surname" %}</th>
+                  <th>{% trans "Username" %}</th>
+                  <th>{% trans "E-mail" %}</th>
+                  <th>{% trans "Is active" %}</th>
+                  <th>{% trans "Actions" %}</th>
               </tr>
           </thead>
           <tbody>
-
                 {% for obj in object_list %}
                 <tr>
                     <td><input type='checkbox' value="{{ obj.pk }}" name="pk"/></td>
-                    <td> {{ obj }}</td>
+                    <td>{{ obj.first_name }} {{ obj.last_name }}</td>
+                    <td>{{ obj.username }}</td>
+                    <td>{{ obj.email }}</td>
+                    <td>{{ obj.is_active }}</td>
+                    <td><a href="{% url 'user-edit' obj.pk %}">
+                          <button type="button" class="btn btn-small" style="margin-right: 30px;"><i class="icon-pencil"></i></button>
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
           </tbody>

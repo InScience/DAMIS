@@ -28,6 +28,7 @@ from damis.forms import ParameterForm, ParameterFormset
 from damis.forms import ExperimentForm
 from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset, ParameterValueForm
 from damis.forms import DatasetSelectForm
+from damis.forms import UserUpdateForm
 
 
 from damis.utils import slugify
@@ -158,6 +159,10 @@ class UserList(ListDeleteMixin, SuperUserRequiredMixin, ListView):
     paginate_by = 30
     success_url = reverse_lazy('user-list')
 
+class UserUpdate(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'damis/user_update.html'
 
 class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
     model = Algorithm
