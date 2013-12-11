@@ -29,6 +29,7 @@ from damis.forms import ExperimentForm
 from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset, ParameterValueForm
 from damis.forms import DatasetSelectForm
 from damis.forms import UserUpdateForm
+from damis.forms import VALIDATOR_FIELDS
 
 
 from damis.utils import slugify
@@ -416,8 +417,9 @@ def algorithm_parameter_form(request):
                             )
     parameter_formset = ParameterValueFormset(instance=None, prefix=prefix)
     for parameter, form in zip(val_params, parameter_formset.forms):
-        form.initial = {'parameter': parameter}
-        form.fields['value'].label = unicode(parameter)
+        form.fields['value'] = VALIDATOR_FIELDS[parameter.type]()
+        form.fields['value'].label = str(parameter)
+        form.initial.update({'parameter': parameter})
 
     return render_to_response('dynamic/parameter_form.html', {
         'formset': parameter_formset,

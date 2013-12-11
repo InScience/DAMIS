@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load disable from damis %}
+{% load disable_if_connection from damis %}
 
 {% for form in formset.forms %}
     {% if form.initial.parameter %}
@@ -12,15 +13,7 @@
             {% if field.name == 'value' %}
                 <span>{{ field.label }}</span><br />
                 {{ field.errors }}
-                {% if form.initial.parameter %}
-                <input id="{{ form.prefix }}-value" type="text" name="{{ form.prefix }}-value" maxlength="255"
-                    {% if form.initial.parameter.connection_type == 'INPUT_CONNECTION' %}
-                    disabled="disabled" value="{% trans "Comes from Connection" %}"{% endif %}>
-                {% else %}
-                <input id="{{ form.prefix }}-value" type="text" name="{{ form.prefix }}-value" maxlength="255"
-                    {% if form.instance.parameter.connection_type == 'INPUT_CONNECTION' %}
-                    disabled="disabled" value="{% trans "Comes from Connection" %}"{% endif %}>
-                {% endif %}
+                {{ field|disable_if_connection }}
             {% endif %}
         {% endfor %}
         {% for field in form.hidden_fields %}

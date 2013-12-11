@@ -15,6 +15,16 @@ from damis.models import Task
 from django.forms.models import inlineformset_factory, BaseInlineFormSet
 from django.forms.formsets import DELETION_FIELD_NAME
 
+VALIDATOR_FIELDS = {
+    'dataset': forms.CharField, # Text
+    'int': forms.IntegerField,
+    'str': forms.CharField,
+    'text': forms.CharField, # Text
+    'bool': forms.BooleanField,
+    'date': forms.DateField,
+    'datetime': forms.DateTimeField,
+}
+
 
 class DatasetForm(forms.ModelForm):
     class Meta:
@@ -126,16 +136,25 @@ class ParameterValueForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ParameterValueForm, self).__init__(*args, **kwargs)
+        parameter = None
+        if self.instance is not None and self.instance.pk:
+            parameter = self.instance.parameter
+        elif kwargs.get('instance'):
+            parameter = kwargs['instance'].parameter
+        elif self.data:
+            parameter_id = self.data.get(self.prefix + '-parameter')
+            if parameter_id:
+                parameter = Parameter.objects.get(pk=parameter_id)
+
+        if parameter:
+            self.fields['value'] = VALIDATOR_FIELDS[parameter.type]()
+            self.fields['value'].label = str(parameter)
+            self.initial.update({'parameter': parameter})
+
         if self.instance and self.instance.source:
             pks = self.instance.source.task.algorithm.parameters.values_list('pk', flat=True)
             index = tuple(pks).index(self.instance.source.parameter.pk)
             self.initial.update({'source_ref': 'PV_PK%s-%s-value' % (self.instance.source.task.pk, index)})
-        if kwargs.get('instance'):
-            self.fields['value'].label = str(kwargs['instance'].parameter)
-        if self.data:
-            parameter_id = self.data.get(self.prefix + '-parameter')
-            if parameter_id:
-                self.initial.update({'parameter': Parameter.objects.get(pk=parameter_id)})
 
     def is_valid(self):
         valid = super(ParameterValueForm, self).is_valid()

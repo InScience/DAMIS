@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from __future__ import division
 
 from django import template
+from django.utils.translation import ugettext_lazy as _
 from os.path import split
 
 register = template.Library()
@@ -34,3 +35,15 @@ def sizify(value):
         value = value / 1073741824.0
         ext = 'GB'
     return '%s %s' % (str(round(value, 2)), ext)
+
+@register.filter
+def disable_if_connection(value):
+    if value.form.initial.get('parameter'):
+        parameter = value.form.initial.get('parameter')
+    else:
+        parameter = value.form.instance.parameter
+    if parameter.connection_type == 'INPUT_CONNECTION':
+        value.field.widget.attrs.update({'disabled': 'disabled'})
+        value.field.widget.attrs.update({'disabled': 'disabled'})
+        value.field.initial = _('Comes from connection')
+    return value

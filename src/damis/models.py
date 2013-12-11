@@ -75,11 +75,20 @@ class Parameter(models.Model):
         ('OUTPUT_VALUE', 'Output value'),
         ('OUTPUT_CONNECTION', 'Output connection'),
     )
+    VALIDATORS = (
+        ('dataset', _('Dataset')),
+        ('int', _('Integer')),
+        ('str', _('String')),
+        ('text', _('Text')),
+        ('bool', _('Boolean')),
+        ('date', _('Date')),
+        ('datetime', _('Date and time')),
+    )
     algorithm = models.ForeignKey(Algorithm, related_name='parameters',
                                   null=True, blank=True,
                                   verbose_name=_('Algorithm'))
     name = models.CharField(_('Option'), max_length=255, null=True)
-    type = models.CharField(_('Type'), max_length=255, null=True, blank=True)
+    type = models.CharField(_('Type'), choices=VALIDATORS , max_length=255, null=True, blank=True)
     required = models.BooleanField(_('Required'), blank=True)
     default = models.CharField(_('Default'), max_length=255, null=True, blank=True)
     connection_type = models.CharField(_('Connection type'), max_length=255, null=True, blank=True,
