@@ -71,6 +71,7 @@ class Parameter(models.Model):
     CONNECTION_TYPES = (
         ('INPUT_VALUE', 'Input value'),
         ('INPUT_CONNECTION', 'Input connection'),
+        ('INPUT_COMMON', 'Input common'),
         ('OUTPUT_VALUE', 'Output value'),
         ('OUTPUT_CONNECTION', 'Output connection'),
     )
