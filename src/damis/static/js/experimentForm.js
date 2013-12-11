@@ -171,6 +171,7 @@
 				var dialog = $("#exec-dialog");
 				if (!dialog.hasClass("ui-dialog-content")) {
 					dialog.dialog({
+						title: gettext('Experiment settings'),
 						modal: true,
 						appendTo: "#experiment-form",
 						buttons: [{
@@ -180,14 +181,16 @@
 							}
 						},
 						{
-							text: gettext('Continue'),
+							text: gettext('Execute'),
 							click: function(ev) {
 								$(this).dialog("close");
 								window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});
 							}
 						}],
 						open: function() {
-							$(this).closest(".ui-dialog").find("button").addClass('btn');
+							var dialog = $(this).closest(".ui-dialog");
+							dialog.find("button").addClass('btn');
+							dialog.find(".ui-dialog-titlebar > button").remove();
 						}
 					});
 				} else {

@@ -108,7 +108,7 @@
 		},
 
 		// create modal window
-		createTaskFormDialog: function(taskForm, existingParameters, formWindowId) {
+		createTaskFormDialog: function(taskForm, existingParameters, formWindowId, title) {
 			var taskFormContainer = $("<div></div>");
 			taskFormContainer.attr("id", formWindowId);
 			taskFormContainer.addClass("task-window");
@@ -119,19 +119,22 @@
 				taskFormContainer.append("<div class=\"parameter-values\"></div>");
 			}
 			taskFormContainer.dialog({
+				title: title,
 				autoOpen: false,
 				appendTo: "#task-forms",
 				modal: true,
 				// Cancel button should return the box to a previous state, but
 				// that is too complicated for now, so no Cancel button
 				buttons: [{
-					text: gettext("Close"),
+					text: gettext("OK"),
 					click: function(ev) {
 						$(this).dialog("close");
 					}
 				}],
 				open: function() {
-					$(this).closest(".ui-dialog").find("button").addClass('btn');
+					var dialog = $(this).closest(".ui-dialog");
+					dialog.find("button").addClass('btn');
+					dialog.find(".ui-dialog-titlebar > button").remove();
 				}
 			});
 		},
@@ -158,7 +161,7 @@
 			var taskForm = addTaskBtn.prev();
 
 			// create modal window for the form
-			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox));
+			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox), currentName);
 
 			this.addTaskBoxEventHandlers(taskBox);
 

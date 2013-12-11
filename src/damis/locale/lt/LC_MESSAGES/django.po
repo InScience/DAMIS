@@ -16,6 +16,14 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#: constants.py:5
+msgid "MII cluster, http://cluster.mii.lt"
+msgstr "MII klusteris, http://cluster.mii.lt"
+
+#: constants.py:6
+msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
+msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
+
 #: forms.py:29 forms.py:45 templates/damis/user_list.html:22
 msgid "Username"
 msgstr "Naudotojo vardas"
@@ -515,11 +523,9 @@ msgstr "Sekantis"
 msgid "Prev"
 msgstr "Ankst"
 
-#~ msgid "MII cluster, http://cluster.mii.lt"
-#~ msgstr "MII klusteris, http://cluster.mii.lt"
-
-#~ msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
-#~ msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
+#, fuzzy
+#~ msgid "Experiment settings"
+#~ msgstr "Eksperimento nustatymai"
 
 #~ msgid "Download"
 #~ msgstr "Atsisiųsti"

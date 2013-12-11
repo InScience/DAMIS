@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-10 20:17+0000\n"
+"POT-Creation-Date: 2013-12-11 15:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,14 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: static/js/experimentForm.js:177
+#: static/js/experimentForm.js:174
+msgid "Experiment settings"
+msgstr "Eksperimento nustatymai"
+
+#: static/js/experimentForm.js:178
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: static/js/experimentForm.js:183
-msgid "Continue"
-msgstr "Tęsti"
+#: static/js/experimentForm.js:184
+msgid "Execute"
+msgstr "Vykdyti"
 
-#: static/js/taskBoxes.js:128
-msgid "Close"
-msgstr "Uždaryti"
+#: static/js/taskBoxes.js:129
+msgid "OK"
+msgstr "Gerai"
