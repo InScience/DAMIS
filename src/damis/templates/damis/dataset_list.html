@@ -15,7 +15,7 @@
     <div class="tab-pane active" id="data-list">
       <form id='dataset-action-form' method='POST' action=''>{% csrf_token %}
       <input type="hidden" value="delete" name="action"/>
-      <button class="btn" type="submit"><i class="icon-trash"></i></button>
+      <button class="btn delete-btn" type="button"><i class="icon-trash"></i></button>
       <table class="table table-hover">
           <thead>
               <tr>
@@ -64,6 +64,7 @@
       </form>
     </div>
   </div>
+  {% include 'damis/_delete_dialog.html' %}
 </div>
 {% endblock %}
 
@@ -72,3 +73,11 @@
     <script src="/static/js/bootstrap-tab.js" type="text/javascript"></script>
 {% endblock %}
 
+{% block javascript_footer %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.utils.initDeleteConfirm("#dataset-action-form");
+        });
+    </script>
+{% endblock %}

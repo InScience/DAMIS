@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-10 21:34+0000\n"
+"POT-Creation-Date: 2013-12-11 21:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -227,11 +227,11 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: templates/base.html:76
+#: templates/base.html:77
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:79
+#: templates/base.html:80
 msgid "API"
 msgstr "API"
 
@@ -378,6 +378,16 @@ msgstr "registruotis čia"
 #: templates/accounts/register.html:13
 msgid "Register"
 msgstr "Registruotis"
+
+#: templates/damis/_delete_dialog.html:3
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: templates/damis/_delete_dialog.html:5
+msgid ""
+"These items will be permanently deleted and cannot be recovered. Are you "
+"sure?"
+msgstr "Ar tikrai norite, kad pažymėti įrašai būtų negrįžtamai ištrinti?"
 
 #: templates/damis/_experiment_form.html:7
 msgid "Form contains errors"
