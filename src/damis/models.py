@@ -58,7 +58,8 @@ class Algorithm(models.Model):
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
     icon = models.ImageField(_('Icon'), upload_to='icons', blank=True, null=True)
-    cluster = models.ForeignKey('Cluster', related_name='tasks', null=True, verbose_name=_('Cluster'))
+    cluster = models.ForeignKey('Cluster', null=True, verbose_name=_('Cluster'))
+    description = models.TextField(_('Description'), null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse('algorithm-list')
@@ -82,6 +83,8 @@ class Parameter(models.Model):
     default = models.CharField(_('Default'), max_length=255, null=True, blank=True)
     connection_type = models.CharField(_('Connection type'), max_length=255, null=True, blank=True,
                               choices=CONNECTION_TYPES, default='INPUT_VALUE')
+    label = models.CharField(_('Label'), max_length=255, null=True, blank=True)
+    description = models.TextField(_('Description'), null=True, blank=True)
 
     def __unicode__(self):
         return '%s (%s)' % (self.name, self.type)
