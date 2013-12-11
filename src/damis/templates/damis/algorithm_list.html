@@ -21,6 +21,7 @@
               <tr>
                   <th><input class="select-all" type="checkbox"></th>
                   <th>{% trans "Title" %}</th>
+                  <th>{% trans "Description" %}</th>
                   <th>{% trans "Actions" %}</th>
               </tr>
           </thead>
@@ -30,6 +31,7 @@
                 <tr>
                     <td><input type='checkbox' value="{{ obj.pk }}" name="pk"/></td>
                     <td> {{ obj }}</td>
+                    <td> {% if obj.description %}{% trans obj.description %}{% endif %} </td>
                     <td> 
                         <a href="{% url 'algorithm-update' obj.pk %}">
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
