@@ -156,48 +156,62 @@
 				extraClasses: ['task-form'],
 			});
 
-			//assign form submit handler
-			$('#save-btn').click(function(ev) {
-				window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.persistWorkflow.persist, {});
-			});
-
 			//assign new experiment handler
 			$('#new-experiment-btn').click(function(ev) {
 				window.location = params['experimentNewUrl'];
 			});
 
-			// open execute dialog
-			$('#execute-btn').click(function(ev) {
-				var dialog = $("#exec-dialog");
-				if (!dialog.hasClass("ui-dialog-content")) {
-					dialog.dialog({
-						title: gettext('Experiment settings'),
-						modal: true,
-						appendTo: "#experiment-form",
-						buttons: [{
-							text: gettext('Cancel'),
-							click: function(ev) {
-								$(this).dialog("close");
-							}
-						},
-						{
-							text: gettext('Execute'),
-							click: function(ev) {
-								$(this).dialog("close");
-								window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});
-							}
-						}],
-						open: function() {
-							var dialog = $(this).closest(".ui-dialog");
-							dialog.find("button").addClass('btn');
-							dialog.find(".ui-dialog-titlebar > button").remove();
-						}
-					});
-				} else {
-					dialog.dialog("open");
-				}
+			// open save dialog
+			$('#save-btn').click(function(ev) {
+				// hide all experiment params except title
+				window.experimentForm.executeDialog("save");
 			});
 
+			// open execute dialog
+			$('#execute-btn').click(function(ev) {
+				window.experimentForm.executeDialog("execute");
+			});
+
+		},
+
+		executeDialog: function(action) {
+			var dialog = $("#exec-dialog");
+			dialog.dialog({
+				title: gettext('Experiment settings'),
+				modal: true,
+				appendTo: "#experiment-form",
+				buttons: [{
+					text: gettext('Cancel'),
+					click: function(ev) {
+						$(this).dialog("close");
+					}
+				},
+				{
+					text: gettext('Execute'),
+					click: function(ev) {
+						$(this).dialog("close");
+						if (action == "execute") {
+							window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.experimentForm.submit, {});
+						} else {
+							window.experimentForm.updatePrefixes(parameterPrefixesUrl, window.persistWorkflow.persist, {});
+						}
+					}
+				}],
+				open: function() {
+					var dialog = $(this).closest(".ui-dialog");
+					dialog.find("button").addClass('btn');
+					dialog.find(".ui-dialog-titlebar > button").remove();
+
+					if (action == "execute") {
+						$(this).find("#exec-params").show();
+					} else {
+						$(this).find("#exec-params").hide();
+					}
+				},
+                close: function() {
+                    $(this).dialog("destroy");
+                }
+			});
 		},
 
 		// returns parameter form, given 

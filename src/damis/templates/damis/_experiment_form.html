@@ -9,14 +9,20 @@
     {% endif %}
 
     <div id="exec-dialog" style="display:none;">
-      {% for field in  experiment_form.visible_fields %}
-          {{ field.errors }}
-          <p>{{ field.label }}:<br/> {{ field }}</p>
-      {% endfor %}
-      {% for field in experiment_form.hidden_fields %}
-          {{ field.errors }}
-          {{ field }}
-      {% endfor %}
+      {{ experiment_form.title.errors }}
+      <p>{{ experiment_form.title.label }}:<br/> {{ experiment_form.title }}</p>
+      <div id="exec-params">
+        {% for field in  experiment_form.visible_fields %}
+            {% if field.name != 'title' %}
+                {{ field.errors }}
+                <p>{{ field.label }}:<br/> {{ field }}</p>
+            {% endif %}
+        {% endfor %}
+        {% for field in experiment_form.hidden_fields %}
+            {{ field.errors }}
+            {{ field }}
+        {% endfor %}
+       </div>
     </div>
 
     {{ task_formset.management_form }}
