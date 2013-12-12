@@ -140,7 +140,7 @@ class Task(models.Model):
     algorithm = models.ForeignKey('Algorithm', verbose_name=_('Algorithm'))
 
     def __unicode__(self):
-        return '%s %s' % (self.sequence, self.algorithm.title)
+        return '%s' % (self.algorithm.title,)
 
 class ParameterValue(models.Model):
     parameter = models.ForeignKey('Parameter', verbose_name=_('Parameter'))
