@@ -1,6 +1,24 @@
 [
 {
     "pk": 1, 
+    "model": "damis.cluster", 
+    "fields": {
+        "url": "http://cluster.mii.lt/", 
+        "workload_url": "http://cluster.mii.lt/ganglia/", 
+        "title": "MII Cluster"
+    }
+},
+{
+    "pk": 2, 
+    "model": "damis.cluster", 
+    "fields": {
+        "url": "http://mif.vu.lt/cluster/", 
+        "workload_url": "http://k007.mif.vu.lt/ganglia2/", 
+        "title": "MIF VU SK2"
+    }
+},
+{
+    "pk": 1, 
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_CONNECTION", 
@@ -8,7 +26,9 @@
         "algorithm": 1, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -20,7 +40,9 @@
         "algorithm": 1, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -32,7 +54,9 @@
         "algorithm": 1, 
         "default": "", 
         "required": true, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -44,7 +68,9 @@
         "algorithm": 1, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -56,7 +82,9 @@
         "algorithm": 1, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -68,7 +96,9 @@
         "algorithm": 1, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -80,7 +110,9 @@
         "algorithm": 1, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -92,7 +124,9 @@
         "algorithm": 2, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -104,7 +138,9 @@
         "algorithm": 2, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -116,7 +152,9 @@
         "algorithm": 2, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -128,7 +166,9 @@
         "algorithm": 2, 
         "default": "", 
         "required": true, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -140,7 +180,9 @@
         "algorithm": 2, 
         "default": "", 
         "required": true, 
-        "type": "boolean"
+        "label": null, 
+        "type": "boolean", 
+        "description": null
     }
 },
 {
@@ -152,7 +194,9 @@
         "algorithm": 2, 
         "default": "1", 
         "required": false, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -164,7 +208,9 @@
         "algorithm": 2, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -176,7 +222,9 @@
         "algorithm": 2, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -188,7 +236,9 @@
         "algorithm": 2, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -200,7 +250,9 @@
         "algorithm": 3, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -212,7 +264,9 @@
         "algorithm": 3, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -224,7 +278,9 @@
         "algorithm": 3, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -236,7 +292,9 @@
         "algorithm": 3, 
         "default": "", 
         "required": true, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -248,7 +306,9 @@
         "algorithm": 3, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -260,7 +320,9 @@
         "algorithm": 3, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -272,7 +334,9 @@
         "algorithm": 3, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -284,7 +348,9 @@
         "algorithm": 3, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -296,7 +362,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -308,7 +376,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -320,7 +390,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -332,7 +404,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": true, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -344,7 +418,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -356,7 +432,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": false, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -368,7 +446,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -380,7 +460,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -392,7 +474,9 @@
         "algorithm": 4, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -404,7 +488,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -416,7 +502,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -428,7 +516,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -440,7 +530,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -452,7 +544,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -464,7 +558,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": true, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -476,7 +572,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -488,7 +586,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -500,7 +600,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -512,7 +614,9 @@
         "algorithm": 5, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -524,7 +628,9 @@
         "algorithm": 6, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -536,7 +642,9 @@
         "algorithm": 6, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -548,7 +656,9 @@
         "algorithm": 6, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -560,7 +670,9 @@
         "algorithm": 6, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -572,7 +684,9 @@
         "algorithm": 6, 
         "default": "1", 
         "required": false, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -584,7 +698,9 @@
         "algorithm": 6, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -596,7 +712,9 @@
         "algorithm": 6, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -608,7 +726,9 @@
         "algorithm": 6, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -620,7 +740,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -632,7 +754,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -644,7 +768,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -656,7 +782,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -668,7 +796,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -680,7 +810,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -692,7 +824,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -704,7 +838,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -716,7 +852,9 @@
         "algorithm": 7, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -728,7 +866,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -740,7 +880,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": true, 
-        "type": "string"
+        "label": null, 
+        "type": "string", 
+        "description": null
     }
 },
 {
@@ -752,7 +894,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -764,7 +908,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -776,7 +922,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -788,7 +936,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -800,7 +950,9 @@
         "algorithm": 8, 
         "default": "1", 
         "required": false, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -812,7 +964,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -824,7 +978,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -836,7 +992,9 @@
         "algorithm": 8, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -848,7 +1006,9 @@
         "algorithm": 9, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -860,7 +1020,9 @@
         "algorithm": 9, 
         "default": "", 
         "required": true, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -872,7 +1034,9 @@
         "algorithm": 9, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -884,7 +1048,9 @@
         "algorithm": 9, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -896,7 +1062,9 @@
         "algorithm": 9, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -908,7 +1076,9 @@
         "algorithm": 9, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -920,7 +1090,9 @@
         "algorithm": 9, 
         "default": "", 
         "required": false, 
-        "type": "double"
+        "label": null, 
+        "type": "double", 
+        "description": null
     }
 },
 {
@@ -932,7 +1104,9 @@
         "algorithm": 10, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -944,7 +1118,9 @@
         "algorithm": 10, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -956,7 +1132,9 @@
         "algorithm": 10, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -968,7 +1146,9 @@
         "algorithm": 10, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -980,7 +1160,9 @@
         "algorithm": 10, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -992,7 +1174,9 @@
         "algorithm": 10, 
         "default": "", 
         "required": false, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -1004,7 +1188,9 @@
         "algorithm": 11, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1016,7 +1202,9 @@
         "algorithm": 11, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1028,7 +1216,9 @@
         "algorithm": 11, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -1040,7 +1230,9 @@
         "algorithm": 12, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1052,7 +1244,9 @@
         "algorithm": 12, 
         "default": "", 
         "required": true, 
-        "type": "boolean"
+        "label": null, 
+        "type": "boolean", 
+        "description": null
     }
 },
 {
@@ -1064,7 +1258,9 @@
         "algorithm": 12, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1076,7 +1272,9 @@
         "algorithm": 12, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -1088,7 +1286,9 @@
         "algorithm": 13, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1100,7 +1300,9 @@
         "algorithm": 13, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -1112,7 +1314,9 @@
         "algorithm": 13, 
         "default": "", 
         "required": true, 
-        "type": "string"
+        "label": null, 
+        "type": "string", 
+        "description": null
     }
 },
 {
@@ -1124,7 +1328,9 @@
         "algorithm": 13, 
         "default": "", 
         "required": true, 
-        "type": "string"
+        "label": null, 
+        "type": "string", 
+        "description": null
     }
 },
 {
@@ -1136,7 +1342,9 @@
         "algorithm": 13, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1148,7 +1356,9 @@
         "algorithm": 13, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -1160,7 +1370,9 @@
         "algorithm": 14, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1172,7 +1384,9 @@
         "algorithm": 14, 
         "default": "", 
         "required": true, 
-        "type": "string"
+        "label": null, 
+        "type": "string", 
+        "description": null
     }
 },
 {
@@ -1184,7 +1398,9 @@
         "algorithm": 14, 
         "default": "", 
         "required": false, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -1196,7 +1412,9 @@
         "algorithm": 14, 
         "default": "", 
         "required": false, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -1208,7 +1426,9 @@
         "algorithm": 14, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1220,7 +1440,9 @@
         "algorithm": 14, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -1232,7 +1454,9 @@
         "algorithm": 15, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1244,7 +1468,9 @@
         "algorithm": 15, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -1256,7 +1482,9 @@
         "algorithm": 15, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1268,7 +1496,9 @@
         "algorithm": 15, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -1280,7 +1510,9 @@
         "algorithm": 16, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1292,7 +1524,9 @@
         "algorithm": 16, 
         "default": "", 
         "required": true, 
-        "type": "int"
+        "label": null, 
+        "type": "int", 
+        "description": null
     }
 },
 {
@@ -1304,7 +1538,9 @@
         "algorithm": 16, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1316,7 +1552,9 @@
         "algorithm": 16, 
         "default": "", 
         "required": false, 
-        "type": "time"
+        "label": null, 
+        "type": "time", 
+        "description": null
     }
 },
 {
@@ -1328,7 +1566,9 @@
         "algorithm": 17, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1340,7 +1580,9 @@
         "algorithm": 18, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1352,7 +1594,9 @@
         "algorithm": 19, 
         "default": "", 
         "required": false, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1364,7 +1608,9 @@
         "algorithm": 20, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1376,7 +1622,2193 @@
         "algorithm": 21, 
         "default": "", 
         "required": true, 
-        "type": "dataset"
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 132, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "fillMissingValues", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "boolean", 
+        "description": null
+    }
+},
+{
+    "pk": 133, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 1, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 134, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 2, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 135, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 3, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 136, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 4, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 137, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 5, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 138, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 6, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 139, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 8, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 140, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 9, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 141, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 10, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 142, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 11, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 143, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 144, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 13, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 145, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 14, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 146, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 15, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 147, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 16, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 148, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 7, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 149, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 150, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 151, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "disp", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 152, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 153, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 154, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 155, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 156, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 157, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 158, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 159, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 160, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eps", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 161, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "zeidel", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "boolean", 
+        "description": null
+    }
+},
+{
+    "pk": 162, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "p", 
+        "algorithm": 23, 
+        "default": "1", 
+        "required": false, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 163, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 164, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 165, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 166, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 23, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 167, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 168, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 169, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 170, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eps", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 171, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "neighbour", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 172, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 173, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 174, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 175, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 24, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 176, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 177, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 178, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 179, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eps", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 180, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "noOfBaseVectors", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 181, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "selStrategy", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 182, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 183, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 184, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 185, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 25, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 186, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 187, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "d", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 188, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 189, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "mTrain", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 190, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "nNeurons", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 191, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eta", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 192, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "p", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 193, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 194, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 195, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 196, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 26, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 197, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 27, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 198, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "rows", 
+        "algorithm": 27, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 199, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "columns", 
+        "algorithm": 27, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 200, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eHat", 
+        "algorithm": 27, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 201, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "p", 
+        "algorithm": 27, 
+        "default": "1", 
+        "required": false, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 202, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 27, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 203, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 27, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 204, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 27, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 205, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 27, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 206, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 207, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "rows", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 208, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "columns", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 209, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "eHat", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 210, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "mdsIteration", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 211, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 212, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 213, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmErrorQuantization", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 214, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmErrorMDS", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 215, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 28, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 216, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 217, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "hidenPerceptrons", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 218, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 219, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dl", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 220, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dt", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 221, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dv", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 222, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "p", 
+        "algorithm": 29, 
+        "default": "1", 
+        "required": false, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 223, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 224, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 225, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 226, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 29, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 227, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 30, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 228, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "q", 
+        "algorithm": 30, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 229, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dl", 
+        "algorithm": 30, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 230, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "Dt", 
+        "algorithm": 30, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 231, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 30, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 232, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 30, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 233, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "algorithmError", 
+        "algorithm": 30, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "double", 
+        "description": null
+    }
+},
+{
+    "pk": 234, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 30, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 235, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 31, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 236, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "maxIteration", 
+        "algorithm": 31, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 237, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "kMax", 
+        "algorithm": 31, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 238, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 31, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 239, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 31, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 240, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "kBest", 
+        "algorithm": 31, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 241, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 31, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 242, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 32, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 243, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 32, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 244, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 32, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 245, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 32, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 246, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 33, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 247, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "fixColumnTypes", 
+        "algorithm": 33, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "boolean", 
+        "description": null
+    }
+},
+{
+    "pk": 248, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 33, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 249, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 33, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 250, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "fillMissingValues", 
+        "algorithm": 33, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "boolean", 
+        "description": null
+    }
+},
+{
+    "pk": 251, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 33, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 252, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 253, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "c", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 254, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "filterType", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 255, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "resultType", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 256, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 257, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 258, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 259, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 35, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 260, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "methodType", 
+        "algorithm": 35, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 261, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "s", 
+        "algorithm": 35, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 262, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "n", 
+        "algorithm": 35, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 263, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 35, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 264, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 35, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 265, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 35, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 266, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 36, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 267, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "c", 
+        "algorithm": 36, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 268, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 36, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 269, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 36, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 270, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 36, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 271, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 37, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 272, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "c", 
+        "algorithm": 37, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "int", 
+        "description": null
+    }
+},
+{
+    "pk": 273, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 37, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 274, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 37, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 275, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 37, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "time", 
+        "description": null
+    }
+},
+{
+    "pk": 276, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 38, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 277, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 39, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 278, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 40, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 279, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 41, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 280, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 43, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 281, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "cols", 
+        "algorithm": 43, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 282, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "class", 
+        "algorithm": 43, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 283, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 43, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 284, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 44, 
+        "default": "", 
+        "required": true, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
+    }
+},
+{
+    "pk": 285, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "cols", 
+        "algorithm": 44, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 286, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "name": "class", 
+        "algorithm": 44, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 287, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 44, 
+        "default": "", 
+        "required": false, 
+        "label": null, 
+        "type": "dataset", 
+        "description": null
     }
 },
 {
@@ -1385,13 +3817,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:24:02.590", 
+        "description": null, 
         "title": "PCA", 
         "created": "2013-12-01T17:08:18.458", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_8.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico.jpg",
-        "cluster": "1"
+        "icon": "icons/dimensionality-reduction-ico.jpg"
     }
 },
 {
@@ -1400,13 +3833,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:24:36.716", 
+        "description": null, 
         "title": "SMACOF", 
         "created": "2013-12-01T17:12:09.444", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_9.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_1.jpg",
-        "cluster": "1"
+        "icon": "icons/dimensionality-reduction-ico_1.jpg"
     }
 },
 {
@@ -1415,13 +3849,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:25:46.473", 
+        "description": null, 
         "title": "DMA", 
         "created": "2013-12-01T17:17:07.181", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_10.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_2.jpg",
-        "cluster": "1"
+        "icon": "icons/dimensionality-reduction-ico_2.jpg"
     }
 },
 {
@@ -1430,13 +3865,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:26:21.141", 
+        "description": null, 
         "title": "SDS", 
         "created": "2013-12-01T17:20:31.364", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_11.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_4.jpg",
-        "cluster": "1"
+        "icon": "icons/dimensionality-reduction-ico_4.jpg"
     }
 },
 {
@@ -1445,13 +3881,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:26:45.406", 
+        "description": null, 
         "title": "SAMANN", 
         "created": "2013-12-01T17:23:45.256", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_12.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_5.jpg",
-        "cluster": "1"
+        "icon": "icons/dimensionality-reduction-ico_5.jpg"
     }
 },
 {
@@ -1460,13 +3897,14 @@
     "fields": {
         "category": "DATA_MINING", 
         "updated": "2013-12-04T14:27:30.916", 
+        "description": null, 
         "title": "SOM", 
         "created": "2013-12-01T17:26:44.550", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_13.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/som-ico.png",
-        "cluster": "1"
+        "icon": "icons/som-ico.png"
     }
 },
 {
@@ -1475,13 +3913,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:28:11.612", 
+        "description": null, 
         "title": "SOMMDS", 
         "created": "2013-12-01T17:30:10.885", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_14.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_6.jpg",
-        "cluster": "1"
+        "icon": "icons/dimensionality-reduction-ico_6.jpg"
     }
 },
 {
@@ -1490,13 +3929,14 @@
     "fields": {
         "category": "DATA_MINING", 
         "updated": "2013-12-04T14:28:38.968", 
+        "description": null, 
         "title": "MLP", 
         "created": "2013-12-01T17:34:03.463", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_15.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/mlp-ico.png",
-        "cluster": "1"
+        "icon": "icons/mlp-ico.png"
     }
 },
 {
@@ -1505,13 +3945,14 @@
     "fields": {
         "category": "DATA_MINING", 
         "updated": "2013-12-04T14:29:07.068", 
+        "description": null, 
         "title": "C45", 
         "created": "2013-12-01T17:36:23.101", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_16.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/C45-ico.png",
-        "cluster": "1"
+        "icon": "icons/C45-ico.png"
     }
 },
 {
@@ -1520,13 +3961,14 @@
     "fields": {
         "category": "DATA_MINING", 
         "updated": "2013-12-04T14:30:59.696", 
+        "description": null, 
         "title": "KMEANS", 
         "created": "2013-12-01T17:39:00.977", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_17.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/kmeans-ico_1.png",
-        "cluster": "1"
+        "icon": "icons/kmeans-ico_1.png"
     }
 },
 {
@@ -1535,13 +3977,14 @@
     "fields": {
         "category": "STAT_PRIMITIVES", 
         "updated": "2013-12-04T14:31:53.156", 
+        "description": null, 
         "title": "STAT PRIMITIVES", 
         "created": "2013-12-01T17:41:08.651", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_18.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/statistical-primitives-icon.png",
-        "cluster": "1"
+        "icon": "icons/statistical-primitives-icon.png"
     }
 },
 {
@@ -1550,13 +3993,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-04T14:33:27.888", 
+        "description": null, 
         "title": "CLEAN DATA", 
         "created": "2013-12-01T17:42:35.946", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_19.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/clean-data-ico.jpeg",
-        "cluster": "1"
+        "icon": "icons/clean-data-ico.jpeg"
     }
 },
 {
@@ -1565,13 +4009,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-04T14:34:05.161", 
+        "description": null, 
         "title": "FILTER DATA", 
         "created": "2013-12-01T17:45:17.719", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_20.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/filter-data-ico_1.png",
-        "cluster": "1"
+        "icon": "icons/filter-data-ico_1.png"
     }
 },
 {
@@ -1580,13 +4025,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-03T21:04:00.733", 
+        "description": null, 
         "title": "SPLIT DATA", 
         "created": "2013-12-02T07:59:59.597", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_21.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/split-data-ico.png",
-        "cluster": "1"
+        "icon": "icons/split-data-ico.png"
     }
 },
 {
@@ -1595,13 +4041,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-04T14:34:24.129", 
+        "description": null, 
         "title": "TRANSPOSE DATA", 
         "created": "2013-12-02T08:01:41.650", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_22.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/transpose-data-ico.jpg",
-        "cluster": "1"
+        "icon": "icons/transpose-data-ico.jpg"
     }
 },
 {
@@ -1610,13 +4057,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-04T14:35:07.796", 
+        "description": null, 
         "title": "TRANSFORM DATA", 
         "created": "2013-12-02T08:03:22.174", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_23.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/transform-data-ico.png",
-        "cluster": "1"
+        "icon": "icons/transform-data-ico.png"
     }
 },
 {
@@ -1625,13 +4073,14 @@
     "fields": {
         "category": "DATA", 
         "updated": "2013-12-03T21:05:36.842", 
+        "description": null, 
         "title": "UPLOAD FILE", 
         "created": "2013-12-03T20:29:16.228", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/upload-file-ico.png", 
         "executable_file": "upload-file-ico.png", 
-        "icon": "icons/upload-file-ico.png",
-        "cluster": "1"
+        "icon": "icons/upload-file-ico.png"
     }
 },
 {
@@ -1640,13 +4089,14 @@
     "fields": {
         "category": "DATA", 
         "updated": "2013-12-03T20:34:33.310", 
+        "description": null, 
         "title": "EXISTING FILE", 
         "created": "2013-12-03T20:34:33.310", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/existing-file-ico.png", 
         "executable_file": "existing-file-ico.png", 
-        "icon": "icons/existing-file-ico.png",
-        "cluster": "1"
+        "icon": "icons/existing-file-ico.png"
     }
 },
 {
@@ -1655,13 +4105,14 @@
     "fields": {
         "category": "DATA", 
         "updated": "2013-12-03T20:36:37.572", 
+        "description": null, 
         "title": "MIDAS FILE", 
         "created": "2013-12-03T20:36:37.573", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/midas-file.png", 
         "executable_file": "midas-file.png", 
-        "icon": "icons/midas-file.png",
-        "cluster": "1"
+        "icon": "icons/midas-file.png"
     }
 },
 {
@@ -1670,13 +4121,14 @@
     "fields": {
         "category": "RESULTS", 
         "updated": "2013-12-03T20:46:11.468", 
+        "description": null, 
         "title": "TECHNICAL DETAILS", 
         "created": "2013-12-03T20:45:44.993", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/technical-details-ico.png", 
         "executable_file": "technical-details-ico.png", 
-        "icon": "icons/technical-details-ico.png",
-        "cluster": "1"
+        "icon": "icons/technical-details-ico.png"
     }
 },
 {
@@ -1685,13 +4137,14 @@
     "fields": {
         "category": "RESULTS", 
         "updated": "2013-12-03T20:46:52.722", 
+        "description": null, 
         "title": "CHART", 
         "created": "2013-12-03T20:46:52.722", 
+        "cluster": 1, 
         "user": null, 
         "file": "anonymous/algorithms/chart-ico.png", 
         "executable_file": "chart-ico.png", 
-        "icon": "icons/chart-ico.png",
-        "cluster": "1"
+        "icon": "icons/chart-ico.png"
     }
 },
 {
@@ -1700,13 +4153,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:24:02.590", 
+        "description": null, 
         "title": "PCA", 
         "created": "2013-12-01T17:08:18.458", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_8.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico.jpg",
-        "cluster": "2"
+        "icon": "icons/dimensionality-reduction-ico.jpg"
     }
 },
 {
@@ -1715,13 +4169,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:24:36.716", 
+        "description": null, 
         "title": "SMACOF", 
         "created": "2013-12-01T17:12:09.444", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_9.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_1.jpg",
-        "cluster": "2"
+        "icon": "icons/dimensionality-reduction-ico_1.jpg"
     }
 },
 {
@@ -1730,13 +4185,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:25:46.473", 
+        "description": null, 
         "title": "DMA", 
         "created": "2013-12-01T17:17:07.181", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_10.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_2.jpg",
-        "cluster": "2"
+        "icon": "icons/dimensionality-reduction-ico_2.jpg"
     }
 },
 {
@@ -1745,13 +4201,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:26:21.141", 
+        "description": null, 
         "title": "SDS", 
         "created": "2013-12-01T17:20:31.364", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_11.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_4.jpg",
-        "cluster": "2"
+        "icon": "icons/dimensionality-reduction-ico_4.jpg"
     }
 },
 {
@@ -1760,13 +4217,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:26:45.406", 
+        "description": null, 
         "title": "SAMANN", 
         "created": "2013-12-01T17:23:45.256", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_12.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_5.jpg",
-        "cluster": "2"
+        "icon": "icons/dimensionality-reduction-ico_5.jpg"
     }
 },
 {
@@ -1775,13 +4233,14 @@
     "fields": {
         "category": "DATA_MINING", 
         "updated": "2013-12-04T14:27:30.916", 
+        "description": null, 
         "title": "SOM", 
         "created": "2013-12-01T17:26:44.550", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_13.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/som-ico.png",
-        "cluster": "2"
+        "icon": "icons/som-ico.png"
     }
 },
 {
@@ -1790,13 +4249,14 @@
     "fields": {
         "category": "DIMENSION_REDUCTION", 
         "updated": "2013-12-04T14:28:11.612", 
+        "description": null, 
         "title": "SOMMDS", 
         "created": "2013-12-01T17:30:10.885", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_14.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/dimensionality-reduction-ico_6.jpg",
-        "cluster": "2"
+        "icon": "icons/dimensionality-reduction-ico_6.jpg"
     }
 },
 {
@@ -1805,13 +4265,14 @@
     "fields": {
         "category": "DATA_MINING", 
         "updated": "2013-12-04T14:28:38.968", 
+        "description": null, 
         "title": "MLP", 
         "created": "2013-12-01T17:34:03.463", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_15.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/mlp-ico.png",
-        "cluster": "2"
+        "icon": "icons/mlp-ico.png"
     }
 },
 {
@@ -1820,13 +4281,14 @@
     "fields": {
         "category": "DATA_MINING", 
         "updated": "2013-12-04T14:29:07.068", 
+        "description": null, 
         "title": "C45", 
         "created": "2013-12-01T17:36:23.101", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_16.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/C45-ico.png",
-        "cluster": "2"
+        "icon": "icons/C45-ico.png"
     }
 },
 {
@@ -1835,13 +4297,14 @@
     "fields": {
         "category": "DATA_MINING", 
         "updated": "2013-12-04T14:30:59.696", 
+        "description": null, 
         "title": "KMEANS", 
         "created": "2013-12-01T17:39:00.977", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_17.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/kmeans-ico_1.png",
-        "cluster": "2"
+        "icon": "icons/kmeans-ico_1.png"
     }
 },
 {
@@ -1850,13 +4313,14 @@
     "fields": {
         "category": "STAT_PRIMITIVES", 
         "updated": "2013-12-04T14:31:53.156", 
+        "description": null, 
         "title": "STAT PRIMITIVES", 
         "created": "2013-12-01T17:41:08.651", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_18.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/statistical-primitives-icon.png",
-        "cluster": "2"
+        "icon": "icons/statistical-primitives-icon.png"
     }
 },
 {
@@ -1865,13 +4329,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-04T14:33:27.888", 
+        "description": null, 
         "title": "CLEAN DATA", 
         "created": "2013-12-01T17:42:35.946", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_19.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/clean-data-ico.jpeg",
-        "cluster": "2"
+        "icon": "icons/clean-data-ico.jpeg"
     }
 },
 {
@@ -1880,13 +4345,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-04T14:34:05.161", 
+        "description": null, 
         "title": "FILTER DATA", 
         "created": "2013-12-01T17:45:17.719", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_20.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/filter-data-ico_1.png",
-        "cluster": "2"
+        "icon": "icons/filter-data-ico_1.png"
     }
 },
 {
@@ -1895,13 +4361,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-03T21:04:00.733", 
+        "description": null, 
         "title": "SPLIT DATA", 
         "created": "2013-12-02T07:59:59.597", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_21.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/split-data-ico.png",
-        "cluster": "2"
+        "icon": "icons/split-data-ico.png"
     }
 },
 {
@@ -1910,13 +4377,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-04T14:34:24.129", 
+        "description": null, 
         "title": "TRANSPOSE DATA", 
         "created": "2013-12-02T08:01:41.650", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_22.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/transpose-data-ico.jpg",
-        "cluster": "2"
+        "icon": "icons/transpose-data-ico.jpg"
     }
 },
 {
@@ -1925,13 +4393,14 @@
     "fields": {
         "category": "PREPROCESSING", 
         "updated": "2013-12-04T14:35:07.796", 
+        "description": null, 
         "title": "TRANSFORM DATA", 
         "created": "2013-12-02T08:03:22.174", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/kmeans_23.py", 
         "executable_file": "kmeans.py", 
-        "icon": "icons/transform-data-ico.png",
-        "cluster": "2"
+        "icon": "icons/transform-data-ico.png"
     }
 },
 {
@@ -1940,13 +4409,14 @@
     "fields": {
         "category": "DATA", 
         "updated": "2013-12-03T21:05:36.842", 
+        "description": null, 
         "title": "UPLOAD FILE", 
         "created": "2013-12-03T20:29:16.228", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/upload-file-ico.png", 
         "executable_file": "upload-file-ico.png", 
-        "icon": "icons/upload-file-ico.png",
-        "cluster": "2"
+        "icon": "icons/upload-file-ico.png"
     }
 },
 {
@@ -1955,13 +4425,14 @@
     "fields": {
         "category": "DATA", 
         "updated": "2013-12-03T20:34:33.310", 
+        "description": null, 
         "title": "EXISTING FILE", 
         "created": "2013-12-03T20:34:33.310", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/existing-file-ico.png", 
         "executable_file": "existing-file-ico.png", 
-        "icon": "icons/existing-file-ico.png",
-        "cluster": "2"
+        "icon": "icons/existing-file-ico.png"
     }
 },
 {
@@ -1970,13 +4441,14 @@
     "fields": {
         "category": "DATA", 
         "updated": "2013-12-03T20:36:37.572", 
+        "description": null, 
         "title": "MIDAS FILE", 
         "created": "2013-12-03T20:36:37.573", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/midas-file.png", 
         "executable_file": "midas-file.png", 
-        "icon": "icons/midas-file.png",
-        "cluster": "2"
+        "icon": "icons/midas-file.png"
     }
 },
 {
@@ -1985,13 +4457,14 @@
     "fields": {
         "category": "RESULTS", 
         "updated": "2013-12-03T20:46:11.468", 
+        "description": null, 
         "title": "TECHNICAL DETAILS", 
         "created": "2013-12-03T20:45:44.993", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/technical-details-ico.png", 
         "executable_file": "technical-details-ico.png", 
-        "icon": "icons/technical-details-ico.png",
-        "cluster": "2"
+        "icon": "icons/technical-details-ico.png"
     }
 },
 {
@@ -2000,13 +4473,46 @@
     "fields": {
         "category": "RESULTS", 
         "updated": "2013-12-03T20:46:52.722", 
+        "description": null, 
         "title": "CHART", 
         "created": "2013-12-03T20:46:52.722", 
+        "cluster": 2, 
         "user": null, 
         "file": "anonymous/algorithms/chart-ico.png", 
         "executable_file": "chart-ico.png", 
-        "icon": "icons/chart-ico.png",
-        "cluster": "2"
+        "icon": "icons/chart-ico.png"
+    }
+},
+{
+    "pk": 43, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-11T23:50:31.750", 
+        "description": "", 
+        "title": "SELECT FEATURES", 
+        "created": "2013-12-11T23:50:31.751", 
+        "cluster": 1, 
+        "user": null, 
+        "file": "anonymous/algorithms/select-ico.png", 
+        "executable_file": "select-ico.png", 
+        "icon": "icons/select-ico.png"
+    }
+},
+{
+    "pk": 44, 
+    "model": "damis.algorithm", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "updated": "2013-12-11T23:53:33.834", 
+        "description": "", 
+        "title": "SELECT FEATURES", 
+        "created": "2013-12-11T23:53:33.834", 
+        "cluster": 2, 
+        "user": null, 
+        "file": "anonymous/algorithms/select-ico_1.png", 
+        "executable_file": "select-ico.png", 
+        "icon": "icons/select-ico_1.png"
     }
 }
 ]
