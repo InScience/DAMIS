@@ -147,8 +147,15 @@ class ParameterValue(models.Model):
     value = models.CharField(max_length=255, blank=True)
     task = models.ForeignKey('Task', related_name='parameter_values',
                                                 verbose_name=_('Task'))
-    source = models.ForeignKey('ParameterValue', null=True, blank=True,
-                                                verbose_name=_('Source'))
+    related = models.ManyToManyField('self', symmetrical=False, null=True,
+                                     blank=True, through='Connection')
 
     def __unicode__(self):
         return '%s: %s' % (self.task.algorithm, self.value)
+
+
+class Connection(models.Model):
+    source = models.ForeignKey('ParameterValue', null=True, blank=True,
+                             verbose_name=_('Source'), related_name='source')
+    target = models.ForeignKey('ParameterValue', null=True, blank=True,
+                             verbose_name=_('Target'), related_name='target')
