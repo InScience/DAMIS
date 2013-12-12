@@ -8,7 +8,7 @@
             <li class="{% if active == "experiments" %}active{% endif %}"><a href="{% url 'experiment-new' %}">{% trans "Experiments" %}</a></li>
             <li class="{% if active == "data" %}active{% endif %}"><a href="{% url 'dataset-list' %}">{% trans "File list" %}</a></li>
             {% if user.is_superuser %}
-                <li class="{% if active == "algorithms" %}active{% endif %}"><a href="{% url 'algorithm-list' %}">{% trans "Algorithms" %}</a></li>
+                <li class="{% if active == "algorithms" %}active{% endif %}"><a href="{% url 'algorithm-list' %}">{% trans "Components" %}</a></li>
                 <li class="{% if active == "users" %}active{% endif %}"><a href="{% url 'user-list' %}">{% trans "Users" %}</a></li>
             {% endif %}
         </ul>

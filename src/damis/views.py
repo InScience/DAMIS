@@ -23,7 +23,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, ListView, D
 
 from damis.forms import LoginForm, RegistrationForm
 from damis.forms import DatasetForm
-from damis.forms import AlgorithmForm
+from damis.forms import ComponentForm
 from damis.forms import ParameterForm, ParameterFormset
 from damis.forms import ExperimentForm
 from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset, ParameterValueForm
@@ -34,7 +34,7 @@ from damis.forms import VALIDATOR_FIELDS
 
 from damis.utils import slugify
 
-from damis.models import Algorithm
+from damis.models import Component
 from damis.models import Parameter, ParameterValue
 from damis.models import Dataset
 from damis.models import Experiment
@@ -118,9 +118,9 @@ def dataset_download_view(request, pk, file_format):
     return response
 
 
-class AlgorithmCreate(LoginRequiredMixin, CreateView):
-    model = Algorithm
-    form_class = AlgorithmForm
+class ComponentCreate(LoginRequiredMixin, CreateView):
+    model = Component
+    form_class = ComponentForm
 
     def get(self, request, *args, **kwargs):
         self.object = None
@@ -152,8 +152,8 @@ class AlgorithmCreate(LoginRequiredMixin, CreateView):
             parameter_form=parameter_form))
 
 
-class AlgorithmList(ListDeleteMixin, LoginRequiredMixin, ListView):
-    model = Algorithm
+class ComponentList(ListDeleteMixin, LoginRequiredMixin, ListView):
+    model = Component
     paginate_by = 30
     success_url = reverse_lazy('algorithm-list')
 
@@ -173,12 +173,12 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
         return reverse_lazy('user-list')
 
 
-class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
-    model = Algorithm
-    form_class = AlgorithmForm
+class ComponentUpdate(LoginRequiredMixin, UpdateView):
+    model = Component
+    form_class = ComponentForm
 
     def post(self, request, *args, **kwargs):
-        self.object = Algorithm.objects.get(pk=self.kwargs['pk'])
+        self.object = Component.objects.get(pk=self.kwargs['pk'])
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         parameter_form = ParameterFormset(self.request.POST, instance=self.object)
@@ -198,16 +198,16 @@ class AlgorithmUpdate(LoginRequiredMixin, UpdateView):
             parameter_form=parameter_form))
 
     def get_context_data(self, **kwargs):
-        context = super(AlgorithmUpdate, self).get_context_data(**kwargs)
-        ParameterFormset = inlineformset_factory(Algorithm, Parameter, extra=0, can_delete=True)
+        context = super(ComponentUpdate, self).get_context_data(**kwargs)
+        ParameterFormset = inlineformset_factory(Component, Parameter, extra=0, can_delete=True)
         context['parameter_form'] = ParameterFormset(instance=self.object)
         return context
 
-class AlgorithmDetail(LoginRequiredMixin, DetailView):
-    model = Algorithm
+class ComponentDetail(LoginRequiredMixin, DetailView):
+    model = Component
 
-class AlgorithmDelete(LoginRequiredMixin, DeleteView):
-    model = Algorithm
+class ComponentDelete(LoginRequiredMixin, DeleteView):
+    model = Component
     success_url = reverse_lazy('algorithm-list')
 
 
@@ -287,8 +287,8 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         context['dataset_form'] = DatasetSelectForm()
         context.update(csrf(self.request))
 
-        # assign algorithms to clusters by category 
-        algorithms = Algorithm.objects.all()
+        # assign component to clusters by category
+        algorithms = Component.objects.all()
         clusters = dict()
         for algorithm in algorithms:
             if not algorithm.cluster in clusters:
@@ -303,7 +303,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         sorted_clusters = []
         for cluster in all_clusters:
             b = []
-            for cat, cat_name in Algorithm.CATEGORIES:
+            for cat, cat_name in Component.CATEGORIES:
                 if cluster in clusters and cat_name in clusters[cluster]:
                     b.append([cat_name, clusters[cluster][cat_name]]);
             a = [cluster, b]
@@ -404,7 +404,7 @@ def gen_parameter_prefixes(request):
     return HttpResponse(",".join(pv_prefixes))
 
 def algorithm_parameter_form(request):
-    algorithm = get_object_or_404(Algorithm, pk=request.GET.get('algorithm_id'))
+    algorithm = get_object_or_404(Component, pk=request.GET.get('algorithm_id'))
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
     prefix = 'PV_%s' % hash(task_form_prefix)
 

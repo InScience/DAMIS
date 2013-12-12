@@ -41,7 +41,7 @@ class Cluster(models.Model):
     def __unicode__(self):
         return self.title
 
-class Algorithm(models.Model):
+class Component(models.Model):
     CATEGORIES= (
         ('DATA', _('Upload data')),
         ('PREPROCESSING', _('Preprocessing')),
@@ -78,7 +78,7 @@ class Parameter(models.Model):
     VALIDATORS = (
         ('dataset', _('Dataset')),
         ('int', _('Integer')),
-        ('float', _('Real Number')),
+        ('float', _('Float')),
         ('double', _('Double')),
         ('string', _('String')),
         ('text', _('Text')),
@@ -87,9 +87,9 @@ class Parameter(models.Model):
         ('datetime', _('Date and time')),
         ('time', _('Time')),
     )
-    algorithm = models.ForeignKey(Algorithm, related_name='parameters',
+    algorithm = models.ForeignKey(Component, related_name='parameters',
                                   null=True, blank=True,
-                                  verbose_name=_('Algorithm'))
+                                  verbose_name=_('Component'))
     name = models.CharField(_('Option'), max_length=255, null=True)
     type = models.CharField(_('Type'), choices=VALIDATORS , max_length=255, null=True, blank=True)
     required = models.BooleanField(_('Required'), blank=True)
@@ -137,7 +137,7 @@ def get_result_file_upload_path(instance, filename):
 class Task(models.Model):
     experiment = models.ForeignKey('Experiment', related_name='tasks',
                                    null=True, verbose_name=_('Experiment'))
-    algorithm = models.ForeignKey('Algorithm', verbose_name=_('Algorithm'))
+    algorithm = models.ForeignKey('Component', verbose_name=_('Component'))
 
     def __unicode__(self):
         return '%s' % (self.algorithm.title,)

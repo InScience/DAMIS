@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
 from damis.models import Dataset
-from damis.models import Algorithm
+from damis.models import Component
 from damis.models import Parameter
 from damis.models import ParameterValue
 from damis.models import Experiment
@@ -103,9 +103,9 @@ class DataFileUploadForm(forms.Form):
             required=False)
 
 
-class AlgorithmForm(forms.ModelForm):
+class ComponentForm(forms.ModelForm):
     class Meta:
-        model = Algorithm
+        model = Component
         exclude = ['user']
 
 class ParameterForm(forms.ModelForm):
@@ -113,7 +113,7 @@ class ParameterForm(forms.ModelForm):
         model = Parameter
         fields = ['name', 'type', 'connection_type', 'required', 'default']
 
-ParameterFormset = inlineformset_factory(Algorithm, Parameter, extra=1, form=ParameterForm, can_delete=False)
+ParameterFormset = inlineformset_factory(Component, Parameter, extra=1, form=ParameterForm, can_delete=False)
 
 
 class ExperimentForm(forms.ModelForm):

@@ -5,8 +5,8 @@
 {% block content %}
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <ul class="nav nav-tabs" id="myTab2">
-      <li><a href="{% url 'algorithm-list' %}">{% trans "Algorithm list" %}</a></li>
-      <li class="active"><a href="{% url 'algorithm-new' %}">{% trans "Upload algorithm" %}</a></li>
+      <li><a href="{% url 'algorithm-list' %}">{% trans "Component list" %}</a></li>
+      <li class="active"><a href="{% url 'algorithm-new' %}">{% trans "Create component" %}</a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
@@ -17,7 +17,7 @@
             {{ form.as_p }}
         </div>
         <fieldset>
-            <legend>Algorithm Parameter</legend>
+            <legend>Component Parameter</legend>
             {{ parameter_form.management_form }}
             {{ parameter_form.non_form_errors }}
             {% for form in parameter_form %}

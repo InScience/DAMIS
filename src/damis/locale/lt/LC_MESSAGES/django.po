@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-11 21:34+0000\n"
+"POT-Creation-Date: 2013-12-12 23:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,58 +16,51 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: constants.py:5
-msgid "MII cluster, http://cluster.mii.lt"
-msgstr "MII klusteris, http://cluster.mii.lt"
-
-#: constants.py:6
-msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
-msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
-
-#: forms.py:29 forms.py:45 templates/damis/user_list.html:22
+#: forms.py:41 forms.py:57 templates/damis/user_list.html:22
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:30 forms.py:46
+#: forms.py:42 forms.py:58
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:40
+#: forms.py:52
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:48
+#: forms.py:60
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:50
+#: forms.py:62
 msgid "First name"
 msgstr "Vardas"
 
-#: forms.py:51
+#: forms.py:63
 msgid "Last name"
 msgstr "Pavardė"
 
-#: forms.py:52 templates/damis/user_list.html:23
+#: forms.py:64 templates/damis/user_list.html:23
 msgid "E-mail"
 msgstr "el. paštas"
 
-#: forms.py:53
+#: forms.py:65
 msgid "Phone"
 msgstr "Telefono numeris"
 
-#: forms.py:87 models.py:15 models.py:37 models.py:53
+#: forms.py:99 models.py:15 models.py:37 models.py:53
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:23
 #: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:88
+#: forms.py:100
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:89 models.py:17 templates/damis/dataset_detail.html:12
-#: templates/damis/dataset_list.html:25
+#: forms.py:101 models.py:17 models.py:62 models.py:100
+#: templates/damis/algorithm_list.html:24
+#: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:25
 msgid "Description"
 msgstr "Aprašymas"
 
@@ -75,7 +68,7 @@ msgstr "Aprašymas"
 msgid "File"
 msgstr "Failas"
 
-#: models.py:18 models.py:54 models.py:101
+#: models.py:18 models.py:54 models.py:117
 msgid "User"
 msgstr "Naudotojas"
 
@@ -135,89 +128,137 @@ msgstr "Ikona"
 msgid "Cluster"
 msgstr "Klusteris"
 
-#: models.py:78 models.py:124
-msgid "Algorithm"
-msgstr "Algoritmas"
-
 #: models.py:79
+msgid "Dataset"
+msgstr "Duomenys"
+
+#: models.py:80
+msgid "Integer"
+msgstr "Sveikasis"
+
+#: models.py:81
+msgid "Float"
+msgstr "Slankaus kablelio"
+
+#: models.py:82
+msgid "Double"
+msgstr "Dvigubo tikslumo slankaus kablelio"
+
+#: models.py:83
+msgid "String"
+msgstr "Simbolių eilutė"
+
+#: models.py:84
+msgid "Text"
+msgstr "Tekstas"
+
+#: models.py:85
+msgid "Boolean"
+msgstr "Loginė reikšmė"
+
+#: models.py:86
+msgid "Date"
+msgstr "Data"
+
+#: models.py:87
+msgid "Date and time"
+msgstr "Data ir laikas"
+
+#: models.py:88
+msgid "Time"
+msgstr "Laikas"
+
+#: models.py:92 models.py:140
+msgid "Component"
+msgstr "Komponentas"
+
+#: models.py:93
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:80
+#: models.py:94
 msgid "Type"
 msgstr "Tipas"
 
-#: models.py:81
+#: models.py:95
 msgid "Required"
 msgstr "Būtinas"
 
-#: models.py:82
+#: models.py:96
 msgid "Default"
 msgstr "Standartinė reikšmė"
 
-#: models.py:83
+#: models.py:97
 msgid "Connection type"
 msgstr "Jungties tipas"
 
-#: models.py:91
+#: models.py:99
+msgid "Label"
+msgstr "Antraštė"
+
+#: models.py:107
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: models.py:92
+#: models.py:108
 msgid "Running"
 msgstr "Vykdoma"
 
-#: models.py:93
+#: models.py:109
 msgid "Error"
 msgstr "Klaida"
 
-#: models.py:94
+#: models.py:110
 msgid "Finished"
 msgstr "Įvykdyta"
 
-#: models.py:96
+#: models.py:112
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:97
+#: models.py:113
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:98
+#: models.py:114
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:99 templates/damis/experiment_list.html:23
+#: models.py:115 templates/damis/experiment_list.html:23
 msgid "Status"
 msgstr "Statusas"
 
-#: models.py:102
+#: models.py:118
 msgid "Workflow state"
 msgstr "Scenarijaus būsena"
 
-#: models.py:104
+#: models.py:120
 msgid "Maximum calculation time"
 msgstr "Maksimali skaičiavimo trukmė"
 
-#: models.py:106
+#: models.py:122
 msgid "Processor number"
 msgstr "Procesorių skaičius"
 
-#: models.py:123
+#: models.py:139
 msgid "Experiment"
 msgstr "Eksperimentas"
 
-#: models.py:130
+#: models.py:146
 msgid "Parameter"
 msgstr "Parametras"
 
-#: models.py:133 templates/damis/_experiment_form.html:25
+#: models.py:149 templates/damis/_experiment_form.html:31
 msgid "Task"
 msgstr "Užduotis"
 
-#: models.py:135
+#: models.py:159
 msgid "Source"
-msgstr "Išeities kodas"
+msgstr "Šaltinis"
+
+#: models.py:161
+msgid "Target"
+msgstr "Tikslas"
 
 #: settings.py:46
 msgid "Lithuanian"
@@ -340,8 +381,8 @@ msgid "Experiments"
 msgstr "Eksperimentai"
 
 #: templates/menu.html:11
-msgid "Algorithms"
-msgstr "Algoritmai"
+msgid "Components"
+msgstr "Komponentai"
 
 #: templates/menu.html:12
 msgid "Users"
@@ -399,13 +440,12 @@ msgstr "Ar tikrai norite pašalinti algoritmą"
 
 #: templates/damis/algorithm_form.html:8
 #: templates/damis/algorithm_list.html:11
-msgid "Algorithm list"
-msgstr "Algoritmai"
+msgid "Component list"
+msgstr "Komponentų sąrašas"
 
 #: templates/damis/algorithm_form.html:9
-#: templates/damis/algorithm_list.html:12
-msgid "Upload algorithm"
-msgstr "Įkelti algoritmą"
+msgid "Create component"
+msgstr "Kurti komponentą"
 
 #: templates/damis/algorithm_form.html:30
 #: templates/damis/experiment_create.html:64 templates/damis/obj_form.html:19
@@ -413,16 +453,20 @@ msgstr "Įkelti algoritmą"
 msgid "Save"
 msgstr "Išsaugoti"
 
-#: templates/damis/algorithm_list.html:24 templates/damis/dataset_list.html:26
+#: templates/damis/algorithm_list.html:12
+msgid "Upload algorithm"
+msgstr "Įkelti algoritmą"
+
+#: templates/damis/algorithm_list.html:25 templates/damis/dataset_list.html:26
 #: templates/damis/experiment_list.html:24 templates/damis/user_list.html:25
 msgid "Actions"
 msgstr "Veiksmai"
 
-#: templates/damis/algorithm_list.html:42
+#: templates/damis/algorithm_list.html:44
 msgid "No algorithms were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų algoritmų. Jūs tai galite padaryti "
 
-#: templates/damis/algorithm_list.html:43 templates/damis/dataset_list.html:58
+#: templates/damis/algorithm_list.html:45 templates/damis/dataset_list.html:58
 #: templates/damis/experiment_list.html:47 templates/damis/user_list.html:49
 msgid "here"
 msgstr "čia"
@@ -520,9 +564,8 @@ msgstr "Aktyvus"
 msgid "No users were created yet. You can register "
 msgstr "Kol kas nėra sukurtų naudotojų. Registruotis galite "
 
-#: templates/dynamic/parameter_form.html:18
-#: templates/dynamic/parameter_form.html:22
-msgid "Comes from Connection"
+#: templatetags/damis.py:48
+msgid "Comes from connection"
 msgstr "Jungties įėjimas"
 
 #: templatetags/pagination.py:79
@@ -533,7 +576,24 @@ msgstr "Sekantis"
 msgid "Prev"
 msgstr "Ankst"
 
-#, fuzzy
+#~ msgid "Real Number"
+#~ msgstr "Realusis"
+
+#~ msgid "MII cluster, http://cluster.mii.lt"
+#~ msgstr "MII klusteris, http://cluster.mii.lt"
+
+#~ msgid "MIF VU SK2, http://mif.vu.lt/cluster/"
+#~ msgstr "MIF VU SK2, http://mif.vu.lt/cluster/"
+
+#~ msgid "Algorithm"
+#~ msgstr "Algoritmas"
+
+#~ msgid "Algorithms"
+#~ msgstr "Algoritmai"
+
+#~ msgid "Algorithm list"
+#~ msgstr "Algoritmai"
+
 #~ msgid "Experiment settings"
 #~ msgstr "Eksperimento nustatymai"
 
@@ -578,9 +638,6 @@ msgstr "Ankst"
 
 #~ msgid "Analysis"
 #~ msgstr "Analizės"
-
-#~ msgid "Dataset"
-#~ msgstr "Duomenys"
 
 #~ msgid "New task"
 #~ msgstr "Užduotis"
