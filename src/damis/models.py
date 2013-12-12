@@ -78,11 +78,14 @@ class Parameter(models.Model):
     VALIDATORS = (
         ('dataset', _('Dataset')),
         ('int', _('Integer')),
-        ('str', _('String')),
+        ('float', _('Real Number')),
+        ('double', _('Double')),
+        ('string', _('String')),
         ('text', _('Text')),
-        ('bool', _('Boolean')),
+        ('boolean', _('Boolean')),
         ('date', _('Date')),
         ('datetime', _('Date and time')),
+        ('time', _('Time')),
     )
     algorithm = models.ForeignKey(Algorithm, related_name='parameters',
                                   null=True, blank=True,

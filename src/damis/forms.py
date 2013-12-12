@@ -18,13 +18,15 @@ from django.forms.formsets import DELETION_FIELD_NAME
 VALIDATOR_FIELDS = {
     'dataset': forms.CharField, # Text
     'int': forms.IntegerField,
-    'str': forms.CharField,
+    'string': forms.CharField,
     'text': forms.CharField, # Text
-    'bool': forms.BooleanField,
+    'boolean': forms.BooleanField,
     'date': forms.DateField,
     'datetime': forms.DateTimeField,
+    'time': forms.TimeField,
+    'float': forms.FloatField,
+    'double': forms.FloatField,
 }
-
 
 class DatasetForm(forms.ModelForm):
     class Meta:
