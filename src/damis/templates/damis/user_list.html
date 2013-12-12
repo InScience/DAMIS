@@ -11,9 +11,9 @@
 <div class="tabbable"> <!-- Only required for left/right tabs -->
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
-        <form id='experiment-action-form' method='POST' action=''>{% csrf_token %}
+        <form id='user-action-form' method='POST' action=''>{% csrf_token %}
       <input type="hidden" value="delete" name="action"/>
-      <button class="btn" type="submit"><i class="icon-trash"></i></button>
+      <button class="btn delete-btn" type="button"><i class="icon-trash"></i></button>
       <table class="table table-hover">
           <thead>
               <tr>
@@ -60,4 +60,14 @@
     </div>
   </div>
 </div>
+{% include 'damis/_delete_dialog.html' %}
+{% endblock %}
+
+{% block javascript_footer %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.utils.initDeleteConfirm("#user-action-form");
+        });
+    </script>
 {% endblock %}
