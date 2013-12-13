@@ -154,6 +154,7 @@ class ComponentCreate(LoginRequiredMixin, CreateView):
 
 class ComponentList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Component
+    template_name = 'damis/algorithm_list.html'
     paginate_by = 30
     success_url = reverse_lazy('algorithm-list')
 
