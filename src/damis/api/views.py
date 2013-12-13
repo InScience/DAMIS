@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from damis.api.serializers import UserSerializer, GroupSerializer, DatasetSerializer, AlgorithmSerializer, ExperimentSerializer
+from damis.api.serializers import UserSerializer, GroupSerializer, DatasetSerializer, ComponentSerializer, ExperimentSerializer
 
-from damis.models import Dataset, Algorithm, Experiment
+from damis.models import Dataset, Component, Experiment
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -26,12 +26,12 @@ class DatasetViewSet(viewsets.ModelViewSet):
     queryset = Dataset.objects.all()
     serializer_class = DatasetSerializer
 
-class AlgorithmViewSet(viewsets.ModelViewSet):
+class ComponentViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows algorithms to be viewed or edited.
+    API endpoint that allows components to be viewed or edited.
     """
-    queryset = Algorithm.objects.all()
-    serializer_class = AlgorithmSerializer
+    queryset = Component.objects.all()
+    serializer_class = ComponentSerializer
 
 class ExperimentViewSet(viewsets.ModelViewSet):
     """
