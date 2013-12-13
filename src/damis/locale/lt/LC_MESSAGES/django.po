@@ -170,7 +170,7 @@ msgstr "Laikas"
 
 #: models.py:92 models.py:140
 msgid "Component"
-msgstr "Komponentas"
+msgstr "Komponentė"
 
 #: models.py:93
 msgid "Option"
@@ -382,7 +382,7 @@ msgstr "Eksperimentai"
 
 #: templates/menu.html:11
 msgid "Components"
-msgstr "Komponentai"
+msgstr "Komponentės"
 
 #: templates/menu.html:12
 msgid "Users"
@@ -445,11 +445,11 @@ msgstr "Ar tikrai norite pašalinti algoritmą"
 #: templates/damis/algorithm_form.html:8
 #: templates/damis/algorithm_list.html:11
 msgid "Component list"
-msgstr "Komponentų sąrašas"
+msgstr "Komponenčių sąrašas"
 
 #: templates/damis/algorithm_form.html:9
 msgid "Create component"
-msgstr "Kurti komponentą"
+msgstr "Kurti komponentę"
 
 #: templates/damis/algorithm_form.html:30
 #: templates/damis/experiment_create.html:64 templates/damis/obj_form.html:19
