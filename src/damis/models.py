@@ -134,7 +134,7 @@ def get_result_file_upload_path(instance, filename):
         username = instance.algorithm.user.username
     return  '%s/result/%s' % (username, filename)
 
-class Task(models.Model):
+class WorkflowTask(models.Model):
     experiment = models.ForeignKey('Experiment', related_name='tasks',
                                    null=True, verbose_name=_('Experiment'))
     algorithm = models.ForeignKey('Component', verbose_name=_('Component'))
@@ -145,8 +145,8 @@ class Task(models.Model):
 class ParameterValue(models.Model):
     parameter = models.ForeignKey('Parameter', verbose_name=_('Parameter'))
     value = models.CharField(max_length=255, blank=True)
-    task = models.ForeignKey('Task', related_name='parameter_values',
-                                                verbose_name=_('Task'))
+    task = models.ForeignKey('WorkflowTask', related_name='parameter_values',
+                                             verbose_name=_('Workflow Task'))
     related = models.ManyToManyField('self', symmetrical=False, null=True,
                                      blank=True, through='Connection')
 

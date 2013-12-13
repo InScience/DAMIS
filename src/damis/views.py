@@ -26,7 +26,7 @@ from damis.forms import DatasetForm
 from damis.forms import ComponentForm
 from damis.forms import ParameterForm, ParameterFormset
 from damis.forms import ExperimentForm
-from damis.forms import TaskFormset, CreateExperimentFormset, ParameterValueFormset, ParameterValueForm
+from damis.forms import WorkflowTaskFormset, CreateExperimentFormset, ParameterValueFormset, ParameterValueForm
 from damis.forms import DatasetSelectForm
 from damis.forms import UserUpdateForm
 from damis.forms import VALIDATOR_FIELDS
@@ -38,7 +38,7 @@ from damis.models import Component
 from damis.models import Parameter, ParameterValue
 from damis.models import Dataset
 from damis.models import Experiment
-from damis.models import Task
+from damis.models import WorkflowTask
 from damis.models import Cluster
 
 
@@ -229,7 +229,7 @@ class ExperimentUpdate(LoginRequiredMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         self.object = None
         experiment = get_object_or_404(Experiment, pk=self.kwargs['pk'])
-        task_formset = TaskFormset(instance=experiment)
+        task_formset = WorkflowTaskFormset(instance=experiment)
         return self.render_to_response(self.get_context_data(
                     experiment=task_formset.instance,
                     task_formset=task_formset,
@@ -239,7 +239,8 @@ class ExperimentUpdate(LoginRequiredMixin, UpdateView):
         self.object = None
         instance = Experiment.objects.get(pk=self.kwargs['pk'])
 
-        task_formset = TaskFormset(self.request.POST, instance=instance)
+        task_formset = WorkflowTaskFormset(self.request.POST,
+                                           instance=instance)
         if task_formset.is_valid():
             return self.form_valid(task_formset)
         else:
@@ -327,7 +328,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             data = task_form.cleaned_data
             data['experiment'] = exp
             if data.get('algorithm'):
-                task = Task.objects.create(**data)
+                task = WorkflowTask.objects.create(**data)
 
                 pv_formset = task_form.parameter_values[0]
                 pv_formset.instance = task
@@ -409,7 +410,7 @@ def algorithm_parameter_form(request):
     prefix = 'PV_%s' % hash(task_form_prefix)
 
     val_params = algorithm.parameters.filter(~Q(connection_type="OUTPUT_VALUE"))
-    ParameterValueFormset = inlineformset_factory(Task,
+    ParameterValueFormset = inlineformset_factory(WorkflowTask,
                                 ParameterValue,
                                 form=ParameterValueForm,
                                 extra=len(val_params),

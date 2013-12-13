@@ -10,7 +10,7 @@ from damis.models import Component
 from damis.models import Parameter
 from damis.models import ParameterValue
 from damis.models import Experiment
-from damis.models import Task
+from damis.models import WorkflowTask
 
 from django.forms.models import inlineformset_factory, BaseInlineFormSet
 from django.forms.formsets import DELETION_FIELD_NAME
@@ -182,11 +182,12 @@ class ParameterValueForm(forms.ModelForm):
         model = ParameterValue
 
 
-ParameterValueFormset = inlineformset_factory(Task, ParameterValue, form=ParameterValueForm, extra=0, can_delete=False)
+ParameterValueFormset = inlineformset_factory(WorkflowTask, ParameterValue,
+                            form=ParameterValueForm, extra=0, can_delete=False)
 
-class BaseTaskFormset(BaseInlineFormSet):
+class BaseWorkflowTaskFormset(BaseInlineFormSet):
     def add_fields(self, form, index):
-        super(BaseTaskFormset, self).add_fields(form, index)
+        super(BaseWorkflowTaskFormset, self).add_fields(form, index)
 
         # Create the nested formset
         try:
@@ -210,7 +211,7 @@ class BaseTaskFormset(BaseInlineFormSet):
                                                       prefix=pv_prefix)]
 
     def is_valid(self):
-        result = super(BaseTaskFormset, self).is_valid()
+        result = super(BaseWorkflowTaskFormset, self).is_valid()
         for form in self.forms:
             if hasattr(form, 'parameter_values'):
                 for pv_form in form.parameter_values:
@@ -220,7 +221,7 @@ class BaseTaskFormset(BaseInlineFormSet):
 
     def save_new(self, form, commit=True):
         """Saves and returns a new model instance for the given form."""
-        instance = super(BaseTaskFormset, self).save_new(form, commit=commit)
+        instance = super(BaseWorkflowTaskFormset, self).save_new(form, commit=commit)
 
         form.instance = instance
 
@@ -267,10 +268,14 @@ class BaseTaskFormset(BaseInlineFormSet):
         return False
 
 
-class TaskForm(forms.ModelForm):
+class WorkflowTaskForm(forms.ModelForm):
     class Meta:
-        model = Task
+        model = WorkflowTask
         exclude = ['stdout', 'stderr', 'processors', 'sequence']
 
-TaskFormset = inlineformset_factory(Experiment, Task, formset=BaseTaskFormset, form=TaskForm, extra=0, can_delete=False)
-CreateExperimentFormset = inlineformset_factory(Experiment, Task, formset=BaseTaskFormset, form=TaskForm, extra=1, can_delete=False)
+WorkflowTaskFormset = inlineformset_factory(Experiment, WorkflowTask,
+        formset=BaseWorkflowTaskFormset, form=WorkflowTaskForm, extra=0,
+        can_delete=False)
+CreateExperimentFormset = inlineformset_factory(Experiment, WorkflowTask,
+        formset=BaseWorkflowTaskFormset, form=WorkflowTaskForm, extra=1,
+        can_delete=False)

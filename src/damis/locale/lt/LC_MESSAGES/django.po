@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-12 23:42+0000\n"
+"POT-Creation-Date: 2013-12-13 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,9 +248,9 @@ msgstr "Eksperimentas"
 msgid "Parameter"
 msgstr "Parametras"
 
-#: models.py:149 templates/damis/_experiment_form.html:31
-msgid "Task"
-msgstr "Užduotis"
+#: models.py:149
+msgid "Workflow Task"
+msgstr "Scenarijaus užduotis"
 
 #: models.py:159
 msgid "Source"
@@ -433,6 +433,10 @@ msgstr "Ar tikrai norite, kad pažymėti įrašai būtų negrįžtamai ištrinti
 #: templates/damis/_experiment_form.html:7
 msgid "Form contains errors"
 msgstr "Formoje yra klaidų"
+
+#: templates/damis/_experiment_form.html:31
+msgid "Task"
+msgstr "Užduotis"
 
 #: templates/damis/algorithm_confirm_delete.html:13
 msgid "Are you sure you want to delete algorithm"
