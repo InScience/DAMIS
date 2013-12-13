@@ -409,7 +409,7 @@ def algorithm_parameter_form(request):
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
     prefix = 'PV_%s' % hash(task_form_prefix)
 
-    val_params = algorithm.parameters.filter(~Q(connection_type="OUTPUT_VALUE"))
+    val_params = algorithm.parameters.filter(Q(connection_type="INPUT_VALUE")|Q(connection_type="INPUT_CONNECTION")|Q(connection_type="OUTPUT_CONNECTION"))
     ParameterValueFormset = inlineformset_factory(WorkflowTask,
                                 ParameterValue,
                                 form=ParameterValueForm,
