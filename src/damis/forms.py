@@ -62,7 +62,6 @@ class RegistrationForm(forms.Form):
     first_name = forms.CharField(label=_('First name'), max_length=100,)
     last_name = forms.CharField(label=_('Last name'), max_length=100,)
     email = forms.EmailField(label=_('E-mail'), max_length=100)
-    phone = forms.CharField(label=_('Phone'), max_length=100, required=False)
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
@@ -88,7 +87,6 @@ class RegistrationForm(forms.Form):
         data = self.cleaned_data
         password = data.pop('password')
         data.pop('password_repeat')
-        data.pop('phone')
         user = User.objects.create(**self.cleaned_data)
         user.set_password(password)
         user.save()
