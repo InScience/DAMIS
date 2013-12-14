@@ -1,25 +1,16 @@
 {% load i18n %}
-{% load disable from damis %}
 {% load disable_if_connection from damis %}
 
-{% for form in formset.forms %}
-    {% if form.initial.parameter %}
-    <div style="{% if form.initial.parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}">
-    {% else %}
-    <div style="{% if form.instance.parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}">
+<div style="{% if parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}">
+{% for field in form.visible_fields %}
+    {% if field.name == 'value' %}
+        <span title='{{ parameter.description }}'>{{ parameter.label }}</span><br />
+        {{ field.errors }}
+        {{ field|disable_if_connection }}
     {% endif %}
-
-        {% for field in form.visible_fields %}
-            {% if field.name == 'value' %}
-                <span>{{ field.label }}</span><br />
-                {{ field.errors }}
-                {{ field|disable_if_connection }}
-            {% endif %}
-        {% endfor %}
-        {% for field in form.hidden_fields %}
-            {{ field }}
-        {% endfor %}
-        <input id="{{ form.prefix }}-connection_type" type="hidden" value="{% firstof form.initial.parameter.connection_type form.instance.parameter.connection_type %}" name="{{ form.prefix }}-connection_type"/>
-    </div>
 {% endfor %}
-{{ formset.management_form }}
+{% for field in form.hidden_fields %}
+    {{ field }}
+{% endfor %}
+<input id="{{ form.prefix }}-connection_type" type="hidden" value="{{ parameter.connection_type }}" name="{{ form.prefix }}-connection_type"/>
+</div>

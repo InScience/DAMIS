@@ -1,0 +1,12 @@
+{% load i18n %}
+{% load disable from damis %}
+{% load disable_if_connection from damis %}
+
+{% for form in formset.forms %}
+    {% if form.initial.parameter %}
+        {% include 'dynamic/parameter_form.html' with parameter=form.initial.parameter %}
+    {% else %}
+        {% include 'dynamic/parameter_form.html' with parameter=form.instance.parameter %}
+    {% endif %}
+{% endfor %}
+{{ formset.management_form }}
