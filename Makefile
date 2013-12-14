@@ -20,6 +20,7 @@ start_database:
 	mkdir var || touch var/db
 	bin/django syncdb --noinput
 	bin/django migrate damis
+	bin/django loaddata initial_algorithms.json
 
 change_db:
 	bin/django schemamigration damis --auto
@@ -44,4 +45,3 @@ graph:
 
 load_data:
 	bin/django loaddata initial_algorithms.json
-	bin/django loaddata initial_clusters.json 
