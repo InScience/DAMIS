@@ -191,7 +191,15 @@
 			taskBox.off("dbclick");
 			taskBox.on("dblclick", function(ev) {
 				var formWindowId = window.taskBoxes.getFormWindowId($(ev.currentTarget));
-				$("#" + formWindowId).dialog('open');
+				var formWindow = $("#" + formWindowId);
+				var componentOption = $(formWindow).find(".algorithm-selection option[selected=selected]");
+
+				var componentName = componentOption.text();
+				if (componentName == 'CHART') {
+                    window.resultsPlot.chart(formWindow);
+				}
+
+				formWindow.dialog('open');
 			});
 
 			//make the box draggable

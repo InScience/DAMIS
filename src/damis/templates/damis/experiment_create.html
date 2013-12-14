@@ -68,9 +68,6 @@
         </div> <!-- tab-content -->
     </div> <!-- tabbable -->
 </div> <!-- span12-->
-<div id="results-plot" style="display: none; width: 600px; height: 300px;">
-
-</div>
 {% endblock %}
 
 {% block javascript %}
@@ -119,8 +116,6 @@
                 var activePanel = $("#cluster-"+ clusterId +"-panel");
                 activePanel.show();
             });
-
-            window.resultsPlot.init();
         }); 
 
     </script>
