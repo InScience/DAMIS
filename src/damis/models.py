@@ -55,11 +55,11 @@ class Component(models.Model):
     category = models.CharField(_('Category'), max_length=255, null=True, blank=True, choices=CATEGORIES)
     wsdl = models.URLField(_('WSDL link'), null=True, blank=True)
     function = models.CharField(_('WSDL function name'), max_length=255, null=True, blank=True)
-    executable_file = models.CharField(_('Executable'), max_length=255, null=True, blank=True)
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
     icon = models.ImageField(_('Icon'), upload_to='icons', blank=True, null=True)
     cluster = models.ForeignKey('Cluster', null=True, verbose_name=_('Cluster'))
+    label = models.CharField(_('Label'), max_length=255, null=True, blank=True)
     description = models.TextField(_('Description'), null=True, blank=True)
 
     def get_absolute_url(self):
