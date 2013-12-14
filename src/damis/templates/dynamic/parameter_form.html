@@ -4,7 +4,9 @@
 <div style="{% if parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}">
 {% for field in form.visible_fields %}
     {% if field.name == 'value' %}
-        <span title='{{ parameter.description }}'>{{ parameter.label }}</span><br />
+    <span title='{% if parameter.description %}{% trans parameter.description %}{% endif %}'
+        >{% if parameter.label %}{% trans parameter.label %}{% else %}{{ parameter.name }}{% endif %}
+        ({% if parameter.type %}{% trans parameter.type %}{% endif %})</span><br />
         {{ field.errors }}
         {{ field|disable_if_connection }}
     {% endif %}
