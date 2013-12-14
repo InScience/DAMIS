@@ -178,6 +178,7 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
 class ComponentUpdate(LoginRequiredMixin, UpdateView):
     model = Component
     form_class = ComponentForm
+    template_name = 'damis/algorithm_form.html'
 
     def post(self, request, *args, **kwargs):
         self.object = Component.objects.get(pk=self.kwargs['pk'])
