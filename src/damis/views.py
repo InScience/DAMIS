@@ -121,6 +121,7 @@ def dataset_download_view(request, pk, file_format):
 class ComponentCreate(LoginRequiredMixin, CreateView):
     model = Component
     form_class = ComponentForm
+    template_name = 'damis/algorithm_form.html'
 
     def get(self, request, *args, **kwargs):
         self.object = None
