@@ -62,14 +62,14 @@
 				data.push({
 					label: rec['group'],
 					points: {
-                        symbol: symbols[idx],
+						symbol: symbols[idx],
 					},
 					data: rec['data'],
 					color: colors[idx],
 				});
 			});
-
-			options = {
+			var options = {
+				canvas: true,
 				series: {
 					points: {
 						show: true,
@@ -77,9 +77,10 @@
 					},
 				},
 				grid: {
+                    backgroundColor: "#ffffff",
 					clickable: true,
 					hoverable: true
-				}
+				},
 			};
 
 			var plot = $.plot(plotPlaceholder, data, options);
@@ -109,20 +110,33 @@
 			});
 		},
 
-		updateChart: function(plotContainer) {
-            var data = window.resultsPlot.getDataToRender();
+		updateChart: function(dialog) {
+			var plotContainer = $(dialog.find(".plot-container")[0]);
+            var formWindow = dialog.find(".task-window");
+
+			var data = window.resultsPlot.getDataToRender();
 			var colors = window.resultsPlot.generateColorPalette(data);
 			var symbols = window.resultsPlot.generateSymbolPalette(data);
 			var renderChoices = plotContainer.find(".render-choices tbody tr");
 			$.each(renderChoices, function(idx, choice) {
-                // TODO: add color validation or color picker
+				// TODO: add color validation or color picker
 				var color = $(choice).find("input").val();
 				colors[idx] = color ? color: colors[idx];
 
 				var symbol = $(choice).find("option:selected").val();
 				symbols[idx] = symbol ? symbol: symbols[idx][0];
 			});
-			window.resultsPlot.renderChart(plotContainer, ".results-container", data, colors, symbols);
+			window.resultsPlot.renderChart(plotContainer, "#" + formWindow.attr("id") + " .results-container", data, colors, symbols);
+		},
+
+		downloadChart: function(plotContainer) {
+			var canvas = plotContainer.find("canvas")[0];
+			var image = canvas.toDataURL("image/jpeg");
+			image = image.replace("image/jpeg", "image/octet-stream");
+            
+			//var image = canvas.toDataURL();
+			//image = image.replace("image/png", "image/octet-stream");
+			document.location.href = image;
 		},
 
 		chart: function(formWindow) {
@@ -133,17 +147,19 @@
 				plotContainer.append(plotPlaceholder);
 
 				var renderChoicesBody = $("<tbody></tbody>");
-                var renderChoicesHead = $("<thead><th>" + gettext('Class') + "</th><th>" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead>");
+				var renderChoicesHead = $("<thead><th>" + gettext('Class') + "</th><th>" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead>");
 				var renderChoices = $("<table class=\"render-choices\" style=\"margin: auto; margin-top: 20px;\"></table>");
-                renderChoices.append(renderChoicesHead);
-                renderChoices.append(renderChoicesBody);
+				renderChoices.append(renderChoicesHead);
+				renderChoices.append(renderChoicesBody);
 				plotContainer.append(renderChoices);
-				formWindow.append(plotContainer);
+
+				// append to body temporarily in order for axes labels to be drawn correctly
+				$("body").append(plotContainer);
 
 				var initData = window.resultsPlot.getDataToRender();
 				var colorPalette = window.resultsPlot.generateColorPalette(initData);
 				var symbolPalette = window.resultsPlot.generateSymbolPalette(initData);
-                var symbolValues = []
+				var symbolValues = []
 
 				$.each(initData, function(idx, series) {
 					var seriesRow = $("<tr></tr>");
@@ -153,7 +169,7 @@
 					var shapeSelect = $("<select></select>");
 					$.each(symbolPalette, function(i, shape) {
 						shapeSelect.append("<option value=\"" + shape[0] + "\"" + (idx == i ? "selected=\"selected\"": "") + ">" + shape[1] + "</option>");
-                        symbolValues.push(shape[0]);
+						symbolValues.push(shape[0]);
 					});
 					var shapeCell = $("<td></td>");
 					shapeCell.append(shapeSelect);
@@ -162,7 +178,9 @@
 					renderChoicesBody.append(seriesRow);
 				});
 
-				window.resultsPlot.renderChart(plotContainer, ".results-container", initData, colorPalette, symbolValues);
+				window.resultsPlot.renderChart(plotContainer, "body > .plot-container .results-container", initData, colorPalette, symbolValues);
+				//append to form after rendering because otherwise axes are not rendered
+				formWindow.append(plotContainer);
 
 				// customize dialog
 				formWindow.dialog("option", "close", function() {
@@ -171,13 +189,16 @@
 				var buttons = formWindow.dialog("option", "buttons");
 				buttons.splice(0, 0, {
 					text: gettext('Download'),
-					click: function(ev) {}
+					click: function(ev) {
+						var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
+						window.resultsPlot.downloadChart($(plotContainer[0]));
+					}
 				});
 				buttons.splice(0, 0, {
 					text: gettext('Update'),
 					click: function(ev) {
-						var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
-						window.resultsPlot.updateChart($(plotContainer[0]));
+						var dialog = $(ev.currentTarget).closest(".ui-dialog");
+						window.resultsPlot.updateChart(dialog);
 					}
 				});
 				formWindow.dialog("option", "buttons", buttons);
