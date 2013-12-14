@@ -1,5 +1,26 @@
 (function() {
 	window.resultsPlot = {
+		// TODO: sends Ajax request to obtain results for the connected component
+		getDataToRender: function() {
+			initData = [{
+				group: "1",
+				data: window.resultsPlot.generate(2, 1.8)
+			},
+			{
+				group: "2",
+				data: window.resultsPlot.generate(4, 0.9)
+			},
+			{
+				group: "3",
+				data: window.resultsPlot.generate(7, 1.1)
+			},
+			{
+				group: "4",
+				data: window.resultsPlot.generate(10, 0.2)
+			}];
+			return initData;
+		},
+
 		generate: function(offset, amplitude) {
 			var res = [];
 			var start = 0,
@@ -27,12 +48,12 @@
 		},
 
 		generateSymbolPalette: function(data) {
-			var baseOptions = [ ["circle", gettext("Circle")], ["square", gettext("Square")], ["diamond", gettext("Diamond")], ["triangle", gettext("Triangle")], ["cross", gettext("Cross")] ];
-            var allOptions= [];
-            for (var i = 0; i < data.length; i++) {
-                allOptions.push(baseOptions[i % baseOptions.length]);
-            }
-            return allOptions;
+			var baseOptions = [["circle", gettext("Circle")], ["square", gettext("Square")], ["diamond", gettext("Diamond")], ["triangle", gettext("Triangle")], ["cross", gettext("Cross")]];
+			var allOptions = [];
+			for (var i = 0; i < data.length; i++) {
+				allOptions.push(baseOptions[i % baseOptions.length]);
+			}
+			return allOptions;
 		},
 
 		renderChart: function(plotContainer, plotPlaceholder, data, colors, symbols) {
@@ -41,7 +62,7 @@
 				data.push({
 					label: rec['group'],
 					points: {
-						symbol: symbols[idx][0],
+                        symbol: symbols[idx],
 					},
 					data: rec['data'],
 					color: colors[idx],
@@ -88,25 +109,20 @@
 			});
 		},
 
-		// TODO: sends Ajax request to obtain results for the connected component
-		getDataToRender: function() {
-			initData = [{
-				group: "1",
-				data: window.resultsPlot.generate(2, 1.8)
-			},
-			{
-				group: "2",
-				data: window.resultsPlot.generate(4, 0.9)
-			},
-			{
-				group: "3",
-				data: window.resultsPlot.generate(7, 1.1)
-			},
-			{
-				group: "4",
-				data: window.resultsPlot.generate(10, 0.2)
-			}];
-			return initData;
+		updateChart: function(plotContainer) {
+            var data = window.resultsPlot.getDataToRender();
+			var colors = window.resultsPlot.generateColorPalette(data);
+			var symbols = window.resultsPlot.generateSymbolPalette(data);
+			var renderChoices = plotContainer.find(".render-choices tbody tr");
+			$.each(renderChoices, function(idx, choice) {
+                // TODO: add color validation or color picker
+				var color = $(choice).find("input").val();
+				colors[idx] = color ? color: colors[idx];
+
+				var symbol = $(choice).find("option:selected").val();
+				symbols[idx] = symbol ? symbol: symbols[idx][0];
+			});
+			window.resultsPlot.renderChart(plotContainer, ".results-container", data, colors, symbols);
 		},
 
 		chart: function(formWindow) {
@@ -115,14 +131,20 @@
 				var plotContainer = $("<div class=\"plot-container\" style=\"min-height: 400px; position: relative;\"></div>");
 				var plotPlaceholder = "<div class=\"results-container\" style=\"width: 600px; height: 300px; margin: auto;\"></div>";
 				plotContainer.append(plotPlaceholder);
-				plotContainer.append("<table id=\"fieldsTable\" style=\"margin: auto; margin-top: 20px;\"><thead><th>" + gettext('Class') + "</th><th>" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead><tbody></tbody></table>");
+
+				var renderChoicesBody = $("<tbody></tbody>");
+                var renderChoicesHead = $("<thead><th>" + gettext('Class') + "</th><th>" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead>");
+				var renderChoices = $("<table class=\"render-choices\" style=\"margin: auto; margin-top: 20px;\"></table>");
+                renderChoices.append(renderChoicesHead);
+                renderChoices.append(renderChoicesBody);
+				plotContainer.append(renderChoices);
 				formWindow.append(plotContainer);
 
 				var initData = window.resultsPlot.getDataToRender();
 				var colorPalette = window.resultsPlot.generateColorPalette(initData);
 				var symbolPalette = window.resultsPlot.generateSymbolPalette(initData);
+                var symbolValues = []
 
-				var fieldsTableBody = $("#fieldsTable tbody");
 				$.each(initData, function(idx, series) {
 					var seriesRow = $("<tr></tr>");
 					seriesRow.append("<td>" + idx + "</td>");
@@ -131,15 +153,16 @@
 					var shapeSelect = $("<select></select>");
 					$.each(symbolPalette, function(i, shape) {
 						shapeSelect.append("<option value=\"" + shape[0] + "\"" + (idx == i ? "selected=\"selected\"": "") + ">" + shape[1] + "</option>");
+                        symbolValues.push(shape[0]);
 					});
 					var shapeCell = $("<td></td>");
 					shapeCell.append(shapeSelect);
 					seriesRow.append(shapeCell);
 
-					fieldsTableBody.append(seriesRow);
+					renderChoicesBody.append(seriesRow);
 				});
 
-				window.resultsPlot.renderChart(plotContainer, ".results-container", initData, colorPalette, symbolPalette);
+				window.resultsPlot.renderChart(plotContainer, ".results-container", initData, colorPalette, symbolValues);
 
 				// customize dialog
 				formWindow.dialog("option", "close", function() {
@@ -152,7 +175,10 @@
 				});
 				buttons.splice(0, 0, {
 					text: gettext('Update'),
-					click: function(ev) {}
+					click: function(ev) {
+						var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
+						window.resultsPlot.updateChart($(plotContainer[0]));
+					}
 				});
 				formWindow.dialog("option", "buttons", buttons);
 				formWindow.dialog("option", "minWidth", 650);
