@@ -122,7 +122,7 @@ msgstr "WSDL funkcijos pavadinimas"
 
 #: models.py:60
 msgid "Icon"
-msgstr "Ikona"
+msgstr "Paveiksliukas"
 
 #: models.py:61
 msgid "Cluster"
