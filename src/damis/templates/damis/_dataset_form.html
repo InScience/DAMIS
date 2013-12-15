@@ -1,0 +1,13 @@
+{% load i18n %}
+
+{% for error in form.non_field_errors %}
+    <div class="alert alert-error">{{ error }}</div>
+{% endfor %}
+
+{% for field in form.visible_fields %}
+    {{ field.errors }}
+    <p>{{ field.label }}:<br/> {{ field }}</p>
+{% endfor %}
+{% for hidden in form.hidden_fields %}
+    {{ hidden }}
+{% endfor %}

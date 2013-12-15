@@ -431,6 +431,28 @@ def algorithm_parameter_form(request):
         })
 
 
+def upload_file_form_view(request):
+    return render_to_response('damis/_dataset_form.html', {
+            'form': DatasetForm(),
+        })
+
+def existing_file_form_view(request):
+    return HttpResponse(_('Not implemented, yet'))
+
+def midas_file_form_view(request):
+    return HttpResponse(_('Not implemented, yet'))
+
+def select_features_form_view(request):
+    return HttpResponse(_('Not implemented, yet'))
+
+def technical_details_form_view(request):
+    return HttpResponse(_('Not implemented, yet'))
+
+def chart_form_view(request):
+    return HttpResponse(_('Not implemented, yet'))
+
+
+# User views
 def register_view(request):
     form = RegistrationForm()
     if request.method == 'POST':
@@ -446,14 +468,6 @@ def register_view(request):
     return render(request, 'accounts/register.html', {
         'form': form,
     })
-
-
-def profile_settings_view(request):
-    pass
-
-def reset_password_view(request):
-    pass
-
 
 def login_view(request):
     if request.method == 'POST':
@@ -474,3 +488,9 @@ def logout_view(request):
     logout(request)
     request.session.clear()
     return HttpResponseRedirect('/login/')
+
+def profile_settings_view(request):
+    pass
+
+def reset_password_view(request):
+    pass

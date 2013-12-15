@@ -12,17 +12,7 @@
   <div class="tab-content">
     <div class="offset3">
       <form method='POST' action='{% url 'dataset-new' %}' enctype="multipart/form-data">{% csrf_token %}
-        {% for error in form.non_field_errors %}
-            <div class="alert alert-error">{{ error }}</div>
-        {% endfor %}
-
-        {% for field in form.visible_fields %}
-            {{ field.errors }}
-            <p>{{ field.label }}:<br/> {{ field }}</p>
-        {% endfor %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
+          {% include 'damis/_dataset_form.html' %}
         <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
     </form>
 
