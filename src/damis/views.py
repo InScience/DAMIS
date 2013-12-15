@@ -314,7 +314,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             sorted_clusters.append(a);
 
         context['clusters'] = sorted_clusters
-        context['component_form_urls'] = COMPONENT_TITLE__TO__FORM_URL
+        context['component_form_urls'] = json.dumps(COMPONENT_TITLE__TO__FORM_URL).replace('"', r'\"')
         return context
 
     def skip_validation(self, experiment_form, task_formset):
