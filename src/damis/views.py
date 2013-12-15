@@ -31,7 +31,7 @@ from damis.forms import DatasetSelectForm
 from damis.forms import UserUpdateForm
 from damis.forms import VALIDATOR_FIELDS
 
-
+from damis.constants import COMPONENT_TITLE__TO__FORM_URL
 from damis.utils import slugify
 
 from damis.models import Component
@@ -314,6 +314,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             sorted_clusters.append(a);
 
         context['clusters'] = sorted_clusters
+        context['component_form_urls'] = COMPONENT_TITLE__TO__FORM_URL
         return context
 
     def skip_validation(self, experiment_form, task_formset):

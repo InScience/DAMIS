@@ -103,3 +103,7 @@ textarea {
 #component-form .delete-row {
     display: inline;
 }
+
+.component-form-urls {
+    display: none;
+}
