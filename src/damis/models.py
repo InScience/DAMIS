@@ -47,7 +47,7 @@ class Component(models.Model):
         ('PREPROCESSING', _('Preprocessing')),
         ('STAT_PRIMITIVES', _('Statistical primitives')),
         ('DIMENSION_REDUCTION', _('Dimension reduction')),
-        ('DATA_MINING',_('Data mining')),
+        ('DATA_MINING', _('Classification, grouping')),
         ('RESULTS', _('View results')),
     )
     title = models.CharField(_('Title'), max_length=255, null=True, blank=True)
