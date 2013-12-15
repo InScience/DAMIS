@@ -99,3 +99,7 @@ h3 {
 textarea {
     height: 60px;
 }
+
+#component-form .delete-row {
+    display: inline;
+}

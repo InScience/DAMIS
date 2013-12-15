@@ -11,7 +11,7 @@
   <div class="tab-content">
     <div class="tab-pane active" id="data-list">
     <div class="span8 offset3">
-    <form action="." method="post" enctype="multipart/form-data">
+    <form id="component-form" action="." method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
             {{ form.as_p }}
