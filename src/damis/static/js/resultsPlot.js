@@ -77,7 +77,7 @@
 					},
 				},
 				grid: {
-                    backgroundColor: "#ffffff",
+					backgroundColor: "#ffffff",
 					clickable: true,
 					hoverable: true
 				},
@@ -112,7 +112,7 @@
 
 		updateChart: function(dialog) {
 			var plotContainer = $(dialog.find(".plot-container")[0]);
-            var formWindow = dialog.find(".task-window");
+			var formWindow = dialog.find(".task-window");
 
 			var data = window.resultsPlot.getDataToRender();
 			var colors = window.resultsPlot.generateColorPalette(data);
@@ -133,7 +133,7 @@
 			var canvas = plotContainer.find("canvas")[0];
 			var image = canvas.toDataURL("image/jpeg");
 			image = image.replace("image/jpeg", "image/octet-stream");
-            
+
 			//var image = canvas.toDataURL();
 			//image = image.replace("image/png", "image/octet-stream");
 			document.location.href = image;
@@ -182,29 +182,34 @@
 				//append to form after rendering because otherwise axes are not rendered
 				formWindow.append(plotContainer);
 
-				// customize dialog
-				formWindow.dialog("option", "close", function() {
-					$(this).find("#point-tooltip").remove();
-				});
-				var buttons = formWindow.dialog("option", "buttons");
-				buttons.splice(0, 0, {
-					text: gettext('Download'),
-					click: function(ev) {
-						var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
-						window.resultsPlot.downloadChart($(plotContainer[0]));
-					}
-				});
-				buttons.splice(0, 0, {
-					text: gettext('Update'),
-					click: function(ev) {
-						var dialog = $(ev.currentTarget).closest(".ui-dialog");
-						window.resultsPlot.updateChart(dialog);
-					}
-				});
-				formWindow.dialog("option", "buttons", buttons);
-				formWindow.dialog("option", "minWidth", 650);
+                window.resultsPlot.customizeDialog(formWindow);
 			}
 		},
+
+        // customize dialog for specific component: set width, add buttons and close handler
+		customizeDialog: function(formWindow) {
+			// customize dialog
+			formWindow.dialog("option", "close", function() {
+				$(this).find("#point-tooltip").remove();
+			});
+			var buttons = formWindow.dialog("option", "buttons");
+			buttons.splice(0, 0, {
+				text: gettext('Download'),
+				click: function(ev) {
+					var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
+					window.resultsPlot.downloadChart($(plotContainer[0]));
+				}
+			});
+			buttons.splice(0, 0, {
+				text: gettext('Update'),
+				click: function(ev) {
+					var dialog = $(ev.currentTarget).closest(".ui-dialog");
+					window.resultsPlot.updateChart(dialog);
+				}
+			});
+			formWindow.dialog("option", "buttons", buttons);
+			formWindow.dialog("option", "minWidth", 650);
+		}
 	}
 })();
 
