@@ -432,8 +432,16 @@ def algorithm_parameter_form(request):
 
 
 def upload_file_form_view(request):
+    if request.method == 'POST':
+        form = DatasetForm(request.POST)
+        if form.is_valid():
+            dataset = form.save()
+            return HttpResponse('Object url: '+ reverse_lazy('dataset-update',
+                                                   kwargs={'pk': dataset.pk}))
+    else:
+        form = DatasetForm()
     return render_to_response('damis/_dataset_form.html', {
-            'form': DatasetForm(),
+            'form': form,
         })
 
 def existing_file_form_view(request):
