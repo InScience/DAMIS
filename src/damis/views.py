@@ -20,6 +20,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.forms.models import modelformset_factory
 from django.forms.models import inlineformset_factory
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from django.core.context_processors import csrf
 
 from damis.forms import LoginForm, RegistrationForm
 from damis.forms import DatasetForm
@@ -314,7 +315,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             sorted_clusters.append(a);
 
         context['clusters'] = sorted_clusters
-        context['component_form_urls'] = json.dumps(COMPONENT_TITLE__TO__FORM_URL).replace('"', r'\"')
+        context['component_form_urls'] = COMPONENT_TITLE__TO__FORM_URL.items()
         return context
 
     def skip_validation(self, experiment_form, task_formset):
@@ -432,17 +433,15 @@ def algorithm_parameter_form(request):
 
 
 def upload_file_form_view(request):
+    context = csrf(request)
     if request.method == 'POST':
-        form = DatasetForm(request.POST)
+        form = DatasetForm(request.POST, request.FILES)
         if form.is_valid():
             dataset = form.save()
-            return HttpResponse('Object url: '+ reverse_lazy('dataset-update',
-                                                   kwargs={'pk': dataset.pk}))
     else:
         form = DatasetForm()
-    return render_to_response('damis/_dataset_form.html', {
-            'form': form,
-        })
+    context['form'] = form
+    return render_to_response('damis/_dataset_form.html', context)
 
 def existing_file_form_view(request):
     return HttpResponse(_('Not implemented, yet'))

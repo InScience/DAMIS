@@ -1,8 +1,10 @@
+from django.core.urlresolvers import reverse_lazy
+
 COMPONENT_TITLE__TO__FORM_URL = {
-    "UPLOAD FILE":       '/x/upload_file_form/',
-    "EXISTING FILE":     '/x/existing_file_form/',
-    "MIDAS FILE":        '/x/midas_file_form/',
-    "SELECT FEATURES":   '/x/select_features_form/',
-    "TECHNICAL DETAILS": '/x/technical_details_form/',
-    "CHART":             '/x/chart_form/',
+    "UPLOAD FILE":       reverse_lazy('component-upload-file-form'),
+    "EXISTING FILE":     reverse_lazy('component-existing-file-form'),
+    "MIDAS FILE":        reverse_lazy('component-midas-file-form'),
+    "SELECT FEATURES":   reverse_lazy('component-select-features-form'),
+    "TECHNICAL DETAILS": reverse_lazy('component-technical-details-form'),
+    "CHART":             reverse_lazy('component-chart-form'),
 }

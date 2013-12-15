@@ -65,11 +65,14 @@
                 <button class="btn btn-primary"
                 type="button" id="execute-btn">{% trans "Execute" %}</button>
             </div>
+            {% for key, val in component_form_urls %}
+                {% if key == 'UPLOAD FILE' %}
+                    <form id="file-upload-form" method="POST" action="{{ val }}" enctype="multipart/form-data" target="file-upload-iframe" style="display:none;" autocomplete="off"></form>
+                {% endif %}
+            {% endfor %}
+            <iframe id="file-upload-iframe" name="file-upload-iframe" style="display: none;"></iframe>
         </div> <!-- tab-content -->
     </div> <!-- tabbable -->
-    <div class='component-form-urls'>
-        "{{ component_form_urls }}"
-    </div>
 </div> <!-- span12-->
 {% endblock %}
 
@@ -87,6 +90,7 @@
     <script src="/static/js/flot/jquery.flot.symbol.js" type="text/javascript" ></script>
     <script src="/static/js/flot/jquery.flot.canvas.js" type="text/javascript" ></script>
     <script src="/static/js/resultsPlot.js" type="text/javascript" ></script>
+    <script src="/static/js/files.js" type="text/javascript" ></script>
 {% endblock %}
 
 {% block javascript_footer %}
@@ -130,7 +134,12 @@
                 var activePanel = $("#cluster-"+ clusterId +"-panel");
                 activePanel.show();
             });
-        }); 
 
+            // mapping native components to Ajax urls for dialog rendering
+            window.componentFormUrls={};
+            {% for name, url in component_form_urls %}
+                window.componentFormUrls["{{ name }}"] = "{{ url }}";
+            {% endfor %}
+		});
     </script>
 {% endblock %}

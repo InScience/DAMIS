@@ -197,7 +197,9 @@
 				var componentName = componentOption.text();
 				if (componentName == 'CHART') {
                     window.resultsPlot.chart(formWindow);
-				}
+                } else if (componentName == 'UPLOAD FILE') {
+                    window.files.uploadFile(formWindow);
+                }
 
 				formWindow.dialog('open');
 			});

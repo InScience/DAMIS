@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-15 07:10+0000\n"
+"POT-Creation-Date: 2013-12-15 18:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgstr "Atšaukti"
 #: static/js/experimentForm.js:190
 msgid "Execute"
 msgstr "Vykdyti"
+
+#: static/js/files.js:58
+msgid "Upload"
+msgstr "Įkelti"
 
 #: static/js/jquery.formset.js:164
 msgid "another"
@@ -78,11 +82,11 @@ msgstr "Spalva"
 msgid "Shape"
 msgstr "Forma"
 
-#: static/js/resultsPlot.js:191
+#: static/js/resultsPlot.js:197
 msgid "Download"
 msgstr "Atsisiųsti"
 
-#: static/js/resultsPlot.js:198
+#: static/js/resultsPlot.js:204
 msgid "Update"
 msgstr "Atnaujinti"
 
