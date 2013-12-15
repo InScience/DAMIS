@@ -17,7 +17,7 @@
             {{ form.as_p }}
         </div>
         <fieldset>
-            <legend>Component Parameter</legend>
+            <legend>{% trans 'Component Parameters' %}</legend>
             {{ parameter_form.management_form }}
             {{ parameter_form.non_form_errors }}
             {% for form in parameter_form %}
@@ -25,6 +25,7 @@
                 <div class="inline"> 
                     {{ form.as_p}}
                 </div>
+                <hr>
             {% endfor %}
         </fieldset>
         <button class="btn" type='submit'>{% trans "Save" %}</button>

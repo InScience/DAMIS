@@ -91,3 +91,11 @@ h3 {
 .row-fluid .span12 {
     margin-left: 0;
 }
+
+.dynamic-form p {
+    margin: 0px;
+}
+
+textarea {
+    height: 60px;
+}
