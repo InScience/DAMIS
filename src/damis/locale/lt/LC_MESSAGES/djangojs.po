@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-14 12:15+0000\n"
+"POT-Creation-Date: 2013-12-15 07:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,51 +30,59 @@ msgstr "Atšaukti"
 msgid "Execute"
 msgstr "Vykdyti"
 
-#: static/js/resultsPlot.js:73
-msgid "index"
-msgstr "taško numeris"
+#: static/js/jquery.formset.js:164
+msgid "another"
+msgstr "pridėti dar vieną"
 
-#: static/js/resultsPlot.js:73
-msgid "class"
-msgstr "klasė"
+#: static/js/jquery.formset.js:165
+msgid "remove"
+msgstr "pašalinti"
 
-#: static/js/resultsPlot.js:116
-msgid "Class"
-msgstr "Klasė"
-
-#: static/js/resultsPlot.js:116
-msgid "Color"
-msgstr "Spalva"
-
-#: static/js/resultsPlot.js:116
-msgid "Shape"
-msgstr "Forma"
-
-#: static/js/resultsPlot.js:129
+#: static/js/resultsPlot.js:51
 msgid "Circle"
 msgstr "Apskritimas"
 
-#: static/js/resultsPlot.js:129
+#: static/js/resultsPlot.js:51
 msgid "Square"
 msgstr "Kvadratas"
 
-#: static/js/resultsPlot.js:129
+#: static/js/resultsPlot.js:51
 msgid "Diamond"
 msgstr "Rombas"
 
-#: static/js/resultsPlot.js:129
+#: static/js/resultsPlot.js:51
 msgid "Triangle"
 msgstr "Trikampis"
 
-#: static/js/resultsPlot.js:129
+#: static/js/resultsPlot.js:51
 msgid "Cross"
 msgstr "Kryžiukas"
 
-#: static/js/resultsPlot.js:149
+#: static/js/resultsPlot.js:103
+msgid "index"
+msgstr "taško numeris"
+
+#: static/js/resultsPlot.js:103
+msgid "class"
+msgstr "klasė"
+
+#: static/js/resultsPlot.js:150
+msgid "Class"
+msgstr "Klasė"
+
+#: static/js/resultsPlot.js:150
+msgid "Color"
+msgstr "Spalva"
+
+#: static/js/resultsPlot.js:150
+msgid "Shape"
+msgstr "Forma"
+
+#: static/js/resultsPlot.js:191
 msgid "Download"
 msgstr "Atsisiųsti"
 
-#: static/js/resultsPlot.js:153
+#: static/js/resultsPlot.js:198
 msgid "Update"
 msgstr "Atnaujinti"
 

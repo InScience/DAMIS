@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-14 11:47+0000\n"
+"POT-Creation-Date: 2013-12-15 07:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,11 +68,11 @@ msgstr "Failas"
 msgid "User"
 msgstr "Naudotojas"
 
-#: models.py:19 models.py:59 templates/damis/dataset_detail.html:14
+#: models.py:19 models.py:58 templates/damis/dataset_detail.html:14
 msgid "Updated"
 msgstr "Atnaujinta"
 
-#: models.py:20 models.py:60 templates/damis/dataset_detail.html:15
+#: models.py:20 models.py:59 templates/damis/dataset_detail.html:15
 msgid "Created"
 msgstr "Sukurta"
 
@@ -120,17 +120,17 @@ msgstr "WSDL nuoroda"
 msgid "WSDL function name"
 msgstr "WSDL funkcijos pavadinimas"
 
-#: models.py:58
-msgid "Executable"
-msgstr "Vykdomasis"
-
-#: models.py:61
+#: models.py:60
 msgid "Icon"
 msgstr "Ikona"
 
-#: models.py:62
+#: models.py:61
 msgid "Cluster"
 msgstr "Klusteris"
+
+#: models.py:62 models.py:100
+msgid "Label"
+msgstr "Antraštė"
 
 #: models.py:80
 msgid "Dataset"
@@ -195,10 +195,6 @@ msgstr "Standartinė reikšmė"
 #: models.py:98
 msgid "Connection type"
 msgstr "Jungties tipas"
-
-#: models.py:100
-msgid "Label"
-msgstr "Antraštė"
 
 #: models.py:108
 msgid "Saved"
@@ -272,11 +268,11 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: templates/base.html:81
+#: templates/base.html:82
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:84
+#: templates/base.html:85
 msgid "API"
 msgstr "API"
 
@@ -456,7 +452,11 @@ msgstr "Komponenčių sąrašas"
 msgid "Create component"
 msgstr "Kurti komponentę"
 
-#: templates/damis/algorithm_form.html:30
+#: templates/damis/algorithm_form.html:20
+msgid "Component Parameters"
+msgstr "Komponentės parametrai"
+
+#: templates/damis/algorithm_form.html:31
 #: templates/damis/experiment_create.html:64 templates/damis/obj_form.html:19
 #: templates/damis/user_update.html:13
 msgid "Save"
@@ -580,6 +580,9 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankst"
+
+#~ msgid "Executable"
+#~ msgstr "Vykdomasis"
 
 #~ msgid "Phone"
 #~ msgstr "Telefono numeris"
