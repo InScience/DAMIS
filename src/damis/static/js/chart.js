@@ -1,22 +1,22 @@
 (function() {
-	window.resultsPlot = {
+	window.chart = {
 		// TODO: sends Ajax request to obtain results for the connected component
 		getDataToRender: function() {
 			initData = [{
 				group: "1",
-				data: window.resultsPlot.generate(2, 1.8)
+				data: window.chart.generate(2, 1.8)
 			},
 			{
 				group: "2",
-				data: window.resultsPlot.generate(4, 0.9)
+				data: window.chart.generate(4, 0.9)
 			},
 			{
 				group: "3",
-				data: window.resultsPlot.generate(7, 1.1)
+				data: window.chart.generate(7, 1.1)
 			},
 			{
 				group: "4",
-				data: window.resultsPlot.generate(10, 0.2)
+				data: window.chart.generate(10, 0.2)
 			}];
 			return initData;
 		},
@@ -114,9 +114,9 @@
 			var plotContainer = $(dialog.find(".plot-container")[0]);
 			var formWindow = dialog.find(".task-window");
 
-			var data = window.resultsPlot.getDataToRender();
-			var colors = window.resultsPlot.generateColorPalette(data);
-			var symbols = window.resultsPlot.generateSymbolPalette(data);
+			var data = window.chart.getDataToRender();
+			var colors = window.chart.generateColorPalette(data);
+			var symbols = window.chart.generateSymbolPalette(data);
 			var renderChoices = plotContainer.find(".render-choices tbody tr");
 			$.each(renderChoices, function(idx, choice) {
 				// TODO: add color validation or color picker
@@ -126,7 +126,7 @@
 				var symbol = $(choice).find("option:selected").val();
 				symbols[idx] = symbol ? symbol: symbols[idx][0];
 			});
-			window.resultsPlot.renderChart(plotContainer, "#" + formWindow.attr("id") + " .results-container", data, colors, symbols);
+			window.chart.renderChart(plotContainer, "#" + formWindow.attr("id") + " .results-container", data, colors, symbols);
 		},
 
 		downloadChart: function(plotContainer) {
@@ -139,7 +139,7 @@
 			document.location.href = image;
 		},
 
-		chart: function(formWindow) {
+		init: function(formWindow) {
 			var plotContainer = formWindow.find(".plot-container");
 			if (plotContainer.length == 0) {
 				var plotContainer = $("<div class=\"plot-container\" style=\"min-height: 400px; position: relative;\"></div>");
@@ -156,9 +156,9 @@
 				// append to body temporarily in order for axes labels to be drawn correctly
 				$("body").append(plotContainer);
 
-				var initData = window.resultsPlot.getDataToRender();
-				var colorPalette = window.resultsPlot.generateColorPalette(initData);
-				var symbolPalette = window.resultsPlot.generateSymbolPalette(initData);
+				var initData = window.chart.getDataToRender();
+				var colorPalette = window.chart.generateColorPalette(initData);
+				var symbolPalette = window.chart.generateSymbolPalette(initData);
 				var symbolValues = []
 
 				$.each(initData, function(idx, series) {
@@ -178,11 +178,11 @@
 					renderChoicesBody.append(seriesRow);
 				});
 
-				window.resultsPlot.renderChart(plotContainer, "body > .plot-container .results-container", initData, colorPalette, symbolValues);
+				window.chart.renderChart(plotContainer, "body > .plot-container .results-container", initData, colorPalette, symbolValues);
 				//append to form after rendering because otherwise axes are not rendered
 				formWindow.append(plotContainer);
 
-                window.resultsPlot.customizeDialog(formWindow);
+                window.chart.customizeDialog(formWindow);
 			}
 		},
 
@@ -197,14 +197,14 @@
 				text: gettext('Download'),
 				click: function(ev) {
 					var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
-					window.resultsPlot.downloadChart($(plotContainer[0]));
+					window.chart.downloadChart($(plotContainer[0]));
 				}
 			});
 			buttons.splice(0, 0, {
 				text: gettext('Update'),
 				click: function(ev) {
 					var dialog = $(ev.currentTarget).closest(".ui-dialog");
-					window.resultsPlot.updateChart(dialog);
+					window.chart.updateChart(dialog);
 				}
 			});
 			formWindow.dialog("option", "buttons", buttons);

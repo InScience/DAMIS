@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-15 07:43+0000\n"
+"POT-Creation-Date: 2013-12-15 19:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -268,11 +268,15 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: templates/base.html:82
+#: views.py:447 views.py:450 views.py:453 views.py:456 views.py:459
+msgid "Not implemented, yet"
+msgstr "Kol kas nerealizuota"
+
+#: templates/base.html:71
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:85
+#: templates/base.html:74
 msgid "API"
 msgstr "API"
 
@@ -484,7 +488,7 @@ msgstr "Ar tikrai norite pašalinti duomenų rinkinį"
 msgid "Author"
 msgstr "Autorius"
 
-#: templates/damis/dataset_form.html:26 templates/damis/dataset_new.html:26
+#: templates/damis/dataset_form.html:16 templates/damis/dataset_new.html:26
 #: templates/damis/obj_form.html:13
 msgid "Upload dataset"
 msgstr "Įkelti duomenis"

@@ -51,6 +51,8 @@
             // clear the iframe response in order to prevent unexpected processing
             fileUploadIframe.contents().find("body").html("");
 
+            // TODO: add saved file id to the OUTPUT_CONNECTION parameter of
+            // this task
             $("#file-upload-form").html("");
             fileFormPlaceholder.parent().append(responseText);
             fileFormPlaceholder.remove();

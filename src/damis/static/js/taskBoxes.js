@@ -195,11 +195,17 @@
 				var componentOption = $(formWindow).find(".algorithm-selection option[selected=selected]");
 
 				var componentName = componentOption.text();
-				if (componentName == 'CHART') {
-                    window.resultsPlot.chart(formWindow);
-                } else if (componentName == 'UPLOAD FILE') {
-                    window.files.uploadFile(formWindow);
-                }
+				switch (componentName) {
+				case 'CHART':
+					window.chart.init(formWindow);
+					break;
+				case 'UPLOAD FILE':
+					window.files.uploadFile(formWindow);
+					break;
+				case 'TECHNICAL DETAILS':
+					window.technicalDetails.init(formWindow);
+					break;
+				}
 
 				formWindow.dialog('open');
 			});
