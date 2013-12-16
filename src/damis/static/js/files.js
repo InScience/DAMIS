@@ -8,12 +8,9 @@
                 dialog.append(fileForm);
 				$.ajax({
 					url: url,
-					prefix: "",
 					context: fileForm  
 				}).done(function(resp) {
                     $(this).html(resp);
-
-                    var dialog = $(this).closest(".task-window");
 				});
 			    window.files.customizeDialog(dialog);
 			}
