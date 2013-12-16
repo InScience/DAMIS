@@ -10,11 +10,8 @@
 			$.each($(".task-window input[id$=connection_type]"), function() {
 				if ($(this).val() === "INPUT_CONNECTION") { // inspect each input parameter
 					var srcRefField = $(this).closest("div").find("input[id$=source_ref]");
-					var oParamAddr = $(srcRefField).val();
-					if (oParamAddr) {
-						var parts = oParamAddr.split(",");
-						var oParam = window.experimentForm.getParameter(parts[0], parts[1]);
-						var oParamField = window.experimentForm.getParameterValue(oParam);
+					var oParamField = window.experimentForm.getOutputParam(srcRefField);
+					if (oParamField) {
 						srcRefField.val(oParamField.attr("name"));
 					}
 				}
@@ -208,9 +205,9 @@
 						$(this).find("#exec-params").hide();
 					}
 				},
-                close: function() {
-                    $(this).dialog("destroy");
-                }
+				close: function() {
+					$(this).dialog("destroy");
+				}
 			});
 		},
 
@@ -231,8 +228,19 @@
 		//returns parameter source_ref field in parameter form
 		getParameterSourceRef: function(paramForm) {
 			return paramForm.find("input[id$=source_ref]");
-		}
+		},
 
+		// returns connected output parameter value or undefined
+		getOutputParam: function(srcRefField) {
+			var oParamAddr = $(srcRefField).val();
+			if (oParamAddr) {
+				var parts = oParamAddr.split(",");
+				var oParam = window.experimentForm.getParameter(parts[0], parts[1]);
+				var oParamField = window.experimentForm.getParameterValue(oParam);
+				return oParamField;
+			}
+			return null;
+		}
 	}
 })();
 
