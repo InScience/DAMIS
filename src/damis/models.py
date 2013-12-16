@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
+from django.utils.translation import get_language
 
 
 def get_dataset_upload_path(instance, filename):
@@ -70,6 +71,20 @@ class Component(models.Model):
     def __unicode__(self):
         return str(self.title)
 
+    def get_label_display(self):
+        language_code = get_language()
+        if language_code == 'lt':
+            return self.label_LT
+        else:
+            return self.label
+
+    def get_description_display(self):
+        language_code = get_language()
+        if language_code == 'lt':
+            return self.description_LT
+        else:
+            return self.description
+
 class Parameter(models.Model):
     CONNECTION_TYPES = (
         ('INPUT_VALUE', 'Input value'),
@@ -106,6 +121,20 @@ class Parameter(models.Model):
 
     def __unicode__(self):
         return '%s (%s)' % (self.name, self.type)
+
+    def get_label_display(self):
+        language_code = get_language()
+        if language_code == 'lt':
+            return self.label_LT
+        else:
+            return self.label
+
+    def get_description_display(self):
+        language_code = get_language()
+        if language_code == 'lt':
+            return self.description_LT
+        else:
+            return self.description
 
 class Experiment(models.Model):
     STATUSES = (
