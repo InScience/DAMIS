@@ -133,7 +133,7 @@
     "pk": 9, 
     "model": "damis.parameter", 
     "fields": {
-        "connection_type": "OUTPUT_CONNECTION", 
+        "connection_type": "OUTPUT_VALUE", 
         "name": "disp", 
         "algorithm": 1, 
         "default": null, 
@@ -2065,7 +2065,7 @@
     "pk": 147, 
     "model": "damis.parameter", 
     "fields": {
-        "connection_type": "OUTPUT_CONNECTION", 
+        "connection_type": "OUTPUT_VALUE", 
         "name": "disp", 
         "algorithm": 23, 
         "default": null, 
