@@ -61,7 +61,7 @@ class Component(models.Model):
     cluster = models.ForeignKey('Cluster', null=True, verbose_name=_('Cluster'))
     label = models.CharField(_('Label EN'), max_length=255, null=True, blank=True)
     label_lt = models.CharField(_('Label LT'), max_length=255, null=True, blank=True)
-    description = models.TextField(_('Description'), null=True, blank=True)
+    description = models.TextField(_('Description EN'), null=True, blank=True)
     description_lt = models.TextField(_('Description LT'), null=True, blank=True)
 
     def get_absolute_url(self):
