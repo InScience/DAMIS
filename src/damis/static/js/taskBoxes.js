@@ -137,6 +137,15 @@
 					dialog.find(".ui-dialog-titlebar > button").remove();
 				}
 			});
+
+			var componentType = window.taskBoxes.getComponentType({
+				formWindowId: formWindowId
+			});
+			$.each(window.experimentCanvas.eventObservers, function(idx, o) {
+				if (o.init) {
+					o.init(componentType, taskFormContainer);
+				}
+			});
 		},
 
 		// create a new task box and modal window, assign event handlers 
@@ -159,12 +168,7 @@
 			var addTaskBtn = $("a.add-row")
 			addTaskBtn.click();
 			var taskForm = addTaskBtn.prev();
-
-			// create modal window for the form
-			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox), currentName);
-
-			this.addTaskBoxEventHandlers(taskBox);
-
+            
 			//set algorithm ID into the task form
 			var algorithmId = $(ui.draggable).find("input").val();
 			var algorithmInput = taskForm.find(".algorithm-selection select");
@@ -172,6 +176,12 @@
 			algorithmInput.find("option[selected=selected]").removeAttr("selected");
 			algorithmInput.find("option[value=" + algorithmId + "]").attr("selected", "selected");
 
+			// create modal window for the form
+			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox), currentName);
+
+			this.addTaskBoxEventHandlers(taskBox);
+
+			// asynchronous Ajax-loading of parameters, so don't add code below
 			window.taskBoxes.loadAlgorithmParameters(algorithmInput);
 		},
 
@@ -190,22 +200,18 @@
 			// open dialog on dbclick
 			taskBox.off("dbclick");
 			taskBox.on("dblclick", function(ev) {
-				var formWindowId = window.taskBoxes.getFormWindowId($(ev.currentTarget));
+				var boxId = $(ev.currentTarget).attr("id");
+				var formWindowId = window.taskBoxes.getFormWindowId(boxId);
 				var formWindow = $("#" + formWindowId);
-				var componentOption = $(formWindow).find(".algorithm-selection option[selected=selected]");
+				var componentType = window.taskBoxes.getComponentType({
+					formWindow: formWindow
+				});
 
-				var componentName = componentOption.text();
-				switch (componentName) {
-				case 'CHART':
-					window.chart.init(formWindow);
-					break;
-				case 'UPLOAD FILE':
-					window.files.uploadFile(formWindow);
-					break;
-				case 'TECHNICAL DETAILS':
-					window.technicalDetails.init(formWindow);
-					break;
-				}
+				$.each(window.experimentCanvas.eventObservers, function(idx, o) {
+					if (o.doubleClick) {
+						o.doubleClick(componentType, formWindow);
+					}
+				});
 
 				formWindow.dialog('open');
 			});
@@ -219,7 +225,8 @@
 
 		//generates task box id from the provided task form 
 		getBoxId: function(formWindow) {
-			return formWindow.attr("id").replace("-form", "");
+			var windowId = formWindow instanceof $ ? formWindow.attr("id") : formWindow;
+			return windowId.replace("-form", "");
 		},
 
 		// generates task form id from the provided task box
@@ -227,6 +234,18 @@
 			return taskBox instanceof $ ? taskBox.attr("id") + "-form": taskBox + "-form";
 		},
 
+		getComponentType: function(params) {
+			var formWindow;
+			if (params['boxId']) {
+				formWindow = $("#" + window.taskBoxes.getFormWindowId(params['boxId']));
+			} else if (params['formWindowId']) {
+				formWindow = $("#" + params['formWindowId']);
+			} else if (params['formWindow']) {
+				formWindow = params['formWindow'];
+			}
+			var componentOption = $(formWindow).find(".algorithm-selection option[selected=selected]");
+			return componentOption.text();
+		}
 	}
 
 })();

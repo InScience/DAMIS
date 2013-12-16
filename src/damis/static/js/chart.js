@@ -1,5 +1,13 @@
 (function() {
 	window.chart = {
+		init: function(componentType, formWindow) {
+			if (componentType == 'CHART') {
+				var container = $("<div class=\"plot-container\">" + gettext("This component should be connected to an executed task in order to view results.") + "</div>");
+			    formWindow.append(container);
+			    this.customizeDialog(formWindow);
+			}
+		},
+
 		// TODO: sends Ajax request to obtain results for the connected component
 		getDataToRender: function() {
 			initData = [{
@@ -139,54 +147,51 @@
 			document.location.href = image;
 		},
 
-		init: function(formWindow) {
-			var plotContainer = formWindow.find(".plot-container");
-			if (plotContainer.length == 0) {
-				var plotContainer = $("<div class=\"plot-container\" style=\"min-height: 400px; position: relative;\"></div>");
-				var plotPlaceholder = "<div class=\"results-container\" style=\"width: 600px; height: 300px; margin: auto;\"></div>";
-				plotContainer.append(plotPlaceholder);
+		update: function(formWindow) {
+			formWindow.find(".plot-container").remove();
 
-				var renderChoicesBody = $("<tbody></tbody>");
-				var renderChoicesHead = $("<thead><th>" + gettext('Class') + "</th><th>" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead>");
-				var renderChoices = $("<table class=\"render-choices\" style=\"margin: auto; margin-top: 20px;\"></table>");
-				renderChoices.append(renderChoicesHead);
-				renderChoices.append(renderChoicesBody);
-				plotContainer.append(renderChoices);
+			var plotContainer = $("<div class=\"plot-container\" style=\"min-height: 400px; position: relative;\"></div>");
+			var plotPlaceholder = "<div class=\"results-container\" style=\"width: 600px; height: 300px; margin: auto;\"></div>";
+			plotContainer.append(plotPlaceholder);
 
-				// append to body temporarily in order for axes labels to be drawn correctly
-				$("body").append(plotContainer);
+			var renderChoicesBody = $("<tbody></tbody>");
+			var renderChoicesHead = $("<thead><th>" + gettext('Class') + "</th><th>" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead>");
+			var renderChoices = $("<table class=\"render-choices\" style=\"margin: auto; margin-top: 20px;\"></table>");
+			renderChoices.append(renderChoicesHead);
+			renderChoices.append(renderChoicesBody);
+			plotContainer.append(renderChoices);
 
-				var initData = window.chart.getDataToRender();
-				var colorPalette = window.chart.generateColorPalette(initData);
-				var symbolPalette = window.chart.generateSymbolPalette(initData);
-				var symbolValues = []
+			// append to body temporarily in order for axes labels to be drawn correctly
+			$("body").append(plotContainer);
 
-				$.each(initData, function(idx, series) {
-					var seriesRow = $("<tr></tr>");
-					seriesRow.append("<td>" + idx + "</td>");
-					seriesRow.append("<td><input type=\"text\" value=\"" + colorPalette[idx].toLowerCase() + "\"/></td>");
+			var initData = window.chart.getDataToRender();
+			var colorPalette = window.chart.generateColorPalette(initData);
+			var symbolPalette = window.chart.generateSymbolPalette(initData);
+			var symbolValues = []
 
-					var shapeSelect = $("<select></select>");
-					$.each(symbolPalette, function(i, shape) {
-						shapeSelect.append("<option value=\"" + shape[0] + "\"" + (idx == i ? "selected=\"selected\"": "") + ">" + shape[1] + "</option>");
-						symbolValues.push(shape[0]);
-					});
-					var shapeCell = $("<td></td>");
-					shapeCell.append(shapeSelect);
-					seriesRow.append(shapeCell);
+			$.each(initData, function(idx, series) {
+				var seriesRow = $("<tr></tr>");
+				seriesRow.append("<td>" + idx + "</td>");
+				seriesRow.append("<td><input type=\"text\" value=\"" + colorPalette[idx].toLowerCase() + "\"/></td>");
 
-					renderChoicesBody.append(seriesRow);
+				var shapeSelect = $("<select></select>");
+				$.each(symbolPalette, function(i, shape) {
+					shapeSelect.append("<option value=\"" + shape[0] + "\"" + (idx == i ? "selected=\"selected\"": "") + ">" + shape[1] + "</option>");
+					symbolValues.push(shape[0]);
 				});
+				var shapeCell = $("<td></td>");
+				shapeCell.append(shapeSelect);
+				seriesRow.append(shapeCell);
 
-				window.chart.renderChart(plotContainer, "body > .plot-container .results-container", initData, colorPalette, symbolValues);
-				//append to form after rendering because otherwise axes are not rendered
-				formWindow.append(plotContainer);
+				renderChoicesBody.append(seriesRow);
+			});
 
-                window.chart.customizeDialog(formWindow);
-			}
+			window.chart.renderChart(plotContainer, "body > .plot-container .results-container", initData, colorPalette, symbolValues);
+			//append to form after rendering because otherwise axes are not rendered
+			formWindow.append(plotContainer);
 		},
 
-        // customize dialog for specific component: set width, add buttons and close handler
+		// customize dialog for specific component: set width, add buttons and close handler
 		customizeDialog: function(formWindow) {
 			// customize dialog
 			formWindow.dialog("option", "close", function() {
@@ -209,7 +214,13 @@
 			});
 			formWindow.dialog("option", "buttons", buttons);
 			formWindow.dialog("option", "minWidth", 650);
-		}
+		},
+
+		connectionEstablished: function(srcComponentType, targetComponentType, connectionParams) {
+			if (targetComponentType == 'CHART') {
+				this.update($("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId)));
+			}
+		},
 	}
 })();
 

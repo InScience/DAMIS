@@ -3,6 +3,9 @@
 
 	window.experimentCanvas = {
 
+		// native components that are interested in events
+		eventObservers: [],
+
 		// this is the paint style for the connecting lines..
 		getConnectorPaintStyle: function() {
 			return {
@@ -35,8 +38,8 @@
 			return {
 				endpoint: "Dot",
 				paintStyle: {
-					fillStyle: "#346789", 
-					radius: 7 
+					fillStyle: "#346789",
+					radius: 7
 				},
 				isSource: true,
 				connector: ["StateMachine", {
@@ -104,39 +107,64 @@
 				}]]
 			});
 
-            jsPlumb.bind("connectionDetached", function(info, originalEvent) {
-                // Clear the input parameter value and display it as input field
-                var params = info.targetEndpoint.getParameters();
-                var param = window.experimentForm.getParameter(params.iParamNo, params.iTaskBoxId);
-                var srcRefField = window.experimentForm.getParameterSourceRef(param);
-                srcRefField.val("");
-                
-                // show literal value field
-                var valField = window.experimentForm.getParameterValue(param);
-                valField.attr("type", "text");
-            });
+			// register native components as event observers
+			this.populateEventObservers();
 
-            // maps task box to its output endpoint connection
-            // stores output parameter address into input parameter
+			jsPlumb.bind("connectionDetached", function(info, originalEvent) {
+				// Clear the input parameter value and display it as input field
+				var params = info.targetEndpoint.getParameters();
+				var param = window.experimentForm.getParameter(params.iParamNo, params.iTaskBoxId);
+				var srcRefField = window.experimentForm.getParameterSourceRef(param);
+				srcRefField.val("");
+
+				// show literal value field
+				var valField = window.experimentForm.getParameterValue(param);
+				valField.attr("type", "text");
+
+				var connectionParams = info.connection.getParameters();
+				$.each(window.experimentCanvas.eventObservers, function(idx, o) {
+					if (o.connectionDeleted) {
+						var srcComponentType = window.taskBoxes.getComponentType({
+							boxId: connectionParams.oTaskBoxId
+						});
+						var targetComponentType = window.taskBoxes.getComponentType({
+							boxId: connectionParams.iTaskBoxId
+						});
+						o.connectionDeleted(srcComponentType, targetComponentType, connectionParams);
+					}
+				});
+			});
+
+			// maps task box to its output endpoint connection
+			// stores output parameter address into input parameter
 			jsPlumb.bind("connection", function(info, originalEvent) {
 				var conn = info.connection;
 				var params = conn.getParameters();
 
-                if ($(conn.source).hasClass("task-box")) {
-				    //display disabled field to the user
-                    var param = window.experimentForm.getParameter(params.iParamNo, params.iTaskBoxId);
-                    var srcRefField= window.experimentForm.getParameterSourceRef(param);
-				    srcRefField.val(params.oParamNo + "," + params.oTaskBoxId);
+				if ($(conn.source).hasClass("task-box")) {
+					//display disabled field to the user
+					var param = window.experimentForm.getParameter(params.iParamNo, params.iTaskBoxId);
+					var srcRefField = window.experimentForm.getParameterSourceRef(param);
+					srcRefField.val(params.oParamNo + "," + params.oTaskBoxId);
 
-                    //clear literal value field and hide it
-                    var valField = window.experimentForm.getParameterValue(param);
-                    valField.val("");
-                    valField.attr("type", "hidden");
-                } else if ($(conn.source).hasClass("data-box")) {
-				    var input = $("#" + params.inParam).closest("div").find("input[id$='value']");
-                    input.val(params.outParam);
-				    input.attr("type", "hidden");
-                }
+					//clear literal value field and hide it
+					var valField = window.experimentForm.getParameterValue(param);
+					valField.val("");
+					valField.attr("type", "hidden");
+				}
+
+				$.each(window.experimentCanvas.eventObservers, function(idx, o) {
+					if (o.connectionEstablished) {
+						var srcComponentType = window.taskBoxes.getComponentType({
+							boxId: params.oTaskBoxId
+						});
+						var targetComponentType = window.taskBoxes.getComponentType({
+							boxId: params.iTaskBoxId
+						});
+
+						o.connectionEstablished(srcComponentType, targetComponentType, params);
+					}
+				});
 			});
 
 			// listen for clicks on connections, and offer to delete connections on click.
@@ -144,6 +172,13 @@
 				jsPlumb.detach(conn);
 			});
 		},
+
+		// collect native components as event observers
+		populateEventObservers: function() {
+			this.eventObservers.push(window.files);
+			this.eventObservers.push(window.chart);
+			this.eventObservers.push(window.technicalDetails);
+		}
 	};
 })();
 

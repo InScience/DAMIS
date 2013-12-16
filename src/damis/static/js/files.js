@@ -1,6 +1,6 @@
 (function() {
 	window.files = {
-		uploadFile: function(dialog) {
+		update: function(dialog) {
 			var url = window.componentFormUrls['UPLOAD FILE'];
 			var fileForm = dialog.find(".file-form-container");
 			if (fileForm.length == 0) {
@@ -65,7 +65,13 @@
 				}
 			});
 			dialog.dialog("option", "buttons", buttons);
-		}
+		}, 
+
+		doubleClick: function(componentType, formWindow) {
+			if (componentType == 'UPLOAD FILE') {
+                this.update(formWindow);
+			}
+		},
 	}
 })();
 
