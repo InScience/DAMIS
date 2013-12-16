@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load disable_if_connection from damis %}
 
-<div style="{% if parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}">
+<div style="{% if parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}{% if parameter.connection_type == 'INPUT_CONNECTION' %}display:none;{% endif %}">
 {% for field in form.visible_fields %}
     {% if field.name == 'value' %}
     <span title='{% if parameter.description %}{% trans parameter.description %}{% endif %}'
