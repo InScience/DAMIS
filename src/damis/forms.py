@@ -110,7 +110,7 @@ class ParameterForm(forms.ModelForm):
     class Meta:
         model = Parameter
         fields = ['name', 'type', 'connection_type', 'required', 'default',
-                  'label', 'description']
+                  'label', 'description', 'label_lt', 'description_lt']
 
 ParameterFormset = inlineformset_factory(Component, Parameter, extra=1, form=ParameterForm, can_delete=False)
 

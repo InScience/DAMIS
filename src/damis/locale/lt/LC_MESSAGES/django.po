@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-15 19:49+0000\n"
+"POT-Creation-Date: 2013-12-16 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,7 +54,7 @@ msgstr "Pavadinimas"
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:99 models.py:17 models.py:63 models.py:101
+#: forms.py:99 models.py:17 models.py:64
 #: templates/damis/algorithm_list.html:24
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:25
 msgid "Description"
@@ -64,7 +64,7 @@ msgstr "Aprašymas"
 msgid "File"
 msgstr "Failas"
 
-#: models.py:18 models.py:54 models.py:118
+#: models.py:18 models.py:54 models.py:122
 msgid "User"
 msgstr "Naudotojas"
 
@@ -128,135 +128,147 @@ msgstr "Paveiksliukas"
 msgid "Cluster"
 msgstr "Klusteris"
 
-#: models.py:62 models.py:100
-msgid "Label"
-msgstr "Antraštė"
+#: models.py:62 models.py:102
+msgid "Label EN"
+msgstr "Antraštė EN"
 
-#: models.py:80
+#: models.py:63 models.py:103
+msgid "Label LT"
+msgstr "Antraštė LT"
+
+#: models.py:65 models.py:105
+msgid "Description LT"
+msgstr "Aprašymas LT"
+
+#: models.py:82
 msgid "Dataset"
 msgstr "Duomenys"
 
-#: models.py:81
+#: models.py:83
 msgid "Integer"
 msgstr "Sveikasis"
 
-#: models.py:82
+#: models.py:84
 msgid "Float"
 msgstr "Slankaus kablelio"
 
-#: models.py:83
+#: models.py:85
 msgid "Double"
 msgstr "Dvigubo tikslumo slankaus kablelio"
 
-#: models.py:84
+#: models.py:86
 msgid "String"
 msgstr "Simbolių eilutė"
 
-#: models.py:85
+#: models.py:87
 msgid "Text"
 msgstr "Tekstas"
 
-#: models.py:86
+#: models.py:88
 msgid "Boolean"
 msgstr "Loginė reikšmė"
 
-#: models.py:87
+#: models.py:89
 msgid "Date"
 msgstr "Data"
 
-#: models.py:88
+#: models.py:90
 msgid "Date and time"
 msgstr "Data ir laikas"
 
-#: models.py:89
+#: models.py:91
 msgid "Time"
 msgstr "Laikas"
 
-#: models.py:93 models.py:141
+#: models.py:95 models.py:145
 msgid "Component"
 msgstr "Komponentė"
 
-#: models.py:94
+#: models.py:96
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:95
+#: models.py:97
 msgid "Type"
 msgstr "Tipas"
 
-#: models.py:96
+#: models.py:98
 msgid "Required"
 msgstr "Būtinas"
 
-#: models.py:97
+#: models.py:99
 msgid "Default"
 msgstr "Standartinė reikšmė"
 
-#: models.py:98
+#: models.py:100
 msgid "Connection type"
 msgstr "Jungties tipas"
 
-#: models.py:108
+#: models.py:104
+msgid "Description EN"
+msgstr "Aprašymas EN"
+
+#: models.py:112
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: models.py:109
+#: models.py:113
 msgid "Running"
 msgstr "Vykdoma"
 
-#: models.py:110
+#: models.py:114
 msgid "Error"
 msgstr "Klaida"
 
-#: models.py:111
+#: models.py:115
 msgid "Finished"
 msgstr "Įvykdyta"
 
-#: models.py:113
+#: models.py:117
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:114
+#: models.py:118
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:115
+#: models.py:119
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:116 templates/damis/experiment_list.html:23
+#: models.py:120 templates/damis/experiment_list.html:23
 msgid "Status"
 msgstr "Statusas"
 
-#: models.py:119
+#: models.py:123
 msgid "Workflow state"
 msgstr "Scenarijaus būsena"
 
-#: models.py:121
+#: models.py:125
 msgid "Maximum calculation time"
 msgstr "Maksimali skaičiavimo trukmė"
 
-#: models.py:123
+#: models.py:127
 msgid "Processor number"
 msgstr "Procesorių skaičius"
 
-#: models.py:140
+#: models.py:144
 msgid "Experiment"
 msgstr "Eksperimentas"
 
-#: models.py:147
+#: models.py:151
 msgid "Parameter"
 msgstr "Parametras"
 
-#: models.py:150
+#: models.py:154
 msgid "Workflow Task"
 msgstr "Scenarijaus užduotis"
 
-#: models.py:160
+#: models.py:164
 msgid "Source"
 msgstr "Šaltinis"
 
-#: models.py:162
+#: models.py:166
 msgid "Target"
 msgstr "Tikslas"
 
@@ -268,9 +280,13 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:447 views.py:450 views.py:453 views.py:456 views.py:459
+#: views.py:448 views.py:451 views.py:454 views.py:467
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
+
+#: views.py:459
+msgid "You have to execute this experiment first to see the result."
+msgstr ""
 
 #: templates/base.html:71
 msgid "Source code"

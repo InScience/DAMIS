@@ -59,8 +59,10 @@ class Component(models.Model):
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
     icon = models.ImageField(_('Icon'), upload_to='icons', blank=True, null=True)
     cluster = models.ForeignKey('Cluster', null=True, verbose_name=_('Cluster'))
-    label = models.CharField(_('Label'), max_length=255, null=True, blank=True)
+    label = models.CharField(_('Label EN'), max_length=255, null=True, blank=True)
+    label_lt = models.CharField(_('Label LT'), max_length=255, null=True, blank=True)
     description = models.TextField(_('Description'), null=True, blank=True)
+    description_lt = models.TextField(_('Description LT'), null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse('algorithm-list')
@@ -97,8 +99,10 @@ class Parameter(models.Model):
     default = models.CharField(_('Default'), max_length=255, null=True, blank=True)
     connection_type = models.CharField(_('Connection type'), max_length=255, null=True, blank=True,
                               choices=CONNECTION_TYPES, default='INPUT_VALUE')
-    label = models.CharField(_('Label'), max_length=255, null=True, blank=True)
-    description = models.TextField(_('Description'), null=True, blank=True)
+    label = models.CharField(_('Label EN'), max_length=255, null=True, blank=True)
+    label_LT = models.CharField(_('Label LT'), max_length=255, null=True, blank=True)
+    description = models.TextField(_('Description EN'), null=True, blank=True)
+    description_LT = models.TextField(_('Description LT'), null=True, blank=True)
 
     def __unicode__(self):
         return '%s (%s)' % (self.name, self.type)
