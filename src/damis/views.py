@@ -438,6 +438,7 @@ def upload_file_form_view(request):
         form = DatasetForm(request.POST, request.FILES)
         if form.is_valid():
             dataset = form.save()
+            context['file_path'] = dataset.file.url
     else:
         form = DatasetForm()
     context['form'] = form
