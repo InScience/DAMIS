@@ -454,7 +454,14 @@ def select_features_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
 
 def technical_details_form_view(request):
-    return HttpResponse(_('Not implemented, yet'))
+    pv_name = request.GET.get('pv_name')
+    if re.findall('PV_\d+-\d+-value', pv_name):
+        return HttpResponse(_('You have to execute this experiment first to see the result.'))
+    else:
+        task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)
+        task = WorkflowTask.objects.get(pk=task_pk)
+        params = task.parameters.filter(connection_type='OUTPUT_VALUE')
+        return HttpResponse('<br/>'.join([str(p) for p in params]))
 
 def chart_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
