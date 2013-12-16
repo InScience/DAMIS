@@ -6,9 +6,10 @@
     {% if field.name == 'value' %}
     <span title='{{ parameter.get_description_display }}'
         >{% firstof parameter.get_label_display parameter.name %}
-        ({% if parameter.type %}{% trans parameter.type %}{% endif %})</span><br />
+        ({% if parameter.type %}{% trans parameter.type %}{% endif %})<br />
         {{ field.errors }}
         {{ field|disable_if_connection }}
+    </span>
     {% endif %}
 {% endfor %}
 {% for field in form.hidden_fields %}
