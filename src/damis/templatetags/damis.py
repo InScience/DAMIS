@@ -44,6 +44,5 @@ def disable_if_connection(value):
         parameter = value.form.instance.parameter
     if parameter.connection_type == 'INPUT_CONNECTION':
         value.field.widget.attrs.update({'disabled': 'disabled'})
-        value.field.widget.attrs.update({'disabled': 'disabled'})
         value.field.initial = _('Comes from connection')
     return value
