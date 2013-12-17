@@ -1,11 +1,42 @@
 (function() {
 	window.chart = {
+        // initialization upon dialog creation
 		init: function(componentType, formWindow) {
 			if (componentType == 'CHART') {
-				var container = $("<div class=\"plot-container\">" + gettext("This component should be connected to an executed task in order to view results.") + "</div>");
-			    formWindow.append(container);
-			    this.customizeDialog(formWindow);
+				this.toUnconnectedState(formWindow);
 			}
+		},
+
+		// prepare dialog, when component is unconnected 
+		toUnconnectedState: function(formWindow) {
+			formWindow.find(".plot-container").remove();
+			var container = $("<div class=\"plot-container\">" + gettext("This component should be connected to an executed task in order to view results.") + "</div>");
+			formWindow.append(container);
+			formWindow.dialog("option", "buttons", window.taskBoxes.defaultDialogButtons());
+			formWindow.dialog("option", "minWidth", 0);
+			formWindow.dialog("option", "width", 300);
+		},
+
+		// all buttons for this component
+		allButtons: function() {
+			var buttons = [{
+				text: gettext('Update'),
+				class: "btn btn-primary",
+				click: function(ev) {
+					var dialog = $(ev.currentTarget).closest(".ui-dialog");
+					window.chart.updateChart(dialog);
+				}
+			},
+			{
+				text: gettext('Download'),
+                class: "btn",
+				click: function(ev) {
+					var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
+					window.chart.downloadChart($(plotContainer[0]));
+				}
+			}];
+			var defaultButtons = window.taskBoxes.defaultDialogButtons();
+			return buttons.concat(defaultButtons);
 		},
 
 		// TODO: sends Ajax request to obtain results for the connected component
@@ -29,6 +60,7 @@
 			return initData;
 		},
 
+        // TODO: remove when Ajax data retrieval is complete
 		generate: function(offset, amplitude) {
 			var res = [];
 			var start = 0,
@@ -55,6 +87,7 @@
 			});
 		},
 
+        // symbol palette, rotates through a set of symbols
 		generateSymbolPalette: function(data) {
 			var baseOptions = [["circle", gettext("Circle")], ["square", gettext("Square")], ["diamond", gettext("Diamond")], ["triangle", gettext("Triangle")], ["cross", gettext("Cross")]];
 			var allOptions = [];
@@ -64,6 +97,7 @@
 			return allOptions;
 		},
 
+        // renders the chart in place of plotPlaceholder
 		renderChart: function(plotContainer, plotPlaceholder, data, colors, symbols) {
 			var data = [];
 			$.each(initData, function(idx, rec) {
@@ -118,6 +152,7 @@
 			});
 		},
 
+        // updates the chart colors and symbols
 		updateChart: function(dialog) {
 			var plotContainer = $(dialog.find(".plot-container")[0]);
 			var formWindow = dialog.find(".task-window");
@@ -137,6 +172,7 @@
 			window.chart.renderChart(plotContainer, "#" + formWindow.attr("id") + " .results-container", data, colors, symbols);
 		},
 
+        // displays a pop-up asking to download file
 		downloadChart: function(plotContainer) {
 			var canvas = plotContainer.find("canvas")[0];
 			var image = canvas.toDataURL("image/jpeg");
@@ -147,6 +183,7 @@
 			document.location.href = image;
 		},
 
+        // re-renders a chart
 		update: function(formWindow) {
 			formWindow.find(".plot-container").remove();
 
@@ -189,36 +226,26 @@
 			window.chart.renderChart(plotContainer, "body > .plot-container .results-container", initData, colorPalette, symbolValues);
 			//append to form after rendering because otherwise axes are not rendered
 			formWindow.append(plotContainer);
-		},
 
-		// customize dialog for specific component: set width, add buttons and close handler
-		customizeDialog: function(formWindow) {
-			// customize dialog
+			formWindow.dialog("option", "buttons", this.allButtons());
+			formWindow.dialog("option", "minWidth", 650);
 			formWindow.dialog("option", "close", function() {
 				$(this).find("#point-tooltip").remove();
 			});
-			var buttons = formWindow.dialog("option", "buttons");
-			buttons.splice(0, 0, {
-				text: gettext('Download'),
-				click: function(ev) {
-					var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
-					window.chart.downloadChart($(plotContainer[0]));
-				}
-			});
-			buttons.splice(0, 0, {
-				text: gettext('Update'),
-				click: function(ev) {
-					var dialog = $(ev.currentTarget).closest(".ui-dialog");
-					window.chart.updateChart(dialog);
-				}
-			});
-			formWindow.dialog("option", "buttons", buttons);
-			formWindow.dialog("option", "minWidth", 650);
 		},
 
+        // called when connection is established
 		connectionEstablished: function(srcComponentType, targetComponentType, connectionParams) {
 			if (targetComponentType == 'CHART') {
 				this.update($("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId)));
+			}
+		},
+
+        // called when connection is deleted
+		connectionDeleted: function(srcComponentType, targetComponentType, connectionParams) {
+			if (srcComponentType == 'CHART' || targetComponentType == 'CHART') {
+				var formWindow = $("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId));
+				this.toUnconnectedState(formWindow);
 			}
 		},
 	}
