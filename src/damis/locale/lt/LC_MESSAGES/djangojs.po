@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-17 20:25+0000\n"
+"POT-Creation-Date: 2013-12-17 21:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,19 +87,15 @@ msgstr "Atšaukti"
 msgid "OK"
 msgstr "Gerai"
 
-#: static/js/files.js:78
-msgid "Title"
-msgstr "Pavadinimas"
+#: static/js/files.js:14
+msgid "A file is selected."
+msgstr "Failas pasirinktas."
 
-#: static/js/files.js:79
-msgid "Description"
-msgstr "Aprašymas"
-
-#: static/js/files.js:80
+#: static/js/files.js:16
 msgid "File url"
 msgstr "Failo nuoroda"
 
-#: static/js/files.js:107
+#: static/js/files.js:104
 msgid "Upload"
 msgstr "Įkelti"
 
@@ -110,6 +106,12 @@ msgstr "pridėti dar vieną"
 #: static/js/jquery.formset.js:165
 msgid "remove"
 msgstr "pašalinti"
+
+#~ msgid "Title"
+#~ msgstr "Pavadinimas"
+
+#~ msgid "Description"
+#~ msgstr "Aprašymas"
 
 #~ msgid "Execute"
 #~ msgstr "Vykdyti"

@@ -1,6 +1,24 @@
 (function() {
 	window.files = {
-        // send request to the server to obtain file upload form
+		init: function(componentType, formWindow) {
+			if (componentType == 'UPLOAD FILE') {
+				var outParam = formWindow.find("input[value=OUTPUT_CONNECTION]").parent().find("input[name$=value]");
+				if (outParam.val()) {
+					// editing workflow: a connection already exists 
+					formWindow.append(this.fileSelectedView(outParam.val()));
+				} 
+			}
+		},
+
+		fileSelectedView: function(fileUrl) {
+			var successText = $("<div class=\"file-form-container\"><p>"+gettext("A file is selected.")+"</p></div>");
+			var tableContent = "";
+			tableContent += "<tr><td><b>" + gettext("File url") + ":</b></td><td>" + fileUrl + "</td></tr>";
+			successText.append("<table><tbody>" + tableContent + "</b></tbody></table>");
+            return successText;
+		},
+
+		// send request to the server to obtain file upload form
 		update: function(dialog) {
 			var url = window.componentFormUrls['UPLOAD FILE'];
 			var fileForm = dialog.find(".file-form-container");
@@ -12,7 +30,7 @@
 					context: fileForm
 				}).done(function(resp) {
 					$(this).html(resp);
-                    dialog.dialog("option", "buttons", window.files.allButtons());
+					dialog.dialog("option", "buttons", window.files.allButtons());
 				});
 			}
 		},
@@ -58,16 +76,7 @@
 				// show read-only file info from the returned response,
 				// this will not disappear during saving
 				var fileUrl = responseText.find("input[name=file_path]").val();
-				var title = responseText.find("input[name=title]").val();
-				var description = responseText.find("textarea[name=description]").val();
-
-				var successText = $("<div class=\"file-form-container\"></div>");
-				var tableContent = "";
-				tableContent += "<tr><td><b>" + gettext("Title") + "</b>:</td><td>" + title + "</td></tr>";
-				tableContent += "<tr><td><b>" + gettext("Description") + ":</b></td><td>" + description + "</td></tr>";
-				tableContent += "<tr><td><b>" + gettext("File url") + ":</b></td><td>" + fileUrl + "</td></tr>";
-				successText.append("<table><tbody>" + tableContent + "</b></tbody></table>");
-				formWindow.append(successText);
+				formWindow.append(this.fileSelectedView(fileUrl));
 
 				// set OUTPUT_CONNECTION parameter of this task to the uploaded 
 				// file url
@@ -84,16 +93,16 @@
 			fileFormPlaceholder.remove();
 		},
 
-        // check if the upload was successful
+		// check if the upload was successful
 		checkSuccess: function(resp) {
 			return resp.find(".errorlist").length == 0;
 		},
 
-        // all buttons of this component dialog
+		// all buttons of this component dialog
 		allButtons: function() {
 			var buttons = [{
 				text: gettext('Upload'),
-                class: "btn btn-primary",
+				class: "btn btn-primary",
 				click: function(ev) {
 					var fileForm = $(ev.currentTarget).closest(".ui-dialog").find(".file-form-container");
 					window.files.doUpload($(fileForm[0]));
