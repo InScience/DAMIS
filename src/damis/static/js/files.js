@@ -48,11 +48,17 @@
             // clear the iframe response in order to prevent unexpected processing
             fileUploadIframe.contents().find("body").html("");
 
-            // TODO: add saved file id to the OUTPUT_CONNECTION parameter of
-            // this task
             $("#file-upload-form").html("");
-            fileFormPlaceholder.parent().append(responseText);
+            var formWindow = fileFormPlaceholder.parent()
+            formWindow.append(responseText);
             fileFormPlaceholder.remove();
+
+            // set OUTPUT_CONNECTION parameter of this task to the uploaded 
+            // file url
+            var fileUrl = formWindow.find(".file-form-container input[name=file_path]").val();
+            var connectionInput = formWindow.find(".parameter-values input[value=OUTPUT_CONNECTION]");
+            var valueInput = connectionInput.parent().find("input[name$=value]"); 
+            valueInput.val(fileUrl);  
         },
 
 		customizeDialog: function(dialog) {
