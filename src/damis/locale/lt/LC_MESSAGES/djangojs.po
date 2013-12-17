@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 23:13+0000\n"
+"POT-Creation-Date: 2013-12-17 20:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,60 +18,61 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: static/js/chart.js:5 static/js/technicalDetails.js:5
+#: static/js/chart.js:13 static/js/technicalDetails.js:19
 msgid ""
 "This component should be connected to an executed task in order to view "
 "results."
 msgstr ""
-"Norėdami peržiūrėti rezultatus, turite sujungti komponentę su įvykdyta komponente."
+"Norėdami peržiūrėti rezultatus, turite sujungti komponentę su įvykdyta "
+"komponente."
 
-#: static/js/chart.js:59
-msgid "Circle"
-msgstr "Apskritimas"
+#: static/js/chart.js:23
+msgid "Update"
+msgstr "Atnaujinti"
 
-#: static/js/chart.js:59
-msgid "Square"
-msgstr "Kvadratas"
-
-#: static/js/chart.js:59
-msgid "Diamond"
-msgstr "Rombas"
-
-#: static/js/chart.js:59
-msgid "Triangle"
-msgstr "Trikampis"
-
-#: static/js/chart.js:59
-msgid "Cross"
-msgstr "Kryžiukas"
-
-#: static/js/chart.js:111
-msgid "index"
-msgstr "taško numeris"
-
-#: static/js/chart.js:111
-msgid "class"
-msgstr "klasė"
-
-#: static/js/chart.js:158
-msgid "Class"
-msgstr "Klasė"
-
-#: static/js/chart.js:158
-msgid "Color"
-msgstr "Spalva"
-
-#: static/js/chart.js:158
-msgid "Shape"
-msgstr "Forma"
-
-#: static/js/chart.js:202 static/js/technicalDetails.js:14
+#: static/js/chart.js:31 static/js/technicalDetails.js:29
 msgid "Download"
 msgstr "Atsisiųsti"
 
-#: static/js/chart.js:209
-msgid "Update"
-msgstr "Atnaujinti"
+#: static/js/chart.js:92
+msgid "Circle"
+msgstr "Apskritimas"
+
+#: static/js/chart.js:92
+msgid "Square"
+msgstr "Kvadratas"
+
+#: static/js/chart.js:92
+msgid "Diamond"
+msgstr "Rombas"
+
+#: static/js/chart.js:92
+msgid "Triangle"
+msgstr "Trikampis"
+
+#: static/js/chart.js:92
+msgid "Cross"
+msgstr "Kryžiukas"
+
+#: static/js/chart.js:145
+msgid "index"
+msgstr "taško numeris"
+
+#: static/js/chart.js:145
+msgid "class"
+msgstr "klasė"
+
+#: static/js/chart.js:195
+msgid "Class"
+msgstr "Klasė"
+
+#: static/js/chart.js:195
+msgid "Color"
+msgstr "Spalva"
+
+#: static/js/chart.js:195
+msgid "Shape"
+msgstr "Forma"
 
 #: static/js/experimentForm.js:177
 msgid "Experiment settings"
@@ -81,11 +82,24 @@ msgstr "Eksperimento nustatymai"
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: static/js/experimentForm.js:187
-msgid "Execute"
-msgstr "Vykdyti"
+#: static/js/experimentForm.js:188 static/js/taskBoxes.js:147
+#: static/js/utils.js:24
+msgid "OK"
+msgstr "Gerai"
 
-#: static/js/files.js:61
+#: static/js/files.js:78
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: static/js/files.js:79
+msgid "Description"
+msgstr "Aprašymas"
+
+#: static/js/files.js:80
+msgid "File url"
+msgstr "Failo nuoroda"
+
+#: static/js/files.js:107
 msgid "Upload"
 msgstr "Įkelti"
 
@@ -97,6 +111,5 @@ msgstr "pridėti dar vieną"
 msgid "remove"
 msgstr "pašalinti"
 
-#: static/js/taskBoxes.js:129 static/js/utils.js:23
-msgid "OK"
-msgstr "Gerai"
+#~ msgid "Execute"
+#~ msgstr "Vykdyti"

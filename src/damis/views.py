@@ -482,12 +482,15 @@ def technical_details_form_view(request):
         else:
             return HttpResponse(_('You have to execute this experiment first to see the result.'))
     else:
-        task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)
+        task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)[0]
         task = WorkflowTask.objects.get(pk=task_pk)
-        params = task.parameters.filter(connection_type='OUTPUT_VALUE')
-        file_param = task.parameters.filter(connection_tupe='OUTPUT_CONNECTION')[0]
+        params = task.parameter_values.filter(parameter__connection_type="OUTPUT_VALUE")
+        file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
         context['values'] = params
-        context['file'] = file_to_table(file_param.value)
+        file_table = file_to_table(file_params[0].value) if len(file_params) else None
+        context['file'] = file_table
+        if not params and not file_table:
+            return HttpResponse(_('You have to execute this experiment first to see the result.'))
         return render_to_response('damis/_technical_details.html', context)
 
 def chart_form_view(request):

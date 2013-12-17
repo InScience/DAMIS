@@ -103,11 +103,18 @@
                 id: "flowchart-container",
             });
 
+            // mapping native components to Ajax urls for dialog rendering
+            window.componentFormUrls={};
+            {% for name, url in component_form_urls %}
+                window.componentFormUrls["{{ name }}"] = "{{ url }}";
+            {% endfor %}
+
             window.experimentForm.params = { 
-                    parametersUrl:"{% url 'parameters-form' %}",
-                    parameterPrefixesUrl: "{% url 'gen-parameter-prefixes' %}", 
-                    experimentNewUrl: "{% url 'experiment-new' %}", 
-                    taskFormPrefix: "{{ task_formset.prefix }}"};
+                parametersUrl:"{% url 'parameters-form' %}",
+                parameterPrefixesUrl: "{% url 'gen-parameter-prefixes' %}", 
+                experimentNewUrl: "{% url 'experiment-new' %}", 
+                taskFormPrefix: "{{ task_formset.prefix }}"
+            };
 
             //decide if an empty canvas or a persisted worklow should be
             //displayed
@@ -136,11 +143,6 @@
                 activePanel.show();
             });
 
-            // mapping native components to Ajax urls for dialog rendering
-            window.componentFormUrls={};
-            {% for name, url in component_form_urls %}
-                window.componentFormUrls["{{ name }}"] = "{{ url }}";
-            {% endfor %}
 		});
     </script>
 {% endblock %}
