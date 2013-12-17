@@ -1,0 +1,30 @@
+{% load i18n %}
+
+{% if values %}
+    <p>{% trans 'Parameter values' %}:</p>
+    <table>
+    <thead>
+        <tr><th>{% trans 'Name' %}</th><th>{% trans 'Value' %}</th></tr>
+    </thead>
+    <tbody>
+        {% for val in values %}
+            <tr><td>{{ val.parameter.name }}</td><td>{{ val.value }}</td></tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endif %}
+
+{% if file %}
+    <p>{% trans 'File content' %}:</p>
+    <table>
+    <tbody>
+        {% for row in file %}
+            <tr>
+            {% for col in row %}
+                <td>{{ col }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endif %}

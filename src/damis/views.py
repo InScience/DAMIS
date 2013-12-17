@@ -462,15 +462,33 @@ def midas_file_form_view(request):
 def select_features_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
 
+def file_to_table(file_url):
+    from damis.settings import BUILDOUT_DIR
+    f = open(BUILDOUT_DIR + '/var/www' + file_url)
+    file_table = []
+    for line in f:
+        file_table.append([cell for cell in line.split(",")])
+    f.close()
+    return file_table
+
 def technical_details_form_view(request):
     pv_name = request.GET.get('pv_name')
+    dataset_url = request.GET.get('dataset_url');
+    context = {}
     if re.findall('PV_\d+-\d+-value', pv_name):
-        return HttpResponse(_('You have to execute this experiment first to see the result.'))
+        if (dataset_url): 
+            context['file'] = file_to_table(dataset_url)
+            return render_to_response('damis/_technical_details.html', context)
+        else:
+            return HttpResponse(_('You have to execute this experiment first to see the result.'))
     else:
         task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)
         task = WorkflowTask.objects.get(pk=task_pk)
         params = task.parameters.filter(connection_type='OUTPUT_VALUE')
-        return HttpResponse('<br/>'.join([str(p) for p in params]))
+        file_param = task.parameters.filter(connection_tupe='OUTPUT_CONNECTION')[0]
+        context['values'] = params
+        context['file'] = file_to_table(file_param.value)
+        return render_to_response('damis/_technical_details.html', context)
 
 def chart_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
