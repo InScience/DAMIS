@@ -179,12 +179,14 @@
 				appendTo: "#experiment-form",
 				buttons: [{
 					text: gettext('Cancel'),
+                    class: "btn",
 					click: function(ev) {
 						$(this).dialog("close");
 					}
 				},
 				{
-					text: gettext('Execute'),
+					text: gettext('OK'),
+                    class: "btn btn-primary",
 					click: function(ev) {
 						$(this).dialog("close");
 						if (action == "execute") {
@@ -196,7 +198,6 @@
 				}],
 				open: function() {
 					var dialog = $(this).closest(".ui-dialog");
-					dialog.find("button").addClass('btn');
 					dialog.find(".ui-dialog-titlebar > button").remove();
 
 					if (action == "execute") {

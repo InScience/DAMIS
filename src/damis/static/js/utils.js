@@ -15,12 +15,14 @@
 						appendTo: "body",
 						buttons: [{
 							text: gettext("Cancel"),
+                            class: "btn btn-primary",
 							click: function(ev) {
 								$(this).dialog("close");
 							}
 						},
 						{
 							text: gettext("OK"),
+                            class: "btn",
 							click: function(ev) {
 								$(this).dialog("close");
 								$(formSelector).submit();
@@ -28,7 +30,6 @@
 						}],
 						open: function() {
 							var dialog = $(this).closest(".ui-dialog");
-							dialog.find("button").addClass('btn');
 							dialog.find(".ui-dialog-titlebar > button").remove();
 						}
 					});
