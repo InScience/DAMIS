@@ -178,7 +178,7 @@ class WorkflowTask(models.Model):
 
 class ParameterValue(models.Model):
     parameter = models.ForeignKey('Parameter', verbose_name=_('Parameter'))
-    value = models.CharField(max_length=255, blank=True)
+    value = models.CharField(max_length=255, blank=True, null=True)
     task = models.ForeignKey('WorkflowTask', related_name='parameter_values',
                                              verbose_name=_('Workflow Task'))
     related = models.ManyToManyField('self', symmetrical=False, null=True,
