@@ -358,10 +358,6 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
                         target = pv_form.instance
                         connection = Connection.objects.create(target=target,
                                                                source=source)
-                        target.source.add(connection)
-                        source.target.add(connection)
-                        target.save()
-                        source.save()
 
         return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
 
