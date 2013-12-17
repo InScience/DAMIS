@@ -358,8 +358,8 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
                         target = pv_form.instance
                         connection = Connection.objects.create(target=target,
                                                                source=source)
-                        target.target.add(connection)
-                        source.source.add(connection)
+                        target.source.add(connection)
+                        source.target.add(connection)
                         target.save()
                         source.save()
 
