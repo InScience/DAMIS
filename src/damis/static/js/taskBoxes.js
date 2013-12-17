@@ -125,15 +125,9 @@
 				modal: true,
 				// Cancel button should return the box to a previous state, but
 				// that is too complicated for now, so no Cancel button
-				buttons: [{
-					text: gettext("OK"),
-					click: function(ev) {
-						$(this).dialog("close");
-					}
-				}],
+				buttons: window.taskBoxes.defaultDialogButtons(),
 				open: function() {
 					var dialog = $(this).closest(".ui-dialog");
-					dialog.find("button").addClass('btn');
 					dialog.find(".ui-dialog-titlebar > button").remove();
 				}
 			});
@@ -146,6 +140,16 @@
 					o.init(componentType, taskFormContainer);
 				}
 			});
+		},
+
+		defaultDialogButtons: function() {
+			return [{
+				text: gettext("OK"),
+                class: "btn",
+				click: function(ev) {
+					$(this).dialog("close");
+				}
+			}]
 		},
 
 		// create a new task box and modal window, assign event handlers 
@@ -168,7 +172,7 @@
 			var addTaskBtn = $("a.add-row")
 			addTaskBtn.click();
 			var taskForm = addTaskBtn.prev();
-            
+
 			//set algorithm ID into the task form
 			var algorithmId = $(ui.draggable).find("input").val();
 			var algorithmInput = taskForm.find(".algorithm-selection select");
