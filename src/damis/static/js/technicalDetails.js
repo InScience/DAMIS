@@ -40,7 +40,7 @@
 		update: function(formWindow) {
 			var url = window.componentFormUrls['TECHNICAL DETAILS'];
 			formWindow.find(".technical-details-container").remove();
-			var container = $("<div class=\"technical-details-container\"><img src=\"static/img/loading.gif\"/></div>");
+			var container = $("<div class=\"technical-details-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
 			formWindow.append(container);
 			var data = window.technicalDetails.getOutputParamDetails(formWindow);
 			$.ajax({
@@ -54,6 +54,7 @@
 				} else {
 					formWindow.dialog("option", "buttons", window.technicalDetails.allButtons());
 					formWindow.dialog("option", "minWidth", 0);
+					formWindow.dialog("option", "maxHeight", 500);
 					formWindow.dialog("option", "width", "auto");
 				}
 			});
