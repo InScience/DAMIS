@@ -36,11 +36,12 @@ from damis.constants import COMPONENT_TITLE__TO__FORM_URL
 from damis.utils import slugify
 
 from damis.models import Component
+from damis.models import Cluster
+from damis.models import Connection
 from damis.models import Parameter, ParameterValue
 from damis.models import Dataset
 from damis.models import Experiment
 from damis.models import WorkflowTask
-from damis.models import Cluster
 
 
 class LoginRequiredMixin(object):
@@ -333,7 +334,9 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             data = task_form.cleaned_data
             data['experiment'] = exp
             if data.get('algorithm'):
-                task = WorkflowTask.objects.create(**data)
+                task = data.get('id')
+                if not task:
+                    task = WorkflowTask.objects.create(**data)
 
                 pv_formset = task_form.parameter_values[0]
                 pv_formset.instance = task
@@ -351,8 +354,14 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
                     source_ref = pv_form.cleaned_data['source_ref']
                     if source_ref:
                         source_ref = source_ref.split('-value')[0]
-                        pv_form.instance.source = sources[source_ref]
-                        pv_form.instance.save()
+                        source = sources[source_ref]
+                        target = pv_form.instance
+                        connection = Connection.objects.create(target=target,
+                                                               source=source)
+                        target.target.add(connection)
+                        source.source.add(connection)
+                        target.save()
+                        source.save()
 
         return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
 

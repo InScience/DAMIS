@@ -153,9 +153,10 @@ class ParameterValueForm(forms.ModelForm):
             self.initial.update({'parameter': parameter})
 
         if self.instance and self.instance.source.all():
-            pks = self.instance.source.task.algorithm.parameters.values_list('pk', flat=True)
-            index = tuple(pks).index(self.instance.source.parameter.pk)
-            self.initial.update({'source_ref': 'PV_PK%s-%s-value' % (self.instance.source.task.pk, index)})
+            source = self.instance.source.all()[0].source
+            pks = source.task.algorithm.parameters.values_list('pk', flat=True)
+            index = tuple(pks).index(source.parameter.pk)
+            self.initial.update({'source_ref': 'PV_PK%s-%s-value' % (source.task.pk, index)})
 
     def is_valid(self):
         valid = super(ParameterValueForm, self).is_valid()
