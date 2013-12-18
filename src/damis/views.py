@@ -347,17 +347,26 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
                     data['parameter'] = pv_form.cleaned_data.get('parameter')
                     data['value'] = pv_form.cleaned_data.get('value')
                     data['task'] = task
-                    pv_form.instance = ParameterValue.objects.create(**data)
-                    sources[pv_form.prefix] = pv_form.instance
 
-                for pv_form in pv_formset.forms:
-                    source_ref = pv_form.cleaned_data['source_ref']
-                    if source_ref:
-                        source_ref = source_ref.split('-value')[0]
-                        source = sources[source_ref]
-                        target = pv_form.instance
-                        connection = Connection.objects.create(target=target,
-                                                               source=source)
+                    pv_form_prefix = pv_form.prefix
+
+                    pv_instance = pv_form.cleaned_data.get('id')
+                    if not pv_instance:
+                        pv_instance = ParameterValue.objects.create(**data)
+                    pv_form.instance = pv_instance
+
+                    sources[pv_form_prefix] = pv_form.instance
+
+        for task_form in task_formset.forms:
+            for pv_form in task_form.parameter_values[0].forms:
+                source_ref = pv_form.cleaned_data['source_ref']
+                if source_ref:
+                    source_ref = source_ref.split('-value')[0]
+                    source = sources[source_ref]
+                    target = pv_form.instance
+                    exist = Connection.objects.filter(target=target, source=source)
+                    if not exist:
+                        Connection.objects.create(target=target, source=source)
 
         return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
 
