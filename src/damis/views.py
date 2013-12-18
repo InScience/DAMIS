@@ -325,6 +325,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         exp_data.pop('skip_validation')
         if experiment_form.instance and experiment_form.instance.pk:
             exp = experiment_form.instance
+            experiment_form.save()
         else:
             exp = Experiment.objects.create(**exp_data)
 
@@ -353,6 +354,8 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
                     pv_instance = pv_form.cleaned_data.get('id')
                     if not pv_instance:
                         pv_instance = ParameterValue.objects.create(**data)
+                    else:
+                        pv_form.save()
                     pv_form.instance = pv_instance
 
                     sources[pv_form_prefix] = pv_form.instance
