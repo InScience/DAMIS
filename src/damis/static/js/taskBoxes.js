@@ -166,11 +166,10 @@
 			taskBox.css("left", ui.position.left + "px");
 			taskBox.css("top", ui.position.top + "px");
 
-			//assign id and class
+			//assign id
 			count = window.taskBoxes.countBoxes;
 			window.taskBoxes.countBoxes++;
 			taskBox.attr("id", "task-box-" + count);
-			taskBox.addClass("task-box");
 
 			// create modal window for the form
 			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox), componentLabel);
