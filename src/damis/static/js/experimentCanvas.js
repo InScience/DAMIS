@@ -77,6 +77,23 @@
 			}
 		},
 
+		addEndpoint: function(isTarget, box, anchor, parameters) {
+			var endpoint;
+			if (isTarget) {
+				endpoint = jsPlumb.addEndpoint(box, window.experimentCanvas.getTargetEndpoint(), {
+					anchor: anchor,
+					parameters: parameters
+				});
+			} else {
+				endpoint = jsPlumb.addEndpoint(box, window.experimentCanvas.getSourceEndpoint(), {
+					anchor: anchor,
+					maxConnections: - 1,
+					parameters: parameters
+				});
+			}
+			return endpoint;
+		},
+
 		// initialize 
 		init: function(spec) {
 

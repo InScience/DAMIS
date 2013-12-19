@@ -63,24 +63,16 @@
 
 				if (connectionType === "INPUT_CONNECTION") {
 					//add input endpoint
-					var x = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getTargetEndpoint(), {
-						anchor: inAnchors[iIdx],
-						parameters: {
-							iParamNo: idx,
-							// parameter form idx
-							iTaskBoxId: taskBoxId
-						},
+					window.experimentCanvas.addEndpoint(true, taskBox, inAnchors[idx], {
+						iParamNo: idx,
+						iTaskBoxId: taskBoxId
 					});
 					iIdx++;
 				} else if (connectionType === "OUTPUT_CONNECTION") {
 					//add output endpoint
-					var y = jsPlumb.addEndpoint(taskBox, window.experimentCanvas.getSourceEndpoint(), {
-						anchor: outAnchors[oIdx],
-						parameters: {
-							oParamNo: idx,
-							// parameter form idx
-							oTaskBoxId: taskBoxId
-						}
+					window.experimentCanvas.addEndpoint(false, taskBox, outAnchors[oIdx], {
+						oParamNo: idx,
+						oTaskBoxId: taskBoxId
 					});
 					oIdx++;
 				}

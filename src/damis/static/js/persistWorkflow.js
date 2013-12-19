@@ -24,7 +24,7 @@
 					boxId: boxId,
 					x: parseInt($box.css("left"), 10),
 					y: parseInt($box.css("top"), 10),
-                    icoUrl: $box.find("img").attr("src"),
+					icoUrl: $box.find("img").attr("src"),
 					endpoints: endpoints
 				};
 			});
@@ -57,15 +57,6 @@
 			return persistedStr;
 		},
 
-		// params is an empty JSON, as this function is a callback
-		persist: function(params) {
-			var persistedStr = window.persistWorkflow.persistJsPlumbEntities();
-			$("#experiment-form input[name=workflow_state]").val(persistedStr);
-			window.experimentForm.submit({
-				"skipValidation": true
-			});
-		},
-
 		// restores jsPlumb entities from a string 
 		restoreJsPlumbEntities: function(persistedStr) {
 			var parts = persistedStr.split("***");
@@ -88,21 +79,13 @@
 				var targetBox = $("#" + conn.targetBoxId);
 
 				// add endpoints that participate in a connection
-				var x = jsPlumb.addEndpoint(targetBox, window.experimentCanvas.getTargetEndpoint(), {
-					anchor: conn.targetAnchor.type,
-					parameters: {
-						iParamNo: conn.params['iParamNo'],
-						// parameter form idx
-						iTaskBoxId: conn.params['iTaskBoxId']
-					},
+				var targetEndpoint = window.experimentCanvas.addEndpoint(true, targetBox, conn.targetAnchor.type, {
+					iParamNo: conn.params['iParamNo'],
+					iTaskBoxId: conn.params['iTaskBoxId']
 				});
-				var y = jsPlumb.addEndpoint(sourceBox, window.experimentCanvas.getSourceEndpoint(), {
-					anchor: conn.sourceAnchor.type,
-					parameters: {
-						oParamNo: conn.params['oParamNo'],
-						// parameter form idx
-						oTaskBoxId: conn.params['oTaskBoxId'],
-					}
+				var sourceEndpoint = window.experimentCanvas.addEndpoint(false, sourceBox, conn.sourceAnchor.type, {
+					oParamNo: conn.params['oParamNo'],
+					oTaskBoxId: conn.params['oTaskBoxId']
 				});
 
 				// remove endpoints that participate in a connection from the
@@ -111,18 +94,15 @@
 				window.persistWorkflow.removeConnectedEndpoints(boxes[conn.sourceBoxId]['endpoints'], conn, false);
 
 				var conn = jsPlumb.connect({
-					source: y,
-					target: x
+					source: sourceEndpoint,
+					target: targetEndpoint
 				});
 			});
 
 			// add remaining unconnected endpoints
 			$.each(boxes, function(idx, box) {
 				$.each(box.endpoints, function(eIdx, e) {
-					var x = jsPlumb.addEndpoint(box['boxId'], e.isTarget ? window.experimentCanvas.getTargetEndpoint() : window.experimentCanvas.getSourceEndpoint(), {
-						anchor: e.anchor,
-						parameters: e.parameters
-					});
+					window.experimentCanvas.addEndpoint(e.isTarget, box['boxId'], e.anchor, e.parameters);
 				});
 			});
 		},
