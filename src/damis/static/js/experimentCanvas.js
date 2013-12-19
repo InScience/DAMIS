@@ -124,12 +124,12 @@
 				var connectionParams = info.connection.getParameters();
 				$.each(window.experimentCanvas.eventObservers, function(idx, o) {
 					if (o.connectionDeleted) {
-						var srcComponentType = window.taskBoxes.getComponentType({
+						var srcComponentType = window.taskBoxes.getComponentDetails({
 							boxId: connectionParams.oTaskBoxId
-						});
-						var targetComponentType = window.taskBoxes.getComponentType({
+						})['type'];
+						var targetComponentType = window.taskBoxes.getComponentDetails({
 							boxId: connectionParams.iTaskBoxId
-						});
+						})['type'];
 						o.connectionDeleted(srcComponentType, targetComponentType, connectionParams);
 					}
 				});
@@ -155,12 +155,12 @@
 
 				$.each(window.experimentCanvas.eventObservers, function(idx, o) {
 					if (o.connectionEstablished) {
-						var srcComponentType = window.taskBoxes.getComponentType({
+						var srcComponentType = window.taskBoxes.getComponentDetails({
 							boxId: params.oTaskBoxId
-						});
-						var targetComponentType = window.taskBoxes.getComponentType({
+						})['type'];
+						var targetComponentType = window.taskBoxes.getComponentDetails({
 							boxId: params.iTaskBoxId
-						});
+						})['type'];
 
 						o.connectionEstablished(srcComponentType, targetComponentType, params);
 					}

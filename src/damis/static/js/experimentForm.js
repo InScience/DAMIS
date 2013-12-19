@@ -100,9 +100,12 @@
 				} else {
 					$(taskBox).removeClass("error");
 				}
-				window.taskBoxes.createTaskFormDialog(taskForm, parameterFormset, window.taskBoxes.getFormWindowId($(taskBox)));
+				var componentLabel = window.taskBoxes.getComponentDetails({
+					formWindow: taskForm
+				})['label'];
+				window.taskBoxes.createTaskFormDialog(taskForm, parameterFormset, window.taskBoxes.getFormWindowId($(taskBox)), componentLabel);
+				window.taskBoxes.setBoxName($(taskBox).attr("id"), componentLabel);
 				window.taskBoxes.addTaskBoxEventHandlers($(taskBox));
-				window.taskBoxes.setBoxName($(taskBox).attr("id"));
 			});
 			$.each($(".task-box"), function(taskBoxId, taskBox) {
 				//restore parameter bindings from server to client representation
@@ -179,14 +182,14 @@
 				appendTo: "#experiment-form",
 				buttons: [{
 					text: gettext('Cancel'),
-                    class: "btn",
+					class: "btn",
 					click: function(ev) {
 						$(this).dialog("close");
 					}
 				},
 				{
 					text: gettext('OK'),
-                    class: "btn btn-primary",
+					class: "btn btn-primary",
 					click: function(ev) {
 						$(this).dialog("close");
 						if (action == "execute") {
@@ -233,9 +236,9 @@
 
 		// returns connected output parameter value or undefined
 		getOutputParam: function(srcRefField) {
-            if (srcRefField.val().match(/PV_.*/)) {
-                return $("input[name$="+srcRefField.val()+"]");
-            }
+			if (srcRefField.val().match(/PV_.*/)) {
+				return $("input[name$=" + srcRefField.val() + "]");
+			}
 			var oParamAddr = $(srcRefField).val();
 			if (oParamAddr) {
 				var parts = oParamAddr.split(",");

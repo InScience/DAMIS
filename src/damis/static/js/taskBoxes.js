@@ -34,10 +34,9 @@
 		},
 
 		// modify box name according to algorithm selection
-		setBoxName: function(taskBoxId) {
-			var formWindow = $("#" + window.taskBoxes.getFormWindowId(taskBoxId));
+		setBoxName: function(taskBoxId, title) {
 			var nameContainer = $("#" + taskBoxId).find(".desc div");
-			nameContainer.html(formWindow.find(".task-form select[id$='-algorithm']").find("option:selected").text());
+			nameContainer.html(title);
 		},
 
 		// delete existing endpoints and create new ones to reflect the
@@ -132,9 +131,9 @@
 				}
 			});
 
-			var componentType = window.taskBoxes.getComponentType({
+			var componentType = window.taskBoxes.getComponentDetails({
 				formWindowId: formWindowId
-			});
+			})['type'];
 			$.each(window.experimentCanvas.eventObservers, function(idx, o) {
 				if (o.init) {
 					o.init(componentType, taskFormContainer);
@@ -145,7 +144,7 @@
 		defaultDialogButtons: function() {
 			return [{
 				text: gettext("OK"),
-                class: "btn",
+				class: "btn",
 				click: function(ev) {
 					$(this).dialog("close");
 				}
@@ -154,10 +153,23 @@
 
 		// create a new task box and modal window, assign event handlers 
 		createTaskBox: function(ev, ui, taskContainer) {
+			// create a task form for this box
+			var addTaskBtn = $("a.add-row")
+			addTaskBtn.click();
+			var taskForm = addTaskBtn.prev();
+
+			//set algorithm ID into the task form
+			var algorithmId = $(ui.draggable).find("input").val();
+			var algorithmInput = taskForm.find(".algorithm-selection select");
+			algorithmInput.find("option[selected=selected]").removeAttr("selected");
+			algorithmInput.find("option[value=" + algorithmId + "]").attr("selected", "selected");
+
 			// drop the task where it was dragged
-			var currentName = ui.draggable.text();
+			var componentLabel = this.getComponentDetails({
+				formWindow: taskForm
+			})['label'];
 			var icoUrl = $(ui.draggable).find("img").attr("src");
-			var taskBox = $(window.taskBoxes.assembleBoxHTML(currentName, icoUrl));
+			var taskBox = $(window.taskBoxes.assembleBoxHTML(componentLabel, icoUrl));
 			taskBox.appendTo(taskContainer);
 			taskBox.css("left", ui.position.left + "px");
 			taskBox.css("top", ui.position.top + "px");
@@ -168,20 +180,8 @@
 			taskBox.attr("id", "task-box-" + count);
 			taskBox.addClass("task-box");
 
-			// create a form for this box
-			var addTaskBtn = $("a.add-row")
-			addTaskBtn.click();
-			var taskForm = addTaskBtn.prev();
-
-			//set algorithm ID into the task form
-			var algorithmId = $(ui.draggable).find("input").val();
-			var algorithmInput = taskForm.find(".algorithm-selection select");
-
-			algorithmInput.find("option[selected=selected]").removeAttr("selected");
-			algorithmInput.find("option[value=" + algorithmId + "]").attr("selected", "selected");
-
 			// create modal window for the form
-			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox), currentName);
+			window.taskBoxes.createTaskFormDialog(taskForm, null, window.taskBoxes.getFormWindowId(taskBox), componentLabel);
 
 			this.addTaskBoxEventHandlers(taskBox);
 
@@ -207,9 +207,9 @@
 				var boxId = $(ev.currentTarget).attr("id");
 				var formWindowId = window.taskBoxes.getFormWindowId(boxId);
 				var formWindow = $("#" + formWindowId);
-				var componentType = window.taskBoxes.getComponentType({
+				var componentType = window.taskBoxes.getComponentDetails({
 					formWindow: formWindow
-				});
+				})['type'];
 
 				$.each(window.experimentCanvas.eventObservers, function(idx, o) {
 					if (o.doubleClick) {
@@ -238,7 +238,7 @@
 			return taskBox instanceof $ ? taskBox.attr("id") + "-form": taskBox + "-form";
 		},
 
-		getComponentType: function(params) {
+		getComponentDetails: function(params) {
 			var formWindow;
 			if (params['boxId']) {
 				formWindow = $("#" + window.taskBoxes.getFormWindowId(params['boxId']));
@@ -248,7 +248,7 @@
 				formWindow = params['formWindow'];
 			}
 			var componentOption = $(formWindow).find(".algorithm-selection option[selected=selected]");
-			return componentOption.text();
+			return window.componentDetails[componentOption.val()];
 		}
 	}
 

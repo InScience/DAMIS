@@ -42,7 +42,7 @@
                                                width="64px" height="64px" />
 
                                                <a href="#"><i class="component-tooltip icon-info-sign"></i></a>
-                                               <div class="desc"><div>{{ algorithm.title }}</div></div>
+                                               <div class="desc"><div>{{ algorithm.get_label_display }}</div></div>
                                                <input type="hidden" value="{{ algorithm.pk }}" />
                                                </div>
                                         {% endfor %}
@@ -104,9 +104,14 @@
             });
 
             // mapping native components to Ajax urls for dialog rendering
-            window.componentFormUrls={};
+            window.componentFormUrls = {};
             {% for name, url in component_form_urls %}
                 window.componentFormUrls["{{ name }}"] = "{{ url }}";
+            {% endfor %}
+
+            window.componentDetails = {};
+            {% for id, details in component_details %}
+                window.componentDetails["{{ id }}"] = {type: "{{ details.title }}", label: "{{ details.label }}"};
             {% endfor %}
 
             window.experimentForm.params = { 
