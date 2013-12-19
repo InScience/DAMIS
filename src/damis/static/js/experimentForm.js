@@ -100,7 +100,7 @@
 				} else {
 					$(taskBox).removeClass("error");
 				}
-				var componentLabel = window.taskBoxes.getComponentDetails({
+				var componentLabel = window.componentSettings.getComponentDetails({
 					formWindow: taskForm
 				})['label'];
 				window.taskBoxes.createTaskFormDialog(taskForm, parameterFormset, window.taskBoxes.getFormWindowId($(taskBox)), componentLabel);

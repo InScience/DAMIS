@@ -63,14 +63,14 @@
 
 				if (connectionType === "INPUT_CONNECTION") {
 					//add input endpoint
-					window.experimentCanvas.addEndpoint(true, taskBox, inAnchors[idx], {
+					window.endpoints.addEndpoint(true, taskBox, inAnchors[idx], {
 						iParamNo: idx,
 						iTaskBoxId: taskBoxId
 					});
 					iIdx++;
 				} else if (connectionType === "OUTPUT_CONNECTION") {
 					//add output endpoint
-					window.experimentCanvas.addEndpoint(false, taskBox, outAnchors[oIdx], {
+					window.endpoints.addEndpoint(false, taskBox, outAnchors[oIdx], {
 						oParamNo: idx,
 						oTaskBoxId: taskBoxId
 					});
@@ -123,10 +123,10 @@
 				}
 			});
 
-			var componentType = window.taskBoxes.getComponentDetails({
+			var componentType = window.componentSettings.getComponentDetails({
 				formWindowId: formWindowId
 			})['type'];
-			$.each(window.experimentCanvas.eventObservers, function(idx, o) {
+			$.each(window.eventObservers.eventObservers, function(idx, o) {
 				if (o.init) {
 					o.init(componentType, taskFormContainer);
 				}
@@ -157,7 +157,7 @@
 			algorithmInput.find("option[value=" + algorithmId + "]").attr("selected", "selected");
 
 			// drop the task where it was dragged
-			var componentLabel = this.getComponentDetails({
+			var componentLabel = window.componentSettings.getComponentDetails({
 				formWindow: taskForm
 			})['label'];
 			var icoUrl = $(ui.draggable).find("img").attr("src");
@@ -199,11 +199,11 @@
 				var boxId = $(ev.currentTarget).attr("id");
 				var formWindowId = window.taskBoxes.getFormWindowId(boxId);
 				var formWindow = $("#" + formWindowId);
-				var componentType = window.taskBoxes.getComponentDetails({
+				var componentType = window.componentSettings.getComponentDetails({
 					formWindow: formWindow
 				})['type'];
 
-				$.each(window.experimentCanvas.eventObservers, function(idx, o) {
+				$.each(window.eventObservers.eventObservers, function(idx, o) {
 					if (o.doubleClick) {
 						o.doubleClick(componentType, formWindow);
 					}
@@ -229,19 +229,6 @@
 		getFormWindowId: function(taskBox) {
 			return taskBox instanceof $ ? taskBox.attr("id") + "-form": taskBox + "-form";
 		},
-
-		getComponentDetails: function(params) {
-			var formWindow;
-			if (params['boxId']) {
-				formWindow = $("#" + window.taskBoxes.getFormWindowId(params['boxId']));
-			} else if (params['formWindowId']) {
-				formWindow = $("#" + params['formWindowId']);
-			} else if (params['formWindow']) {
-				formWindow = params['formWindow'];
-			}
-			var componentOption = $(formWindow).find(".algorithm-selection option[selected=selected]");
-			return window.componentDetails[componentOption.val()];
-		}
 	}
 
 })();

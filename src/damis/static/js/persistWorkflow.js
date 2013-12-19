@@ -79,11 +79,11 @@
 				var targetBox = $("#" + conn.targetBoxId);
 
 				// add endpoints that participate in a connection
-				var targetEndpoint = window.experimentCanvas.addEndpoint(true, targetBox, conn.targetAnchor.type, {
+				var targetEndpoint = window.endpoints.addEndpoint(true, targetBox, conn.targetAnchor.type, {
 					iParamNo: conn.params['iParamNo'],
 					iTaskBoxId: conn.params['iTaskBoxId']
 				});
-				var sourceEndpoint = window.experimentCanvas.addEndpoint(false, sourceBox, conn.sourceAnchor.type, {
+				var sourceEndpoint = window.endpoints.addEndpoint(false, sourceBox, conn.sourceAnchor.type, {
 					oParamNo: conn.params['oParamNo'],
 					oTaskBoxId: conn.params['oTaskBoxId']
 				});
@@ -102,7 +102,7 @@
 			// add remaining unconnected endpoints
 			$.each(boxes, function(idx, box) {
 				$.each(box.endpoints, function(eIdx, e) {
-					window.experimentCanvas.addEndpoint(e.isTarget, box['boxId'], e.anchor, e.parameters);
+					window.endpoints.addEndpoint(e.isTarget, box['boxId'], e.anchor, e.parameters);
 				});
 			});
 		},
