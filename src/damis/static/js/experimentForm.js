@@ -243,9 +243,6 @@
 
 		// returns connected output parameter value or undefined
 		getOutputParam: function(srcRefField) {
-			if (srcRefField.val().match(/PV_.*/)) {
-				return $("input[name$=" + srcRefField.val() + "]");
-			}
 			var oParamAddr = $(srcRefField).val();
 			if (oParamAddr) {
 				var parts = oParamAddr.split(",");

@@ -57,75 +57,66 @@
 			return persistedStr;
 		},
 
-		// restores jsPlumb entities from a string 
-		restoreJsPlumbEntities: function(persistedStr) {
+		restoreBoxes: function(persistedStr) {
 			var parts = persistedStr.split("***");
 			var boxes = JSON.parse(parts[0]);
-			var connections = JSON.parse(parts[1]);
-			window.taskBoxes.countBoxes = parseInt(parts[2]);
 
-			// restore boxes 
 			$.each(boxes, function(idx, box) {
 				var taskBox = $(window.taskBoxes.assembleBoxHTML("", box['icoUrl']));
 				taskBox.attr("id", box['boxId']);
 				taskBox.appendTo($("#flowchart-container"));
 				taskBox.css("left", box['x'] + "px");
 				taskBox.css("top", box['y'] + "px");
-			});
 
-			// recreate connections 
-			$.each(connections, function(idx, conn) {
-				var sourceBox = $("#" + conn.sourceBoxId);
-				var targetBox = $("#" + conn.targetBoxId);
-
-				// add endpoints that participate in a connection
-				var targetEndpoint = window.endpoints.addEndpoint(true, targetBox, conn.targetAnchor.type, {
-					iParamNo: conn.params['iParamNo'],
-					iTaskBoxId: conn.params['iTaskBoxId']
+				$.each(box['endpoints'], function(i, e) {
+					var endpoint = window.endpoints.addEndpoint(e.isTarget, box['boxId'], e.anchor, e.parameters);
 				});
-				var sourceEndpoint = window.endpoints.addEndpoint(false, sourceBox, conn.sourceAnchor.type, {
+			});
+		},
+
+		restoreConnections: function(persistedStr) {
+			var parts = persistedStr.split("***");
+			var connections = JSON.parse(parts[1]);
+
+			$.each(connections, function(idx, conn) {
+				var sourceParams = {
 					oParamNo: conn.params['oParamNo'],
 					oTaskBoxId: conn.params['oTaskBoxId']
+				};
+				var targetParams = {
+					iParamNo: conn.params['iParamNo'],
+					iTaskBoxId: conn.params['iTaskBoxId']
+				};
+
+				var sourceEndpoint;
+				$.each(jsPlumb.getEndpoints(conn.sourceBoxId), function(eIdx, e) {
+					match = ! e.isTarget && e.getParameters()["oParamNo"] == conn.params["oParamNo"];
+					if (match) {
+						sourceEndpoint = e;
+						return false;
+					}
 				});
 
-				// remove endpoints that participate in a connection from the
-				// list of endpoints to be recreated 
-				window.persistWorkflow.removeConnectedEndpoints(boxes[conn.targetBoxId]['endpoints'], conn, true);
-				window.persistWorkflow.removeConnectedEndpoints(boxes[conn.sourceBoxId]['endpoints'], conn, false);
+				var targetEndpoint;
+				$.each(jsPlumb.getEndpoints(conn.targetBoxId), function(eIdx, e) {
+					match = e.isTarget && e.getParameters()["iParamNo"] == conn.params["iParamNo"];
+					if (match) {
+						targetEndpoint = e;
+						return false;
+					}
+				});
 
-				var conn = jsPlumb.connect({
+				jsPlumb.connect({
 					source: sourceEndpoint,
 					target: targetEndpoint
 				});
 			});
-
-			// add remaining unconnected endpoints
-			$.each(boxes, function(idx, box) {
-				$.each(box.endpoints, function(eIdx, e) {
-					window.endpoints.addEndpoint(e.isTarget, box['boxId'], e.anchor, e.parameters);
-				});
-			});
 		},
 
-		// remove endpoint from the array if it matches the connection endpoint
-		// by the parameters
-		removeConnectedEndpoints: function(epoints, conn, isTarget) {
-			var len = epoints.length;
-			while (len--) {
-				var e = epoints[len];
-				var match = isTarget ? e.parameters["iParamNo"] == conn.params["iParamNo"] : e.parameters["oParamNo"] == conn.params["oParamNo"];
-				if (match) {
-					epoints.splice(len, 1);
-				}
-			}
-		},
-
-		restore: function(persistedStr) {
-			jsPlumb.setSuspendDrawing(true);
-			this.restoreJsPlumbEntities(persistedStr);
-			window.experimentForm.init();
-			window.experimentForm.reinitExperimentForm();
-			jsPlumb.setSuspendDrawing(false, true);
+		restoreCountBoxes: function(persistedStr) {
+			var parts = persistedStr.split("***");
+			var boxes = JSON.parse(parts[0]);
+			window.taskBoxes.countBoxes = parseInt(parts[2]);
 		},
 	}
 })();

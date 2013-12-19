@@ -1,18 +1,5 @@
 (function() {
 	window.technicalDetails = {
-		// initialization upon dialog creation
-		init: function(componentType, formWindow) {
-			if (componentType == 'TECHNICAL DETAILS') {
-				if (formWindow.find("input[name$=source_ref]").val()) {
-					// editing workflow: a connection already exists 
-					this.update(formWindow);
-				} else {
-					// new workflow: 
-					this.toUnconnectedState(formWindow);
-				}
-			}
-		},
-
 		// prepare dialog, when component is unconnected 
 		toUnconnectedState: function(formWindow) {
 			formWindow.find(".technical-details-container").remove();

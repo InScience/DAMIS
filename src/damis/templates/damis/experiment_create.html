@@ -129,7 +129,16 @@
             //displayed
             var persistedStr = $("#id_workflow_state").val();
             if (persistedStr) {
-                window.persistWorkflow.restore(persistedStr);
+			    jsPlumb.setSuspendDrawing(true);
+
+                window.persistWorkflow.restoreBoxes(persistedStr);
+                window.persistWorkflow.restoreCountBoxes(persistedStr);
+
+			    window.experimentForm.init();
+			    window.experimentForm.reinitExperimentForm();
+
+                window.persistWorkflow.restoreConnections(persistedStr);
+			    jsPlumb.setSuspendDrawing(false, true);
             } else {
                 window.experimentForm.init();
             }
