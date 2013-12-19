@@ -63,7 +63,6 @@
 					lineWidth: 2
 				},
 				hoverPaintStyle: this.getEndpointHoverStyle(),
-				maxConnections: - 1,
 				dropOptions: {
 					hoverClass: "hover",
 					activeClass: "active-target"
@@ -77,12 +76,13 @@
 			if (isTarget) {
 				endpoint = jsPlumb.addEndpoint(box, this.getTargetEndpoint(), {
 					anchor: anchor,
+                    maxConnections: 1,
 					parameters: parameters
 				});
 			} else {
 				endpoint = jsPlumb.addEndpoint(box, this.getSourceEndpoint(), {
 					anchor: anchor,
-					maxConnections: - 1,
+                    maxConnections: -1,
 					parameters: parameters
 				});
 			}
