@@ -1,0 +1,68 @@
+File '/usr/include/pthread.h'
+Lines executed:0.00% of 2
+/usr/include/pthread.h:creating 'pthread.h.gcov'
+
+File 'DimReductionMethod.cpp'
+Lines executed:83.33% of 24
+DimReductionMethod.cpp:creating 'DimReductionMethod.cpp.gcov'
+
+File 'DataMatrix.h'
+Lines executed:33.33% of 3
+DataMatrix.h:creating 'DataMatrix.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_vector.h'
+Lines executed:68.09% of 47
+/usr/include/c++/4.4/bits/stl_vector.h:creating 'stl_vector.h.gcov'
+
+File '/usr/include/c++/4.4/ext/new_allocator.h'
+Lines executed:83.33% of 6
+/usr/include/c++/4.4/ext/new_allocator.h:creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/allocator.h'
+Lines executed:100.00% of 3
+/usr/include/c++/4.4/bits/allocator.h:creating 'allocator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_construct.h'
+Lines executed:0.00% of 2
+/usr/include/c++/4.4/bits/stl_construct.h:creating 'stl_construct.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_algobase.h'
+Lines executed:40.00% of 25
+/usr/include/c++/4.4/bits/stl_algobase.h:creating 'stl_algobase.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_iterator.h'
+Lines executed:28.57% of 7
+/usr/include/c++/4.4/bits/stl_iterator.h:creating 'stl_iterator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_uninitialized.h'
+Lines executed:27.27% of 11
+/usr/include/c++/4.4/bits/stl_uninitialized.h:creating 'stl_uninitialized.h.gcov'
+
+File '/usr/include/c++/4.4/new'
+Lines executed:100.00% of 1
+/usr/include/c++/4.4/new:creating 'new.gcov'
+
+File 'DataObject.h'
+Lines executed:0.00% of 1
+DataObject.h:creating 'DataObject.h.gcov'
+
+File '/usr/include/c++/4.4/bits/vector.tcc'
+Lines executed:0.00% of 43
+/usr/include/c++/4.4/bits/vector.tcc:creating 'vector.tcc.gcov'
+
+File '/usr/include/c++/4.4/bits/basic_string.h'
+Lines executed:7.14% of 14
+/usr/include/c++/4.4/bits/basic_string.h:creating 'basic_string.h.gcov'
+
+File '/usr/include/c++/4.4/i486-linux-gnu/bits/gthr-default.h'
+Lines executed:0.00% of 1
+/usr/include/c++/4.4/i486-linux-gnu/bits/gthr-default.h:creating 'gthr-default.h.gcov'
+
+File '/usr/include/c++/4.4/ext/atomicity.h'
+Lines executed:0.00% of 7
+/usr/include/c++/4.4/ext/atomicity.h:creating 'atomicity.h.gcov'
+
+File 'ObjectMatrix.h'
+Lines executed:100.00% of 1
+ObjectMatrix.h:creating 'ObjectMatrix.h.gcov'
+

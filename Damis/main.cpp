@@ -29,7 +29,6 @@
 #include "PCA.h"
 #include "AdditionalMethods.h"
 #include <sstream>
-using namespace std;
 
 int AdditionalMethods::PID;    //  seed for random numbers generator
 
@@ -49,7 +48,7 @@ int main(int argc, char** argv) {
     double epsilon;                             // skaiciavimu tikslumas
     int maxIter, d;                             // (maxIter) leistinas iteraciju kiekis, (d) mazinimo dimensija
     
-    epsilon = 0.1;
+    epsilon = 0.001;
     maxIter = 10;
     d = 2;
     
@@ -59,35 +58,44 @@ int main(int argc, char** argv) {
     numOfProcs = MPI::COMM_WORLD.Get_size();
     MPI_Status status;
     
-    //PCA::PCA mthd(d);
-    //PCA::PCA mthd(1.0);
-    //SDS mthd(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
-    //SMACOFZEIDEL mthd (epsilon, maxIter, d, BUBLESORTDSC);
-    //SMACOFZEIDEL mthd (epsilon, maxIter, d, BUBLESORTASC);
-    //SMACOFZEIDEL mthd (epsilon, maxIter, d, RANDOM);
-    //SMACOF mthd (epsilon, maxIter, d);
-    SAMANN mthd(70, 10, 5.0, 30);
-    //DMA mthd(epsilon, 10, d, 15);
-    //SOM mthd(100, 3, 5);
-    //SOMMDS mthd(epsilon, maxIter, d, 100, 3, 5);
+    PCA::PCA mthd1(d);
+    PCA::PCA mthd2(1.0);
+    SDS mthd3(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
+    SMACOFZEIDEL mthd4 (epsilon, maxIter, d, BUBLESORTDSC);
+    SMACOFZEIDEL mthd5 (epsilon, maxIter, d, BUBLESORTASC);
+    SMACOFZEIDEL mthd6 (epsilon, maxIter, d, RANDOM);
+    SMACOF mthd7 (epsilon, maxIter, d);
+    SAMANN mthd8(70, 10, 10.0, 50);
+    DMA mthd9(epsilon, 10, d, 15);
+    SOM mthd10(100, 3, 5);
+    SOMMDS mthd11(epsilon, maxIter, d, 100, 3, 5);
     
     if (pid == 0)
     { 
         t_start = MPI_Wtime();
         if (numOfProcs == 1)
         {               
-            Y = mthd.getProjection();
+            Y = mthd1.getProjection();
+            Y = mthd2.getProjection();
+            Y = mthd3.getProjection();
+            Y = mthd4.getProjection();
+            Y = mthd5.getProjection();
+            Y = mthd6.getProjection();
+            Y = mthd7.getProjection();
+            Y = mthd8.getProjection();
+            Y = mthd9.getProjection();
+            Y = mthd10.getProjection();
+            Y = mthd11.getProjection();
             t_end = MPI_Wtime();
-            PrintMatrix(Y);
-            
+            //PrintMatrix(Y);    
         }
         else
         {
             stressErrors = new double[numOfProcs];     // surinktu paklaidu masyvas (testavimui)       
-            Y = mthd.getProjection();
+            Y = mthd7.getProjection();
             int n = Y.getObjectCount();
             int m = Y.getObjectAt(0).getFeatureCount();
-            stressErrors[0] = mthd.getStress();
+            stressErrors[0] = mthd7.getStress();
             for (int i = 1; i < numOfProcs; i++)
             {
                 MPI_Recv(&receivedStress, 1, MPI_DOUBLE, i, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimama paklaida is kiekvieno proceso
@@ -95,9 +103,6 @@ int main(int argc, char** argv) {
             }
             
             t_end = MPI_Wtime();
-            
-            for (int i = 0; i < numOfProcs; i++)
-                cout<<"Stress error received from process No. " <<i<<" is "<<stressErrors[i]<<endl;
                         
             min_stress = stressErrors[0];
             for (int i = 1; i < numOfProcs; i++)
@@ -135,12 +140,12 @@ int main(int argc, char** argv) {
                 PrintMatrix(Y);
             }                    
         }
-        cout<<"Calculation time: "<<t_end - t_start<<" s."<<endl;
+        std::cout<<"Calculation time: "<<t_end - t_start<<" s."<<std::endl;
     }
     else
     {
-        Y = mthd.getProjection();
-        double stress = mthd.getStress();
+        Y = mthd7.getProjection();
+        double stress = mthd7.getStress();
         MPI_Send(&stress, 1, MPI_DOUBLE, 0, pid, MPI_COMM_WORLD);  // siunciama paklaida teviniam procesui
         MPI_Recv(&send, 1, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimamas pranesimas ar siusti Y
         
@@ -164,11 +169,11 @@ void PrintMatrix(ObjectMatrix matrix)
     int numOfObjects = matrix.getObjectCount();
     int numOfFeatures = matrix.getObjectAt(0).getFeatureCount();
     
-    cout<<"******* Projekcijos matrica *******"<<endl;
+    std::cout<<"******* Projekcijos matrica *******"<<std::endl;
     for (int i = 0; i < numOfObjects; i++)
     {
         for (int j = 0; j < numOfFeatures; j++)
-            cout<<matrix.getObjectAt(i).getFeatureAt(j)<<" ";
-        cout<<endl;
+            std::cout<<matrix.getObjectAt(i).getFeatureAt(j)<<" ";
+        std::cout<<std::endl;
     }
 }

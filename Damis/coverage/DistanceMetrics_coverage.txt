@@ -1,0 +1,40 @@
+File '/usr/include/pthread.h'
+Lines executed:0.00% of 2
+/usr/include/pthread.h:creating 'pthread.h.gcov'
+
+File 'DistanceMetrics.cpp'
+Lines executed:46.67% of 30
+DistanceMetrics.cpp:creating 'DistanceMetrics.cpp.gcov'
+
+File '/usr/include/c++/4.4/cmath'
+Lines executed:100.00% of 1
+/usr/include/c++/4.4/cmath:creating 'cmath.gcov'
+
+File 'DataObject.h'
+Lines executed:100.00% of 1
+DataObject.h:creating 'DataObject.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_vector.h'
+Lines executed:92.86% of 14
+/usr/include/c++/4.4/bits/stl_vector.h:creating 'stl_vector.h.gcov'
+
+File '/usr/include/c++/4.4/bits/allocator.h'
+Lines executed:50.00% of 2
+/usr/include/c++/4.4/bits/allocator.h:creating 'allocator.h.gcov'
+
+File '/usr/include/c++/4.4/ext/new_allocator.h'
+Lines executed:75.00% of 4
+/usr/include/c++/4.4/ext/new_allocator.h:creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_iterator.h'
+Lines executed:100.00% of 2
+/usr/include/c++/4.4/bits/stl_iterator.h:creating 'stl_iterator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_algobase.h'
+Lines executed:100.00% of 9
+/usr/include/c++/4.4/bits/stl_algobase.h:creating 'stl_algobase.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_uninitialized.h'
+Lines executed:100.00% of 3
+/usr/include/c++/4.4/bits/stl_uninitialized.h:creating 'stl_uninitialized.h.gcov'
+

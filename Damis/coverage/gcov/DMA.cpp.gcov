@@ -1,0 +1,142 @@
+        -:    0:Source:DMA.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/DMA.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/DMA.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  DMA.cpp
+        -:    3://  Implementation of the Class DMA
+        -:    4://  Created on:      07-Lie-2013 20:07:30
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:
+        -:    8:#include "DMA.h"
+        -:    9:#include "ShufleEnum.h"
+        -:   10:#include "ShufleObjects.h"
+        -:   11:#include <float.h>
+        -:   12:#include <fstream>
+        -:   13:#include "DistanceMetrics.h"
+        -:   14:#include "DistanceMetricsEnum.h"
+        -:   15:#include <cmath>
+        -:   16:
+        -:   17:/*! \class DMA
+        -:   18:    \brief A class of methods and attributes for DMA algorithm.
+        -:   19: */
+        -:   20:
+    #####:   21:DMA::DMA(){
+        -:   22:
+    #####:   23:}
+        -:   24:
+        1:   25:DMA::~DMA(){
+        -:   26:
+        1:   27:}
+        -:   28:
+        1:   29:DMA::DMA(double eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
+        1:   30:    neighbourNumber = neighbours;
+        1:   31:    initializeProjectionMatrix();
+    #####:   32:}
+        -:   33:
+    #####:   34:DMA::DMA(double eps, int maxIter, int d, int neighbours, ObjectMatrix x):MDS(eps, maxIter, d){
+    #####:   35:    neighbourNumber = neighbours;
+    #####:   36:    X = x;
+    #####:   37:    initializeProjectionMatrix();
+    #####:   38:}
+        -:   39:
+    #####:   40:int DMA::getNeighbours(){
+    #####:   41:    return neighbourNumber;
+        -:   42:}
+        -:   43:
+        1:   44:ObjectMatrix DMA::getProjection(){
+        1:   45:    stressErrors.reserve(maxIteration);
+        1:   46:    m = X.getObjectCount();
+        1:   47:    int iteration = 0;
+        1:   48:    stressErrors.push_back(getStress());
+        1:   49:    double Epsilon = DBL_MAX;
+        1:   50:    double sum = 0.0;   
+        1:   51:    ObjectMatrix Y_new(m);
+        1:   52:    ObjectMatrix gutman;      
+        1:   53:    Y_new = Y;
+        -:   54:
+       11:   55:    while (iteration < maxIteration && Epsilon > epsilon)
+        -:   56:    {
+       10:   57:        shuffle();
+       10:   58:        gutman = getGutman(neighbourNumber);
+        -:   59:
+     1510:   60:        for (int i = 0; i < m; i++)
+        -:   61:        {            
+     4500:   62:            for (int j = 0; j < d; j++)
+        -:   63:            {
+     3000:   64:                sum = 0.0;
+    96000:   65:                for (int k = (i - neighbourNumber); k <= (i + neighbourNumber); k++)
+    93000:   66:                    if (k >= 0 && k < m)
+    88200:   67:                        sum += gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+     6000:   68:                Y_new.updateDataObject(i, j, Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / getV(i));
+        -:   69:            }
+        -:   70:        }
+       10:   71:        Y = Y_new;
+       10:   72:        iteration++;        
+       10:   73:        stressErrors.push_back(getStress());        
+       10:   74:        Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
+        -:   75:    }
+        1:   76:    return  Y;
+        -:   77:}
+        -:   78:
+    #####:   79:int DMA::getV(int i)
+        -:   80:{
+     3000:   81:    int k1 = i - neighbourNumber;
+     3000:   82:    int k2 = i + neighbourNumber;
+     3000:   83:    if (k1 < 0)
+      300:   84:        k1 = 0;
+     3000:   85:    if (k2 >= m)
+      300:   86:        k2 = m - 1;
+     3000:   87:    return k2 - k1;
+        -:   88:}
+        -:   89:
+    #####:   90:void DMA::setNeighbours(int neighbours){
+    #####:   91:    neighbourNumber = neighbours;
+    #####:   92:}
+        -:   93:
+       10:   94:void DMA::shuffle()
+        -:   95:{
+       10:   96:    int m = X.getObjectCount();
+       10:   97:    int j = 0;
+       10:   98:    ObjectMatrix Xshuffled(m);
+       10:   99:    ObjectMatrix Yshuffled(m);
+        -:  100:    std::vector<int> shufledIndexes;
+       10:  101:    shufledIndexes.reserve(m);
+       10:  102:    shufledIndexes = ShufleObjects::shufleObjectMatrix(RANDOM, Y);
+     1510:  103:    for (int i = 0; i < m; i++)
+        -:  104:    {
+     1500:  105:        j = shufledIndexes.at(i);
+     1500:  106:        Xshuffled.addObject(X.getObjectAt(j));
+        -:  107:    }
+       10:  108:    X = Xshuffled;
+        -:  109:    
+     1510:  110:    for (int i = 0; i < m; i++)
+        -:  111:    {
+     1500:  112:        j = shufledIndexes.at(i);
+     1500:  113:        Yshuffled.addObject(Y.getObjectAt(j));
+        -:  114:    }
+       10:  115:    Y = Yshuffled;
+        -:  116:    
+       10:  117:}
+        -:  118:
+       11:  119:double DMA::getStress(){
+       11:  120:    double sum1 = 0.0, sum2 = 0.0, stress = 0.0;
+       11:  121:    int m = X.getObjectCount();
+       11:  122:    double distX = 0.0;
+       11:  123:    double distY = 0.0;
+        -:  124:    
+     1650:  125:    for (int i = 0; i < m - 1; i++)
+        -:  126:    {
+   124564:  127:        for (int j = i + 1; j < m; j++)
+        -:  128:        {
+   122925:  129:            distX = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+   122925:  130:            distY = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+   245850:  131:            sum1 += std::pow(distX - distY, 2);
+   122925:  132:            sum2 += std::pow(distX, 2);
+        -:  133:        }
+        -:  134:    }
+       11:  135:    stress = std::sqrt(sum1 / sum2);
+       11:  136:    return stress;
+        -:  137:}

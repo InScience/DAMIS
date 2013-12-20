@@ -98,8 +98,8 @@ void TestMethodWithLargeXMatrix(ObjectMatrix X, ObjectMatrix Y, int d, const cha
 }
 
 int main(int argc, char** argv) {
-    int d = 2, n = 0, iter = 10, neighbours = 10, mTrain = 100, nNeurons = 10, k_x = 100, k_y = 3, eHat = 5;
-    double epsilon = 0.001, dispPart = 1.0, eta = 1.0;
+    int d = 2, n = 0, iter = 100, neighbours = 10, mTrain = 100, nNeurons = 10, k_x = 100, k_y = 3, eHat = 5;
+    double epsilon = 0.001, dispPart = 1.0, eta = 5.0;
     ObjectMatrix Y;
     std::vector<double> stressErrors;
     

@@ -1,0 +1,228 @@
+        -:    0:Source:MDS.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/MDS.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/MDS.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  MDS.cpp
+        -:    3://  Implementation of the Class MDS
+        -:    4://  Created on:      07-Lie-2013 20:07:30
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:
+        -:    8:/*! \class MDS
+        -:    9:    \brief A class of methods and attributes for MDS algorithms.
+        -:   10: */
+        -:   11:
+        -:   12:#include "MDS.h"
+        -:   13:#include "ARFF.h"
+        -:   14:#include "string"
+        -:   15:#include "DistanceMetrics.h"
+        -:   16:#include <cstdlib>
+        -:   17:#include "DataObject.h"
+        -:   18:#include "PCA.h"
+        -:   19:#include <vector>
+        -:   20:#include <cmath>
+        -:   21:
+        2:   22:MDS::MDS(){
+        -:   23:
+    #####:   24:}
+        -:   25:
+        8:   26:MDS::~MDS(){
+        -:   27:
+       16:   28:}
+        -:   29:
+       14:   30:MDS::MDS(double eps, int maxIter, int dimension){
+        7:   31:    epsilon = eps;
+        7:   32:    maxIteration = maxIter;
+        7:   33:    d = dimension;
+        7:   34:    int m = X.getObjectCount();
+        7:   35:    gutman = ObjectMatrix(m);
+        -:   36:    std::vector<double> gutmanRow;
+        7:   37:    gutmanRow.reserve(m);
+        -:   38:    
+     1057:   39:    for (int i = 0; i < m; i++)
+     1050:   40:        gutmanRow.push_back(0.0);
+        -:   41:    
+     1057:   42:    for (int i = 0; i < m; i++)       
+     1050:   43:        gutman.addObject(DataObject(gutmanRow));
+    #####:   44:}
+        -:   45:
+    #####:   46:MDS::MDS(double eps, int maxIter, int dimension, ObjectMatrix initialMatrix){
+    #####:   47:    epsilon = eps;
+    #####:   48:    maxIteration = maxIter;
+    #####:   49:    d = dimension;
+    #####:   50:    X = initialMatrix;
+    #####:   51:}
+        -:   52:
+    #####:   53:double MDS::getEpsilon(){
+    #####:   54:    return epsilon;
+        -:   55:}
+        -:   56:
+      174:   57:ObjectMatrix MDS::getGutman(){
+      174:   58:    int m = X.getObjectCount();
+        -:   59:    double distXij;
+        -:   60:    double distYij;
+      174:   61:    double sum = 0.0;
+        -:   62:       
+    18724:   63:    for (int i = 0; i < m; i++)
+        -:   64:    {
+    18550:   65:        sum = 0.0;
+  2488800:   66:        for (int j = 0; j < i; j++)
+        -:   67:        {
+  1225850:   68:            distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+  1225850:   69:            if (distYij > 0)
+        -:   70:            {
+  1225849:   71:                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+  1225849:   72:                gutman.updateDataObject(i, j,  -1 * distXij/distYij);
+        -:   73:            }
+        -:   74:            else
+        1:   75:                gutman.updateDataObject(i, j, 0.0);
+  1225850:   76:            sum += gutman.getObjectAt(i).getFeatureAt(j);
+        -:   77:        }
+        -:   78:        
+  2488800:   79:        for (int j = i + 1; j < m; j++)
+        -:   80:        {
+  1225850:   81:            distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+  1225850:   82:            if (distYij > 0)
+        -:   83:            {
+  1225849:   84:                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+  1225849:   85:                gutman.updateDataObject(i, j,  -1 * distXij/distYij);
+        -:   86:            }
+        -:   87:            else
+        1:   88:                gutman.updateDataObject(i, j, 0.0);
+  1225850:   89:            sum += gutman.getObjectAt(i).getFeatureAt(j);
+        -:   90:        }
+    18550:   91:        gutman.updateDataObject(i, i, -1 * sum);
+        -:   92:    }
+      174:   93:    return  gutman;
+        -:   94:}
+        -:   95:
+       10:   96:ObjectMatrix MDS::getGutman(int neighbour){
+       10:   97:    int m = X.getObjectCount();
+        -:   98:    double distXij;
+        -:   99:    double distYij;
+       10:  100:    double sum = 0.0;
+        -:  101:       
+     1510:  102:    for (int i = 0; i < m; i++)
+        -:  103:    {
+   226500:  104:        for (int j = 0; j < m; j++)
+   225000:  105:            gutman.updateDataObject(i, j, 0.0);
+        -:  106:        
+    48000:  107:        for (int j = (i - neighbour); j <= (i + neighbour); j++)
+        -:  108:        {
+    46500:  109:            if (j >= 0 && j != i && j < m)
+        -:  110:            {
+    42600:  111:                distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+    42600:  112:                if (distYij > 0)
+        -:  113:                {
+    42600:  114:                    distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+    42600:  115:                    gutman.updateDataObject(i, j, -1.0 * distXij/distYij + 1.0);
+        -:  116:                }
+        -:  117:                else
+    #####:  118:                    gutman.updateDataObject(i, j, 1.0);
+        -:  119:            }
+        -:  120:        }
+        -:  121:    }
+        -:  122:    
+     1510:  123:    for (int i = 0; i < m; i++)
+        -:  124:    {
+     1500:  125:        sum = 0.0;
+   226500:  126:        for (int j = 0; j < i; j++)
+   111750:  127:            sum += gutman.getObjectAt(i).getFeatureAt(j);
+        -:  128:        
+   226500:  129:        for (int j = i + 1; j < m; j++)
+   111750:  130:            sum += gutman.getObjectAt(i).getFeatureAt(j);
+        -:  131:    
+     1500:  132:        gutman.updateDataObject(i, i, -1 * sum);
+        -:  133:    }
+        -:  134:
+       10:  135:    return  gutman;
+        -:  136:}
+        -:  137:
+    40950:  138:ObjectMatrix MDS::getGutman(ObjectMatrix Ynew){
+    40950:  139:    int m = X.getObjectCount();
+        -:  140:    double distXij;
+        -:  141:    double distYij;
+    40950:  142:    double sum = 0.0;
+        -:  143:       
+  6183450:  144:    for (int i = 0; i < m; i++)
+        -:  145:    {
+  6142500:  146:        sum = 0.0;
+927517500:  147:        for (int j = 0; j < i; j++)
+        -:  148:        {
+457616250:  149:            distYij = DistanceMetrics::getDistance(Ynew.getObjectAt(i), Ynew.getObjectAt(j), EUCLIDEAN);
+457616250:  150:            if (distYij > 0)
+        -:  151:            {
+457616250:  152:                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+457616250:  153:                gutman.updateDataObject(i, j,  -1 * distXij/distYij);
+        -:  154:            }
+        -:  155:            else
+    #####:  156:                gutman.updateDataObject(i, j, 0.0);
+457616250:  157:            sum += gutman.getObjectAt(i).getFeatureAt(j);
+        -:  158:        }
+        -:  159:        
+927517500:  160:        for (int j = i + 1; j < m; j++)
+        -:  161:        {
+457616250:  162:            distYij = DistanceMetrics::getDistance(Ynew.getObjectAt(i), Ynew.getObjectAt(j), EUCLIDEAN);
+457616250:  163:            if (distYij > 0)
+        -:  164:            {
+457616250:  165:                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+457616250:  166:                gutman.updateDataObject(i, j,  -1 * distXij/distYij);
+        -:  167:            }
+        -:  168:            else
+    #####:  169:                gutman.updateDataObject(i, j, 0.0);
+457616250:  170:            sum += gutman.getObjectAt(i).getFeatureAt(j);
+        -:  171:        }
+  6142500:  172:        gutman.updateDataObject(i, i, -1 * sum);
+        -:  173:    }
+    40950:  174:    return  gutman;
+        -:  175:}
+        -:  176:
+    #####:  177:int MDS::getMaxIteration(){
+    #####:  178:    return maxIteration;
+        -:  179:}
+        -:  180:
+      451:  181:double MDS::getStress(){
+      451:  182:    double stress = 0.0;
+      451:  183:    int m = X.getObjectCount();
+      451:  184:    double distX = 0.0;
+      451:  185:    double distY = 0.0;
+        -:  186:    
+    59710:  187:    for (int i = 0; i < m - 1; i++)
+        -:  188:    {
+  4348304:  189:        for (int j = i + 1; j < m; j++)
+        -:  190:        {
+  4289045:  191:            distX = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+  4289045:  192:            distY = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+  8578090:  193:            stress += getWeight(i, j) * std::pow(distX - distY, 2);
+        -:  194:        }
+        -:  195:    }
+        -:  196:    
+      451:  197:    return stress;
+        -:  198:}
+        -:  199:
+    #####:  200:double MDS::getWeight(int i, int j)
+        -:  201:{
+        -:  202:    //double weight = 0.0;
+        -:  203:    //int m = X.getObjectCount();
+        -:  204:    
+        -:  205:    //for (int k = i; k < j; k++)
+        -:  206:    //for (int k = j; k < m; k++)
+        -:  207:    //    weight += std::pow(DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(k), EUCLIDEAN), 2);
+        -:  208:    //return 1 / weight;
+  4289045:  209:    return 1.0;
+        -:  210:}
+        -:  211:
+    #####:  212:void MDS::setEpsilon(double eps){
+    #####:  213:    epsilon = eps;
+    #####:  214:}
+        -:  215:
+    #####:  216:void MDS::setMaxIteration(int maxIter){
+    #####:  217:    maxIteration = maxIter;
+    #####:  218:}
+        -:  219:
+    #####:  220:std::vector<double> MDS::getStressErrors()
+        -:  221:{
+    #####:  222:    return stressErrors;
+        -:  223:}
