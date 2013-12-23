@@ -1,6 +1,6 @@
 (function() {
 	window.chart = {
-        // initialization upon dialog creation
+		// initialization upon dialog creation
 		init: function(componentType, formWindow) {
 			if (componentType == 'CHART') {
 				this.toUnconnectedState(formWindow);
@@ -29,7 +29,7 @@
 			},
 			{
 				text: gettext('Download'),
-                class: "btn",
+				class: "btn",
 				click: function(ev) {
 					var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
 					window.chart.downloadChart($(plotContainer[0]));
@@ -37,41 +37,6 @@
 			}];
 			var defaultButtons = window.taskBoxes.defaultDialogButtons();
 			return buttons.concat(defaultButtons);
-		},
-
-		// TODO: sends Ajax request to obtain results for the connected component
-		getDataToRender: function() {
-			initData = [{
-				group: "1",
-				data: window.chart.generate(2, 1.8)
-			},
-			{
-				group: "2",
-				data: window.chart.generate(4, 0.9)
-			},
-			{
-				group: "3",
-				data: window.chart.generate(7, 1.1)
-			},
-			{
-				group: "4",
-				data: window.chart.generate(10, 0.2)
-			}];
-			return initData;
-		},
-
-        // TODO: remove when Ajax data retrieval is complete
-		generate: function(offset, amplitude) {
-			var res = [];
-			var start = 0,
-			end = 10;
-
-			for (var i = 0; i <= 50; ++i) {
-				var x = start + i / 50 * (end - start);
-				res.push([x, amplitude * Math.sin(x + offset)]);
-			}
-
-			return res;
 		},
 
 		// custom color palette, rotates through a range of hue values
@@ -87,7 +52,7 @@
 			});
 		},
 
-        // symbol palette, rotates through a set of symbols
+		// symbol palette, rotates through a set of symbols
 		generateSymbolPalette: function(data) {
 			var baseOptions = [["circle", gettext("Circle")], ["square", gettext("Square")], ["diamond", gettext("Diamond")], ["triangle", gettext("Triangle")], ["cross", gettext("Cross")]];
 			var allOptions = [];
@@ -97,10 +62,10 @@
 			return allOptions;
 		},
 
-        // renders the chart in place of plotPlaceholder
-		renderChart: function(plotContainer, plotPlaceholder, data, colors, symbols) {
+		// renders the chart in place of plotPlaceholder
+		renderChart: function(plotContainer, plotPlaceholder, dataContent, colors, symbols) {
 			var data = [];
-			$.each(initData, function(idx, rec) {
+			$.each(dataContent.data, function(idx, rec) {
 				data.push({
 					label: rec['group'],
 					points: {
@@ -123,6 +88,16 @@
 					clickable: true,
 					hoverable: true
 				},
+				xaxis: {
+					min: dataContent["minX"],
+					max: dataContent["maxX"],
+					tickSize: 5
+				},
+				yaxis: {
+					min: dataContent["minY"],
+					max: dataContent["maxY"],
+					tickSize: 5
+				},
 			};
 
 			var plot = $.plot(plotPlaceholder, data, options);
@@ -141,7 +116,7 @@
 					var x = item.datapoint[0].toFixed(2),
 					y = item.datapoint[1].toFixed(2);
 
-					var containerOffset = $(plotPlaceholder).offset();
+					var containerOffset = $(plotContainer).find(".results-container").offset();
 					$("#point-tooltip").html(x + ", " + y + " (" + gettext("index") + ": " + item.dataIndex + ", " + gettext("class") + ": " + item.series.label + ")").css({
 						top: item.pageY - containerOffset['top'],
 						left: item.pageX - containerOffset['left'] + 10
@@ -152,8 +127,8 @@
 			});
 		},
 
-        // updates the chart colors and symbols
-		updateChart: function(dialog) {
+		// updates the chart colors and symbols
+		updateChartColorsSymbols: function(dialog) {
 			var plotContainer = $(dialog.find(".plot-container")[0]);
 			var formWindow = dialog.find(".task-window");
 
@@ -172,24 +147,26 @@
 			window.chart.renderChart(plotContainer, "#" + formWindow.attr("id") + " .results-container", data, colors, symbols);
 		},
 
-        // displays a pop-up asking to download file
+		// displays a pop-up asking to download file
 		downloadChart: function(plotContainer) {
 			var canvas = plotContainer.find("canvas")[0];
 			var image = canvas.toDataURL("image/jpeg");
 			image = image.replace("image/jpeg", "image/octet-stream");
 
-			//var image = canvas.toDataURL();
-			//image = image.replace("image/png", "image/octet-stream");
+			// var image = canvas.toDataURL();
+			// image = image.replace("image/png", "image/octet-stream");
+			// TODO: use server side to obtain download prompt
 			document.location.href = image;
 		},
 
-        // re-renders a chart
-		update: function(formWindow) {
-			formWindow.find(".plot-container").remove();
-
-			var plotContainer = $("<div class=\"plot-container\" style=\"min-height: 400px; position: relative;\"></div>");
+		// renders the chart and the form with inputs for colors and symbols
+		// for the first time
+		renderChartAndForm: function(dataContent, formWindow) {
+			var plotContainer = formWindow.find(".plot-container");
+			plotContainer.css("min-height", 400);
+			plotContainer.css("position", "relative");
 			var plotPlaceholder = "<div class=\"results-container\" style=\"width: 600px; height: 300px; margin: auto;\"></div>";
-			plotContainer.append(plotPlaceholder);
+			plotContainer.html(plotPlaceholder);
 
 			var renderChoicesBody = $("<tbody></tbody>");
 			var renderChoicesHead = $("<thead><th>" + gettext('Class') + "</th><th>" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead>");
@@ -201,12 +178,12 @@
 			// append to body temporarily in order for axes labels to be drawn correctly
 			$("body").append(plotContainer);
 
-			var initData = window.chart.getDataToRender();
-			var colorPalette = window.chart.generateColorPalette(initData);
-			var symbolPalette = window.chart.generateSymbolPalette(initData);
+			var colorPalette = window.chart.generateColorPalette(dataContent.data);
+			var symbolPalette = window.chart.generateSymbolPalette(dataContent.data);
 			var symbolValues = []
 
-			$.each(initData, function(idx, series) {
+			// fill the form with current color and symbol values
+			$.each(dataContent.data, function(idx, series) {
 				var seriesRow = $("<tr></tr>");
 				seriesRow.append("<td>" + idx + "</td>");
 				seriesRow.append("<td><input type=\"text\" value=\"" + colorPalette[idx].toLowerCase() + "\"/></td>");
@@ -223,25 +200,60 @@
 				renderChoicesBody.append(seriesRow);
 			});
 
-			window.chart.renderChart(plotContainer, "body > .plot-container .results-container", initData, colorPalette, symbolValues);
+			window.chart.renderChart(plotContainer, "body > .plot-container .results-container", dataContent, colorPalette, symbolValues);
 			//append to form after rendering because otherwise axes are not rendered
 			formWindow.append(plotContainer);
 
-			formWindow.dialog("option", "buttons", this.allButtons());
+			formWindow.dialog("option", "buttons", window.chart.allButtons());
 			formWindow.dialog("option", "minWidth", 650);
 			formWindow.dialog("option", "close", function() {
 				$(this).find("#point-tooltip").remove();
 			});
 		},
 
-        // called when connection is established
+		updateData: function(formWindow, callback) {
+			var url = window.componentFormUrls['CHART'];
+			var data = window.technicalDetails.getOutputParamDetails(formWindow);
+			formWindow.find(".plot-container").remove();
+			var container = $("<div class=\"plot-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
+			formWindow.append(container);
+			$.ajax({
+				url: url,
+				data: data,
+				context: container,
+			}).done(function(resp) {
+				if (resp.status == "SUCCESS") {
+					callback(resp.content, formWindow);
+				} else {
+					var container = formWindow.find(".plot-container");
+					container.html(resp.message);
+				}
+			});
+		},
+
+		// get details of a parameter, that is connected to the current component input connection
+		getOutputParamDetails: function(dialog) {
+			var inParam = dialog.find("input[value=INPUT_CONNECTION]");
+			var srcRefField = inParam.closest("div").find("input[id$=source_ref]");
+			var oParamField = window.experimentForm.getOutputParam(srcRefField);
+			if (oParamField) {
+				return {
+					pv_name: oParamField.attr("name"),
+					dataset_url: oParamField.val()
+				}
+			}
+			return {}
+		},
+
+		// called when connection is established
 		connectionEstablished: function(srcComponentType, targetComponentType, connectionParams) {
 			if (targetComponentType == 'CHART') {
-				this.update($("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId)));
+				var formWindow = $("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId));
+				this.updateData(formWindow, this.renderChartAndForm);
 			}
 		},
 
-        // called when connection is deleted
+		// called when connection is deleted
 		connectionDeleted: function(srcComponentType, targetComponentType, connectionParams) {
 			if (srcComponentType == 'CHART' || targetComponentType == 'CHART') {
 				var formWindow = $("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId));

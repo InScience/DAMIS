@@ -5,6 +5,8 @@ from os.path import join, exists, getsize, splitext
 from os import makedirs, listdir
 from subprocess import Popen, PIPE
 
+from collections import OrderedDict
+
 from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
 from django.core.context_processors import csrf
@@ -502,9 +504,55 @@ def technical_details_form_view(request):
             return HttpResponse(_('You have to execute this experiment first to see the result.'))
         return render_to_response('damis/_technical_details.html', context)
 
-def chart_form_view(request):
-    return HttpResponse(_('Not implemented, yet'))
+def read_classified_data(file_url):
+    from damis.settings import BUILDOUT_DIR
+    f = open(BUILDOUT_DIR + '/var/www' + file_url)
+    clsCol = -1
+    result = OrderedDict()
+    minX = None; maxX = None
+    minY = None; maxY = None
+    for line in f:
+        cells = line.rstrip().split(",")
+        cls = cells[clsCol]
+        if not cls in result:
+            result[cls] = []
+        result[cls].append([cells[0], cells[1]])
 
+        if minX is None or float(cells[0]) < minX:
+            minX = float(cells[0])
+        if maxX is None or float(cells[0]) > maxX:
+            maxX = float(cells[0])
+        if minY is None or float(cells[1]) < minY:
+            minY = float(cells[1])
+        if maxY is None or float(cells[1]) > maxY:
+            maxY = float(cells[1])
+
+    f.close()
+    result = [{"group": cls, "data": data} for cls, data in result.items()]
+    return {"data": result, "minX": minX, "maxX": maxX, "minY": minY, "maxY": maxY}
+
+def chart_form_view(request):
+    pv_name = request.GET.get('pv_name')
+    dataset_url = request.GET.get('dataset_url');
+
+    if re.findall('PV_\d+-\d+-value', pv_name):
+        if (dataset_url): 
+            content = read_classified_data(dataset_url)
+            resp = {"status": "SUCCESS", "content": content}
+            return HttpResponse(json.dumps(resp), content_type="application/json") 
+        else:
+            resp = {"status": "ERROR", "message": unicode(_('You have to execute this experiment first to see the result.'))}
+            return HttpResponse(json.dumps(resp), content_type="application/json")
+    else:
+        task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)[0]
+        task = WorkflowTask.objects.get(pk=task_pk)
+        file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
+        if not file_params:
+            resp = {"status": "ERROR", "message": unicode(_('You have to execute this experiment first to see the result.'))}
+            return HttpResponse(json.dumps(resp), content_type="applicatioin/json")
+        content = read_classified_data(dataset_url)
+        resp = {"status": "SUCCESS", "content": content}
+        return HttpResponse(json.dumps(resp), content_type="application/json") 
 
 # User views
 def register_view(request):

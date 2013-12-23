@@ -1,5 +1,11 @@
 (function() {
 	window.technicalDetails = {
+		init: function(componentType, formWindow) {
+			if (componentType == 'TECHNICAL DETAILS') {
+				this.toUnconnectedState(formWindow);
+			}
+		},
+
 		// prepare dialog, when component is unconnected 
 		toUnconnectedState: function(formWindow) {
 			formWindow.find(".technical-details-container").remove();
