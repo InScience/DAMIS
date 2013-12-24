@@ -12,9 +12,12 @@ def get_dataset_upload_path(instance, filename):
     return  '%s/datasets/%s' % (username, filename)
 
 
+def type_validator(value):
+    pass
+
 class Dataset(models.Model):
     title = models.CharField(_('Title'), max_length=255)
-    file = models.FileField(_('File'), upload_to=get_dataset_upload_path)
+    file = models.FileField(_('File'), upload_to=get_dataset_upload_path, validators=[type_validator])
     description = models.TextField(_('Description'), blank=True, null=True)
     user = models.ForeignKey(User, blank=True, null=True, verbose_name=_('User'))
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
