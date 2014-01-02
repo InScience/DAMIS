@@ -23,9 +23,11 @@
 				class: "btn btn-primary",
 				click: function(ev) {
 					var url = window.componentFormUrls['TECHNICAL DETAILS'];
-					var formWindow = $(ev.currentTarget).closest(".ui-dialog").find(".task-window");
+                    var dialog = $(ev.currentTarget).closest(".ui-dialog");
+					var formWindow = dialog.find(".task-window");
 					var data = window.technicalDetails.getOutputParamDetails(formWindow);
-					document.location.href = url + "?download=True&format=csv&pv_name=" + data.pv_name + "&dataset_url=" + data.dataset_url
+					var format = dialog.find(".file-type-select").val();
+					document.location.href = url + "?download=True&format=" + format + "&pv_name=" + data.pv_name + "&dataset_url=" + data.dataset_url;
 				}
 			}];
 			var defaultButtons = window.taskBoxes.defaultDialogButtons();

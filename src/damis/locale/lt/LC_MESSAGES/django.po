@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-02 14:36+0000\n"
+"POT-Creation-Date: 2014-01-02 19:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,8 +106,9 @@ msgid ""
 "<p>{0}</p><p>Cluster home:</p><p><a href=\"{1}\" target=\"blank\">{1}</a></"
 "p><p>Cluster workload:</p><p><a href=\"{2}\" target=\"blank\">{2}</a></p>"
 msgstr ""
-"<p>{0}</p><p>Klasterio svetainė:</p><p><a href=\"{1}\" target=\"blank\">{1}</a></"
-"p><p>Klasterio apkrovimas:</p><p><a href=\"{2}\" target=\"blank\">{2}</a></p>"
+"<p>{0}</p><p>Klasterio svetainė:</p><p><a href=\"{1}\" target=\"blank\">{1}</"
+"a></p><p>Klasterio apkrovimas:</p><p><a href=\"{2}\" target=\"blank\">{2}</"
+"a></p>"
 
 #: models.py:74
 msgid "Upload data"
@@ -297,13 +298,17 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:468 views.py:471 views.py:474
+#: views.py:469 views.py:472 views.py:475
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:494 views.py:504 views.py:544 views.py:551
+#: views.py:516 views.py:544 views.py:585 views.py:592
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
+
+#: views.py:537
+msgid "There is no file to download."
+msgstr ""
 
 #: templates/base.html:72
 msgid "Source code"
@@ -475,22 +480,25 @@ msgstr "Formoje yra klaidų"
 msgid "Task"
 msgstr "Užduotis"
 
-#: templates/damis/_technical_details.html:4
-#, fuzzy
-msgid "Parameter values"
-msgstr "Parametras"
+#: templates/damis/_technical_details.html:6
+msgid "Returned values"
+msgstr "Grąžintos reikšmės"
 
-#: templates/damis/_technical_details.html:7
+#: templates/damis/_technical_details.html:9
 msgid "Name"
-msgstr ""
+msgstr "Pavadinimas"
 
-#: templates/damis/_technical_details.html:7
+#: templates/damis/_technical_details.html:9
 msgid "Value"
-msgstr ""
+msgstr "Reikšmė"
 
-#: templates/damis/_technical_details.html:18
+#: templates/damis/_technical_details.html:21
 msgid "File content"
-msgstr ""
+msgstr "Failo turinys"
+
+#: templates/damis/_technical_details.html:39
+msgid "Select results file type: "
+msgstr "Rezultatų failo formatas:"
 
 #: templates/damis/algorithm_confirm_delete.html:13
 msgid "Are you sure you want to delete algorithm"
