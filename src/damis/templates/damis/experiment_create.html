@@ -18,9 +18,11 @@
                         <ul class="nav nav-tabs" id="cluster-tabs">
                             {% for cluster, cluster_algorithms in clusters %}
                                 <li id="cluster-{{ cluster.pk }}-tab" {% if forloop.first %}class="active"{% endif %}>
-                                    <a href="#">{{ cluster.title }}</a>
-                                    <span><i class="component-tooltip cluster-tooltip icon-info-sign" data-placement="bottom"
-                                                data-original-title="{% trans 'Cluster information' %}" data-content="{{ tooltip_content }}" style="cursor: pointer"></i></span>
+                                    <a href="#">{{ cluster.get_title_display }}</a>
+                                    <span><i class="component-tooltip
+                                            cluster-tooltip icon-info-sign" data-placement="right"
+                                                data-original-title="{% trans 'Cluster information' %}"
+                                                data-content="{{ cluster.get_tooltip_html }} " style="cursor: pointer"></i></span>
                                 </li>
                             {% endfor %}
                         </ul>

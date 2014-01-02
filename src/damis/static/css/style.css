@@ -110,3 +110,5 @@ textarea {
 
 /* tooltips */
 .popover-content { word-wrap: break-word; }
+.popover { width: 276px; }
+.tab-content { overflow: visible; }
