@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 23:11+0000\n"
+"POT-Creation-Date: 2014-01-02 12:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -279,19 +279,19 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:448 views.py:451 views.py:454 views.py:467
+#: views.py:470 views.py:473 views.py:476
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:459
+#: views.py:496 views.py:506 views.py:546 views.py:553
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: templates/base.html:71
+#: templates/base.html:72
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:74
+#: templates/base.html:75
 msgid "API"
 msgstr "API"
 
@@ -457,6 +457,23 @@ msgstr "Formoje yra klaidų"
 msgid "Task"
 msgstr "Užduotis"
 
+#: templates/damis/_technical_details.html:4
+#, fuzzy
+msgid "Parameter values"
+msgstr "Parametras"
+
+#: templates/damis/_technical_details.html:7
+msgid "Name"
+msgstr ""
+
+#: templates/damis/_technical_details.html:7
+msgid "Value"
+msgstr ""
+
+#: templates/damis/_technical_details.html:18
+msgid "File content"
+msgstr ""
+
 #: templates/damis/algorithm_confirm_delete.html:13
 msgid "Are you sure you want to delete algorithm"
 msgstr "Ar tikrai norite pašalinti algoritmą"
@@ -476,7 +493,7 @@ msgid "Component Parameters"
 msgstr "Komponentės parametrai"
 
 #: templates/damis/algorithm_form.html:31
-#: templates/damis/experiment_create.html:64 templates/damis/obj_form.html:19
+#: templates/damis/experiment_create.html:65 templates/damis/obj_form.html:19
 #: templates/damis/user_update.html:13
 msgid "Save"
 msgstr "Išsaugoti"
@@ -528,13 +545,17 @@ msgstr "XML"
 msgid "No files were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų failų. Įkelti failą galite "
 
-#: templates/damis/experiment_create.html:63
+#: templates/damis/experiment_create.html:23
+msgid "Cluster information"
+msgstr "Skaičiavimo telkinio informacija"
+
+#: templates/damis/experiment_create.html:64
 #: templates/damis/experiment_detail.html:10
 #: templates/damis/experiment_form.html:14
 msgid "New experiment"
 msgstr "Naujas eksperimentas"
 
-#: templates/damis/experiment_create.html:66
+#: templates/damis/experiment_create.html:67
 #: templates/damis/experiment_detail.html:18
 #: templates/damis/experiment_form.html:43
 msgid "Execute"
@@ -588,7 +609,7 @@ msgstr "Aktyvus"
 msgid "No users were created yet. You can register "
 msgstr "Kol kas nėra sukurtų naudotojų. Registruotis galite "
 
-#: templatetags/damis.py:48
+#: templatetags/damis.py:47
 msgid "Comes from connection"
 msgstr "Jungties įėjimas"
 
