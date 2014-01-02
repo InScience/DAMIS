@@ -26,6 +26,9 @@ change_db:
 	bin/django schemamigration damis --auto
 	bin/django migrate damis
 
+drop_db:
+	rm var/db
+
 messages:
 	#../../bin/django makemessages --all
 	#../../bin/django makemessages -d djangojs --all
