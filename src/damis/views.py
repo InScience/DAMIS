@@ -17,6 +17,7 @@ from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
+from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
 from django.forms.models import modelformset_factory
@@ -482,12 +483,33 @@ def file_to_table(file_url):
     f.close()
     return file_table
 
+def convert(file_path, file_format):
+    '''Opens, converts file to specified format and returns it.'''
+    from damis.settings import BUILDOUT_DIR
+    f = open(BUILDOUT_DIR + '/var/www' + file_path)
+    return f
+
 def technical_details_form_view(request):
+    '''Handles Ajax GET request to update the technical details component.
+
+    request - Ajax GET request. Fields:
+        pv_name - OUTPUT_CONNECTION parameter form input name; used to track down the task, output of which should be rendered by the technical details component
+        dataset_url - url of the data file, which is to be rendered ty the technical details component
+        download - if True return a downloadable file, else return HTML
+        format - file format
+    '''
     pv_name = request.GET.get('pv_name')
     dataset_url = request.GET.get('dataset_url');
     context = {}
     if re.findall('PV_\d+-\d+-value', pv_name):
         if (dataset_url): 
+            if request.GET.get('download'):
+                file_format = request.GET.get('format')
+                response = HttpResponse(mimetype='text/html')
+                response['Content-Disposition'] = 'attachment; filename=%s.%s' % ("rez", file_format)
+                converted_file = convert(dataset_url, file_format=file_format)
+                response.write(converted_file.read())
+                return response
             context['file'] = file_to_table(dataset_url)
             return render_to_response('damis/_technical_details.html', context)
         else:
@@ -496,13 +518,32 @@ def technical_details_form_view(request):
         task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)[0]
         task = WorkflowTask.objects.get(pk=task_pk)
         params = task.parameter_values.filter(parameter__connection_type="OUTPUT_VALUE")
-        file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
         context['values'] = params
-        file_table = file_to_table(file_params[0].value) if len(file_params) else None
+        file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
+        # XXX: constraint: can download only first file OUTPUT_CONNECTION
+        file_table = None
+        file_path = None
+        if len(file_params):
+            file_path = file_params[0].value
+            file_table = file_to_table(file_path)
+
+        if request.GET.get('download'):
+            file_format = request.GET.get('format')
+            response = HttpResponse(mimetype='text/html')
+            response['Content-Disposition'] = 'attachment; filename=%s.%s' % ("rez", file_format)
+            if file_path:
+                converted_file = convert(file_path, file_format=file_format)
+            else:
+                return HttpResponse(_('There is no file to download.'))
+
+            response.write(converted_file.read())
+            return response
+
         context['file'] = file_table
         if not params and not file_table:
             return HttpResponse(_('You have to execute this experiment first to see the result.'))
         return render_to_response('damis/_technical_details.html', context)
+
 
 def read_classified_data(file_url):
     from damis.settings import BUILDOUT_DIR
