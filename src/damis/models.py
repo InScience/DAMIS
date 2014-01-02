@@ -63,9 +63,10 @@ class Cluster(models.Model):
             return self.description
 
     def get_tooltip_html(self):
-        return _('<p>{0}</p><p>Current cluster workload information can be found here:</p><p><a href="{1}" target="blank">{1}</a></p>').format(
+        return _('<p>{0}</p><p>Cluster home:</p><p><a href="{1}" target="blank">{1}</a></p><p>Cluster workload:</p><p><a href="{2}" target="blank">{2}</a></p>').format(
                     self.get_description_display(),
                     self.url,
+                    self.workload_url
                 )
 
 class Component(models.Model):
