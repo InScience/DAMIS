@@ -107,3 +107,6 @@ textarea {
 .component-form-urls {
     display: none;
 }
+
+/* tooltips */
+.popover-content { word-wrap: break-word; }

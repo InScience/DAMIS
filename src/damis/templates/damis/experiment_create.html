@@ -19,7 +19,8 @@
                             {% for cluster, cluster_algorithms in clusters %}
                                 <li id="cluster-{{ cluster.pk }}-tab" {% if forloop.first %}class="active"{% endif %}>
                                     <a href="#">{{ cluster.title }}</a>
-                                    <span><a href="#"><i class="component-tooltip icon-info-sign"></i></a></span>
+                                    <span><i class="component-tooltip cluster-tooltip icon-info-sign" data-placement="bottom"
+                                                data-original-title="{% trans 'Cluster information' %}" data-content="{{ tooltip_content }}" style="cursor: pointer"></i></span>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -101,6 +102,10 @@
 {% block javascript_footer %}
     {{ block.super }}
     <script type="text/javascript">
+        $(document).ready(function() {
+            $(".cluster-tooltip").popover({html:true}); 
+        });
+
         jsPlumb.ready(function() {
             // jsPlumb initialization
             experimentCanvas.init({

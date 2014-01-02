@@ -320,6 +320,8 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         context['clusters'] = sorted_clusters
         context['component_form_urls'] = COMPONENT_TITLE__TO__FORM_URL.items()
         context['component_details'] = [[c.pk, {"title": c.title, "label": c.get_label_display()}] for c in Component.objects.all()]
+        # TODO: replace with tooltip from Cluster object
+        context['tooltip_content'] = "<a href=\"http://www.google.com\" target=\"blank\">Workload information</a><div>Cluster description</div>"
         return context
 
     def skip_validation(self, experiment_form, task_formset):
