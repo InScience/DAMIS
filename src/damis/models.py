@@ -38,12 +38,30 @@ def get_algorithm_file_upload_path(instance, filename):
     return  '%s/algorithms/%s' % (username, filename)
 
 class Cluster(models.Model):
-    title = models.CharField(_('Title'), max_length=255, null=True)
+    title = models.CharField(_('Title EN'), max_length=255, null=True)
+    title_lt = models.CharField(_('Title LT'), max_length=255, null=True)
     url = models.URLField(_('Cluster home page'), max_length=255, null=True, blank=True)
     workload_url = models.URLField(_('Workload page'), max_length=255, null=True)
+    description = models.TextField(_('Description EN'), null=True, blank=True)
+    description_lt = models.TextField(_('Description LT'), null=True, blank=True)
 
     def __unicode__(self):
         return self.title
+
+    def get_title_display(self):
+        language_code = get_language()
+        if language_code == 'lt':
+            return self.title_lt
+        else:
+            return self.title
+
+    def get_description_display(self):
+        language_code = get_language()
+        if language_code == 'lt':
+            return self.description_lt
+        else:
+            return self.description
+
 
 class Component(models.Model):
     CATEGORIES= (
