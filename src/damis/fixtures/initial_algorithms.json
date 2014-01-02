@@ -1,5 +1,23 @@
 [
 {
+    "pk": 1,
+    "model": "auth.user",
+    "fields": {
+        "username": "demo",
+        "first_name": "Testinis",
+        "last_name": "Naudotojas",
+        "is_active": true,
+        "is_superuser": true,
+        "is_staff": false,
+        "last_login": "2014-01-02T18:06:13.029",
+        "groups": [],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$10000$jFGXqyAASotv$lKFqgp/4wKfp6XTvGTg+8H9zYGHkVaK6dAxzqqeC/nk=",
+        "email": "demo@damis.lt",
+        "date_joined": "2014-01-02T18:06:12.273"
+    }
+},
+{
     "pk": 1, 
     "model": "damis.cluster", 
     "fields": {
