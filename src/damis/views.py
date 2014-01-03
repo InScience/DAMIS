@@ -407,7 +407,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         exp = experiment_form.save()
         self.object = task_formset.save_all(experiment=exp)
 
-        command = 'bin/python %s/src/damis/run_experiment.py %s' % (BUILDOUT_DIR, exp.pk)
+        command = '{0}/bin/python {0}/src/damis/run_experiment.py {1}'.format(BUILDOUT_DIR, exp.pk)
         response = Popen(command, shell=True, stdout=PIPE, stderr=PIPE)
         # response.wait()
         # response.communicate()
