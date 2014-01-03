@@ -182,6 +182,9 @@ class Experiment(models.Model):
                                      default="2:00", null=True)
     p = models.IntegerField(_('Processor number'), default=1, null=True)
 
+    updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
+    created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
+
     def get_absolute_url(self):
         return reverse('experiment-list')
 
