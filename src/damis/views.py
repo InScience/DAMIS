@@ -225,6 +225,11 @@ class ExperimentList(ListDeleteMixin, LoginRequiredMixin, ListView):
     paginate_by = 10
     success_url = reverse_lazy('experiment-list')
 
+    def get_queryset(self):
+        qs = super(ExperimentList, self).get_queryset()
+        return qs.order_by('-created')
+
+
 class ExperimentDetail(LoginRequiredMixin, DetailView):
     model = Experiment
 
