@@ -5,8 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
-from damis.models import Dataset
 from damis.models import Component
+from damis.models import Connection
+from damis.models import Dataset
 from damis.models import Parameter
 from damis.models import ParameterValue
 from damis.models import Experiment
@@ -251,27 +252,45 @@ class BaseWorkflowTaskFormset(BaseInlineFormSet):
         if experiment:
             self.instance = experiment
 
-        objects = self.save(commit=False)
-        if commit:
-            for o in objects:
-                o.save()
+        sources = {}
+        for task_form in self.forms:
+            data = task_form.cleaned_data
+            data['experiment'] = experiment
+            if data.get('algorithm'):
+                task = data.get('id')
+                if not task:
+                    task = WorkflowTask.objects.create(**data)
 
-        if not commit:
-            self.save_m2m()
+                pv_formset = task_form.parameter_values[0]
+                pv_formset.instance = task
 
-        pv_prefix_to_obj = {}
-        for form in set(self.initial_forms + self.saved_forms):
-            if self.should_delete(form):
-                continue
-            for pv in form.parameter_values:
-                pv.save(commit=commit)
-                for f in pv.forms:
-                    pv_prefix_to_obj[f.prefix] = f.instance
+                for pv_form in pv_formset.forms:
+                    data = {}
+                    data['parameter'] = pv_form.cleaned_data.get('parameter')
+                    data['value'] = pv_form.cleaned_data.get('value')
+                    data['task'] = task
 
-        for form in set(self.initial_forms + self.saved_forms):
-            for pv in form.parameter_values:
-                for f in pv.forms:
-                    f.source_ref_to_obj(pv_prefix_to_obj)
+                    pv_form_prefix = pv_form.prefix
+
+                    pv_instance = pv_form.cleaned_data.get('id')
+                    if not pv_instance:
+                        pv_instance = ParameterValue.objects.create(**data)
+                    else:
+                        pv_form.save()
+                    pv_form.instance = pv_instance
+
+                    sources[pv_form_prefix] = pv_form.instance
+
+        for task_form in self.forms:
+            for pv_form in task_form.parameter_values[0].forms:
+                source_ref = pv_form.cleaned_data['source_ref']
+                if source_ref:
+                    source_ref = source_ref.split('-value')[0]
+                    source = sources[source_ref]
+                    target = pv_form.instance
+                    exist = Connection.objects.filter(target=target, source=source)
+                    if not exist:
+                        Connection.objects.create(target=target, source=source)
 
 
     def should_delete(self, form):

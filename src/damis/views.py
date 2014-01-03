@@ -401,12 +401,6 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         exp = experiment_form.save()
         self.object = task_formset.save_all(experiment=exp)
 
-        # run_exp_cmd = "bin/fab run_experiment:%s -H %s@uosis.mif.vu.lt -p %s" % (
-        #         experiment.pk,
-        #         self.request.user.username,
-        #         self.request.session['password'])
-        # shell_response = Popen(run_exp_cmd, shell=True)
-
         return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
 
     def form_invalid(self, experiment_form, task_formset):
