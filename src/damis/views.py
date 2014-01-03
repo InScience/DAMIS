@@ -412,7 +412,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         # response.wait()
         # response.communicate()
 
-        return HttpResponseRedirect(reverse_lazy('experiment-list'))
+        return HttpResponse(reverse_lazy('experiment-list'))
 
     def form_invalid(self, experiment_form, task_formset):
         return render_to_response('damis/_experiment_form.html',
