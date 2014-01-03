@@ -104,7 +104,15 @@
     {{ block.super }}
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".cluster-tooltip").popover({html:true}); 
+            var clusterTooltips = $(".cluster-tooltip")
+            clusterTooltips.popover({html:true}); 
+            clusterTooltips.on("click", function(ev) {
+                $.each($(".cluster-tooltip"), function(idx, tooltip) {
+                    if (tooltip != ev.currentTarget) {
+                        $(tooltip).popover("hide");
+                    }    
+                });
+            });
         });
 
         jsPlumb.ready(function() {
