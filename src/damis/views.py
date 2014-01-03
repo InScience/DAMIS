@@ -523,7 +523,7 @@ def technical_details_form_view(request):
         # XXX: constraint: can download only first file OUTPUT_CONNECTION
         file_table = None
         file_path = None
-        if len(file_params):
+        if len(file_params) and file_params[0].value:
             file_path = file_params[0].value
             file_table = file_to_table(file_path)
 
