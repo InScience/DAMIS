@@ -3,7 +3,7 @@ import json
 import re
 from os.path import join, exists, getsize, splitext
 from os import makedirs, listdir
-from subprocess import Popen, PIPE
+from subprocess import call, Popen, PIPE
 
 from collections import OrderedDict
 
@@ -25,6 +25,10 @@ from django.forms.models import inlineformset_factory
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.core.context_processors import csrf
 
+from damis.settings import BUILDOUT_DIR
+from damis.constants import COMPONENT_TITLE__TO__FORM_URL
+from damis.utils import slugify
+
 from damis.forms import LoginForm, RegistrationForm
 from damis.forms import DatasetForm
 from damis.forms import ComponentForm
@@ -34,9 +38,6 @@ from damis.forms import WorkflowTaskFormset, CreateExperimentFormset, ParameterV
 from damis.forms import DatasetSelectForm
 from damis.forms import UserUpdateForm
 from damis.forms import VALIDATOR_FIELDS
-
-from damis.constants import COMPONENT_TITLE__TO__FORM_URL
-from damis.utils import slugify
 
 from damis.models import Component
 from damis.models import Cluster
@@ -401,7 +402,12 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         exp = experiment_form.save()
         self.object = task_formset.save_all(experiment=exp)
 
-        return HttpResponse(reverse_lazy('experiment-update', kwargs={'pk': exp.pk}))
+        command = 'bin/python %s/src/damis/run_experiment.py %s' % (BUILDOUT_DIR, exp.pk)
+        response = Popen(command, shell=True, stdout=PIPE, stderr=PIPE)
+        # response.wait()
+        # response.communicate()
+
+        return HttpResponseRedirect(reverse_lazy('experiment-list'))
 
     def form_invalid(self, experiment_form, task_formset):
         return render_to_response('damis/_experiment_form.html',
@@ -471,7 +477,6 @@ def select_features_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
 
 def file_to_table(file_url):
-    from damis.settings import BUILDOUT_DIR
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
     file_table = []
     for line in f:
@@ -481,7 +486,6 @@ def file_to_table(file_url):
 
 def convert(file_path, file_format):
     '''Opens, converts file to specified format and returns it.'''
-    from damis.settings import BUILDOUT_DIR
     f = open(BUILDOUT_DIR + '/var/www' + file_path)
     return f
 
@@ -542,7 +546,6 @@ def technical_details_form_view(request):
 
 
 def read_classified_data(file_url):
-    from damis.settings import BUILDOUT_DIR
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
     clsCol = -1
     result = OrderedDict()
