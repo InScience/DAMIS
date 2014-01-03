@@ -444,7 +444,9 @@ def algorithm_parameter_form(request):
                             )
     parameter_formset = ParameterValueFormset(instance=None, prefix=prefix)
     for parameter, form in zip(val_params, parameter_formset.forms):
-        form.fields['value'] = VALIDATOR_FIELDS[parameter.type]()
+        field_class = VALIDATOR_FIELDS[parameter.type]['class']
+        field_attrs = VALIDATOR_FIELDS[parameter.type]['attrs']
+        form.fields['value'] = field_class(**field_attrs)
         form.fields['value'].label = str(parameter)
         form.initial.update({'parameter': parameter})
 

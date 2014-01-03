@@ -16,16 +16,24 @@ from django.forms.models import inlineformset_factory, BaseInlineFormSet
 from django.forms.formsets import DELETION_FIELD_NAME
 
 VALIDATOR_FIELDS = {
-    'dataset': forms.CharField, # Text
-    'int': forms.IntegerField,
-    'string': forms.CharField,
-    'text': forms.CharField, # Text
-    'boolean': forms.BooleanField,
-    'date': forms.DateField,
-    'datetime': forms.DateTimeField,
-    'time': forms.TimeField,
-    'float': forms.FloatField,
-    'double': forms.FloatField,
+    'dataset': {'class': forms.CharField,
+        'attrs': {
+            'required': False,
+        }
+    },
+    'int': {'class': forms.IntegerField, 'attrs': {'required': False}},
+    'string': {'class': forms.CharField, 'attrs': {'required': False}},
+    'text': {'class': forms.CharField,
+        'attrs': {
+            'required': False,
+        }
+    },
+    'boolean': {'class': forms.BooleanField, 'attrs': {'required': False}},
+    'date': {'class': forms.DateField, 'attrs': {'required': False}},
+    'datetime': {'class': forms.DateTimeField, 'attrs': {'required': False}},
+    'time': {'class': forms.TimeField, 'attrs': {'required': False}},
+    'float': {'class': forms.FloatField, 'attrs': {'required': False}},
+    'double': {'class': forms.FloatField, 'attrs': {'required': False}},
 }
 
 class DatasetForm(forms.ModelForm):
@@ -135,6 +143,9 @@ class ParameterValueForm(forms.ModelForm):
                                        widget=forms.HiddenInput())
     source_ref = forms.CharField(max_length=255, widget=forms.HiddenInput(), required=False)
 
+    class Meta:
+        model = ParameterValue
+
     def __init__(self, *args, **kwargs):
         super(ParameterValueForm, self).__init__(*args, **kwargs)
         parameter = None
@@ -148,7 +159,9 @@ class ParameterValueForm(forms.ModelForm):
                 parameter = Parameter.objects.get(pk=parameter_id)
 
         if parameter:
-            self.fields['value'] = VALIDATOR_FIELDS[parameter.type]()
+            field_class = VALIDATOR_FIELDS[parameter.type]['class']
+            field_attrs = VALIDATOR_FIELDS[parameter.type]['attrs']
+            self.fields['value'] = field_class(**field_attrs)
             self.fields['value'].label = str(parameter)
             self.initial.update({'parameter': parameter})
 
@@ -165,7 +178,10 @@ class ParameterValueForm(forms.ModelForm):
 
         value = self.cleaned_data.get('value')
         source_ref = self.cleaned_data.get('source_ref')
+        connection_type = self.cleaned_data.get('connection_type')
         if value or source_ref:
+            return True
+        if not connection_type or connection_type in ['INPUT_COMMON', 'OUTPUT_VALUE', 'OUTPUT_CONNECTION']:
             return True
         errors = self._errors.setdefault('value', ErrorList())
         errors.append(u'Parameter value must be specified')
@@ -178,8 +194,6 @@ class ParameterValueForm(forms.ModelForm):
             self.instance.source = obj
             self.instance.save()
 
-    class Meta:
-        model = ParameterValue
 
 
 ParameterValueFormset = inlineformset_factory(WorkflowTask, ParameterValue,
