@@ -4,11 +4,13 @@ from damis.settings import BUILDOUT_DIR
 from os.path import splitext
 from algorithms.preprocess import transpose
 
-def transpose_data_callable(X, c, *args, **kwargs):
+def transpose_data_callable(X, c, arff=False, *args, **kwargs):
     X_absolute = BUILDOUT_DIR + '/var/www' + X
     Y = '%s_transposed%s' % splitext(X)
     Y_absolute = BUILDOUT_DIR + '/var/www' + Y
-    transpose(X_absolute, Y_absolute, int(c))
+    if X.endswith('arff'):
+        arff = True
+    transpose(X_absolute, Y_absolute, int(c), arff=arff)
     return [('Y', Y)]
 
 def do_nothing(*args, **kwargs):

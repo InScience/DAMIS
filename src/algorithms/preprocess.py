@@ -88,12 +88,17 @@ def normalise(source, output, attr=-1, filter=None):
     z_factor(source, output, attr, filter, update_value=True)
 
 
-def transpose(source, output, attr=-1, *args, **kwargs):
+def transpose(source, output, attr=-1, arff=False, *args, **kwargs):
     '''Categorical attribute is changed to attribute list: an attribute for
     each category is created, which value is 1 if the vector belongs to this
     category and 0 if it does not.'''
+
     values = set()
     with open(source) as source_file:
+        if arff:
+            for row in source_file:
+                if row.strip().lower().startswith("@data"):
+                    break
         for attr_list in csv.reader(source_file):
             value = attr_list[attr].strip()
             values.add(value)
@@ -103,6 +108,11 @@ def transpose(source, output, attr=-1, *args, **kwargs):
     output_file = open(output, 'w')
     output_writer = csv.writer(output_file)
     with open(source) as source_file:
+        if arff:
+            for row in source_file:
+                output_file.write(row)
+                if row.strip().lower().startswith("@data"):
+                    break
         for attr_list in csv.reader(source_file):
             value = attr_list[attr]
             transposed = []
