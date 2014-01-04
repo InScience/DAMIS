@@ -19,19 +19,25 @@
             <td>
                 {% if file %}
                     <p>{% trans 'File content' %}:</p>
-                    <div style="max-height: 300px; min-width: 300px; overflow: auto;">
-                    <table>
-                    <tbody>
-                        {% for row in file %}
-                           <tr>
-                            {% for col in row %}
-                                <td>{{ col }}</td>
+					<div style="max-height: 300px; min-width: 300px; overflow: auto;">
+
+                    {% for header_row in header %}
+                        {{ header_row }} <br />
+                    {% endfor %}
+
+                    
+                        <table>
+                        <tbody>
+                            {% for row in file %}
+                               <tr>
+                                {% for col in row %}
+                                    <td>{{ col }}</td>
+                                {% endfor %}
+                                </tr>
                             {% endfor %}
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                    </table>
-                </div>
+                        </tbody>
+                        </table>
+                    </div>
                 {% endif %}
             </td> 
     </tr>
@@ -40,11 +46,10 @@
             <select class="file-type-select"> 
                 <option value="tab">tab</option>
                 <option value="txt">txt</option>
-                <option value="csv" selected="selected">csv</option>
+                <option value="csv">csv</option>
                 <option value="xls">xls</option>
                 <option value="xlsx">xlsx</option>
-                <option value="arff">arff</option>
-                <option value="xml">xml</option>
+                <option value="arff" selected="selected">arff</option>
             </select>
         </td></tr>
     </tbody>

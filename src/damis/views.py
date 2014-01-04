@@ -1,6 +1,8 @@
 #! coding: utf-8
+import csv
 import json
 import re
+import tempfile
 from os.path import join, exists, getsize, splitext
 from os import makedirs, listdir
 from subprocess import call, Popen, PIPE
@@ -482,17 +484,61 @@ def select_features_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
 
 def file_to_table(file_url):
+    '''Splits the file into header (rows) and content (structured as a matrix) portions.
+    file_url - file path on the server
+    '''
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
     file_table = []
-    for line in f:
-        file_table.append([cell for cell in line.split(",")])
+    header = []
+    data_sec = False
+    for row in f:
+        if data_sec:
+            file_table.append([cell for cell in row.split(",")])
+        else:
+            row_std = row.strip().lower()
+            if row_std.startswith("@data"):
+                data_sec = True
+            else:
+                header.append(row)
     f.close()
-    return file_table
+    return header, file_table
 
 def convert(file_path, file_format):
-    '''Opens, converts file to specified format and returns it.'''
+    '''Opens, converts file to specified format and returns it.
+    file_path - file path on the server 
+    file_format - result file format, desired by the user
+    '''
     f = open(BUILDOUT_DIR + '/var/www' + file_path)
-    return f
+    if file_format == "arff":
+        return f
+    elif file_format == "csv" or file_format == "tab" or file_format == "txt" or file_format == "xls" or file_format == "xlsx":
+        # strip the header
+        file_no_header = tempfile.NamedTemporaryFile()
+        data_sec = False
+        for row in f:
+            if data_sec:
+                file_no_header.write(row)
+            else:
+                row_std = row.strip().lower()
+                if row_std.startswith("@data"):
+                    data_sec = True
+        file_no_header.seek(0)
+        res = file_no_header
+
+        if file_format == "tab":
+            # read stripped file as csv
+            csv_reader = csv.reader(file_no_header, delimiter=',', quotechar='"')
+            file_res = tempfile.NamedTemporaryFile()
+            # write file as csv with a specific delimiter
+            csv_writer = csv.writer(file_res, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            for row in csv_reader:
+                csv_writer.writerow(row)
+            file_no_header.close()
+            file_res.seek(0)
+            res = file_res
+        return res
+    else:
+        return f # default action - return arff
 
 def technical_details_form_view(request):
     '''Handles Ajax GET request to update the technical details component.
@@ -515,7 +561,7 @@ def technical_details_form_view(request):
                 converted_file = convert(dataset_url, file_format=file_format)
                 response.write(converted_file.read())
                 return response
-            context['file'] = file_to_table(dataset_url)
+            context['header'], context['file'] = file_to_table(dataset_url)
             return render_to_response('damis/_technical_details.html', context)
         else:
             return HttpResponse(_('You have to execute this experiment first to see the result.'))
@@ -526,11 +572,10 @@ def technical_details_form_view(request):
         context['values'] = params
         file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
         # XXX: constraint: can download only first file OUTPUT_CONNECTION
-        file_table = None
         file_path = None
         if len(file_params) and file_params[0].value:
             file_path = file_params[0].value
-            file_table = file_to_table(file_path)
+            context['header'], context['file'] = file_to_table(file_path)
 
         if request.GET.get('download'):
             file_format = request.GET.get('format')
@@ -544,8 +589,7 @@ def technical_details_form_view(request):
             response.write(converted_file.read())
             return response
 
-        context['file'] = file_table
-        if not params and not file_table:
+        if not context['values'] and not context['file']:
             return HttpResponse(_('You have to execute this experiment first to see the result.'))
         return render_to_response('damis/_technical_details.html', context)
 
