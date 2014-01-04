@@ -1,5 +1,12 @@
 #! coding: utf-8
+
+import arff
+import csv
+import tempfile
+import StringIO
+
 from django import forms
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.forms.util import ErrorList
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
@@ -41,6 +48,76 @@ class DatasetForm(forms.ModelForm):
     class Meta:
         model = Dataset
         fields = ('title', 'file', 'description')
+
+    def clean_file(self, *args, **kwargs):
+        '''Converts the uploaded file to the arff file format, if possible.
+        csv, txt and tab files are parsed as csv files with comma, comma and tab delimiter respectively.
+        arff files are parsed and valid headers are recreated for them.
+        '''
+        uploaded_file = self.cleaned_data.get('file')
+        title = self.cleaned_data.get('title', "-")
+
+        # determine file name and extension
+        name_parts = uploaded_file.name.split(".")
+        file_name = name_parts[0]
+        extension = name_parts[-1]
+
+        if extension == 'csv' or extension == 'txt':
+            reader_file = uploaded_file
+            csv_reader = csv.reader(uploaded_file, delimiter=',', quotechar='"')
+        elif extension == "tab":
+            reader_file = uploaded_file
+            csv_reader = csv.reader(uploaded_file, delimiter='\t', quotechar='"')
+        elif extension == "arff":
+            # read arff data section and recreate header,
+            # thus we obtain a valid header
+            tmp = tempfile.NamedTemporaryFile()
+            reader_file = tmp
+            data_sec = False
+            for row in uploaded_file:
+                if data_sec:
+                    tmp.write(row)
+                else:
+                    row_std = row.strip().lower()
+                    if row_std.startswith("@data"):
+                        data_sec = True
+            tmp.seek(0)
+            csv_reader = csv.reader(tmp, delimiter=',', quotechar='"')
+        else:
+            raise forms.ValidationError(_('File type is not supported. Please select a tab, csv, txt or ARFF file.'))
+
+        # parse file field as a number when possible
+        content = []
+        for in_row in csv_reader:
+            row = []
+            for in_col in in_row:
+                col = in_col
+                try:
+                    col = int(in_col)
+                except ValueError:
+                    try:
+                        col = float(in_col)
+                    except ValueError:
+                        pass
+                row.append(col)
+            content.append(row)
+
+        reader_file.close()
+
+        # save content to a temporary file
+        # in order to process by arff function
+        f = tempfile.NamedTemporaryFile()
+        arff.dump(f.name, content, relation=title)
+        f.seek(0)
+
+        # transfer resulting arff file to memory
+        # in order to return to django
+        buff= StringIO.StringIO(f.read())
+        f.close()
+        arff_file = InMemoryUploadedFile(buff, 'file', file_name + ".arff", None, buff.tell(), None)
+
+        return arff_file
+
 
 class DatasetSelectForm(forms.Form):
     dataset = forms.ModelChoiceField(queryset=Dataset.objects.all())
