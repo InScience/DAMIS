@@ -199,9 +199,17 @@ def get_result_file_upload_path(instance, filename):
     return  '%s/result/%s' % (username, filename)
 
 class WorkflowTask(models.Model):
+    STATUSES = (
+        ('SAVED', _('Saved')),
+        ('RUNNING', _('Running')),
+        ('ERROR', _('Error')),
+        ('FINISHED', _('Finished')),
+    )
     experiment = models.ForeignKey('Experiment', related_name='tasks',
                                    null=True, verbose_name=_('Experiment'))
     algorithm = models.ForeignKey('Component', verbose_name=_('Component'))
+    status = models.CharField(_('Status'), max_length=255, null=True, blank=True,
+                              choices=STATUSES, default='SAVED')
 
     def __unicode__(self):
         return '%s' % (self.algorithm.title,)
