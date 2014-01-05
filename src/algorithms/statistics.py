@@ -48,7 +48,7 @@ def statistics(source, output, arff=False, *args, **kwargs):
                 if not maxs[i] or attr_float > maxs[i]:
                     maxs[i] = attr_float
 
-                value = attr.strip()
+                value = float(attr.strip())
                 if each_value_counts[i].has_key(value):
                     each_value_counts[i][value] += 1
                 else:
