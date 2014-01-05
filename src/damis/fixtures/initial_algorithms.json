@@ -26,7 +26,7 @@
         "title": "MII Cluster",
         "title_lt": "MII klasteris",
         "description": "Distributed Computing cluster of Vilnius University Institute of Mathematics and Informatics.",
-        "description_lt": "Vilniaus universiteto Matematikos ir Informatikos instituto paskirstitųjų skaičiavimų klasteris."
+        "description_lt": "Vilniaus universiteto Matematikos ir informatikos instituto paskirstitųjų skaičiavimų klasteris."
     }
 },
 {
@@ -37,8 +37,8 @@
         "workload_url": "http://k007.mif.vu.lt/ganglia2/", 
         "title": "MIF VU SK2",
         "title_lt": "MIF VU SK2",
-        "description": "Distributed Computing Network of Vilnius University Faculty of Mathematics and Informatics is an environment for executing software, requiring efficient data exchange.",
-        "description_lt": "Vilniaus universiteto Matematikos ir informatikos fakulteto Paskirstytųjų skaičiavimų tinklas (VU MIF PST) - specialiai paruoštas kompiuterių tinklas, kuriame yra galimybė vykdyti programas, kurios galėtų efektyviai apsikeisti duomenimis."
+        "description": "Supercomputer of Vilnius University Faculty of Mathematics and Informatics.",
+        "description_lt": "Vilniaus universiteto Matematikos ir informatikos fakulteto paskirstytųjų skaičiavimų superkompiuteris."
     }
 },
 {
