@@ -6,16 +6,16 @@
 				if (outParam.val()) {
 					// editing workflow: a connection already exists 
 					formWindow.append(this.fileSelectedView(outParam.val()));
-				} 
+				}
 			}
 		},
 
 		fileSelectedView: function(fileUrl) {
-			var successText = $("<div class=\"file-form-container\"><p>"+gettext("A file is selected.")+"</p></div>");
+			var successText = $("<div class=\"file-form-container\"><p>" + gettext("A file is selected.") + "</p></div>");
 			var tableContent = "";
 			tableContent += "<tr><td><b>" + gettext("File url") + ":</b></td><td>" + fileUrl + "</td></tr>";
 			successText.append("<table><tbody>" + tableContent + "</b></tbody></table>");
-            return successText;
+			return successText;
 		},
 
 		// send request to the server to obtain file upload form
@@ -72,7 +72,6 @@
 
 			if (this.checkSuccess(responseText)) {
 				// TODO: display feature naming form to the user? 
-
 				// show read-only file info from the returned response,
 				// this will not disappear during saving
 				var fileUrl = responseText.find("input[name=file_path]").val();
@@ -107,9 +106,15 @@
 					var fileForm = $(ev.currentTarget).closest(".ui-dialog").find(".file-form-container");
 					window.files.doUpload($(fileForm[0]));
 				}
+			},
+			{
+				text: gettext('Cancel'),
+				class: "btn",
+				click: function(ev) {
+                    $(this).dialog("close");
+				}
 			}];
-			var defaultButtons = window.taskBoxes.defaultDialogButtons();
-			return buttons.concat(defaultButtons);
+            return buttons;
 		},
 
 		doubleClick: function(componentType, formWindow) {
