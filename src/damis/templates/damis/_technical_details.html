@@ -14,9 +14,12 @@
                          {% endfor %}
                      </tbody>
                      </table>
+                    {% if file %}
+                        <br />
+                    {% endif %}
                 {% endif %}
                 {% if file %}
-                    <br /><b>{% trans 'File content' %}:</b><br />
+                    <b>{% trans 'File content' %}:</b><br />
 
                     {% for header_row in header %}
                         {{ header_row }} <br />
