@@ -415,7 +415,8 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         response = Popen(command, shell=True, stdout=PIPE, stderr=PIPE)
         # response.wait()
         # response.communicate()
-
+        exp.status = 'RUNNING'
+        exp.save()
         return HttpResponse(reverse_lazy('experiment-list'))
 
     def form_invalid(self, experiment_form, task_formset):

@@ -44,6 +44,9 @@ SERVICES = {
 
 ## Recursively walk through through tasks.
 def execute_tasks(task):
+    task.status = 'RUNNING'
+    task.save()
+
     # Get INPUT and COMMON parameter values.
     kwargs = {}
     for pv in task.parameter_values.all():
@@ -64,7 +67,7 @@ def execute_tasks(task):
         pv.value = value
         pv.save()
 
-    task.status = 'SAVED'
+    task.status = 'FINISHED'
     task.save()
 
     ## Call its following tasks
