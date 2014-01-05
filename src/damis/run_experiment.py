@@ -5,8 +5,23 @@ from datetime import datetime
 from damis.models import Experiment, Connection, ParameterValue
 from damis.settings import BUILDOUT_DIR
 from algorithms.preprocess import transpose
+from algorithms.statistics import statistics
 
-def transpose_data_callable(X, c, arff=False, *args, **kwargs):
+
+def stat_primitives_service(X, arff=False, *args, **kwargs):
+    start_time = datetime.now()
+    X_absolute = BUILDOUT_DIR + '/var/www' + X
+    Y = '%s_stats%s' % splitext(X)
+    Y_absolute = BUILDOUT_DIR + '/var/www' + Y
+    if X.endswith('arff'):
+        arff = True
+    statistics(X_absolute, Y_absolute, arff=arff)
+    print Y_absolute
+    print Y
+    duration = datetime.now() - start_time
+    return [('Y', Y), ('calcTime', duration)]
+
+def transpose_data_service(X, c, arff=False, *args, **kwargs):
     start_time = datetime.now()
     X_absolute = BUILDOUT_DIR + '/var/www' + X
     Y = '%s_transposed%s' % splitext(X)
@@ -30,9 +45,9 @@ SERVICES = {
     # "CLEAN DATA",
     # "FILTER DATA",
     # "SPLIT DATA",
-    "TRANSPOSE DATA": transpose_data_callable,
-    # "TRANSFORM DATA": transform_data_callable,
-    # "STAT PRIMITIVES",
+    "TRANSPOSE DATA": transpose_data_service,
+    # "TRANSFORM DATA",
+    "STAT PRIMITIVES": stat_primitives_service,
     # "MLP",
     # "C45",
     # "KMEANS",
