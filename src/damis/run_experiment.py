@@ -1,10 +1,10 @@
 import sys
-from damis.models import Experiment, Connection
-from damis.settings import BUILDOUT_DIR
 from os.path import splitext
-from algorithms.preprocess import transpose
 from datetime import datetime
 
+from damis.models import Experiment, Connection, ParameterValue
+from damis.settings import BUILDOUT_DIR
+from algorithms.preprocess import transpose
 
 def transpose_data_callable(X, c, arff=False, *args, **kwargs):
     start_time = datetime.now()
@@ -67,9 +67,16 @@ def execute_tasks(task):
 
     # Set OUTPUT parameter values and save.
     for name, value in response:
-        pv = task.parameter_values.get(parameter__name=name)
-        pv.value = value
-        pv.save()
+        param_qs = task.algorithm.parameters.filter(name=name)
+        parameter = param_qs[0] if param_qs else None
+        if parameter:
+            pv_qs = task.parameter_values.filter(parameter__name=name)
+            if not pv_qs:
+                pv = ParameterValue(task=task, parameter=parameter)
+            else:
+                pv = pv_qs[0]
+            pv.value = value
+            pv.save()
 
     task.status = 'FINISHED'
     task.save()
