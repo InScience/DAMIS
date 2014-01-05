@@ -36,7 +36,7 @@
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
                         </a>
                         <a href="{% url 'experiment-update' obj.id %}">
-                            <button {% if obj.status == 'SAVED' %}disabled="disabled"{% endif %}  type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
+                            <button {% if obj.status == 'SAVED' or obj.status == 'RUNNING' %}disabled="disabled"{% endif %}  type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
                         </a>
                     </td>
                 </tr>
