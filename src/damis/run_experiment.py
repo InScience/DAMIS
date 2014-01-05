@@ -3,15 +3,19 @@ from damis.models import Experiment, Connection
 from damis.settings import BUILDOUT_DIR
 from os.path import splitext
 from algorithms.preprocess import transpose
+from datetime import datetime
+
 
 def transpose_data_callable(X, c, arff=False, *args, **kwargs):
+    start_time = datetime.now()
     X_absolute = BUILDOUT_DIR + '/var/www' + X
     Y = '%s_transposed%s' % splitext(X)
     Y_absolute = BUILDOUT_DIR + '/var/www' + Y
     if X.endswith('arff'):
         arff = True
     transpose(X_absolute, Y_absolute, int(c), arff=arff)
-    return [('Y', Y)]
+    duration = datetime.now() - start_time
+    return [('Y', Y), ('calcTime', duration)]
 
 def do_nothing(*args, **kwargs):
     return []
