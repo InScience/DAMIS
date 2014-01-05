@@ -3,7 +3,7 @@ import csv
 import json
 import re
 import tempfile
-from os.path import join, exists, getsize, splitext
+from os.path import join, exists, getsize, splitext, split
 from os import makedirs, listdir
 from subprocess import call, Popen, PIPE
 
@@ -555,12 +555,13 @@ def technical_details_form_view(request):
     pv_name = request.GET.get('pv_name')
     dataset_url = request.GET.get('dataset_url');
     context = {}
-    if re.findall('PV_\d+-\d+-value', pv_name):
-        if (dataset_url): 
+    if not pv_name or re.findall('PV_\d+-\d+-value', pv_name):
+        if dataset_url:
             if request.GET.get('download'):
                 file_format = request.GET.get('format')
+                filename = splitext(split(dataset_url)[1])[0]
                 response = HttpResponse(mimetype='text/html')
-                response['Content-Disposition'] = 'attachment; filename=%s.%s' % ("rez", file_format)
+                response['Content-Disposition'] = 'attachment; filename=%s.%s' % (filename, file_format)
                 converted_file = convert(dataset_url, file_format=file_format)
                 response.write(converted_file.read())
                 return response
@@ -582,8 +583,9 @@ def technical_details_form_view(request):
 
         if request.GET.get('download'):
             file_format = request.GET.get('format')
+            filename = splitext(split(file_path)[1])[0]
             response = HttpResponse(mimetype='text/html')
-            response['Content-Disposition'] = 'attachment; filename=%s.%s' % ("rez", file_format)
+            response['Content-Disposition'] = 'attachment; filename=%s.%s' % (filename, file_format)
             if file_path:
                 converted_file = convert(file_path, file_format=file_format)
             else:
