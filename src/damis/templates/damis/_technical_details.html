@@ -2,11 +2,11 @@
 <table>
     <tbody><tr>
             <td>
+				<div style="max-height: 300px; min-width: 300px; overflow: auto;">
                 {% if values %}
-                     <p>{% trans 'Returned values' %}:</p>
                      <table>
                      <thead>
-                         <tr><th>{% trans 'Name' %}</th><th>{% trans 'Value' %}</th></tr>
+                         <tr><th>{% trans 'Parameter' %}</th><th>{% trans 'Value' %}</th></tr>
                      </thead>
                      <tbody>
                          {% for val in values %}
@@ -15,11 +15,8 @@
                      </tbody>
                      </table>
                 {% endif %}
-            </td>
-            <td>
                 {% if file %}
-                    <p>{% trans 'File content' %}:</p>
-					<div style="max-height: 300px; min-width: 300px; overflow: auto;">
+                    <br /><b>{% trans 'File content' %}:</b><br />
 
                     {% for header_row in header %}
                         {{ header_row }} <br />
@@ -37,11 +34,11 @@
                             {% endfor %}
                         </tbody>
                         </table>
-                    </div>
                 {% endif %}
+                </div>
             </td> 
     </tr>
-    <tr><td colspan="2">
+    <tr><td>
             {% trans 'Select results file type: ' %}
             <select class="file-type-select"> 
                 <option value="tab">tab</option>
