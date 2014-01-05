@@ -353,6 +353,8 @@ class BaseWorkflowTaskFormset(BaseInlineFormSet):
                     if not pv_instance:
                         pv_instance = ParameterValue.objects.create(**data)
                     else:
+                        if pv_form.cleaned_data.has_key('related'):
+                            pv_form.cleaned_data.pop('related')
                         pv_form.save()
                     pv_form.instance = pv_instance
 
