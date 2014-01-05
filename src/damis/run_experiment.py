@@ -16,8 +16,6 @@ def stat_primitives_service(X, arff=False, *args, **kwargs):
     if X.endswith('arff'):
         arff = True
     statistics(X_absolute, Y_absolute, arff=arff)
-    print Y_absolute
-    print Y
     duration = datetime.now() - start_time
     return [('Y', Y), ('calcTime', duration)]
 
