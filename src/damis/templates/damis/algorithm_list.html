@@ -30,8 +30,8 @@
                 {% for obj in object_list %}
                 <tr>
                     <td><input type='checkbox' value="{{ obj.pk }}" name="pk"/></td>
-                    <td> {{ obj }}</td>
-                    <td> {% if obj.description %}{% trans obj.description %}{% endif %} </td>
+                    <td> {{ obj.get_label_display }}</td>
+                    <td> {{ obj.get_description_display }} </td>
                     <td> 
                         <a href="{% url 'algorithm-update' obj.pk %}">
                             <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
