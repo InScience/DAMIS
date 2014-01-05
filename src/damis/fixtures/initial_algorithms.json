@@ -1979,7 +1979,7 @@
         "required": false, 
         "label": "Class Column", 
         "label_LT": "Klas\u0117s stulpelis", 
-        "type": "string", 
+        "type": "int", 
         "description": "Class column"
     }
 },
@@ -3998,15 +3998,15 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Klas\u0117s stulpelis ", 
+        "description_LT": "Klas\u0117s stulpelis", 
         "name": "classColumn", 
         "algorithm": 39, 
         "default": "", 
         "required": false, 
-        "label": "Class Column ", 
-        "label_LT": "Klas\u0117s stulpelis ", 
-        "type": "string", 
-        "description": "Class Column "
+        "label": "Class Column", 
+        "label_LT": "Klas\u0117s stulpelis", 
+        "type": "int", 
+        "description": "Class column"
     }
 },
 {
