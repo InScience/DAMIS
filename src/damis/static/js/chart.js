@@ -24,7 +24,10 @@
 				class: "btn btn-primary",
 				click: function(ev) {
 					var dialog = $(ev.currentTarget).closest(".ui-dialog");
-					window.chart.updateChart(dialog);
+					var formWindow = dialog.find("div[id$=-form]");
+					window.chart.updateData(formWindow, window.chart.updateChartColorsSymbols, {
+						renderChoices: dialog.find(".plot-container .render-choices tbody tr")
+					});
 				}
 			},
 			{
@@ -128,15 +131,11 @@
 		},
 
 		// updates the chart colors and symbols
-		updateChartColorsSymbols: function(dialog) {
-			var plotContainer = $(dialog.find(".plot-container")[0]);
-			var formWindow = dialog.find(".task-window");
-
-			var data = window.chart.getDataToRender();
+		updateChartColorsSymbols: function(dataContent, formWindow, params) {
+			var data = dataContent.data;
 			var colors = window.chart.generateColorPalette(data);
 			var symbols = window.chart.generateSymbolPalette(data);
-			var renderChoices = plotContainer.find(".render-choices tbody tr");
-			$.each(renderChoices, function(idx, choice) {
+			$.each(params['renderChoices'], function(idx, choice) {
 				// TODO: add color validation or color picker
 				var color = $(choice).find("input").val();
 				colors[idx] = color ? color: colors[idx];
@@ -144,24 +143,23 @@
 				var symbol = $(choice).find("option:selected").val();
 				symbols[idx] = symbol ? symbol: symbols[idx][0];
 			});
-			window.chart.renderChart(plotContainer, "#" + formWindow.attr("id") + " .results-container", data, colors, symbols);
+			window.chart.renderChartAndForm(dataContent, formWindow, colors, symbols);
 		},
 
 		// displays a pop-up asking to download file
 		downloadChart: function(plotContainer) {
 			var canvas = plotContainer.find("canvas")[0];
-			var image = canvas.toDataURL("image/jpeg");
-			image = image.replace("image/jpeg", "image/octet-stream");
-
-			// var image = canvas.toDataURL();
-			// image = image.replace("image/png", "image/octet-stream");
-			// TODO: use server side to obtain download prompt
+			//var image = canvas.toDataURL("image/jpeg");
+			//image = image.replace("image/jpeg", "image/octet-stream");
+			var image = canvas.toDataURL();
+			image = image.replace("image/png", "image/octet-stream");
+			// TODO: use server side to obtain download prompt with file extension
 			document.location.href = image;
 		},
 
 		// renders the chart and the form with inputs for colors and symbols
 		// for the first time
-		renderChartAndForm: function(dataContent, formWindow) {
+		renderChartAndForm: function(dataContent, formWindow, selectedColors, selectedSymbols) {
 			var plotContainer = formWindow.find(".plot-container");
 			plotContainer.css("min-height", 400);
 			plotContainer.css("position", "relative");
@@ -178,7 +176,7 @@
 			// append to body temporarily in order for axes labels to be drawn correctly
 			$("body").append(plotContainer);
 
-			var colorPalette = window.chart.generateColorPalette(dataContent.data);
+			var colorPalette = selectedColors ? selectedColors: window.chart.generateColorPalette(dataContent.data);
 			var symbolPalette = window.chart.generateSymbolPalette(dataContent.data);
 			var symbolValues = []
 
@@ -190,9 +188,18 @@
 
 				var shapeSelect = $("<select></select>");
 				$.each(symbolPalette, function(i, shape) {
-					shapeSelect.append("<option value=\"" + shape[0] + "\"" + (idx == i ? "selected=\"selected\"": "") + ">" + shape[1] + "</option>");
-					symbolValues.push(shape[0]);
+					var selected;
+					if (selectedSymbols) {
+						selected = selectedSymbols[idx] == shape[0];
+					} else {
+						selected = idx == i;
+					}
+					if (selected) {
+						symbolValues.push(shape[0]);
+					}
+					shapeSelect.append("<option value=\"" + shape[0] + "\"" + (selected ? "selected=\"selected\"": "") + ">" + shape[1] + "</option>");
 				});
+
 				var shapeCell = $("<td></td>");
 				shapeCell.append(shapeSelect);
 				seriesRow.append(shapeCell);
@@ -211,9 +218,9 @@
 			});
 		},
 
-		updateData: function(formWindow, callback) {
+		updateData: function(formWindow, callback, params) {
 			var url = window.componentFormUrls['CHART'];
-			var data = window.technicalDetails.getOutputParamDetails(formWindow);
+			var data = window.chart.getOutputParamDetails(formWindow);
 			formWindow.find(".plot-container").remove();
 			var container = $("<div class=\"plot-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
 			formWindow.append(container);
@@ -223,7 +230,11 @@
 				context: container,
 			}).done(function(resp) {
 				if (resp.status == "SUCCESS") {
-					callback(resp.content, formWindow);
+					if (params) {
+						callback(resp.content, formWindow, params);
+					} else {
+						callback(resp.content, formWindow);
+					}
 				} else {
 					var container = formWindow.find(".plot-container");
 					container.html(resp.message);
