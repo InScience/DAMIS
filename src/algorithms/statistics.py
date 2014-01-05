@@ -44,9 +44,9 @@ def statistics(source, output, arff=False, *args, **kwargs):
                 attr_sums[i] += attr_float
                 attr_sq_sums[i] += attr_float * attr_float
                 if not mins[i] or attr_float < mins[i]:
-                    mins[i] = attr
+                    mins[i] = attr_float
                 if not maxs[i] or attr_float > maxs[i]:
-                    maxs[i] = attr
+                    maxs[i] = attr_float
 
                 value = attr.strip()
                 if each_value_counts[i].has_key(value):
