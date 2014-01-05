@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-04 21:02+0000\n"
+"POT-Creation-Date: 2014-01-05 14:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,49 +16,57 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:84
+#: forms.py:57 forms.py:69
+msgid "Corrupted zip archive file."
+msgstr "Zip archyvas pažeistas."
+
+#: forms.py:67
+msgid "The zip archive should contain exactly one file, {0} found."
+msgstr "Zip archyve turėtų būti vienas failas, tačiau rasta {0}."
+
+#: forms.py:117
 msgid "File type is not supported. Please select a tab, csv, txt or ARFF file."
 msgstr "Šis failo tipas nepalaikomas. Pasirinkite tab, csv, txt ar ARFF failą."
 
-#: forms.py:124 forms.py:140 templates/damis/user_list.html:22
+#: forms.py:157 forms.py:173 templates/damis/user_list.html:22
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:125 forms.py:141
+#: forms.py:158 forms.py:174
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:135
+#: forms.py:168
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:143
+#: forms.py:176
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:145
+#: forms.py:178
 msgid "First name"
 msgstr "Vardas"
 
-#: forms.py:146
+#: forms.py:179
 msgid "Last name"
 msgstr "Pavardė"
 
-#: forms.py:147 templates/damis/user_list.html:23
+#: forms.py:180 templates/damis/user_list.html:23
 msgid "E-mail"
 msgstr "el. paštas"
 
-#: forms.py:180 models.py:19 models.py:81
+#: forms.py:213 models.py:19 models.py:81
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:23
 #: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:181
+#: forms.py:214
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:182 models.py:21 templates/damis/algorithm_list.html:24
+#: forms.py:215 models.py:21 templates/damis/algorithm_list.html:24
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:25
 msgid "Description"
 msgstr "Aprašymas"
@@ -206,7 +214,7 @@ msgstr "Data ir laikas"
 msgid "Time"
 msgstr "Laikas"
 
-#: models.py:137 models.py:204
+#: models.py:137 models.py:210
 msgid "Component"
 msgstr "Komponentė"
 
@@ -230,19 +238,19 @@ msgstr "Standartinė reikšmė"
 msgid "Connection type"
 msgstr "Jungties tipas"
 
-#: models.py:168
+#: models.py:168 models.py:203
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: models.py:169
+#: models.py:169 models.py:204
 msgid "Running"
 msgstr "Vykdoma"
 
-#: models.py:170
+#: models.py:170 models.py:205
 msgid "Error"
 msgstr "Klaida"
 
-#: models.py:171
+#: models.py:171 models.py:206
 msgid "Finished"
 msgstr "Įvykdyta"
 
@@ -258,7 +266,7 @@ msgstr "Pradžia"
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:176 templates/damis/experiment_list.html:23
+#: models.py:176 models.py:211 templates/damis/experiment_list.html:23
 msgid "Status"
 msgstr "Statusas"
 
@@ -274,23 +282,23 @@ msgstr "Maksimali skaičiavimo trukmė"
 msgid "Processor number"
 msgstr "Procesorių skaičius"
 
-#: models.py:203
+#: models.py:209
 msgid "Experiment"
 msgstr "Eksperimentas"
 
-#: models.py:210
+#: models.py:218 templates/damis/_technical_details.html:9
 msgid "Parameter"
 msgstr "Parametras"
 
-#: models.py:213
+#: models.py:221
 msgid "Workflow Task"
 msgstr "Scenarijaus užduotis"
 
-#: models.py:223
+#: models.py:231
 msgid "Source"
 msgstr "Šaltinis"
 
-#: models.py:225
+#: models.py:233
 msgid "Target"
 msgstr "Tikslas"
 
@@ -302,15 +310,15 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:478 views.py:481 views.py:484
+#: views.py:481 views.py:484 views.py:487
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:561 views.py:587 views.py:627 views.py:634
+#: views.py:570 views.py:596 views.py:636 views.py:643
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:581
+#: views.py:590
 msgid "There is no file to download."
 msgstr "Nėra failo, kurį galėtumėte atsisiųsti."
 
@@ -484,23 +492,15 @@ msgstr "Formoje yra klaidų"
 msgid "Task"
 msgstr "Užduotis"
 
-#: templates/damis/_technical_details.html:6
-msgid "Returned values"
-msgstr "Grąžintos reikšmės"
-
-#: templates/damis/_technical_details.html:9
-msgid "Name"
-msgstr "Pavadinimas"
-
 #: templates/damis/_technical_details.html:9
 msgid "Value"
 msgstr "Reikšmė"
 
-#: templates/damis/_technical_details.html:21
+#: templates/damis/_technical_details.html:22
 msgid "File content"
 msgstr "Failo turinys"
 
-#: templates/damis/_technical_details.html:44
+#: templates/damis/_technical_details.html:45
 msgid "Select results file type: "
 msgstr "Rezultatų failo formatas:"
 
@@ -650,6 +650,12 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankst"
+
+#~ msgid "Returned values"
+#~ msgstr "Grąžintos reikšmės"
+
+#~ msgid "Name"
+#~ msgstr "Pavadinimas"
 
 #~ msgid "Data mining"
 #~ msgstr "Duomenų analizė"

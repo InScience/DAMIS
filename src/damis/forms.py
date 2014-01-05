@@ -4,6 +4,7 @@ import arff
 import csv
 import tempfile
 import StringIO
+import zipfile
 
 from django import forms
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -49,32 +50,65 @@ class DatasetForm(forms.ModelForm):
         model = Dataset
         fields = ('title', 'file', 'description')
 
+    def extract_file(self, archive):
+        '''Extracts a compressed file from a zip archive.
+        Throws an validation error when a file is corrupt or does not contain exactly one file.
+
+        archive - the zip archive (InMemoryUploadedFile)
+        '''
+        try:
+            zip_file = zipfile.ZipFile(archive)
+        except zipfile.error:
+            raise forms.ValidationError(_('Corrupted zip archive file.'))
+
+        if not zip_file.testzip():
+            file_list = zip_file.infolist()
+            if len(file_list) == 1:
+                compressed_file = file_list[0]
+                content = zip_file.read(file_list[0])
+                buff= StringIO.StringIO(content)
+                uncompressed_file = InMemoryUploadedFile(buff, 'file', compressed_file.filename, None, buff.tell(), None)
+            else:
+                raise forms.ValidationError(_('The zip archive should contain exactly one file, {0} found.').format(len(file_list)))
+        else:
+            raise forms.ValidationError(_('Corrupted zip archive file.'))
+        zip_file.close()
+        return uncompressed_file
+
     def clean_file(self, *args, **kwargs):
         '''Converts the uploaded file to the arff file format, if possible.
         csv, txt and tab files are parsed as csv files with comma, comma and tab delimiter respectively.
         arff files are parsed and valid headers are recreated for them.
+        zip files are checked to be valid and contain a single file; 
+        the file is extracted and handled as other uncompressed types.
         '''
-        uploaded_file = self.cleaned_data.get('file')
+        input_file = self.cleaned_data.get('file')
         title = self.cleaned_data.get('title', "-")
 
         # determine file name and extension
-        name_parts = uploaded_file.name.split(".")
+        name_parts = input_file.name.split(".")
         file_name = name_parts[0]
         extension = name_parts[-1]
 
+        if extension == "zip":
+            uncompressed_file = self.extract_file(input_file)
+            input_file = uncompressed_file
+            name_parts = input_file.name.split(".")
+            file_name = name_parts[0]
+            extension = name_parts[-1]
+
         if extension == 'csv' or extension == 'txt':
-            reader_file = uploaded_file
-            csv_reader = csv.reader(uploaded_file, delimiter=',', quotechar='"')
+            reader_file = input_file
+            csv_reader = csv.reader(reader_file, delimiter=',', quotechar='"')
         elif extension == "tab":
-            reader_file = uploaded_file
-            csv_reader = csv.reader(uploaded_file, delimiter='\t', quotechar='"')
+            reader_file = input_file 
+            csv_reader = csv.reader(reader_file, delimiter='\t', quotechar='"')
         elif extension == "arff":
             # read arff data section and recreate header,
             # thus we obtain a valid header
             tmp = tempfile.NamedTemporaryFile()
-            reader_file = tmp
             data_sec = False
-            for row in uploaded_file:
+            for row in input_file:
                 if data_sec:
                     tmp.write(row)
                 else:
@@ -82,7 +116,8 @@ class DatasetForm(forms.ModelForm):
                     if row_std.startswith("@data"):
                         data_sec = True
             tmp.seek(0)
-            csv_reader = csv.reader(tmp, delimiter=',', quotechar='"')
+            reader_file = tmp
+            csv_reader = csv.reader(reader_file, delimiter=',', quotechar='"')
         else:
             raise forms.ValidationError(_('File type is not supported. Please select a tab, csv, txt or ARFF file.'))
 
