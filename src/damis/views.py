@@ -29,7 +29,7 @@ from django.core.context_processors import csrf
 
 from damis.settings import BUILDOUT_DIR
 from damis.constants import COMPONENT_TITLE__TO__FORM_URL
-from damis.utils import slugify
+from damis.utils import slugify, strip_arff_header
 
 from damis.forms import LoginForm, RegistrationForm
 from damis.forms import DatasetForm
@@ -601,6 +601,7 @@ def technical_details_form_view(request):
 
 def read_classified_data(file_url):
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
+    f = strip_arff_header(f)
     clsCol = -1
     result = OrderedDict()
     minX = None; maxX = None

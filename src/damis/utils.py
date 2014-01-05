@@ -29,3 +29,9 @@ def slugify(s, sep='-', allowed_chars='._-'):
     r = r'(%s*)([%s])(%s*)' % (rsep, rchars, rsep)
     slug = re.sub(r, r'\2', slug)
     return slug
+
+def strip_arff_header(opened_file):
+    for row in opened_file:
+        if row.strip().lower().startswith("@data"):
+            break
+    return opened_file
