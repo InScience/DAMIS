@@ -52,7 +52,11 @@ def execute_tasks(task):
     task.save()
 
     # Get INPUT and COMMON parameter values.
-    kwargs = {}
+    kwargs = {
+        'maxCalcTime': exp.max_calc_time,
+        'p': exp.p,
+    }
+
     for pv in task.parameter_values.all():
         cons = Connection.objects.filter(target=pv)
         if cons:
