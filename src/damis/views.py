@@ -592,7 +592,7 @@ def technical_details_form_view(request):
             response.write(converted_file.read())
             return response
 
-        if not context['values'] and not context['file']:
+        if not context.get('values') and not context.get('file'):
             return HttpResponse(_('You have to execute this experiment first to see the result.'))
         return render_to_response('damis/_technical_details.html', context)
 
