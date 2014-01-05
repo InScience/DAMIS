@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load disable_if_connection from damis %}
 
+{% if parameter.connection_type != 'OUTPUT_VALUE' %}
 <div style="{% if parameter.connection_type == 'OUTPUT_CONNECTION' %}display:none;{% endif %}{% if parameter.connection_type == 'INPUT_CONNECTION' %}display:none;{% endif %}">
 {% for field in form.visible_fields %}
     {% if field.name == 'value' %}
@@ -17,3 +18,4 @@
 {% endfor %}
 <input id="{{ form.prefix }}-connection_type" type="hidden" value="{{ parameter.connection_type }}" name="{{ form.prefix }}-connection_type"/>
 </div>
+{% endif %}
