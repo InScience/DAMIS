@@ -11,10 +11,13 @@
 		},
 
 		fileSelectedView: function(fileUrl) {
-			var successText = $("<div class=\"file-form-container\"><p>" + gettext("A file is selected.") + "</p></div>");
+			var successText = $("<div class=\"file-form-container\"></div>");
 			var tableContent = "";
-			tableContent += "<tr><td><b>" + gettext("File url") + ":</b></td><td>" + fileUrl + "</td></tr>";
-			successText.append("<table><tbody>" + tableContent + "</b></tbody></table>");
+			if (fileUrl) {
+				var fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+				tableContent += "<tr><td>" + gettext("A file is uploaded") + ":</td><td><a href=\"" + fileUrl + "\"><b>" + fileName + "</b></a></td></tr>";
+				successText.append("<table><tbody>" + tableContent + "</b></tbody></table>");
+			}
 			return successText;
 		},
 
@@ -111,10 +114,10 @@
 				text: gettext('Cancel'),
 				class: "btn",
 				click: function(ev) {
-                    $(this).dialog("close");
+					$(this).dialog("close");
 				}
 			}];
-            return buttons;
+			return buttons;
 		},
 
 		doubleClick: function(componentType, formWindow) {

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-17 21:21+0000\n"
+"POT-Creation-Date: 2014-01-05 15:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: static/js/chart.js:13 static/js/technicalDetails.js:19
+#: static/js/chart.js:13 static/js/technicalDetails.js:12
 msgid ""
 "This component should be connected to an executed task in order to view "
 "results."
@@ -30,72 +30,69 @@ msgstr ""
 msgid "Update"
 msgstr "Atnaujinti"
 
-#: static/js/chart.js:31 static/js/technicalDetails.js:29
+#: static/js/chart.js:31 static/js/technicalDetails.js:22
 msgid "Download"
 msgstr "Atsisiųsti"
 
-#: static/js/chart.js:92
+#: static/js/chart.js:57
 msgid "Circle"
 msgstr "Apskritimas"
 
-#: static/js/chart.js:92
+#: static/js/chart.js:57
 msgid "Square"
 msgstr "Kvadratas"
 
-#: static/js/chart.js:92
+#: static/js/chart.js:57
 msgid "Diamond"
 msgstr "Rombas"
 
-#: static/js/chart.js:92
+#: static/js/chart.js:57
 msgid "Triangle"
 msgstr "Trikampis"
 
-#: static/js/chart.js:92
+#: static/js/chart.js:57
 msgid "Cross"
 msgstr "Kryžiukas"
 
-#: static/js/chart.js:145
+#: static/js/chart.js:120
 msgid "index"
 msgstr "taško numeris"
 
-#: static/js/chart.js:145
+#: static/js/chart.js:120
 msgid "class"
 msgstr "klasė"
 
-#: static/js/chart.js:195
+#: static/js/chart.js:172
 msgid "Class"
 msgstr "Klasė"
 
-#: static/js/chart.js:195
+#: static/js/chart.js:172
 msgid "Color"
 msgstr "Spalva"
 
-#: static/js/chart.js:195
+#: static/js/chart.js:172
 msgid "Shape"
 msgstr "Forma"
 
-#: static/js/experimentForm.js:177
+#: static/js/experimentForm.js:180
 msgid "Experiment settings"
 msgstr "Eksperimento nustatymai"
 
-#: static/js/experimentForm.js:181 static/js/utils.js:17
+#: static/js/experimentForm.js:184 static/js/files.js:114
+#: static/js/utils.js:17
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: static/js/experimentForm.js:188 static/js/taskBoxes.js:147
+#: static/js/experimentForm.js:191 static/js/taskBoxes.js:138
 #: static/js/utils.js:24
 msgid "OK"
 msgstr "Gerai"
 
-#: static/js/files.js:14
-msgid "A file is selected."
-msgstr "Failas pasirinktas."
+#: static/js/files.js:18
+msgid "A file is uploaded"
+msgstr "Failas įkeltas"
 
-#: static/js/files.js:16
-msgid "File url"
-msgstr "Failo nuoroda"
-
-#: static/js/files.js:104
+#: static/js/files.js:106
 msgid "Upload"
 msgstr "Įkelti"
 
@@ -106,6 +103,9 @@ msgstr "pridėti dar vieną"
 #: static/js/jquery.formset.js:165
 msgid "remove"
 msgstr "pašalinti"
+
+#~ msgid "File url"
+#~ msgstr "Failo nuoroda"
 
 #~ msgid "Title"
 #~ msgstr "Pavadinimas"
