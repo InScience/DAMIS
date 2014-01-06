@@ -2,5 +2,6 @@
 
 <ul class="nav nav-tabs" id="myTab2">
   <li class="{% if active == 'dataset-list' %}active{% endif %}"><a href="{% url 'dataset-list' %}">{% trans "File list" %}</a></li>
-  <li class="{% if active == 'dataset-new' %}active{% endif %}"><a href="{% url 'dataset-new' %}">{% trans "Upload file" %}</a></li>
+  <li class="{% if active == 'dataset-new' %}active{% endif %}"><a href="{% url 'dataset-new' %}">{% trans "Upload file from computer" %}</a></li>
+  <li class="{% if active == 'dataset-midas' %}active{% endif %}"><a href="{% url 'dataset-new' %}">{% trans "Upload file from MIDAS" %}</a></li>
 </ul>
