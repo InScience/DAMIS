@@ -1,4 +1,5 @@
 import sys
+import csv
 from os.path import splitext
 from datetime import datetime
 
@@ -30,6 +31,57 @@ def transpose_data_service(X, c, arff=False, *args, **kwargs):
     duration = datetime.now() - start_time
     return [('Y', Y), ('calcTime', duration)]
 
+def column_string_to_list(columns):
+    column_list = []
+    for c in columns.split(','):
+        c = c.strip()
+        if '-' in c:
+            from_c, till_c = c.split('-')
+            for i in range(int(from_c), int(till_c) + 1):
+                column_list.append(i)
+        else:
+            column_list.append(int(c))
+    return column_list
+
+def select_features_service(X, columns, classColumn, *args, **kwargs):
+    X_absolute = BUILDOUT_DIR + '/var/www' + X
+    Y = '%s_stats%s' % splitext(X)
+    Y_absolute = BUILDOUT_DIR + '/var/www' + Y
+
+    input_file = open(X_absolute)
+    output_file = open(Y_absolute, 'w')
+
+    columns = column_string_to_list(columns)
+
+    attr = -1
+    new_attr = -1
+    for line in input_file:
+        if '@attribute' in line.lower():
+            attr += 1
+            if attr in columns:
+                new_attr += 1
+                type_ = line.split()[-1].strip()
+                title = 'attr{0}'.format(new_attr)
+                if attr == int(classColumn):
+                    title = 'class'
+                output_file.write('@attribute %s %s\n' % (title, type_))
+        else:
+            output_file.write(line)
+        if line.strip().lower().startswith("@data"):
+            break
+
+    for attr_list in csv.reader(input_file):
+        attrs_to_write = []
+        for c in columns:
+            attrs_to_write.append(attr_list[c])
+        output_file.write(', '.join(attrs_to_write) + '\n')
+
+    input_file.close()
+    output_file.close()
+
+    return [('Y', Y)]
+
+
 def do_nothing(*args, **kwargs):
     return []
 
@@ -45,6 +97,7 @@ SERVICES = {
     # "SPLIT DATA",
     "TRANSPOSE DATA": transpose_data_service,
     # "TRANSFORM DATA",
+    "SELECT FEATURES": select_features_service,
     "STAT PRIMITIVES": stat_primitives_service,
     # "MLP",
     # "C45",
@@ -56,7 +109,6 @@ SERVICES = {
     # "SAMANN",
     # "SOM",
     # "SOMMDS",
-    # "SELECT FEATURES",
 }
 
 ## Recursively walk through through tasks.
