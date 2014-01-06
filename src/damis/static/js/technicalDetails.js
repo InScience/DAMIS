@@ -19,9 +19,9 @@
 		// all buttons for this component
 		allButtons: function() {
 			var buttons = [{
-				text: gettext('Download'),
-				class: "btn btn-primary",
-				click: function(ev) {
+				"text": gettext('Download'),
+				"class": "btn btn-primary",
+				"click": function(ev) {
 					var url = window.componentFormUrls['TECHNICAL DETAILS'];
                     var dialog = $(ev.currentTarget).closest(".ui-dialog");
 					var formWindow = dialog.find(".task-window");

@@ -103,17 +103,17 @@
 		// all buttons of this component dialog
 		allButtons: function() {
 			var buttons = [{
-				text: gettext('Upload'),
-				class: "btn btn-primary",
-				click: function(ev) {
+				"text": gettext('Upload'),
+				"class": "btn btn-primary",
+				"click": function(ev) {
 					var fileForm = $(ev.currentTarget).closest(".ui-dialog").find(".file-form-container");
 					window.files.doUpload($(fileForm[0]));
 				}
 			},
 			{
-				text: gettext('Cancel'),
-				class: "btn",
-				click: function(ev) {
+				"text": gettext('Cancel'),
+				"class": "btn",
+				"click": function(ev) {
 					$(this).dialog("close");
 				}
 			}];

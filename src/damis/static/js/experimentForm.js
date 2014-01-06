@@ -177,20 +177,20 @@
 		executeDialog: function(action) {
 			var dialog = $("#exec-dialog");
 			dialog.dialog({
-				title: gettext('Experiment settings'),
-				modal: true,
-				appendTo: "#experiment-form",
-				buttons: [{
-					text: gettext('Cancel'),
-					class: "btn",
-					click: function(ev) {
+				"title": gettext('Experiment settings'),
+				"modal": true,
+				"appendTo": "#experiment-form",
+				"buttons": [{
+					"text": gettext('Cancel'),
+					"class": "btn",
+					"click": function(ev) {
 						$(this).dialog("close");
 					}
 				},
 				{
-					text: gettext('OK'),
-					class: "btn btn-primary",
-					click: function(ev) {
+					"text": gettext('OK'),
+					"class": "btn btn-primary",
+					"click": function(ev) {
 						$(this).dialog("close");
 						if (action == "execute") {
 							window.experimentForm.updatePrefixes(parameterPrefixesUrl, function() {
@@ -211,7 +211,7 @@
 						}
 					}
 				}],
-				open: function() {
+				"open": function() {
 					var dialog = $(this).closest(".ui-dialog");
 					dialog.find(".ui-dialog-titlebar > button").remove();
 
@@ -221,7 +221,7 @@
 						$(this).find("#exec-params").hide();
 					}
 				},
-				close: function() {
+				"close": function() {
 					$(this).dialog("destroy");
 				}
 			});

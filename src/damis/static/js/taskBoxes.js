@@ -135,9 +135,9 @@
 
 		defaultDialogButtons: function() {
 			return [{
-				text: gettext("OK"),
-				class: "btn",
-				click: function(ev) {
+				"text": gettext("OK"),
+				"class": "btn",
+				"click": function(ev) {
 					$(this).dialog("close");
 				}
 			}]

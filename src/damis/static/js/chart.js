@@ -20,9 +20,9 @@
 		// all buttons for this component
 		allButtons: function() {
 			var buttons = [{
-				text: gettext('Update'),
-				class: "btn btn-primary",
-				click: function(ev) {
+				"text": gettext('Update'),
+				"class": "btn btn-primary",
+				"click": function(ev) {
 					var dialog = $(ev.currentTarget).closest(".ui-dialog");
 					var formWindow = dialog.find("div[id$=-form]");
 					window.chart.updateData(formWindow, window.chart.updateChartColorsSymbols, {
@@ -31,9 +31,9 @@
 				}
 			},
 			{
-				text: gettext('Download'),
-				class: "btn",
-				click: function(ev) {
+				"text": gettext('Download'),
+				"class": "btn",
+				"click": function(ev) {
 					var plotContainer = $(ev.currentTarget).closest(".ui-dialog").find(".plot-container");
 					window.chart.downloadChart($(plotContainer[0]));
 				}
