@@ -56,20 +56,22 @@ def statistics(source, output, arff=False, *args, **kwargs):
 
         for i in range(attr_count):
             if not stats[i].has_key('min'):
-                stats[i]['min'] = mins[i]
+                stats[i]['min'] = round(mins[i], 8)
             if not stats[i].has_key('max'):
-                stats[i]['max'] = maxs[i]
+                stats[i]['max'] = round(maxs[i], 8)
             if not stats[i].has_key('mean'):
-                stats[i]['mean'] = attr_sums[i] / total_rows
+                mean = attr_sums[i] / total_rows
+                stats[i]['mean'] = round(mean, 8)
             if not stats[i].has_key('std'):
-                stats[i]['std'] = sqrt(attr_sq_sums[i] / total_rows - stats[i]['mean']**2)
+                std = sqrt(attr_sq_sums[i] / total_rows - stats[i]['mean']**2)
+                stats[i]['std'] = round(std, 8)
             if not stats[i].has_key('median'):
                 stats[i]['median'] = None
                 viewed = 0
-                for key, count in sorted(each_value_counts[i].items(), key=lambda x: float(x[0])):
+                for key, count in sorted(each_value_counts[i].items(), key=lambda x: x[0]):
                     viewed += count
                     if stats[i]['median'] is None and viewed > 0.5 * (total_rows + 1):
-                        stats[i]['median'] = key
+                        stats[i]['median'] = round(key, 8)
 
     content = []
     for i in range(attr_count):
