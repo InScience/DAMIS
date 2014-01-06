@@ -112,3 +112,4 @@ textarea {
 .popover-content { word-wrap: break-word; }
 .popover { width: 276px; }
 .tab-content { overflow: visible; }
+.file-content-table td {padding: 4px; border: 1px solid #bbb}
