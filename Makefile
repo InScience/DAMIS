@@ -48,3 +48,8 @@ graph:
 
 load_data:
 	bin/django loaddata initial_algorithms.json
+
+pull: 
+	git pull
+	bin/django migrate damis
+	sudo /etc/init.d/apache2 restart
