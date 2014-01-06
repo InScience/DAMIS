@@ -426,7 +426,7 @@ class BaseWorkflowTaskFormset(BaseInlineFormSet):
 class WorkflowTaskForm(forms.ModelForm):
     class Meta:
         model = WorkflowTask
-        exclude = ['stdout', 'stderr', 'processors', 'sequence']
+        exclude = ['stdout', 'stderr', 'processors', 'sequence', 'status']
 
 WorkflowTaskFormset = inlineformset_factory(Experiment, WorkflowTask,
         formset=BaseWorkflowTaskFormset, form=WorkflowTaskForm, extra=0,
