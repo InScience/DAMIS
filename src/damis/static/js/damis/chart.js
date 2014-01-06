@@ -140,7 +140,7 @@
 				var color = $(choice).find("input").val();
 				colors[idx] = color ? color: colors[idx];
 
-				var symbol = $(choice).find("option:selected").val();
+				var symbol = $(choice).find("select").val();
 				symbols[idx] = symbol ? symbol: symbols[idx][0];
 			});
 			window.chart.renderChartAndForm(dataContent, formWindow, colors, symbols);

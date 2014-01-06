@@ -153,8 +153,7 @@
 			//set algorithm ID into the task form
 			var algorithmId = $(ui.draggable).find("input").val();
 			var algorithmInput = taskForm.find(".algorithm-selection select");
-			algorithmInput.find("option[selected=selected]").removeAttr("selected");
-			algorithmInput.find("option[value=" + algorithmId + "]").attr("selected", "selected");
+			algorithmInput.val(algorithmId);
 
 			// drop the task where it was dragged
 			var componentLabel = window.componentSettings.getComponentDetails({

@@ -10,8 +10,8 @@
 			} else if (params['formWindow']) {
 				formWindow = params['formWindow'];
 			}
-			var componentOption = $(formWindow).find(".algorithm-selection option[selected=selected]");
-			return this.details[componentOption.val()];
+			var componentInput = $(formWindow).find(".algorithm-selection select");
+			return this.details[componentInput.val()];
 		}
 	}
 })();
