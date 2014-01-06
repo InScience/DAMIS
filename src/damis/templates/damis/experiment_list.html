@@ -32,12 +32,16 @@
                     <td> {{ obj.title }}</td>
                     <td> {{ obj.get_status_display }}</td>
                     <td>
-                        <a href="{% url 'experiment-update' obj.id %}">
-                            <button type="button" class="btn btn-small"><i class="icon-edit"></i></button>
+                        <a class="btn btn-small" href="{% url 'experiment-update' obj.id %}">
+                            <i class="icon-edit"></i>
                         </a>
-                        <a href="{% url 'experiment-update' obj.id %}">
-                            <button {% if obj.status == 'SAVED' or obj.status == 'RUNNING' %}disabled="disabled"{% endif %}  type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
-                        </a>
+                        {% if obj.status == 'SAVED' or obj.status == 'RUNNING' %}
+                            <button disabled="disabled" type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
+                        {% else %}
+                            <a class="btn btn-small" href="{% url 'experiment-update' obj.id %}">
+                                <i class="icon-eye-open"></i>
+                            </a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% empty %}

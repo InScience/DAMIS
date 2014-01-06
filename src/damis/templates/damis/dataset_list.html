@@ -34,26 +34,25 @@
                   <td>{{ dataset.file.size|sizify }}</td>
                   <td>{{ dataset.description }}</td>
                   <td>
-                      <a href="{% url 'dataset-update' dataset.pk %}">
-                          <button type="button" class="btn btn-small" style="margin-right: 30px;"><i class="icon-pencil"></i></button>
+                      <a class="btn btn-small" style="margin-right: 30px;" href="{% url 'dataset-update' dataset.pk %}">
+                          <i class="icon-pencil"></i>
                       </a>
 
                       <div class="btn-group">
-                          
-                          <a href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=csv">
-                              <button type="button" class="btn btn-small">{% trans "CSV" %}</button>
+                          <a class="btn btn-small" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=csv">
+                              {% trans "CSV" %}
                           </a>
-                          <a href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=arff">
-                              <button type="button" class="btn btn-small">{% trans "ARFF" %}</button>
+                          <a class="btn btn-small" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=arff">
+                              {% trans "ARFF" %}
                           </a>
-                          <a href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=txt">
-                              <button type="button" class="btn btn-small">{% trans "TXT" %}</button>
+                          <a class="btn btn-small" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=txt">
+                              {% trans "TXT" %}
                           </a>
-                          <a href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=tab">
-                              <button type="button" class="btn btn-small">{% trans "TAB" %}</button>
+                          <a class="btn btn-small" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=tab">
+                              {% trans "TAB" %}
                           </a>
-                          <a href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=xls">
-                              <button type="button" class="btn btn-small">{% trans "XLS" %}</button>
+                          <a class="btn btn-small" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=xls">
+                              {% trans "XLS" %}
                           </a>
                       </div>
                   </td>
