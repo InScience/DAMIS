@@ -45,7 +45,7 @@ def column_string_to_list(columns):
 
 def select_features_service(X, columns, classColumn, *args, **kwargs):
     X_absolute = BUILDOUT_DIR + '/var/www' + X
-    Y = '%s_stats%s' % splitext(X)
+    Y = '%s_select%s' % splitext(X)
     Y_absolute = BUILDOUT_DIR + '/var/www' + Y
 
     input_file = open(X_absolute)
