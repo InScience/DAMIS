@@ -58,7 +58,7 @@
 		// process file upload response
 		handleUploadResponse: function(fileFormPlaceholder) {
 			var fileUploadIframe = $("#file-upload-iframe");
-			var textContent = fileUploadIframe.contents().find("body")[0].textContent;
+			var textContent = fileUploadIframe.contents().find("body").text();
 
 			// if we no text in the iframe, it means that this was not a POST
 			// response, so we should exit
