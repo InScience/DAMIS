@@ -458,7 +458,7 @@ def algorithm_parameter_form(request):
         field_attrs = VALIDATOR_FIELDS[parameter.type]['attrs']
         form.fields['value'] = field_class(**field_attrs)
         form.fields['value'].label = str(parameter)
-        form.initial.update({'parameter': parameter})
+        form.initial.update({'parameter': parameter, 'value': parameter.default})
 
     return render_to_response('dynamic/parameter_formset.html', {
         'formset': parameter_formset,

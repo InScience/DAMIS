@@ -284,7 +284,7 @@ class ParameterValueForm(forms.ModelForm):
             field_attrs = VALIDATOR_FIELDS[parameter.type]['attrs']
             self.fields['value'] = field_class(**field_attrs)
             self.fields['value'].label = str(parameter)
-            self.initial.update({'parameter': parameter})
+            self.initial.update({'parameter': parameter, 'value': parameter.default})
 
         if self.instance and self.instance.target.all():
             source = self.instance.target.all()[0].source
