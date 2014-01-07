@@ -35,7 +35,7 @@
                         <a class="btn btn-small" href="{% url 'experiment-update' obj.id %}">
                             <i class="icon-edit"></i>
                         </a>
-                        {% if obj.status == 'SAVED' or obj.status == 'RUNNING' %}
+                        {% if obj.status == 'ERROR' or obj.status == 'RUNNING' %}
                             <button disabled="disabled" type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
                         {% else %}
                             <a class="btn btn-small" href="{% url 'experiment-update' obj.id %}">

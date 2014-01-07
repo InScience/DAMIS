@@ -162,6 +162,9 @@ if __name__ == '__main__':
     exp_pk = sys.argv[1]
     exp = Experiment.objects.get(pk=exp_pk)
     first_task = exp.tasks.filter(algorithm__category='DATA')[0]
-    execute_tasks(first_task)
-    exp.status = 'FINISHED'
+    try:
+        execute_tasks(first_task)
+        exp.status = 'FINISHED'
+    except Exception:
+        exp.status = 'ERROR'
     exp.save()
