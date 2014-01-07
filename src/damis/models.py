@@ -212,7 +212,10 @@ class WorkflowTask(models.Model):
                               choices=STATUSES, default='SAVED')
 
     def __unicode__(self):
-        return '%s' % (self.algorithm.title,)
+        if self.algorithm:
+            return '%s' % (self.algorithm.title,)
+        else:
+            return 'Task pk:%s' % self.pk
 
 class ParameterValue(models.Model):
     parameter = models.ForeignKey('Parameter', verbose_name=_('Parameter'))
@@ -223,7 +226,7 @@ class ParameterValue(models.Model):
                                      blank=True, through='Connection')
 
     def __unicode__(self):
-        return '%s: %s' % (self.task.algorithm, self.value)
+        return '%s: %s' % (self.parameter, self.value)
 
 
 class Connection(models.Model):
