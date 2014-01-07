@@ -6,10 +6,7 @@
 {% for field in form.visible_fields %}
     {% if field.name == 'value' %}
     <span title='{{ parameter.get_description_display }}'
-        >{% firstof parameter.get_label_display parameter.name %}
-        {% if parameter.required %}
-            <b>*</b>
-        {% endif %}
+        >{% firstof parameter.get_label_display parameter.name %}{% if parameter.required %}<b>*</b>{% endif %}
         {% if parameter.type != 'boolean' %}
         <span class="helptext">({% if parameter.type %}{% trans parameter.type %}{% endif %})<br />
         {% endif %}
