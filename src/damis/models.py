@@ -152,14 +152,14 @@ class Parameter(models.Model):
     def get_label_display(self):
         language_code = get_language()
         if language_code == 'lt':
-            return self.label_LT
+            return self.label_lt
         else:
             return self.label
 
     def get_description_display(self):
         language_code = get_language()
         if language_code == 'lt':
-            return self.description_LT
+            return self.description_lt
         else:
             return self.description
 
