@@ -42,10 +42,6 @@
 				var srcRefField = window.experimentForm.getParameterSourceRef(param);
 				srcRefField.val("");
 
-				// show literal value field
-				var valField = window.experimentForm.getParameterValue(param);
-				valField.attr("type", "text");
-
 				var connectionParams = info.connection.getParameters();
 				var srcComponentType = window.componentSettings.getComponentDetails({
 					boxId: connectionParams.oTaskBoxId
@@ -75,7 +71,6 @@
 					//clear literal value field and hide it
 					var valField = window.experimentForm.getParameterValue(param);
 					valField.val("");
-					valField.attr("type", "hidden");
 				}
 
 				var srcComponentType = window.componentSettings.getComponentDetails({
