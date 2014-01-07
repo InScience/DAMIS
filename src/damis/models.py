@@ -142,9 +142,9 @@ class Parameter(models.Model):
     connection_type = models.CharField(_('Connection type'), max_length=255, null=True, blank=True,
                               choices=CONNECTION_TYPES, default='INPUT_VALUE')
     label = models.CharField(_('Label EN'), max_length=255, null=True, blank=True)
-    label_LT = models.CharField(_('Label LT'), max_length=255, null=True, blank=True)
+    label_lt = models.CharField(_('Label LT'), max_length=255, null=True, blank=True)
     description = models.TextField(_('Description EN'), null=True, blank=True)
-    description_LT = models.TextField(_('Description LT'), null=True, blank=True)
+    description_lt = models.TextField(_('Description LT'), null=True, blank=True)
 
     def __unicode__(self):
         return '%s (%s)' % (self.name, self.type)

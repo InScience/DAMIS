@@ -101,9 +101,9 @@
         "default": "", 
         "required": true, 
         "type": "int", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "label": "Pojection space", 
-        "label_LT": "Projekcijos dimensija", 
+        "label_lt": "Projekcijos dimensija", 
         "description": "Dimensionality of projection space"
     }
 },
@@ -118,9 +118,9 @@
         "required": true, 
         "type": "double", 
         "description": "The amount of variance, which must be preserved",
-        "description_LT": "Dispersijos dalis, kuri\u0105 norima i\u0161laikyti", 
+        "description_lt": "Dispersijos dalis, kuri\u0105 norima i\u0161laikyti", 
         "label": "The amount of variance", 
-        "label_LT": "Dispersijos dalis"
+        "label_lt": "Dispersijos dalis"
     }
 },
 {
@@ -226,13 +226,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 2, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija", 
+        "label_lt": "Projekcijos dimensija", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -242,13 +242,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius", 
         "name": "maxIteration", 
         "algorithm": 2, 
         "default": "", 
         "required": true, 
         "label": "Minimal stress change ", 
-        "label_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173", 
+        "label_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173", 
         "type": "int", 
         "description": "A maximum number of iterations"
     }
@@ -258,13 +258,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173", 
+        "description_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173", 
         "name": "eps", 
         "algorithm": 2, 
         "default": "", 
         "required": true, 
         "label": "Minimal stress change ", 
-        "label_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173", 
+        "label_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173", 
         "type": "double", 
         "description": "Minimal stress change"
     }
@@ -274,13 +274,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Parametras, kuris nurodo taikyti arba netaikyti Zeidelio modifikacij\u0105", 
+        "description_lt": "Parametras, kuris nurodo taikyti arba netaikyti Zeidelio modifikacij\u0105", 
         "name": "zeidel", 
         "algorithm": 2, 
         "default": "", 
         "required": true, 
         "label": "Seidel modification", 
-        "label_LT": "Zeidelio modifikacija", 
+        "label_lt": "Zeidelio modifikacija", 
         "type": "boolean", 
         "description": "Parameter which indicates if Seidel modification will be applied"
     }
@@ -374,13 +374,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 3, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija ", 
+        "label_lt": "Projekcijos dimensija ", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -390,13 +390,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius", 
         "name": "maxIteration", 
         "algorithm": 3, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "A maximum number of iterations"
     }
@@ -406,13 +406,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
+        "description_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
         "name": "eps", 
         "algorithm": 3, 
         "default": "", 
         "required": true, 
         "label": "Minimal stress change ", 
-        "label_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
+        "label_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
         "type": "double", 
         "description": "Minimal stress change"
     }
@@ -422,13 +422,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Nurodomas kaimyn\u0173 skai\u010dius", 
+        "description_lt": "Nurodomas kaimyn\u0173 skai\u010dius", 
         "name": "neighbour", 
         "algorithm": 3, 
         "default": "", 
         "required": true, 
         "label": "Number of neighbours", 
-        "label_LT": "Kaimyn\u0173 skai\u010dius", 
+        "label_lt": "Kaimyn\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Number of neighbours"
     }
@@ -508,13 +508,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 4, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija ", 
+        "label_lt": "Projekcijos dimensija ", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -524,14 +524,14 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "name": "maxIteration", 
         "algorithm": 4, 
         "default": "", 
         "required": true, 
         "type": "int", 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "description": "A maximum number of iterations"
     }
 },
@@ -540,13 +540,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Skirtumas tarp paklaid\u0173          ", 
+        "description_lt": "Skirtumas tarp paklaid\u0173          ", 
         "name": "eps", 
         "algorithm": 4, 
         "default": "", 
         "required": true, 
         "label": "Minimal stress change ", 
-        "label_LT": "Skirtumas tarp paklaid\u0173 ", 
+        "label_lt": "Skirtumas tarp paklaid\u0173 ", 
         "type": "double", 
         "description": "Minimal stress change "
     }
@@ -556,13 +556,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Nurodykite bazini\u0173 objekt\u0173 skai\u010di\u0173", 
+        "description_lt": "Nurodykite bazini\u0173 objekt\u0173 skai\u010di\u0173", 
         "name": "noOfBaseVectors", 
         "algorithm": 4, 
         "default": "", 
         "required": true, 
         "label": "Number of basis objects", 
-        "label_LT": "Bazini\u0173 objekt\u0173 skai\u010dius", 
+        "label_lt": "Bazini\u0173 objekt\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Number of basis objects"
     }
@@ -572,13 +572,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Bazini\u0173 objekt\u0173 parinkimo strategija", 
+        "description_lt": "Bazini\u0173 objekt\u0173 parinkimo strategija", 
         "name": "selStrategy", 
         "algorithm": 4, 
         "default": "", 
         "required": false, 
         "label": "Strategy ", 
-        "label_LT": "Strategija", 
+        "label_lt": "Strategija", 
         "type": "int", 
         "description": "Basis objects selection strategy"
     }
@@ -658,13 +658,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 5, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija ", 
+        "label_lt": "Projekcijos dimensija ", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -674,13 +674,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius", 
         "name": "maxIteration", 
         "algorithm": 5, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "A maximum number of iterations"
     }
@@ -690,13 +690,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "SAMANN neuroninio tinklo apmokymui naudojam\u0173 objekt\u0173 skai\u010dius", 
+        "description_lt": "SAMANN neuroninio tinklo apmokymui naudojam\u0173 objekt\u0173 skai\u010dius", 
         "name": "mTrain", 
         "algorithm": 5, 
         "default": "", 
         "required": true, 
         "label": "Size of the training data", 
-        "label_LT": "Apmokymo aib\u0117s dydis", 
+        "label_lt": "Apmokymo aib\u0117s dydis", 
         "type": "int", 
         "description": "Size of the training data for SAMANN neural network"
     }
@@ -706,13 +706,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "SAMANN neuroninio tinklo pasl\u0117ptojo sluoksnio neuron\u0173 skai\u010dius", 
+        "description_lt": "SAMANN neuroninio tinklo pasl\u0117ptojo sluoksnio neuron\u0173 skai\u010dius", 
         "name": "nNeurons", 
         "algorithm": 5, 
         "default": "", 
         "required": true, 
         "label": "Number of neurons in the  hidden layer", 
-        "label_LT": "Pasl\u0117ptojo sluoksnio neuron\u0173 skai\u010dius", 
+        "label_lt": "Pasl\u0117ptojo sluoksnio neuron\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Number of neurons in the  hidden layer"
     }
@@ -722,13 +722,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Mokymosi grei\u010dio parametro reik\u0161m\u0117 (i\u0161 intervalo 0,1\u201310)", 
+        "description_lt": "Mokymosi grei\u010dio parametro reik\u0161m\u0117 (i\u0161 intervalo 0,1\u201310)", 
         "name": "eta", 
         "algorithm": 5, 
         "default": "", 
         "required": true, 
         "label": "Value of the learning rate", 
-        "label_LT": "Mokymosi grei\u010dio parametras", 
+        "label_lt": "Mokymosi grei\u010dio parametras", 
         "type": "double", 
         "description": "Value of the learning rate (0.1\u201310)"
     }
@@ -822,13 +822,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Saviorganizuojan\u010dio neuroninio tinklo eilu\u010di\u0173 skai\u010dius", 
+        "description_lt": "Saviorganizuojan\u010dio neuroninio tinklo eilu\u010di\u0173 skai\u010dius", 
         "name": "rows", 
         "algorithm": 6, 
         "default": "", 
         "required": true, 
         "label": "Number of rows", 
-        "label_LT": "Eilu\u010di\u0173 skai\u010dius", 
+        "label_lt": "Eilu\u010di\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Number of rows of self-organizing map"
     }
@@ -838,13 +838,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Saviorganizuojan\u010dio neuroninio tinklo stulpeli\u0173 skai\u010dius", 
+        "description_lt": "Saviorganizuojan\u010dio neuroninio tinklo stulpeli\u0173 skai\u010dius", 
         "name": "columns", 
         "algorithm": 6, 
         "default": "", 
         "required": true, 
         "label": "Number of columns", 
-        "label_LT": "Stulpeli\u0173 skai\u010dius", 
+        "label_lt": "Stulpeli\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Number of columns of self-organizing map"
     }
@@ -854,13 +854,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Nustatomas viso mokymo epoch\u0173 skai\u010dius", 
+        "description_lt": "Nustatomas viso mokymo epoch\u0173 skai\u010dius", 
         "name": "eHat", 
         "algorithm": 6, 
         "default": "", 
         "required": true, 
         "label": "Number of training epochs", 
-        "label_LT": "Mokymo epoch\u0173 skai\u010dius", 
+        "label_lt": "Mokymo epoch\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Number of training epochs in self-organizing map"
     }
@@ -954,13 +954,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Saviorganizuojan\u010dio neuroninio tinklo eilu\u010di\u0173 skai\u010dius", 
+        "description_lt": "Saviorganizuojan\u010dio neuroninio tinklo eilu\u010di\u0173 skai\u010dius", 
         "name": "rows", 
         "algorithm": 7, 
         "default": "", 
         "required": true, 
         "label": "Number of rows ", 
-        "label_LT": "Eilu\u010di\u0173 skai\u010dius", 
+        "label_lt": "Eilu\u010di\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Number of rows of self-organizing map"
     }
@@ -970,13 +970,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Saviorganizuojan\u010dio neuroninio tinklo stulpeli\u0173 skai\u010dius", 
+        "description_lt": "Saviorganizuojan\u010dio neuroninio tinklo stulpeli\u0173 skai\u010dius", 
         "name": "columns", 
         "algorithm": 7, 
         "default": "", 
         "required": true, 
         "label": "Number of columns ", 
-        "label_LT": "Stulpeli\u0173 skai\u010dius ", 
+        "label_lt": "Stulpeli\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of columns of self-organizing map"
     }
@@ -986,13 +986,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Nustatomas viso mokymo epoch\u0173 skai\u010dius", 
+        "description_lt": "Nustatomas viso mokymo epoch\u0173 skai\u010dius", 
         "name": "eHat", 
         "algorithm": 7, 
         "default": "", 
         "required": true, 
         "label": "Number of training epochs ", 
-        "label_LT": "Mokymo epoch\u0173 skai\u010dius ", 
+        "label_lt": "Mokymo epoch\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of training epochs in self-organizing map"
     }
@@ -1002,13 +1002,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "MDS iteracij\u0173 skai\u010dius", 
+        "description_lt": "MDS iteracij\u0173 skai\u010dius", 
         "name": "mdsIteration", 
         "algorithm": 7, 
         "default": "", 
         "required": true, 
         "label": "Number of iterations of MDS", 
-        "label_LT": "MDS iteracij\u0173 skai\u010dius", 
+        "label_lt": "MDS iteracij\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Number of iterations of MDS"
     }
@@ -1102,13 +1102,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Pasl\u0117pt\u0173 perceptron\u0173 skai\u010dius", 
+        "description_lt": "Pasl\u0117pt\u0173 perceptron\u0173 skai\u010dius", 
         "name": "hidenPerceptrons", 
         "algorithm": 8, 
         "default": "", 
         "required": true, 
         "label": "Number of hidden layers", 
-        "label_LT": "Pasl\u0117pt\u0173 perceptron\u0173 skai\u010dius", 
+        "label_lt": "Pasl\u0117pt\u0173 perceptron\u0173 skai\u010dius", 
         "type": "string", 
         "description": "Number of hidden layers"
     }
@@ -1118,13 +1118,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "name": "maxIteration", 
         "algorithm": 8, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Maximum number of iterations "
     }
@@ -1134,13 +1134,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Mokymo objekt\u0173 skai\u010dius", 
+        "description_lt": "Mokymo objekt\u0173 skai\u010dius", 
         "name": "Dl", 
         "algorithm": 8, 
         "default": "", 
         "required": true, 
         "label": "Size of training data ", 
-        "label_LT": "Mokymo aib\u0117s dydis", 
+        "label_lt": "Mokymo aib\u0117s dydis", 
         "type": "int", 
         "description": "Data set for training"
     }
@@ -1150,13 +1150,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Testavimo objekt\u0173 skai\u010dius", 
+        "description_lt": "Testavimo objekt\u0173 skai\u010dius", 
         "name": "Dt", 
         "algorithm": 8, 
         "default": "", 
         "required": true, 
         "label": "Size of test data", 
-        "label_LT": "Testavimo aib\u0117s dydis", 
+        "label_lt": "Testavimo aib\u0117s dydis", 
         "type": "int", 
         "description": "Data set for testing"
     }
@@ -1166,13 +1166,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Validavimo objekt\u0173 skai\u010dius", 
+        "description_lt": "Validavimo objekt\u0173 skai\u010dius", 
         "name": "Dv", 
         "algorithm": 8, 
         "default": "", 
         "required": true, 
         "label": "Size of validation data", 
-        "label_LT": "Validavimo aib\u0117s dydis", 
+        "label_lt": "Validavimo aib\u0117s dydis", 
         "type": "int", 
         "description": "Data set for validation"
     }
@@ -1266,13 +1266,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Pasikliovimo lygmuo, \u012fvertinant klaidos tikimyb\u0117s pasikliautin\u0105j\u012f interval\u0105", 
+        "description_lt": "Pasikliovimo lygmuo, \u012fvertinant klaidos tikimyb\u0117s pasikliautin\u0105j\u012f interval\u0105", 
         "name": "q", 
         "algorithm": 9, 
         "default": "", 
         "required": true, 
         "label": "Confidence level ", 
-        "label_LT": "Pasikliovimo lygmuo", 
+        "label_lt": "Pasikliovimo lygmuo", 
         "type": "double", 
         "description": "Confidence level "
     }
@@ -1282,13 +1282,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Mokymo duomen\u0173 objektai", 
+        "description_lt": "Mokymo duomen\u0173 objektai", 
         "name": "Dl", 
         "algorithm": 9, 
         "default": "", 
         "required": true, 
         "label": "Training data", 
-        "label_LT": "Mokymo aib\u0117 ", 
+        "label_lt": "Mokymo aib\u0117 ", 
         "type": "int", 
         "description": "Data set for training"
     }
@@ -1298,13 +1298,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Testavimo duomen\u0173 objektai", 
+        "description_lt": "Testavimo duomen\u0173 objektai", 
         "name": "Dt", 
         "algorithm": 9, 
         "default": "", 
         "required": true, 
         "label": "Test data ", 
-        "label_LT": "Testavimo aib\u0117 ", 
+        "label_lt": "Testavimo aib\u0117 ", 
         "type": "int", 
         "description": "Data set for testing"
     }
@@ -1384,13 +1384,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "name": "maxIteration", 
         "algorithm": 10, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Maximum number of iterations "
     }
@@ -1400,13 +1400,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus galimas klasteri\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus galimas klasteri\u0173 skai\u010dius ", 
         "name": "kMax", 
         "algorithm": 10, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of clusters ", 
-        "label_LT": "Maksimalus klasteri\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus klasteri\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Maximum number of clusters "
     }
@@ -1542,13 +1542,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
+        "description_lt": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
         "name": "fillMissingValues", 
         "algorithm": 12, 
         "default": "", 
         "required": true, 
         "label": "Cleaning Missing Data", 
-        "label_LT": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
+        "label_lt": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
         "type": "boolean", 
         "description": "Delete observations with missing data"
     }
@@ -1600,13 +1600,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Patikrinamas duomen\u0173 vektori\u0173 atribut\u0173 duomen\u0173 tip\u0173 atitikimas meta informacijoje deklaruotiems duomen\u0173 tipams", 
+        "description_lt": "Patikrinamas duomen\u0173 vektori\u0173 atribut\u0173 duomen\u0173 tip\u0173 atitikimas meta informacijoje deklaruotiems duomen\u0173 tipams", 
         "name": "fixColumnTypes", 
         "algorithm": 12, 
         "default": "", 
         "required": true, 
         "label": "Data Type Matching", 
-        "label_LT": "Duomen\u0173 tip\u0173 atitikimas", 
+        "label_lt": "Duomen\u0173 tip\u0173 atitikimas", 
         "type": "boolean", 
         "description": "Check data type matching with file meta-information"
     }
@@ -1644,13 +1644,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Stulpelio, su kuriuo reikia atlikti skai\u010diavimus, indeksas", 
+        "description_lt": "Stulpelio, su kuriuo reikia atlikti skai\u010diavimus, indeksas", 
         "name": "c", 
         "algorithm": 13, 
         "default": "", 
         "required": true, 
         "label": "Number of Column", 
-        "label_LT": "Stulpelio numeris", 
+        "label_lt": "Stulpelio numeris", 
         "type": "int", 
         "description": "Select the column for a data filtering."
     }
@@ -1660,13 +1660,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Filtro tipas", 
+        "description_lt": "Filtro tipas", 
         "name": "filterType", 
         "algorithm": 13, 
         "default": "", 
         "required": true, 
         "label": "Type of Filter", 
-        "label_LT": "Filtravimo tipas", 
+        "label_lt": "Filtravimo tipas", 
         "type": "string", 
         "description": "Type of the Filter"
     }
@@ -1676,13 +1676,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Rezultato tipas (su atsiskyr\u0117liais arba be atskiskyr\u0117li\u0173)", 
+        "description_lt": "Rezultato tipas (su atsiskyr\u0117liais arba be atskiskyr\u0117li\u0173)", 
         "name": "resultType", 
         "algorithm": 13, 
         "default": "", 
         "required": true, 
         "label": "Result", 
-        "label_LT": "Rezultatas", 
+        "label_lt": "Rezultatas", 
         "type": "string", 
         "description": "Type of the Result (with or without outliers)"
     }
@@ -1748,13 +1748,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Skaidymo metodo tipas (pagal atributus arba \u012f lygias dalis)", 
+        "description_lt": "Skaidymo metodo tipas (pagal atributus arba \u012f lygias dalis)", 
         "name": "methodType", 
         "algorithm": 14, 
         "default": "", 
         "required": true, 
         "label": "Type of Splitting", 
-        "label_LT": "Skaidymo tipas", 
+        "label_lt": "Skaidymo tipas", 
         "type": "string", 
         "description": "Type of splitting data (by attribute or into an equal number of parts)"
     }
@@ -1764,7 +1764,7 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Atributas, naudojamas skaidymui", 
+        "description_lt": "Atributas, naudojamas skaidymui", 
         "name": "s", 
         "algorithm": 14, 
         "default": "", 
@@ -1784,7 +1784,7 @@
         "default": "", 
         "required": false, 
         "label": "Number of parts", 
-        "label_LT": "Poaibi\u0173 skai\u010dius", 
+        "label_lt": "Poaibi\u0173 skai\u010dius", 
         "type": "int", 
         "description": ""
     }
@@ -1850,13 +1850,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Stulpelio, su kuriuo reikia atlikti skai\u010diavimus, numeris", 
+        "description_lt": "Stulpelio, su kuriuo reikia atlikti skai\u010diavimus, numeris", 
         "name": "c", 
         "algorithm": 15, 
         "default": "", 
         "required": true, 
         "label": "Column Number", 
-        "label_LT": "Stulpelio numeris", 
+        "label_lt": "Stulpelio numeris", 
         "type": "int", 
         "description": "Number of column which will be used for the transpose"
     }
@@ -1992,13 +1992,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Stulpeliai", 
+        "description_lt": "Stulpeliai", 
         "name": "columns", 
         "algorithm": 17, 
         "default": "", 
         "required": false, 
         "label": "Columns", 
-        "label_LT": "Stulpeliai", 
+        "label_lt": "Stulpeliai", 
         "type": "string", 
         "description": "Columns"
     }
@@ -2008,13 +2008,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Klas\u0117s stulpelis", 
+        "description_lt": "Klas\u0117s stulpelis", 
         "name": "classColumn", 
         "algorithm": 17, 
         "default": "", 
         "required": false, 
         "label": "Class Column", 
-        "label_LT": "Klas\u0117s stulpelis", 
+        "label_lt": "Klas\u0117s stulpelis", 
         "type": "int", 
         "description": "Class column"
     }
@@ -2122,13 +2122,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 23, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija ", 
+        "label_lt": "Projekcijos dimensija ", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -2138,13 +2138,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Dispersijos dalis, kuri\u0105 norima i\u0161laikyti", 
+        "description_lt": "Dispersijos dalis, kuri\u0105 norima i\u0161laikyti", 
         "name": "disp", 
         "algorithm": 23, 
         "default": "", 
         "required": true, 
         "label": "The amount of variance ", 
-        "label_LT": "Dispersijos dalis ", 
+        "label_lt": "Dispersijos dalis ", 
         "type": "double", 
         "description": "The amount of variance, which must be preserved"
     }
@@ -2252,13 +2252,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 24, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija ", 
+        "label_lt": "Projekcijos dimensija ", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -2268,13 +2268,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "name": "maxIteration", 
         "algorithm": 24, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Maximum number of iterations "
     }
@@ -2284,13 +2284,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
+        "description_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
         "name": "eps", 
         "algorithm": 24, 
         "default": "", 
         "required": true, 
         "label": "Minimal stress change ", 
-        "label_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
+        "label_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
         "type": "double", 
         "description": "Minimal stress change "
     }
@@ -2300,13 +2300,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Parametras, kuris nurodo taikyti arba netaikyti Zeidelio modifikacij\u0105", 
+        "description_lt": "Parametras, kuris nurodo taikyti arba netaikyti Zeidelio modifikacij\u0105", 
         "name": "zeidel", 
         "algorithm": 24, 
         "default": "", 
         "required": true, 
         "label": "Seidel modification ", 
-        "label_LT": "Zeidelio modifikacija ", 
+        "label_lt": "Zeidelio modifikacija ", 
         "type": "boolean", 
         "description": "Parameter which indicates if Seidel modification will be applied"
     }
@@ -2400,13 +2400,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 25, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija ", 
+        "label_lt": "Projekcijos dimensija ", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -2416,13 +2416,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "name": "maxIteration", 
         "algorithm": 25, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "A maximum number of iterations"
     }
@@ -2432,13 +2432,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
+        "description_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
         "name": "eps", 
         "algorithm": 25, 
         "default": "", 
         "required": true, 
         "label": "Minimal stress change ", 
-        "label_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
+        "label_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
         "type": "double", 
         "description": "Minimal stress change "
     }
@@ -2448,13 +2448,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Nurodomas kaimyn\u0173 skai\u010dius", 
+        "description_lt": "Nurodomas kaimyn\u0173 skai\u010dius", 
         "name": "neighbour", 
         "algorithm": 25, 
         "default": "", 
         "required": true, 
         "label": "Number of neighbours ", 
-        "label_LT": "Kaimyn\u0173 skai\u010dius ", 
+        "label_lt": "Kaimyn\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of neighbours "
     }
@@ -2534,13 +2534,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 26, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija ", 
+        "label_lt": "Projekcijos dimensija ", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -2550,13 +2550,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "name": "maxIteration", 
         "algorithm": 26, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Maximum number of iterations "
     }
@@ -2566,13 +2566,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
+        "description_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
         "name": "eps", 
         "algorithm": 26, 
         "default": "", 
         "required": true, 
         "label": "Minimal stress change ", 
-        "label_LT": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
+        "label_lt": "Skirtumas tarp paklaid\u0173, gaut\u0173 tarp gretim\u0173 iteracij\u0173 ", 
         "type": "double", 
         "description": "Minimal stress change "
     }
@@ -2582,13 +2582,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Bazini\u0173 objekt\u0173 skai\u010dius ", 
+        "description_lt": "Bazini\u0173 objekt\u0173 skai\u010dius ", 
         "name": "noOfBaseVectors", 
         "algorithm": 26, 
         "default": "", 
         "required": true, 
         "label": "Number of basis objects ", 
-        "label_LT": "Bazini\u0173 objekt\u0173 skai\u010dius ", 
+        "label_lt": "Bazini\u0173 objekt\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of basis objects "
     }
@@ -2598,13 +2598,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Bazini\u0173 objekt\u0173 parinkimo strategija", 
+        "description_lt": "Bazini\u0173 objekt\u0173 parinkimo strategija", 
         "name": "selStrategy", 
         "algorithm": 26, 
         "default": "", 
         "required": false, 
         "label": "Strategy ", 
-        "label_LT": "Strategija", 
+        "label_lt": "Strategija", 
         "type": "int", 
         "description": "Basis objects selection strategy "
     }
@@ -2684,13 +2684,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
+        "description_lt": "Projekcin\u0117s erdv\u0117s matmen\u0173 skai\u010dius", 
         "name": "d", 
         "algorithm": 27, 
         "default": "", 
         "required": true, 
         "label": "Projection space ", 
-        "label_LT": "Projekcijos dimensija ", 
+        "label_lt": "Projekcijos dimensija ", 
         "type": "int", 
         "description": "Dimensionality of projection space"
     }
@@ -2700,13 +2700,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "name": "maxIteration", 
         "algorithm": 27, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Maximum number of iterations "
     }
@@ -2716,13 +2716,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "SAMANN neuroninio tinklo apmokymui naudojam\u0173 objekt\u0173 skai\u010dius", 
+        "description_lt": "SAMANN neuroninio tinklo apmokymui naudojam\u0173 objekt\u0173 skai\u010dius", 
         "name": "mTrain", 
         "algorithm": 27, 
         "default": "", 
         "required": true, 
         "label": "Size of the training data ", 
-        "label_LT": "Apmokymo aib\u0117s dydis ", 
+        "label_lt": "Apmokymo aib\u0117s dydis ", 
         "type": "int", 
         "description": "Size of the training data for SAMANN neural network"
     }
@@ -2732,13 +2732,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "SAMANN neuroninio tinklo pasl\u0117ptojo sluoksnio neuron\u0173 skai\u010dius", 
+        "description_lt": "SAMANN neuroninio tinklo pasl\u0117ptojo sluoksnio neuron\u0173 skai\u010dius", 
         "name": "nNeurons", 
         "algorithm": 27, 
         "default": "", 
         "required": true, 
         "label": "Number of neurons in the hidden layer ", 
-        "label_LT": "Pasl\u0117ptojo sluoksnio neuron\u0173 skai\u010dius ", 
+        "label_lt": "Pasl\u0117ptojo sluoksnio neuron\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of neurons in the  hidden layer "
     }
@@ -2748,13 +2748,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Mokymosi grei\u010dio parametro reik\u0161m\u0117 (i\u0161 intervalo 0,1\u201310)", 
+        "description_lt": "Mokymosi grei\u010dio parametro reik\u0161m\u0117 (i\u0161 intervalo 0,1\u201310)", 
         "name": "eta", 
         "algorithm": 27, 
         "default": "", 
         "required": true, 
         "label": "Value of the learning rate ", 
-        "label_LT": "Mokymosi grei\u010dio parametras ", 
+        "label_lt": "Mokymosi grei\u010dio parametras ", 
         "type": "double", 
         "description": "Value of the learning rate (0.1\u201310)"
     }
@@ -2848,13 +2848,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Saviorganizuojan\u010dio neuroninio tinklo eilu\u010di\u0173 skai\u010dius", 
+        "description_lt": "Saviorganizuojan\u010dio neuroninio tinklo eilu\u010di\u0173 skai\u010dius", 
         "name": "rows", 
         "algorithm": 28, 
         "default": "", 
         "required": true, 
         "label": "Number of rows ", 
-        "label_LT": "Eilu\u010di\u0173 skai\u010dius ", 
+        "label_lt": "Eilu\u010di\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of rows of self-organizing map"
     }
@@ -2864,13 +2864,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Saviorganizuojan\u010dio neuroninio tinklo stulpeli\u0173 skai\u010dius", 
+        "description_lt": "Saviorganizuojan\u010dio neuroninio tinklo stulpeli\u0173 skai\u010dius", 
         "name": "columns", 
         "algorithm": 28, 
         "default": "", 
         "required": true, 
         "label": "Number of columns ", 
-        "label_LT": "Stulpeli\u0173 skai\u010dius ", 
+        "label_lt": "Stulpeli\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of columns of self-organizing map"
     }
@@ -2880,13 +2880,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Nustatomas viso mokymo epoch\u0173 skai\u010dius", 
+        "description_lt": "Nustatomas viso mokymo epoch\u0173 skai\u010dius", 
         "name": "eHat", 
         "algorithm": 28, 
         "default": "", 
         "required": true, 
         "label": "Number of training epochs ", 
-        "label_LT": "Mokymo epoch\u0173 skai\u010dius ", 
+        "label_lt": "Mokymo epoch\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of training epochs in self-organizing map"
     }
@@ -2980,13 +2980,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Saviorganizuojan\u010dio neuroninio tinklo eilu\u010di\u0173 skai\u010dius", 
+        "description_lt": "Saviorganizuojan\u010dio neuroninio tinklo eilu\u010di\u0173 skai\u010dius", 
         "name": "rows", 
         "algorithm": 29, 
         "default": "", 
         "required": true, 
         "label": "Number of rows ", 
-        "label_LT": "Eilu\u010di\u0173 skai\u010dius ", 
+        "label_lt": "Eilu\u010di\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "| Number of rows of self-organizing map"
     }
@@ -2996,13 +2996,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Saviorganizuojan\u010dio neuroninio tinklo stulpeli\u0173 skai\u010dius", 
+        "description_lt": "Saviorganizuojan\u010dio neuroninio tinklo stulpeli\u0173 skai\u010dius", 
         "name": "columns", 
         "algorithm": 29, 
         "default": "", 
         "required": true, 
         "label": "Number of columns ", 
-        "label_LT": "Stulpeli\u0173 skai\u010dius ", 
+        "label_lt": "Stulpeli\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of columns of self-organizing map"
     }
@@ -3012,13 +3012,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Nustatomas viso mokymo epoch\u0173 skai\u010dius", 
+        "description_lt": "Nustatomas viso mokymo epoch\u0173 skai\u010dius", 
         "name": "eHat", 
         "algorithm": 29, 
         "default": "", 
         "required": true, 
         "label": "Number of training epochs ", 
-        "label_LT": "Mokymo epoch\u0173 skai\u010dius ", 
+        "label_lt": "Mokymo epoch\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of training epochs in self-organizing map"
     }
@@ -3028,13 +3028,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "MDS iteracij\u0173 skai\u010dius ", 
+        "description_lt": "MDS iteracij\u0173 skai\u010dius ", 
         "name": "mdsIteration", 
         "algorithm": 29, 
         "default": "", 
         "required": true, 
         "label": "Number of iterations of MDS ", 
-        "label_LT": "MDS iteracij\u0173 skai\u010dius ", 
+        "label_lt": "MDS iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Number of iterations of MDS "
     }
@@ -3128,13 +3128,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Pasl\u0117pt\u0173 perceptron\u0173 skai\u010dius ", 
+        "description_lt": "Pasl\u0117pt\u0173 perceptron\u0173 skai\u010dius ", 
         "name": "hidenPerceptrons", 
         "algorithm": 30, 
         "default": "", 
         "required": true, 
         "label": "Number of hidden layers ", 
-        "label_LT": "Pasl\u0117pt\u0173 perceptron\u0173 skai\u010dius ", 
+        "label_lt": "Pasl\u0117pt\u0173 perceptron\u0173 skai\u010dius ", 
         "type": "string", 
         "description": "Number of hidden layers "
     }
@@ -3144,13 +3144,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "name": "maxIteration", 
         "algorithm": 30, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations ", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Maximum number of iterations "
     }
@@ -3160,13 +3160,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Mokymo objekt\u0173 skai\u010dius", 
+        "description_lt": "Mokymo objekt\u0173 skai\u010dius", 
         "name": "Dl", 
         "algorithm": 30, 
         "default": "", 
         "required": true, 
         "label": "Size of training data ", 
-        "label_LT": "Mokymo aib\u0117s dydis ", 
+        "label_lt": "Mokymo aib\u0117s dydis ", 
         "type": "int", 
         "description": "Data set for training"
     }
@@ -3176,13 +3176,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Testavimo objekt\u0173 skai\u010dius", 
+        "description_lt": "Testavimo objekt\u0173 skai\u010dius", 
         "name": "Dt", 
         "algorithm": 30, 
         "default": "", 
         "required": true, 
         "label": "Size of test data ", 
-        "label_LT": "Testavimo aib\u0117s dydis", 
+        "label_lt": "Testavimo aib\u0117s dydis", 
         "type": "int", 
         "description": "Data set for testing"
     }
@@ -3192,13 +3192,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Validavimo objekt\u0173 skai\u010dius ", 
+        "description_lt": "Validavimo objekt\u0173 skai\u010dius ", 
         "name": "Dv", 
         "algorithm": 30, 
         "default": "", 
         "required": true, 
         "label": "Size of validation data", 
-        "label_LT": "Validavimo aib\u0117s dydis", 
+        "label_lt": "Validavimo aib\u0117s dydis", 
         "type": "int", 
         "description": "Data set for validation"
     }
@@ -3292,13 +3292,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Pasikliovimo lygmuo, \u012fvertinant klaidos tikimyb\u0117s pasikliautin\u0105j\u012f interval\u0105", 
+        "description_lt": "Pasikliovimo lygmuo, \u012fvertinant klaidos tikimyb\u0117s pasikliautin\u0105j\u012f interval\u0105", 
         "name": "q", 
         "algorithm": 31, 
         "default": "", 
         "required": true, 
         "label": "Confidence level", 
-        "label_LT": "Pasikliovimo lygmuo", 
+        "label_lt": "Pasikliovimo lygmuo", 
         "type": "double", 
         "description": "Confidence level"
     }
@@ -3308,13 +3308,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Mokymo objekt\u0173 skai\u010dius", 
+        "description_lt": "Mokymo objekt\u0173 skai\u010dius", 
         "name": "Dl", 
         "algorithm": 31, 
         "default": "", 
         "required": true, 
         "label": "Training data", 
-        "label_LT": "Mokymo aib\u0117s dydis", 
+        "label_lt": "Mokymo aib\u0117s dydis", 
         "type": "int", 
         "description": "Data set for training"
     }
@@ -3324,13 +3324,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Testavimo objekt\u0173 skai\u010dius", 
+        "description_lt": "Testavimo objekt\u0173 skai\u010dius", 
         "name": "Dt", 
         "algorithm": 31, 
         "default": "", 
         "required": true, 
         "label": "Test data", 
-        "label_LT": "Testavimo aib\u0117s dydis", 
+        "label_lt": "Testavimo aib\u0117s dydis", 
         "type": "int", 
         "description": "Data set for testing"
     }
@@ -3410,13 +3410,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus iteracij\u0173 skai\u010dius", 
+        "description_lt": "Maksimalus iteracij\u0173 skai\u010dius", 
         "name": "maxIteration", 
         "algorithm": 32, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of iterations", 
-        "label_LT": "Maksimalus iteracij\u0173 skai\u010dius", 
+        "label_lt": "Maksimalus iteracij\u0173 skai\u010dius", 
         "type": "int", 
         "description": "Maximum number of iterations"
     }
@@ -3426,13 +3426,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Maksimalus klasteri\u0173 skai\u010dius ", 
+        "description_lt": "Maksimalus klasteri\u0173 skai\u010dius ", 
         "name": "kMax", 
         "algorithm": 32, 
         "default": "", 
         "required": true, 
         "label": "Maximum number of clusters ", 
-        "label_LT": "Maksimalus klasteri\u0173 skai\u010dius ", 
+        "label_lt": "Maksimalus klasteri\u0173 skai\u010dius ", 
         "type": "int", 
         "description": "Maximum number of clusters "
     }
@@ -3568,13 +3568,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
+        "description_lt": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
         "name": "fillMissingValues", 
         "algorithm": 34, 
         "default": "", 
         "required": true, 
         "label": "Cleaning Missing Data", 
-        "label_LT": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
+        "label_lt": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
         "type": "boolean", 
         "description": "Delete observations with missing data"
     }
@@ -3626,13 +3626,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Patikrinamas duomen\u0173 vektori\u0173 atribut\u0173 duomen\u0173 tip\u0173 atitikimas meta informacijoje deklaruotiems duomen\u0173 tipams", 
+        "description_lt": "Patikrinamas duomen\u0173 vektori\u0173 atribut\u0173 duomen\u0173 tip\u0173 atitikimas meta informacijoje deklaruotiems duomen\u0173 tipams", 
         "name": "fixColumnTypes", 
         "algorithm": 34, 
         "default": "", 
         "required": true, 
         "label": "Data Type Matching", 
-        "label_LT": "Duomen\u0173 tip\u0173 atitikimas", 
+        "label_lt": "Duomen\u0173 tip\u0173 atitikimas", 
         "type": "boolean", 
         "description": "Check data type matching with file meta-information"
     }
@@ -3670,13 +3670,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Stulpelio, su kuriuo reikia atlikti skai\u010diavimus, indeksas", 
+        "description_lt": "Stulpelio, su kuriuo reikia atlikti skai\u010diavimus, indeksas", 
         "name": "c", 
         "algorithm": 35, 
         "default": "", 
         "required": true, 
         "label": "Number of Column", 
-        "label_LT": "Stulpelio numeris", 
+        "label_lt": "Stulpelio numeris", 
         "type": "int", 
         "description": "Select the column for a data filtering"
     }
@@ -3686,13 +3686,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Filtravimo tipas ", 
+        "description_lt": "Filtravimo tipas ", 
         "name": "filterType", 
         "algorithm": 35, 
         "default": "", 
         "required": true, 
         "label": "Type of filter", 
-        "label_LT": "Filtravimo tipas ", 
+        "label_lt": "Filtravimo tipas ", 
         "type": "string", 
         "description": "Type of the Filter"
     }
@@ -3702,13 +3702,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Rezultato tipas (su atsiskyr\u0117liais arba be atskiskyr\u0117li\u0173)", 
+        "description_lt": "Rezultato tipas (su atsiskyr\u0117liais arba be atskiskyr\u0117li\u0173)", 
         "name": "resultType", 
         "algorithm": 35, 
         "default": "", 
         "required": true, 
         "label": "Result", 
-        "label_LT": "Rezultatas", 
+        "label_lt": "Rezultatas", 
         "type": "string", 
         "description": "Type of the Result (with or without outliers)"
     }
@@ -3774,13 +3774,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Skaidymo metodo tipas (pagal atributus arba \u012f lygias dalis)", 
+        "description_lt": "Skaidymo metodo tipas (pagal atributus arba \u012f lygias dalis)", 
         "name": "methodType", 
         "algorithm": 36, 
         "default": "", 
         "required": true, 
         "label": "Type of Splitting", 
-        "label_LT": "Skaidymo tipas", 
+        "label_lt": "Skaidymo tipas", 
         "type": "string", 
         "description": "Type of splitting data (by attribute or into an equal number of parts)"
     }
@@ -3790,13 +3790,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Atributas, naudojamas skaidymui", 
+        "description_lt": "Atributas, naudojamas skaidymui", 
         "name": "s", 
         "algorithm": 36, 
         "default": "", 
         "required": false, 
         "label": "By attribute", 
-        "label_LT": "Pagal po\u017eym\u012f", 
+        "label_lt": "Pagal po\u017eym\u012f", 
         "type": "int", 
         "description": "Attribute which will be used for splitting data"
     }
@@ -3876,13 +3876,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Stulpelio, su kuriuo reikia atlikti skai\u010diavimus, numeris", 
+        "description_lt": "Stulpelio, su kuriuo reikia atlikti skai\u010diavimus, numeris", 
         "name": "c", 
         "algorithm": 37, 
         "default": "", 
         "required": true, 
         "label": "Column Number", 
-        "label_LT": "Stulpelio numeris", 
+        "label_lt": "Stulpelio numeris", 
         "type": "int", 
         "description": "Number of column which will be used for the transpose"
     }
@@ -4018,13 +4018,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Stulpeliai", 
+        "description_lt": "Stulpeliai", 
         "name": "columns", 
         "algorithm": 39, 
         "default": "", 
         "required": false, 
         "label": "Columns", 
-        "label_LT": "Stulpeliai", 
+        "label_lt": "Stulpeliai", 
         "type": "string", 
         "description": "Columns"
     }
@@ -4034,13 +4034,13 @@
     "model": "damis.parameter", 
     "fields": {
         "connection_type": "INPUT_VALUE", 
-        "description_LT": "Klas\u0117s stulpelis", 
+        "description_lt": "Klas\u0117s stulpelis", 
         "name": "classColumn", 
         "algorithm": 39, 
         "default": "", 
         "required": false, 
         "label": "Class Column", 
-        "label_LT": "Klas\u0117s stulpelis", 
+        "label_lt": "Klas\u0117s stulpelis", 
         "type": "int", 
         "description": "Class column"
     }
