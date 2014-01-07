@@ -11,7 +11,7 @@
             <b>*</b>
         {% endif %}
         {% if parameter.type != 'boolean' %}
-        <span class="lower">({% if parameter.type %}{% trans parameter.type %}{% endif %})<br />
+        <span class="helptext">({% if parameter.type %}{% trans parameter.type %}{% endif %})<br />
         {% endif %}
         {{ field.errors }}
         {{ field|disable_if_connection }}
