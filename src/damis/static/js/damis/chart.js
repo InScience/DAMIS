@@ -154,6 +154,7 @@
 			var image = canvas.toDataURL();
 			image = image.replace("image/png", "image/octet-stream");
 			// TODO: use server side to obtain download prompt with file extension
+            // TODO: IE8 does not support toDataURL(); possibly use flashcanvas
 			document.location.href = image;
 		},
 
