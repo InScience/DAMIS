@@ -4411,7 +4411,7 @@
         "cluster": 1, 
         "user": null, 
         "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
-        "icon": "icons/transpose-data-ico.jpg"
+        "icon": "icons/transpose-data-ico.png"
     }
 },
 {
@@ -4450,6 +4450,25 @@
         "user": null, 
         "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
         "icon": "icons/select-ico.png"
+    }
+},
+{
+    "pk": 45, 
+    "model": "damis.component", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "function": "SPLIT FEATURE", 
+        "updated": "2013-12-14T13:29:16.906", 
+        "description": "Splits nominal feature into several features", 
+        "description_lt": "Kategorinį po\u017eym\u012f išskaido į kelis po\u017eymius", 
+        "label": "Split nominal feature", 
+        "label_lt": "Kategorinio po\u017eymio skaidymas", 
+        "title": "SPLIT FEATURE", 
+        "created": "2013-12-11T23:50:31.751", 
+        "cluster": 1, 
+        "user": null, 
+        "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
+        "icon": "icons/split_feature-ico.jpg"
     }
 },
 {
@@ -4831,7 +4850,7 @@
         "cluster": 2, 
         "user": null, 
         "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
-        "icon": "icons/transpose-data-ico.jpg"
+        "icon": "icons/transpose-data-ico.png"
     }
 },
 {
@@ -4870,6 +4889,25 @@
         "user": null, 
         "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
         "icon": "icons/select-ico.png"
+    }
+},
+{
+    "pk": 46, 
+    "model": "damis.component", 
+    "fields": {
+        "category": "PREPROCESSING", 
+        "function": "SPLIT FEATURE", 
+        "updated": "2013-12-14T13:29:16.906", 
+        "description": "Splits nominal feature into several features", 
+        "description_lt": "Kategorinį po\u017eym\u012f išskaido į kelis po\u017eymius", 
+        "label": "Split nominal feature", 
+        "label_lt": "Kategorinio po\u017eymio skaidymas", 
+        "title": "SPLIT FEATURE", 
+        "created": "2013-12-11T23:50:31.751", 
+        "cluster": 2, 
+        "user": null, 
+        "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
+        "icon": "icons/split_feature-ico.jpg"
     }
 },
 {
