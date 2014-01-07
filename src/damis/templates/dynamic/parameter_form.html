@@ -7,7 +7,12 @@
     {% if field.name == 'value' %}
     <span title='{{ parameter.get_description_display }}'
         >{% firstof parameter.get_label_display parameter.name %}
-        ({% if parameter.type %}{% trans parameter.type %}{% endif %})<br />
+        {% if parameter.required %}
+            <b>*</b>
+        {% endif %}
+        {% if parameter.type != 'boolean' %}
+        <span class="lower">({% if parameter.type %}{% trans parameter.type %}{% endif %})<br />
+        {% endif %}
         {{ field.errors }}
         {{ field|disable_if_connection }}
     </span>
