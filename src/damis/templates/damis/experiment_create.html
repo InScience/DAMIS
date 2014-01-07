@@ -39,11 +39,11 @@
                                     <div style="padding: 0;">
                                         <div class="tools-padding">
                                         {% for algorithm in algorithms %}
-                                           <div class="prototype-box {% if forloop.counter|divisibleby:"3" %}last{% endif %}"><img
-                                               {% if algorithm.icon %} src="{{ algorithm.icon.url }}" {% else %} src="/static/img/algorithm-ico.png" {% endif %}
-                                               width="64px" height="64px" />
+                                        <div class="prototype-box {% if forloop.counter|divisibleby:"3" %}last{% endif %}">
+                                               <img src="{{ algorithm.icon.url }}" width="64px" height="64px" />
 
-                                               <a href="#"><i class="component-tooltip icon-info-sign"></i></a>
+                                               <i style="cursor:pointer; " class="component-tooltip icon-info-sign" data-placement="bottom" data-original-title="{{ algorithm.get_label_display }}"
+                                                   data-content="{{ algorithm.get_description_display }}"></i>
                                                <div class="desc"><div>{{ algorithm.get_label_display }}</div></div>
                                                <input type="hidden" value="{{ algorithm.pk }}" />
                                                </div>
@@ -104,10 +104,10 @@
     {{ block.super }}
     <script type="text/javascript">
         $(document).ready(function() {
-            var clusterTooltips = $(".cluster-tooltip")
-            clusterTooltips.popover({html:true}); 
-            clusterTooltips.on("click", function(ev) {
-                $.each($(".cluster-tooltip"), function(idx, tooltip) {
+            var tooltips = $(".component-tooltip")
+            tooltips.popover({html:true, container: "body"}); 
+            tooltips.on("click", function(ev) {
+                $.each($(".component-tooltip"), function(idx, tooltip) {
                     if (tooltip != ev.currentTarget) {
                         $(tooltip).popover("hide");
                     }    
