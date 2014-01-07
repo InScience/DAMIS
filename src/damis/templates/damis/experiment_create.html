@@ -113,6 +113,11 @@
                     }    
                 });
             });
+            $(".ui-accordion-header, #cluster-tabs li").click(function(ev) {
+                if (!$(ev.target).hasClass("cluster-tooltip")) {
+                    $(".component-tooltip").popover("hide");
+                }
+            });
         });
 
         jsPlumb.ready(function() {
