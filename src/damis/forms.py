@@ -302,10 +302,17 @@ class ParameterValueForm(forms.ModelForm):
         connection_type = self.cleaned_data.get('connection_type')
         if value or source_ref:
             return True
+
+        parameter = self.cleaned_data.get('parameter')
+        if parameter and parameter.required and not value:
+            errors = self._errors.setdefault('value', ErrorList())
+            errors.append(_(u'This value must be specified'))
+            return False
+
         if not connection_type or connection_type in ['INPUT_COMMON', 'OUTPUT_VALUE', 'OUTPUT_CONNECTION']:
             return True
         errors = self._errors.setdefault('value', ErrorList())
-        errors.append(u'Parameter value must be specified')
+        errors.append(_(u'Parameter value must be specified'))
         return False
 
     def source_ref_to_obj(self, pv_prefix_to_obj):

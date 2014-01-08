@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-06 06:52+0000\n"
+"POT-Creation-Date: 2014-01-08 00:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,6 +74,14 @@ msgstr "Duomenų failas"
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:25
 msgid "Description"
 msgstr "Aprašymas"
+
+#: forms.py:309
+msgid "This value must be specified"
+msgstr "Ši reikšmė turi būti nurodyta"
+
+#: forms.py:315
+msgid "Parameter value must be specified"
+msgstr "Parametro reikšmė turi būti nurodyta"
 
 #: models.py:22 models.py:82 models.py:178
 msgid "User"
@@ -286,19 +294,19 @@ msgstr "Procesorių skaičius"
 msgid "Experiment"
 msgstr "Eksperimentas"
 
-#: models.py:218 templates/damis/_technical_details.html:9
+#: models.py:221 templates/damis/_technical_details.html:9
 msgid "Parameter"
 msgstr "Parametras"
 
-#: models.py:221
+#: models.py:224
 msgid "Workflow Task"
 msgstr "Scenarijaus užduotis"
 
-#: models.py:231
+#: models.py:234
 msgid "Source"
 msgstr "Šaltinis"
 
-#: models.py:233
+#: models.py:236
 msgid "Target"
 msgstr "Tikslas"
 
@@ -541,8 +549,8 @@ msgstr "Veiksmai"
 msgid "No algorithms were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų algoritmų. Jūs tai galite padaryti "
 
-#: templates/damis/algorithm_list.html:45 templates/damis/dataset_list.html:65
-#: templates/damis/experiment_list.html:47 templates/damis/user_list.html:49
+#: templates/damis/algorithm_list.html:45 templates/damis/dataset_list.html:64
+#: templates/damis/experiment_list.html:51 templates/damis/user_list.html:49
 msgid "here"
 msgstr "čia"
 
@@ -563,27 +571,27 @@ msgstr "Įkelti duomenis"
 msgid "Size"
 msgstr "Dydis"
 
-#: templates/damis/dataset_list.html:44
+#: templates/damis/dataset_list.html:43
 msgid "CSV"
 msgstr "CSV"
 
-#: templates/damis/dataset_list.html:47
+#: templates/damis/dataset_list.html:46
 msgid "ARFF"
 msgstr "ARFF"
 
-#: templates/damis/dataset_list.html:50
+#: templates/damis/dataset_list.html:49
 msgid "TXT"
 msgstr "TXT"
 
-#: templates/damis/dataset_list.html:53
+#: templates/damis/dataset_list.html:52
 msgid "TAB"
 msgstr "TAB"
 
-#: templates/damis/dataset_list.html:56
+#: templates/damis/dataset_list.html:55
 msgid "XLS"
 msgstr "XLS"
 
-#: templates/damis/dataset_list.html:64
+#: templates/damis/dataset_list.html:63
 msgid "No files were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų failų. Įkelti failą galite "
 
@@ -597,7 +605,7 @@ msgstr "Skaičiavimo telkinio informacija"
 msgid "New experiment"
 msgstr "Naujas eksperimentas"
 
-#: templates/damis/experiment_create.html:68
+#: templates/damis/experiment_create.html:67
 #: templates/damis/experiment_detail.html:18
 #: templates/damis/experiment_form.html:43
 msgid "Execute"
@@ -631,7 +639,7 @@ msgstr "Užduotys"
 msgid "parameters"
 msgstr "Parametrai"
 
-#: templates/damis/experiment_list.html:46
+#: templates/damis/experiment_list.html:50
 msgid "No experiments were created yet. You can create one "
 msgstr "Nėra sukurtų eksperimentų. Eksperimentus kurti galite "
 
