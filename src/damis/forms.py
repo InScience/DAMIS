@@ -285,6 +285,8 @@ class ParameterValueForm(forms.ModelForm):
             self.fields['value'] = field_class(**field_attrs)
             self.fields['value'].label = str(parameter)
             self.initial.update({'parameter': parameter, 'value': parameter.default})
+            if self.instance:
+                self.initial['value'] = self.instance.value
 
         if self.instance and self.instance.target.all():
             source = self.instance.target.all()[0].source
