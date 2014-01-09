@@ -20,8 +20,11 @@
                                 <li id="cluster-{{ cluster.pk }}-tab" {% if forloop.first %}class="active"{% endif %}>
                                     <a href="#">{{ cluster.get_title_display }}</a>
                                     <span><i class="component-tooltip cluster-tooltip icon-info-sign"
-                                            data-placement="bottom" data-original-title="{% trans 'Cluster information' %}"
-                                                data-content="{{ cluster.get_tooltip_html }} " style="cursor: pointer"></i></span>
+                                            data-placement="bottom" 
+                                            data-content="{{ cluster.get_tooltip_html }} " style="cursor: pointer">
+                                            <span style="display: none;">{% trans 'Cluster information' %}</span>
+                                        </i>
+                                    </span>
                                 </li>
                             {% endfor %}
                         </ul>
@@ -42,8 +45,10 @@
                                         <div class="prototype-box {% if forloop.counter|divisibleby:"3" %}last{% endif %}">
                                                <img src="{{ algorithm.icon.url }}" width="64px" height="64px" />
 
-                                               <i style="cursor:pointer; " class="component-tooltip icon-info-sign" data-placement="bottom" data-original-title="{{ algorithm.get_label_display }}"
-                                                   data-content="{{ algorithm.get_description_display }}"></i>
+                                               <i style="cursor:pointer; " class="component-tooltip icon-info-sign" data-placement="bottom"
+                                                   data-content="{{ algorithm.get_description_display }}">
+                                                   <span style="display: none;">{{ algorithm.get_label_display }}</span>
+                                               </i>
                                                <div class="desc"><div>{{ algorithm.get_label_display }}</div></div>
                                                <input type="hidden" value="{{ algorithm.pk }}" />
                                                </div>
@@ -105,7 +110,13 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var tooltips = $(".component-tooltip")
-            tooltips.popover({html:true, container: "body"}); 
+            $.each(tooltips, function(idx, el) {
+                $(el).popover({
+                    html:true, 
+                    container: "body",
+                    title: $(el).text() + "<i style=\"float: right; cursor: pointer;\" class=\"icon-remove\" onclick=\"$(&quot;.component-tooltip&quot;).popover(&quot;hide&quot;);\"></i>"
+                });
+            });
             tooltips.on("click", function(ev) {
                 $.each($(".component-tooltip"), function(idx, tooltip) {
                     if (tooltip != ev.currentTarget) {
