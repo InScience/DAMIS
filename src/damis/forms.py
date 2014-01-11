@@ -316,6 +316,7 @@ class ParameterValueForm(forms.ModelForm):
         if parameter and parameter.connection_type in ['INPUT_COMMON',
                                         'OUTPUT_VALUE', 'OUTPUT_CONNECTION']:
             return True
+        return True
 
     def source_ref_to_obj(self, pv_prefix_to_obj):
         source_ref = self.cleaned_data['source_ref']
