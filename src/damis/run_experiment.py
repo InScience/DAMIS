@@ -3,6 +3,8 @@ import csv
 from os.path import splitext
 from datetime import datetime
 
+from django.utils.translation import ugettext as _
+
 from damis.models import Experiment, Connection, ParameterValue
 from damis.settings import BUILDOUT_DIR
 from algorithms.preprocess import transpose
@@ -30,6 +32,9 @@ def transpose_data_service(X, c, arff=False, *args, **kwargs):
     transpose(X_absolute, Y_absolute, int(c), arff=arff)
     duration = datetime.now() - start_time
     return [('Y', Y), ('calcTime', duration)]
+
+def not_implemented(*args, **kwargs):
+    raise ValueError(_('This service is not implemented yet'))
 
 def column_string_to_list(columns):
     column_list = []
@@ -92,23 +97,23 @@ SERVICES = {
     "MIDAS FILE": do_nothing,
     "TECHNICAL DETAILS": do_nothing,
     "CHART": do_nothing,
-    # "CLEAN DATA",
-    # "FILTER DATA",
-    # "SPLIT DATA",
+    "CLEAN DATA": not_implemented,
+    "FILTER DATA": not_implemented,
+    "SPLIT DATA": not_implemented,
     "TRANSPOSE DATA": transpose_data_service,
-    # "TRANSFORM DATA",
+    "TRANSFORM DATA": not_implemented,
     "SELECT FEATURES": select_features_service,
     "STAT PRIMITIVES": stat_primitives_service,
-    # "MLP",
-    # "C45",
-    # "KMEANS",
-    # "PCA",
-    # "SMACOF",
-    # "DMA",
-    # "SDS",
-    # "SAMANN",
-    # "SOM",
-    # "SOMMDS",
+    "MLP": not_implemented,
+    "C45": not_implemented,
+    "KMEANS": not_implemented,
+    "PCA": not_implemented,
+    "SMACOF": not_implemented,
+    "DMA": not_implemented,
+    "SDS": not_implemented,
+    "SAMANN": not_implemented,
+    "SOM": not_implemented,
+    "SOMMDS": not_implemented,
 }
 
 ## Recursively walk through through tasks.
@@ -136,10 +141,11 @@ def execute_tasks(task):
         response = service(**kwargs) # Response dict: name -> value
     except Exception, e:
         task.status = 'ERROR'
-        task.error_message = e
+        task.error = e.message
         task.save()
         task.experiment.status = 'ERROR'
         task.experiment.save()
+        return
 
     # Set OUTPUT parameter values and save.
     for name, value in response:
@@ -161,7 +167,7 @@ def execute_tasks(task):
     for pv in task.parameter_values.all():
         for con in Connection.objects.filter(source=pv):
             next_task = con.target.task
-            if next_task.status == 'SAVED':
+            if next_task.status != 'FINISHED':
                 execute_tasks(next_task)
 
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-11 16:23+0000\n"
+"POT-Creation-Date: 2014-01-11 17:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -315,6 +315,10 @@ msgstr "Šaltinis"
 msgid "Target"
 msgstr "Tikslas"
 
+#: run_experiment.py:37
+msgid "This service is not implemented yet"
+msgstr "Šis servisas dar nerealizuotas"
+
 #: settings.py:46
 msgid "Lithuanian"
 msgstr "Lietuvių"
@@ -506,6 +510,10 @@ msgstr "Ar tikrai norite, kad pažymėti įrašai būtų negrįžtamai ištrinti
 #: templates/damis/_experiment_form.html:7
 msgid "Form contains errors"
 msgstr "Formoje yra klaidų"
+
+#: templates/damis/_experiment_form.html:34
+msgid "Error:"
+msgstr "Klaida:"
 
 #: templates/damis/_technical_details.html:9
 msgid "Value"

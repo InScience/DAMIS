@@ -29,6 +29,11 @@
     <div>
         {% for task in task_formset.forms %}
         <div class="inline task">
+            {% if task.error.value %}
+                <ul class="errorlist">
+                    <li>{% trans "Error:" %} {{ task.error.value }}</li>
+                </ul>
+            {% endif %}
             {{ task.non_field_errors }}
             <div style="display:none">
                 {% for field in task.visible_fields %}
