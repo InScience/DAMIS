@@ -86,6 +86,9 @@
 						radius: 3
 					},
 				},
+				legend: {
+					show: false
+				},
 				grid: {
 					backgroundColor: "#ffffff",
 					clickable: true,
@@ -154,7 +157,7 @@
 			var image = canvas.toDataURL();
 			image = image.replace("image/png", "image/octet-stream");
 			// TODO: use server side to obtain download prompt with file extension
-            // TODO: IE8 does not support toDataURL(); possibly use flashcanvas
+			// TODO: IE8 does not support toDataURL(); possibly use flashcanvas
 			document.location.href = image;
 		},
 
@@ -168,7 +171,7 @@
 			plotContainer.html(plotPlaceholder);
 
 			var renderChoicesBody = $("<tbody></tbody>");
-			var renderChoicesHead = $("<thead><th>" + gettext('Class') + "</th><th>" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead>");
+			var renderChoicesHead = $("<thead><th>" + gettext('Class') + "</th><th colspan=\"2\">" + gettext('Color') + "</th><th>" + gettext('Shape') + "</th></thead>");
 			var renderChoices = $("<table class=\"render-choices\" style=\"margin: auto; margin-top: 20px;\"></table>");
 			renderChoices.append(renderChoicesHead);
 			renderChoices.append(renderChoicesBody);
@@ -185,7 +188,22 @@
 			$.each(dataContent.data, function(idx, series) {
 				var seriesRow = $("<tr></tr>");
 				seriesRow.append("<td>" + idx + "</td>");
-				seriesRow.append("<td><input type=\"text\" value=\"" + colorPalette[idx].toLowerCase() + "\"/></td>");
+				var colorCode = colorPalette[idx].toLowerCase();
+				seriesRow.append("<td><div class=\"color-selector\" style=\"background-color: " + colorCode + ";\"></div></td>");
+				seriesRow.append("<td><input type=\"hidden\" value=\"" + colorCode + "\"/></td>");
+
+				// add color picker
+				seriesRow.find('.color-selector').colpick({
+					layout: 'rgbhex',
+					color: colorCode,
+					submitText: gettext('OK'),
+					onSubmit: function(hsb, hex, rgb, el) {
+						var colorCode = '#' + hex;
+						$(el).css('background-color', colorCode);
+						$(el).closest("td").next().find("input").val(colorCode);
+						$(el).colpickHide();
+					}
+				}).css('background-color', colorCode);
 
 				var shapeSelect = $("<select></select>");
 				$.each(symbolPalette, function(i, shape) {

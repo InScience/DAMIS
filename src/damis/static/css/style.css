@@ -113,3 +113,10 @@ textarea {
 .popover { width: 276px; }
 .tab-content { overflow: visible; }
 .file-content-table td {padding: 4px; border: 1px solid #bbb}
+
+/* color picker */
+.color-selector {width: 28px; height: 28px; margin: 4px; vertical-align: middle; display: inline-block; cursor: pointer;}
+
+.render-choices input, .render-choices select {margin-bottom: 0px;}
+
+.colpick {z-index: 9999;}
