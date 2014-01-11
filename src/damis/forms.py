@@ -301,21 +301,21 @@ class ParameterValueForm(forms.ModelForm):
 
         value = self.cleaned_data.get('value')
         source_ref = self.cleaned_data.get('source_ref')
-        connection_type = self.cleaned_data.get('connection_type')
         if value or source_ref:
             return True
 
         parameter = self.cleaned_data.get('parameter')
         if parameter and parameter.required and not value:
-            errors = self._errors.setdefault('value', ErrorList())
-            errors.append(_(u'This value must be specified'))
+            if parameter.connection_type == 'INPUT_CONNECTION':
+                raise forms.ValidationError(_('Input connection is not connected'))
+            else:
+                errors = self._errors.setdefault('value', ErrorList())
+                errors.append(_(u'This value must be specified'))
             return False
 
-        if not connection_type or connection_type in ['INPUT_COMMON', 'OUTPUT_VALUE', 'OUTPUT_CONNECTION']:
+        if parameter and parameter.connection_type in ['INPUT_COMMON',
+                                        'OUTPUT_VALUE', 'OUTPUT_CONNECTION']:
             return True
-        errors = self._errors.setdefault('value', ErrorList())
-        errors.append(_(u'Parameter value must be specified'))
-        return False
 
     def source_ref_to_obj(self, pv_prefix_to_obj):
         source_ref = self.cleaned_data['source_ref']
@@ -359,7 +359,12 @@ class BaseWorkflowTaskFormset(BaseInlineFormSet):
         for form in self.forms:
             if hasattr(form, 'parameter_values'):
                 for pv_form in form.parameter_values:
-                    result = result and pv_form.is_valid()
+                    try:
+                        result = result and pv_form.is_valid()
+                    except forms.ValidationError, e:
+                        errors = form._errors.setdefault('__all__', ErrorList())
+                        errors.append(e.messages[0])
+                        result = False
         return result
 
 

@@ -26,12 +26,11 @@
     </div>
 
     {{ task_formset.management_form }}
-    <div style="display: none;">
+    <div>
         {% for task in task_formset.forms %}
-        {% trans 'Task' %}
         <div class="inline task">
+            {{ task.non_field_errors }}
             <div style="display:none">
-                {{ task.non_field_errors }}
                 {% for field in task.visible_fields %}
                     <p>{{ field.errors }}
                     {{ field.label }}:<br/>
