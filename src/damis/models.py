@@ -44,6 +44,7 @@ class Cluster(models.Model):
     workload_url = models.URLField(_('Workload page'), max_length=255, null=True)
     description = models.TextField(_('Description EN'), null=True, blank=True)
     description_lt = models.TextField(_('Description LT'), null=True, blank=True)
+    icon = models.ImageField(_('Icon'), upload_to='icons', blank=True, null=True)
 
     def __unicode__(self):
         return self.title

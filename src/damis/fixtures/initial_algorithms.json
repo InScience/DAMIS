@@ -62,7 +62,8 @@
         "title": "MII Cluster",
         "title_lt": "MII klasteris",
         "description": "Distributed Computing cluster of Vilnius University Institute of Mathematics and Informatics.",
-        "description_lt": "Vilniaus universiteto Matematikos ir informatikos instituto paskirstitųjų skaičiavimų klasteris."
+        "description_lt": "Vilniaus universiteto Matematikos ir informatikos instituto paskirstitųjų skaičiavimų klasteris.",
+        "icon": "icons/mii_logo.png"
     }
 },
 {
@@ -74,7 +75,8 @@
         "title": "MIF VU SK2",
         "title_lt": "MIF VU SK2",
         "description": "Supercomputer of Vilnius University Faculty of Mathematics and Informatics.",
-        "description_lt": "Vilniaus universiteto Matematikos ir informatikos fakulteto paskirstytųjų skaičiavimų superkompiuteris."
+        "description_lt": "Vilniaus universiteto Matematikos ir informatikos fakulteto paskirstytųjų skaičiavimų superkompiuteris.",
+        "icon": "icons/mif_logo.png"
     }
 },
 {
