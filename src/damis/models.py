@@ -211,6 +211,7 @@ class WorkflowTask(models.Model):
     algorithm = models.ForeignKey('Component', verbose_name=_('Component'))
     status = models.CharField(_('Status'), max_length=255, null=True, blank=True,
                               choices=STATUSES, default='SAVED')
+    error = models.TextField(_('Error message'), blank=True, null=True)
 
     def __unicode__(self):
         if self.algorithm:
