@@ -13,7 +13,7 @@
     <div class="tab-pane active" id="data-list">
         <form id='user-action-form' method='POST' action=''>{% csrf_token %}
       <input type="hidden" value="delete" name="action"/>
-      <button class="btn delete-btn" type="button"><i class="icon-trash"></i></button>
+      <button class="btn delete-btn" type="button" title="{% trans 'Delete' %}"><i class="icon-trash"></i></button>
       <table class="table table-hover">
           <thead>
               <tr>
@@ -37,7 +37,7 @@
                             <i class="icon-ok"></i>
                         {% endif %}
                     </td>
-                    <td><a class="btn btn-small" style="margin-right: 30px;" href="{% url 'user-edit' obj.pk %}">
+                    <td><a class="btn btn-small" title="{% trans 'Edit' %}" style="margin-right: 30px;" href="{% url 'user-edit' obj.pk %}">
                           <i class="icon-pencil"></i>
                         </a>
                     </td>

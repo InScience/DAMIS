@@ -15,7 +15,7 @@
     <div class="tab-pane active" id="data-list">
       <form id='algorithm-action-form' method='POST' action=''>{% csrf_token %}
       <input type="hidden" value="delete" name="action"/>
-      <button class="btn delete-btn" type="button"><i class="icon-trash"></i></button>
+      <button class="btn delete-btn" type="button" title="{% trans 'Delete' %}"><i class="icon-trash"></i></button>
       <table class="table table-hover">
           <thead>
               <tr>
@@ -33,8 +33,8 @@
                     <td> {{ obj.get_label_display }}</td>
                     <td> {{ obj.get_description_display }} </td>
                     <td> 
-                        <a class="btn btn-small" href="{% url 'algorithm-update' obj.pk %}">
-                            <i class="icon-edit"></i>
+                        <a class="btn btn-small" title="{% trans 'Edit' %}" href="{% url 'algorithm-update' obj.pk %}">
+                            <i class="icon-pencil"></i>
                         </a>
                     </td>
                 </tr>

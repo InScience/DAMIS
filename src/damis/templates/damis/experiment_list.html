@@ -14,8 +14,7 @@
     <div class="tab-pane active" id="data-list">
       <form id='experiment-action-form' method='POST' action=''>{% csrf_token %}
       <input type="hidden" value="delete" name="action"/>
-      <button class="btn delete-btn" type="button"><i class="icon-trash"></i></button>
-      <table class="table table-hover">
+      <button class="btn delete-btn" type="button" title="{% trans 'Delete' %}"><i class="icon-trash"></i></button> <table class="table table-hover">
           <thead>
               <tr>
                   <th><input class="select-all" type="checkbox"></th>
@@ -32,13 +31,13 @@
                     <td> {{ obj.title }}</td>
                     <td> {{ obj.get_status_display }}</td>
                     <td>
-                        <a class="btn btn-small" href="{% url 'experiment-update' obj.id %}">
-                            <i class="icon-edit"></i>
+                        <a class="btn btn-small" title="{% trans 'Edit' %}" href="{% url 'experiment-update' obj.id %}">
+                            <i class="icon-pencil"></i>
                         </a>
                         {% if obj.status == 'ERROR' or obj.status == 'RUNNING' %}
-                            <button disabled="disabled" type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
+                            <button disabled="disabled" title="{% trans 'View results' %}" type="button" class="btn btn-small"><i class="icon-eye-open"></i></button>
                         {% else %}
-                            <a class="btn btn-small" href="{% url 'experiment-update' obj.id %}">
+                        <a class="btn btn-small" title="{% trans 'View results' %}" href="{% url 'experiment-update' obj.id %}">
                                 <i class="icon-eye-open"></i>
                             </a>
                         {% endif %}
