@@ -132,7 +132,14 @@ def execute_tasks(task):
 
     # Call executable
     service = SERVICES[task.algorithm.title]
-    response = service(**kwargs) # Response dict: name -> value
+    try:
+        response = service(**kwargs) # Response dict: name -> value
+    except Exception, e:
+        task.status = 'ERROR'
+        task.error_message = e
+        task.save()
+        task.experiment.status = 'ERROR'
+        task.experiment.save()
 
     # Set OUTPUT parameter values and save.
     for name, value in response:
@@ -162,9 +169,7 @@ if __name__ == '__main__':
     exp_pk = sys.argv[1]
     exp = Experiment.objects.get(pk=exp_pk)
     first_task = exp.tasks.filter(algorithm__category='DATA')[0]
-    try:
-        execute_tasks(first_task)
+    execute_tasks(first_task)
+    if exp.status != 'ERROR':
         exp.status = 'FINISHED'
-    except Exception:
-        exp.status = 'ERROR'
-    exp.save()
+        exp.save()
