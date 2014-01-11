@@ -1,8 +1,9 @@
 (function() {
 	window.taskBoxes = {
-		assembleBoxHTML: function(boxName, icoUrl) {
+		assembleBoxHTML: function(boxName, icoUrl, clusterIcoUrl) {
 			var closeIco = '<a href="#"><i class="component-tooltip icon-remove"></i></a>';
-			return '<div class="task-box"><img src=\"' + icoUrl + '\" width=\"64px\" height=\"64px\" />' + closeIco + '<div class=\"desc\"><div>' + boxName + '</div></div></div>';
+			var clusterIco = '<span style="width: 20px; height: 20px; position: absolute; top:0; left:0; background: url(' + clusterIcoUrl + ')"></span>';
+			return '<div class="task-box"><img src=\"' + icoUrl + '\" width=\"64px\" height=\"64px\" />' + closeIco + clusterIco + '<div class=\"desc\"><div>' + boxName + '</div></div></div>';
 		},
 
 		countBoxes: 0,
@@ -156,11 +157,14 @@
 			algorithmInput.val(algorithmId);
 
 			// drop the task where it was dragged
-			var componentLabel = window.componentSettings.getComponentDetails({
+            var componentDetails = window.componentSettings.getComponentDetails({
 				formWindow: taskForm
-			})['label'];
-			var icoUrl = $(ui.draggable).find("img").attr("src");
-			var taskBox = $(window.taskBoxes.assembleBoxHTML(componentLabel, icoUrl));
+			}); 
+			var componentLabel = componentDetails['label'];
+			var clusterIcoUrl = componentDetails['cluster_ico'];
+			var icoUrl = componentDetails['ico'];
+
+			var taskBox = $(window.taskBoxes.assembleBoxHTML(componentLabel, icoUrl, clusterIcoUrl));
 			taskBox.appendTo(taskContainer);
 			taskBox.css("left", ui.position.left + "px");
 			taskBox.css("top", ui.position.top + "px");

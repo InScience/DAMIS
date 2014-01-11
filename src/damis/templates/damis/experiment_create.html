@@ -151,7 +151,12 @@
 
             window.componentSettings.details = {};
             {% for id, details in component_details %}
-                window.componentSettings.details["{{ id }}"] = {type: "{{ details.title }}", label: "{{ details.label }}"};
+                window.componentSettings.details["{{ id }}"] = {
+                    type: "{{ details.title }}", 
+                    label: "{{ details.label }}",
+                    ico: "{{ details.ico }}",
+                    cluster_ico: "{{ details.cluster_ico }}",
+                };
             {% endfor %}
 
             window.experimentForm.params = { 
