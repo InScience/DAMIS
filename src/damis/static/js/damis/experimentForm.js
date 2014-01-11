@@ -93,13 +93,13 @@
 			var updatedForms = $("#experiment-form .inline");
 			$.each($(".task-box"), function(taskBoxId, taskBox) {
 				taskForm = $(updatedForms[taskBoxId + 1]);
-				parameterFormset = $(taskForm.next(".parameter-values"));
 				// mark the task box as conataining errors
-				if (parameterFormset.find(".errorlist").length > 0) {
+				if (taskForm.find(".errorlist").length > 0) {
 					$(taskBox).addClass("error");
 				} else {
 					$(taskBox).removeClass("error");
 				}
+				parameterFormset = $(taskForm.next(".parameter-values"));
 				var componentLabel = window.componentSettings.getComponentDetails({
 					formWindow: taskForm
 				})['label'];
