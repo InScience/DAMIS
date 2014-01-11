@@ -26,7 +26,7 @@
     </div>
 
     {{ task_formset.management_form }}
-    <div>
+    <div style="display:none">
         {% for task in task_formset.forms %}
         <div class="inline task">
             {% if task.error.value %}
