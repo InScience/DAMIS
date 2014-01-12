@@ -1739,7 +1739,7 @@
         "name": "X", 
         "algorithm": 15, 
         "default": "", 
-        "required": false, 
+        "required": true, 
         "label": "", 
         "type": "dataset", 
         "description": ""
@@ -3663,7 +3663,7 @@
         "name": "X", 
         "algorithm": 37, 
         "default": "", 
-        "required": false, 
+        "required": true, 
         "label": "", 
         "type": "dataset", 
         "description": ""
