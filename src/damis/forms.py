@@ -191,6 +191,9 @@ class RegistrationForm(forms.Form):
     first_name = forms.CharField(label=_('First name'), max_length=100,)
     last_name = forms.CharField(label=_('Last name'), max_length=100,)
     email = forms.EmailField(label=_('E-mail'), max_length=100)
+    organization = forms.CharField(label=_('Organization'),
+            widget=forms.Textarea(attrs={'rows':'5', 'cols': '25'}),
+            required=False)
 
     def clean_username(self):
         username = self.cleaned_data.get('username')

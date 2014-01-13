@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-11 17:08+0000\n"
+"POT-Creation-Date: 2014-01-13 07:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,26 +60,30 @@ msgstr "Pavardė"
 msgid "E-mail"
 msgstr "El. pašto adresas"
 
-#: forms.py:226 models.py:19 models.py:82
+#: forms.py:194
+msgid "Organization"
+msgstr "Organizacija"
+
+#: forms.py:229 models.py:19 models.py:82
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:23
 #: templates/damis/experiment_list.html:21
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:227
+#: forms.py:230
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:228 models.py:21 templates/damis/algorithm_list.html:24
+#: forms.py:231 models.py:21 templates/damis/algorithm_list.html:24
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:25
 msgid "Description"
 msgstr "Aprašymas"
 
-#: forms.py:310
+#: forms.py:313
 msgid "Input connection is not connected"
 msgstr "Įeities jungtis nėra prijungta"
 
-#: forms.py:313
+#: forms.py:316
 msgid "This value must be specified"
 msgstr "Ši reikšmė turi būti nurodyta"
 
@@ -339,11 +343,11 @@ msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 msgid "There is no file to download."
 msgstr "Nėra failo, kurį galėtumėte atsisiųsti."
 
-#: templates/base.html:72
+#: templates/base.html:75
 msgid "Source code"
 msgstr "Išeities kodas"
 
-#: templates/base.html:75
+#: templates/base.html:78
 msgid "API"
 msgstr "API"
 
