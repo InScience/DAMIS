@@ -1526,6 +1526,108 @@
     }
 },
 {
+    "pk": 99, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "label": "Duomenys", 
+        "type": "dataset", 
+        "description": "Duomenys"
+    }
+},
+{
+    "pk": 100, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "description_lt": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
+        "name": "fillMissingValues", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "label": "Cleaning Missing Data", 
+        "label_lt": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
+        "type": "boolean", 
+        "description": "Delete observations with missing data"
+    }
+},
+{
+    "pk": 101, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": false, 
+        "label": "", 
+        "type": "dataset", 
+        "description": ""
+    }
+},
+{
+    "pk": 102, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": false, 
+        "label": "", 
+        "type": "time", 
+        "description": ""
+    }
+},
+{
+    "pk": 103, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "errors", 
+        "algorithm": 12, 
+        "default": null, 
+        "required": false, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 104, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "description_lt": "Patikrinamas duomen\u0173 vektori\u0173 atribut\u0173 duomen\u0173 tip\u0173 atitikimas meta informacijoje deklaruotiems duomen\u0173 tipams", 
+        "name": "fixColumnTypes", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "label": "Data Type Matching", 
+        "label_lt": "Duomen\u0173 tip\u0173 atitikimas", 
+        "type": "boolean", 
+        "description": "Check data type matching with file meta-information"
+    }
+},
+{
+    "pk": 105, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 12, 
+        "default": "", 
+        "required": true, 
+        "label": "", 
+        "type": "time", 
+        "description": ""
+    }
+},
+{
     "pk": 106, 
     "model": "damis.parameter", 
     "fields": {
@@ -3450,6 +3552,108 @@
     }
 },
 {
+    "pk": 237, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": "Duomenys", 
+        "type": "dataset", 
+        "description": "Duomenys"
+    }
+},
+{
+    "pk": 238, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "description_lt": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
+        "name": "fillMissingValues", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": "Cleaning Missing Data", 
+        "label_lt": "Tr\u016bkstam\u0173 reik\u0161mi\u0173 \u0161alinimas", 
+        "type": "boolean", 
+        "description": "Delete observations with missing data"
+    }
+},
+{
+    "pk": 239, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_CONNECTION", 
+        "name": "Y", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": false, 
+        "label": "", 
+        "type": "dataset", 
+        "description": ""
+    }
+},
+{
+    "pk": 240, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "calcTime", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": false, 
+        "label": "", 
+        "type": "time", 
+        "description": ""
+    }
+},
+{
+    "pk": 241, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "OUTPUT_VALUE", 
+        "name": "errors", 
+        "algorithm": 34, 
+        "default": null, 
+        "required": false, 
+        "label": null, 
+        "type": "string", 
+        "description": null
+    }
+},
+{
+    "pk": 242, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_VALUE", 
+        "description_lt": "Patikrinamas duomen\u0173 vektori\u0173 atribut\u0173 duomen\u0173 tip\u0173 atitikimas meta informacijoje deklaruotiems duomen\u0173 tipams", 
+        "name": "fixColumnTypes", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": "Data Type Matching", 
+        "label_lt": "Duomen\u0173 tip\u0173 atitikimas", 
+        "type": "boolean", 
+        "description": "Check data type matching with file meta-information"
+    }
+},
+{
+    "pk": 243, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_COMMON", 
+        "name": "maxCalcTime", 
+        "algorithm": 34, 
+        "default": "", 
+        "required": true, 
+        "label": "", 
+        "type": "time", 
+        "description": ""
+    }
+},
+{
     "pk": 244, 
     "model": "damis.parameter", 
     "fields": {
@@ -4141,6 +4345,25 @@
     "model": "damis.component", 
     "fields": {
         "category": "PREPROCESSING", 
+        "function": "CLEAN DATA", 
+        "updated": "2013-12-14T16:20:06.152", 
+        "description": "Data cleaning", 
+        "description_lt": "Duomen\u0173 valymas", 
+        "label": "Clean data", 
+        "label_lt": "Valymas", 
+        "title": "CLEAN DATA", 
+        "created": "2013-12-01T17:42:35.946", 
+        "cluster": 1, 
+        "user": null, 
+        "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
+        "icon": "icons/clean-data-ico.jpeg"
+    }
+},
+{
+    "pk": 45, 
+    "model": "damis.component", 
+    "fields": {
+        "category": "PREPROCESSING", 
         "function": "SPLIT FEATURE", 
         "updated": "2013-12-14T13:29:16.906", 
         "description": "Splits nominal feature into several features", 
@@ -4183,7 +4406,7 @@
         "updated": "2013-12-14T13:29:16.763", 
         "description_lt": "Failo padalinimas \u012f kelis smulkesnius", 
         "description": "Split a file into given number of parts", 
-        "label_lt": "Failo padalinimas", 
+        "label_lt": "Skaidymas", 
         "label": "Split file", 
         "title": "SPLIT DATA", 
         "created": "2013-12-02T07:59:59.597", 
@@ -4561,6 +4784,25 @@
     "model": "damis.component", 
     "fields": {
         "category": "PREPROCESSING", 
+        "function": "CLEAN DATA", 
+        "updated": "2013-12-14T18:29:31.534", 
+        "description": "Data cleaning", 
+        "description_lt": "Duomen\u0173 valymas", 
+        "label": "Clean data", 
+        "label_lt": "Valymas", 
+        "title": "CLEAN DATA", 
+        "created": "2013-12-14T18:29:31.534", 
+        "cluster": 2, 
+        "user": null, 
+        "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
+        "icon": "icons/clean-data-ico.jpeg"
+    }
+},
+{
+    "pk": 46, 
+    "model": "damis.component", 
+    "fields": {
+        "category": "PREPROCESSING", 
         "function": "SPLIT FEATURE", 
         "updated": "2013-12-14T13:29:16.906", 
         "description": "Splits nominal feature into several features", 
@@ -4603,7 +4845,7 @@
         "updated": "2013-12-14T18:29:33.746", 
         "description_lt": "Failo padalinimas \u012f kelis smulkesnius", 
         "description": "Split a file into given number of parts", 
-        "label_lt": "Failo padalinimas", 
+        "label_lt": "Skaidymas", 
         "label": "Split file", 
         "title": "SPLIT DATA", 
         "created": "2013-12-14T18:29:33.746", 
