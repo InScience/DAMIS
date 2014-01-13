@@ -2097,7 +2097,7 @@
     "fields": {
         "connection_type": "INPUT_CONNECTION", 
         "name": "X", 
-        "algorithm": 22, 
+        "algorithm": 47, 
         "default": "", 
         "required": true, 
         "label": "", 
@@ -4123,6 +4123,34 @@
     "fields": {
         "connection_type": "INPUT_CONNECTION", 
         "name": "X", 
+        "algorithm": 48, 
+        "default": "", 
+        "required": true, 
+        "label": "", 
+        "type": "dataset", 
+        "description": ""
+    }
+},
+{
+    "pk": 277, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
+        "algorithm": 22, 
+        "default": "", 
+        "required": true, 
+        "label": "", 
+        "type": "dataset", 
+        "description": ""
+    }
+},
+{
+    "pk": 278, 
+    "model": "damis.parameter", 
+    "fields": {
+        "connection_type": "INPUT_CONNECTION", 
+        "name": "X", 
         "algorithm": 44, 
         "default": "", 
         "required": true, 
@@ -4550,7 +4578,7 @@
     }
 },
 {
-    "pk": 22, 
+    "pk": 47, 
     "model": "damis.component", 
     "fields": {
         "category": "RESULTS", 
@@ -4989,7 +5017,7 @@
     }
 },
 {
-    "pk": 44, 
+    "pk": 48, 
     "model": "damis.component", 
     "fields": {
         "category": "RESULTS", 
@@ -5000,6 +5028,44 @@
         "label": "Chart", 
         "label_lt": "Grafinis vaizdavimas", 
         "title": "CHART", 
+        "created": "2013-12-14T18:29:38.479", 
+        "cluster": 2, 
+        "user": null, 
+        "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
+        "icon": "icons/chart-ico.jpeg"
+    }
+},
+{
+    "pk": 22, 
+    "model": "damis.component", 
+    "fields": {
+        "category": "RESULTS", 
+        "function": "MATRIX VIEW", 
+        "updated": "2013-12-14T18:29:38.479", 
+        "description_lt": "Rezultat\u0173 matricinis vaizdavimas", 
+        "description": "Results matrix view", 
+        "label": "Matrix view", 
+        "label_lt": "Matricinis vaizdavimas", 
+        "title": "MATRIX VIEW", 
+        "created": "2013-12-14T18:29:38.479", 
+        "cluster": 1, 
+        "user": null, 
+        "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
+        "icon": "icons/chart-ico.jpeg"
+    }
+},
+{
+    "pk": 44, 
+    "model": "damis.component", 
+    "fields": {
+        "category": "RESULTS", 
+        "function": "MATRIX VIEW", 
+        "updated": "2013-12-14T18:29:38.479", 
+        "description_lt": "Rezultat\u0173 matricinis vaizdavimas", 
+        "description": "Results matrix view", 
+        "label": "Matrix view", 
+        "label_lt": "Matricinis vaizdavimas", 
+        "title": "MATRIX VIEW", 
         "created": "2013-12-14T18:29:38.479", 
         "cluster": 2, 
         "user": null, 
