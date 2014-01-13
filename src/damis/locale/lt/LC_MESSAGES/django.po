@@ -58,7 +58,7 @@ msgstr "Pavardė"
 
 #: forms.py:193 templates/damis/user_list.html:23
 msgid "E-mail"
-msgstr "el. paštas"
+msgstr "El. pašto adresas"
 
 #: forms.py:226 models.py:19 models.py:82
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:23
