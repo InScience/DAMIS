@@ -52,4 +52,5 @@ load_data:
 pull: 
 	git pull
 	bin/django migrate damis
+	bin/django compilemessages
 	sudo /etc/init.d/apache2 restart
