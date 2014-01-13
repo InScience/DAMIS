@@ -225,6 +225,16 @@ class RegistrationForm(forms.Form):
         return user
 
 
+class EmailForm(forms.Form):
+    email = forms.EmailField(label=_('E-mail'), max_length=100)
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not User.objects.filter(email='info@damis.lt').exists():
+            raise forms.ValidationError(_('Please enter correct email address'))
+        return email
+
+
 class DataFileUploadForm(forms.Form):
     title = forms.CharField(label=_('Title'))
     data_file = forms.FileField(label=_('Dataset file'))

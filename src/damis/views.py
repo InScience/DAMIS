@@ -10,28 +10,26 @@ from subprocess import call, Popen, PIPE
 from collections import OrderedDict
 
 from django.conf import settings
-from django.core.urlresolvers import reverse_lazy
-from django.core.context_processors import csrf
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse_lazy
+from django.core.context_processors import csrf
+from django.core.mail import send_mail
 from django.db.models import Q
-from django.shortcuts import render, get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, get_object_or_404, render_to_response
 from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
-from django.forms.models import modelformset_factory
 from django.forms.models import inlineformset_factory
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-from django.core.context_processors import csrf
 
 from damis.settings import BUILDOUT_DIR
 from damis.constants import COMPONENT_TITLE__TO__FORM_URL
 from damis.utils import slugify, strip_arff_header
 
-from damis.forms import LoginForm, RegistrationForm
+from damis.forms import LoginForm, RegistrationForm, EmailForm
 from damis.forms import DatasetForm
 from damis.forms import ComponentForm
 from damis.forms import ParameterForm, ParameterFormset
@@ -691,5 +689,25 @@ def logout_view(request):
 def profile_settings_view(request):
     pass
 
+
 def reset_password_view(request):
-    pass
+    if request.method == 'POST':
+        email_form = EmailForm(request.POST)
+        if email_form.is_valid():
+            receiver = email_form.cleaned_data.get('email')
+            user = User.objects.get(email=receiver)
+            # Get the domain.
+            domain = 'test.damis.lt'
+            subject = _('{0} password recovery').format(domain)
+            body = render_to_string('accounts/mail/reset_password.html', {
+                'domain': domain,
+                'user': user.username,
+                'recovery_url': domain,
+            })
+            sender = settings.DEFAULT_FROM_EMAIL
+            send_mail(subject, body, sender, [receiver])
+    else:
+        email_form = EmailForm()
+    return render(request, 'accounts/reset_password.html', {
+                'form': email_form,
+            })

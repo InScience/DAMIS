@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-13 07:58+0000\n"
+"POT-Creation-Date: 2014-01-13 20:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr "Vardas"
 msgid "Last name"
 msgstr "Pavardė"
 
-#: forms.py:193 templates/damis/user_list.html:23
+#: forms.py:193 forms.py:229 templates/damis/user_list.html:23
 msgid "E-mail"
 msgstr "El. pašto adresas"
 
@@ -64,26 +64,30 @@ msgstr "El. pašto adresas"
 msgid "Organization"
 msgstr "Organizacija"
 
-#: forms.py:229 models.py:19 models.py:82
+#: forms.py:234
+msgid "Please enter correct email address"
+msgstr "Įveskite teisingą savo el. pašto adresą"
+
+#: forms.py:239 models.py:19 models.py:82
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:23
 #: templates/damis/experiment_list.html:21
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:230
+#: forms.py:240
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:231 models.py:21 templates/damis/algorithm_list.html:24
+#: forms.py:241 models.py:21 templates/damis/algorithm_list.html:24
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:25
 msgid "Description"
 msgstr "Aprašymas"
 
-#: forms.py:313
+#: forms.py:323
 msgid "Input connection is not connected"
 msgstr "Įeities jungtis nėra prijungta"
 
-#: forms.py:316
+#: forms.py:326
 msgid "This value must be specified"
 msgstr "Ši reikšmė turi būti nurodyta"
 
@@ -331,17 +335,21 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:483 views.py:486 views.py:489
+#: views.py:481 views.py:484 views.py:487
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:573 views.py:600 views.py:641 views.py:648
+#: views.py:571 views.py:598 views.py:639 views.py:646
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:594
+#: views.py:592
 msgid "There is no file to download."
 msgstr "Nėra failo, kurį galėtumėte atsisiųsti."
+
+#: views.py:701
+msgid "{0} password recovery"
+msgstr "{0} slaptažodžio atstatymas"
 
 #: templates/base.html:75
 msgid "Source code"
@@ -506,6 +514,14 @@ msgstr "Registruokitės čia"
 #: templates/accounts/register.html:13
 msgid "Register"
 msgstr "Registruotis"
+
+#: templates/accounts/reset_password.html:13
+msgid "Send password recover email"
+msgstr "Siųsti slaptažodžio atstatymo el. laišką"
+
+#: templates/accounts/mail/login.html:3
+msgid "username"
+msgstr "Naudotojo vardas"
 
 #: templates/damis/_delete_dialog.html:3
 #: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:18
