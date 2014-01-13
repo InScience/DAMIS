@@ -122,6 +122,13 @@ INTERNAL_IPS = (
     '127.0.0.1',
 )
 
+# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'damis.lt'
+EMAIL_HOST_USER = 'info@damis.lt'
+EMAIL_HOST_PASSWORD = 'damisinfoslaptazodis'
+DEFAULT_FROM_EMAIL = 'info@damis.lt'
+
 LOGIN_URL = '/login/'
 
 DEBUG_TOOLBAR_CONFIG = {
