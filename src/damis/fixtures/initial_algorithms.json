@@ -5051,7 +5051,7 @@
         "cluster": 1, 
         "user": null, 
         "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
-        "icon": "icons/chart-ico.jpeg"
+        "icon": "icons/matrix-view-ico.jpeg"
     }
 },
 {
@@ -5070,7 +5070,7 @@
         "cluster": 2, 
         "user": null, 
         "wsdl": "http://158.129.140.146/Damis/cgi-bin/DAMISserver.cgi?wsdl", 
-        "icon": "icons/chart-ico.jpeg"
+        "icon": "icons/matrix-view-ico.jpeg"
     }
 }
 ]
