@@ -40,7 +40,7 @@ VALIDATOR_FIELDS = {
     'boolean': {'class': forms.BooleanField, 'attrs': {'required': False}},
     'date': {'class': forms.DateField, 'attrs': {'required': False}},
     'datetime': {'class': forms.DateTimeField, 'attrs': {'required': False}},
-    'time': {'class': forms.TimeField, 'attrs': {'required': False}},
+    'time': {'class': forms.CharField, 'attrs': {'required': False}},
     'float': {'class': forms.FloatField, 'attrs': {'required': False}},
     'double': {'class': forms.FloatField, 'attrs': {'required': False}},
 }
@@ -393,7 +393,9 @@ class BaseWorkflowTaskFormset(BaseInlineFormSet):
             data['experiment'] = experiment
             if data.get('algorithm'):
                 task = data.get('id')
-                if not task:
+                if not task and not data.get('DELETE'):
+                    if data.has_key('DELETE'):
+                        data.pop('DELETE')
                     task = WorkflowTask.objects.create(**data)
 
                 pv_formset = task_form.parameter_values[0]
@@ -445,7 +447,7 @@ class WorkflowTaskForm(forms.ModelForm):
 
 WorkflowTaskFormset = inlineformset_factory(Experiment, WorkflowTask,
         formset=BaseWorkflowTaskFormset, form=WorkflowTaskForm, extra=0,
-        can_delete=False)
+        can_delete=True)
 CreateExperimentFormset = inlineformset_factory(Experiment, WorkflowTask,
         formset=BaseWorkflowTaskFormset, form=WorkflowTaskForm, extra=1,
-        can_delete=False)
+        can_delete=True)
