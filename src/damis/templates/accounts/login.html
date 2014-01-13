@@ -12,6 +12,7 @@
             {{ form.as_p }}
             <p><input class="btn btn-primary" type="submit" value="{% trans "Login" %}" /></p>
         </form>
+        <p>{% trans "Forgot password? You can" %} <b><a href='{% url 'reset-password' %}'>{% trans "recover it here" %}</a></b></p>
         <p>{% trans "Do not have an account? You can" %} <b><a href='{% url 'register' %}'>{% trans "register here" %}</a></b></p>
     </div>
 {% endblock %}
