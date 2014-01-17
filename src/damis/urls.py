@@ -58,6 +58,7 @@ urlpatterns += i18n_patterns('',
     url(r'^x/select_features_form/$', select_features_form_view, name='component-select-features-form'),
     url(r'^x/technical_details_form/$', technical_details_form_view, name='component-technical-details-form'),
     url(r'^x/chart_form/$', chart_form_view, name='component-chart-form'),
+    url(r'^x/matrix_form/$', matrix_form_view, name='component-matrix-form'),
 )
 
 urlpatterns += staticfiles_urlpatterns()

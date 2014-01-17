@@ -9,6 +9,7 @@
 			this.eventObservers.push(window.files);
 			this.eventObservers.push(window.chart);
 			this.eventObservers.push(window.technicalDetails);
+			this.eventObservers.push(window.matrixView);
 		},
 	}
 })();

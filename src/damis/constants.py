@@ -7,4 +7,5 @@ COMPONENT_TITLE__TO__FORM_URL = {
     "SELECT FEATURES":   reverse_lazy('component-select-features-form'),
     "TECHNICAL DETAILS": reverse_lazy('component-technical-details-form'),
     "CHART":             reverse_lazy('component-chart-form'),
+    "MATRIX VIEW":       reverse_lazy('component-matrix-form'),
 }

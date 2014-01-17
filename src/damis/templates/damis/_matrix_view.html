@@ -1,0 +1,39 @@
+{% load i18n %}
+<table>
+    <tbody><tr>
+            <td>
+				<div style="max-height: 300px; min-width: 300px; overflow: auto;">
+                    <b>{% trans 'File content' %}:</b><br />
+
+                    {% for header_row in header %}
+                        {{ header_row }} <br />
+                    {% endfor %}
+
+                    <table class="file-content-table">
+                        <tbody>
+                            {% for row in file %}
+                               <tr>
+                                {% for col in row %}
+                                    <td>{{ col }}</td>
+                                {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </td> 
+    </tr>
+    <tr><td>
+            {% trans 'Select results file type: ' %}
+            <select class="file-type-select"> 
+                <option value="tab">tab</option>
+                <option value="txt">txt</option>
+                <option value="csv">csv</option>
+                <option value="xls">xls</option>
+                <option value="xlsx">xlsx</option>
+                <option value="arff" selected="selected">arff</option>
+            </select>
+        </td></tr>
+    </tbody>
+</table>
+

@@ -548,7 +548,39 @@ def technical_details_form_view(request):
 
     request - Ajax GET request. Fields:
         pv_name - OUTPUT_CONNECTION parameter form input name; used to track down the task, output of which should be rendered by the technical details component
-        dataset_url - url of the data file, which is to be rendered ty the technical details component
+    '''
+    pv_name = request.GET.get('pv_name')
+    context = {}
+    if pv_name and re.findall('PV_PK(\d+)-\d+-value', pv_name):
+        task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)[0]
+        task = WorkflowTask.objects.get(pk=task_pk)
+        params = task.parameter_values.filter(parameter__connection_type="OUTPUT_VALUE")
+        context['values'] = params
+
+    if not context.get('values'):
+        return HttpResponse(_('You have to execute this experiment first to see the result.'))
+    else:
+        return render_to_response('damis/_technical_details.html', context)
+
+def download_file(file_url, file_format):
+    '''Prepares the HTTP response to download a file in a given format.
+
+    file_url - url from which to download the file
+    file_format - file download format
+    '''
+    filename = splitext(split(file_url)[1])[0]
+    response = HttpResponse(mimetype='text/html')
+    response['Content-Disposition'] = 'attachment; filename=%s.%s' % (filename, file_format)
+    converted_file = convert(file_url, file_format=file_format)
+    response.write(converted_file.read())
+    return response
+
+def matrix_form_view(request):
+    '''Handles Ajax GET request to update the matrix view component.
+
+    request - Ajax GET request. Fields:
+        pv_name - OUTPUT_CONNECTION parameter form input name; used to track down the task, output of which should be rendered by the matrix view component
+        dataset_url - url of the data file, which is to be rendered ty the matrix view component
         download - if True return a downloadable file, else return HTML
         format - file format
     '''
@@ -558,46 +590,27 @@ def technical_details_form_view(request):
     if not pv_name or re.findall('PV_\d+-\d+-value', pv_name):
         if dataset_url:
             if request.GET.get('download'):
-                file_format = request.GET.get('format')
-                filename = splitext(split(dataset_url)[1])[0]
-                response = HttpResponse(mimetype='text/html')
-                response['Content-Disposition'] = 'attachment; filename=%s.%s' % (filename, file_format)
-                converted_file = convert(dataset_url, file_format=file_format)
-                response.write(converted_file.read())
-                return response
-            context['header'], context['file'] = file_to_table(dataset_url)
-            return render_to_response('damis/_technical_details.html', context)
+                return download_file(dataset_url, request.GET.get('format'))
+            else:
+                context['header'], context['file'] = file_to_table(dataset_url)
+                return render_to_response('damis/_matrix_view.html', context)
         else:
             return HttpResponse(_('You have to execute this experiment first to see the result.'))
     else:
         task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)[0]
         task = WorkflowTask.objects.get(pk=task_pk)
-        params = task.parameter_values.filter(parameter__connection_type="OUTPUT_VALUE")
-        context['values'] = params
         file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
         # XXX: constraint: can download only first file OUTPUT_CONNECTION
         file_path = None
         if len(file_params) and file_params[0].value:
             file_path = file_params[0].value
-            context['header'], context['file'] = file_to_table(file_path)
-
-        if request.GET.get('download'):
-            file_format = request.GET.get('format')
-            filename = splitext(split(file_path)[1])[0]
-            response = HttpResponse(mimetype='text/html')
-            response['Content-Disposition'] = 'attachment; filename=%s.%s' % (filename, file_format)
-            if file_path:
-                converted_file = convert(file_path, file_format=file_format)
+            if request.GET.get('download'):
+                return download_file(file_path, request.GET.get('format'))
             else:
-                return HttpResponse(_('There is no file to download.'))
-
-            response.write(converted_file.read())
-            return response
-
-        if not context.get('values') and not context.get('file'):
+                context['header'], context['file'] = file_to_table(file_path)
+                return render_to_response('damis/_matrix_view.html', context)
+        else:
             return HttpResponse(_('You have to execute this experiment first to see the result.'))
-        return render_to_response('damis/_technical_details.html', context)
-
 
 def read_classified_data(file_url):
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
