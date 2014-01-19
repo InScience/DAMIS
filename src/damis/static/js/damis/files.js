@@ -12,11 +12,10 @@
 
 		fileSelectedView: function(fileUrl) {
 			var successText = $("<div class=\"file-form-container\"></div>");
-			var tableContent = "";
 			if (fileUrl) {
 				var fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-				tableContent += "<tr><td>" + gettext("A file is uploaded") + ":</td><td><a href=\"" + fileUrl + "\"><b>" + fileName + "</b></a></td></tr>";
-				successText.append("<table><tbody>" + tableContent + "</b></tbody></table>");
+				tableContent = gettext("A file is uploaded") + ": <a href=\"" + fileUrl + "\"><b>" + fileName + "</b></a>";
+				successText.append(tableContent);
 			}
 			return successText;
 		},

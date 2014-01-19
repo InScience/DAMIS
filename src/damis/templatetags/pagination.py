@@ -85,8 +85,8 @@ class Prev(Page):
 
 
 class SmartPager(object):
-    on_each_side = 3
-    on_ends = 2
+    on_each_side = 1
+    on_ends = 1
 
     def __init__(self, request, paginator, page_obj):
         self.request = request

@@ -14,7 +14,7 @@
      <tbody>
        {% for dataset in object_list %}
          <tr>
-             <td><input type='radio' value="{{ dataset.pk }}" name="dataset_pk"/></td>
+             <td><input type='radio' value="{{ dataset.file.url }}" name="dataset_pk"/></td>
              <td>{{ dataset.title }}</td>
              <td>{{ dataset.file.size|sizify }}</td>
              <td>{{ dataset.description }}</td>
