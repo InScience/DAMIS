@@ -345,7 +345,9 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             data['experiment'] = exp
             if data.get('algorithm'):
                 task = data.get('id')
-                if not task:
+                if not task and not data.get('DELETE'):
+                    if data.has_key('DELETE'):
+                        data.pop('DELETE')
                     task = WorkflowTask.objects.create(**data)
 
                 pv_formset = task_form.parameter_values[0]
