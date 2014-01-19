@@ -228,7 +228,9 @@ class ParameterValue(models.Model):
                                      blank=True, through='Connection')
 
     def __unicode__(self):
-        return '%s: %s' % (self.parameter, self.value)
+        if self.parameter:
+            return '%s: %s' % (self.parameter, self.value)
+        return self.value
 
 
 class Connection(models.Model):
