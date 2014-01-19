@@ -26,7 +26,7 @@ from django.forms.models import inlineformset_factory
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from damis.settings import BUILDOUT_DIR
-from damis.constants import COMPONENT_TITLE__TO__FORM_URL
+from damis.constants import COMPONENT_TITLE__TO__FORM_URL, FILE_TYPE__TO__MIME_TYPE
 from damis.utils import slugify, strip_arff_header
 
 from damis.forms import LoginForm, RegistrationForm, EmailForm
@@ -575,7 +575,7 @@ def download_file(file_url, file_format):
     file_format - file download format
     '''
     filename = splitext(split(file_url)[1])[0]
-    response = HttpResponse(mimetype='text/html')
+    response = HttpResponse(mimetype=FILE_TYPE__TO__MIME_TYPE[file_format])
     response['Content-Disposition'] = 'attachment; filename=%s.%s' % (filename, file_format)
     converted_file = convert(file_url, file_format=file_format)
     response.write(converted_file.read())
