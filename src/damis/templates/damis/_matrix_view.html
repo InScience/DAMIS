@@ -2,21 +2,27 @@
 <table>
     <tbody><tr>
             <td>
-				<div style="max-height: 300px; min-width: 300px; overflow: auto;">
-                    <b>{% trans 'File content' %}:</b><br />
-
+				<div style="overflow: auto; overflow-x: hidden; max-height: 300px; padding-right: 20px;">
                     {% for header_row in header %}
-                        {{ header_row }} <br />
+                        {{ header_row }}<br />
                     {% endfor %}
-
                     <table class="file-content-table">
+                        <thead>
+                            <tr>
+                            {% for header_col in file.0 %}
+                                <th>{{ header_col }}</th>
+                            {% endfor %}
+                            </tr>
+                        </thead>
                         <tbody>
                             {% for row in file %}
-                               <tr>
-                                {% for col in row %}
-                                    <td>{{ col }}</td>
-                                {% endfor %}
-                                </tr>
+                                {% if not forloop.first %}
+                                    <tr>
+                                    {% for col in row %}
+                                        <td>{{ col }}</td>
+                                    {% endfor %}
+                                    </tr>
+                                {% endif %}
                             {% endfor %}
                         </tbody>
                     </table>

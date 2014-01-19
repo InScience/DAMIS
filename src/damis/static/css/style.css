@@ -112,7 +112,7 @@ textarea {
 .popover-content { word-wrap: break-word; }
 .popover { width: 276px; }
 .tab-content { overflow: visible; }
-.file-content-table td {padding: 4px; border: 1px solid #bbb}
+.file-content-table td, .file-content-table th {padding: 4px; border: 1px solid #bbb}
 
 /* color picker */
 .color-selector {width: 28px; height: 28px; margin: 4px; vertical-align: middle; display: inline-block; cursor: pointer;}
