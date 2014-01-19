@@ -458,7 +458,7 @@ def algorithm_parameter_form(request):
         form.fields['value'] = field_class(**field_attrs)
         form.fields['value'].label = str(parameter)
         form.initial.update({'parameter': parameter, 'value': parameter.default})
-        if form.instance:
+        if form.instance and form.instance.value:
             form.initial['value'] = form.instance.value
 
     return render_to_response('dynamic/parameter_formset.html', {
