@@ -53,7 +53,7 @@ urlpatterns += i18n_patterns('',
     url(r'^x/gen-parameter-prefixes/$', gen_parameter_prefixes, name='gen-parameter-prefixes'),
     # Dynamic component forms
     url(r'^x/upload_file_form/$', upload_file_form_view, name='component-upload-file-form'),
-    url(r'^x/existing_file_form/$', existing_file_form_view, name='component-existing-file-form'),
+    url(r'^x/existing_file_form/$', ExistingFileView.as_view(), name='component-existing-file-form'),
     url(r'^x/midas_file_form/$', midas_file_form_view, name='component-midas-file-form'),
     url(r'^x/select_features_form/$', select_features_form_view, name='component-select-features-form'),
     url(r'^x/technical_details_form/$', technical_details_form_view, name='component-technical-details-form'),

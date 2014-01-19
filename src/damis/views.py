@@ -103,7 +103,6 @@ class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
         qs = super(DatasetList, self).get_queryset()
         return qs.order_by('-created')
 
-
 class DatasetUpdate(LoginRequiredMixin, UpdateView):
     model = Dataset
     form_class = DatasetForm
@@ -477,8 +476,22 @@ def upload_file_form_view(request):
     context['form'] = form
     return render_to_response('damis/_dataset_form.html', context)
 
-def existing_file_form_view(request):
-    return HttpResponse(_('Not implemented, yet'))
+
+class ExistingFileView(LoginRequiredMixin, ListView):
+    model = Dataset
+    paginate_by = 10
+    template_name = 'damis/_existing_file.html'
+    success_url = reverse_lazy('dataset-list')
+
+    def get_queryset(self):
+        qs = super(ExistingFileView, self).get_queryset()
+        return qs.order_by('-created')
+
+    def get_context_data(self, **kwargs):
+        context = super(ExistingFileView, self).get_context_data(**kwargs)
+        context['request'] = self.request
+        return context
+
 
 def midas_file_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
