@@ -23,8 +23,10 @@ from django.shortcuts import render, get_object_or_404, render_to_response
 from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 from django.forms.models import inlineformset_factory
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
+from django.views.decorators.csrf import csrf_exempt
 
 from damis.settings import BUILDOUT_DIR
 from damis.constants import COMPONENT_TITLE__TO__FORM_URL, FILE_TYPE__TO__MIME_TYPE
@@ -658,28 +660,59 @@ def read_classified_data(file_url):
     result = [{"group": cls, "data": data} for cls, data in result.items()]
     return {"data": result, "minX": minX, "maxX": maxX, "minY": minY, "maxY": maxY}
 
+def download_image(image, file_format):
+    '''Prepares the HTTP response to download an image in a given format.
+
+    image - image, as returned by the HTML5 canvas.toDataUrl() function
+    file_format - image download format
+    '''
+    imgstr = re.findall(r'base64,(.*)', image)[0]
+
+    response = HttpResponse(mimetype=FILE_TYPE__TO__MIME_TYPE[file_format])
+    response['Content-Disposition'] = 'attachment; filename=%s.%s' % (ugettext("image"), file_format)
+    response.write(imgstr.decode("base64"));
+    return response
+
+@csrf_exempt
 def chart_form_view(request):
+    '''Handles Ajax (GET or POST) request to update the chart component.
+
+    request - Ajax request. 
+        GET fields:
+            pv_name - OUTPUT_CONNECTION parameter form input name; used to track down the task, output of which should be rendered by the chart component
+            dataset_url - url of the data file, which is to be rendered ty the chart component
+
+        POST fields:
+            format - image file format
+            image - image data, as returned by HTML5 canvas.toDataUrl() function
+    '''
+    if request.method == 'POST':
+        return download_image(request.POST.get("image"), request.POST.get("format"))
+
     pv_name = request.GET.get('pv_name')
     dataset_url = request.GET.get('dataset_url');
-
-    if re.findall('PV_\d+-\d+-value', pv_name):
-        if (dataset_url): 
+    if not pv_name or re.findall('PV_\d+-\d+-value', pv_name):
+        if dataset_url:
             content = read_classified_data(dataset_url)
             resp = {"status": "SUCCESS", "content": content}
-            return HttpResponse(json.dumps(resp), content_type="application/json") 
+            return HttpResponse(json.dumps(resp), content_type="application/json")
         else:
             resp = {"status": "ERROR", "message": unicode(_('You have to execute this experiment first to see the result.'))}
-            return HttpResponse(json.dumps(resp), content_type="application/json")
+            return HttpResponse(json.dumps(resp), content_type="applicatioin/json")
     else:
         task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)[0]
         task = WorkflowTask.objects.get(pk=task_pk)
         file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
-        if not file_params:
+        # XXX: constraint: can download only first file OUTPUT_CONNECTION
+        file_path = None
+        if len(file_params) and file_params[0].value:
+            file_path = file_params[0].value
+            content = read_classified_data(file_path)
+            resp = {"status": "SUCCESS", "content": content}
+            return HttpResponse(json.dumps(resp), content_type="application/json") 
+        else:
             resp = {"status": "ERROR", "message": unicode(_('You have to execute this experiment first to see the result.'))}
             return HttpResponse(json.dumps(resp), content_type="applicatioin/json")
-        content = read_classified_data(dataset_url)
-        resp = {"status": "SUCCESS", "content": content}
-        return HttpResponse(json.dumps(resp), content_type="application/json") 
 
 # User views
 def register_view(request):

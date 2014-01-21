@@ -8,6 +8,8 @@ FILE_TYPE__TO__MIME_TYPE = {
     'zip': 'application/zip',
     'xls': 'application/vnd.ms-excel',
     'xlsx': 'application/vnd.ms-excel',
+    'png': 'image/png',
+    'jpeg': 'image/jpeg'
 }
 
 COMPONENT_TITLE__TO__FORM_URL = {

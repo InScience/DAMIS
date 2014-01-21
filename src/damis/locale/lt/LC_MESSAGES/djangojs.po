@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-19 21:39+0000\n"
+"POT-Creation-Date: 2014-01-21 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,56 +35,73 @@ msgstr ""
 "Norėdami peržiūrėti rezultatus, turite sujungti komponentę su įvykdyta "
 "komponente."
 
-#: static/js/damis/chart.js:23
+#: static/js/damis/chart.js:22 static/js/damis/experimentForm.js:184
+#: static/js/damis/files.js:124 static/js/damis/matrixView.js:21
+#: static/js/damis/taskBoxes.js:147 static/js/damis/technicalDetails.js:21
+#: static/js/damis/utils.js:17
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: static/js/damis/chart.js:34
 msgid "Update"
 msgstr "Atnaujinti"
 
-#: static/js/damis/chart.js:34 static/js/damis/matrixView.js:22
+#: static/js/damis/chart.js:45 static/js/damis/chart.js.c:190
+#: static/js/damis/matrixView.js:33
 msgid "Download"
 msgstr "Atsisiųsti"
 
-#: static/js/damis/chart.js:60
+#: static/js/damis/chart.js:71
 msgid "Circle"
 msgstr "Apskritimas"
 
-#: static/js/damis/chart.js:60
+#: static/js/damis/chart.js:71
 msgid "Square"
 msgstr "Kvadratas"
 
-#: static/js/damis/chart.js:60
+#: static/js/damis/chart.js:71
 msgid "Diamond"
 msgstr "Rombas"
 
-#: static/js/damis/chart.js:60
+#: static/js/damis/chart.js:71
 msgid "Triangle"
 msgstr "Trikampis"
 
-#: static/js/damis/chart.js:60
+#: static/js/damis/chart.js:71
 msgid "Cross"
 msgstr "Kryžiukas"
 
-#: static/js/damis/chart.js:126
+#: static/js/damis/chart.js:137
 msgid "index"
 msgstr "taško numeris"
 
-#: static/js/damis/chart.js:126
+#: static/js/damis/chart.js:137
 msgid "class"
 msgstr "klasė"
 
-#: static/js/damis/chart.js:174
+#: static/js/damis/chart.js:168
+msgid "Image format"
+msgstr "Paveiksliuko formatas"
+
+#: static/js/damis/chart.js:183
+msgid "Select format"
+msgstr "Formato pasirinkimas"
+
+#: static/js/damis/chart.js:232
 msgid "Class"
 msgstr "Klasė"
 
-#: static/js/damis/chart.js:174
+#: static/js/damis/chart.js:232
 msgid "Color"
 msgstr "Spalva"
 
-#: static/js/damis/chart.js:174
+#: static/js/damis/chart.js:232
 msgid "Shape"
 msgstr "Forma"
 
-#: static/js/damis/chart.js:199 static/js/damis/experimentForm.js:191
-#: static/js/damis/taskBoxes.js:139 static/js/damis/utils.js:24
+#: static/js/damis/chart.js:257 static/js/damis/experimentForm.js:191
+#: static/js/damis/files.js:104 static/js/damis/taskBoxes.js:139
+#: static/js/damis/utils.js:24
 msgid "OK"
 msgstr "Patvirtinti"
 
@@ -100,18 +117,16 @@ msgstr "Pasirinkite failą."
 msgid "Experiment settings"
 msgstr "Eksperimento nustatymai"
 
-#: static/js/damis/experimentForm.js:184 static/js/damis/files.js:113
-#: static/js/damis/utils.js:17
-msgid "Cancel"
-msgstr "Atšaukti"
-
 #: static/js/damis/files.js:17
 msgid "A file is uploaded"
 msgstr "Failas įkeltas"
 
-#: static/js/damis/files.js:105
+#: static/js/damis/files.js:116
 msgid "Upload"
 msgstr "Patvirtinti"
+
+#~ msgid "Please select the download image file format"
+#~ msgstr "Pasirinkite atsisiunčiamo paveiksliuko formatą"
 
 #~ msgid "File url"
 #~ msgstr "Failo nuoroda"

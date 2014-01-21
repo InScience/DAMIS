@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-21 10:34+0000\n"
+"POT-Creation-Date: 2014-01-21 14:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,8 @@ msgstr "Zip archyve turėtų būti vienas failas, tačiau rasta {0}."
 #: forms.py:130
 msgid ""
 "File type is not supported. Please select a tab, csv, txt, arff or zip file."
-msgstr "Šis failo tipas nepalaikomas. Pasirinkite tab, csv, txt, arff ar zip failą."
+msgstr ""
+"Šis failo tipas nepalaikomas. Pasirinkite tab, csv, txt, arff ar zip failą."
 
 #: forms.py:170 forms.py:186 templates/damis/user_list.html:22
 msgid "Username"
@@ -338,15 +339,19 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:499 views.py:502
+#: views.py:501 views.py:504
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:579 views.py:616 views.py:631 views.py:670 views.py:677
+#: views.py:581 views.py:618 views.py:633 views.py:699 views.py:713
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:732
+#: views.py:671
+msgid "image"
+msgstr "pav"
+
+#: views.py:765
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 

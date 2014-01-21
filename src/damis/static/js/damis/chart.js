@@ -17,16 +17,16 @@
 			formWindow.dialog("option", "width", 300);
 		},
 
-        reducedButtons: function() {
+		reducedButtons: function() {
 			var buttons = [{
 				"text": gettext('Cancel'),
 				"class": "btn",
 				"click": function(ev) {
-                    $(this).dialog("close");
+					$(this).dialog("close");
 				}
 			}];
-            return buttons;
-        },
+			return buttons;
+		},
 
 		// all buttons for this component
 		allButtons: function() {
@@ -160,16 +160,70 @@
 			window.chart.renderChartAndForm(dataContent, formWindow, colors, symbols);
 		},
 
-		// displays a pop-up asking to download file
+		// creates an image type selection dialog
+		imageFormatSelectionDialog: function() {
+			var res = $("#img-format-selection");
+			if (res.length == 0) {
+				res = "<div id=\"img-format-selection\">";
+				res += "<span>" + gettext("Image format") + ":</span><br />";
+				var formats = ["jpeg", "png"];
+				$.each(formats, function(idx, format) {
+					var checked = idx == 0 ? "checked=\"checked\"": "";
+					res += "<input " + checked + "type=\"radio\" name=\"img-file-format\" value=\"" + format + "\" />" + format + "<br />";
+				});
+				res += "</div>";
+				return $(res);
+			}
+			return res;
+		},
+
+		// displays a image format selection dialog 
 		downloadChart: function(plotContainer) {
-			var canvas = plotContainer.find("canvas")[0];
-			//var image = canvas.toDataURL("image/jpeg");
-			//image = image.replace("image/jpeg", "image/octet-stream");
-			var image = canvas.toDataURL();
-			image = image.replace("image/png", "image/octet-stream");
-			// TODO: use server side to obtain download prompt with file extension
-			// TODO: IE8 does not support toDataURL(); possibly use flashcanvas
-			document.location.href = image;
+			window.chart.imageFormatSelectionDialog().dialog({
+				"title": gettext("Select format"),
+				"modal": true,
+				"open": function() {
+					var dialog = $(this).closest(".ui-dialog");
+					dialog.find(".ui-dialog-titlebar > button").remove();
+				},
+				"buttons": [{
+					"text": gettext("Cancel"),
+					"class": "btn",
+					"click": function(ev) {
+						$(this).dialog("close");
+					},
+				},
+				{
+					"text": gettext("Download"),
+					"class": "btn btn-primary",
+					"click": function(ev) {
+						// TODO: show progress indicator
+						var canvas = plotContainer.find("canvas")[0];
+						var image;
+						var format = $("#img-format-selection input[type=radio]:checked").val();
+						if (format == "png") {
+							image = canvas.toDataURL();
+							image = image.replace("image/png", "image/octet-stream");
+						} else if (format == "jpeg") {
+							var image = canvas.toDataURL("image/jpeg");
+							image = image.replace("image/jpeg", "image/octet-stream");
+						}
+						$(this).dialog("close");
+
+						var url = window.componentFormUrls['CHART'];
+
+						// POST to server to obtain a downloadable result
+						var imageInput = $("<input name=\"image\" value=\"" + image + "\"/>");
+						var formatInput = $("<input name=\"format\" value=\"" + format + "\"/>");
+						var myForm = $("<form method=\"post\" action=\"" + url + "\"></form>");
+						myForm.append(imageInput);
+						myForm.append(formatInput);
+						$("body").append(myForm);
+						myForm.submit();
+						myForm.remove();
+					}
+				}],
+			});
 		},
 
 		// renders the chart and the form with inputs for colors and symbols
