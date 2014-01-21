@@ -691,8 +691,9 @@ def chart_form_view(request):
 
     pv_name = request.GET.get('pv_name')
     dataset_url = request.GET.get('dataset_url');
-    if not pv_name or re.findall('PV_\d+-\d+-value', pv_name):
-        if dataset_url:
+
+    if re.findall('PV_\d+-\d+-value', pv_name):
+        if (dataset_url):
             content = read_classified_data(dataset_url)
             resp = {"status": "SUCCESS", "content": content}
             return HttpResponse(json.dumps(resp), content_type="application/json")
@@ -713,6 +714,9 @@ def chart_form_view(request):
         else:
             resp = {"status": "ERROR", "message": unicode(_('You have to execute this experiment first to see the result.'))}
             return HttpResponse(json.dumps(resp), content_type="applicatioin/json")
+        content = read_classified_data(dataset_url)
+        resp = {"status": "SUCCESS", "content": content}
+        return HttpResponse(json.dumps(resp), content_type="application/json")
 
 # User views
 def register_view(request):
@@ -720,13 +724,24 @@ def register_view(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
             user = form.save()
-            user = authenticate(username=username, password=password)
-            if user is not None and user.is_active:
-                login(request, user)
-                return HttpResponseRedirect(reverse_lazy('home'))
+            ## Login user
+            # username = form.cleaned_data.get('username')
+            # password = form.cleaned_data.get('password')
+            # user = authenticate(username=username, password=password)
+            # if user is not None and user.is_active:
+            #     login(request, user)
+            #     return HttpResponseRedirect(reverse_lazy('home'))
+
+            receiver = form.cleaned_data.get('email')
+            domain = request.get_host()
+            subject = _('{0} confirm email').format(domain)
+            body = render_to_string('accounts/mail/confirm_email_letter.html', {
+                'domain': domain,
+                'recovery_url': domain + 'not_implemented_yet/',
+            })
+            sender = settings.DEFAULT_FROM_EMAIL
+            send_mail(subject, body, sender, [receiver])
     return render(request, 'accounts/register.html', {
         'form': form,
     })
