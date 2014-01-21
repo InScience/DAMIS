@@ -137,10 +137,20 @@
 		defaultDialogButtons: function() {
 			return [{
 				"text": gettext("OK"),
-				"class": "btn",
+				"class": "btn btn-primary",
 				"click": function(ev) {
+					// TODO: send to server for processing
 					$(this).dialog("close");
 				}
+			},
+			{
+				"text": gettext("Cancel"),
+				"class": "btn",
+				"click": function(ev) {
+					// TODO: discard any changes
+					$(this).dialog("close");
+				},
+
 			}]
 		},
 
@@ -157,9 +167,9 @@
 			algorithmInput.val(algorithmId);
 
 			// drop the task where it was dragged
-            var componentDetails = window.componentSettings.getComponentDetails({
+			var componentDetails = window.componentSettings.getComponentDetails({
 				formWindow: taskForm
-			}); 
+			});
 			var componentLabel = componentDetails['label'];
 			var clusterIcoUrl = componentDetails['cluster_ico'];
 			var icoUrl = componentDetails['ico'];

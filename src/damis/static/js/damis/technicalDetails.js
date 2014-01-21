@@ -11,14 +11,25 @@
 			formWindow.find(".technical-details-container").remove();
 			var container = $("<div class=\"technical-details-container\">" + gettext("This component should be connected to an executed task in order to view results.") + "</div>");
 			formWindow.append(container);
-			formWindow.dialog("option", "buttons", window.taskBoxes.defaultDialogButtons());
+			formWindow.dialog("option", "buttons", window.technicalDetails.reducedButtons());
 			formWindow.dialog("option", "minWidth", 0);
 			formWindow.dialog("option", "width", 300);
 		},
 
+        reducedButtons: function() {
+             var buttons = [{
+                 "text": gettext('Cancel'),
+                 "class": "btn",
+                 "click": function(ev) {
+                     $(this).dialog("close");
+                 }
+             }];
+             return buttons;
+        },
+
 		// all buttons for this component
 		allButtons: function() {
-			return window.taskBoxes.defaultDialogButtons();
+			return window.technicalDetails.reducedButtons();
 		},
 
 		// update dialog content with new data

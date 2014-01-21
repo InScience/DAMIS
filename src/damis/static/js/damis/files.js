@@ -85,8 +85,8 @@
 				var valueInput = connectionInput.parent().find("input[name$=value]");
 				valueInput.val(fileUrl);
 
-				// display only default buttons
-				formWindow.dialog("option", "buttons", window.taskBoxes.defaultDialogButtons());
+				// display only reduced buttons
+				formWindow.dialog("option", "buttons", window.files.reducedButtons());
 			} else {
 				formWindow.append(responseText);
 			}
@@ -98,6 +98,17 @@
 		checkSuccess: function(resp) {
 			return resp.find(".errorlist").length == 0;
 		},
+
+        reducedButtons: function() {
+             var buttons = [{
+                 "text": gettext('OK'),
+                 "class": "btn btn-primary",
+                 "click": function(ev) {
+                     $(this).dialog("close");
+                 }
+             }];
+             return buttons;
+        },
 
 		// all buttons of this component dialog
 		allButtons: function() {

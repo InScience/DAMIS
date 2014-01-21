@@ -11,10 +11,21 @@
 			formWindow.find(".matrix-container").remove();
 			var container = $("<div class=\"matrix-container\">" + gettext("This component should be connected to an executed task in order to view results.") + "</div>");
 			formWindow.append(container);
-			formWindow.dialog("option", "buttons", window.taskBoxes.defaultDialogButtons());
+			formWindow.dialog("option", "buttons", window.matrixView.reducedButtons());
 			formWindow.dialog("option", "minWidth", 0);
 			formWindow.dialog("option", "width", 300);
 		},
+
+        reducedButtons: function() {
+			var buttons = [{
+				"text": gettext('Cancel'),
+				"class": "btn",
+				"click": function(ev) {
+                    $(this).dialog("close");
+				}
+			}];
+            return buttons;
+        },
 
 		// all buttons for this component
 		allButtons: function() {
@@ -30,8 +41,8 @@
 					document.location.href = url + "?download=True&format=" + format + "&pv_name=" + data.pv_name + "&dataset_url=" + data.dataset_url;
 				}
 			}];
-			var defaultButtons = window.taskBoxes.defaultDialogButtons();
-			return buttons.concat(defaultButtons);
+			var reducedButtons = window.matrixView.reducedButtons();
+			return buttons.concat(reducedButtons);
 		},
 
 		// update dialog content with new data
