@@ -12,7 +12,8 @@ from collections import OrderedDict
 from django.conf import settings
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 from django.core.urlresolvers import reverse_lazy
 from django.core.context_processors import csrf
 from django.core.mail import send_mail

@@ -11,7 +11,8 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.forms.util import ErrorList
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 from damis.models import Component
 from damis.models import Connection

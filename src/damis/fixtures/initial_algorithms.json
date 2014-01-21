@@ -1,7 +1,7 @@
 [
 {
     "pk": 1,
-    "model": "auth.user",
+    "model": "damis.damisuser",
     "fields": {
         "username": "demo",
         "first_name": "Testinis",
@@ -19,7 +19,7 @@
 },
 {
     "pk": 2, 
-    "model": "auth.user", 
+    "model": "damis.damisuser",
     "fields": {
         "username": "damis", 
         "first_name": "Testinis", 
@@ -37,7 +37,7 @@
 },
 {
     "pk": 3, 
-    "model": "auth.user", 
+    "model": "damis.damisuser",
     "fields": {
         "username": "admin", 
         "first_name": "Testinis", 
