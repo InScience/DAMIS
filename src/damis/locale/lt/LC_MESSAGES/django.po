@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-13 20:36+0000\n"
+"POT-Creation-Date: 2014-01-21 10:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,8 +29,9 @@ msgid "The zip archive should contain exactly one file, {0} found."
 msgstr "Zip archyve turėtų būti vienas failas, tačiau rasta {0}."
 
 #: forms.py:130
-msgid "File type is not supported. Please select a tab, csv, txt or ARFF file."
-msgstr "Šis failo tipas nepalaikomas. Pasirinkite tab, csv, txt ar ARFF failą."
+msgid ""
+"File type is not supported. Please select a tab, csv, txt, arff or zip file."
+msgstr "Šis failo tipas nepalaikomas. Pasirinkite tab, csv, txt, arff ar zip failą."
 
 #: forms.py:170 forms.py:186 templates/damis/user_list.html:22
 msgid "Username"
@@ -69,7 +70,8 @@ msgid "Please enter correct email address"
 msgstr "Įveskite teisingą savo el. pašto adresą"
 
 #: forms.py:239 models.py:19 models.py:82
-#: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:23
+#: templates/damis/_existing_file.html:9
+#: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:24
 #: templates/damis/experiment_list.html:21
 msgid "Title"
 msgstr "Pavadinimas"
@@ -78,8 +80,9 @@ msgstr "Pavadinimas"
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:241 models.py:21 templates/damis/algorithm_list.html:24
-#: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:25
+#: forms.py:241 models.py:21 templates/damis/_existing_file.html:11
+#: templates/damis/algorithm_list.html:24
+#: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:26
 msgid "Description"
 msgstr "Aprašymas"
 
@@ -307,7 +310,7 @@ msgstr "Eksperimentas"
 msgid "Error message"
 msgstr "Klaidos pranešimas"
 
-#: models.py:223 templates/damis/_technical_details.html:9
+#: models.py:223 templates/damis/_technical_details.html:6
 msgid "Parameter"
 msgstr "Parametras"
 
@@ -315,11 +318,11 @@ msgstr "Parametras"
 msgid "Workflow Task"
 msgstr "Scenarijaus užduotis"
 
-#: models.py:236
+#: models.py:238
 msgid "Source"
 msgstr "Šaltinis"
 
-#: models.py:238
+#: models.py:240
 msgid "Target"
 msgstr "Tikslas"
 
@@ -335,19 +338,15 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:481 views.py:484 views.py:487
+#: views.py:499 views.py:502
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:571 views.py:598 views.py:639 views.py:646
+#: views.py:579 views.py:616 views.py:631 views.py:670 views.py:677
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:592
-msgid "There is no file to download."
-msgstr "Nėra failo, kurį galėtumėte atsisiųsti."
-
-#: views.py:701
+#: views.py:732
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -519,12 +518,12 @@ msgstr "Registruotis"
 msgid "Send password recover email"
 msgstr "Siųsti slaptažodžio atstatymo el. laišką"
 
-#: templates/accounts/mail/login.html:3
+#: templates/accounts/mail/reset_password.html:3
 msgid "username"
 msgstr "Naudotojo vardas"
 
 #: templates/damis/_delete_dialog.html:3
-#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:18
+#: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:19
 #: templates/damis/experiment_list.html:17 templates/damis/user_list.html:16
 msgid "Delete"
 msgstr "Ištrinti"
@@ -535,6 +534,20 @@ msgid ""
 "sure?"
 msgstr "Ar tikrai norite, kad pažymėti įrašai būtų negrįžtamai ištrinti?"
 
+#: templates/damis/_existing_file.html:10 templates/damis/dataset_list.html:25
+msgid "Size"
+msgstr "Dydis"
+
+#: templates/damis/_existing_file.html:25 templates/damis/dataset_list.html:64
+msgid "No files were uploaded yet. You can upload one "
+msgstr "Kol kas nėra įkeltų failų. Įkelti failą galite "
+
+#: templates/damis/_existing_file.html:26
+#: templates/damis/algorithm_list.html:45 templates/damis/dataset_list.html:65
+#: templates/damis/experiment_list.html:50 templates/damis/user_list.html:49
+msgid "here"
+msgstr "čia"
+
 #: templates/damis/_experiment_form.html:7
 msgid "Form contains errors"
 msgstr "Formoje yra klaidų"
@@ -543,17 +556,13 @@ msgstr "Formoje yra klaidų"
 msgid "Error:"
 msgstr "Klaida:"
 
-#: templates/damis/_technical_details.html:9
-msgid "Value"
-msgstr "Reikšmė"
-
-#: templates/damis/_technical_details.html:22
-msgid "File content"
-msgstr "Failo turinys"
-
-#: templates/damis/_technical_details.html:45
+#: templates/damis/_matrix_view.html:28
 msgid "Select results file type: "
 msgstr "Rezultatų failo formatas:"
+
+#: templates/damis/_technical_details.html:6
+msgid "Value"
+msgstr "Reikšmė"
 
 #: templates/damis/algorithm_confirm_delete.html:13
 msgid "Are you sure you want to delete algorithm"
@@ -579,12 +588,12 @@ msgstr "Komponentės parametrai"
 msgid "Save"
 msgstr "Išsaugoti"
 
-#: templates/damis/algorithm_list.html:25 templates/damis/dataset_list.html:26
+#: templates/damis/algorithm_list.html:25 templates/damis/dataset_list.html:27
 #: templates/damis/experiment_list.html:23 templates/damis/user_list.html:25
 msgid "Actions"
 msgstr "Veiksmai"
 
-#: templates/damis/algorithm_list.html:36 templates/damis/dataset_list.html:37
+#: templates/damis/algorithm_list.html:36 templates/damis/dataset_list.html:38
 #: templates/damis/experiment_list.html:34 templates/damis/user_list.html:40
 msgid "Edit"
 msgstr "Redaguoti"
@@ -592,11 +601,6 @@ msgstr "Redaguoti"
 #: templates/damis/algorithm_list.html:44
 msgid "No algorithms were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų algoritmų. Jūs tai galite padaryti "
-
-#: templates/damis/algorithm_list.html:45 templates/damis/dataset_list.html:64
-#: templates/damis/experiment_list.html:50 templates/damis/user_list.html:49
-msgid "here"
-msgstr "čia"
 
 #: templates/damis/dataset_confirm_delete.html:13
 msgid "Are you sure you want to delete dataset"
@@ -611,53 +615,45 @@ msgstr "Autorius"
 msgid "Upload dataset"
 msgstr "Įkelti duomenis"
 
-#: templates/damis/dataset_list.html:24
-msgid "Size"
-msgstr "Dydis"
-
-#: templates/damis/dataset_list.html:42
+#: templates/damis/dataset_list.html:43
 msgid "Download CSV file"
 msgstr "Atsisiųsti CSV failą"
 
-#: templates/damis/dataset_list.html:43
+#: templates/damis/dataset_list.html:44
 msgid "CSV"
 msgstr "CSV"
 
-#: templates/damis/dataset_list.html:45
+#: templates/damis/dataset_list.html:46
 msgid "Download ARFF file"
 msgstr "Atsisiųsti ARFF failą"
 
-#: templates/damis/dataset_list.html:46
+#: templates/damis/dataset_list.html:47
 msgid "ARFF"
 msgstr "ARFF"
 
-#: templates/damis/dataset_list.html:48
+#: templates/damis/dataset_list.html:49
 msgid "Download TXT file"
 msgstr "Atsisiųsti TXT failą"
 
-#: templates/damis/dataset_list.html:49
+#: templates/damis/dataset_list.html:50
 msgid "TXT"
 msgstr "TXT"
 
-#: templates/damis/dataset_list.html:51
+#: templates/damis/dataset_list.html:52
 msgid "Download TAB file"
 msgstr "Atsisiųsti TAB failą"
 
-#: templates/damis/dataset_list.html:52
+#: templates/damis/dataset_list.html:53
 msgid "TAB"
 msgstr "TAB"
 
-#: templates/damis/dataset_list.html:54
+#: templates/damis/dataset_list.html:55
 msgid "Download XLS file"
 msgstr "Atsisiųsti XLS failą"
 
-#: templates/damis/dataset_list.html:55
+#: templates/damis/dataset_list.html:56
 msgid "XLS"
 msgstr "XLS"
-
-#: templates/damis/dataset_list.html:63
-msgid "No files were uploaded yet. You can upload one "
-msgstr "Kol kas nėra įkeltų failų. Įkelti failą galite "
 
 #: templates/damis/experiment_create.html:25
 msgid "Cluster information"
@@ -734,6 +730,12 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankst"
+
+#~ msgid "There is no file to download."
+#~ msgstr "Nėra failo, kurį galėtumėte atsisiųsti."
+
+#~ msgid "File content"
+#~ msgstr "Failo turinys"
 
 #~ msgid "Parameter value must be specified"
 #~ msgstr "Parametro reikšmė turi būti nurodyta"

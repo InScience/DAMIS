@@ -127,7 +127,7 @@ class DatasetForm(forms.ModelForm):
             reader_file = tmp
             csv_reader = csv.reader(reader_file, delimiter=',', quotechar='"')
         else:
-            raise forms.ValidationError(_('File type is not supported. Please select a tab, csv, txt or ARFF file.'))
+            raise forms.ValidationError(_('File type is not supported. Please select a tab, csv, txt, arff or zip file.'))
 
         # parse file field as a number when possible
         content = []
