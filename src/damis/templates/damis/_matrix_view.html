@@ -3,26 +3,21 @@
     <tbody><tr>
             <td>
 				<div style="overflow: auto; overflow-x: hidden; max-height: 300px; padding-right: 20px;">
-                    {% for header_row in header %}
-                        {{ header_row }}<br />
-                    {% endfor %}
                     <table class="file-content-table">
                         <thead>
                             <tr>
-                            {% for header_col in file.0 %}
-                                <th>{{ header_col }}</th>
+                            {% for header_col in header %}
+                                <th>{{ header_col.0 }} <span class="helptext">({{ header_col.1 }})</span></th>
                             {% endfor %}
                             </tr>
                         </thead>
                         <tbody>
                             {% for row in file %}
-                                {% if not forloop.first %}
-                                    <tr>
-                                    {% for col in row %}
-                                        <td>{{ col }}</td>
-                                    {% endfor %}
-                                    </tr>
-                                {% endif %}
+                                <tr>
+                                {% for col in row %}
+                                    <td>{{ col }}</td>
+                                {% endfor %}
+                                </tr>
                             {% endfor %}
                         </tbody>
                     </table>

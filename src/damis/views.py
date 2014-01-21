@@ -507,7 +507,6 @@ def file_to_table(file_url):
     '''
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
     file_table = []
-    header_row = []
     header = []
     data_sec = False
     for row in f:
@@ -517,13 +516,11 @@ def file_to_table(file_url):
             row_std = row.strip().lower()
             if row_std.startswith("@data"):
                 data_sec = True
-                file_table.append(header_row)
             elif row_std.startswith("@attribute"):
-                header.append(row)
-                col_name = row.split()[1]
-                header_row.append(col_name)
-            else:
-                header.append(row)
+                parts = row.split()
+                col_name = parts[1]
+                col_type = parts[2]
+                header.append([col_name, col_type])
     f.close()
     return header, file_table
 
