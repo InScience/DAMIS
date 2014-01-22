@@ -25,7 +25,7 @@
 			var url = window.componentFormUrls['UPLOAD FILE'];
 			var fileForm = dialog.find(".file-form-container");
 			if (fileForm.length == 0) {
-				var fileForm = $("<div class=\"file-form-container\"></div>");
+				var fileForm = $("<div class=\"file-form-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
 				dialog.append(fileForm);
 				$.ajax({
 					url: url,
@@ -39,7 +39,6 @@
 				});
 			}
 		},
-
 
 		// upload form in the iframe
 		doUpload: function(fileForm) {

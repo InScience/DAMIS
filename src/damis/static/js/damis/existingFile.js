@@ -16,7 +16,7 @@
 			var successText = "";
 			if (fileUrl) {
 				var fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-				successText = gettext("Selected file") + ": <a href=\"" + fileUrl + "\"><b>" + fileName + "</b></a>";
+				successText = gettext("File used in the experiment") + ": <a href=\"" + fileUrl + "\"><b>" + fileName + "</b></a>";
 			}
 			return successText;
 		},
@@ -29,29 +29,26 @@
 			var container = dialog.find(".file-form-container");
 			var fileList;
 			if (container.length == 0) {
-				container = $("<div class=\"file-form-container\"></div>");
-				message = $("<div class=\"message\" style=\"text-align: center; font-weight: bold;\">" + gettext("Please select a file.") + "</div>");
-				fileList = $("<div class=\"file-list\"></div >");
-				container.append(message);
-				container.append(fileList);
+				container = $("<div class=\"file-form-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
 				dialog.append(container);
 			} else {
 				fileList = container.find(".file-list");
 			}
 			$.ajax({
 				url: url,
-				context: fileList
+				context: container
 			}).done(function(resp) {
-				$(this).html(resp);
+                var container = $(this);
+				container.html(resp);
 
 				// bind paging handler
-				$(this).find(".pagination a").on("click", function(ev) {
+				container.find(".pagination a").on("click", function(ev) {
 					ev.preventDefault();
 					var page_url = $(this).attr("href");
 					window.existingFile.update(dialog, page_url);
 				});
 				// bind selection handler
-				$(this).find("input[name = dataset_pk]").on("click", function(ev) {
+				container.find("input[name=dataset_pk]").on("click", function(ev) {
                     var fileUrl = $(this).val();
 
                     // set OUTPUT_CONNECTION value for this component
@@ -60,7 +57,7 @@
 				    valueInput.val(fileUrl);
 
 					// show message
-					message.html(window.existingFile.fileSelectedView(fileUrl));
+					container.find(".message").html(window.existingFile.fileSelectedView(fileUrl));
 				});
 
 				dialog.dialog("option", "buttons", window.existingFile.allButtons());

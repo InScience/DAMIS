@@ -2,32 +2,35 @@
 {% load sizify from damis %}
 {% load paginate from pagination %}
 
-<table class="table table-hover">
-     <thead>
-         <tr>
-             <th></th>
-             <th>{% trans "Title" %}</th>
-             <th>{% trans "Size" %}</th>
-             <th>{% trans "Description" %}</th>
-         </tr>
-     </thead>
-     <tbody>
-       {% for dataset in object_list %}
-         <tr>
-             <td><input type='radio' value="{{ dataset.file.url }}" name="dataset_pk"/></td>
-             <td>{{ dataset.title }}</td>
-             <td>{{ dataset.file.size|sizify }}</td>
-             <td>{{ dataset.description }}</td>
-         </tr>
-       {% empty %}
-       <tr>
-           <td colspan="4" style="text-align:center;">
-               {% trans "No files were uploaded yet. You can upload one " %}
-               <a href='{% url 'dataset-new' %}'>{% trans "here" %}</a>.
-           </td>
-       </tr>
-       {% endfor %}
-     </tbody>
-</table>
-<hr/>
-{% paginate request paginator page_obj %}
+<div class="message">{% trans 'Uploaded files' %}:</div>
+<div class="file-list">
+    <table class="table table-hover">
+         <thead>
+             <tr>
+                 <th></th>
+                 <th>{% trans "Title" %}</th>
+                 <th>{% trans "Size" %}</th>
+                 <th>{% trans "Description" %}</th>
+             </tr>
+         </thead>
+         <tbody>
+           {% for dataset in object_list %}
+             <tr>
+                 <td><input type='radio' value="{{ dataset.file.url }}" name="dataset_pk"/></td>
+                 <td>{{ dataset.title }}</td>
+                 <td>{{ dataset.file.size|sizify }}</td>
+                 <td>{{ dataset.description }}</td>
+             </tr>
+           {% empty %}
+           <tr>
+               <td colspan="4" style="text-align:center;">
+                   {% trans "No files were uploaded yet. You can upload one " %}
+                   <a href='{% url 'dataset-new' %}'>{% trans "here" %}</a>.
+               </td>
+           </tr>
+           {% endfor %}
+         </tbody>
+    </table>
+    <hr/>
+    {% paginate request paginator page_obj %}
+</div>

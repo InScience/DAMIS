@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-22 19:46+0000\n"
+"POT-Creation-Date: 2014-01-22 21:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,7 +72,7 @@ msgid "Please enter correct email address"
 msgstr "Įveskite teisingą savo el. pašto adresą"
 
 #: forms.py:240 models.py:23 models.py:123
-#: templates/damis/_existing_file.html:9
+#: templates/damis/_existing_file.html:11
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:24
 #: templates/damis/experiment_list.html:21
 msgid "Title"
@@ -82,7 +82,7 @@ msgstr "Pavadinimas"
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:242 models.py:25 templates/damis/_existing_file.html:11
+#: forms.py:242 models.py:25 templates/damis/_existing_file.html:13
 #: templates/damis/algorithm_list.html:24
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:26
 msgid "Description"
@@ -390,23 +390,23 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:502 views.py:505
+#: views.py:503 views.py:506
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:582 views.py:619 views.py:634 views.py:701 views.py:715
+#: views.py:583 views.py:620 views.py:635 views.py:702 views.py:716
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:672
+#: views.py:673
 msgid "image"
 msgstr "pav"
 
-#: views.py:738
+#: views.py:739
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:781
+#: views.py:782
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -621,15 +621,19 @@ msgid ""
 "sure?"
 msgstr "Ar tikrai norite, kad pažymėti įrašai būtų negrįžtamai ištrinti?"
 
-#: templates/damis/_existing_file.html:10 templates/damis/dataset_list.html:25
+#: templates/damis/_existing_file.html:5
+msgid "Uploaded files"
+msgstr "Įkeltų failų sąrašas"
+
+#: templates/damis/_existing_file.html:12 templates/damis/dataset_list.html:25
 msgid "Size"
 msgstr "Dydis"
 
-#: templates/damis/_existing_file.html:25 templates/damis/dataset_list.html:64
+#: templates/damis/_existing_file.html:27 templates/damis/dataset_list.html:64
 msgid "No files were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų failų. Įkelti failą galite "
 
-#: templates/damis/_existing_file.html:26
+#: templates/damis/_existing_file.html:28
 #: templates/damis/algorithm_list.html:45 templates/damis/dataset_list.html:65
 #: templates/damis/experiment_list.html:50 templates/damis/user_list.html:49
 msgid "here"
@@ -697,11 +701,6 @@ msgstr "Ar tikrai norite pašalinti duomenų rinkinį"
 msgid "Author"
 msgstr "Autorius"
 
-#: templates/damis/dataset_form.html:16 templates/damis/dataset_new.html:26
-#: templates/damis/obj_form.html:13
-msgid "Upload dataset"
-msgstr "Įkelti duomenis"
-
 #: templates/damis/dataset_list.html:43
 msgid "Download CSV file"
 msgstr "Atsisiųsti CSV failą"
@@ -741,6 +740,11 @@ msgstr "Atsisiųsti XLS failą"
 #: templates/damis/dataset_list.html:56
 msgid "XLS"
 msgstr "XLS"
+
+#: templates/damis/dataset_new.html:16 templates/damis/dataset_update.html:16
+#: templates/damis/obj_form.html:13
+msgid "Upload dataset"
+msgstr "Įkelti duomenis"
 
 #: templates/damis/experiment_create.html:25
 msgid "Cluster information"

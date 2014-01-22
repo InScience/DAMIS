@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-21 13:59+0000\n"
+"POT-Creation-Date: 2014-01-22 21:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,10 +35,10 @@ msgstr ""
 "Norėdami peržiūrėti rezultatus, turite sujungti komponentę su įvykdyta "
 "komponente."
 
-#: static/js/damis/chart.js:22 static/js/damis/experimentForm.js:184
-#: static/js/damis/files.js:124 static/js/damis/matrixView.js:21
-#: static/js/damis/taskBoxes.js:147 static/js/damis/technicalDetails.js:21
-#: static/js/damis/utils.js:17
+#: static/js/damis/chart.js:22 static/js/damis/chart.js.c:190
+#: static/js/damis/experimentForm.js:184 static/js/damis/files.js:128
+#: static/js/damis/matrixView.js:21 static/js/damis/taskBoxes.js:147
+#: static/js/damis/technicalDetails.js:21 static/js/damis/utils.js:17
 msgid "Cancel"
 msgstr "Atšaukti"
 
@@ -46,7 +46,7 @@ msgstr "Atšaukti"
 msgid "Update"
 msgstr "Atnaujinti"
 
-#: static/js/damis/chart.js:45 static/js/damis/chart.js.c:190
+#: static/js/damis/chart.js:45 static/js/damis/chart.js.c:197
 #: static/js/damis/matrixView.js:33
 msgid "Download"
 msgstr "Atsisiųsti"
@@ -87,31 +87,27 @@ msgstr "Paveiksliuko formatas"
 msgid "Select format"
 msgstr "Formato pasirinkimas"
 
-#: static/js/damis/chart.js:232
+#: static/js/damis/chart.js:239
 msgid "Class"
 msgstr "Klasė"
 
-#: static/js/damis/chart.js:232
+#: static/js/damis/chart.js:239
 msgid "Color"
 msgstr "Spalva"
 
-#: static/js/damis/chart.js:232
+#: static/js/damis/chart.js:239
 msgid "Shape"
 msgstr "Forma"
 
-#: static/js/damis/chart.js:257 static/js/damis/experimentForm.js:191
-#: static/js/damis/files.js:104 static/js/damis/taskBoxes.js:139
+#: static/js/damis/chart.js:264 static/js/damis/experimentForm.js:191
+#: static/js/damis/files.js:108 static/js/damis/taskBoxes.js:139
 #: static/js/damis/utils.js:24
 msgid "OK"
 msgstr "Patvirtinti"
 
 #: static/js/damis/existingFile.js:19
-msgid "Selected file"
-msgstr "Failas pasirinktas"
-
-#: static/js/damis/existingFile.js:33
-msgid "Please select a file."
-msgstr "Pasirinkite failą."
+msgid "File used in the experiment"
+msgstr "Eksperimentui naudojamas failas"
 
 #: static/js/damis/experimentForm.js:180
 msgid "Experiment settings"
@@ -121,9 +117,15 @@ msgstr "Eksperimento nustatymai"
 msgid "A file is uploaded"
 msgstr "Failas įkeltas"
 
-#: static/js/damis/files.js:116
+#: static/js/damis/files.js:120
 msgid "Upload"
 msgstr "Patvirtinti"
+
+#~ msgid "Selected file"
+#~ msgstr "Failas pasirinktas"
+
+#~ msgid "Please select a file."
+#~ msgstr "Pasirinkite failą."
 
 #~ msgid "Please select the download image file format"
 #~ msgstr "Pasirinkite atsisiunčiamo paveiksliuko formatą"
