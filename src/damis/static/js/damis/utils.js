@@ -37,7 +37,20 @@
 					dialog.dialog("open");
 				}
 			}
-		}
+		},
+
+		// enables the Choose file button to open browse dialog and display
+		// selected file name
+		customizeFileBtn: function(container) {
+			var fileInput = container.find("input[type=file]");
+			var fileButton = container.find(".choose-file");
+			fileButton.on("click", function(ev) {
+				fileInput.click();
+			});
+			fileInput.on("change", function(ev) {
+				fileButton.next("span").html($(this).val());
+			});
+		},
 	}
 })();
 

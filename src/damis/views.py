@@ -107,6 +107,7 @@ class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
         return qs.order_by('-created')
 
 class DatasetUpdate(LoginRequiredMixin, UpdateView):
+    template_name = 'damis/dataset_update.html'
     model = Dataset
     form_class = DatasetForm
 

@@ -32,7 +32,7 @@
 					context: fileForm
 				}).done(function(resp) {
 					$(this).html(resp);
-					window.files.customizeFileBtn($(this));
+					window.utils.customizeFileBtn($(this));
 					dialog.dialog("option", "buttons", window.files.allButtons());
 					dialog.dialog("option", "min-width", 0);
 					dialog.dialog("option", "width", "auto");
@@ -40,18 +40,6 @@
 			}
 		},
 
-		// enables the Choose file button to open browse dialog and display
-		// selected file name
-		customizeFileBtn: function(fileForm) {
-			var fileInput = fileForm.find("input[type=file]");
-			var fileButton = fileForm.find(".choose-file");
-			fileButton.on("click", function(ev) {
-				fileInput.click();
-			});
-			fileInput.on("change", function(ev) {
-				fileButton.next("span").html($(this).val());
-			});
-		},
 
 		// upload form in the iframe
 		doUpload: function(fileForm) {
@@ -108,7 +96,7 @@
 			}
 
 			fileFormPlaceholder.remove();
-			window.files.customizeFileBtn(formWindow);
+			window.utils.customizeFileBtn(formWindow);
 		},
 
 		// check if the upload was successful

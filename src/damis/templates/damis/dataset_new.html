@@ -11,21 +11,10 @@
   {% include 'files_menu.html' with active='dataset-new' %}
   <div class="tab-content">
     <div class="offset3">
-      <form method='POST' action='{% url 'dataset-new' %}' enctype="multipart/form-data">{% csrf_token %}
-        {% for error in form.non_field_errors %}
-            <div class="alert alert-error">{{ error }}</div>
-        {% endfor %}
-
-        {% for field in form.visible_fields %}
-            {{ field.errors }}
-            <p>{{ field.label }}:<br/> {{ field }}</p>
-        {% endfor %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-        <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
-    </form>
-
+        <form class="dataset-form" method='POST' action='{% url 'dataset-new' %}' enctype="multipart/form-data">{% csrf_token %}
+            {% include 'damis/_dataset_form.html' %}
+            <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
+        </form>
     </div>
   </div>
 </div>
@@ -34,5 +23,10 @@
 {% block javascript %}
 {{ block.super }}
     <script src="/static/js/bootstrap-tab.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            window.utils.customizeFileBtn($(".dataset-form"));
+        });
+    </script>
 {% endblock %}
 
