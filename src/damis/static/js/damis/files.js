@@ -32,9 +32,25 @@
 					context: fileForm
 				}).done(function(resp) {
 					$(this).html(resp);
+					window.files.customizeFileBtn($(this));
 					dialog.dialog("option", "buttons", window.files.allButtons());
+					dialog.dialog("option", "min-width", 0);
+					dialog.dialog("option", "width", "auto");
 				});
 			}
+		},
+
+		// enables the Choose file button to open browse dialog and display
+		// selected file name
+		customizeFileBtn: function(fileForm) {
+			var fileInput = fileForm.find("input[type=file]");
+			var fileButton = fileForm.find(".choose-file");
+			fileButton.on("click", function(ev) {
+				fileInput.click();
+			});
+			fileInput.on("change", function(ev) {
+				fileButton.next("span").html($(this).val());
+			});
 		},
 
 		// upload form in the iframe
@@ -70,7 +86,7 @@
 			fileUploadIframe.contents().find("body").html("");
 			$("#file-upload-form").html("");
 
-			var formWindow = fileFormPlaceholder.parent()
+			var formWindow = fileFormPlaceholder.parent();
 
 			if (this.checkSuccess(responseText)) {
 				// TODO: display feature naming form to the user? 
@@ -92,6 +108,7 @@
 			}
 
 			fileFormPlaceholder.remove();
+			window.files.customizeFileBtn(formWindow);
 		},
 
 		// check if the upload was successful
@@ -99,16 +116,16 @@
 			return resp.find(".errorlist").length == 0;
 		},
 
-        reducedButtons: function() {
-             var buttons = [{
-                 "text": gettext('OK'),
-                 "class": "btn btn-primary",
-                 "click": function(ev) {
-                     $(this).dialog("close");
-                 }
-             }];
-             return buttons;
-        },
+		reducedButtons: function() {
+			var buttons = [{
+				"text": gettext('OK'),
+				"class": "btn btn-primary",
+				"click": function(ev) {
+					$(this).dialog("close");
+				}
+			}];
+			return buttons;
+		},
 
 		// all buttons of this component dialog
 		allButtons: function() {

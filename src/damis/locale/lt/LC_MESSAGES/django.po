@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-21 14:27+0000\n"
+"POT-Creation-Date: 2014-01-22 19:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:50 models.py:24 templates/damis/dataset_detail.html:11
+#: forms.py:50 models.py:24 templates/damis/_dataset_form.html:11
+#: templates/damis/dataset_detail.html:11
 msgid "File"
 msgstr "Failas"
 
@@ -577,11 +578,11 @@ msgstr "Registruotis"
 msgid "Send password recover email"
 msgstr "Siųsti slaptažodžio atstatymo el. laišką"
 
-#: templates/accounts/mail/confirm_email_letter.html:3
-#, python-format
+#: templates/accounts/mail/confirm_email_letter.html:2
+#, fuzzy, python-format
 msgid ""
 "\n"
-"In order to register new account at <b>%(domain)s</b> you have to confirm\n"
+"In order to register new account at %(domain)s you have to confirm\n"
 "your email by clicking this link:\n"
 "\n"
 "    %(confirm_email_url)s\n"
@@ -599,6 +600,14 @@ msgstr ""
 "Kai patvirtinsite el. pašto adresą, administratorius peržiūrės paskyros "
 "duomenis ir \n"
 "patvirtins arba atmes naujos paskyros sukūrimą.\n"
+
+#: templates/damis/_dataset_form.html:12
+msgid "Choose"
+msgstr "Pasirinkti"
+
+#: templates/damis/_dataset_form.html:13
+msgid "No file selected"
+msgstr "Joks failas nėra pasirinktas"
 
 #: templates/damis/_delete_dialog.html:3
 #: templates/damis/algorithm_list.html:18 templates/damis/dataset_list.html:19

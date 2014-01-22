@@ -7,7 +7,14 @@
 
 {% for field in form.visible_fields %}
     {{ field.errors }}
-    <p>{{ field.label }}:<br/> {{ field }}</p>
+    {% if field.name == 'file' %}
+        <p>{% trans 'File' %}:<br/>
+        <button class="btn btn-primary choose-file" type="button">{% trans 'Choose' %}</button>
+        <span>{% trans 'No file selected' %}.</span>
+        <span style="display: none;"> {{ field }}</span></p>
+    {% else %}
+        <p>{{ field.label }}:<br/> {{ field }}</p>
+    {% endif %}
 {% endfor %}
 {% for hidden in form.hidden_fields %}
     {{ hidden }}
