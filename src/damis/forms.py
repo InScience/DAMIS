@@ -51,8 +51,9 @@ class CustomMessages(object):
     def __init__(self, *args, **kwargs):
         super(CustomMessages, self).__init__(*args, **kwargs)
         for key, field in self.fields.items():
-            name = field.label.title().lower()
-            field.error_messages['required'] = _('Enter "{0}" field value.').format(name)
+            if field and field.label:
+                name = field.label.title().lower()
+                field.error_messages['required'] = _('Enter "{0}" field value.').format(name)
 
 
 class DatasetForm(CustomMessages, forms.ModelForm):
