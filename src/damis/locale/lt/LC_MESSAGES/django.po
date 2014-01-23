@@ -16,58 +16,62 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:50 models.py:24 templates/damis/_dataset_form.html:11
+#: forms.py:55
+msgid "Enter {0} field value."
+msgstr "Įveskite {0} lauko reikšmę"
+
+#: forms.py:59 models.py:24 templates/damis/_dataset_form.html:11
 #: templates/damis/dataset_detail.html:11
 msgid "File"
 msgstr "Failas"
 
-#: forms.py:71 forms.py:83
+#: forms.py:80 forms.py:92
 msgid "Corrupted zip archive file."
 msgstr "Zip archyvas pažeistas."
 
-#: forms.py:81
+#: forms.py:90
 msgid "The zip archive should contain exactly one file, {0} found."
 msgstr "Zip archyve turėtų būti vienas failas, tačiau rasta {0}."
 
-#: forms.py:131
+#: forms.py:140
 msgid ""
 "File type is not supported. Please select a tab, csv, txt, arff or zip file."
 msgstr ""
 "Šis failo tipas nepalaikomas. Pasirinkite tab, csv, txt, arff ar zip failą."
 
-#: forms.py:171 forms.py:187 templates/damis/user_list.html:22
+#: forms.py:180 forms.py:196 templates/damis/user_list.html:22
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:172 forms.py:188
+#: forms.py:181 forms.py:197
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:182
+#: forms.py:191
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:190
+#: forms.py:199
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:192
+#: forms.py:201
 msgid "First name"
 msgstr "Vardas"
 
-#: forms.py:193
+#: forms.py:202
 msgid "Last name"
 msgstr "Pavardė"
 
-#: forms.py:194 forms.py:230 templates/damis/user_list.html:23
+#: forms.py:203 forms.py:239 templates/damis/user_list.html:23
 msgid "E-mail"
 msgstr "El. pašto adresas"
 
-#: forms.py:195 models.py:55
+#: forms.py:204 models.py:55
 msgid "Organization"
 msgstr "Organizacija"
 
-#: forms.py:235
+#: forms.py:244
 msgid "Please enter correct email address"
 msgstr "Įveskite teisingą savo el. pašto adresą"
 
@@ -78,7 +82,7 @@ msgstr "Įveskite teisingą savo el. pašto adresą"
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:241
+#: forms.py:250
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
@@ -88,11 +92,11 @@ msgstr "Duomenų failas"
 msgid "Description"
 msgstr "Aprašymas"
 
-#: forms.py:324
+#: forms.py:333
 msgid "Input connection is not connected"
 msgstr "Įeities jungtis nėra prijungta"
 
-#: forms.py:327
+#: forms.py:336
 msgid "This value must be specified"
 msgstr "Ši reikšmė turi būti nurodyta"
 
@@ -118,35 +122,33 @@ msgstr "Naudotojo vardas"
 msgid ""
 "Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters"
 msgstr ""
+"Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters"
 
 #: models.py:41
 msgid "Enter a valid username."
-msgstr ""
+msgstr "Įveskite tinkamą naudotojo vardą."
 
 #: models.py:43
-#, fuzzy
 msgid "first name"
 msgstr "Vardas"
 
 #: models.py:44
-#, fuzzy
 msgid "last name"
 msgstr "Pavardė"
 
 #: models.py:46
 msgid "Email address"
-msgstr ""
+msgstr "El. pašto adresas"
 
 #: models.py:48
 msgid "staff status"
-msgstr ""
+msgstr "darbuotojo statusas"
 
 #: models.py:49
 msgid "Designates whether the user can log into this admin site."
-msgstr ""
+msgstr "Nurodo ar naudotojas turi administratoriaus teises."
 
 #: models.py:51
-#, fuzzy
 msgid "active"
 msgstr "Aktyvus"
 
@@ -155,10 +157,12 @@ msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
 msgstr ""
+"Nurodo ar naudotojas yra aktyvus. Naudotojas turi būti deaktyvuojamas"
+"vietoje jo paskyros ištrynimo."
 
 #: models.py:54
 msgid "date joined"
-msgstr ""
+msgstr "paskyros sukūrimo data"
 
 #: models.py:82
 msgid "Title EN"
@@ -579,7 +583,7 @@ msgid "Send password recover email"
 msgstr "Siųsti slaptažodžio atstatymo el. laišką"
 
 #: templates/accounts/mail/confirm_email_letter.html:2
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "In order to register new account at %(domain)s you have to confirm\n"
