@@ -8,7 +8,7 @@ install:
 
 run:
 	bin/django migrate damis
-	bin/django runserver
+	bin/django runserver --settings=damis.development
 
 static:
 	bin/django collectstatic --noinput

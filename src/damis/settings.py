@@ -2,6 +2,9 @@
 
 import os
 
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+
 PROJECT_DIR = os.path.realpath(os.path.dirname(__file__))
 BUILDOUT_DIR = os.path.abspath(os.path.join(PROJECT_DIR, '..', '..'))
 
@@ -152,7 +155,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'debug_toolbar',
     'rest_framework',
     # 'rest_framework.authtoken',
     'south',
