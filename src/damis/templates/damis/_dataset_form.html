@@ -1,5 +1,14 @@
 {% load i18n %}
 
+
+{% if file_path %}
+    <div class="message">
+        {% trans 'Dataset used in the experiment' %}: <a href="{{ file_path }}">{{ file_name }}</a>
+    </div>
+    <button type="button" class="new-file-btn show btn">{% trans 'New file' %}</button>
+{% endif %}
+
+<div class="new-file-form" {% if GET and file_path or new_file_path %}style="display: none;"{% endif %}>
 {% csrf_token %}
 {% for error in form.non_field_errors %}
     <div class="alert alert-error">{{ error }}</div>
@@ -23,3 +32,4 @@
 {% if file_path %}
     <input id="id_file_path" type="hidden" value="{{ file_path }}" name="file_path">
 {% endif %}
+</div>

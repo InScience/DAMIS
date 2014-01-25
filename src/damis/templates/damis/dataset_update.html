@@ -12,7 +12,25 @@
   <div class="tab-content">
     <div class="offset3">
         <form class="dataset-form" method='POST' action='{% url 'dataset-update' form.instance.pk %}' enctype="multipart/form-data">{% csrf_token %}
-          {% include 'damis/_dataset_form.html' %}
+            {% csrf_token %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-error">{{ error }}</div>
+            {% endfor %}
+            
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {% if field.name == 'file' %}
+                    <p>{% trans 'File' %}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/>
+                    <button class="btn btn-primary choose-file" type="button">{% trans 'Choose' %}</button>
+                    <span>{% trans 'No file selected' %}.</span>
+                    <span style="display: none;"> {{ field }}</span></p>
+                {% else %}
+                    <p>{{ field.label }}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/> {{ field }}</p>
+                {% endif %}
+            {% endfor %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
         <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
     </form>
     </div>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-22 21:39+0000\n"
+"POT-Creation-Date: 2014-01-25 15:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,8 +37,9 @@ msgstr ""
 
 #: static/js/damis/chart.js:22 static/js/damis/chart.js.c:190
 #: static/js/damis/experimentForm.js:184 static/js/damis/files.js:128
-#: static/js/damis/matrixView.js:21 static/js/damis/taskBoxes.js:147
-#: static/js/damis/technicalDetails.js:21 static/js/damis/utils.js:17
+#: static/js/damis/files.js.c:148 static/js/damis/matrixView.js:21
+#: static/js/damis/taskBoxes.js:147 static/js/damis/technicalDetails.js:21
+#: static/js/damis/utils.js:17
 msgid "Cancel"
 msgstr "Atšaukti"
 
@@ -100,8 +101,8 @@ msgid "Shape"
 msgstr "Forma"
 
 #: static/js/damis/chart.js:264 static/js/damis/experimentForm.js:191
-#: static/js/damis/files.js:108 static/js/damis/taskBoxes.js:139
-#: static/js/damis/utils.js:24
+#: static/js/damis/files.js:107 static/js/damis/files.js.c:141
+#: static/js/damis/taskBoxes.js:139 static/js/damis/utils.js:24
 msgid "OK"
 msgstr "Patvirtinti"
 
@@ -113,13 +114,19 @@ msgstr "Eksperimentui naudojamas failas"
 msgid "Experiment settings"
 msgstr "Eksperimento nustatymai"
 
-#: static/js/damis/files.js:17
-msgid "A file is uploaded"
-msgstr "Failas įkeltas"
+#: static/js/damis/utils.js:70
+msgid "Hide form"
+msgstr "Paslėpti formą"
 
-#: static/js/damis/files.js:120
-msgid "Upload"
-msgstr "Patvirtinti"
+#: static/js/damis/utils.js:75
+msgid "New file"
+msgstr "Naujas failas"
+
+#~ msgid "A file is uploaded"
+#~ msgstr "Failas įkeltas"
+
+#~ msgid "Upload"
+#~ msgstr "Patvirtinti"
 
 #~ msgid "Selected file"
 #~ msgstr "Failas pasirinktas"

@@ -39,9 +39,7 @@
 			}
 		},
 
-		// enables the Choose file button to open browse dialog and display
-		// selected file name; 
-		// prefills title input field with uploaded file name
+		// initilializes elements of file input form
 		customizeFileForm: function(container) {
 			var fileInput = container.find("input[type=file]");
 			var fileButton = container.find(".choose-file");
@@ -58,6 +56,24 @@
 				var baseName = fileName.substring(0, fileName.lastIndexOf("."));
 				titleInput.val(baseName);
 			});
+
+			// toggle file form visibility on click of a button
+			var newFileBtn = container.find(".new-file-btn");
+			newFileBtn.on("click", function(ev) {
+				var newFileForm = container.find(".new-file-form");
+				if (newFileBtn.hasClass("show")) {
+					newFileForm.show();
+
+					newFileBtn.removeClass("show");
+					newFileBtn.html(gettext("Hide form"));
+				} else {
+					newFileForm.hide();
+
+					newFileBtn.addClass("show");
+					newFileBtn.html(gettext("New file"));
+				}
+			})
+
 		},
 	}
 })();

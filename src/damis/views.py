@@ -471,15 +471,32 @@ def algorithm_parameter_form(request):
 
 
 def upload_file_form_view(request):
+    '''Handles Ajax request to update the uploaded file component.
+
+    request - Ajax request. Fields:
+        dataset_url - url of the uploaded data file, currently used by the component.
+    '''
     context = csrf(request)
     if request.method == 'POST':
+        dataset_url = request.POST.get("dataset_url")
         form = DatasetForm(request.POST, request.FILES)
         if form.is_valid():
             dataset = form.save()
             context['file_path'] = dataset.file.url
+            context['new_file_path'] = dataset.file.url
+            # clear the form
+            form = DatasetForm()
+        else:
+            context['file_path'] = dataset_url
     else:
+        context['GET'] = True
+        dataset_url = request.GET.get("dataset_url")
+        if dataset_url:
+            context['file_path'] = dataset_url
         form = DatasetForm()
     context['form'] = form
+    if 'file_path' in context:
+        context['file_name'] = split(context['file_path'])[1]
     return render_to_response('damis/_dataset_form.html', context)
 
 

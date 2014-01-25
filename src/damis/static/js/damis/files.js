@@ -2,22 +2,8 @@
 	window.files = {
 		init: function(componentType, formWindow) {
 			if (componentType == 'UPLOAD FILE') {
-				var outParam = formWindow.find("input[value=OUTPUT_CONNECTION]").parent().find("input[name$=value]");
-				if (outParam.val()) {
-					// editing workflow: a connection already exists 
-					formWindow.append(this.fileSelectedView(outParam.val()));
-				}
+                this.update(formWindow);
 			}
-		},
-
-		fileSelectedView: function(fileUrl) {
-			var successText = $("<div class=\"file-form-container\"></div>");
-			if (fileUrl) {
-				var fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-				tableContent = gettext("A file is uploaded") + ": <a href=\"" + fileUrl + "\"><b>" + fileName + "</b></a>";
-				successText.append(tableContent);
-			}
-			return successText;
 		},
 
 		// send request to the server to obtain file upload form
@@ -27,13 +13,25 @@
 			if (fileForm.length == 0) {
 				var fileForm = $("<div class=\"file-form-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
 				dialog.append(fileForm);
+				var outParam = dialog.find("input[value=OUTPUT_CONNECTION]").parent().find("input[name$=value]");
+				var data = {}
+				if (outParam.val()) {
+					data['dataset_url'] = outParam.val();
+				}
 				$.ajax({
 					url: url,
+					data: data,
 					context: fileForm
 				}).done(function(resp) {
 					$(this).html(resp);
 					window.utils.customizeFileForm($(this));
-					dialog.dialog("option", "buttons", window.files.allButtons());
+                    var buttons;
+                    if (data['dataset_url']) {
+                       buttons = window.files.uploadedButtons(); 
+                    } else {
+                       buttons = window.files.allButtons(); 
+                    }
+                    dialog.dialog("option", "buttons", buttons);
 					dialog.dialog("option", "min-width", 0);
 					dialog.dialog("option", "width", "auto");
 				});
@@ -41,20 +39,29 @@
 		},
 
 		// upload form in the iframe
-		doUpload: function(fileForm) {
+		doUpload: function(dialog) {
+            fileForm = dialog.find(".file-form-container");
 			// TODO: clone does not preserve textarea and input values 
 			// so we need to construct a placeholder differently 
 			var fileFormPlaceholder = fileForm.clone(true);
-			var fileUploadForm = $("#file-upload-form");
+            
+            // append a field with currently selected file url
+			var outParam = dialog.find("input[value=OUTPUT_CONNECTION]").parent().find("input[name$=value]");
+            var currDatasetInput = $("<input type=\"hidden\" name=\"dataset_url\" />");
+            currDatasetInput.val(outParam.val());
+            fileForm.append(currDatasetInput);
+
 			// move the fields to the hidden form
 			// replace them with a placeholder
+			var fileUploadForm = $("#file-upload-form");
 			fileForm.after(fileFormPlaceholder).appendTo(fileUploadForm);
 
 			$("#file-upload-iframe").off("load");
 			$("#file-upload-iframe").on("load", function(resp) {
 				window.files.handleUploadResponse(fileFormPlaceholder);
 			});
-			document.getElementById("file-upload-form").submit();
+
+            $("#file-upload-form").submit();
 		},
 
 		// process file upload response
@@ -76,25 +83,19 @@
 			var formWindow = fileFormPlaceholder.parent();
 
 			if (this.checkSuccess(responseText)) {
-				// TODO: display feature naming form to the user? 
-				// show read-only file info from the returned response,
-				// this will not disappear during saving
-				var fileUrl = responseText.find("input[name=file_path]").val();
-				formWindow.append(this.fileSelectedView(fileUrl));
-
 				// set OUTPUT_CONNECTION parameter of this task to the uploaded 
 				// file url
+				var fileUrl = responseText.find("input[name=file_path]").val();
 				var connectionInput = formWindow.find(".parameter-values input[value=OUTPUT_CONNECTION]");
 				var valueInput = connectionInput.parent().find("input[name$=value]");
 				valueInput.val(fileUrl);
 
-				// display only reduced buttons
-				formWindow.dialog("option", "buttons", window.files.reducedButtons());
-			} else {
-				formWindow.append(responseText);
+				// display only another set of buttons 
+				formWindow.dialog("option", "buttons", window.files.uploadedButtons());
 			}
 
 			fileFormPlaceholder.remove();
+			formWindow.append(responseText);
 			window.utils.customizeFileForm(formWindow);
 		},
 
@@ -103,13 +104,35 @@
 			return resp.find(".errorlist").length == 0;
 		},
 
-		reducedButtons: function() {
+		uploadedButtons: function() {
 			var buttons = [{
 				"text": gettext('OK'),
 				"class": "btn btn-primary",
 				"click": function(ev) {
+					var fileForm = $(this).find(".file-form-container");
+                    var submit = false;
+                    $.each(fileForm.find("input[name=title],input[name=file],textarea[name=description]"), function(idx, el){
+                        if ($(el).val()){
+                            submit = true;
+                            return false; 
+                        }
+                    });
+					// submit form if any of the visible fields are filled in
+                    // otherwise, just close the window 
+                    if (submit) {
+					    window.files.doUpload($(this));
+                    } else {
+                        $(this).dialog("close");
+                    }
+				}
+			},
+			{
+				"text": gettext('Cancel'),
+				"class": "btn",
+				"click": function(ev) {
 					$(this).dialog("close");
 				}
+
 			}];
 			return buttons;
 		},
@@ -117,11 +140,10 @@
 		// all buttons of this component dialog
 		allButtons: function() {
 			var buttons = [{
-				"text": gettext('Upload'),
+				"text": gettext('OK'),
 				"class": "btn btn-primary",
 				"click": function(ev) {
-					var fileForm = $(ev.currentTarget).closest(".ui-dialog").find(".file-form-container");
-					window.files.doUpload($(fileForm[0]));
+					window.files.doUpload($(this));
 				}
 			},
 			{
@@ -132,12 +154,6 @@
 				}
 			}];
 			return buttons;
-		},
-
-		doubleClick: function(componentType, formWindow) {
-			if (componentType == 'UPLOAD FILE') {
-				this.update(formWindow);
-			}
 		},
 	}
 })();
