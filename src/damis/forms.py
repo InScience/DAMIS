@@ -106,14 +106,13 @@ class DatasetForm(CustomMessages, forms.ModelForm):
 
         # determine file name and extension
         name_parts = input_file.name.split(".")
-        file_name = name_parts[0]
         extension = name_parts[-1]
+        col_names = []
 
         if extension == "zip":
             uncompressed_file = self.extract_file(input_file)
             input_file = uncompressed_file
             name_parts = input_file.name.split(".")
-            file_name = name_parts[0]
             extension = name_parts[-1]
 
         if extension == 'csv' or extension == 'txt':
@@ -128,12 +127,15 @@ class DatasetForm(CustomMessages, forms.ModelForm):
             tmp = tempfile.NamedTemporaryFile()
             data_sec = False
             for row in input_file:
-                if data_sec:
-                    tmp.write(row)
-                else:
-                    row_std = row.strip().lower()
-                    if row_std.startswith("@data"):
-                        data_sec = True
+                if not row.startswith("%"):
+                    if data_sec:
+                        tmp.write(row)
+                    else:
+                        row_std = row.strip().lower()
+                        if row_std.startswith("@data"):
+                            data_sec = True
+                        elif row_std.startswith("@attribute"):
+                            col_names.append(row.split()[1]);
             tmp.seek(0)
             reader_file = tmp
             csv_reader = csv.reader(reader_file, delimiter=',', quotechar='"')
@@ -161,7 +163,10 @@ class DatasetForm(CustomMessages, forms.ModelForm):
         # save content to a temporary file
         # in order to process by arff function
         f = tempfile.NamedTemporaryFile()
-        arff.dump(f.name, content, relation=title)
+        if col_names:
+            arff.dump(f.name, content, names=col_names, relation=title)
+        else:
+            arff.dump(f.name, content, relation=title)
         f.seek(0)
 
         # transfer resulting arff file to memory
