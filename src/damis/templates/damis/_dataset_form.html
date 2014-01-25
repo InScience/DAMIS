@@ -32,4 +32,9 @@
 {% if file_path %}
     <input id="id_file_path" type="hidden" value="{{ file_path }}" name="file_path">
 {% endif %}
+
+<div>
+    <span class="req">*</span>&nbsp;<span class="helptext">{% trans 'Fields with an asterix are required' %}</span>
+</div>
+
 </div>
