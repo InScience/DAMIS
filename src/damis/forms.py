@@ -168,7 +168,7 @@ class DatasetForm(CustomMessages, forms.ModelForm):
         # in order to return to django
         buff= StringIO.StringIO(f.read())
         f.close()
-        arff_file = InMemoryUploadedFile(buff, 'file', file_name + ".arff", None, buff.tell(), None)
+        arff_file = InMemoryUploadedFile(buff, 'file', title + ".arff", None, buff.tell(), None)
 
         return arff_file
 
