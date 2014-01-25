@@ -15,14 +15,14 @@
 						"appendTo": "body",
 						"buttons": [{
 							"text": gettext("Cancel"),
-                            "class": "btn btn-primary",
+							"class": "btn btn-primary",
 							"click": function(ev) {
 								$(this).dialog("close");
 							}
 						},
 						{
 							"text": gettext("OK"),
-                            "class": "btn",
+							"class": "btn",
 							"click": function(ev) {
 								$(this).dialog("close");
 								$(formSelector).submit();
@@ -40,15 +40,23 @@
 		},
 
 		// enables the Choose file button to open browse dialog and display
-		// selected file name
-		customizeFileBtn: function(container) {
+		// selected file name; 
+		// prefills title input field with uploaded file name
+		customizeFileForm: function(container) {
 			var fileInput = container.find("input[type=file]");
 			var fileButton = container.find(".choose-file");
 			fileButton.on("click", function(ev) {
 				fileInput.click();
 			});
 			fileInput.on("change", function(ev) {
-				fileButton.next("span").html($(this).val());
+				var fileName = $(this).val();
+				// put the uploaded file name next to the upload button
+				fileButton.next("span").html(fileName);
+
+				// prefill title input field with the uploaded file name
+				var titleInput = container.find("input[name=title]");
+				var baseName = fileName.substring(0, fileName.lastIndexOf("."));
+				titleInput.val(baseName);
 			});
 		},
 	}

@@ -32,7 +32,7 @@
 					context: fileForm
 				}).done(function(resp) {
 					$(this).html(resp);
-					window.utils.customizeFileBtn($(this));
+					window.utils.customizeFileForm($(this));
 					dialog.dialog("option", "buttons", window.files.allButtons());
 					dialog.dialog("option", "min-width", 0);
 					dialog.dialog("option", "width", "auto");
@@ -95,7 +95,7 @@
 			}
 
 			fileFormPlaceholder.remove();
-			window.utils.customizeFileBtn(formWindow);
+			window.utils.customizeFileForm(formWindow);
 		},
 
 		// check if the upload was successful
