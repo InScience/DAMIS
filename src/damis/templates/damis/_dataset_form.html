@@ -8,12 +8,12 @@
 {% for field in form.visible_fields %}
     {{ field.errors }}
     {% if field.name == 'file' %}
-        <p>{% trans 'File' %}{% if field.field.required %}<b>*</b>{% endif %}:<br/>
+        <p>{% trans 'File' %}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/>
         <button class="btn btn-primary choose-file" type="button">{% trans 'Choose' %}</button>
         <span>{% trans 'No file selected' %}.</span>
         <span style="display: none;"> {{ field }}</span></p>
     {% else %}
-        <p>{{ field.label }}{% if field.field.required %}<b>*</b>{% endif %}:<br/> {{ field }}</p>
+        <p>{{ field.label }}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/> {{ field }}</p>
     {% endif %}
 {% endfor %}
 {% for hidden in form.hidden_fields %}
