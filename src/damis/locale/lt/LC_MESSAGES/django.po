@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-26 23:29+0000\n"
+"POT-Creation-Date: 2014-01-27 00:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -420,7 +420,7 @@ msgstr "pav"
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:819
+#: views.py:820
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -587,6 +587,10 @@ msgstr "Registruokitės čia"
 #: templates/accounts/register.html:13
 msgid "Register"
 msgstr "Registruotis"
+
+#: templates/accounts/registration_done.html:12
+msgid "Further registration instructions was sent to your email."
+msgstr "Tolimesnės registracijos instrukcijos buvo išsiųstos į Jūsų elektroninį paštą."
 
 #: templates/accounts/reset_password.html:13
 msgid "Send password recover email"

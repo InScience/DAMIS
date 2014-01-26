@@ -777,6 +777,7 @@ def register_view(request):
             })
             sender = settings.DEFAULT_FROM_EMAIL
             send_mail(subject, body, sender, [receiver])
+            return HttpResponseRedirect(reverse_lazy('registration-done'))
     return render(request, 'accounts/register.html', {
         'form': form,
     })
