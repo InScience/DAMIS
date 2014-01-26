@@ -6,7 +6,7 @@
     <div class="message">
         {% trans 'Dataset used in the experiment' %}: <a href="{{ file_path }}">{{ file_name }}</a>
     </div>
-    {% if file_path and not page %}
+    {% if file_path and not list_filter %}
         <button type="button" class="toggle-btn show btn">{% trans 'New file' %}</button>
     {% else %}
         <button type="button" class="toggle-btn btn">{% trans 'Hide form' %}</button>
@@ -16,7 +16,7 @@
         {% trans 'Uploaded files' %}:
     </div>
 {% endif %}
-<div class="file-list toggle-section" {% if file_path and not page %}style="display:none;"{% endif %}>
+<div class="file-list toggle-section" {% if file_path and not list_filter %}style="display:none;"{% endif %}>
     <table class="table table-hover">
          <thead>
              <tr>
