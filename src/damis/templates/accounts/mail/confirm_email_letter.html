@@ -1,9 +1,8 @@
 {% load i18n %}
-{% blocktrans %}
-In order to register new account at {{ domain }} you have to confirm
+{% blocktrans %}In order to register new account at {{ domain }} you have to confirm
 your email by clicking this link:
 
-    {{ confirm_email_url }}
+    http://{{ domain}}{{ confirm_email_url }}
 
 After email confirmation, administrator will review your request and will
 confirm or reject new account creation.

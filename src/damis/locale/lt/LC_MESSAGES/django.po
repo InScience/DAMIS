@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-26 18:02+0000\n"
+"POT-Creation-Date: 2014-01-26 23:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,8 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: forms.py:56
-#, fuzzy
 msgid "Enter \"{0}\" field value."
-msgstr "Įveskite {0} lauko reikšmę"
+msgstr "Įveskite \"{0}\" lauko reikšmę."
 
 #: forms.py:60 models.py:24 templates/damis/_dataset_form.html:20
 #: templates/damis/dataset_detail.html:11
@@ -65,7 +64,7 @@ msgstr "Vardas"
 msgid "Last name"
 msgstr "Pavardė"
 
-#: forms.py:209 forms.py:245 templates/damis/user_list.html:23
+#: forms.py:209 forms.py:251 templates/damis/user_list.html:23
 msgid "E-mail"
 msgstr "El. pašto adresas"
 
@@ -73,32 +72,40 @@ msgstr "El. pašto adresas"
 msgid "Organization"
 msgstr "Organizacija"
 
-#: forms.py:250
+#: forms.py:217
+msgid "This username is already taken."
+msgstr "Šis naudotojo vardas jau užimtas."
+
+#: forms.py:223
+msgid "User with this email already exist."
+msgstr "Naudotojas su šiuo el. pašto adresu jau egzistuoja."
+
+#: forms.py:256
 msgid "Please enter correct email address"
 msgstr "Įveskite teisingą savo el. pašto adresą"
 
-#: forms.py:255 models.py:23 models.py:123
+#: forms.py:261 models.py:23 models.py:123
 #: templates/damis/_existing_file.html:24
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:24
 #: templates/damis/experiment_list.html:21
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:256
+#: forms.py:262
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:257 models.py:25 templates/damis/_existing_file.html:27
-#: templates/damis/algorithm_list.html:24
-#: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:27
+#: forms.py:263 models.py:25 templates/damis/_existing_file.html:33
+#: templates/damis/algorithm_list.html:27
+#: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:33
 msgid "Description"
 msgstr "Aprašymas"
 
-#: forms.py:339
+#: forms.py:345
 msgid "Input connection is not connected"
 msgstr "Įeities jungtis nėra prijungta"
 
-#: forms.py:342
+#: forms.py:348
 msgid "This value must be specified"
 msgstr "Ši reikšmė turi būti nurodyta"
 
@@ -112,8 +119,8 @@ msgid "Updated"
 msgstr "Atnaujinta"
 
 #: models.py:28 models.py:129 models.py:228
-#: templates/damis/_existing_file.html:26
-#: templates/damis/dataset_detail.html:15 templates/damis/dataset_list.html:26
+#: templates/damis/_existing_file.html:29
+#: templates/damis/dataset_detail.html:15 templates/damis/dataset_list.html:29
 msgid "Created"
 msgstr "Sukurta"
 
@@ -397,23 +404,23 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:524 views.py:527
+#: views.py:534 views.py:537
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:604 views.py:641 views.py:656 views.py:723 views.py:737
+#: views.py:614 views.py:651 views.py:666 views.py:733 views.py:747
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:694
+#: views.py:704
 msgid "image"
 msgstr "pav"
 
-#: views.py:760
+#: views.py:770
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:803
+#: views.py:819
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -588,25 +595,21 @@ msgstr "Siųsti slaptažodžio atstatymo el. laišką"
 #: templates/accounts/mail/confirm_email_letter.html:2
 #, python-format
 msgid ""
-"\n"
 "In order to register new account at %(domain)s you have to confirm\n"
 "your email by clicking this link:\n"
 "\n"
-"    %(confirm_email_url)s\n"
+"    http://%(domain)s%(confirm_email_url)s\n"
 "\n"
 "After email confirmation, administrator will review your request and will\n"
 "confirm or reject new account creation.\n"
 msgstr ""
+"Norėdami sukurti naują paskyrą %(domain)s svetainėje turite patvirtinti savo "
+"el. pašto adresą paspausdami šią nuorodą:\n"
 "\n"
-"Norėdami sukurti naują paskyrą <b>%(domain)s</b> svetainėje turite "
-"patvirtinti\n"
-"savo el. pašto adresą paspausdami šią nuorodą:\n"
-"\n"
-"    %(confirm_email_url)s\n"
+"    http://%(domain)s%(confirm_email_url)s\n"
 "\n"
 "Kai patvirtinsite el. pašto adresą, administratorius peržiūrės paskyros "
-"duomenis ir \n"
-"patvirtins arba atmes naujos paskyros sukūrimą.\n"
+"duomenis ir patvirtins arba atmes naujos paskyros sukūrimą.\n"
 
 #: templates/damis/_dataset_form.html:6 templates/damis/_existing_file.html:7
 msgid "Dataset used in the experiment"
@@ -650,16 +653,16 @@ msgstr "Paslėpti formą"
 msgid "Uploaded files"
 msgstr "Įkeltų failų sąrašas"
 
-#: templates/damis/_existing_file.html:25 templates/damis/dataset_list.html:25
+#: templates/damis/_existing_file.html:28 templates/damis/dataset_list.html:28
 msgid "Size"
 msgstr "Dydis"
 
-#: templates/damis/_existing_file.html:42 templates/damis/dataset_list.html:66
+#: templates/damis/_existing_file.html:48 templates/damis/dataset_list.html:72
 msgid "No files were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų failų. Įkelti failą galite "
 
-#: templates/damis/_existing_file.html:43
-#: templates/damis/algorithm_list.html:45 templates/damis/dataset_list.html:67
+#: templates/damis/_existing_file.html:49
+#: templates/damis/algorithm_list.html:48 templates/damis/dataset_list.html:73
 #: templates/damis/experiment_list.html:50 templates/damis/user_list.html:49
 msgid "here"
 msgstr "čia"
@@ -704,17 +707,17 @@ msgstr "Komponentės parametrai"
 msgid "Save"
 msgstr "Išsaugoti"
 
-#: templates/damis/algorithm_list.html:25 templates/damis/dataset_list.html:28
+#: templates/damis/algorithm_list.html:28 templates/damis/dataset_list.html:34
 #: templates/damis/experiment_list.html:23 templates/damis/user_list.html:25
 msgid "Actions"
 msgstr "Veiksmai"
 
-#: templates/damis/algorithm_list.html:36 templates/damis/dataset_list.html:40
+#: templates/damis/algorithm_list.html:39 templates/damis/dataset_list.html:46
 #: templates/damis/experiment_list.html:34 templates/damis/user_list.html:40
 msgid "Edit"
 msgstr "Redaguoti"
 
-#: templates/damis/algorithm_list.html:44
+#: templates/damis/algorithm_list.html:47
 msgid "No algorithms were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų algoritmų. Jūs tai galite padaryti "
 
@@ -726,43 +729,43 @@ msgstr "Ar tikrai norite pašalinti duomenų rinkinį"
 msgid "Author"
 msgstr "Autorius"
 
-#: templates/damis/dataset_list.html:45
+#: templates/damis/dataset_list.html:51
 msgid "Download CSV file"
 msgstr "Atsisiųsti CSV failą"
 
-#: templates/damis/dataset_list.html:46
+#: templates/damis/dataset_list.html:52
 msgid "CSV"
 msgstr "CSV"
 
-#: templates/damis/dataset_list.html:48
+#: templates/damis/dataset_list.html:54
 msgid "Download ARFF file"
 msgstr "Atsisiųsti ARFF failą"
 
-#: templates/damis/dataset_list.html:49
+#: templates/damis/dataset_list.html:55
 msgid "ARFF"
 msgstr "ARFF"
 
-#: templates/damis/dataset_list.html:51
+#: templates/damis/dataset_list.html:57
 msgid "Download TXT file"
 msgstr "Atsisiųsti TXT failą"
 
-#: templates/damis/dataset_list.html:52
+#: templates/damis/dataset_list.html:58
 msgid "TXT"
 msgstr "TXT"
 
-#: templates/damis/dataset_list.html:54
+#: templates/damis/dataset_list.html:60
 msgid "Download TAB file"
 msgstr "Atsisiųsti TAB failą"
 
-#: templates/damis/dataset_list.html:55
+#: templates/damis/dataset_list.html:61
 msgid "TAB"
 msgstr "TAB"
 
-#: templates/damis/dataset_list.html:57
+#: templates/damis/dataset_list.html:63
 msgid "Download XLS file"
 msgstr "Atsisiųsti XLS failą"
 
-#: templates/damis/dataset_list.html:58
+#: templates/damis/dataset_list.html:64
 msgid "XLS"
 msgstr "XLS"
 
