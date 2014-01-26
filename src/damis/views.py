@@ -103,8 +103,9 @@ class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
     success_url = reverse_lazy('dataset-list')
 
     def get_queryset(self):
+        order_by = self.request.GET.get('order_by') or '-created'
         qs = super(DatasetList, self).get_queryset()
-        return qs.order_by('-created')
+        return qs.order_by(order_by)
 
 class DatasetUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'damis/dataset_update.html'
