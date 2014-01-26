@@ -3,22 +3,7 @@
 		init: function(componentType, formWindow) {
 			if (componentType == 'EXISTING FILE') {
 				window.existingFile.update(formWindow);
-				var outParam = formWindow.find("input[value=OUTPUT_CONNECTION]").parent().find("input[name$=value]");
-				if (outParam.val()) {
-					// editing workflow: a connection already exists 
-					// TODO: put the message into the message container
-					formWindow.find(".message").html(this.fileSelectedView(outParam.val()));
-				}
 			}
-		},
-
-		fileSelectedView: function(fileUrl) {
-			var successText = "";
-			if (fileUrl) {
-				var fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-				successText = gettext("File used in the experiment") + ": <a href=\"" + fileUrl + "\"><b>" + fileName + "</b></a>";
-			}
-			return successText;
 		},
 
 		// send request to the server to obtain file upload form
@@ -26,19 +11,25 @@
 			if (!url) {
 				url = window.componentFormUrls['EXISTING FILE'];
 			}
-			var container = dialog.find(".file-form-container");
+			var container = dialog.find(".dynamic-container");
 			var fileList;
 			if (container.length == 0) {
-				container = $("<div class=\"file-form-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
+				container = $("<div class=\"dynamic-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
 				dialog.append(container);
 			} else {
 				fileList = container.find(".file-list");
 			}
+			var outParam = dialog.find("input[value=OUTPUT_CONNECTION]").parent().find("input[name$=value]");
+			var data = {}
+			if (outParam.val()) {
+				data['dataset_url'] = outParam.val();
+			}
 			$.ajax({
 				url: url,
+				data: data,
 				context: container
 			}).done(function(resp) {
-                var container = $(this);
+				var container = $(this);
 				container.html(resp);
 
 				// bind paging handler
@@ -47,18 +38,8 @@
 					var page_url = $(this).attr("href");
 					window.existingFile.update(dialog, page_url);
 				});
-				// bind selection handler
-				container.find("input[name=dataset_pk]").on("click", function(ev) {
-                    var fileUrl = $(this).val();
 
-                    // set OUTPUT_CONNECTION value for this component
-				    var connectionInput = dialog.find(".parameter-values input[value=OUTPUT_CONNECTION]");
-				    var valueInput = connectionInput.parent().find("input[name$=value]");
-				    valueInput.val(fileUrl);
-
-					// show message
-					container.find(".message").html(window.existingFile.fileSelectedView(fileUrl));
-				});
+                window.utils.initToggleSectionBtn(container);
 
 				dialog.dialog("option", "buttons", window.existingFile.allButtons());
 				dialog.dialog("option", "minWidth", 0);
@@ -68,7 +49,34 @@
 
 		// all buttons of this component dialog
 		allButtons: function() {
-			return window.taskBoxes.defaultDialogButtons();
+			var buttons = [{
+				"text": gettext('OK'),
+				"class": "btn btn-primary",
+				"click": function(ev) {
+					var container = $(this).find(".dynamic-container");
+					var datasetInput = container.find("input[name=dataset_pk]:checked");
+                    if (datasetInput.val()) {
+					    var fileUrl = $(datasetInput).val();
+
+					    // set OUTPUT_CONNECTION value for this component
+					    var connectionInput = $(this).find(".parameter-values input[value=OUTPUT_CONNECTION]");
+					    var valueInput = connectionInput.parent().find("input[name$=value]");
+					    valueInput.val(fileUrl);
+					    window.existingFile.update($(this));
+                    } else {
+                        $(this).dialog("close");
+                    }
+				}
+			},
+			{
+				"text": gettext('Cancel'),
+				"class": "btn",
+				"click": function(ev) {
+					$(this).dialog("close");
+				}
+
+			}];
+			return buttons;
 		},
 	}
 })();

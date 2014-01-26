@@ -517,6 +517,12 @@ class ExistingFileView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(ExistingFileView, self).get_context_data(**kwargs)
         context['request'] = self.request
+        if self.request.GET.has_key('dataset_url'):
+            context['file_path'] = self.request.GET.get('dataset_url')
+            context["file_name"] = split(context["file_path"])[1]
+            self.request.GET = self.request.GET.copy()
+            self.request.GET.pop('dataset_url')
+        context['page']=self.request.GET.get("page")
         return context
 
 

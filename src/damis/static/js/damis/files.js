@@ -9,9 +9,9 @@
 		// send request to the server to obtain file upload form
 		update: function(dialog) {
 			var url = window.componentFormUrls['UPLOAD FILE'];
-			var fileForm = dialog.find(".file-form-container");
+			var fileForm = dialog.find(".dynamic-container");
 			if (fileForm.length == 0) {
-				var fileForm = $("<div class=\"file-form-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
+				var fileForm = $("<div class=\"dynamic-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
 				dialog.append(fileForm);
 				var outParam = dialog.find("input[value=OUTPUT_CONNECTION]").parent().find("input[name$=value]");
 				var data = {}
@@ -40,7 +40,7 @@
 
 		// upload form in the iframe
 		doUpload: function(dialog) {
-            fileForm = dialog.find(".file-form-container");
+            fileForm = dialog.find(".dynamic-container");
 			// TODO: clone does not preserve textarea and input values 
 			// so we need to construct a placeholder differently 
 			var fileFormPlaceholder = fileForm.clone(true);
@@ -74,7 +74,7 @@
 			if (!textContent || textContent.length == 0) {
 				return;
 			}
-			var responseText = $("<div class=\"file-form-container\">" + fileUploadIframe.contents().find("body").html() + "</div>");
+			var responseText = $("<div class=\"dynamic-container\">" + fileUploadIframe.contents().find("body").html() + "</div>");
 
 			// clear the iframe response in order to prevent unexpected processing
 			fileUploadIframe.contents().find("body").html("");
@@ -109,7 +109,7 @@
 				"text": gettext('OK'),
 				"class": "btn btn-primary",
 				"click": function(ev) {
-					var fileForm = $(this).find(".file-form-container");
+					var fileForm = $(this).find(".dynamic-container");
                     var submit = false;
                     $.each(fileForm.find("input[name=title],input[name=file],textarea[name=description]"), function(idx, el){
                         if ($(el).val()){
