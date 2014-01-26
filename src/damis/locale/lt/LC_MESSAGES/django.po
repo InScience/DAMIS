@@ -840,7 +840,7 @@ msgstr "Sekantis"
 
 #: templatetags/pagination.py:84
 msgid "Prev"
-msgstr "Ankst"
+msgstr "Ankstesnis"
 
 #~ msgid "There is no file to download."
 #~ msgstr "Nėra failo, kurį galėtumėte atsisiųsti."
