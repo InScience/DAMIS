@@ -168,6 +168,10 @@ class ComponentList(ListDeleteMixin, LoginRequiredMixin, ListView):
     paginate_by = 30
     success_url = reverse_lazy('algorithm-list')
 
+    def get_queryset(self):
+        order_by = self.request.GET.get('order_by') or '-created'
+        qs = super(ComponentList, self).get_queryset()
+        return qs.order_by(order_by)
 
 class UserList(ListDeleteMixin, SuperUserRequiredMixin, ListView):
     model = User
