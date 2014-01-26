@@ -98,7 +98,7 @@ class DatasetCreate(LoginRequiredMixin, CreateView):
 
 class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Dataset
-    paginate_by = 50
+    paginate_by = 25
     template_name = 'damis/dataset_list.html'
     success_url = reverse_lazy('dataset-list')
 
@@ -166,7 +166,7 @@ class ComponentCreate(LoginRequiredMixin, CreateView):
 class ComponentList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Component
     template_name = 'damis/algorithm_list.html'
-    paginate_by = 30
+    paginate_by = 25
     success_url = reverse_lazy('algorithm-list')
 
     def get_queryset(self):
@@ -177,7 +177,7 @@ class ComponentList(ListDeleteMixin, LoginRequiredMixin, ListView):
 class UserList(ListDeleteMixin, SuperUserRequiredMixin, ListView):
     model = User
     template_name = 'damis/user_list.html'
-    paginate_by = 30
+    paginate_by = 25
     success_url = reverse_lazy('user-list')
 
 class UserUpdate(LoginRequiredMixin, UpdateView):
@@ -230,7 +230,7 @@ class ComponentDelete(LoginRequiredMixin, DeleteView):
 
 class ExperimentList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Experiment
-    paginate_by = 10
+    paginate_by = 25
     success_url = reverse_lazy('experiment-list')
 
     def get_queryset(self):
