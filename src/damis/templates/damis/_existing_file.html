@@ -21,9 +21,15 @@
          <thead>
              <tr>
                  <th></th>
-                 <th>{% trans "Title" %}</th>
+                 <th>{% trans "Title" %}
+                     <a href="{% url 'component-existing-file-form' %}?order_by=title"><i class="icon-chevron-up"></i></a>
+                      <a href="{% url 'component-existing-file-form' %}?order_by=-title"><i class="icon-chevron-down"></i></a>
+                 </th>
                  <th>{% trans "Size" %}</th>
-                 <th>{% trans "Created" %}</th>
+                 <th>{% trans "Created" %}
+                      <a href="{% url 'component-existing-file-form' %}?order_by=created"><i class="icon-chevron-up"></i></a>
+                      <a href="{% url 'component-existing-file-form' %}?order_by=-created"><i class="icon-chevron-down"></i></a>
+                 </th>
                  <th>{% trans "Description" %}</th>
              </tr>
          </thead>

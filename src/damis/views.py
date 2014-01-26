@@ -512,8 +512,9 @@ class ExistingFileView(LoginRequiredMixin, ListView):
     success_url = reverse_lazy('dataset-list')
 
     def get_queryset(self):
+        order_by = self.request.GET.get('order_by') or '-created'
         qs = super(ExistingFileView, self).get_queryset()
-        return qs.order_by('-created')
+        return qs.order_by(order_by)
 
     def get_context_data(self, **kwargs):
         context = super(ExistingFileView, self).get_context_data(**kwargs)

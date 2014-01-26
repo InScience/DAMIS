@@ -33,7 +33,7 @@
 				container.html(resp);
 
 				// bind paging handler
-				container.find(".pagination a").on("click", function(ev) {
+				container.find(".pagination a, thead a").on("click", function(ev) {
 					ev.preventDefault();
 					var page_url = $(this).attr("href");
 					window.existingFile.update(dialog, page_url);
