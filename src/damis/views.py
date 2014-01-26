@@ -12,6 +12,7 @@ from collections import OrderedDict
 from django.conf import settings
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.core.urlresolvers import reverse_lazy
@@ -22,6 +23,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
+from django.utils.http import int_to_base36
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.forms.models import inlineformset_factory
@@ -768,7 +770,10 @@ def register_view(request):
             subject = _('{0} confirm email').format(domain)
             body = render_to_string('accounts/mail/confirm_email_letter.html', {
                 'domain': domain,
-                'recovery_url': domain + 'not_implemented_yet/',
+                'confirm_email_url': reverse_lazy('confirm-email', kwargs={
+                        'uidb36': int_to_base36(user.pk),
+                        'token': default_token_generator.make_token(user)
+                    }),
             })
             sender = settings.DEFAULT_FROM_EMAIL
             send_mail(subject, body, sender, [receiver])
@@ -799,6 +804,9 @@ def logout_view(request):
 def profile_settings_view(request):
     pass
 
+def confirm_email_view(request, uidb36, token):
+    # Labas
+    pass
 
 def reset_password_view(request):
     if request.method == 'POST':

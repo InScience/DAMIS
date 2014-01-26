@@ -214,8 +214,14 @@ class RegistrationForm(CustomMessages, forms.Form):
     def clean_username(self):
         username = self.cleaned_data.get('username')
         if User.objects.filter(username=username).exists():
-            raise forms.ValidationError('This username is already taken.')
+            raise forms.ValidationError(_('This username is already taken.'))
         return username
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(_('User with this email already exist.'))
+        return email
 
     def is_valid(self):
         valid = super(RegistrationForm, self).is_valid()
@@ -480,3 +486,10 @@ WorkflowTaskFormset = inlineformset_factory(Experiment, WorkflowTask,
 CreateExperimentFormset = inlineformset_factory(Experiment, WorkflowTask,
         formset=BaseWorkflowTaskFormset, form=WorkflowTaskForm, extra=1,
         can_delete=True)
+
+
+class SetPasswordForm(forms.Form):
+    pass
+
+class PasswordResetForm(forms.Form):
+    pass
