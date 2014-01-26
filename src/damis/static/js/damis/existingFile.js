@@ -36,10 +36,12 @@
 				container.find(".pagination a, thead a").on("click", function(ev) {
 					ev.preventDefault();
 					var page_url = $(this).attr("href");
-					window.existingFile.update(dialog, page_url);
+					if (!page_url.match(/.*#.*/g)) {
+						window.existingFile.update(dialog, page_url);
+					}
 				});
 
-                window.utils.initToggleSectionBtn(container);
+				window.utils.initToggleSectionBtn(container);
 
 				dialog.dialog("option", "buttons", window.existingFile.allButtons());
 				dialog.dialog("option", "minWidth", 0);
@@ -55,17 +57,17 @@
 				"click": function(ev) {
 					var container = $(this).find(".dynamic-container");
 					var datasetInput = container.find("input[name=dataset_pk]:checked");
-                    if (datasetInput.val()) {
-					    var fileUrl = $(datasetInput).val();
+					if (datasetInput.val()) {
+						var fileUrl = $(datasetInput).val();
 
-					    // set OUTPUT_CONNECTION value for this component
-					    var connectionInput = $(this).find(".parameter-values input[value=OUTPUT_CONNECTION]");
-					    var valueInput = connectionInput.parent().find("input[name$=value]");
-					    valueInput.val(fileUrl);
-					    window.existingFile.update($(this));
-                    } else {
-                        $(this).dialog("close");
-                    }
+						// set OUTPUT_CONNECTION value for this component
+						var connectionInput = $(this).find(".parameter-values input[value=OUTPUT_CONNECTION]");
+						var valueInput = connectionInput.parent().find("input[name$=value]");
+						valueInput.val(fileUrl);
+						window.existingFile.update($(this));
+					} else {
+						$(this).dialog("close");
+					}
 				}
 			},
 			{
