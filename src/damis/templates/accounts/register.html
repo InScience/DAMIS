@@ -9,7 +9,7 @@
 {% block content %}
     <div class="span6 offset4 top-space">
         <form action="{% url 'register' %}" method="post">{% csrf_token %}
-            {{ form.as_p }}
+            {% include 'damis/_form.html' with form=form %}
             <p><input class="btn btn-primary" type="submit" value="{% trans "Register" %}" /></p>
         </form>
     </div>
