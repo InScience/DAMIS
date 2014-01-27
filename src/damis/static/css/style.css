@@ -64,6 +64,7 @@ body {
 .errorlist {
     color: #A60000;
     list-style-type: none;
+    display: inline-block;
 }
 
 .error-message {

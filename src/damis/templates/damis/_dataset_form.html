@@ -15,14 +15,18 @@
 {% endfor %}
 
 {% for field in form.visible_fields %}
-    {{ field.errors }}
     {% if field.name == 'file' %}
-        <p>{% trans 'File' %}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/>
-        <button class="btn btn-primary choose-file" type="button">{% trans 'Choose' %}</button>
-        <span>{% trans 'No file selected' %}.</span>
-        <span style="display: none;"> {{ field }}</span></p>
+        <div>
+            {% trans 'File' %}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/>
+            <button class="btn btn-primary choose-file" type="button">{% trans 'Choose' %}</button>
+            <span>{% trans 'No file selected' %}.</span>
+            <span style="display: none;"> {{ field }}</span>
+            {{ field.errors }}
+        </div>
     {% else %}
-        <p>{{ field.label }}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/> {{ field }}</p>
+    <div>{{ field.label }}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/> {{ field }}
+        {{ field.errors }}
+    </div>
     {% endif %}
 {% endfor %}
 {% for hidden in form.hidden_fields %}
