@@ -1,6 +1,5 @@
 {% load i18n %}
 {% blocktrans %}Your "{{ user.username }}" account at {{ domain }} was activated. You
-can login here:
+can login here:{% endblocktrans %}
 
     http://{{ domain }}{% url 'login' %}
-{% endblocktrans %}
