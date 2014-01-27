@@ -123,3 +123,6 @@ textarea {
 .colpick {z-index: 9999;}
 .req {font-weight: bold; color: #A60000}
 .message {margin-bottom: 20px;}
+
+.damis-list {margin-top: 5px;}
+    .damis-list thead {background-color: #eeeeef;}
