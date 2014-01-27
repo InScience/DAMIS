@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='login' %}
+{% endblock %}
+
+{% block content %}
+    <div class="span6 offset4 top-space">
+        <div class="alert alert-success">
+            {% blocktrans %}<b>Your email was confirmed</b>. Now administrator will approve
+            your registration and inform you by email.{% endblocktrans %}
+        </div>
+    </div>
+{% endblock %}

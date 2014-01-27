@@ -19,11 +19,11 @@ from django.core.urlresolvers import reverse_lazy
 from django.core.context_processors import csrf
 from django.core.mail import send_mail
 from django.db.models import Q
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.template.loader import render_to_string
 from django.utils.decorators import method_decorator
-from django.utils.http import int_to_base36
+from django.utils.http import int_to_base36, base36_to_int
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 from django.forms.models import inlineformset_factory
@@ -806,8 +806,12 @@ def profile_settings_view(request):
     pass
 
 def confirm_email_view(request, uidb36, token):
-    # Labas
-    pass
+    user = User.objects.get(pk=base36_to_int(uidb36))
+    if not user.email_approved and default_token_generator.check_token(user, token):
+        user.email_approved = True
+        user.save()
+        return HttpResponseRedirect(reverse_lazy('email-confirmed'))
+    raise Http404
 
 def reset_password_view(request):
     if request.method == 'POST':

@@ -32,6 +32,8 @@ urlpatterns += i18n_patterns('',
     # User registers and gets welcome email with email confirm URL.
     url(r'^confirm-email/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         confirm_email_view, name='confirm-email'),
+    url(r'^email-confirmed/$', static_page_view, name='email-confirmed',
+        kwargs={'template': 'accounts/email_confirmed.html'}),
 
     url(r'^set-password/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         'django.contrib.auth.views.password_reset_confirm',

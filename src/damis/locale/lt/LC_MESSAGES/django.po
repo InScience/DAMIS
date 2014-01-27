@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-27 00:02+0000\n"
+"POT-Creation-Date: 2014-01-27 00:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,7 +68,7 @@ msgstr "Pavardė"
 msgid "E-mail"
 msgstr "El. pašto adresas"
 
-#: forms.py:210 models.py:55
+#: forms.py:210 models.py:56
 msgid "Organization"
 msgstr "Organizacija"
 
@@ -84,7 +84,7 @@ msgstr "Naudotojas su šiuo el. pašto adresu jau egzistuoja."
 msgid "Please enter correct email address"
 msgstr "Įveskite teisingą savo el. pašto adresą"
 
-#: forms.py:261 models.py:23 models.py:123
+#: forms.py:261 models.py:23 models.py:124
 #: templates/damis/_existing_file.html:24
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:24
 #: templates/damis/experiment_list.html:21
@@ -109,16 +109,16 @@ msgstr "Įeities jungtis nėra prijungta"
 msgid "This value must be specified"
 msgstr "Ši reikšmė turi būti nurodyta"
 
-#: models.py:26 models.py:124 models.py:220
+#: models.py:26 models.py:125 models.py:221
 msgid "User"
 msgstr "Naudotojas"
 
-#: models.py:27 models.py:128 models.py:227
+#: models.py:27 models.py:129 models.py:228
 #: templates/damis/dataset_detail.html:14
 msgid "Updated"
 msgstr "Atnaujinta"
 
-#: models.py:28 models.py:129 models.py:228
+#: models.py:28 models.py:130 models.py:229
 #: templates/damis/_existing_file.html:29
 #: templates/damis/dataset_detail.html:15 templates/damis/dataset_list.html:29
 msgid "Created"
@@ -150,19 +150,23 @@ msgstr "Pavardė"
 msgid "Email address"
 msgstr "El. pašto adresas"
 
-#: models.py:48
+#: models.py:47
+msgid "Was email approved"
+msgstr "Ar el. paštas buvo patvirtintas"
+
+#: models.py:49
 msgid "staff status"
 msgstr "darbuotojo statusas"
 
-#: models.py:49
+#: models.py:50
 msgid "Designates whether the user can log into this admin site."
 msgstr "Nurodo ar naudotojas turi administratoriaus teises."
 
-#: models.py:51
+#: models.py:52
 msgid "active"
 msgstr "Aktyvus"
 
-#: models.py:52
+#: models.py:53
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -170,39 +174,39 @@ msgstr ""
 "Nurodo ar naudotojas yra aktyvus. Naudotojas turi būti deaktyvuojamasvietoje "
 "jo paskyros ištrynimo."
 
-#: models.py:54
+#: models.py:55
 msgid "date joined"
 msgstr "paskyros sukūrimo data"
 
-#: models.py:82
+#: models.py:83
 msgid "Title EN"
 msgstr "Angliškas pavadinimas"
 
-#: models.py:83
+#: models.py:84
 msgid "Title LT"
 msgstr "Lietuviškas pavadinimas"
 
-#: models.py:84
+#: models.py:85
 msgid "Cluster home page"
 msgstr "Skaičiavimo telkinio namų puslapis"
 
-#: models.py:85
+#: models.py:86
 msgid "Workload page"
 msgstr "Apkrovimo puslapis"
 
-#: models.py:86 models.py:134 models.py:188
+#: models.py:87 models.py:135 models.py:189
 msgid "Description EN"
 msgstr "Aprašymas EN"
 
-#: models.py:87 models.py:135 models.py:189
+#: models.py:88 models.py:136 models.py:190
 msgid "Description LT"
 msgstr "Aprašymas LT"
 
-#: models.py:88 models.py:130
+#: models.py:89 models.py:131
 msgid "Icon"
 msgstr "Paveiksliukas"
 
-#: models.py:108
+#: models.py:109
 msgid ""
 "<p>{0}</p><p>Cluster home:</p><p><a href=\"{1}\" target=\"blank\">{1}</a></"
 "p><p>Cluster workload:</p><p><a href=\"{2}\" target=\"blank\">{2}</a></p>"
@@ -211,184 +215,184 @@ msgstr ""
 "a></p><p>Klasterio apkrovimas:</p><p><a href=\"{2}\" target=\"blank\">{2}</"
 "a></p>"
 
-#: models.py:116
+#: models.py:117
 msgid "Upload data"
 msgstr "Duomenų įkėlimas"
 
-#: models.py:117
+#: models.py:118
 msgid "Preprocessing"
 msgstr "Pirminis apdorojimas"
 
-#: models.py:118
+#: models.py:119
 msgid "Statistical primitives"
 msgstr "Statistiniai primityvai"
 
-#: models.py:119
+#: models.py:120
 msgid "Dimension reduction"
 msgstr "Dimensijos mažinimas"
 
-#: models.py:120
+#: models.py:121
 msgid "Classification, grouping"
 msgstr "Klasifikavimas, grupavimas"
 
-#: models.py:121 templates/damis/experiment_list.html:38
+#: models.py:122 templates/damis/experiment_list.html:38
 #: templates/damis/experiment_list.html:40
 msgid "View results"
 msgstr "Rezultatų peržiūra"
 
-#: models.py:125
+#: models.py:126
 msgid "Category"
 msgstr "Kategorija"
 
-#: models.py:126
+#: models.py:127
 msgid "WSDL link"
 msgstr "WSDL nuoroda"
 
-#: models.py:127
+#: models.py:128
 msgid "WSDL function name"
 msgstr "WSDL funkcijos pavadinimas"
 
-#: models.py:131
+#: models.py:132
 msgid "Cluster"
 msgstr "Klusteris"
 
-#: models.py:132 models.py:186
+#: models.py:133 models.py:187
 msgid "Label EN"
 msgstr "Antraštė EN"
 
-#: models.py:133 models.py:187
+#: models.py:134 models.py:188
 msgid "Label LT"
 msgstr "Antraštė LT"
 
-#: models.py:166
+#: models.py:167
 msgid "Dataset"
 msgstr "Duomenys"
 
-#: models.py:167
+#: models.py:168
 msgid "Integer"
 msgstr "Sveikasis"
 
-#: models.py:168
+#: models.py:169
 msgid "Float"
 msgstr "Slankaus kablelio"
 
-#: models.py:169
+#: models.py:170
 msgid "Double"
 msgstr "Dvigubo tikslumo slankaus kablelio"
 
-#: models.py:170
+#: models.py:171
 msgid "String"
 msgstr "Simbolių eilutė"
 
-#: models.py:171
+#: models.py:172
 msgid "Text"
 msgstr "Tekstas"
 
-#: models.py:172
+#: models.py:173
 msgid "Boolean"
 msgstr "Loginė reikšmė"
 
-#: models.py:173
+#: models.py:174
 msgid "Date"
 msgstr "Data"
 
-#: models.py:174
+#: models.py:175
 msgid "Date and time"
 msgstr "Data ir laikas"
 
-#: models.py:175
+#: models.py:176
 msgid "Time"
 msgstr "Laikas"
 
-#: models.py:179 models.py:252
+#: models.py:180 models.py:253
 msgid "Component"
 msgstr "Komponentė"
 
-#: models.py:180
+#: models.py:181
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:181
+#: models.py:182
 msgid "Type"
 msgstr "Tipas"
 
-#: models.py:182
+#: models.py:183
 msgid "Required"
 msgstr "Būtinas"
 
-#: models.py:183
+#: models.py:184
 msgid "Default"
 msgstr "Standartinė reikšmė"
 
-#: models.py:184
+#: models.py:185
 msgid "Connection type"
 msgstr "Jungties tipas"
 
-#: models.py:210 models.py:245
+#: models.py:211 models.py:246
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: models.py:211 models.py:246
+#: models.py:212 models.py:247
 msgid "Running"
 msgstr "Vykdoma"
 
-#: models.py:212 models.py:247
+#: models.py:213 models.py:248
 msgid "Error"
 msgstr "Klaida"
 
-#: models.py:213 models.py:248
+#: models.py:214 models.py:249
 msgid "Finished"
 msgstr "Įvykdyta"
 
-#: models.py:215
+#: models.py:216
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:216
+#: models.py:217
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:217
+#: models.py:218
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:218 models.py:253 templates/damis/experiment_list.html:22
+#: models.py:219 models.py:254 templates/damis/experiment_list.html:22
 msgid "Status"
 msgstr "Statusas"
 
-#: models.py:221
+#: models.py:222
 msgid "Workflow state"
 msgstr "Scenarijaus būsena"
 
-#: models.py:223
+#: models.py:224
 msgid "Maximum calculation time"
 msgstr "Maksimali skaičiavimo trukmė"
 
-#: models.py:225
+#: models.py:226
 msgid "Processor number"
 msgstr "Procesorių skaičius"
 
-#: models.py:251
+#: models.py:252
 msgid "Experiment"
 msgstr "Eksperimentas"
 
-#: models.py:255
+#: models.py:256
 msgid "Error message"
 msgstr "Klaidos pranešimas"
 
-#: models.py:264 templates/damis/_technical_details.html:6
+#: models.py:265 templates/damis/_technical_details.html:6
 msgid "Parameter"
 msgstr "Parametras"
 
-#: models.py:267
+#: models.py:268
 msgid "Workflow Task"
 msgstr "Scenarijaus užduotis"
 
-#: models.py:279
+#: models.py:280
 msgid "Source"
 msgstr "Šaltinis"
 
-#: models.py:281
+#: models.py:282
 msgid "Target"
 msgstr "Tikslas"
 
@@ -420,7 +424,7 @@ msgstr "pav"
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:820
+#: views.py:824
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -564,6 +568,15 @@ msgstr "(Atsijungti)"
 msgid "Log in"
 msgstr "Prisijungti"
 
+#: templates/accounts/email_confirmed.html:12
+msgid ""
+"<b>Your email was confirmed</b>. Now administrator will approve\n"
+"            your registration and inform you by email."
+msgstr ""
+"<b>Jūsų el. pašto adresas patvirtintas</b>. Dabar laukite kol "
+"administratorius\n"
+"patvirtins Jūsų duomenis ir informuos Jūs el. paštu."
+
 #: templates/accounts/login.html:13
 msgid "Login"
 msgstr "Prisijungti"
@@ -590,7 +603,9 @@ msgstr "Registruotis"
 
 #: templates/accounts/registration_done.html:12
 msgid "Further registration instructions was sent to your email."
-msgstr "Tolimesnės registracijos instrukcijos buvo išsiųstos į Jūsų elektroninį paštą."
+msgstr ""
+"Tolimesnės registracijos instrukcijos buvo išsiųstos į Jūsų elektroninį "
+"paštą."
 
 #: templates/accounts/reset_password.html:13
 msgid "Send password recover email"
