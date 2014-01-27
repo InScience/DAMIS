@@ -254,7 +254,7 @@ class EmailForm(CustomMessages, forms.Form):
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if not User.objects.filter(email=email).exists():
+        if not User.objects.filter(email=email, is_active=True).exists():
             raise forms.ValidationError(_('Please enter correct email address'))
         return email
 
