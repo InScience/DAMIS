@@ -8,8 +8,9 @@
 
 {% block content %}
     <div class="span6 offset4 top-space">
-        <form action="/{{ lang }}/login/" method="post">{% csrf_token %}
+        <form action="." method="post">{% csrf_token %}
             {% include 'damis/_form.html' with form=form %}
+            <input type='hidden' name='next' value='{{ request.GET.next }}'>
             <p><input class="btn btn-primary" type="submit" value="{% trans "Login" %}" /></p>
         </form>
         <p>{% trans "Forgot password? You can" %} <b><a href='{% url 'reset-password' %}'>{% trans "recover it here" %}</a></b></p>

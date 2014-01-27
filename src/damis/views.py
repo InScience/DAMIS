@@ -799,19 +799,21 @@ def register_view(request):
         'form': form,
     })
 
-def login_view(request):
+def login_view(request, *args, **kwargs):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             user = form.cleaned_data['user']
             if user is not None and user.is_active:
+                next_page = request.POST.get('next', reverse_lazy('home'))
                 login(request, user)
-                return HttpResponseRedirect(reverse_lazy('home'))
+                return HttpResponseRedirect(next_page)
     else:
         form = LoginForm()
 
     return render(request, 'accounts/login.html', {
             'form': form,
+            'request': request,
         })
 
 def logout_view(request):
