@@ -51,16 +51,7 @@ VALIDATOR_FIELDS = {
 }
 
 
-class CustomMessages(object):
-    def __init__(self, *args, **kwargs):
-        super(CustomMessages, self).__init__(*args, **kwargs)
-        for key, field in self.fields.items():
-            if field and field.label:
-                name = field.label.title().lower()
-                field.error_messages['required'] = _('Enter "{0}" field value.').format(name)
-
-
-class DatasetForm(CustomMessages, forms.ModelForm):
+class DatasetForm(forms.ModelForm):
     file = forms.FileField(_('File'),
             widget=forms.FileInput(attrs={'accept':
                 'text/csv,text/tab-separated-values,text/plain,text/arff,application/zip'
@@ -186,11 +177,11 @@ class DatasetForm(CustomMessages, forms.ModelForm):
         return arff_file
 
 
-class DatasetSelectForm(CustomMessages, forms.Form):
+class DatasetSelectForm(forms.Form):
     dataset = forms.ModelChoiceField(queryset=Dataset.objects.all())
 
 
-class LoginForm(CustomMessages, forms.Form):
+class LoginForm(forms.Form):
     username = forms.CharField(label=_('Username'), max_length=100)
     password = forms.CharField(label=_('Password'), max_length=128,
                         widget=forms.PasswordInput(render_value=False))
@@ -206,7 +197,7 @@ class LoginForm(CustomMessages, forms.Form):
         cleaned_data['user'] = user
         return cleaned_data
 
-class RegistrationForm(CustomMessages, forms.Form):
+class RegistrationForm(forms.Form):
     username = forms.CharField(label=_('Username'), max_length=100,)
     password = forms.CharField(label=_('Password'), max_length=128,
                         widget=forms.PasswordInput(render_value=False))
@@ -255,7 +246,7 @@ class RegistrationForm(CustomMessages, forms.Form):
         return user
 
 
-class EmailForm(CustomMessages, forms.Form):
+class EmailForm(forms.Form):
     email = forms.EmailField(label=_('E-mail'), max_length=100)
 
     def clean_email(self):
@@ -265,7 +256,7 @@ class EmailForm(CustomMessages, forms.Form):
         return email
 
 
-class DataFileUploadForm(CustomMessages, forms.Form):
+class DataFileUploadForm(forms.Form):
     title = forms.CharField(label=_('Title'))
     data_file = forms.FileField(label=_('Dataset file'))
     comment = forms.CharField(label=_('Description'),
@@ -273,12 +264,12 @@ class DataFileUploadForm(CustomMessages, forms.Form):
             required=False)
 
 
-class ComponentForm(CustomMessages, forms.ModelForm):
+class ComponentForm(forms.ModelForm):
     class Meta:
         model = Component
         exclude = ['user']
 
-class ParameterForm(CustomMessages, forms.ModelForm):
+class ParameterForm(forms.ModelForm):
     class Meta:
         model = Parameter
         fields = ['name', 'type', 'connection_type', 'required', 'default',
@@ -287,7 +278,7 @@ class ParameterForm(CustomMessages, forms.ModelForm):
 ParameterFormset = inlineformset_factory(Component, Parameter, extra=1, form=ParameterForm, can_delete=False)
 
 
-class ExperimentForm(CustomMessages, forms.ModelForm):
+class ExperimentForm(forms.ModelForm):
     workflow_state = forms.CharField(widget=forms.HiddenInput(), required=False)
     skip_validation = forms.CharField(widget=forms.HiddenInput(), required=False)
 
@@ -296,13 +287,13 @@ class ExperimentForm(CustomMessages, forms.ModelForm):
         exclude = ['user', 'start', 'finish', 'status']
 
 
-class UserUpdateForm(CustomMessages, forms.ModelForm):
+class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'is_active']
 
 
-class ParameterValueForm(CustomMessages, forms.ModelForm):
+class ParameterValueForm(forms.ModelForm):
     parameter = forms.ModelChoiceField(queryset=Parameter.objects.all(),
                                        widget=forms.HiddenInput())
     source_ref = forms.CharField(max_length=255, widget=forms.HiddenInput(), required=False)
@@ -483,7 +474,7 @@ class BaseWorkflowTaskFormset(BaseInlineFormSet):
         return False
 
 
-class WorkflowTaskForm(CustomMessages, forms.ModelForm):
+class WorkflowTaskForm(forms.ModelForm):
     class Meta:
         model = WorkflowTask
         exclude = ['stdout', 'stderr', 'processors', 'sequence', 'status']
