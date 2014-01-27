@@ -14,7 +14,7 @@
 			var container = dialog.find(".dynamic-container");
 			var fileList;
 			if (container.length == 0) {
-				container = $("<div class=\"dynamic-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
+				container = $("<div class=\"dynamic-container\"></div>");
 				dialog.append(container);
 			} else {
 				fileList = container.find(".file-list");
@@ -24,6 +24,8 @@
 			if (outParam.val()) {
 				data['dataset_url'] = outParam.val();
 			}
+			dialog.closest(".ui-dialog").find("button").attr("disabled", "disabled");
+			window.utils.showProgress();
 			$.ajax({
 				url: url,
 				data: data,
@@ -46,6 +48,7 @@
 				dialog.dialog("option", "buttons", window.existingFile.allButtons());
 				dialog.dialog("option", "minWidth", 0);
 				dialog.dialog("option", "width", "auto");
+				window.utils.hideProgress();
 			});
 		},
 

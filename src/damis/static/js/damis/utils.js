@@ -1,5 +1,24 @@
 (function() {
 	window.utils = {
+		showProgress: function() {
+			var spinner = $("#spinner");
+			if (spinner.length == 0) {
+				var spinner = $('<div id="spinner" style="display: none; background-color: rgba(0, 0, 0, 0.6); width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:9999"/>');
+				$("body").append(spinner);
+				setTimeout(function() {
+					if (spinner.length > 0) {
+						spinner.show();
+						spinner.spin("modal");
+					}
+				},
+				2000);
+			}
+		},
+		hideProgress: function() {
+			var spinner = $("#spinner");
+			spinner.spin(false);
+			spinner.remove();
+		},
 		initDeleteConfirm: function(formSelector) {
 			$(".delete-btn").click(function() {
 				window.utils.openDeleteConfirm(formSelector);
@@ -58,12 +77,12 @@
 			});
 
 			// toggle file form visibility on click of a button
-            window.utils.initToggleSectionBtn(container);
+			window.utils.initToggleSectionBtn(container);
 		},
 
-        // initializes a button (.toggle-btn) that toggles a section (.toggle-section) 
-        // visibility inside a container
-        initToggleSectionBtn: function(container) {
+		// initializes a button (.toggle-btn) that toggles a section (.toggle-section) 
+		// visibility inside a container
+		initToggleSectionBtn: function(container) {
 			// toggle file form visibility on click of a button
 			var newFileBtn = container.find(".toggle-btn");
 			newFileBtn.on("click", function(ev) {
@@ -80,7 +99,7 @@
 					newFileBtn.html(gettext("New file"));
 				}
 			})
-        }
+		}
 	}
 })();
 

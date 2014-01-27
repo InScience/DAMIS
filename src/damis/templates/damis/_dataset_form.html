@@ -5,7 +5,11 @@
     <div class="message">
         {% trans 'Dataset used in the experiment' %}: <a href="{{ file_path }}">{{ file_name }}</a>
     </div>
-    <button type="button" class="toggle-btn show btn">{% trans 'New file' %}</button>
+    {% if GET and file_path or new_file_path %}
+        <button type="button" class="toggle-btn show btn">{% trans 'New file' %}</button>
+    {% else %}
+        <button type="button" class="toggle-btn btn">{% trans 'Hide form' %}</button>
+    {% endif %}
 {% endif %}
 
 <div class="toggle-section" {% if GET and file_path or new_file_path %}style="display: none;"{% endif %}>
