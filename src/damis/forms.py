@@ -27,6 +27,8 @@ from damis.models import WorkflowTask
 from django.forms.models import inlineformset_factory, BaseInlineFormSet
 from django.forms.formsets import DELETION_FIELD_NAME
 
+from damis.utils import slugify
+
 VALIDATOR_FIELDS = {
     'dataset': {'class': forms.CharField,
         'attrs': {
@@ -95,6 +97,10 @@ class DatasetForm(CustomMessages, forms.ModelForm):
             raise forms.ValidationError(_('Corrupted zip archive file.'))
         zip_file.close()
         return uncompressed_file
+
+    def clean_title(self):
+        title = self.cleaned_data.get('title', "-")
+        return slugify(unicode(title))
 
     def clean_file(self, *args, **kwargs):
         '''Converts the uploaded file to the arff file format, if possible.
