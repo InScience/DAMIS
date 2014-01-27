@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-27 20:59+0000\n"
+"POT-Creation-Date: 2014-01-27 21:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -429,8 +429,8 @@ msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
 #: views.py:839
-msgid "Approve {0}@{1}"
-msgstr "Patvirtinti {0}@{1}"
+msgid "{0}: Approve {1}"
+msgstr "{0}: Patvirtinti {1}"
 
 #: views.py:860
 msgid "{0} password recovery"
@@ -638,22 +638,21 @@ msgid "Send password recover email"
 msgstr "Atnaujinti slaptažodį"
 
 #: templates/accounts/mail/account_activated.html:2
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Your account %(username)s at %(domain)s was activated. You can login here:"
 msgstr ""
-"Jūsų \"%(user.username)s\" naudotojas %(domain)s sistemoje buvo "
-"aktyvuotas. \n"
+"Jūsų %(username)s naudotojas %(domain)s sistemoje buvo aktyvuotas. "
 "Galite prisijungti paspaudę šią nuorodą:"
 
 #: templates/accounts/mail/approve_registration.html:2
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "New user have registered at %(domain)s and confirmed its email. You can "
 "review %(user.username)s user registration information by clicking this URL:"
 msgstr ""
-"Naujas naudotojas prisiregistravo %(domain)s sistemoje ir patvirtino \n"
-"savo el. pašto adresą. Galite peržiūrėti %(user.username)s naudotojo \n"
+"Naujas naudotojas prisiregistravo %(domain)s sistemoje ir patvirtino "
+"savo el. pašto adresą. Galite peržiūrėti %(user.username)s naudotojo "
 "registracijos informaciją paspausdami šią nuorodą:"
 
 #: templates/accounts/mail/approve_registration.html:6

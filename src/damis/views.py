@@ -836,7 +836,7 @@ def confirm_email_view(request, uidb36, token):
         user.save()
 
         domain = request.get_host()
-        subject = _('Approve {0}@{1}').format(user.username, domain)
+        subject = _('{0}: Approve {1}').format(domain, user.username)
         body = render_to_string('accounts/mail/approve_registration.html', {
             'domain': domain,
             'user': user,
