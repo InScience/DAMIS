@@ -13,6 +13,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 User = get_user_model()
+from django.utils.http import base36_to_int
+from django.contrib.auth.tokens import default_token_generator
 
 from damis.models import Component
 from damis.models import Connection
@@ -488,8 +490,30 @@ CreateExperimentFormset = inlineformset_factory(Experiment, WorkflowTask,
         can_delete=True)
 
 
-class SetPasswordForm(forms.Form):
-    pass
+class PasswordRecoveryForm(forms.Form):
+    password = forms.CharField(label=_('Password'), max_length=128,
+                        widget=forms.PasswordInput(render_value=False))
+    password_repeat = forms.CharField(label=_('Repeat Password'),
+            max_length=128, widget=forms.PasswordInput(render_value=False))
 
-class PasswordResetForm(forms.Form):
-    pass
+    def is_valid(self):
+        valid = super(PasswordRecoveryForm, self).is_valid()
+        if not valid:
+            return valid
+
+        first_password = self.cleaned_data.get('password')
+        repeat_password = self.cleaned_data.get('password_repeat')
+
+        if first_password == repeat_password:
+            return True
+        errors = self._errors.setdefault('password_repeat', ErrorList())
+        errors.append(u'Passwords do not match')
+        return False
+
+    def save(self, uidb36, token):
+        password = self.cleaned_data.get('password')
+        user = User.objects.get(pk=base36_to_int(uidb36))
+        if default_token_generator.check_token(user, token):
+            user.set_password(password)
+            user.save()
+        return user

@@ -34,7 +34,7 @@ from damis.settings import BUILDOUT_DIR
 from damis.constants import COMPONENT_TITLE__TO__FORM_URL, FILE_TYPE__TO__MIME_TYPE
 from damis.utils import slugify, strip_arff_header
 
-from damis.forms import LoginForm, RegistrationForm, EmailForm
+from damis.forms import LoginForm, RegistrationForm, EmailForm, PasswordRecoveryForm
 from damis.forms import DatasetForm
 from damis.forms import ComponentForm
 from damis.forms import ParameterForm, ParameterFormset
@@ -814,23 +814,47 @@ def confirm_email_view(request, uidb36, token):
     raise Http404
 
 def reset_password_view(request):
+    email_form = EmailForm()
     if request.method == 'POST':
         email_form = EmailForm(request.POST)
         if email_form.is_valid():
             receiver = email_form.cleaned_data.get('email')
             user = User.objects.get(email=receiver)
             # Get the domain.
-            domain = 'test.damis.lt'
+            domain = request.get_host()
             subject = _('{0} password recovery').format(domain)
             body = render_to_string('accounts/mail/reset_password.html', {
                 'domain': domain,
                 'user': user.username,
-                'recovery_url': domain,
+                'recovery_url': reverse_lazy('recover-password', kwargs={
+                        'uidb36': int_to_base36(user.pk),
+                        'token': default_token_generator.make_token(user)
+                    }),
             })
             sender = settings.DEFAULT_FROM_EMAIL
             send_mail(subject, body, sender, [receiver])
+            return HttpResponseRedirect(reverse_lazy('recovery-email-sent'))
     else:
         email_form = EmailForm()
     return render(request, 'accounts/reset_password.html', {
                 'form': email_form,
             })
+
+def recover_password_view(request, uidb36, token):
+    user = User.objects.get(pk=base36_to_int(uidb36))
+    if default_token_generator.check_token(user, token):
+        if request.method == 'POST':
+            form = PasswordRecoveryForm(request.POST)
+            if form.is_valid():
+                user = form.save(uidb36, token)
+                password = form.cleaned_data.get('password')
+                user = authenticate(username=user.username, password=password)
+                if user is not None and user.is_active:
+                    login(request, user)
+                return HttpResponseRedirect(reverse_lazy('home'))
+        else:
+            form = PasswordRecoveryForm()
+        return render(request, 'accounts/recover_password.html', {
+                'form': form,
+            })
+    raise Http404

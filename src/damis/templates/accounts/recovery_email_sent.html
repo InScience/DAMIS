@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='login' %}
+{% endblock %}
+
+{% block content %}
+    <div class="span6 offset4 top-space">
+        <div class="alert alert-success">
+            {% trans 'Password recovery email sent.' %}
+        </div>
+    </div>
+{% endblock %}

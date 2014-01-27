@@ -5,7 +5,6 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from damis.views import *
-from damis.forms import SetPasswordForm, PasswordResetForm
 
 
 urlpatterns = patterns('',
@@ -28,22 +27,18 @@ urlpatterns += i18n_patterns('',
         kwargs={'template': 'accounts/registration_done.html'}),
     url(r'^profile/$', profile_settings_view, name='profile-settings'),
     url(r'^reset-password/$', reset_password_view, name='reset-password'),
-
+    url(r'^recover-password/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+            recover_password_view, name='recover-password'),
     # User registers and gets welcome email with email confirm URL.
     url(r'^confirm-email/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         confirm_email_view, name='confirm-email'),
     url(r'^email-confirmed/$', static_page_view, name='email-confirmed',
         kwargs={'template': 'accounts/email_confirmed.html'}),
 
-    url(r'^set-password/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        'django.contrib.auth.views.password_reset_confirm',
-        kwargs={'template_name': 'accounts/set_password.html',
-            'set_password_form': SetPasswordForm}, name='set_password'),
     url(r'^change-password/$', 'django.contrib.auth.views.password_change', name='password_change'),
-    url(r'^reset-password/$', 'django.contrib.auth.views.password_reset', kwargs={
-        'password_reset_form': PasswordResetForm}, name='password_reset',),
-    url(r'^reset/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        'django.contrib.auth.views.password_reset_confirm', name='password-reset-confirm'),
+    url(r'^recovery-email-sent/$', static_page_view, name='recovery-email-sent',
+        kwargs={'template': 'accounts/recovery_email_sent.html'}),
+
 
     url(r'^users/$', UserList.as_view(), name='user-list'),
     url(r'^user/(?P<pk>\d*)/edit/$', UserUpdate.as_view(), name='user-edit'),
