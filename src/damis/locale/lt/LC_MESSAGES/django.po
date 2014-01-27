@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-27 21:15+0000\n"
+"POT-Creation-Date: 2014-01-27 21:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:55 models.py:27 templates/damis/_dataset_form.html:24
+#: forms.py:55 models.py:27 templates/damis/_dataset_form.html:28
 #: templates/damis/dataset_detail.html:11
 #: templates/damis/dataset_update.html:23
 msgid "File"
@@ -408,23 +408,29 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:543 views.py:546
+#: views.py:519
+msgid ""
+"Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file with "
+"the name \"{2}\" already existed, so the uploaded file was renamed."
+msgstr "Eksperimentui naudojamas failas: <a href=\"{0}\">{1}</a>. <br /> Failas pavadinimu \"{2}\" egzistuoja, todėl ką tik įkeltas failas buvo pervadintas."
+
+#: views.py:547 views.py:550
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:623 views.py:660 views.py:675 views.py:742 views.py:756
+#: views.py:627 views.py:664 views.py:679 views.py:746 views.py:760
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:713
+#: views.py:717
 msgid "image"
 msgstr "pav"
 
-#: views.py:779
+#: views.py:783
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:828
+#: views.py:832
 msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
@@ -432,7 +438,7 @@ msgstr "Naudotojas buvo aktyvuotas"
 msgid "{0}: Approve {1}"
 msgstr "{0}: Patvirtinti {1}"
 
-#: views.py:860
+#: views.py:864
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -684,29 +690,30 @@ msgstr ""
 "Galite nustatyti %(user)s naudotojo %(domain)s sistemoje slaptažodį "
 "paspausdami šią nuorodą:"
 
-#: templates/damis/_dataset_form.html:6 templates/damis/_existing_file.html:7
+#: templates/damis/_dataset_form.html:9 templates/damis/_existing_file.html:7
 msgid "Dataset used in the experiment"
 msgstr "Eksperimentui naudojamas failas"
 
-#: templates/damis/_dataset_form.html:9 templates/damis/_existing_file.html:10
+#: templates/damis/_dataset_form.html:13
+#: templates/damis/_existing_file.html:10
 msgid "New file"
 msgstr "Naujas failas"
 
-#: templates/damis/_dataset_form.html:11
+#: templates/damis/_dataset_form.html:15
 msgid "Hide form"
 msgstr "Paslėpti formą"
 
-#: templates/damis/_dataset_form.html:25
+#: templates/damis/_dataset_form.html:29
 #: templates/damis/dataset_update.html:24
 msgid "Choose"
 msgstr "Pasirinkti"
 
-#: templates/damis/_dataset_form.html:26
+#: templates/damis/_dataset_form.html:30
 #: templates/damis/dataset_update.html:25
 msgid "No file selected"
 msgstr "Joks failas nėra pasirinktas"
 
-#: templates/damis/_dataset_form.html:45
+#: templates/damis/_dataset_form.html:49
 msgid "Fields with an asterix are required"
 msgstr "Žvaigždute pažymėti laukai yra privalomi"
 

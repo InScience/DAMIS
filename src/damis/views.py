@@ -495,11 +495,19 @@ def upload_file_form_view(request):
     context = csrf(request)
     if request.method == 'POST':
         dataset_url = request.POST.get("dataset_url")
+        orig_title = request.POST.get("title")
         form = DatasetForm(request.POST, request.FILES)
         if form.is_valid():
             dataset = form.save()
             context['file_path'] = dataset.file.url
+            context['file_name'] = splitext(split(context['file_path'])[1])[0]
             context['new_file_path'] = dataset.file.url
+
+            # inform the user if the file name was changed by the system
+            if context['file_name']!= orig_title:
+                dataset.title = context['file_name']
+                dataset.save()
+                context["message"] = _("Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file with the name \"{2}\" already existed, so the uploaded file was renamed.").format(context['file_path'], context['file_name'], orig_title)
             # clear the form
             form = DatasetForm()
         else:
@@ -509,10 +517,10 @@ def upload_file_form_view(request):
         dataset_url = request.GET.get("dataset_url")
         if dataset_url:
             context['file_path'] = dataset_url
+            context['file_name'] = splitext(split(context['file_path'])[1])[0]
         form = DatasetForm()
     context['form'] = form
-    if 'file_path' in context:
-        context['file_name'] = split(context['file_path'])[1]
+
     return render_to_response('damis/_dataset_form.html', context)
 
 
@@ -533,7 +541,7 @@ class ExistingFileView(LoginRequiredMixin, ListView):
         context['list_filter'] = bool(self.request.GET.get("page") or self.request.GET.get("order_by"))
         if self.request.GET.has_key('dataset_url'):
             context['file_path'] = self.request.GET.get('dataset_url')
-            context["file_name"] = split(context["file_path"])[1]
+            context["file_name"] = splitext(split(context["file_path"])[1])[0]
             self.request.GET = self.request.GET.copy()
             self.request.GET.pop('dataset_url')
         return context

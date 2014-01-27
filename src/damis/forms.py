@@ -89,10 +89,6 @@ class DatasetForm(forms.ModelForm):
         zip_file.close()
         return uncompressed_file
 
-    def clean_title(self):
-        title = self.cleaned_data.get('title', "-")
-        return slugify(unicode(title))
-
     def clean_file(self, *args, **kwargs):
         '''Converts the uploaded file to the arff file format, if possible.
         csv, txt and tab files are parsed as csv files with comma, comma and tab delimiter respectively.
@@ -172,7 +168,7 @@ class DatasetForm(forms.ModelForm):
         # in order to return to django
         buff= StringIO.StringIO(f.read())
         f.close()
-        arff_file = InMemoryUploadedFile(buff, 'file', title + ".arff", None, buff.tell(), None)
+        arff_file = InMemoryUploadedFile(buff, 'file', slugify(unicode(title)) + ".arff", None, buff.tell(), None)
 
         return arff_file
 
