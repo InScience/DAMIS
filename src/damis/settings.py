@@ -120,6 +120,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'damis.urls'
 
 # AUTHENTICATION_BACKENDS = ('damis.auth.UosisMIFVUAuthBackend',)
+ALLOWED_HOSTS = ['.damis.lt']
 
 INTERNAL_IPS = (
     '127.0.0.1',
