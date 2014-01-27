@@ -39,6 +39,7 @@ urlpatterns += i18n_patterns('',
     url(r'^recovery-email-sent/$', static_page_view, name='recovery-email-sent',
         kwargs={'template': 'accounts/recovery_email_sent.html'}),
 
+    url(r'^user/(?P<pk>\d*)/approve/$', approve_user_view, name='user-approve'),
 
     url(r'^users/$', UserList.as_view(), name='user-list'),
     url(r'^user/(?P<pk>\d*)/edit/$', UserUpdate.as_view(), name='user-edit'),

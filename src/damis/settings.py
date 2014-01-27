@@ -13,6 +13,10 @@ ADMINS = (
     ('Albertas', 'albertasgim@gmail.com'),
 )
 
+APPROVE_REGISTRATION_EMAILS = (
+    'damisregistracija@inscience.lt',
+)
+
 MANAGERS = ADMINS
 
 DATABASES = {

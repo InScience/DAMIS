@@ -1,9 +1,12 @@
 import re
 
-from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.core import validators
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.db import models
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import get_language
 from django.utils import timezone
@@ -71,6 +74,20 @@ class DamisUser(AbstractBaseUser, PermissionsMixin):
         "Returns the short name for the user."
         return self.first_name
 
+    def activate(self, domain='demo.damis.lt'):
+        if not self.is_active:
+            self.is_active = True
+            self.save()
+            receiver = self.email
+            subject = _('{0} account activated').format(domain)
+            body = render_to_string('accounts/mail/account_activated.html', {
+                'domain': domain,
+                'user': self,
+            })
+            sender = settings.DEFAULT_FROM_EMAIL
+            send_mail(subject, body, sender, [receiver])
+            return True
+        return False
 
 
 def get_algorithm_file_upload_path(instance, filename):

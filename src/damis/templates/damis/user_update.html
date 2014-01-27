@@ -7,7 +7,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="offset3">
+    {% if message %}
+    <div class="offset3 span4">
+        <div class="alert alert-success">{{ message }}</div>
+    </div>
+    {% endif %}
+    <div class="offset3 span6">
         <form action="." method="post">{% csrf_token %}
             {{ form.as_p }}
             <button class="btn" type='submit'>{% trans "Save" %}</button>

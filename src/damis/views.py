@@ -176,16 +176,25 @@ class ComponentList(ListDeleteMixin, LoginRequiredMixin, ListView):
         qs = super(ComponentList, self).get_queryset()
         return qs.order_by(order_by)
 
+
 class UserList(ListDeleteMixin, SuperUserRequiredMixin, ListView):
     model = User
     template_name = 'damis/user_list.html'
     paginate_by = 25
     success_url = reverse_lazy('user-list')
 
+
 class UserUpdate(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = 'damis/user_update.html'
+
+    def form_valid(self, form):
+        user = form.instance
+        activate = form.cleaned_data.get('is_active')
+        if user and not user.is_active and activate:
+            user.activate(domain=self.request.get_host())
+        return super(UserUpdate, self).form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('user-list')
@@ -805,11 +814,38 @@ def logout_view(request):
 def profile_settings_view(request):
     pass
 
+
+@login_required(login_url=reverse_lazy('login'))
+def approve_user_view(request, pk):
+    user = request.user
+    if not user.is_superuser:
+        return HttpResponseRedirect(reverse_lazy('login'))
+    user = User.objects.get(pk=pk)
+    user.activate(domain=request.get_host())
+    form = UserUpdateForm(instance=user)
+    return render(request, 'damis/user_update.html', {
+                'form': form,
+                'message': _('User was activated')
+            })
+
+
 def confirm_email_view(request, uidb36, token):
     user = User.objects.get(pk=base36_to_int(uidb36))
     if not user.email_approved and default_token_generator.check_token(user, token):
         user.email_approved = True
         user.save()
+
+        domain = request.get_host()
+        subject = _('Approve {0}@{1}').format(user.username, domain)
+        body = render_to_string('accounts/mail/approve_registration.html', {
+            'domain': domain,
+            'user': user,
+            'approve_url': reverse_lazy('approve-user', kwargs={'pk': user.pk}),
+        })
+        sender = settings.DEFAULT_FROM_EMAIL
+        receivers = settings.APPROVE_REGISTRATION_EMAILS
+        send_mail(subject, body, sender, receivers)
+
         return HttpResponseRedirect(reverse_lazy('email-confirmed'))
     raise Http404
 

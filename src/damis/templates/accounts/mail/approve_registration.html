@@ -1,0 +1,10 @@
+{% load i18n %}
+{% blocktrans %}New user have registered at {{ domain }} and confirmed its
+email. You can review {{ user.username }} user registration information by clicking this URL:
+
+    http://{{ domain }}{% url 'user-edit' user.pk %}
+
+You can activate {{ user.username }} user by clicking this URL:
+
+    http://{{ domain }}{{ approve_url }}
+{% endblocktrans %}
