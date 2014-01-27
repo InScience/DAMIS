@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-27 01:42+0000\n"
+"POT-Creation-Date: 2014-01-27 09:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -617,9 +617,17 @@ msgstr ""
 "Tolimesnės registracijos instrukcijos buvo išsiųstos į Jūsų elektroninį "
 "paštą."
 
-#: templates/accounts/reset_password.html:13
+#: templates/accounts/reset_password.html:12
+msgid ""
+"To reset your password enter your email. Letter with password recovery URL "
+"will be sent."
+msgstr ""
+"Norėdami atnaujinti slaptažodį įveskite savo el. pašto adresą. Laiškas su "
+"slaptažodžio nustatymo nuoroda bus išsiųstas."
+
+#: templates/accounts/reset_password.html:17
 msgid "Send password recover email"
-msgstr "Siųsti slaptažodžio atstatymo el. laišką"
+msgstr "Atnaujinti slaptažodį"
 
 #: templates/accounts/mail/confirm_email_letter.html:2
 #, python-format
