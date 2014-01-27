@@ -190,7 +190,7 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'damis/user_update.html'
 
     def form_valid(self, form):
-        user = form.instance
+        user = User.objects.get(pk=form.instance.pk)
         activate = form.cleaned_data.get('is_active')
         if user and not user.is_active and activate:
             user.activate(domain=self.request.get_host())
@@ -856,7 +856,6 @@ def reset_password_view(request):
         if email_form.is_valid():
             receiver = email_form.cleaned_data.get('email')
             user = User.objects.get(email=receiver)
-            # Get the domain.
             domain = request.get_host()
             subject = _('{0} password recovery').format(domain)
             body = render_to_string('accounts/mail/reset_password.html', {

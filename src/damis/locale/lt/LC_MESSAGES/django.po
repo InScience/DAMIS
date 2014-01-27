@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-27 19:53+0000\n"
+"POT-Creation-Date: 2014-01-27 20:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -432,7 +432,7 @@ msgstr "Naudotojas buvo aktyvuotas"
 msgid "Approve {0}@{1}"
 msgstr "Patvirtinti {0}@{1}"
 
-#: views.py:861
+#: views.py:860
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -638,26 +638,25 @@ msgid "Send password recover email"
 msgstr "Atnaujinti slaptažodį"
 
 #: templates/accounts/mail/account_activated.html:2
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"Your \"%(user.username)s\" account at %(domain)s was activated. You\n"
-"can login here:"
+"Your account %(username)s at %(domain)s was activated. You can login here:"
 msgstr ""
-"Jūsų \"%(user.username)s\" naudotojas %(domain)s sistemoje buvo aktyvuotas. \n"
+"Jūsų \"%(user.username)s\" naudotojas %(domain)s sistemoje buvo "
+"aktyvuotas. \n"
 "Galite prisijungti paspaudę šią nuorodą:"
 
 #: templates/accounts/mail/approve_registration.html:2
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"New user have registered at %(domain)s and confirmed its\n"
-"email. You can review %(user.username)s user registration information by\n"
-"clicking this URL:"
+"New user have registered at %(domain)s and confirmed its email. You can "
+"review %(user.username)s user registration information by clicking this URL:"
 msgstr ""
 "Naujas naudotojas prisiregistravo %(domain)s sistemoje ir patvirtino \n"
 "savo el. pašto adresą. Galite peržiūrėti %(user.username)s naudotojo \n"
 "registracijos informaciją paspausdami šią nuorodą:"
 
-#: templates/accounts/mail/approve_registration.html:8
+#: templates/accounts/mail/approve_registration.html:6
 #, python-format
 msgid "You can activate %(user.username)s user by clicking this URL:"
 msgstr "Galite aktyvuoti %(user.username)s naudotoją paspausdami šią nuorodą:"
@@ -665,33 +664,26 @@ msgstr "Galite aktyvuoti %(user.username)s naudotoją paspausdami šią nuorodą
 #: templates/accounts/mail/confirm_email_letter.html:2
 #, python-format
 msgid ""
-"In order to register new account at %(domain)s you have to confirm\n"
-"your email by clicking this link:\n"
-"\n"
-"    http://%(domain)s%(confirm_email_url)s\n"
-"\n"
-"After email confirmation, administrator will review your request and will\n"
-"confirm or reject new account creation.\n"
+"In order to register new account at %(domain)s you have to confirm your "
+"email by clicking this link:"
 msgstr ""
 "Norėdami sukurti naują paskyrą %(domain)s svetainėje turite patvirtinti savo "
-"el. pašto adresą paspausdami šią nuorodą:\n"
-"\n"
-"    http://%(domain)s%(confirm_email_url)s\n"
-"\n"
+"el. pašto adresą paspausdami šią nuorodą:"
+
+#: templates/accounts/mail/confirm_email_letter.html:6
+msgid ""
+"After email confirmation, administrator will review your request and will "
+"confirm or reject new account creation."
+msgstr ""
 "Kai patvirtinsite el. pašto adresą, administratorius peržiūrės paskyros "
-"duomenis ir patvirtins arba atmes naujos paskyros sukūrimą.\n"
+"duomenis ir patvirtins arba atmes naujos paskyros sukūrimą."
 
 #: templates/accounts/mail/reset_password.html:2
 #, python-format
-msgid ""
-"You can reset %(user)s at %(domain)s password by pressing this link:\n"
-"\n"
-"    http://%(domain)s%(recovery_url)s\n"
+msgid "You can reset %(user)s at %(domain)s password by pressing this link:"
 msgstr ""
 "Galite nustatyti %(user)s naudotojo %(domain)s sistemoje slaptažodį "
-"paspausdami šią nuorodą:\n"
-"\n"
-"    http://%(domain)s%(recovery_url)s\n"
+"paspausdami šią nuorodą:"
 
 #: templates/damis/_dataset_form.html:6 templates/damis/_existing_file.html:7
 msgid "Dataset used in the experiment"
