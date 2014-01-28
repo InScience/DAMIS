@@ -39,12 +39,12 @@
             {% for dataset in object_list %}
               <tr>
                   <td><input type='checkbox' value="{{ dataset.pk }}" name="pk"/></td>
-                  <td>{{ dataset.title }}</td>
+                  <td><a class="update-btn" href="{% url 'dataset-update' dataset.pk %}">{{ dataset.title }}</a></td>
                   <td>{{ dataset.file.size|sizify }}</td>
                   <td>{{ dataset.created|date:"Y-m-d" }} </td>
                   <td>{{ dataset.description }}</td>
                   <td class="c">
-                      <a class="btn btn-small" title="{% trans 'Edit' %}" href="{% url 'dataset-update' dataset.pk %}">
+                      <a class="btn btn-small update-btn" title="{% trans 'Edit' %}" href="{% url 'dataset-update' dataset.pk %}">
                           <i class="icon-pencil"></i>
                       </a>
                   </td>
@@ -83,12 +83,15 @@
     </div>
   </div>
   {% include 'damis/_delete_dialog.html' %}
+  <form id="file-upload-form" method="POST" enctype="multipart/form-data" target="file-upload-iframe" style="display:none;" autocomplete="off"></form>
+  <iframe id="file-upload-iframe" name="file-upload-iframe" style="display: none;"></iframe>
 </div>
 {% endblock %}
 
 {% block javascript %}
 {{ block.super }}
     <script src="/static/js/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="/static/js/damis/datasetUpdate.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block javascript_footer %}
@@ -96,6 +99,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             window.utils.initDeleteConfirm("#dataset-action-form");
+            window.datasetUpdate.init();
         });
     </script>
 {% endblock %}

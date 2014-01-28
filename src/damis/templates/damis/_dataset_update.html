@@ -1,0 +1,42 @@
+{% load i18n %}
+
+{% if message %}
+    <div class="message">
+        {{ message|safe }}
+    </div>
+{% endif %}
+<form autocomplete="off" class="dataset-form" method='POST' action='{% url 'dataset-update' form.instance.pk %}' enctype="multipart/form-data">
+    <div class="dynamic-container">
+        {% csrf_token %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-error">{{ error }}</div>
+        {% endfor %}
+        
+        {% for field in form.visible_fields %}
+            {% if field.name == 'file' %}
+                <div>
+                    {% trans 'File' %}{% if field.field.required %}{% endif %}<span class="req">*</span>:<br/>
+                    <button class="btn btn-primary choose-file" type="button">{% trans 'Choose' %}</button>
+                    <span>{{ file_name }}.arff</span>
+                    <span style="display: none;"> {{ field }}</span>
+                    {{ field.errors }}
+                </div>
+            {% else %}
+            <div>{{ field.label }}{% if field.field.required %}<span class="req">*</span>{% endif %}:<br/> {{ field }}
+                {{ field.errors }}
+            </div>
+            {% endif %}
+        {% endfor %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        
+        {% if file_path %}
+            <input id="id_file_path" type="hidden" value="{{ file_path }}" name="file_path">
+        {% endif %}
+        
+        <div>
+            <span class="req">*</span>&nbsp;<span class="helptext">{% trans 'Fields with an asterix are required' %}</span>
+        </div>
+    </div>
+</form>

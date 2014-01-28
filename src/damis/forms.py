@@ -97,6 +97,11 @@ class DatasetForm(forms.ModelForm):
         the file is extracted and handled as other uncompressed types.
         '''
         input_file = self.cleaned_data.get('file')
+        if not input_file:
+            if self.instance and self.instance.file:
+                return input_file
+            else:
+                raise forms.ValidationError(_("This field is required"))
         title = self.cleaned_data.get('title', "-")
 
         # determine file name and extension

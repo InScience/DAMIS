@@ -112,11 +112,6 @@ class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
             order_by = order_by + '_lower'
         return qs.order_by(order_by)
 
-class DatasetUpdate(LoginRequiredMixin, UpdateView):
-    template_name = 'damis/dataset_update.html'
-    model = Dataset
-    form_class = DatasetForm
-
 class DatasetDetail(LoginRequiredMixin, DetailView):
     model = Dataset
 
@@ -488,6 +483,29 @@ def algorithm_parameter_form(request):
         'formset': parameter_formset,
         })
 
+def dataset_update_view(request, pk):
+    context = csrf(request)
+    if request.method == 'POST':
+        orig_title = request.POST.get("title")
+        form = DatasetForm(request.POST, request.FILES)
+        form.instance = Dataset.objects.get(pk=pk)
+        context['file_name'] = splitext(split(form.instance.file.url)[1])[0]
+        if form.is_valid():
+            dataset = form.save()
+            context['file_name'] = splitext(split(dataset.file.url)[1])[0]
+
+            # inform the user if the file name was changed by the system
+            if context['file_name']!= orig_title:
+                dataset.title = context['file_name']
+                dataset.save()
+                form = DatasetForm(instance=Dataset.objects.get(pk=pk))
+                context["message"] = _("A file with the name \"{0}\" already existed, so the uploaded file was renamed.").format(orig_title)
+    else:
+        form = DatasetForm(instance=Dataset.objects.get(pk=pk))
+        context['file_name'] = splitext(split(form.instance.file.url)[1])[0]
+    context['form'] = form
+
+    return render_to_response('damis/_dataset_update.html', context)
 
 def upload_file_form_view(request):
     '''Handles Ajax request to update the uploaded file component.
