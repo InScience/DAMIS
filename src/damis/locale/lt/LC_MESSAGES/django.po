@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-28 19:51+0000\n"
+"POT-Creation-Date: 2014-01-28 21:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,158 +16,163 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:55 models.py:27 templates/damis/_dataset_form.html:28
-#: templates/damis/_dataset_update.html:18
+#: forms.py:57 models.py:27 templates/damis/_dataset_form.html:28
+#: templates/damis/_dataset_update.html:28
 #: templates/damis/dataset_detail.html:11
 #: templates/damis/dataset_update.html:23
 msgid "File"
 msgstr "Failas"
 
-#: forms.py:76 forms.py:88
+#: forms.py:78 forms.py:90
 msgid "Corrupted zip archive file."
 msgstr "Zip archyvas pažeistas."
 
-#: forms.py:86
+#: forms.py:88
 msgid "The zip archive should contain exactly one file, {0} found."
 msgstr "Zip archyve turėtų būti vienas failas, tačiau rasta {0}."
 
-#: forms.py:104
+#: forms.py:106
 msgid "This field is required"
 msgstr "Šis laukas yra privalomas"
 
-#: forms.py:143
+#: forms.py:148
 msgid ""
 "File type is not supported. Please select a tab, csv, txt, arff or zip file."
 msgstr ""
 "Šis failo tipas nepalaikomas. Pasirinkite tab, csv, txt, arff ar zip failą."
 
-#: forms.py:186 forms.py:202 templates/damis/user_list.html:22
+#: forms.py:191 forms.py:207 templates/damis/user_list.html:22
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:187 forms.py:203 forms.py:492
+#: forms.py:192 forms.py:208 forms.py:466
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:197
+#: forms.py:202
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:205 forms.py:494
+#: forms.py:210 forms.py:468
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:207
+#: forms.py:212
 msgid "First name"
 msgstr "Vardas"
 
-#: forms.py:208
+#: forms.py:213
 msgid "Last name"
 msgstr "Pavardė"
 
-#: forms.py:209 forms.py:251 templates/damis/user_list.html:23
+#: forms.py:214 forms.py:256 templates/damis/user_list.html:23
 msgid "E-mail"
 msgstr "El. pašto adresas"
 
-#: forms.py:210 models.py:59
+#: forms.py:215 models.py:60
 msgid "Organization"
 msgstr "Organizacija"
 
-#: forms.py:217
+#: forms.py:222
 msgid "This username is already taken."
 msgstr "Šis naudotojo vardas jau užimtas."
 
-#: forms.py:223
+#: forms.py:228
 msgid "User with this email already exist."
 msgstr "Naudotojas su šiuo el. pašto adresu jau egzistuoja."
 
-#: forms.py:256
+#: forms.py:261
 msgid "Please enter correct email address"
 msgstr "Įveskite teisingą savo el. pašto adresą"
 
-#: forms.py:261 models.py:26 models.py:141
+#: forms.py:266 models.py:26 models.py:142
 #: templates/damis/_existing_file.html:22
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:24
 #: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:262
+#: forms.py:267
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:263 models.py:28 templates/damis/_existing_file.html:31
+#: forms.py:268 models.py:28 templates/damis/_existing_file.html:31
 #: templates/damis/algorithm_list.html:27
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:33
 msgid "Description"
 msgstr "Aprašymas"
 
-#: forms.py:345
+#: forms.py:350
 msgid "Input connection is not connected"
 msgstr "Įeities jungtis nėra prijungta"
 
-#: forms.py:348
+#: forms.py:353
 msgid "This value must be specified"
 msgstr "Ši reikšmė turi būti nurodyta"
 
-#: models.py:29 models.py:142 models.py:238
+#: models.py:29 models.py:143 models.py:239
 msgid "User"
 msgstr "Naudotojas"
 
-#: models.py:30 models.py:146 models.py:245
+#: models.py:30 models.py:147 models.py:246
 #: templates/damis/dataset_detail.html:14
 msgid "Updated"
 msgstr "Atnaujinta"
 
-#: models.py:31 models.py:147 models.py:246
+#: models.py:31 models.py:148 models.py:247
+#: templates/damis/_dataset_update.html:16
 #: templates/damis/_existing_file.html:27
 #: templates/damis/dataset_detail.html:15 templates/damis/dataset_list.html:29
 msgid "Created"
 msgstr "Sukurta"
 
-#: models.py:40
+#: models.py:32
+msgid "Is from MIDAS"
+msgstr "Iš MIDAS"
+
+#: models.py:41
 msgid "username"
 msgstr "Naudotojo vardas"
 
-#: models.py:41
+#: models.py:42
 msgid ""
 "Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters"
 msgstr ""
 "Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters"
 
-#: models.py:44
+#: models.py:45
 msgid "Enter a valid username."
 msgstr "Įveskite tinkamą naudotojo vardą."
 
-#: models.py:46
+#: models.py:47
 msgid "first name"
 msgstr "Vardas"
 
-#: models.py:47
+#: models.py:48
 msgid "last name"
 msgstr "Pavardė"
 
-#: models.py:49
+#: models.py:50
 msgid "Email address"
 msgstr "El. pašto adresas"
 
-#: models.py:50
+#: models.py:51
 msgid "Was email approved"
 msgstr "Ar el. paštas buvo patvirtintas"
 
-#: models.py:52
+#: models.py:53
 msgid "staff status"
 msgstr "darbuotojo statusas"
 
-#: models.py:53
+#: models.py:54
 msgid "Designates whether the user can log into this admin site."
 msgstr "Nurodo ar naudotojas turi administratoriaus teises."
 
-#: models.py:55
+#: models.py:56
 msgid "active"
 msgstr "Aktyvus"
 
-#: models.py:56
+#: models.py:57
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -175,43 +180,43 @@ msgstr ""
 "Nurodo ar naudotojas yra aktyvus. Naudotojas turi būti deaktyvuojamasvietoje "
 "jo paskyros ištrynimo."
 
-#: models.py:58
+#: models.py:59
 msgid "date joined"
 msgstr "paskyros sukūrimo data"
 
-#: models.py:82
+#: models.py:83
 msgid "{0} account activated"
 msgstr "{0} paskyra aktyvuota"
 
-#: models.py:100
+#: models.py:101
 msgid "Title EN"
 msgstr "Angliškas pavadinimas"
 
-#: models.py:101
+#: models.py:102
 msgid "Title LT"
 msgstr "Lietuviškas pavadinimas"
 
-#: models.py:102
+#: models.py:103
 msgid "Cluster home page"
 msgstr "Skaičiavimo telkinio namų puslapis"
 
-#: models.py:103
+#: models.py:104
 msgid "Workload page"
 msgstr "Apkrovimo puslapis"
 
-#: models.py:104 models.py:152 models.py:206
+#: models.py:105 models.py:153 models.py:207
 msgid "Description EN"
 msgstr "Aprašymas EN"
 
-#: models.py:105 models.py:153 models.py:207
+#: models.py:106 models.py:154 models.py:208
 msgid "Description LT"
 msgstr "Aprašymas LT"
 
-#: models.py:106 models.py:148
+#: models.py:107 models.py:149
 msgid "Icon"
 msgstr "Paveiksliukas"
 
-#: models.py:126
+#: models.py:127
 msgid ""
 "<p>{0}</p><p>Cluster home:</p><p><a href=\"{1}\" target=\"blank\">{1}</a></"
 "p><p>Cluster workload:</p><p><a href=\"{2}\" target=\"blank\">{2}</a></p>"
@@ -220,184 +225,184 @@ msgstr ""
 "a></p><p>Klasterio apkrovimas:</p><p><a href=\"{2}\" target=\"blank\">{2}</"
 "a></p>"
 
-#: models.py:134
+#: models.py:135
 msgid "Upload data"
 msgstr "Duomenų įkėlimas"
 
-#: models.py:135
+#: models.py:136
 msgid "Preprocessing"
 msgstr "Pirminis apdorojimas"
 
-#: models.py:136
+#: models.py:137
 msgid "Statistical primitives"
 msgstr "Statistiniai primityvai"
 
-#: models.py:137
+#: models.py:138
 msgid "Dimension reduction"
 msgstr "Dimensijos mažinimas"
 
-#: models.py:138
+#: models.py:139
 msgid "Classification, grouping"
 msgstr "Klasifikavimas, grupavimas"
 
-#: models.py:139 templates/damis/experiment_list.html:39
+#: models.py:140 templates/damis/experiment_list.html:39
 #: templates/damis/experiment_list.html:41
 msgid "View results"
 msgstr "Rezultatų peržiūra"
 
-#: models.py:143
+#: models.py:144
 msgid "Category"
 msgstr "Kategorija"
 
-#: models.py:144
+#: models.py:145
 msgid "WSDL link"
 msgstr "WSDL nuoroda"
 
-#: models.py:145
+#: models.py:146
 msgid "WSDL function name"
 msgstr "WSDL funkcijos pavadinimas"
 
-#: models.py:149
+#: models.py:150
 msgid "Cluster"
 msgstr "Klusteris"
 
-#: models.py:150 models.py:204
+#: models.py:151 models.py:205
 msgid "Label EN"
 msgstr "Antraštė EN"
 
-#: models.py:151 models.py:205
+#: models.py:152 models.py:206
 msgid "Label LT"
 msgstr "Antraštė LT"
 
-#: models.py:184
+#: models.py:185
 msgid "Dataset"
 msgstr "Duomenys"
 
-#: models.py:185
+#: models.py:186
 msgid "Integer"
 msgstr "Sveikasis"
 
-#: models.py:186
+#: models.py:187
 msgid "Float"
 msgstr "Slankaus kablelio"
 
-#: models.py:187
+#: models.py:188
 msgid "Double"
 msgstr "Dvigubo tikslumo slankaus kablelio"
 
-#: models.py:188
+#: models.py:189
 msgid "String"
 msgstr "Simbolių eilutė"
 
-#: models.py:189
+#: models.py:190
 msgid "Text"
 msgstr "Tekstas"
 
-#: models.py:190
+#: models.py:191
 msgid "Boolean"
 msgstr "Loginė reikšmė"
 
-#: models.py:191
+#: models.py:192
 msgid "Date"
 msgstr "Data"
 
-#: models.py:192
+#: models.py:193
 msgid "Date and time"
 msgstr "Data ir laikas"
 
-#: models.py:193
+#: models.py:194
 msgid "Time"
 msgstr "Laikas"
 
-#: models.py:197 models.py:270
+#: models.py:198 models.py:271
 msgid "Component"
 msgstr "Komponentė"
 
-#: models.py:198
+#: models.py:199
 msgid "Option"
 msgstr "Parinktis"
 
-#: models.py:199
+#: models.py:200
 msgid "Type"
 msgstr "Tipas"
 
-#: models.py:200
+#: models.py:201
 msgid "Required"
 msgstr "Būtinas"
 
-#: models.py:201
+#: models.py:202
 msgid "Default"
 msgstr "Standartinė reikšmė"
 
-#: models.py:202
+#: models.py:203
 msgid "Connection type"
 msgstr "Jungties tipas"
 
-#: models.py:228 models.py:263
+#: models.py:229 models.py:264
 msgid "Saved"
 msgstr "Išsaugota"
 
-#: models.py:229 models.py:264
+#: models.py:230 models.py:265
 msgid "Running"
 msgstr "Vykdoma"
 
-#: models.py:230 models.py:265
+#: models.py:231 models.py:266
 msgid "Error"
 msgstr "Klaida"
 
-#: models.py:231 models.py:266
+#: models.py:232 models.py:267
 msgid "Finished"
 msgstr "Įvykdyta"
 
-#: models.py:233
+#: models.py:234
 msgid "Experiment title"
 msgstr "Eksperimento pavadinimas"
 
-#: models.py:234
+#: models.py:235
 msgid "Start"
 msgstr "Pradžia"
 
-#: models.py:235
+#: models.py:236
 msgid "Finish"
 msgstr "Pabaiga"
 
-#: models.py:236 models.py:271 templates/damis/experiment_list.html:23
+#: models.py:237 models.py:272 templates/damis/experiment_list.html:23
 msgid "Status"
 msgstr "Statusas"
 
-#: models.py:239
+#: models.py:240
 msgid "Workflow state"
 msgstr "Scenarijaus būsena"
 
-#: models.py:241
+#: models.py:242
 msgid "Maximum calculation time"
 msgstr "Maksimali skaičiavimo trukmė"
 
-#: models.py:243
+#: models.py:244
 msgid "Processor number"
 msgstr "Procesorių skaičius"
 
-#: models.py:269
+#: models.py:270
 msgid "Experiment"
 msgstr "Eksperimentas"
 
-#: models.py:273
+#: models.py:274
 msgid "Error message"
 msgstr "Klaidos pranešimas"
 
-#: models.py:282 templates/damis/_technical_details.html:6
+#: models.py:283 templates/damis/_technical_details.html:6
 msgid "Parameter"
 msgstr "Parametras"
 
-#: models.py:285
+#: models.py:286
 msgid "Workflow Task"
 msgstr "Scenarijaus užduotis"
 
-#: models.py:297
+#: models.py:298
 msgid "Source"
 msgstr "Šaltinis"
 
-#: models.py:299
+#: models.py:300
 msgid "Target"
 msgstr "Tikslas"
 
@@ -413,14 +418,7 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:499
-msgid ""
-"A file with the name \"{0}\" already existed, so the uploaded file was "
-"renamed."
-msgstr ""
-"Failas pavadinimu \"{0}\" egzistuoja, todėl ką tik įkeltas failas buvo pervadintas."
-
-#: views.py:528
+#: views.py:463 views.py:516
 msgid ""
 "Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file with "
 "the name \"{2}\" already existed, so the uploaded file was renamed."
@@ -428,31 +426,39 @@ msgstr ""
 "Eksperimentui naudojamas failas: <a href=\"{0}\">{1}</a>. <br /> Failas "
 "pavadinimu \"{2}\" egzistuoja, todėl ką tik įkeltas failas buvo pervadintas."
 
-#: views.py:569 views.py:572
+#: views.py:487
+msgid ""
+"A file with the name \"{0}\" already existed, so the uploaded file was "
+"renamed."
+msgstr ""
+"Failas pavadinimu \"{0}\" egzistuoja, todėl ką tik įkeltas failas buvo "
+"pervadintas."
+
+#: views.py:560 views.py:563
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:649 views.py:686 views.py:701 views.py:768 views.py:782
+#: views.py:640 views.py:677 views.py:692 views.py:759 views.py:773
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:739
+#: views.py:730
 msgid "image"
 msgstr "pav"
 
-#: views.py:805
+#: views.py:796
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:856
+#: views.py:847
 msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
-#: views.py:867
+#: views.py:858
 msgid "{0}: Approve {1}"
 msgstr "{0}: Patvirtinti {1}"
 
-#: views.py:888
+#: views.py:879
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -718,7 +724,7 @@ msgid "Hide form"
 msgstr "Paslėpti formą"
 
 #: templates/damis/_dataset_form.html:29
-#: templates/damis/_dataset_update.html:19
+#: templates/damis/_dataset_update.html:29
 #: templates/damis/dataset_update.html:24
 msgid "Choose"
 msgstr "Pasirinkti"
@@ -729,9 +735,13 @@ msgid "No file selected"
 msgstr "Joks failas nėra pasirinktas"
 
 #: templates/damis/_dataset_form.html:49
-#: templates/damis/_dataset_update.html:39
+#: templates/damis/_dataset_update.html:49
 msgid "Fields with an asterix are required"
 msgstr "Žvaigždute pažymėti laukai yra privalomi"
+
+#: templates/damis/_dataset_update.html:11
+msgid "This is MIDAS file"
+msgstr "Tai yra MIDAS failas"
 
 #: templates/damis/_delete_dialog.html:3
 msgid "Delete"
@@ -952,6 +962,9 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankstesnis"
+
+#~ msgid "Created:"
+#~ msgstr "Sukurta:"
 
 #~ msgid "Enter \"{0}\" field value."
 #~ msgstr "Įveskite \"{0}\" lauko reikšmę."

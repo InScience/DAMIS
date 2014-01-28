@@ -13,7 +13,7 @@
 {% endif %}
 <div style="clear:both"></div>
 <div class="helptext pull-right">
-    {% trans 'Created:' %}{{ form.instance.created|date:'Y-m-d' }}
+    {% trans 'Created' %}:&nbsp;{{ form.instance.created|date:'Y-m-d' }}
 </div>
 <form autocomplete="off" class="dataset-form" method='POST' action='{% url 'dataset-update' form.instance.pk %}' enctype="multipart/form-data">
     <div class="dynamic-container">
