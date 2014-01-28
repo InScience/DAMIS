@@ -1,4 +1,5 @@
 import re
+from os import remove
 
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
@@ -36,6 +37,11 @@ class Dataset(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def delete(self):
+        remove(self.file.path)
+        return super(Dataset, self).delete()
+
 
 class DamisUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(_('username'), max_length=30, unique=True,
