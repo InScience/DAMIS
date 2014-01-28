@@ -54,7 +54,7 @@ VALIDATOR_FIELDS = {
 
 
 class DatasetForm(forms.ModelForm):
-    file = forms.FileField(_('File'),
+    file = forms.FileField(label=_('File'), required=False,
             widget=forms.FileInput(attrs={'accept':
                 'text/csv,text/tab-separated-values,text/plain,text/arff,application/zip'
             }))
