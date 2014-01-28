@@ -29,6 +29,7 @@ class Dataset(models.Model):
     user = models.ForeignKey('DamisUser', blank=True, null=True, verbose_name=_('User'))
     updated = models.DateTimeField(_('Updated'), auto_now=True, blank=True, null=True)
     created = models.DateTimeField(_('Created'), auto_now_add=True, blank=True, null=True)
+    is_from_midas = models.BooleanField(_('Is from MIDAS'))
 
     def get_absolute_url(self):
         return reverse('dataset-list')
