@@ -811,7 +811,7 @@ def login_view(request, *args, **kwargs):
         if form.is_valid():
             user = form.cleaned_data['user']
             if user is not None and user.is_active:
-                next_page = request.POST.get('next', reverse_lazy('home'))
+                next_page = request.POST.get('next') or reverse_lazy('home')
                 login(request, user)
                 return HttpResponseRedirect(next_page)
     else:
