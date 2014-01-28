@@ -25,7 +25,7 @@
                       <a href="{% url 'algorithm-list' %}?order_by=-title"><i class="icon-chevron-down"></i></a>
                   </th>
                   <th>{% trans "Description" %}</th>
-                  <th>{% trans "Actions" %}</th>
+                  <th class="c">{% trans "Actions" %}</th>
               </tr>
           </thead>
           <tbody>
@@ -35,7 +35,7 @@
                     <td><input type='checkbox' value="{{ obj.pk }}" name="pk"/></td>
                     <td> {{ obj.get_label_display }}</td>
                     <td> {{ obj.get_description_display }} </td>
-                    <td> 
+                    <td class="c"> 
                         <a class="btn btn-small" title="{% trans 'Edit' %}" href="{% url 'algorithm-update' obj.pk %}">
                             <i class="icon-pencil"></i>
                         </a>

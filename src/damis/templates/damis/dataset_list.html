@@ -31,7 +31,8 @@
                       <a href="{% url 'dataset-list' %}?order_by=-created"><i class="icon-chevron-down"></i></a>
                   </th>
                   <th>{% trans "Description" %}</th>
-                  <th style='text-align: center;'>{% trans "Actions" %}</th>
+                  <th class="c">{% trans "Actions" %}</th>
+                  <th class="c">{% trans "Download" %}</th>
               </tr>
           </thead>
           <tbody>
@@ -42,28 +43,27 @@
                   <td>{{ dataset.file.size|sizify }}</td>
                   <td>{{ dataset.created|date:"Y-m-d" }} </td>
                   <td>{{ dataset.description }}</td>
-                  <td>
-                      <a class="btn btn-small" title="{% trans 'Edit' %}" style="margin-right: 30px;" href="{% url 'dataset-update' dataset.pk %}">
+                  <td class="c">
+                      <a class="btn btn-small" title="{% trans 'Edit' %}" href="{% url 'dataset-update' dataset.pk %}">
                           <i class="icon-pencil"></i>
                       </a>
-
-                      <div class="btn-group">
-                          <a class="btn btn-small" title="{% trans 'Download CSV file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=csv">
-                              {% trans "CSV" %}
-                          </a>
-                          <a class="btn btn-small" title="{% trans 'Download ARFF file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=arff">
-                              {% trans "ARFF" %}
-                          </a>
-                          <a class="btn btn-small" title="{% trans 'Download TXT file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=txt">
-                              {% trans "TXT" %}
-                          </a>
-                          <a class="btn btn-small" title="{% trans 'Download TAB file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=tab">
-                              {% trans "TAB" %}
-                          </a>
-                          <a class="btn btn-small" title="{% trans 'Download XLS file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=xls">
-                              {% trans "XLS" %}
-                          </a>
-                      </div>
+                  </td>
+                  <td class="c">
+                      <a class="btn btn-small" title="{% trans 'Download CSV file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=csv">
+                          {% trans "CSV" %}
+                      </a>
+                      <a class="btn btn-small" title="{% trans 'Download ARFF file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=arff">
+                          {% trans "ARFF" %}
+                      </a>
+                      <a class="btn btn-small" title="{% trans 'Download TXT file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=txt">
+                          {% trans "TXT" %}
+                      </a>
+                      <a class="btn btn-small" title="{% trans 'Download TAB file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=tab">
+                          {% trans "TAB" %}
+                      </a>
+                      <a class="btn btn-small" title="{% trans 'Download XLS file' %}" href="{% url 'component-technical-details-form' %}?dataset_url={{ dataset.file.url }}&download=True&format=xls">
+                          {% trans "XLS" %}
+                      </a>
                   </td>
               </tr>
             {% empty %}

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-28 13:57+0000\n"
+"POT-Creation-Date: 2014-01-28 14:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -797,7 +797,7 @@ msgstr "Ištrinti pažymėtus"
 msgid "Actions"
 msgstr "Veiksmai"
 
-#: templates/damis/algorithm_list.html:39 templates/damis/dataset_list.html:46
+#: templates/damis/algorithm_list.html:39 templates/damis/dataset_list.html:47
 #: templates/damis/experiment_list.html:35 templates/damis/user_list.html:40
 msgid "Edit"
 msgstr "Redaguoti"
@@ -814,43 +814,47 @@ msgstr "Ar tikrai norite pašalinti duomenų rinkinį"
 msgid "Author"
 msgstr "Autorius"
 
-#: templates/damis/dataset_list.html:51
+#: templates/damis/dataset_list.html:35
+msgid "Download"
+msgstr "Atsisiuntimas"
+
+#: templates/damis/dataset_list.html:52
 msgid "Download CSV file"
 msgstr "Atsisiųsti CSV failą"
 
-#: templates/damis/dataset_list.html:52
+#: templates/damis/dataset_list.html:53
 msgid "CSV"
 msgstr "CSV"
 
-#: templates/damis/dataset_list.html:54
+#: templates/damis/dataset_list.html:55
 msgid "Download ARFF file"
 msgstr "Atsisiųsti ARFF failą"
 
-#: templates/damis/dataset_list.html:55
+#: templates/damis/dataset_list.html:56
 msgid "ARFF"
 msgstr "ARFF"
 
-#: templates/damis/dataset_list.html:57
+#: templates/damis/dataset_list.html:58
 msgid "Download TXT file"
 msgstr "Atsisiųsti TXT failą"
 
-#: templates/damis/dataset_list.html:58
+#: templates/damis/dataset_list.html:59
 msgid "TXT"
 msgstr "TXT"
 
-#: templates/damis/dataset_list.html:60
+#: templates/damis/dataset_list.html:61
 msgid "Download TAB file"
 msgstr "Atsisiųsti TAB failą"
 
-#: templates/damis/dataset_list.html:61
+#: templates/damis/dataset_list.html:62
 msgid "TAB"
 msgstr "TAB"
 
-#: templates/damis/dataset_list.html:63
+#: templates/damis/dataset_list.html:64
 msgid "Download XLS file"
 msgstr "Atsisiųsti XLS failą"
 
-#: templates/damis/dataset_list.html:64
+#: templates/damis/dataset_list.html:65
 msgid "XLS"
 msgstr "XLS"
 

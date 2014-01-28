@@ -21,8 +21,8 @@
                   <th>{% trans "Name Surname" %}</th>
                   <th>{% trans "Username" %}</th>
                   <th>{% trans "E-mail" %}</th>
-                  <th>{% trans "Is active" %}</th>
-                  <th>{% trans "Actions" %}</th>
+                  <th class="c">{% trans "Is active" %}</th>
+                  <th class="c">{% trans "Actions" %}</th>
               </tr>
           </thead>
           <tbody>
@@ -32,12 +32,12 @@
                     <td>{{ obj.first_name }} {{ obj.last_name }}</td>
                     <td>{{ obj.username }}</td>
                     <td>{{ obj.email }}</td>
-                    <td>
+                    <td class="c">
                         {% if obj.is_active %}
                             <i class="icon-ok"></i>
                         {% endif %}
                     </td>
-                    <td><a class="btn btn-small" title="{% trans 'Edit' %}" style="margin-right: 30px;" href="{% url 'user-edit' obj.pk %}">
+                    <td class="c"><a class="btn btn-small" title="{% trans 'Edit' %}" href="{% url 'user-edit' obj.pk %}">
                           <i class="icon-pencil"></i>
                         </a>
                     </td>
