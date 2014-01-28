@@ -96,6 +96,7 @@ SERVICES = {
     "EXISTING FILE": do_nothing,
     "MIDAS FILE": do_nothing,
     "TECHNICAL DETAILS": do_nothing,
+    "MATRIX VIEW": do_nothing,
     "CHART": do_nothing,
     "CLEAN DATA": not_implemented,
     "FILTER DATA": not_implemented,
