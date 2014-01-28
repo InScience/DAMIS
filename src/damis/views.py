@@ -88,16 +88,6 @@ def index_view(request):
 def static_page_view(request, template):
     return render(request, template, {})
 
-class DatasetCreate(LoginRequiredMixin, CreateView):
-    model = Dataset
-    template_name = 'damis/dataset_new.html'
-    form_class = DatasetForm
-
-    def form_valid(self, form):
-        form.instance.slug = slugify(form.instance.title)
-        return super(DatasetCreate, self).form_valid(form)
-
-
 class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Dataset
     paginate_by = 25
@@ -482,6 +472,28 @@ def algorithm_parameter_form(request):
     return render_to_response('dynamic/parameter_formset.html', {
         'formset': parameter_formset,
         })
+
+def dataset_create_view(request):
+    context = csrf(request)
+    if request.method == 'POST':
+        orig_title = request.POST.get("title")
+        form = DatasetForm(request.POST, request.FILES)
+        if form.is_valid():
+            dataset = form.save()
+            context['file_path'] = dataset.file.url
+            context['file_name'] = splitext(split(context['file_path'])[1])[0]
+
+            # inform the user if the file name was changed by the system
+            if context['file_name']!= orig_title:
+                dataset.title = context['file_name']
+                dataset.save()
+                context["message"] = _("Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file with the name \"{2}\" already existed, so the uploaded file was renamed.").format(context['file_path'], context['file_name'], orig_title)
+
+            return HttpResponseRedirect(reverse_lazy('dataset-list'))
+    else:
+        form = DatasetForm()
+    context['form'] = form
+    return render_to_response('damis/dataset_new.html', context)
 
 def dataset_update_view(request, pk):
     context = csrf(request)
