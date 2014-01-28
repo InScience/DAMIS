@@ -107,6 +107,9 @@ class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
     def get_queryset(self):
         order_by = self.request.GET.get('order_by') or '-created'
         qs = super(DatasetList, self).get_queryset()
+        if 'title' in order_by:
+            qs = qs.extra(select={'title_lower': 'lower(title)'})
+            order_by = order_by + '_lower'
         return qs.order_by(order_by)
 
 class DatasetUpdate(LoginRequiredMixin, UpdateView):
@@ -533,6 +536,9 @@ class ExistingFileView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         order_by = self.request.GET.get('order_by') or '-created'
         qs = super(ExistingFileView, self).get_queryset()
+        if 'title' in order_by:
+            qs = qs.extra(select={'title_lower': 'lower(title)'})
+            order_by = order_by + '_lower'
         return qs.order_by(order_by)
 
     def get_context_data(self, **kwargs):
