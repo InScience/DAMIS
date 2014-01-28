@@ -5,6 +5,7 @@ import csv
 import tempfile
 import StringIO
 import zipfile
+from datetime import datetime
 
 from django import forms
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -102,6 +103,9 @@ class DatasetForm(forms.ModelForm):
                 return input_file
             else:
                 raise forms.ValidationError(_("This field is required"))
+        else:
+            if self.instance:
+                self.instance.created = datetime.now()
         title = self.cleaned_data.get('title', "-")
 
         # determine file name and extension
