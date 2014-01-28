@@ -16,6 +16,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.utils.http import base36_to_int
 from django.contrib.auth.tokens import default_token_generator
+from damis.utils import save_task
 
 from damis.models import Component
 from damis.models import Connection
@@ -426,38 +427,7 @@ class BaseWorkflowTaskFormset(BaseInlineFormSet):
         if experiment:
             self.instance = experiment
 
-        sources = {}
-        for task_form in self.forms:
-            data = task_form.cleaned_data
-            data['experiment'] = experiment
-            if data.get('algorithm'):
-                task = data.get('id')
-                if not task and not data.get('DELETE'):
-                    if data.has_key('DELETE'):
-                        data.pop('DELETE')
-                    task = WorkflowTask.objects.create(**data)
-
-                pv_formset = task_form.parameter_values[0]
-                pv_formset.instance = task
-
-                for pv_form in pv_formset.forms:
-                    data = {}
-                    data['parameter'] = pv_form.cleaned_data.get('parameter')
-                    data['value'] = pv_form.cleaned_data.get('value')
-                    data['task'] = task
-
-                    pv_form_prefix = pv_form.prefix
-
-                    pv_instance = pv_form.cleaned_data.get('id')
-                    if not pv_instance:
-                        pv_instance = ParameterValue.objects.create(**data)
-                    else:
-                        if pv_form.cleaned_data.has_key('related'):
-                            pv_form.cleaned_data.pop('related')
-                        pv_form.save()
-                    pv_form.instance = pv_instance
-
-                    sources[pv_form_prefix] = pv_form.instance
+        sources = save_task(experiment, self)
 
         for task_form in self.forms:
             for pv_form in task_form.parameter_values[0].forms:

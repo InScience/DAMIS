@@ -5,6 +5,7 @@ import re
 import tempfile
 from os.path import join, exists, getsize, splitext, split
 from os import makedirs, listdir
+from shutil import copy
 from subprocess import call, Popen, PIPE
 
 from collections import OrderedDict
@@ -32,7 +33,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from damis.settings import BUILDOUT_DIR
 from damis.constants import COMPONENT_TITLE__TO__FORM_URL, FILE_TYPE__TO__MIME_TYPE
-from damis.utils import slugify, strip_arff_header
+from damis.utils import slugify, strip_arff_header, save_task
 
 from damis.forms import LoginForm, RegistrationForm, EmailForm, PasswordRecoveryForm
 from damis.forms import DatasetForm
@@ -347,39 +348,11 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
             exp = Experiment.objects.create(**exp_data)
 
         task_formset.full_clean()
-        sources = {}
         for task_form in task_formset.forms:
-            data = task_form.cleaned_data
-            data['experiment'] = exp
-            if data.get('algorithm'):
-                task = data.get('id')
-                if not task and not data.get('DELETE'):
-                    if data.has_key('DELETE'):
-                        data.pop('DELETE')
-                    task = WorkflowTask.objects.create(**data)
-
-                pv_formset = task_form.parameter_values[0]
-                pv_formset.instance = task
+            for pv_formset in task_form.parameter_values:
                 pv_formset.full_clean()
 
-                for pv_form in pv_formset.forms:
-                    data = {}
-                    data['parameter'] = pv_form.cleaned_data.get('parameter')
-                    data['value'] = pv_form.cleaned_data.get('value')
-                    data['task'] = task
-
-                    pv_form_prefix = pv_form.prefix
-
-                    pv_instance = pv_form.cleaned_data.get('id')
-                    if not pv_instance:
-                        pv_instance = ParameterValue.objects.create(**data)
-                    else:
-                        if pv_form.cleaned_data.has_key('related'):
-                            pv_form.cleaned_data.pop('related')
-                        pv_form.save()
-                    pv_form.instance = pv_instance
-
-                    sources[pv_form_prefix] = pv_form.instance
+        sources = save_task(exp, task_formset)
 
         for task_form in task_formset.forms:
             for pv_form in task_form.parameter_values[0].forms:
