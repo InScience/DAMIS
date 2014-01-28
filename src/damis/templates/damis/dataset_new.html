@@ -13,7 +13,8 @@
     <div class="offset3">
         <form class="dataset-form" method='POST' action='{% url 'dataset-new' %}' enctype="multipart/form-data">{% csrf_token %}
             {% include 'damis/_dataset_form.html' %}
-            <input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
+            <div style="margin-top: 10px"><input type='submit' class="btn btn-primary" value="{% trans "Upload dataset" %}" />
+            </div>
         </form>
     </div>
   </div>
