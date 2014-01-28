@@ -13,7 +13,7 @@
     <div class="tab-pane active" id="data-list">
         <form id='user-action-form' method='POST' action=''>{% csrf_token %}
       <input type="hidden" value="delete" name="action"/>
-      <button class="btn delete-btn" type="button" title="{% trans 'Delete' %}"><i class="icon-trash"></i></button>
+      <button class="btn delete-btn" type="button" title="{% trans 'Delete selected items' %}"><i class="icon-trash"></i></button>
       <table class="table table-hover damis-list">
           <thead>
               <tr>
