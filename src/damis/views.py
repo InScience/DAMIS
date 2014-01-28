@@ -408,6 +408,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
                         ))
 
 
+@login_required(login_url=reverse_lazy('login'))
 def gen_parameter_prefixes(request):
     prefixes = request.GET.getlist('prefixes[]')
     task_ids = request.GET.getlist('taskIds[]')
@@ -420,6 +421,7 @@ def gen_parameter_prefixes(request):
             pv_prefixes.append('PV_%s' % (str(hash(task_prefix)),))
     return HttpResponse(",".join(pv_prefixes))
 
+@login_required(login_url=reverse_lazy('login'))
 def algorithm_parameter_form(request):
     algorithm = get_object_or_404(Component, pk=request.GET.get('algorithm_id'))
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
@@ -446,6 +448,7 @@ def algorithm_parameter_form(request):
         'formset': parameter_formset,
         })
 
+@login_required(login_url=reverse_lazy('login'))
 def dataset_create_view(request):
     context = csrf(request)
     if request.method == 'POST':
@@ -468,6 +471,7 @@ def dataset_create_view(request):
     context['form'] = form
     return render_to_response('damis/dataset_new.html', context)
 
+@login_required(login_url=reverse_lazy('login'))
 def dataset_update_view(request, pk):
     context = csrf(request)
     if request.method == 'POST':
@@ -492,6 +496,7 @@ def dataset_update_view(request, pk):
 
     return render_to_response('damis/_dataset_update.html', context)
 
+@login_required(login_url=reverse_lazy('login'))
 def upload_file_form_view(request):
     '''Handles Ajax request to update the uploaded file component.
 
@@ -556,9 +561,11 @@ class ExistingFileView(LoginRequiredMixin, ListView):
         return context
 
 
+@login_required(login_url=reverse_lazy('login'))
 def midas_file_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
 
+@login_required(login_url=reverse_lazy('login'))
 def select_features_form_view(request):
     return HttpResponse(_('Not implemented, yet'))
 
@@ -622,6 +629,7 @@ def convert(file_path, file_format):
     else:
         return f # default action - return arff
 
+@login_required(login_url=reverse_lazy('login'))
 def technical_details_form_view(request):
     '''Handles Ajax GET request to update the technical details component.
 
@@ -654,6 +662,7 @@ def download_file(file_url, file_format):
     response.write(converted_file.read())
     return response
 
+@login_required(login_url=reverse_lazy('login'))
 def matrix_form_view(request):
     '''Handles Ajax GET request to update the matrix view component.
 
@@ -732,6 +741,7 @@ def download_image(image, file_format):
     return response
 
 @csrf_exempt
+@login_required(login_url=reverse_lazy('login'))
 def chart_form_view(request):
     '''Handles Ajax (GET or POST) request to update the chart component.
 
