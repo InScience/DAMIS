@@ -486,19 +486,13 @@ def upload_file_form_view(request):
     context = csrf(request)
     if request.method == 'POST':
         dataset_url = request.POST.get("dataset_url")
-        orig_title = request.POST.get("title")
         form = DatasetForm(data=request.POST, files=request.FILES, user=request.user)
         if form.is_valid():
             dataset = form.save()
             context['file_path'] = dataset.file.url
-            context['file_name'] = splitext(split(context['file_path'])[1])[0]
+            context['file_name'] = dataset.title
             context['new_file_path'] = dataset.file.url
 
-            # inform the user if the file name was changed by the system
-            if context['file_name']!= orig_title:
-                dataset.title = context['file_name']
-                dataset.save()
-                context["message"] = _("Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file with the name \"{2}\" already existed, so the uploaded file was renamed.").format(context['file_path'], context['file_name'], orig_title)
             # clear the form
             form = DatasetForm(user=request.user)
         else:
@@ -508,7 +502,10 @@ def upload_file_form_view(request):
         dataset_url = request.GET.get("dataset_url")
         if dataset_url:
             context['file_path'] = dataset_url
-            context['file_name'] = splitext(split(context['file_path'])[1])[0]
+            file_name = split(dataset_url)[1]
+            file_pattern = "{0}/datasets/{1}".format(request.user.username, file_name)
+            dataset = Dataset.objects.get(file=file_pattern)
+            context['file_name'] = dataset.title
         form = DatasetForm(user=request.user)
     context['form'] = form
 

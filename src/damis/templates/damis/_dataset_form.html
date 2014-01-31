@@ -3,16 +3,10 @@
 
 {% if file_path %}
     <div class="message">
-        {% if message %}
-        	{{ message|safe }}
-        {% else %}
-            {% trans 'Dataset used in the experiment' %}: <a href="{{ file_path }}">{{ file_name }}</a>
-        {% endif %}
+        {% trans 'Dataset used in the experiment' %}: <a href="{{ file_path }}">{{ file_name }}</a>
     </div>
     {% if GET and file_path or new_file_path %}
         <button type="button" class="toggle-btn show btn">{% trans 'New file' %}</button>
-    {% else %}
-        <button type="button" class="toggle-btn btn">{% trans 'Hide form' %}</button>
     {% endif %}
 {% endif %}
 
