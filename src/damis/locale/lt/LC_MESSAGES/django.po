@@ -603,7 +603,7 @@ msgid ""
 msgstr ""
 "<b>Jūsų el. pašto adresas patvirtintas</b>. Dabar laukite kol "
 "administratorius\n"
-"patvirtins Jūsų duomenis ir informuos Jūs el. paštu."
+"patvirtins Jūsų duomenis ir informuos Jus el. paštu."
 
 #: templates/accounts/login.html:14
 msgid "Login"
