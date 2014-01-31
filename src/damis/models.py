@@ -89,7 +89,7 @@ class DamisUser(AbstractBaseUser, PermissionsMixin):
             subject = _('{0} account activated').format(domain)
             body = render_to_string('accounts/mail/account_activated.html', {
                 'domain': domain,
-                'username': self.username,
+                'user': self,
             })
             sender = settings.DEFAULT_FROM_EMAIL
             send_mail(subject, body, sender, [receiver])
