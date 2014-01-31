@@ -71,7 +71,7 @@ def save_task(exp, task_formset):
                 else:
                     if pv_form.cleaned_data.has_key('related'):
                         pv_form.cleaned_data.pop('related')
-                    pv_form.save()
+                    pv_instance = pv_form.save()
                 pv_form.instance = pv_instance
 
                 if pv_instance.parameter.type == 'dataset' and pv_instance.value:
