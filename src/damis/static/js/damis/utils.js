@@ -68,11 +68,13 @@
 			fileInput.on("change", function(ev) {
 				var fileName = $(this).val();
 				// put the uploaded file name next to the upload button
-				fileButton.next("span").html(fileName);
+				var stdFileName = fileName.replace(/\\/g, "/");
+				var start = stdFileName.lastIndexOf("/") + 1;
+				fileButton.next("span").html(stdFileName.substring(start, stdFileName.length));
 
 				// prefill title input field with the uploaded file name
 				var titleInput = container.find("input[name=title]");
-				var baseName = fileName.substring(0, fileName.replace(/\\/g, "/").lastIndexOf("."));
+				var baseName = fileName.substring(start, stdFileName.lastIndexOf("."));
 				titleInput.val(baseName);
 			});
 
@@ -87,8 +89,8 @@
 			var newFileBtn = container.find(".toggle-btn");
 			newFileBtn.on("click", function(ev) {
 				var newFileForm = container.find(".toggle-section");
-			    newFileForm.show();
-			    newFileBtn.hide();
+				newFileForm.show();
+				newFileBtn.hide();
 			})
 		}
 	}
