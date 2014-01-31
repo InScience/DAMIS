@@ -55,14 +55,12 @@ VALIDATOR_FIELDS = {
 
 
 class DatasetForm(forms.ModelForm):
-    file = forms.FileField(label=_('File'), required=False,
-            widget=forms.FileInput(attrs={'accept':
-                'text/csv,text/tab-separated-values,text/plain,text/arff,application/zip'
-            }))
-    user = forms.CharField(widget=forms.HiddenInput(), required=False)
+    file = forms.FileField(label=_('File'), required=False, widget=forms.FileInput())
     ## XXX: Firefox does not recognize mime types for 'tab' and 'arff'
     # csv: text/csv; tab: text/tab-separated-values; txt: text/plain;
     # arff: text/arff; zip: application/zip; xls: application/vnd.ms-excel
+    # 'accept': 'text/csv,text/tab-separated-values,text/plain,text/arff,application/zip'
+    user = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = Dataset
