@@ -50,7 +50,7 @@ load_data:
 	bin/django loaddata initial_algorithms.json
 
 pull: 
-	git pull
+	git pull -r
 	bin/django migrate damis
 	bin/django compilemessages
 	sudo /etc/init.d/apache2 restart
