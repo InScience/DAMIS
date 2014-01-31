@@ -469,6 +469,7 @@ def dataset_create_view(request):
     else:
         form = DatasetForm()
     context['form'] = form
+    context['user'] = request.user
     return render_to_response('damis/dataset_new.html', context)
 
 @login_required(login_url=reverse_lazy('login'))
