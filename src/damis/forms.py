@@ -9,6 +9,7 @@ from datetime import datetime
 
 from django import forms
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.db.models import Q
 from django.forms.util import ErrorList
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import authenticate
@@ -58,13 +59,18 @@ class DatasetForm(forms.ModelForm):
             widget=forms.FileInput(attrs={'accept':
                 'text/csv,text/tab-separated-values,text/plain,text/arff,application/zip'
             }))
+    user = forms.CharField(widget=forms.HiddenInput(), required=False)
     ## XXX: Firefox does not recognize mime types for 'tab' and 'arff'
     # csv: text/csv; tab: text/tab-separated-values; txt: text/plain;
     # arff: text/arff; zip: application/zip; xls: application/vnd.ms-excel
 
     class Meta:
         model = Dataset
-        fields = ('title', 'file', 'description')
+        fields = ('title', 'file', 'description', 'user')
+
+    def __init__(self, user, *args, **kwargs):
+        super(DatasetForm, self).__init__(*args, **kwargs)
+        self.user = user
 
     def extract_file(self, archive):
         '''Extracts a compressed file from a zip archive.
@@ -182,6 +188,15 @@ class DatasetForm(forms.ModelForm):
 
         return arff_file
 
+    def clean_title(self):
+        title = self.cleaned_data.get("title")
+        user = self.user
+        if Dataset.objects.filter(~Q(pk=self.instance.pk), user=user, title=title).exists():
+            raise forms.ValidationError(_("Please choose a unique title, as \"{0}\" already exists.").format(title))
+        return title
+
+    def clean_user(self):
+        return self.user or None
 
 class DatasetSelectForm(forms.Form):
     dataset = forms.ModelChoiceField(queryset=Dataset.objects.all())

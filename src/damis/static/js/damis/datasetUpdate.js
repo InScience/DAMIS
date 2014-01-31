@@ -38,7 +38,20 @@ $(function() {
 				"text": gettext("OK"),
 				"class": "btn btn-primary",
 				"click": function(ev) {
-					window.datasetUpdate.doUpload($(this));
+					var form = $(this).find("form");
+                    window.utils.showProgress();
+					$.ajax({
+                        url: form.attr("action"),
+						"method": "POST",
+						"data": form.serialize(),
+						"context": $(this)
+					}).done(function(resp) {
+                        $(this).html(resp);
+                        if (window.datasetUpdate.checkSuccess($(this))) {
+                            window.location.reload();
+                        }
+                        window.utils.hideProgress();
+					});
 				}
 			},
 			{
@@ -48,55 +61,6 @@ $(function() {
 					$(this).dialog("close");
 				}
 			}]
-		},
-
-		doUpload: function(dialog) {
-			window.utils.showProgress();
-			dialog.closest(".ui-dialog").find("button").attr("disabled", "disabled");
-
-			var fileForm = dialog.find(".dynamic-container");
-			// TODO: clone does not preserve textarea and input values 
-			// so we need to construct a placeholder differently 
-			var fileFormPlaceholder = fileForm.clone(true);
-
-			// move the fields to the hidden form
-			// replace them with a placeholder
-			var fileUploadForm = $("#file-upload-form");
-			fileForm.after(fileFormPlaceholder).appendTo(fileUploadForm);
-
-			$("#file-upload-iframe").off("load");
-			$("#file-upload-iframe").on("load", function(resp) {
-				window.datasetUpdate.handleUploadResponse(dialog);
-			});
-
-			var form = dialog.find("form");
-			$("#file-upload-form").attr("action", form.attr("action"));
-			$("#file-upload-form").submit();
-		},
-
-		handleUploadResponse: function(dialog) {
-			var fileUploadIframe = $("#file-upload-iframe");
-			var textContent = fileUploadIframe.contents().find("body").text();
-
-			// if we no text in the iframe, it means that this was not a POST
-			// response, so we should exit
-			if (!textContent || textContent.length == 0) {
-				return;
-			}
-			var responseText = $(fileUploadIframe.contents().find("body").html());
-			// clear the iframe response in order to prevent unexpected processing
-			fileUploadIframe.contents().find("body").html("");
-			$("#file-upload-form").html("");
-
-			dialog.dialog("option", "buttons", window.datasetUpdate.allButtons());
-			dialog.html(responseText);
-
-			window.utils.customizeFileForm(dialog);
-			window.utils.hideProgress();
-			if (this.checkSuccess(responseText)) {
-				dialog.dialog("close");
-				document.location.reload(true);
-			}
 		},
 
 		checkSuccess: function(resp) {

@@ -452,22 +452,12 @@ def algorithm_parameter_form(request):
 def dataset_create_view(request):
     context = csrf(request)
     if request.method == 'POST':
-        orig_title = request.POST.get("title")
-        form = DatasetForm(request.POST, request.FILES)
+        form = DatasetForm(data=request.POST, files=request.FILES, user=request.user)
         if form.is_valid():
-            dataset = form.save()
-            context['file_path'] = dataset.file.url
-            context['file_name'] = splitext(split(context['file_path'])[1])[0]
-
-            # inform the user if the file name was changed by the system
-            if context['file_name']!= orig_title:
-                dataset.title = context['file_name']
-                dataset.save()
-                context["message"] = _("Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file with the name \"{2}\" already existed, so the uploaded file was renamed.").format(context['file_path'], context['file_name'], orig_title)
-
+            form.save()
             return HttpResponseRedirect(reverse_lazy('dataset-list'))
     else:
-        form = DatasetForm()
+        form = DatasetForm(user=request.user)
     context['form'] = form
     context['user'] = request.user
     return render_to_response('damis/dataset_new.html', context)
@@ -476,23 +466,12 @@ def dataset_create_view(request):
 def dataset_update_view(request, pk):
     context = csrf(request)
     if request.method == 'POST':
-        orig_title = request.POST.get("title")
-        form = DatasetForm(request.POST, request.FILES)
+        form = DatasetForm(data=request.POST, files=request.FILES, user=request.user)
         form.instance = Dataset.objects.get(pk=pk)
-        context['file_name'] = splitext(split(form.instance.file.url)[1])[0]
         if form.is_valid():
-            dataset = form.save()
-            context['file_name'] = splitext(split(dataset.file.url)[1])[0]
-
-            # inform the user if the file name was changed by the system
-            if context['file_name']!= orig_title:
-                dataset.title = context['file_name']
-                dataset.save()
-                form = DatasetForm(instance=Dataset.objects.get(pk=pk))
-                context["message"] = _("A file with the name \"{0}\" already existed, so the uploaded file was renamed.").format(orig_title)
+            form.save()
     else:
-        form = DatasetForm(instance=Dataset.objects.get(pk=pk))
-        context['file_name'] = splitext(split(form.instance.file.url)[1])[0]
+        form = DatasetForm(instance=Dataset.objects.get(pk=pk), user=request.user)
     context['form'] = form
 
     return render_to_response('damis/_dataset_update.html', context)
@@ -508,7 +487,7 @@ def upload_file_form_view(request):
     if request.method == 'POST':
         dataset_url = request.POST.get("dataset_url")
         orig_title = request.POST.get("title")
-        form = DatasetForm(request.POST, request.FILES)
+        form = DatasetForm(data=request.POST, files=request.FILES, user=request.user)
         if form.is_valid():
             dataset = form.save()
             context['file_path'] = dataset.file.url
@@ -521,7 +500,7 @@ def upload_file_form_view(request):
                 dataset.save()
                 context["message"] = _("Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file with the name \"{2}\" already existed, so the uploaded file was renamed.").format(context['file_path'], context['file_name'], orig_title)
             # clear the form
-            form = DatasetForm()
+            form = DatasetForm(user=request.user)
         else:
             context['file_path'] = dataset_url
     else:
@@ -530,7 +509,7 @@ def upload_file_form_view(request):
         if dataset_url:
             context['file_path'] = dataset_url
             context['file_name'] = splitext(split(context['file_path'])[1])[0]
-        form = DatasetForm()
+        form = DatasetForm(user=request.user)
     context['form'] = form
 
     return render_to_response('damis/_dataset_form.html', context)
