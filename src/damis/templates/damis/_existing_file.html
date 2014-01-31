@@ -30,7 +30,7 @@
          </thead>
          <tbody>
            {% for dataset in object_list %}
-             <tr>
+           <tr {% if dataset.pk == highlight_pk %}class="selected-row"{% endif %}>
                  <td><input type='radio' value="{{ dataset.file.url }}"
                     {% if dataset.pk == highlight_pk %}checked='checked'{% endif %}
                      name="dataset_pk"/></td>

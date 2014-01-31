@@ -68,9 +68,8 @@
 						var valueInput = connectionInput.parent().find("input[name$=value]");
 						valueInput.val(fileUrl);
 						window.existingFile.update($(this));
-					} else {
-						$(this).dialog("close");
 					}
+					$(this).dialog("close");
 				}
 			},
 			{

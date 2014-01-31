@@ -127,5 +127,6 @@ textarea {
 .message {margin-bottom: 20px;}
 
 .damis-list {margin-top: 5px;}
-    .damis-list thead {background-color: #eeeeef;}
+    .damis-list thead {background-color: #f5f5f5;}
     .damis-list .c, .damis-list .c {text-align: center}
+    .damis-list .selected-row {background-color: #f5f5f5;}
