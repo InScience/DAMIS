@@ -6,21 +6,18 @@
     <div class="message">
         {% trans 'Dataset used in the experiment' %}: <a href="{{ file_path }}">{{ file_name }}</a>
     </div>
-    {% if file_path and not list_filter %}
-        <button type="button" class="toggle-btn show btn">{% trans 'New file' %}</button>
-    {% endif %}
 {% else %}
     <div class="message">
         {% trans 'Uploaded files' %}:
     </div>
 {% endif %}
-<div class="file-list toggle-section" {% if file_path and not list_filter %}style="display:none;"{% endif %}>
+<div class="file-list toggle-section">
     <table class="table table-hover damis-list">
          <thead>
              <tr>
                  <th></th>
                  <th>{% trans "Title" %}
-                     <a href="{% url 'component-existing-file-form' %}?order_by=title"><i class="icon-chevron-up"></i></a>
+                      <a href="{% url 'component-existing-file-form' %}?order_by=title"><i class="icon-chevron-up"></i></a>
                       <a href="{% url 'component-existing-file-form' %}?order_by=-title"><i class="icon-chevron-down"></i></a>
                  </th>
                  <th>{% trans "Size" %}</th>
