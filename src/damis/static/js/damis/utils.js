@@ -72,7 +72,7 @@
 
 				// prefill title input field with the uploaded file name
 				var titleInput = container.find("input[name=title]");
-				var baseName = fileName.substring(0, fileName.lastIndexOf("."));
+				var baseName = fileName.substring(0, fileName.replace(/\\/g, "/").lastIndexOf("."));
 				titleInput.val(baseName);
 			});
 
