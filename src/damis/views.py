@@ -846,6 +846,7 @@ def confirm_email_view(request, uidb36, token):
         body = render_to_string('accounts/mail/approve_registration.html', {
             'domain': domain,
             'user': user,
+            'username': user.username,
             'approve_url': reverse_lazy('approve-user', kwargs={'pk': user.pk}),
         })
         sender = settings.DEFAULT_FROM_EMAIL

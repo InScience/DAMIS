@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 11:55+0000\n"
+"POT-Creation-Date: 2014-01-31 16:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,99 +16,100 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:57 models.py:28 templates/damis/_dataset_form.html:28
+#: forms.py:58 models.py:28 templates/damis/_dataset_form.html:22
 #: templates/damis/dataset_detail.html:11
+#: templates/damis/dataset_update.html:23
 msgid "File"
 msgstr "Failas"
 
-#: forms.py:83 forms.py:95
+#: forms.py:82 forms.py:94
 msgid "Corrupted zip archive file."
 msgstr "Zip archyvas pažeistas."
 
-#: forms.py:93
+#: forms.py:92
 msgid "The zip archive should contain exactly one file, {0} found."
 msgstr "Zip archyve turėtų būti vienas failas, tačiau rasta {0}."
 
-#: forms.py:111
+#: forms.py:110
 msgid "This field is required"
 msgstr "Šis laukas yra privalomas"
 
-#: forms.py:153
+#: forms.py:152
 msgid ""
 "File type is not supported. Please select a tab, csv, txt, arff or zip file."
 msgstr ""
 "Šis failo tipas nepalaikomas. Pasirinkite tab, csv, txt, arff ar zip failą."
 
-#: forms.py:194
+#: forms.py:193
 msgid "Please choose a unique title, as \"{0}\" already exists."
 msgstr "Pasirinkite kitą pavadinimą, nes \"{0}\" jau egzistuoja."
 
-#: forms.py:205 forms.py:221 templates/damis/user_list.html:22
+#: forms.py:204 forms.py:220 templates/damis/user_list.html:22
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:206 forms.py:222 forms.py:480
+#: forms.py:205 forms.py:221 forms.py:479
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: forms.py:216
+#: forms.py:215
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:224 forms.py:482
+#: forms.py:223 forms.py:481
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
-#: forms.py:226
+#: forms.py:225
 msgid "First name"
 msgstr "Vardas"
 
-#: forms.py:227
+#: forms.py:226
 msgid "Last name"
 msgstr "Pavardė"
 
-#: forms.py:228 forms.py:270 templates/damis/user_list.html:23
+#: forms.py:227 forms.py:269 templates/damis/user_list.html:23
 msgid "E-mail"
 msgstr "El. pašto adresas"
 
-#: forms.py:229 models.py:66
+#: forms.py:228 models.py:66
 msgid "Organization"
 msgstr "Organizacija"
 
-#: forms.py:236
+#: forms.py:235
 msgid "This username is already taken."
 msgstr "Šis naudotojo vardas jau užimtas."
 
-#: forms.py:242
+#: forms.py:241
 msgid "User with this email already exist."
 msgstr "Naudotojas su šiuo el. pašto adresu jau egzistuoja."
 
-#: forms.py:275
+#: forms.py:274
 msgid "Please enter correct email address"
 msgstr "Įveskite teisingą savo el. pašto adresą"
 
-#: forms.py:280 models.py:27 models.py:148
+#: forms.py:279 models.py:27 models.py:148
 #: templates/damis/_existing_file.html:22
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:24
 #: templates/damis/experiment_list.html:22
 msgid "Title"
 msgstr "Pavadinimas"
 
-#: forms.py:281
+#: forms.py:280
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:282 models.py:29 templates/damis/_existing_file.html:31
+#: forms.py:281 models.py:29 templates/damis/_existing_file.html:31
 #: templates/damis/algorithm_list.html:27
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:33
 msgid "Description"
 msgstr "Aprašymas"
 
-#: forms.py:364
+#: forms.py:363
 msgid "Input connection is not connected"
 msgstr "Įeities jungtis nėra prijungta"
 
-#: forms.py:367
+#: forms.py:366
 msgid "This value must be specified"
 msgstr "Ši reikšmė turi būti nurodyta"
 
@@ -420,39 +421,31 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:500
-msgid ""
-"Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file with "
-"the name \"{2}\" already existed, so the uploaded file was renamed."
-msgstr ""
-"Eksperimentui naudojamas failas: <a href=\"{0}\">{1}</a>. <br /> Failas "
-"pavadinimu \"{2}\" egzistuoja, todėl ką tik įkeltas failas buvo pervadintas."
-
-#: views.py:545 views.py:549
+#: views.py:543 views.py:547
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:627 views.py:665 views.py:680 views.py:748 views.py:762
+#: views.py:625 views.py:663 views.py:678 views.py:746 views.py:760
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:718
+#: views.py:716
 msgid "image"
 msgstr "pav"
 
-#: views.py:785
+#: views.py:783
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:836
+#: views.py:834
 msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
-#: views.py:847
+#: views.py:845
 msgid "{0}: Approve {1}"
 msgstr "{0}: Patvirtinti {1}"
 
-#: views.py:868
+#: views.py:867
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -669,16 +662,16 @@ msgstr ""
 #, python-format
 msgid ""
 "New user have registered at %(domain)s and confirmed its email. You can "
-"review %(user.username)s user registration information by clicking this URL:"
+"review %(username)s user registration information by clicking this URL:"
 msgstr ""
 "Naujas naudotojas prisiregistravo %(domain)s sistemoje ir patvirtino savo "
-"el. pašto adresą. Galite peržiūrėti %(user.username)s naudotojo "
+"el. pašto adresą. Galite peržiūrėti %(username)s naudotojo "
 "registracijos informaciją paspausdami šią nuorodą:"
 
 #: templates/accounts/mail/approve_registration.html:6
 #, python-format
-msgid "You can activate %(user.username)s user by clicking this URL:"
-msgstr "Galite aktyvuoti %(user.username)s naudotoją paspausdami šią nuorodą:"
+msgid "You can activate %(username)s user by clicking this URL:"
+msgstr "Galite aktyvuoti %(username)s naudotoją paspausdami šią nuorodą:"
 
 #: templates/accounts/mail/confirm_email_letter.html:2
 #, python-format
@@ -704,28 +697,25 @@ msgstr ""
 "Galite nustatyti %(user)s naudotojo %(domain)s sistemoje slaptažodį "
 "paspausdami šią nuorodą:"
 
-#: templates/damis/_dataset_form.html:9 templates/damis/_existing_file.html:7
+#: templates/damis/_dataset_form.html:6 templates/damis/_existing_file.html:7
 msgid "Dataset used in the experiment"
 msgstr "Eksperimentui naudojamas failas"
 
-#: templates/damis/_dataset_form.html:13
-#: templates/damis/_existing_file.html:10
+#: templates/damis/_dataset_form.html:9 templates/damis/_existing_file.html:10
 msgid "New file"
 msgstr "Naujas failas"
 
-#: templates/damis/_dataset_form.html:15
-msgid "Hide form"
-msgstr "Paslėpti formą"
-
-#: templates/damis/_dataset_form.html:29
+#: templates/damis/_dataset_form.html:23
+#: templates/damis/dataset_update.html:24
 msgid "Choose"
 msgstr "Pasirinkti"
 
-#: templates/damis/_dataset_form.html:30
+#: templates/damis/_dataset_form.html:24
+#: templates/damis/dataset_update.html:25
 msgid "No file selected"
 msgstr "Joks failas nėra pasirinktas"
 
-#: templates/damis/_dataset_form.html:49
+#: templates/damis/_dataset_form.html:43
 #: templates/damis/_dataset_update.html:30
 msgid "Fields with an asterix are required"
 msgstr "Žvaigždute pažymėti laukai yra privalomi"
@@ -873,7 +863,7 @@ msgstr "Atsisiųsti XLS failą"
 msgid "XLS"
 msgstr "XLS"
 
-#: templates/damis/dataset_new.html:16 templates/damis/dataset_update.html:29
+#: templates/damis/dataset_new.html:16 templates/damis/dataset_update.html:34
 #: templates/damis/obj_form.html:13
 msgid "Upload dataset"
 msgstr "Įkelti duomenis"
@@ -953,6 +943,17 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankstesnis"
+
+#~ msgid ""
+#~ "Dataset used in the experiment: <a href=\"{0}\">{1}</a>. <br />A file "
+#~ "with the name \"{2}\" already existed, so the uploaded file was renamed."
+#~ msgstr ""
+#~ "Eksperimentui naudojamas failas: <a href=\"{0}\">{1}</a>. <br /> Failas "
+#~ "pavadinimu \"{2}\" egzistuoja, todėl ką tik įkeltas failas buvo "
+#~ "pervadintas."
+
+#~ msgid "Hide form"
+#~ msgstr "Paslėpti formą"
 
 #~ msgid ""
 #~ "A file with the name \"{0}\" already existed, so the uploaded file was "

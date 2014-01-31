@@ -1,8 +1,8 @@
 {% load i18n %}
-{% blocktrans %}New user have registered at {{ domain }} and confirmed its email. You can review {{ user.username }} user registration information by clicking this URL:{% endblocktrans %}
+{% blocktrans %}New user have registered at {{ domain }} and confirmed its email. You can review {{ username }} user registration information by clicking this URL:{% endblocktrans %}
 
     http://{{ domain }}{% url 'user-edit' user.pk %}
 
-{% blocktrans %}You can activate {{ user.username }} user by clicking this URL:{% endblocktrans %}
+{% blocktrans %}You can activate {{ username }} user by clicking this URL:{% endblocktrans %}
 
     http://{{ domain }}{{ approve_url }}
