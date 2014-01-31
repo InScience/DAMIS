@@ -98,6 +98,7 @@ class DatasetList(ListDeleteMixin, LoginRequiredMixin, ListView):
     def get_queryset(self):
         order_by = self.request.GET.get('order_by') or '-created'
         qs = super(DatasetList, self).get_queryset()
+        qs = qs.filter(user__id=self.request.user.pk)
         if 'title' in order_by:
             qs = qs.extra(select={'title_lower': 'lower(title)'})
             order_by = order_by + '_lower'
@@ -518,29 +519,37 @@ class ExistingFileView(LoginRequiredMixin, ListView):
     template_name = 'damis/_existing_file.html'
     success_url = reverse_lazy('dataset-list')
 
+    def get_page_no(self, ds):
+        index = self.get_queryset().filter(created__gt=ds.created).count()
+        return index / self.paginate_by + 1
+
     def get_queryset(self):
         order_by = self.request.GET.get('order_by') or '-created'
         qs = super(ExistingFileView, self).get_queryset()
+        qs = qs.filter(user__id=self.request.user.pk)
         if 'title' in order_by:
             qs = qs.extra(select={'title_lower': 'lower(title)'})
             order_by = order_by + '_lower'
         return qs.order_by(order_by)
 
     def get_context_data(self, **kwargs):
-        context = super(ExistingFileView, self).get_context_data(**kwargs)
-        context['request'] = self.request
+        context = {'request': self.request}
         if self.request.GET.has_key('dataset_url'):
             dataset_url = self.request.GET.get('dataset_url')
             context['file_path'] = dataset_url
-
             file_name = split(dataset_url)[1]
             file_pattern = "{0}/datasets/{1}".format(self.request.user.username, file_name)
             dataset = Dataset.objects.get(file=file_pattern)
             context['file_name'] = dataset.title
+            context['highlight_pk'] = dataset.pk
 
+            if not self.request.GET.has_key('page') and \
+               not self.request.GET.has_key('order_by'):
+                self.kwargs['page'] = self.get_page_no(dataset)
             self.request.GET = self.request.GET.copy()
-            self.request.GET.update({"page":2})
             self.request.GET.pop('dataset_url')
+
+        context.update(super(ExistingFileView, self).get_context_data(**kwargs))
         return context
 
 
