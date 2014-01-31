@@ -143,6 +143,8 @@
 				"text": gettext('Cancel'),
 				"class": "btn",
 				"click": function(ev) {
+                    $(this).find(".toggle-section").hide();
+                    $(this).find(".toggle-btn").show();
 					$(this).dialog("close");
 				}
 

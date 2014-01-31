@@ -77,31 +77,18 @@
 			});
 
 			// toggle file form visibility on click of a button
-			window.utils.initToggleSectionBtn(container, true);
+			window.utils.initToggleSectionBtn(container);
 		},
 
 		// initializes a button (.toggle-btn) that toggles a section (.toggle-section) 
 		// visibility inside a container
-		initToggleSectionBtn: function(container, useHideBtn) {
+		initToggleSectionBtn: function(container) {
 			// toggle file form visibility on click of a button
 			var newFileBtn = container.find(".toggle-btn");
 			newFileBtn.on("click", function(ev) {
 				var newFileForm = container.find(".toggle-section");
-				if (newFileBtn.hasClass("show")) {
-					newFileForm.show();
-
-					newFileBtn.removeClass("show");
-					if (useHideBtn) {
-						newFileBtn.html(gettext("Hide form"));
-					} else {
-						newFileBtn.remove();
-					}
-				} else {
-					newFileForm.hide();
-
-					newFileBtn.addClass("show");
-					newFileBtn.html(gettext("New file"));
-				}
+			    newFileForm.show();
+			    newFileBtn.hide();
 			})
 		}
 	}
