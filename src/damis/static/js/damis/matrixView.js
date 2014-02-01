@@ -38,7 +38,7 @@
 					downloadOptions.dialog({
 						"title": gettext("Select file type and destination"),
 						"modal": true,
-						"minWidth": 400,
+						"minWidth": 450,
 						"open": function() {
 							var dialog = $(this).closest(".ui-dialog");
 							dialog.find(".ui-dialog-titlebar > button").remove();
