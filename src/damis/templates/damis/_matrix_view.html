@@ -1,40 +1,31 @@
 {% load i18n %}
-<table>
-    <tbody><tr>
-            <td>
-				<div style="overflow: auto; overflow-x: hidden; max-height: 300px; padding-right: 20px;">
-                    <table class="file-content-table">
-                        <thead>
-                            <tr>
-                            {% for header_col in header %}
-                                <th>{{ header_col.0 }} <span class="helptext">({{ header_col.1 }})</span></th>
-                            {% endfor %}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for row in file %}
-                                <tr>
-                                {% for col in row %}
-                                    <td>{{ col }}</td>
-                                {% endfor %}
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </td> 
-    </tr>
-    <tr><td>
-            {% trans 'Select results file type: ' %}
-            <select class="file-type-select"> 
-                <option value="tab">tab</option>
-                <option value="txt">txt</option>
-                <option value="csv">csv</option>
-                <option value="xls">xls</option>
-                <option value="xlsx">xlsx</option>
-                <option value="arff" selected="selected">arff</option>
-            </select>
-        </td></tr>
+<div style="width: 500px;">
+<table class="file-content-table" cellspacing="0" cellpadding="0" border="0" >
+    <thead>
+        <tr>
+        {% for header_col in header %}
+            <th>{{ header_col.0 }} <span class="helptext">({{ header_col.1 }})</span></th>
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in file %}
+            <tr>
+            {% for col in row %}
+                <td>{{ col }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
     </tbody>
 </table>
+</div>
 
+{% trans 'Select results file type: ' %}
+<select class="file-type-select"> 
+    <option value="tab">tab</option>
+    <option value="txt">txt</option>
+    <option value="csv">csv</option>
+    <option value="xls">xls</option>
+    <option value="xlsx">xlsx</option>
+    <option value="arff" selected="selected">arff</option>
+</select>

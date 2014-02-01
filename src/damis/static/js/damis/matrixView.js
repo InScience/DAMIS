@@ -16,16 +16,16 @@
 			formWindow.dialog("option", "width", 300);
 		},
 
-        reducedButtons: function() {
+		reducedButtons: function() {
 			var buttons = [{
 				"text": gettext('Cancel'),
 				"class": "btn",
 				"click": function(ev) {
-                    $(this).dialog("close");
+					$(this).dialog("close");
 				}
 			}];
-            return buttons;
-        },
+			return buttons;
+		},
 
 		// all buttons for this component
 		allButtons: function() {
@@ -34,7 +34,7 @@
 				"class": "btn btn-primary",
 				"click": function(ev) {
 					var url = window.componentFormUrls['MATRIX VIEW'];
-                    var dialog = $(ev.currentTarget).closest(".ui-dialog");
+					var dialog = $(ev.currentTarget).closest(".ui-dialog");
 					var formWindow = dialog.find(".task-window");
 					var data = window.matrixView.getOutputParamDetails(formWindow);
 					var format = dialog.find(".file-type-select").val();
@@ -52,6 +52,7 @@
 			var container = $("<div class=\"matrix-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
 			formWindow.append(container);
 			var data = window.matrixView.getOutputParamDetails(formWindow);
+			window.utils.showProgress();
 			$.ajax({
 				url: url,
 				data: data,
@@ -62,10 +63,21 @@
 					// non-html (failure) response
 				} else {
 					formWindow.dialog("option", "buttons", window.matrixView.allButtons());
-					formWindow.dialog("option", "minWidth", 0);
 					formWindow.dialog("option", "maxHeight", 500);
 					formWindow.dialog("option", "width", "auto");
 				}
+				window.utils.hideProgress();
+			});
+		},
+
+		initTable: function(table) {
+			return table.dataTable({
+				"sScrollY": 200,
+				"sScrollX": "100%",
+				"bInfo": false,
+				"bPaginate": false,
+				"bFilter": false,
+				"bDestroy": true,
 			});
 		},
 
@@ -95,6 +107,17 @@
 			if (srcComponentType == 'MATRIX VIEW' || targetComponentType == 'MATRIX VIEW') {
 				var formWindow = $("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId));
 				this.toUnconnectedState(formWindow);
+			}
+		},
+
+		doubleClick: function(componentType, formWindow) {
+			if (componentType == 'MATRIX VIEW') {
+				formWindow.dialog("open");
+				var dataTable = $(formWindow).find("table[id^=DataTables]");
+				if (dataTable.length == 0) {
+					var table = $(formWindow).find(".file-content-table");
+					var dataTable = window.matrixView.initTable(table);
+				}
 			}
 		}
 	}
