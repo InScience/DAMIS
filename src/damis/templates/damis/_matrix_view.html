@@ -20,12 +20,35 @@
 </table>
 </div>
 
-{% trans 'Select results file type: ' %}
-<select class="file-type-select"> 
-    <option value="tab">tab</option>
-    <option value="txt">txt</option>
-    <option value="csv">csv</option>
-    <option value="xls">xls</option>
-    <option value="xlsx">xlsx</option>
-    <option value="arff" selected="selected">arff</option>
-</select>
+<div style="display:none;" class="download-options">
+    <div>
+        {% trans 'Select file type' %}:<br />
+        <table><tbody>
+            <tr>
+                <td style="padding:5px"><input type="radio" name="file-type" value="arff" checked="checked" />arff</td>
+                <td style="padding:5px"><input type="radio" name="file-type" value="txt" />txt</td>
+                <td style="padding:5px"><input type="radio" name="file-type" value="tab" />tab</td>
+            </tr>
+            <tr>
+                <td style="padding:5px"><input type="radio" name="file-type" value="csv" />csv</td>
+                <td style="padding:5px"><input type="radio" name="file-type" value="xls" />xls</td>
+                <td style="padding:5px"><input type="radio" name="file-type" value="xlsx /">xlsx</td>
+            </tr>
+        </tbody></table>
+    </div>
+    <hr />
+    <div>
+        {% trans 'Select destination' %}:<br />
+        <table><tbody>
+            <tr>
+                <td style="padding:5px"><input type="radio" name="file-destination" value="user-computer" checked="checked" />{% trans 'User computer' %}</td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <input type="radio" name="file-destination" value="midas" />{% trans 'MIDAS' %}
+                    <span style="display: none;" class="not-implemented helptext">{% trans 'This functionality will be negotiated during the 6th activity.' %}</span>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>

@@ -33,12 +33,41 @@
 				"text": gettext('Download'),
 				"class": "btn btn-primary",
 				"click": function(ev) {
-					var url = window.componentFormUrls['MATRIX VIEW'];
-					var dialog = $(ev.currentTarget).closest(".ui-dialog");
-					var formWindow = dialog.find(".task-window");
-					var data = window.matrixView.getOutputParamDetails(formWindow);
-					var format = dialog.find(".file-type-select").val();
-					document.location.href = url + "?download=True&format=" + format + "&pv_name=" + data.pv_name + "&dataset_url=" + data.dataset_url;
+					var formWindow = $(this);
+					var downloadOptions = $(this).find(".download-options").clone(true);
+					downloadOptions.dialog({
+						"title": gettext("Select file type and destination"),
+						"modal": true,
+						"minWidth": 400,
+						"open": function() {
+							var dialog = $(this).closest(".ui-dialog");
+							dialog.find(".ui-dialog-titlebar > button").remove();
+						},
+						"buttons": [{
+							"text": gettext("OK"),
+							"class": "btn btn-primary",
+							"click": function(ev) {
+								var format = $(this).find("input[name=file-type]:checked").val();
+								var dst = $(this).find("input[name=file-destination]:checked").val();
+								if (dst == 'midas') {
+									$(".not-implemented").show();
+								} else {
+									$(this).dialog("destroy");
+									var url = window.componentFormUrls['MATRIX VIEW'];
+									var data = window.matrixView.getOutputParamDetails(formWindow);
+									document.location.href = url + "?download=True&format=" + format + "&pv_name=" + data.pv_name + "&dataset_url=" + data.dataset_url;
+								}
+							}
+						},
+						{
+							"text": gettext("Cancel"),
+							"class": "btn",
+							"click": function(ev) {
+								$(".not-implemented").hide();
+								$(this).dialog("destroy");
+							}
+						}]
+					});
 				}
 			}];
 			var reducedButtons = window.matrixView.reducedButtons();

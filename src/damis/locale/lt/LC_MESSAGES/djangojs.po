@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-28 19:51+0000\n"
+"POT-Creation-Date: 2014-02-01 20:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,11 +36,11 @@ msgstr ""
 "komponente."
 
 #: static/js/damis/chart.js:22 static/js/damis/chart.js.c:190
-#: static/js/damis/datasetUpdate.js:45 static/js/damis/existingFile.js:77
+#: static/js/damis/datasetUpdate.js:58 static/js/damis/existingFile.js:76
 #: static/js/damis/experimentForm.js:184 static/js/damis/files.js:143
-#: static/js/damis/files.js.c:163 static/js/damis/matrixView.js:21
-#: static/js/damis/taskBoxes.js:147 static/js/damis/technicalDetails.js:21
-#: static/js/damis/utils.js:36
+#: static/js/damis/files.js.c:165 static/js/damis/matrixView.js:21
+#: static/js/damis/matrixView.js.c:62 static/js/damis/taskBoxes.js:147
+#: static/js/damis/technicalDetails.js:21 static/js/damis/utils.js:36
 msgid "Cancel"
 msgstr "Atšaukti"
 
@@ -103,8 +103,9 @@ msgstr "Forma"
 
 #: static/js/damis/chart.js:264 static/js/damis/datasetUpdate.js:38
 #: static/js/damis/existingFile.js:58 static/js/damis/experimentForm.js:191
-#: static/js/damis/files.js:122 static/js/damis/files.js.c:156
-#: static/js/damis/taskBoxes.js:139 static/js/damis/utils.js:43
+#: static/js/damis/files.js:122 static/js/damis/files.js.c:158
+#: static/js/damis/matrixView.js:46 static/js/damis/taskBoxes.js:139
+#: static/js/damis/utils.js:43
 msgid "OK"
 msgstr "Patvirtinti"
 
@@ -116,13 +117,15 @@ msgstr "Atnaujinti duomenis"
 msgid "Experiment settings"
 msgstr "Eksperimento nustatymai"
 
-#: static/js/damis/utils.js:95
-msgid "Hide form"
-msgstr "Paslėpti formą"
+#: static/js/damis/matrixView.js:39
+msgid "Select file type and destination"
+msgstr "Failo tipo ir saugojimo vietos pasirinkimas"
 
-#: static/js/damis/utils.js:103
-msgid "New file"
-msgstr "Naujas failas"
+#~ msgid "Hide form"
+#~ msgstr "Paslėpti formą"
+
+#~ msgid "New file"
+#~ msgstr "Naujas failas"
 
 #~ msgid "File used in the experiment"
 #~ msgstr "Eksperimentui naudojamas failas"

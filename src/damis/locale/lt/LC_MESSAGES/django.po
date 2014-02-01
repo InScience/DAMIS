@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-01 18:38+0000\n"
+"POT-Creation-Date: 2014-02-01 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -768,9 +768,25 @@ msgstr "Formoje yra klaidų"
 msgid "Error:"
 msgstr "Klaida:"
 
-#: templates/damis/_matrix_view.html:23
-msgid "Select results file type: "
-msgstr "Rezultatų failo formatas:"
+#: templates/damis/_matrix_view.html:25
+msgid "Select file type"
+msgstr "Pasirinkite failo formatą"
+
+#: templates/damis/_matrix_view.html:36
+msgid "Select destination"
+msgstr "Pasirinkite saugojimo vietą"
+
+#: templates/damis/_matrix_view.html:37
+msgid "User computer"
+msgstr "Naudotojo kompiuteris"
+
+#: templates/damis/_matrix_view.html:39
+msgid "MIDAS"
+msgstr "MIDAS"
+
+#: templates/damis/_matrix_view.html:40
+msgid "This functionality will be negotiated during the 6th activity."
+msgstr "Šis funkcionalumas bus derinamas 6 veiklos atlikimo metu."
 
 #: templates/damis/_technical_details.html:6
 msgid "Value"
