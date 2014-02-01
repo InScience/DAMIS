@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-31 16:19+0000\n"
+"POT-Creation-Date: 2014-02-01 17:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -89,7 +89,7 @@ msgid "Please enter correct email address"
 msgstr "Įveskite teisingą savo el. pašto adresą"
 
 #: forms.py:279 models.py:27 models.py:148
-#: templates/damis/_existing_file.html:22
+#: templates/damis/_existing_file.html:19
 #: templates/damis/algorithm_list.html:23 templates/damis/dataset_list.html:24
 #: templates/damis/experiment_list.html:22
 msgid "Title"
@@ -99,7 +99,7 @@ msgstr "Pavadinimas"
 msgid "Dataset file"
 msgstr "Duomenų failas"
 
-#: forms.py:281 models.py:29 templates/damis/_existing_file.html:31
+#: forms.py:281 models.py:29 templates/damis/_existing_file.html:28
 #: templates/damis/algorithm_list.html:27
 #: templates/damis/dataset_detail.html:12 templates/damis/dataset_list.html:33
 msgid "Description"
@@ -124,7 +124,7 @@ msgstr "Atnaujinta"
 
 #: models.py:32 models.py:154 models.py:253
 #: templates/damis/_dataset_update.html:10
-#: templates/damis/_existing_file.html:27
+#: templates/damis/_existing_file.html:24
 #: templates/damis/dataset_detail.html:15 templates/damis/dataset_list.html:29
 msgid "Created"
 msgstr "Sukurta"
@@ -421,31 +421,35 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:543 views.py:547
+#: views.py:558 views.py:562
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:625 views.py:663 views.py:678 views.py:746 views.py:760
+#: views.py:585
+msgid "attr{0}"
+msgstr "atributas{0}"
+
+#: views.py:644 views.py:682 views.py:697 views.py:765 views.py:779
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:716
+#: views.py:735
 msgid "image"
 msgstr "pav"
 
-#: views.py:783
+#: views.py:802
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:834
+#: views.py:856
 msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
-#: views.py:845
+#: views.py:867
 msgid "{0}: Approve {1}"
 msgstr "{0}: Patvirtinti {1}"
 
-#: views.py:867
+#: views.py:889
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -665,8 +669,8 @@ msgid ""
 "review %(username)s user registration information by clicking this URL:"
 msgstr ""
 "Naujas naudotojas prisiregistravo %(domain)s sistemoje ir patvirtino savo "
-"el. pašto adresą. Galite peržiūrėti %(username)s naudotojo "
-"registracijos informaciją paspausdami šią nuorodą:"
+"el. pašto adresą. Galite peržiūrėti %(username)s naudotojo registracijos "
+"informaciją paspausdami šią nuorodą:"
 
 #: templates/accounts/mail/approve_registration.html:6
 #, python-format
@@ -701,7 +705,7 @@ msgstr ""
 msgid "Dataset used in the experiment"
 msgstr "Eksperimentui naudojamas failas"
 
-#: templates/damis/_dataset_form.html:9 templates/damis/_existing_file.html:10
+#: templates/damis/_dataset_form.html:9
 msgid "New file"
 msgstr "Naujas failas"
 
@@ -734,19 +738,19 @@ msgid ""
 "sure?"
 msgstr "Ar tikrai norite, kad pažymėti įrašai būtų negrįžtamai ištrinti?"
 
-#: templates/damis/_existing_file.html:14
+#: templates/damis/_existing_file.html:11
 msgid "Uploaded files"
 msgstr "Įkeltų failų sąrašas"
 
-#: templates/damis/_existing_file.html:26 templates/damis/dataset_list.html:28
+#: templates/damis/_existing_file.html:23 templates/damis/dataset_list.html:28
 msgid "Size"
 msgstr "Dydis"
 
-#: templates/damis/_existing_file.html:46 templates/damis/dataset_list.html:72
+#: templates/damis/_existing_file.html:45 templates/damis/dataset_list.html:72
 msgid "No files were uploaded yet. You can upload one "
 msgstr "Kol kas nėra įkeltų failų. Įkelti failą galite "
 
-#: templates/damis/_existing_file.html:47
+#: templates/damis/_existing_file.html:46
 #: templates/damis/algorithm_list.html:48 templates/damis/dataset_list.html:73
 #: templates/damis/experiment_list.html:51 templates/damis/user_list.html:49
 msgid "here"
@@ -760,7 +764,7 @@ msgstr "Formoje yra klaidų"
 msgid "Error:"
 msgstr "Klaida:"
 
-#: templates/damis/_matrix_view.html:28
+#: templates/damis/_matrix_view.html:23
 msgid "Select results file type: "
 msgstr "Rezultatų failo formatas:"
 

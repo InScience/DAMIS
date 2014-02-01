@@ -580,7 +580,11 @@ def file_to_table(file_url):
                 parts = row.split()
                 col_name = parts[1]
                 col_type = parts[2]
-                header.append([col_name, col_type])
+                attr_no = re.findall("^attr(\d+)$", col_name)
+                if attr_no:
+                    header.append([_("attr{0}").format(attr_no[0]), col_type])
+                else:
+                    header.append([col_name, col_type])
     f.close()
     return header, file_table
 
