@@ -19,6 +19,7 @@ urlpatterns += i18n_patterns('',
     url(r'^about/$', static_page_view, name='about', kwargs={'template': 'index.html'}),
     url(r'^help/$', static_page_view, name='help', kwargs={'template': 'help.html'}),
     url(r'^faq/$', static_page_view, name='faq', kwargs={'template': 'faq.html'}),
+    url(r'^404/$', static_page_view, name='404', kwargs={'template': '404.html'}),
 
     url(r'^login/$', login_view, name='login'),
     url(r'^logout/$', logout_view, name='logout'),

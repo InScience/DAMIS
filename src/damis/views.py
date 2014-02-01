@@ -841,7 +841,10 @@ def approve_user_view(request, pk):
     user = request.user
     if not user.is_superuser:
         return HttpResponseRedirect(reverse_lazy('login'))
-    user = User.objects.get(pk=pk)
+    try:
+        user = User.objects.get(pk=pk)
+    except User.DoesNotExist:
+        raise Http404
     user.activate(domain=request.get_host())
     form = UserUpdateForm(instance=user)
     return render(request, 'damis/user_update.html', {
