@@ -4,7 +4,7 @@
     <thead>
         <tr>
         {% for header_col in header %}
-            <th>{{ header_col.0 }} <span class="helptext">({{ header_col.1 }})</span></th>
+        <th>{{ header_col.0 }} {% if header_col.1 %}<span class="helptext">({{ header_col.1 }})</span>{% endif %}</th>
         {% endfor %}
         </tr>
     </thead>

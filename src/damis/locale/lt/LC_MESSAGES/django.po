@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-01 17:45+0000\n"
+"POT-Creation-Date: 2014-02-01 18:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -425,31 +425,35 @@ msgstr "Anlgų"
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:585
+#: views.py:570
+msgid "Object No."
+msgstr "Objekto Nr."
+
+#: views.py:589
 msgid "attr{0}"
 msgstr "atributas{0}"
 
-#: views.py:644 views.py:682 views.py:697 views.py:765 views.py:779
+#: views.py:648 views.py:686 views.py:701 views.py:769 views.py:783
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:735
+#: views.py:739
 msgid "image"
 msgstr "pav"
 
-#: views.py:802
+#: views.py:806
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:856
+#: views.py:860
 msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
-#: views.py:867
+#: views.py:871
 msgid "{0}: Approve {1}"
 msgstr "{0}: Patvirtinti {1}"
 
-#: views.py:889
+#: views.py:893
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 

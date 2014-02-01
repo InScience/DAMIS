@@ -567,11 +567,15 @@ def file_to_table(file_url):
     '''
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
     file_table = []
-    header = []
+    header = [[_("Object No."), None]]
     data_sec = False
+    count = 0
     for row in f:
         if data_sec:
-            file_table.append([cell for cell in row.split(",")])
+            res_row = [count]
+            count += 1
+            res_row.extend([cell for cell in row.split(",")])
+            file_table.append(res_row)
         else:
             row_std = row.strip().lower()
             if row_std.startswith("@data"):
