@@ -687,32 +687,55 @@ def matrix_form_view(request):
     else:
         return HttpResponse(_('You have to execute this experiment first to see the result.'))
 
-def read_classified_data(file_url):
+def read_classified_data(file_url, x, y, clsCol):
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
-    f = strip_arff_header(f)
-    clsCol = -1
+
     result = OrderedDict()
     minX = None; maxX = None
     minY = None; maxY = None
-    for line in f:
-        cells = line.rstrip().split(",")
-        cls = cells[clsCol]
-        if not cls in result:
-            result[cls] = []
-        result[cls].append([cells[0], cells[1]])
+    data_sec = False
+    attributes = []
+    max_classes = 120
+    error = None
+    for row in f:
+        if data_sec:
+            cells = row.rstrip().split(",")
+            cls = cells[clsCol]
+            if not cls in result:
+                if len(result.keys()) >= max_classes:
+                    error = _("More than {0} classes found in the class "
+                            "attribute {1}. Please select another class "
+                            "attribute.").format(max_classes, attributes[clsCol][0])
+                    break
+                else:
+                    result[cls] = []
+            result[cls].append([cells[x], cells[y]])
 
-        if minX is None or float(cells[0]) < minX:
-            minX = float(cells[0])
-        if maxX is None or float(cells[0]) > maxX:
-            maxX = float(cells[0])
-        if minY is None or float(cells[1]) < minY:
-            minY = float(cells[1])
-        if maxY is None or float(cells[1]) > maxY:
-            maxY = float(cells[1])
-
+            if minX is None or float(cells[x]) < minX:
+                minX = float(cells[x])
+            if maxX is None or float(cells[x]) > maxX:
+                maxX = float(cells[x])
+            if minY is None or float(cells[y]) < minY:
+                minY = float(cells[y])
+            if maxY is None or float(cells[y]) > maxY:
+                maxY = float(cells[y])
+        else:
+            row_std = row.strip().lower()
+            if row_std.startswith("@data"):
+                data_sec = True
+            elif row_std.startswith("@attribute"):
+                parts = row.split()
+                col_name = parts[1]
+                col_type = parts[2]
+                attr_no = re.findall("^attr(\d+)$", col_name)
+                if attr_no:
+                    attributes.append([_("attr{0}").format(attr_no[0]), col_type])
+                else:
+                    attributes.append([col_name, col_type])
     f.close()
+
     result = [{"group": cls, "data": data} for cls, data in result.items()]
-    return {"data": result, "minX": minX, "maxX": maxX, "minY": minY, "maxY": maxY}
+    return error, attributes, {"data": result, "minX": minX, "maxX": maxX, "minY": minY, "maxY": maxY}
 
 def download_image(image, file_format):
     '''Prepares the HTTP response to download an image in a given format.
@@ -743,8 +766,10 @@ def chart_form_view(request):
 
     request - Ajax request. 
         GET fields:
-            pv_name - OUTPUT_CONNECTION parameter form input name; used to track down the task, output of which should be rendered by the chart component
             dataset_url - url of the data file, which is to be rendered ty the chart component
+            x - attribute to render in x axis
+            y - attribute to render in y axis
+            cls - class attribute
 
         POST fields:
             format - image file format
@@ -753,34 +778,25 @@ def chart_form_view(request):
     if request.method == 'POST':
         return download_image(request.POST.get("image"), request.POST.get("format"))
 
-    pv_name = request.GET.get('pv_name')
     dataset_url = request.GET.get('dataset_url');
 
-    if re.findall('PV_\d+-\d+-value', pv_name):
-        if (dataset_url):
-            content = read_classified_data(dataset_url)
-            resp = {"status": "SUCCESS", "content": content}
-            return HttpResponse(json.dumps(resp), content_type="application/json")
+    if (dataset_url):
+        x = int(request.GET.get("x")) if not request.GET.get("x") is None else None
+        y = int(request.GET.get("y")) if not request.GET.get("y") is None else None
+        cls = int(request.GET.get("cls")) if not request.GET.get("cls") is None else None
+        error, attributes, content = read_classified_data(dataset_url, x or 0, y or 1, cls or -1)
+        if x is None or y is None or cls is None:
+            error = _("Please specify attributes to render you data:")
+        context = {"attrs": attributes, "error": error, "x": x, "y": y, "cls": cls}
+        html = render_to_string("damis/_chart.html", context)
+        if error:
+            resp = {"status": "ERROR", "html": html}
         else:
-            resp = {"status": "ERROR", "message": unicode(_('You have to execute this experiment first to see the result.'))}
-            return HttpResponse(json.dumps(resp), content_type="applicatioin/json")
-    else:
-        task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)[0]
-        task = WorkflowTask.objects.get(pk=task_pk)
-        file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
-        # XXX: constraint: can download only first file OUTPUT_CONNECTION
-        file_path = None
-        if len(file_params) and file_params[0].value:
-            file_path = file_params[0].value
-            content = read_classified_data(file_path)
-            resp = {"status": "SUCCESS", "content": content}
-            return HttpResponse(json.dumps(resp), content_type="application/json") 
-        else:
-            resp = {"status": "ERROR", "message": unicode(_('You have to execute this experiment first to see the result.'))}
-            return HttpResponse(json.dumps(resp), content_type="applicatioin/json")
-        content = read_classified_data(dataset_url)
-        resp = {"status": "SUCCESS", "content": content}
+            resp = {"status": "SUCCESS", "content": content, "html": html}
         return HttpResponse(json.dumps(resp), content_type="application/json")
+    else:
+        resp = {"status": "ERROR", "html": unicode(_('You have to execute this experiment first to see the result.'))}
+        return HttpResponse(json.dumps(resp), content_type="applicatioin/json")
 
 # User views
 def register_view(request):

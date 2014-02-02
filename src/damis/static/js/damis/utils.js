@@ -92,7 +92,15 @@
 				newFileForm.show();
 				newFileBtn.hide();
 			})
-		}
+		},
+
+		formatStr: function(str, args) {
+			var newStr = str;
+			for (var key in args) {
+				newStr = newStr.replace(new RegExp("{" + key + "}", "g"), args[key]);
+			}
+			return newStr;
+		},
 	}
 })();
 

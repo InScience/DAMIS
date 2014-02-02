@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-02 09:37+0000\n"
+"POT-Creation-Date: 2014-02-02 22:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr "Pasirinkite kitą pavadinimą, nes \"{0}\" jau egzistuoja."
 msgid "Username"
 msgstr "Naudotojo vardas"
 
-#: forms.py:205 forms.py:221 forms.py:479
+#: forms.py:205 forms.py:221 forms.py:484
 msgid "Password"
 msgstr "Slaptažodis"
 
@@ -56,7 +56,7 @@ msgstr "Slaptažodis"
 msgid "Username or password is incorrect"
 msgstr "Naudotojo vardas arba slaptažodis yra neteisingas"
 
-#: forms.py:223 forms.py:481
+#: forms.py:223 forms.py:486
 msgid "Repeat Password"
 msgstr "Pakartokite slaptažodį"
 
@@ -105,11 +105,11 @@ msgstr "Duomenų failas"
 msgid "Description"
 msgstr "Aprašymas"
 
-#: forms.py:363
+#: forms.py:368
 msgid "Input connection is not connected"
 msgstr "Įeities jungtis nėra prijungta"
 
-#: forms.py:366
+#: forms.py:371
 msgid "This value must be specified"
 msgstr "Ši reikšmė turi būti nurodyta"
 
@@ -429,31 +429,41 @@ msgstr "Kol kas nerealizuota"
 msgid "Object No."
 msgstr "Objekto Nr."
 
-#: views.py:589
+#: views.py:589 views.py:727
 msgid "attr{0}"
-msgstr "atributas{0}"
+msgstr "atr{0}"
 
-#: views.py:648 views.py:686 views.py:701 views.py:769 views.py:783
+#: views.py:648 views.py:683 views.py:784
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:739
+#: views.py:701
+msgid ""
+"More than {0} classes found in the class attribute {1}. Please select "
+"another class attribute."
+msgstr "Pasirinktas klasės atributas <b>\"{1}\"</b> turi daugiau kaip <b>{0}</b> skirtingų " "reikšmių. Pasirinkite kitą klasės atributą."
+
+#: views.py:744
 msgid "image"
 msgstr "pav"
 
-#: views.py:806
+#: views.py:775
+msgid "Please specify attributes to render you data:"
+msgstr "Pasirinkite atributus, kuriuos norite vaizduoti:"
+
+#: views.py:804
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:860
+#: views.py:858
 msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
-#: views.py:871
+#: views.py:869
 msgid "{0}: Approve {1}"
 msgstr "{0}: Patvirtinti {1}"
 
-#: views.py:893
+#: views.py:891
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -705,6 +715,38 @@ msgstr ""
 "Galite nustatyti %(user)s naudotojo %(domain)s sistemoje slaptažodį "
 "paspausdami šią nuorodą:"
 
+#: templates/damis/_chart.html:35 templates/damis/_chart.html.py:52
+msgid "Class"
+msgstr "Klasė"
+
+#: templates/damis/_chart.html:53
+msgid "Color"
+msgstr "Spalva"
+
+#: templates/damis/_chart.html:55
+msgid "Shape"
+msgstr "Forma"
+
+#: templates/damis/_chart.html:64 templates/damis/_matrix_view.html:25
+msgid "Select file type"
+msgstr "Pasirinkite failo formatą"
+
+#: templates/damis/_chart.html:76 templates/damis/_matrix_view.html:41
+msgid "Select destination"
+msgstr "Pasirinkite saugojimo vietą"
+
+#: templates/damis/_chart.html:79 templates/damis/_matrix_view.html:44
+msgid "User computer"
+msgstr "Naudotojo kompiuteris"
+
+#: templates/damis/_chart.html:83 templates/damis/_matrix_view.html:48
+msgid "MIDAS"
+msgstr "MIDAS"
+
+#: templates/damis/_chart.html:84 templates/damis/_matrix_view.html:49
+msgid "This functionality will be negotiated during the 6th activity."
+msgstr "Šis funkcionalumas bus derinamas 6 veiklos atlikimo metu."
+
 #: templates/damis/_dataset_form.html:6 templates/damis/_existing_file.html:7
 msgid "Dataset used in the experiment"
 msgstr "Eksperimentui naudojamas failas"
@@ -767,26 +809,6 @@ msgstr "Formoje yra klaidų"
 #: templates/damis/_experiment_form.html:34
 msgid "Error:"
 msgstr "Klaida:"
-
-#: templates/damis/_matrix_view.html:25
-msgid "Select file type"
-msgstr "Pasirinkite failo formatą"
-
-#: templates/damis/_matrix_view.html:41
-msgid "Select destination"
-msgstr "Pasirinkite saugojimo vietą"
-
-#: templates/damis/_matrix_view.html:44
-msgid "User computer"
-msgstr "Naudotojo kompiuteris"
-
-#: templates/damis/_matrix_view.html:48
-msgid "MIDAS"
-msgstr "MIDAS"
-
-#: templates/damis/_matrix_view.html:49
-msgid "This functionality will be negotiated during the 6th activity."
-msgstr "Šis funkcionalumas bus derinamas 6 veiklos atlikimo metu."
 
 #: templates/damis/_technical_details.html:6
 msgid "Value"
