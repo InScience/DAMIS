@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-01 20:21+0000\n"
+"POT-Creation-Date: 2014-02-02 15:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,8 +26,7 @@ msgstr "pridėti dar vieną"
 msgid "remove"
 msgstr "pašalinti"
 
-#: static/js/damis/chart.js:13 static/js/damis/matrixView.js:12
-#: static/js/damis/technicalDetails.js:12
+#: static/js/damis/chart.js:13 static/js/damis/technicalDetails.js:12
 msgid ""
 "This component should be connected to an executed task in order to view "
 "results."
@@ -38,8 +37,8 @@ msgstr ""
 #: static/js/damis/chart.js:22 static/js/damis/chart.js.c:190
 #: static/js/damis/datasetUpdate.js:58 static/js/damis/existingFile.js:76
 #: static/js/damis/experimentForm.js:184 static/js/damis/files.js:143
-#: static/js/damis/files.js.c:165 static/js/damis/matrixView.js:21
-#: static/js/damis/matrixView.js.c:62 static/js/damis/taskBoxes.js:147
+#: static/js/damis/files.js.c:165 static/js/damis/matrixView.js:15
+#: static/js/damis/matrixView.js.c:57 static/js/damis/taskBoxes.js:147
 #: static/js/damis/technicalDetails.js:21 static/js/damis/utils.js:36
 msgid "Cancel"
 msgstr "Atšaukti"
@@ -49,7 +48,7 @@ msgid "Update"
 msgstr "Atnaujinti"
 
 #: static/js/damis/chart.js:45 static/js/damis/chart.js.c:197
-#: static/js/damis/matrixView.js:33
+#: static/js/damis/matrixView.js:27
 msgid "Download"
 msgstr "Atsisiųsti"
 
@@ -104,7 +103,7 @@ msgstr "Forma"
 #: static/js/damis/chart.js:264 static/js/damis/datasetUpdate.js:38
 #: static/js/damis/existingFile.js:58 static/js/damis/experimentForm.js:191
 #: static/js/damis/files.js:122 static/js/damis/files.js.c:158
-#: static/js/damis/matrixView.js:46 static/js/damis/taskBoxes.js:139
+#: static/js/damis/matrixView.js:41 static/js/damis/taskBoxes.js:139
 #: static/js/damis/utils.js:43
 msgid "OK"
 msgstr "Patvirtinti"
@@ -117,7 +116,15 @@ msgstr "Atnaujinti duomenis"
 msgid "Experiment settings"
 msgstr "Eksperimento nustatymai"
 
-#: static/js/damis/matrixView.js:39
+#: static/js/damis/matrixView.js:7
+msgid ""
+"This component should be connected to a selected file or an executed task in "
+"order to view results."
+msgstr ""
+"Norėdami peržiūrėti rezultatus, turite sujungti komponentę su pasirinktu "
+"failu arba įvykdyta komponente."
+
+#: static/js/damis/matrixView.js:33
 msgid "Select file type and destination"
 msgstr "Failo tipo ir saugojimo vietos pasirinkimas"
 

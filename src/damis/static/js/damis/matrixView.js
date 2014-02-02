@@ -1,19 +1,13 @@
 (function() {
 	window.matrixView = {
-		init: function(componentType, formWindow) {
-			if (componentType == 'MATRIX VIEW') {
-				this.toUnconnectedState(formWindow);
-			}
-		},
 
 		// prepare dialog, when component is unconnected 
 		toUnconnectedState: function(formWindow) {
 			formWindow.find(".matrix-container").remove();
-			var container = $("<div class=\"matrix-container\">" + gettext("This component should be connected to an executed task in order to view results.") + "</div>");
+			var container = $("<div class=\"matrix-container\">" + gettext("This component should be connected to a selected file or an executed task in order to view results.") + "</div>");
 			formWindow.append(container);
 			formWindow.dialog("option", "buttons", window.matrixView.reducedButtons());
-			formWindow.dialog("option", "minWidth", 0);
-			formWindow.dialog("option", "width", 300);
+			formWindow.dialog("option", "width", "auto");
 		},
 
 		reducedButtons: function() {
@@ -78,9 +72,14 @@
 		update: function(formWindow) {
 			var url = window.componentFormUrls['MATRIX VIEW'];
 			formWindow.find(".matrix-container").remove();
-			var container = $("<div class=\"matrix-container\"><img width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
+			var container = $("<div class=\"matrix-container\"><img style=\"display: block; width: 250px; margin:auto;\" width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
+            formWindow.dialog("option", "buttons", this.reducedButtons());
 			formWindow.append(container);
 			var data = window.matrixView.getOutputParamDetails(formWindow);
+            if (!data["dataset_url"]) {
+                this.toUnconnectedState(formWindow);
+                return;
+            }
 			window.utils.showProgress();
 			$.ajax({
 				url: url,
@@ -92,8 +91,9 @@
 					// non-html (failure) response
 				} else {
 					formWindow.dialog("option", "buttons", window.matrixView.allButtons());
-					formWindow.dialog("option", "maxHeight", 500);
 					formWindow.dialog("option", "width", "auto");
+					var table = $(formWindow).find(".file-content-table");
+					var dataTable = window.matrixView.initTable(table);
 				}
 				window.utils.hideProgress();
 			});
@@ -101,7 +101,7 @@
 
 		initTable: function(table) {
 			return table.dataTable({
-				"sScrollY": 200,
+				"sScrollY": 400,
 				"sScrollX": "100%",
 				"bInfo": false,
 				"bPaginate": false,
@@ -117,36 +117,17 @@
 			var oParamField = window.experimentForm.getOutputParam(srcRefField);
 			if (oParamField) {
 				return {
-					pv_name: oParamField.attr("name"),
 					dataset_url: oParamField.val()
 				}
 			}
 			return {}
 		},
 
-		// called when connection is established
-		connectionEstablished: function(srcComponentType, targetComponentType, connectionParams) {
-			if (targetComponentType == 'MATRIX VIEW') {
-				this.update($("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId)));
-			}
-		},
-
-		// called when connection is deleted
-		connectionDeleted: function(srcComponentType, targetComponentType, connectionParams) {
-			if (srcComponentType == 'MATRIX VIEW' || targetComponentType == 'MATRIX VIEW') {
-				var formWindow = $("#" + window.taskBoxes.getFormWindowId(connectionParams.iTaskBoxId));
-				this.toUnconnectedState(formWindow);
-			}
-		},
-
 		doubleClick: function(componentType, formWindow) {
 			if (componentType == 'MATRIX VIEW') {
+				formWindow.dialog("option", "width", 614);
 				formWindow.dialog("open");
-				var dataTable = $(formWindow).find("table[id^=DataTables]");
-				if (dataTable.length == 0) {
-					var table = $(formWindow).find(".file-content-table");
-					var dataTable = window.matrixView.initTable(table);
-				}
+				this.update(formWindow);
 			}
 		}
 	}

@@ -667,38 +667,20 @@ def matrix_form_view(request):
     '''Handles Ajax GET request to update the matrix view component.
 
     request - Ajax GET request. Fields:
-        pv_name - OUTPUT_CONNECTION parameter form input name; used to track down the task, output of which should be rendered by the matrix view component
         dataset_url - url of the data file, which is to be rendered ty the matrix view component
         download - if True return a downloadable file, else return HTML
         format - file format
     '''
-    pv_name = request.GET.get('pv_name')
     dataset_url = request.GET.get('dataset_url');
     context = {}
-    if not pv_name or re.findall('PV_\d+-\d+-value', pv_name):
-        if dataset_url:
-            if request.GET.get('download'):
-                return download_file(dataset_url, request.GET.get('format'))
-            else:
-                context['header'], context['file'] = file_to_table(dataset_url)
-                return render_to_response('damis/_matrix_view.html', context)
+    if dataset_url:
+        if request.GET.get('download'):
+            return download_file(dataset_url, request.GET.get('format'))
         else:
-            return HttpResponse(_('You have to execute this experiment first to see the result.'))
+            context['header'], context['file'] = file_to_table(dataset_url)
+            return render_to_response('damis/_matrix_view.html', context)
     else:
-        task_pk = re.findall('PV_PK(\d+)-\d+-value', pv_name)[0]
-        task = WorkflowTask.objects.get(pk=task_pk)
-        file_params = task.parameter_values.filter(parameter__connection_type='OUTPUT_CONNECTION')
-        # XXX: constraint: can download only first file OUTPUT_CONNECTION
-        file_path = None
-        if len(file_params) and file_params[0].value:
-            file_path = file_params[0].value
-            if request.GET.get('download'):
-                return download_file(file_path, request.GET.get('format'))
-            else:
-                context['header'], context['file'] = file_to_table(file_path)
-                return render_to_response('damis/_matrix_view.html', context)
-        else:
-            return HttpResponse(_('You have to execute this experiment first to see the result.'))
+        return HttpResponse(_('You have to execute this experiment first to see the result.'))
 
 def read_classified_data(file_url):
     f = open(BUILDOUT_DIR + '/var/www' + file_url)
