@@ -22,6 +22,7 @@ from damis.utils import save_task
 from damis.models import Component
 from damis.models import Connection
 from damis.models import Dataset
+from damis.models import DamisUser
 from damis.models import Parameter
 from damis.models import ParameterValue
 from damis.models import Experiment
@@ -263,6 +264,11 @@ class RegistrationForm(forms.Form):
         user.set_password(password)
         user.save()
         return user
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = DamisUser
+        fields = ['first_name', 'last_name', 'email', 'organization']
 
 
 class EmailForm(forms.Form):

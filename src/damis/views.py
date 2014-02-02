@@ -48,6 +48,7 @@ from damis.forms import ExperimentForm
 from damis.forms import WorkflowTaskFormset, CreateExperimentFormset, ParameterValueFormset, ParameterValueForm
 from damis.forms import DatasetSelectForm
 from damis.forms import UserUpdateForm
+from damis.forms import ProfileForm
 from damis.forms import VALIDATOR_FIELDS
 
 from damis.models import Component
@@ -853,7 +854,10 @@ def logout_view(request):
     return HttpResponseRedirect('/login/')
 
 def profile_settings_view(request):
-    pass
+    form = ProfileForm(instance=request.user)
+    return render(request, 'damis/profile.html', {
+                'form': form,
+            })
 
 
 @login_required(login_url=reverse_lazy('login'))

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% get_current_language as lang %}
+
+{% block menu %}
+    {% include 'menu.html' with active='login' %}
+{% endblock %}
+
+{% block content %}
+    <div class="span6 offset4 top-space">
+        <form action="{% url 'profile-settings' %}" method="post">{% csrf_token %}
+            {% include 'damis/_form.html' with form=form %}
+            <p><input class="btn btn-primary" type="submit" value="{% trans "Update profile" %}" /></p>
+        </form>
+    </div>
+{% endblock %}
