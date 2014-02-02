@@ -180,13 +180,8 @@
 						if (dst == "midas") {
 							$(this).find(".not-implemented").show();
 						} else {
-							if (format == "png") {
-								image = canvas.toDataURL();
-								image = image.replace("image/png", "image/octet-stream");
-							} else if (format == "jpeg") {
-								var image = canvas.toDataURL("image/jpeg");
-								image = image.replace("image/jpeg", "image/octet-stream");
-							}
+						    image = canvas.toDataURL();
+							image = image.replace("image/png", "image/octet-stream");
 							var url = window.componentFormUrls['CHART'];
 
 							// POST to server to obtain a downloadable result
