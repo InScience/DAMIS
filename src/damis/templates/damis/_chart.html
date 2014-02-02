@@ -3,7 +3,7 @@
 <div style="width: 614px;">
     {% if error %}
         <div class="message">
-            {{ error }}    
+            {{ error|safe }}    
         </div>
     {% endif %}
     <table class="attribute-choices" style="margin: auto; 20px;">

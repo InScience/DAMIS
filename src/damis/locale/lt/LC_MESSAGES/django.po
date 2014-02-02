@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-02 23:13+0000\n"
+"POT-Creation-Date: 2014-02-02 23:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -439,10 +439,10 @@ msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
 #: views.py:707
 msgid ""
-"More than {0} classes found in the class attribute {1}. Please select "
-"another class attribute."
+"More than <b>\"{0}\"</b> classes found in the class attribute <b>\"{1}\"</"
+"b>. Please select another class attribute."
 msgstr ""
-"Pasirinktas klasės atributas <b>\"{1}\"</b> turi daugiau kaip <b>{0}</b> "
+"Pasirinktas klasės atributas <b>\"{1}\"</b> turi daugiau kaip <b>\"{0}\"</b> "
 "skirtingų reikšmių. Pasirinkite kitą klasės atributą."
 
 #: views.py:750
@@ -457,15 +457,19 @@ msgstr "Pasirinkite atributus, kuriuos norite vaizduoti:"
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:876
+#: views.py:864
+msgid "Profile update"
+msgstr ""
+
+#: views.py:884
 msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
-#: views.py:887
+#: views.py:895
 msgid "{0}: Approve {1}"
 msgstr "{0}: Patvirtinti {1}"
 
-#: views.py:909
+#: views.py:917
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -717,6 +721,38 @@ msgstr ""
 "Galite nustatyti %(user)s naudotojo %(domain)s sistemoje slaptažodį "
 "paspausdami šią nuorodą:"
 
+#: templates/damis/_chart.html:35 templates/damis/_chart.html.py:52
+msgid "Class"
+msgstr "Klasė"
+
+#: templates/damis/_chart.html:53
+msgid "Color"
+msgstr "Spalva"
+
+#: templates/damis/_chart.html:55
+msgid "Shape"
+msgstr "Forma"
+
+#: templates/damis/_chart.html:64 templates/damis/_matrix_view.html:25
+msgid "Select file type"
+msgstr "Pasirinkite failo formatą"
+
+#: templates/damis/_chart.html:76 templates/damis/_matrix_view.html:41
+msgid "Select destination"
+msgstr "Pasirinkite saugojimo vietą"
+
+#: templates/damis/_chart.html:79 templates/damis/_matrix_view.html:44
+msgid "User computer"
+msgstr "Naudotojo kompiuteris"
+
+#: templates/damis/_chart.html:83 templates/damis/_matrix_view.html:48
+msgid "MIDAS"
+msgstr "MIDAS"
+
+#: templates/damis/_chart.html:84 templates/damis/_matrix_view.html:49
+msgid "This functionality will be negotiated during the 6th activity."
+msgstr "Šis funkcionalumas bus derinamas 6 veiklos atlikimo metu."
+
 #: templates/damis/_dataset_form.html:6 templates/damis/_existing_file.html:7
 msgid "Dataset used in the experiment"
 msgstr "Eksperimentui naudojamas failas"
@@ -779,26 +815,6 @@ msgstr "Formoje yra klaidų"
 #: templates/damis/_experiment_form.html:34
 msgid "Error:"
 msgstr "Klaida:"
-
-#: templates/damis/_matrix_view.html:25
-msgid "Select file type"
-msgstr "Pasirinkite failo formatą"
-
-#: templates/damis/_matrix_view.html:41
-msgid "Select destination"
-msgstr "Pasirinkite saugojimo vietą"
-
-#: templates/damis/_matrix_view.html:44
-msgid "User computer"
-msgstr "Naudotojo kompiuteris"
-
-#: templates/damis/_matrix_view.html:48
-msgid "MIDAS"
-msgstr "MIDAS"
-
-#: templates/damis/_matrix_view.html:49
-msgid "This functionality will be negotiated during the 6th activity."
-msgstr "Šis funkcionalumas bus derinamas 6 veiklos atlikimo metu."
 
 #: templates/damis/_technical_details.html:6
 msgid "Value"
@@ -956,7 +972,7 @@ msgstr "Nėra sukurtų eksperimentų. Eksperimentus kurti galite "
 msgid "Dataset list"
 msgstr "Rinkmenų sąrašas"
 
-#: templates/damis/profile.html:13
+#: templates/damis/profile.html:18
 msgid "Update profile"
 msgstr "Atnaujinti profilį"
 
@@ -983,15 +999,6 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankstesnis"
-
-#~ msgid "Class"
-#~ msgstr "Klasė"
-
-#~ msgid "Color"
-#~ msgstr "Spalva"
-
-#~ msgid "Shape"
-#~ msgstr "Forma"
 
 #~ msgid "Are you sure you want to delete algorithm"
 #~ msgstr "Ar tikrai norite pašalinti algoritmą"
