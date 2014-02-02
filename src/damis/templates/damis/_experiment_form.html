@@ -53,7 +53,7 @@
         </div>
         <div class="parameter-values">
             {% for param_formset in task.parameter_values %}
-                {% include 'dynamic/parameter_formset.html' with formset=param_formset %}
+                {% include 'damis/_parameter_formset.html' with formset=param_formset %}
             {% endfor %}
         </div>
         {% endfor %}

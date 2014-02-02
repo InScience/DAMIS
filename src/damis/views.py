@@ -445,7 +445,7 @@ def component_parameter_form(request):
         if form.instance and form.instance.value:
             form.initial['value'] = form.instance.value
 
-    return render_to_response('dynamic/parameter_formset.html', {
+    return render_to_response('damis/_parameter_formset.html', {
         'formset': parameter_formset,
         })
 
