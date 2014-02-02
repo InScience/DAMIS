@@ -1,0 +1,89 @@
+{% load i18n %}
+
+<div style="width: 614px;">
+    {% if error %}
+        <div class="message">
+            {{ error }}    
+        </div>
+    {% endif %}
+    <table class="attribute-choices" style="margin: auto; 20px;">
+        <tbody>
+            <td style="padding: 5px;">X:
+                <select class="x-attr" style="width: 100px;">
+                    <option value="-">-</option>
+                    {% for name, type in attrs %}
+                        {% if type == "integer" or type == "real" %} 
+                            <option value="{{ forloop.counter0 }}" {% if forloop.counter0 == x %}selected="selected"{% endif %}>
+                                {{ name }}
+                            </option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </td>
+            <td style="padding: 5px;">Y:
+                <select class="y-attr" style="width: 100px;">
+                    <option value="-">-</option>
+                    {% for name, type in attrs %}
+                        {% if type == "integer" or type == "real" %}
+                            <option value="{{ forloop.counter0 }}" {% if forloop.counter0 == y %}selected="selected"{% endif %}>
+                                {{ name }}
+                            </option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </td>
+            <td style="padding: 5px;">{% trans 'Class' %}:
+                <select class="cls-attr" style="width: 100px;">
+                    <option value="-">-</option>
+                    {% for name, type in attrs %}
+                        <option value="{{ forloop.counter0 }}" {% if forloop.counter0 == cls %}selected="selected"{% endif %}>
+                            {{ name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tbody>
+    </table>
+    </div>
+    {% if not error %}
+        <div class="results-container" style="width: 600px; height: 300px; margin: auto;"></div>
+        <table class="render-choices" style="margin: auto; margin-top: 20px;">
+            <thead>
+                <th>{% trans 'Class' %}</th>
+                <th>{% trans 'Color' %}</th>
+                <th></th>
+                <th>{% trans 'Shape' %}</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+    {% endif %}
+</div>
+
+<div style="display:none;" class="download-options">
+    <div>
+        {% trans 'Select file type' %}:<br />
+        <table><tbody>
+            <tr>
+                <td style="padding:5px"><input type="radio" name="file-type" value="jpeg" checked="checked" />jpeg</td>
+            </tr>
+            <tr>
+                <td style="padding:5px"><input type="radio" name="file-type" value="png" />png</td>
+            </tr>
+        </tbody></table>
+    </div>
+    <hr />
+    <div>
+        {% trans 'Select destination' %}:<br />
+        <table><tbody>
+            <tr>
+                <td style="padding:5px"><input type="radio" name="file-destination" value="user-computer" checked="checked" />{% trans 'User computer' %}</td>
+            </tr>
+            <tr>
+                <td style="padding:5px">
+                    <input type="radio" name="file-destination" value="midas" />{% trans 'MIDAS' %}
+                    <span style="display: none;" class="not-implemented helptext">{% trans 'This functionality will be negotiated during the 6th activity.' %}</span>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>
