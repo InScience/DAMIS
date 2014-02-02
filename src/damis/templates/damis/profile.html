@@ -7,7 +7,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class="span6 offset4 top-space">
+    <div class="offset4 span3 top-space">
+    {% if message %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endif %}
+    </div>
+    <div class="span6 offset4">
         <form action="{% url 'profile-settings' %}" method="post">{% csrf_token %}
             {% include 'damis/_form.html' with form=form %}
             <p><input class="btn btn-primary" type="submit" value="{% trans "Update profile" %}" /></p>

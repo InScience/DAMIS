@@ -855,6 +855,14 @@ def logout_view(request):
 
 def profile_settings_view(request):
     form = ProfileForm(instance=request.user)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return render(request, 'damis/profile.html', {
+                    'form': form,
+                    'message': _('Profile update'),
+                })
     return render(request, 'damis/profile.html', {
                 'form': form,
             })
