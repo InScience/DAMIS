@@ -17,6 +17,8 @@ tags:
 	bin/ctags -v
 
 start_database:
+	rm var/www/media/*/datasets/*.arff
+	rm -r var/www/media/experiments/* 
 	mkdir var || touch var/db
 	bin/django syncdb --noinput
 	bin/django migrate damis
