@@ -301,6 +301,11 @@ class ExperimentForm(forms.ModelForm):
     workflow_state = forms.CharField(widget=forms.HiddenInput(), required=False)
     skip_validation = forms.CharField(widget=forms.HiddenInput(), required=False)
 
+    def __init__(self, *args, **kwargs):
+        super(ExperimentForm, self).__init__(*args, **kwargs)
+        if not self.prefix:
+            self.prefix = 'experiment'
+
     class Meta:
         model = Experiment
         exclude = ['user', 'start', 'finish', 'status']

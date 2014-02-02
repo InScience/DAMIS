@@ -195,14 +195,14 @@
 						if (action == "execute") {
 							window.experimentForm.updatePrefixes(parameterPrefixesUrl, function() {
 								var persistedStr = window.persistWorkflow.persistJsPlumbEntities();
-								$("#experiment-form input[name=workflow_state]").val(persistedStr);
+								$("#experiment-form input[name=experiment-workflow_state]").val(persistedStr);
 								window.experimentForm.submit({});
 							},
 							{});
 						} else {
 							window.experimentForm.updatePrefixes(parameterPrefixesUrl, function(params) {
 								var persistedStr = window.persistWorkflow.persistJsPlumbEntities();
-								$("#experiment-form input[name=workflow_state]").val(persistedStr);
+								$("#experiment-form input[name=experiment-workflow_state]").val(persistedStr);
 								window.experimentForm.submit({
 									"skipValidation": true
 								});
