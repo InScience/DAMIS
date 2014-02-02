@@ -44,7 +44,7 @@
 								var format = $(this).find("input[name=file-type]:checked").val();
 								var dst = $(this).find("input[name=file-destination]:checked").val();
 								if (dst == 'midas') {
-									$(".not-implemented").show();
+									$(this).find(".not-implemented").show();
 								} else {
 									$(this).dialog("destroy");
 									var url = window.componentFormUrls['MATRIX VIEW'];
@@ -70,17 +70,16 @@
 
 		// update dialog content with new data
 		update: function(formWindow) {
-			var url = window.componentFormUrls['MATRIX VIEW'];
-			formWindow.find(".matrix-container").remove();
-			var container = $("<div class=\"matrix-container\"><img style=\"display: block; width: 250px; margin:auto;\" width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
-            formWindow.dialog("option", "buttons", this.reducedButtons());
-			formWindow.append(container);
 			var data = window.matrixView.getOutputParamDetails(formWindow);
             if (!data["dataset_url"]) {
                 this.toUnconnectedState(formWindow);
                 return;
             }
-			window.utils.showProgress();
+			var url = window.componentFormUrls['MATRIX VIEW'];
+			formWindow.find(".matrix-container").remove();
+			var container = $("<div class=\"matrix-container\"><img style=\"display: block; width: 250px; margin:auto;\" width=\"250px\" src=\"/static/img/loading.gif\"/></div>");
+            formWindow.dialog("option", "buttons", this.reducedButtons());
+			formWindow.append(container);
 			$.ajax({
 				url: url,
 				data: data,
@@ -95,7 +94,6 @@
 					var table = $(formWindow).find(".file-content-table");
 					var dataTable = window.matrixView.initTable(table);
 				}
-				window.utils.hideProgress();
 			});
 		},
 
