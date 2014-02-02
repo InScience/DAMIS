@@ -52,10 +52,10 @@ urlpatterns += i18n_patterns('',
     url(r'^datasets/(?P<pk>\d*)/edit/$', dataset_update_view, name='dataset-update'),
     url(r'^datasets/(?P<pk>\d*)/delete/$', DatasetDelete.as_view(), name='dataset-delete'),
 
-    url(r'^algorithms/$', ComponentList.as_view(), name='algorithm-list'),
-    url(r'^algorithms/new/$', ComponentCreate.as_view(), name='algorithm-new'),
-    url(r'^algorithms/(?P<pk>\d*)/edit/$', ComponentUpdate.as_view(), name='algorithm-update'),
-    url(r'^algorithms/(?P<pk>\d*)/delete/$', ComponentDelete.as_view(), name='algorithm-delete'),
+    url(r'^components/$', ComponentList.as_view(), name='component-list'),
+    url(r'^components/new/$', ComponentCreate.as_view(), name='component-new'),
+    url(r'^components/(?P<pk>\d*)/edit/$', ComponentUpdate.as_view(), name='component-update'),
+    url(r'^components/(?P<pk>\d*)/delete/$', ComponentDelete.as_view(), name='component-delete'),
 
     url(r'^experiments/$', ExperimentList.as_view(), name='experiment-list'),
     url(r'^experiments/new/$', ExperimentCreate.as_view(), name='experiment-new'),
@@ -65,7 +65,7 @@ urlpatterns += i18n_patterns('',
     url(r'^experiments/(?P<pk>\d*)/confirm/$', ExperimentDetail.as_view(), name='experiment-confirm'),
 
     # Dynamic urls
-    url(r'^x/algorithm-parameter-form/$', algorithm_parameter_form, name='parameters-form'),
+    url(r'^x/component-parameter-form/$', component_parameter_form, name='parameters-form'),
     url(r'^x/gen-parameter-prefixes/$', gen_parameter_prefixes, name='gen-parameter-prefixes'),
     # Dynamic component forms
     url(r'^x/upload_file_form/$', upload_file_form_view, name='component-upload-file-form'),

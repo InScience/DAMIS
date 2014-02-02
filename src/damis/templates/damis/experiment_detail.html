@@ -22,7 +22,7 @@
         <ol>
         {% for task in object.tasks.all %}
         <li><b>"{{ task.dataset }}"</b>&nbsp; {% trans 'dataset with' %}
-        &nbsp;<b>"{{ task.algorithm }}"</b>&nbsp; {% trans 'algorithm.' %}</li>
+        &nbsp;<b>"{{ task.component }}"</b>&nbsp; {% trans 'component.' %}</li>
         {% endfor %}
         </ol>
     </div>

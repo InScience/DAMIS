@@ -16,7 +16,7 @@
                 <div id="workflow-editor-container">
                     <div id="toolbox-container">
                         <ul class="nav nav-tabs" id="cluster-tabs">
-                            {% for cluster, cluster_algorithms in clusters %}
+                            {% for cluster, cluster_components in clusters %}
                                 <li id="cluster-{{ cluster.pk }}-tab" {% if forloop.first %}class="active"{% endif %}>
                                     <a href="#">{{ cluster.get_title_display }}</a>
                                     <span><i class="component-tooltip cluster-tooltip icon-info-sign"
@@ -29,9 +29,9 @@
                             {% endfor %}
                         </ul>
                         <div id="toolbox">
-                            {% for cluster, cluster_algorithms in clusters %}
+                            {% for cluster, cluster_components in clusters %}
                             <div id="cluster-{{ cluster.pk }}-panel" {% if not forloop.first %}style="display:none"{% endif %}>
-                            {% for cat_name, algorithms in cluster_algorithms %}
+                            {% for cat_name, components in cluster_components %}
                                 {% spaceless %}
                                     {% if forloop.first %}
                                         <h3 class="first">{{ cat_name }}</h3>
@@ -41,16 +41,16 @@
 
                                     <div style="padding: 0;">
                                         <div class="tools-padding">
-                                        {% for algorithm in algorithms %}
+                                        {% for component in components %}
                                         <div class="prototype-box {% if forloop.counter|divisibleby:"3" %}last{% endif %}">
-                                               <img src="{{ algorithm.icon.url }}" width="64px" height="64px" />
+                                               <img src="{{ component.icon.url }}" width="64px" height="64px" />
 
                                                <i style="cursor:pointer; " class="component-tooltip icon-info-sign" data-placement="bottom"
-                                                   data-content="{{ algorithm.get_description_display }}">
-                                                   <span style="display: none;">{{ algorithm.get_label_display }}</span>
+                                                   data-content="{{ component.get_description_display }}">
+                                                   <span style="display: none;">{{ component.get_label_display }}</span>
                                                </i>
-                                               <div class="desc"><div>{{ algorithm.get_label_display }}</div></div>
-                                               <input type="hidden" value="{{ algorithm.pk }}" />
+                                               <div class="desc"><div>{{ component.get_label_display }}</div></div>
+                                               <input type="hidden" value="{{ component.pk }}" />
                                                </div>
                                         {% endfor %}
                                         </div>

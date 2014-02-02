@@ -39,8 +39,8 @@
                 {% for field in task.visible_fields %}
                     <p>{{ field.errors }}
                     {{ field.label }}:<br/>
-                    {% if field.name == 'algorithm' %} 
-                    <span class='algorithm-selection'>{{ field }}</span>
+                    {% if field.name == 'component' %} 
+                    <span class='component-selection'>{{ field }}</span>
                     {% else %}
                     {{ field }}
                     {% endif %}

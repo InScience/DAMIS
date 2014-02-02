@@ -97,12 +97,6 @@ class DamisUser(AbstractBaseUser, PermissionsMixin):
         return False
 
 
-def get_algorithm_file_upload_path(instance, filename):
-    username = 'anonymous'
-    if instance.user:
-        username = instance.user.username
-    return  '%s/algorithms/%s' % (username, filename)
-
 class Cluster(models.Model):
     title = models.CharField(_('Title EN'), max_length=255, null=True)
     title_lt = models.CharField(_('Title LT'), max_length=255, null=True)
@@ -160,7 +154,7 @@ class Component(models.Model):
     description_lt = models.TextField(_('Description LT'), null=True, blank=True)
 
     def get_absolute_url(self):
-        return reverse('algorithm-list')
+        return reverse('component-list')
 
     def __unicode__(self):
         return str(self.title)
@@ -199,7 +193,7 @@ class Parameter(models.Model):
         ('datetime', _('Date and time')),
         ('time', _('Time')),
     )
-    algorithm = models.ForeignKey(Component, related_name='parameters',
+    component = models.ForeignKey(Component, related_name='parameters',
                                   null=True, blank=True,
                                   verbose_name=_('Component'))
     name = models.CharField(_('Option'), max_length=255, null=True)
@@ -261,8 +255,8 @@ class Experiment(models.Model):
 
 def get_result_file_upload_path(instance, filename):
     username = 'anonymous'
-    if instance.algorithm.user:
-        username = instance.algorithm.user.username
+    if instance.component.user:
+        username = instance.component.user.username
     return  '%s/result/%s' % (username, filename)
 
 class WorkflowTask(models.Model):
@@ -274,14 +268,14 @@ class WorkflowTask(models.Model):
     )
     experiment = models.ForeignKey('Experiment', related_name='tasks',
                                    null=True, verbose_name=_('Experiment'))
-    algorithm = models.ForeignKey('Component', verbose_name=_('Component'))
+    component = models.ForeignKey('Component', verbose_name=_('Component'))
     status = models.CharField(_('Status'), max_length=255, null=True, blank=True,
                               choices=STATUSES, default='SAVED')
     error = models.TextField(_('Error message'), blank=True, null=True)
 
     def __unicode__(self):
-        if self.algorithm:
-            return '%s' % (self.algorithm.title,)
+        if self.component:
+            return '%s' % (self.component.title,)
         else:
             return 'Task pk:%s' % self.pk
 

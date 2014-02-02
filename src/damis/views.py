@@ -123,7 +123,7 @@ def dataset_download_view(request, pk, file_format):
 class ComponentCreate(LoginRequiredMixin, CreateView):
     model = Component
     form_class = ComponentForm
-    template_name = 'damis/algorithm_form.html'
+    template_name = 'damis/component_form.html'
 
     def get(self, request, *args, **kwargs):
         self.object = None
@@ -157,9 +157,9 @@ class ComponentCreate(LoginRequiredMixin, CreateView):
 
 class ComponentList(ListDeleteMixin, LoginRequiredMixin, ListView):
     model = Component
-    template_name = 'damis/algorithm_list.html'
+    template_name = 'damis/component_list.html'
     paginate_by = 25
-    success_url = reverse_lazy('algorithm-list')
+    success_url = reverse_lazy('component-list')
 
     def get_queryset(self):
         order_by = self.request.GET.get('order_by') or '-created'
@@ -193,7 +193,7 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
 class ComponentUpdate(LoginRequiredMixin, UpdateView):
     model = Component
     form_class = ComponentForm
-    template_name = 'damis/algorithm_form.html'
+    template_name = 'damis/component_form.html'
 
     def post(self, request, *args, **kwargs):
         self.object = Component.objects.get(pk=self.kwargs['pk'])
@@ -226,7 +226,7 @@ class ComponentDetail(LoginRequiredMixin, DetailView):
 
 class ComponentDelete(LoginRequiredMixin, DeleteView):
     model = Component
-    success_url = reverse_lazy('algorithm-list')
+    success_url = reverse_lazy('component-list')
 
 
 class ExperimentList(ListDeleteMixin, LoginRequiredMixin, ListView):
@@ -312,17 +312,17 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         context.update(csrf(self.request))
 
         # assign component to clusters by category
-        algorithms = Component.objects.all()
+        components = Component.objects.all()
         clusters = dict()
-        for algorithm in algorithms:
-            if not algorithm.cluster in clusters:
-                clusters[algorithm.cluster] = dict()
-            cat_name = algorithm.get_category_display()
-            if not cat_name in clusters[algorithm.cluster]:
-                clusters[algorithm.cluster][cat_name] = []
-            clusters[algorithm.cluster][cat_name].append(algorithm)
+        for component in components:
+            if not component.cluster in clusters:
+                clusters[component.cluster] = dict()
+            cat_name = component.get_category_display()
+            if not cat_name in clusters[component.cluster]:
+                clusters[component.cluster][cat_name] = []
+            clusters[component.cluster][cat_name].append(component)
 
-        # sort algorithms by clusters and categories
+        # sort components by clusters and categories
         all_clusters = Cluster.objects.all()
         sorted_clusters = []
         for cluster in all_clusters:
@@ -423,12 +423,12 @@ def gen_parameter_prefixes(request):
     return HttpResponse(",".join(pv_prefixes))
 
 @login_required(login_url=reverse_lazy('login'))
-def algorithm_parameter_form(request):
-    algorithm = get_object_or_404(Component, pk=request.GET.get('algorithm_id'))
+def component_parameter_form(request):
+    component = get_object_or_404(Component, pk=request.GET.get('component_id'))
     task_form_prefix = re.findall('[id_]*(\w+-\d+)', request.GET.get('prefix'))[0]
     prefix = 'PV_%s' % hash(task_form_prefix)
 
-    val_params = algorithm.parameters.filter(Q(connection_type="INPUT_VALUE")|Q(connection_type="INPUT_CONNECTION")|Q(connection_type="OUTPUT_CONNECTION"))
+    val_params = component.parameters.filter(Q(connection_type="INPUT_VALUE")|Q(connection_type="INPUT_CONNECTION")|Q(connection_type="OUTPUT_CONNECTION"))
     ParameterValueFormset = inlineformset_factory(WorkflowTask,
                                 ParameterValue,
                                 form=ParameterValueForm,

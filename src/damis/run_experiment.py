@@ -137,7 +137,7 @@ def execute_tasks(task):
         kwargs[pv.parameter.name] = value
 
     # Call executable
-    service = SERVICES[task.algorithm.title]
+    service = SERVICES[task.component.title]
     try:
         response = service(**kwargs) # Response dict: name -> value
     except Exception, e:
@@ -150,7 +150,7 @@ def execute_tasks(task):
 
     # Set OUTPUT parameter values and save.
     for name, value in response:
-        param_qs = task.algorithm.parameters.filter(name=name)
+        param_qs = task.component.parameters.filter(name=name)
         parameter = param_qs[0] if param_qs else None
         if parameter:
             pv_qs = task.parameter_values.filter(parameter__name=name)
@@ -175,7 +175,7 @@ def execute_tasks(task):
 if __name__ == '__main__':
     exp_pk = sys.argv[1]
     exp = Experiment.objects.get(pk=exp_pk)
-    first_task = exp.tasks.filter(algorithm__category='DATA')[0]
+    first_task = exp.tasks.filter(component__category='DATA')[0]
     execute_tasks(first_task)
     if exp.status != 'ERROR':
         exp.status = 'FINISHED'

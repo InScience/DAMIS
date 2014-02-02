@@ -21,7 +21,7 @@
 				});
 
 				formWindow = $("#" + window.taskBoxes.getFormWindowId(boxId));
-				var componentInput = $(formWindow).find(".algorithm-selection select");
+				var componentInput = $(formWindow).find(".component-selection select");
 
 				boxes[boxId] = {
 					boxId: boxId,

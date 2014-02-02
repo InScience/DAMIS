@@ -34,14 +34,14 @@
 			taskBox.remove(); // remove task box
 		},
 
-		// modify box name according to algorithm selection
+		// modify box name according to component selection
 		setBoxName: function(taskBoxId, title) {
 			var nameContainer = $("#" + taskBoxId).find(".desc div");
 			nameContainer.html(title);
 		},
 
 		// delete existing endpoints and create new ones to reflect the
-		// selected algorithm
+		// selected component
 		recreateEndpoints: function(taskBoxId, formWindow) {
 			// Remove old endpoints
 			window.taskBoxes.removeEndpoints(taskBoxId);
@@ -80,18 +80,18 @@
 			});
 		},
 
-		// Loads parameters for the selected algorithm
-		loadAlgorithmParameters: function(algorithmInput) {
+		// Loads parameters for the selected component
+		loadComponentParameters: function(componentInput) {
 			$.ajax({
 				url: parametersUrl,
 				data: {
-					algorithm_id: algorithmInput.val(),
-					prefix: algorithmInput.attr('name')
+					component_id: componentInput.val(),
+					prefix: componentInput.attr('name')
 				},
 				context: $(this)
 			}).done(function(resp) {
 				// replace old parameter formset with a new one
-				var formWindow = algorithmInput.closest('.task').parent();
+				var formWindow = componentInput.closest('.task').parent();
 				formWindow.find(".parameter-values").html(resp);
 
 				var taskBoxId = window.taskBoxes.getBoxId(formWindow);
@@ -161,10 +161,10 @@
 			addTaskBtn.click();
 			var taskForm = addTaskBtn.prev();
 
-			//set algorithm ID into the task form
-			var algorithmId = $(ui.draggable).find("input").val();
-			var algorithmInput = taskForm.find(".algorithm-selection select");
-			algorithmInput.val(algorithmId);
+			//set component ID into the task form
+			var componentId = $(ui.draggable).find("input").val();
+			var componentInput = taskForm.find(".component-selection select");
+			componentInput.val(componentId);
 
 			// drop the task where it was dragged
 			var componentDetails = window.componentSettings.getComponentDetails({
@@ -190,7 +190,7 @@
 			this.addTaskBoxEventHandlers(taskBox);
 
 			// asynchronous Ajax-loading of parameters, so don't add code below
-			window.taskBoxes.loadAlgorithmParameters(algorithmInput);
+			window.taskBoxes.loadComponentParameters(componentInput);
 		},
 
 		//adds task box event handlers: delete task box, dbclick, and makes it

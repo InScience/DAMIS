@@ -47,7 +47,7 @@ def save_task(exp, task_formset):
     for task_form in task_formset.forms:
         data = task_form.cleaned_data
         data['experiment'] = exp
-        if data.get('algorithm'):
+        if data.get('component'):
             task = data.get('id')
             if not task and not data.get('DELETE'):
                 if data.has_key('DELETE'):
