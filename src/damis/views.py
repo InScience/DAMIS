@@ -3,6 +3,11 @@ import csv
 import json
 import re
 import tempfile
+
+from PIL import Image
+from io import BytesIO
+import cStringIO
+
 from os.path import join, exists, getsize, splitext, split
 from os import makedirs, listdir
 from shutil import copy
@@ -719,7 +724,16 @@ def download_image(image, file_format):
 
     response = HttpResponse(mimetype=FILE_TYPE__TO__MIME_TYPE[file_format])
     response['Content-Disposition'] = 'attachment; filename=%s.%s' % (ugettext("image"), file_format)
-    response.write(imgstr.decode("base64"));
+    data = imgstr.decode("base64")
+
+    im = Image.open(BytesIO(data)).convert("RGBA")
+    image = Image.new('RGBA', im.size, (255, 255, 255, 255))
+    image.paste(im, (0, 0), im)
+
+    output = cStringIO.StringIO()
+    image.save(output, file_format.upper())
+
+    response.write(output.getvalue())
     return response
 
 @csrf_exempt
