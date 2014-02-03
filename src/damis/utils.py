@@ -49,9 +49,16 @@ def save_task(exp, task_formset):
         data['experiment'] = exp
         if data.get('component'):
             task = data.get('id')
-            if not task and not data.get('DELETE'):
-                if data.has_key('DELETE'):
-                    data.pop('DELETE')
+            if data.has_key('DELETE'):
+                if data.pop('DELETE'):
+                    if task.pk:
+                        task.delete()
+                    for pv_form in task_form.parameter_values[0]:
+                        pv = pv_form.instance
+                        if pv.pk:
+                            pv.delete()
+                    continue
+            if not task:
                 task = WorkflowTask.objects.create(**data)
 
             pv_formset = task_form.parameter_values[0]
