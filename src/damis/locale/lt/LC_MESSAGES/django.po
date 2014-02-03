@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-02 23:41+0000\n"
+"POT-Creation-Date: 2014-02-03 00:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -439,10 +439,10 @@ msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
 #: views.py:707
 msgid ""
-"More than <b>\"{0}\"</b> classes found in the class attribute <b>\"{1}\"</"
-"b>. Please select another class attribute."
+"More than <b>{0}</b> classes found in the class attribute <b>\"{1}\"</b>. "
+"Please select another class attribute."
 msgstr ""
-"Pasirinktas klasės atributas <b>\"{1}\"</b> turi daugiau kaip <b>\"{0}\"</b> "
+"Pasirinktas klasės atributas <b>\"{1}\"</b> turi daugiau kaip <b>{0}</b> "
 "skirtingų reikšmių. Pasirinkite kitą klasės atributą."
 
 #: views.py:750
@@ -458,8 +458,8 @@ msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
 #: views.py:864
-msgid "Profile update"
-msgstr ""
+msgid "Profile updated"
+msgstr "Profilis atnaujintas"
 
 #: views.py:884
 msgid "User was activated"

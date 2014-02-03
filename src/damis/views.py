@@ -704,7 +704,7 @@ def read_classified_data(file_url, x, y, clsCol):
             cls = cells[clsCol]
             if not cls in result:
                 if len(result.keys()) >= max_classes:
-                    error = _('More than <b>"{0}"</b> classes found in the class '
+                    error = _('More than <b>{0}</b> classes found in the class '
                             'attribute <b>"{1}"</b>. Please select another class '
                             'attribute.').format(max_classes, attributes[clsCol][0])
                     break
@@ -861,7 +861,7 @@ def profile_settings_view(request):
             form.save()
             return render(request, 'damis/profile.html', {
                     'form': form,
-                    'message': _('Profile update'),
+                    'message': _('Profile updated'),
                 })
     return render(request, 'damis/profile.html', {
                 'form': form,
