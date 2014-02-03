@@ -386,7 +386,7 @@ class ExperimentCreate(LoginRequiredMixin, CreateView):
         experiment_form = ExperimentForm(self.request.POST, instance=experiment)
         task_formset = CreateExperimentFormset(self.request.POST, instance=experiment)
 
-        if self.request.POST.get('skip_validation'):
+        if self.request.POST.get(experiment_form.prefix + '-skip_validation'):
             return self.skip_validation(experiment_form, task_formset)
 
         if experiment_form.is_valid() and task_formset.is_valid():

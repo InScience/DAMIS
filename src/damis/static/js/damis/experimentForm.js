@@ -123,7 +123,7 @@
 
 			var form = $("#experiment-form");
 			if (params["skipValidation"]) {
-				form.find("input[name=skip_validation]").val("True");
+				form.find("input[name=experiment-skip_validation]").val("True");
 			}
 			var data = form.serialize();
 			$.post(form.attr("action"), data, function(resp) {
