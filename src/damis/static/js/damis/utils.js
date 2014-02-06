@@ -65,6 +65,9 @@
 			fileButton.on("click", function(ev) {
 				fileInput.click();
 			});
+
+			var titleInput = container.find("input[name=title]");
+			titleInput.on("change", window.utils.titleChanged);
 			fileInput.on("change", function(ev) {
 				var fileName = $(this).val();
 				// put the uploaded file name next to the upload button
@@ -73,13 +76,26 @@
 				fileButton.next("span").html(stdFileName.substring(start, stdFileName.length));
 
 				// prefill title input field with the uploaded file name
-				var titleInput = container.find("input[name=title]");
-				var baseName = fileName.substring(start, stdFileName.lastIndexOf("."));
-				titleInput.val(baseName);
+				// if the input had not been changed by the user
+				if (!titleInput.hasClass("changed")) {
+					var baseName = fileName.substring(start, stdFileName.lastIndexOf("."));
+					titleInput.off("change");
+					titleInput.val(baseName);
+					titleInput.on("change", window.utils.titleChanged);
+				}
 			});
 
 			// toggle file form visibility on click of a button
 			window.utils.initToggleSectionBtn(container);
+		},
+
+		// adds a flag that the input was changed by the user
+		titleChanged: function(ev) {
+			if ($(this).val()) {
+				$(this).addClass("changed");
+			} else {
+				$(this).removeClass("changed");
+			}
 		},
 
 		// initializes a button (.toggle-btn) that toggles a section (.toggle-section) 
