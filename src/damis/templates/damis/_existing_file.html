@@ -16,16 +16,16 @@
          <thead>
              <tr>
                  <th></th>
-                 <th>{% trans "Title" %}
+                 <th class="title">{% trans "Title" %}
                       <a href="{% url 'component-existing-file-form' %}?order_by=title"><i class="icon-chevron-up"></i></a>
                       <a href="{% url 'component-existing-file-form' %}?order_by=-title"><i class="icon-chevron-down"></i></a>
                  </th>
                  <th>{% trans "Size" %}</th>
-                 <th>{% trans "Created" %}
+                 <th class="created">{% trans "Created" %}
                       <a href="{% url 'component-existing-file-form' %}?order_by=created"><i class="icon-chevron-up"></i></a>
                       <a href="{% url 'component-existing-file-form' %}?order_by=-created"><i class="icon-chevron-down"></i></a>
                  </th>
-                 <th>{% trans "Description" %}</th>
+                 <th class="descr">{% trans "Description" %}</th>
              </tr>
          </thead>
          <tbody>
@@ -34,10 +34,10 @@
                  <td><input type='radio' value="{{ dataset.file.url }}"
                     {% if dataset.pk == highlight_pk %}checked='checked'{% endif %}
                      name="dataset_pk"/></td>
-                 <td>{{ dataset.title }}</td>
-                 <td>{{ dataset.file.size|sizify }}</td>
+                 <td class="title">{{ dataset.title }}</td>
+                 <td>{{ dataset.file.size|sizify|safe }}</td>
                  <td>{{ dataset.created|date:"Y-m-d" }}</td>
-                 <td>{{ dataset.description }}</td>
+                 <td class="descr">{{ dataset.description }}</td>
              </tr>
            {% empty %}
            <tr>

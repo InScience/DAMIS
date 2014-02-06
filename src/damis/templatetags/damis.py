@@ -34,7 +34,7 @@ def sizify(value):
     else:
         value = value / 1073741824.0
         ext = 'GB'
-    return '%s %s' % (str(round(value, 2)), ext)
+    return '%s&nbsp;%s' % (str(round(value, 2)), ext)
 
 @register.filter
 def disable_if_connection(value):

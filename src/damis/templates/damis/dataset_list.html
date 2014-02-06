@@ -21,12 +21,12 @@
           <thead>
               <tr>
                   <th><input class="select-all" type="checkbox"></th>
-                  <th>{% trans "Title" %}
+                  <th class="title">{% trans "Title" %}
                       <a href="{% url 'dataset-list' %}?order_by=title"><i class="icon-chevron-up"></i></a>
                       <a href="{% url 'dataset-list' %}?order_by=-title"><i class="icon-chevron-down"></i></a>
                   </th>
                   <th>{% trans "Size" %}</th>
-                  <th>{% trans "Created" %}
+                  <th class="created">{% trans "Created" %}
                       <a href="{% url 'dataset-list' %}?order_by=created"><i class="icon-chevron-up"></i></a>
                       <a href="{% url 'dataset-list' %}?order_by=-created"><i class="icon-chevron-down"></i></a>
                   </th>
@@ -39,10 +39,10 @@
             {% for dataset in object_list %}
               <tr>
                   <td><input type='checkbox' value="{{ dataset.pk }}" name="pk"/></td>
-                  <td><a class="update-btn" href="{% url 'dataset-update' dataset.pk %}">{{ dataset.title }}</a></td>
-                  <td>{{ dataset.file.size|sizify }}</td>
+                  <td class="title"><a class="update-btn" href="{% url 'dataset-update' dataset.pk %}">{{ dataset.title }}</a></td>
+                  <td>{{ dataset.file.size|sizify|safe }}</td>
                   <td>{{ dataset.created|date:"Y-m-d" }} </td>
-                  <td>{{ dataset.description }}</td>
+                  <td class="descr">{{ dataset.description }}</td>
                   <td class="c">
                       <a class="btn btn-small update-btn" title="{% trans 'Edit' %}" href="{% url 'dataset-update' dataset.pk %}">
                           <i class="icon-pencil"></i>
