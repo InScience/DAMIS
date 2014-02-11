@@ -132,7 +132,7 @@
 					y = item.datapoint[1].toFixed(2);
 
 					var containerOffset = $(plotContainer).find(".results-container").offset();
-					$("#point-tooltip").html(x + ", " + y + " (" + gettext("index") + ": " + item.dataIndex + ", " + gettext("class") + ": " + item.series.label + ")").css({
+					$("#point-tooltip").html(x + ", " + y + " (" + gettext("index") + ": " + (item.dataIndex + 1) + ", " + gettext("class") + ": " + item.series.label + ")").css({
 						top: item.pageY - containerOffset['top'],
 						left: item.pageX - containerOffset['left'] + 10
 					}).fadeIn(200);

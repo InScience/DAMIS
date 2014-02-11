@@ -578,8 +578,8 @@ def file_to_table(file_url):
     count = 0
     for row in f:
         if data_sec:
-            res_row = [count]
             count += 1
+            res_row = [count]
             res_row.extend([cell for cell in row.split(",")])
             file_table.append(res_row)
         else:
