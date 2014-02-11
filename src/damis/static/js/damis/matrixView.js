@@ -106,6 +106,7 @@
 				"bFilter": false,
                 "bSort": false,
 				"bDestroy": true,
+                "bScrollCollapse": true
 			});
 		},
 
