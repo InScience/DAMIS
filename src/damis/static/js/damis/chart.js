@@ -180,7 +180,7 @@
 						if (dst == "midas") {
 							$(this).find(".not-implemented").show();
 						} else {
-						    image = canvas.toDataURL();
+							image = canvas.toDataURL();
 							image = image.replace("image/png", "image/octet-stream");
 							var url = window.componentFormUrls['CHART'];
 
@@ -223,7 +223,7 @@
 			$.each(dataContent.data, function(idx, series) {
 				var rowPattern = "<tr><td>{cls}</td>";
 				rowPattern += "<td><div class=\"color-selector\" style=\"background-color: {colorCode};\"></div></td>";
-				rowPattern += "<td><input type=\"hidden\" value=\"{colorCode}\"/></td>";
+				rowPattern += "<td class=\"hide\"><input type=\"hidden\" value=\"{colorCode}\"/></td>";
 
 				var colorCode = colorPalette[idx].toLowerCase();
 				var seriesRow = $(window.utils.formatStr(rowPattern, {
@@ -278,6 +278,15 @@
 			window.chart.renderChart(plotContainer, "body > .plot-container .results-container", dataContent, colorPalette, symbolValues);
 			//append to form after rendering because otherwise axes are not rendered
 			formWindow.append(plotContainer);
+
+			var renderChoicesDataTable = plotContainer.find(".render-choices").dataTable({
+				"sScrollY": 400,
+				"bScrollCollapse": true,
+				"bInfo": false,
+				"bPaginate": false,
+				"bFilter": false,
+				"bDestroy": true,
+			});
 
 			formWindow.dialog("option", "buttons", window.chart.allButtons());
 			formWindow.dialog("option", "minWidth", 650);
