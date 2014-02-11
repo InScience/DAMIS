@@ -227,7 +227,7 @@
 
 				var colorCode = colorPalette[idx].toLowerCase();
 				var seriesRow = $(window.utils.formatStr(rowPattern, {
-					"cls": idx,
+					"cls": series.group,
 					"colorCode": colorCode
 				}));
 

@@ -8,6 +8,8 @@ from PIL import Image
 from io import BytesIO
 import cStringIO
 
+from math import floor
+from numpy import arange
 from os.path import join, exists, getsize, splitext, split
 from os import makedirs, listdir
 from shutil import copy
@@ -694,13 +696,46 @@ def read_classified_data(file_url, x, y, clsCol):
     result = OrderedDict()
     minX = None; maxX = None
     minY = None; maxY = None
+    minCls = None; maxCls = None
+    clsType = None
     data_sec = False
+    arff_cls = None # class attribute number
     attributes = []
     max_classes = 120
     error = None
+
+    # first read
     for row in f:
         if data_sec:
+            # analyse data portion of the file
             cells = row.rstrip().split(",")
+            if minX is None or float(cells[x]) < minX:
+                minX = float(cells[x])
+            if maxX is None or float(cells[x]) > maxX:
+                maxX = float(cells[x])
+            if minY is None or float(cells[y]) < minY:
+                minY = float(cells[y])
+            if maxY is None or float(cells[y]) > maxY:
+                maxY = float(cells[y])
+
+            if clsType != "string":
+                if minCls is None or float(cells[clsCol]) < minCls:
+                    try:
+                        minCls = int(cells[clsCol])
+                    except ValueError:
+                        minCls = float(cells[clsCol])
+                if maxCls is None or float(cells[clsCol]) > maxCls:
+                    try:
+                        maxCls = int(cells[clsCol])
+                    except ValueError:
+                        maxCls = float(cells[clsCol])
+
+            if not (clsType == "string" or clsType == "integer"):
+                continue
+
+            # try to classify only if the column is string
+            # other types are classified during second read when min/max
+            # are known
             cls = cells[clsCol]
             if not cls in result:
                 if len(result.keys()) >= max_classes:
@@ -711,19 +746,24 @@ def read_classified_data(file_url, x, y, clsCol):
                 else:
                     result[cls] = []
             result[cls].append([cells[x], cells[y]])
-
-            if minX is None or float(cells[x]) < minX:
-                minX = float(cells[x])
-            if maxX is None or float(cells[x]) > maxX:
-                maxX = float(cells[x])
-            if minY is None or float(cells[y]) < minY:
-                minY = float(cells[y])
-            if maxY is None or float(cells[y]) > maxY:
-                maxY = float(cells[y])
         else:
+            # analyse file header
             row_std = row.strip().lower()
             if row_std.startswith("@data"):
                 data_sec = True
+
+                if x is None:
+                    x = 0
+                if y is None:
+                    y = 1
+                if clsCol is None:
+                    if arff_cls is not None:
+                        # use arff class attribute, if defined
+                        clsCol = arff_cls
+                    else:
+                        # otherwise, use last column
+                        clsCol = len(attributes) - 1
+                clsType = attributes[clsCol][1]
             elif row_std.startswith("@attribute"):
                 parts = row.split()
                 col_name = parts[1]
@@ -733,10 +773,32 @@ def read_classified_data(file_url, x, y, clsCol):
                     attributes.append([_("attr{0}").format(attr_no[0]), col_type])
                 else:
                     attributes.append([col_name, col_type])
+                    if col_name == "class":
+                        # save the number of the class column
+                        arff_cls = len(attributes) - 1
     f.close()
 
+    if clsType != "string" and clsType != "integer":
+        # second read
+        f = open(BUILDOUT_DIR + '/var/www' + file_url)
+        f = strip_arff_header(f)
+
+        step = 1. * (maxCls - minCls) / max_classes
+        groups = [str(t) + "-" + str(t + step) for t in arange(minCls, maxCls, step)]
+        for row in f:
+            cells = row.rstrip().split(",")
+            val = float(cells[clsCol])
+            group_no = int(floor((1.0 * (val - minCls) * max_classes) / (maxCls - minCls)))
+            if group_no == len(groups):
+                group_no -= 1
+            cls = groups[group_no]
+            if not cls in result:
+                result[cls] = []
+            result[cls].append([cells[x], cells[y]])
+        f.close()
+
     result = [{"group": cls, "data": data} for cls, data in result.items()]
-    return error, attributes, {"data": result, "minX": minX, "maxX": maxX, "minY": minY, "maxY": maxY}
+    return error, attributes, {"data": result, "minX": minX, "maxX": maxX, "minY": minY, "maxY": maxY}, x, y, clsCol
 
 def download_image(image, file_format):
     '''Prepares the HTTP response to download an image in a given format.
@@ -785,9 +847,7 @@ def chart_form_view(request):
         x = int(request.GET.get("x")) if not request.GET.get("x") is None else None
         y = int(request.GET.get("y")) if not request.GET.get("y") is None else None
         cls = int(request.GET.get("cls")) if not request.GET.get("cls") is None else None
-        error, attributes, content = read_classified_data(dataset_url, x or 0, y or 1, cls or -1)
-        if x is None or y is None or cls is None:
-            error = _("Please specify attributes to render you data:")
+        error, attributes, content, x, y, cls = read_classified_data(dataset_url, x, y, cls)
         context = {"attrs": attributes, "error": error, "x": x, "y": y, "cls": cls}
         html = render_to_string("damis/_chart.html", context)
         if error:
