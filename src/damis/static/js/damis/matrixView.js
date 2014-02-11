@@ -104,6 +104,7 @@
 				"bInfo": false,
 				"bPaginate": false,
 				"bFilter": false,
+                "bSort": false,
 				"bDestroy": true,
 			});
 		},
