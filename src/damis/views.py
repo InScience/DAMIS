@@ -752,18 +752,20 @@ def read_classified_data(file_url, x, y, clsCol):
             if row_std.startswith("@data"):
                 data_sec = True
 
-                if x is None:
-                    x = 0
-                if y is None:
-                    y = 1
                 if clsCol is None:
                     if arff_cls is not None:
                         # use arff class attribute, if defined
                         clsCol = arff_cls
                     else:
                         # otherwise, use last column
-                        clsCol = len(attributes) - 1
-                clsType = attributes[clsCol][1]
+                        if len(attributes) > 0:
+                            clsCol = len(attributes) - 1
+                if clsCol is not None:
+                    clsType = attributes[clsCol][1]
+
+                if x is None or y is None or clsCol is None:
+                    error = _("Please specify columns for rendering, as default choices could not be used.")
+                    break
             elif row_std.startswith("@attribute"):
                 parts = row.split()
                 col_name = parts[1]
@@ -773,12 +775,17 @@ def read_classified_data(file_url, x, y, clsCol):
                     attributes.append([_("attr{0}").format(attr_no[0]), col_type])
                 else:
                     attributes.append([col_name, col_type])
-                    if col_name == "class":
-                        # save the number of the class column
-                        arff_cls = len(attributes) - 1
+                attr_idx = len(attributes) - 1
+                if x is None and col_type != "string":
+                    x = attr_idx
+                elif y is None and col_type != "string":
+                    y = attr_idx
+                if col_name == "class":
+                    # save the number of the class column
+                    arff_cls = attr_idx
     f.close()
 
-    if clsType != "string" and clsType != "integer":
+    if not error and clsType != "string" and clsType != "integer":
         # second read
         f = open(BUILDOUT_DIR + '/var/www' + file_url)
         f = strip_arff_header(f)

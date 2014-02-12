@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-03 00:10+0000\n"
+"POT-Creation-Date: 2014-02-11 23:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -421,23 +421,23 @@ msgstr "Lietuvių"
 msgid "English"
 msgstr "Anlgų"
 
-#: views.py:564 views.py:568
+#: views.py:566 views.py:570
 msgid "Not implemented, yet"
 msgstr "Kol kas nerealizuota"
 
-#: views.py:576
+#: views.py:578
 msgid "Object No."
 msgstr "Objekto Nr."
 
-#: views.py:595 views.py:733
+#: views.py:597 views.py:775
 msgid "attr{0}"
 msgstr "atr{0}"
 
-#: views.py:654 views.py:689 views.py:799
+#: views.py:656 views.py:691 views.py:866
 msgid "You have to execute this experiment first to see the result."
 msgstr "Norėdami peržiūrėti rezultatus, turite įvykdyti eksperimentą."
 
-#: views.py:707
+#: views.py:742
 msgid ""
 "More than <b>{0}</b> classes found in the class attribute <b>\"{1}\"</b>. "
 "Please select another class attribute."
@@ -445,31 +445,33 @@ msgstr ""
 "Pasirinktas klasės atributas <b>\"{1}\"</b> turi daugiau kaip <b>{0}</b> "
 "skirtingų reikšmių. Pasirinkite kitą klasės atributą."
 
-#: views.py:750
+#: views.py:767
+msgid ""
+"Please specify columns for rendering, as default choices could not be used."
+msgstr "Nurodykite stulpelius, kuriuos norite vaizduoti, nes taikant "
+"numatytuosius pasirinkimus kilo klaidų."
+
+#: views.py:819
 msgid "image"
 msgstr "pav"
 
-#: views.py:790
-msgid "Please specify attributes to render you data:"
-msgstr "Pasirinkite atributus, kuriuos norite vaizduoti:"
-
-#: views.py:819
+#: views.py:886
 msgid "{0} confirm email"
 msgstr "{0} el. pašto adreso patvirtinimas"
 
-#: views.py:864
+#: views.py:931
 msgid "Profile updated"
 msgstr "Profilis atnaujintas"
 
-#: views.py:884
+#: views.py:951
 msgid "User was activated"
 msgstr "Naudotojas buvo aktyvuotas"
 
-#: views.py:895
+#: views.py:962
 msgid "{0}: Approve {1}"
 msgstr "{0}: Patvirtinti {1}"
 
-#: views.py:917
+#: views.py:984
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
 
@@ -999,6 +1001,9 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankstesnis"
+
+#~ msgid "Please specify attributes to render you data:"
+#~ msgstr "Pasirinkite atributus, kuriuos norite vaizduoti:"
 
 #~ msgid "Are you sure you want to delete algorithm"
 #~ msgstr "Ar tikrai norite pašalinti algoritmą"
