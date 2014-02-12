@@ -10,6 +10,10 @@
 			formWindow.dialog("option", "width", "auto");
 		},
 
+		errorButtons: function() {
+			return window.chart.notConnectedButtons();
+		},
+
 		notConnectedButtons: function() {
 			var buttons = [{
 				"text": gettext('Cancel'),
@@ -22,32 +26,16 @@
 		},
 
 		// all buttons for this component
-		errorButtons: function() {
-			var buttons = [{
-				"text": gettext('Update'),
-				"class": "btn btn-primary",
-				"click": function(ev) {
-					window.chart.update($(this), window.chart.updateChartColorsSymbols, {
-						renderChoices: $(this).find(".plot-container .render-choices tbody tr")
-					});
-				}
-			}];
-			var notConnectedButtons = window.chart.notConnectedButtons();
-			return buttons.concat(notConnectedButtons);
-		},
-
-		// all buttons for this component
 		allButtons: function() {
 			var buttons = [{
 				"text": gettext('Download'),
-				"class": "btn",
+				"class": "btn btn-primary",
 				"click": function(ev) {
 					window.chart.downloadChart($(this));
 				}
 			}];
-			var errorButtons = window.chart.errorButtons();
-			var result = [errorButtons[0]].concat(buttons);
-			result = result.concat(errorButtons[1]);
+			var errorButtons = window.chart.notConnectedButtons();
+			var result = buttons.concat(errorButtons);
 			return result;
 		},
 
@@ -56,7 +44,7 @@
 			var len = data.length;
 			return $.map(data, function(o, i) {
 				return jQuery.Color({
-					hue: (i * 360 / len),
+					hue: (i * 300 / len),
 					saturation: 0.95,
 					lightness: 0.35,
 					alpha: 1
@@ -65,13 +53,8 @@
 		},
 
 		// symbol palette, rotates through a set of symbols
-		generateSymbolPalette: function(data) {
-			var baseOptions = [["circle", gettext("Circle")], ["square", gettext("Square")], ["diamond", gettext("Diamond")], ["triangle", gettext("Triangle")], ["cross", gettext("Cross")]];
-			var allOptions = [];
-			for (var i = 0; i < data.length; i++) {
-				allOptions.push(baseOptions[i % baseOptions.length]);
-			}
-			return allOptions;
+		generateSymbolPalette: function() {
+			return [["circle", gettext("Circle")], ["square", gettext("Square")], ["diamond", gettext("Diamond")], ["triangle", gettext("Triangle")], ["cross", gettext("Cross")]];
 		},
 
 		// renders the chart in place of plotPlaceholder
@@ -145,14 +128,16 @@
 		// updates the chart colors and symbols
 		updateChartColorsSymbols: function(resp, formWindow, params) {
 			var data = resp.content.data;
-			var colors = window.chart.generateColorPalette(data);
-			var symbols = window.chart.generateSymbolPalette(data);
+			var colorPalette = window.chart.generateColorPalette(data);
+			var symbolPalette = window.chart.generateSymbolPalette();
+			var colors = {};
+			var symbols = {};
 			$.each(params['renderChoices'], function(idx, choice) {
 				var color = $(choice).find("input").val();
-				colors[idx] = color ? color: colors[idx];
+				colors[idx] = color ? color: colorPalette[idx % colorPalette.length];
 
 				var symbol = $(choice).find("select").val();
-				symbols[idx] = symbol ? symbol: symbols[idx][0];
+				symbols[idx] = symbol ? symbol: symbolPalette[0][0];
 			});
 			window.chart.renderChartAndForm(resp, formWindow, colors, symbols);
 		},
@@ -212,9 +197,10 @@
 		// for the first time
 		renderChartAndForm: function(resp, formWindow, selectedColors, selectedSymbols) {
 			var dataContent = resp.content;
-			var colorPalette = selectedColors ? selectedColors: window.chart.generateColorPalette(dataContent.data);
-			var symbolPalette = window.chart.generateSymbolPalette(dataContent.data);
+			var colorPalette = window.chart.generateColorPalette(dataContent.data);
+			var symbolPalette = window.chart.generateSymbolPalette();
 			var symbolValues = []
+			var colorValues = []
 
 			var plotContainer = formWindow.find(".plot-container");
 			var renderChoicesBody = plotContainer.find(".render-choices tbody");
@@ -225,22 +211,26 @@
 				rowPattern += "<td><div class=\"color-selector\" style=\"background-color: {colorCode};\"></div></td>";
 				rowPattern += "<td class=\"hide\"><input type=\"hidden\" value=\"{colorCode}\"/></td>";
 
-				var colorCode = colorPalette[idx].toLowerCase();
+				var colorCode = selectedColors ? selectedColors[idx] : colorPalette[idx].toLowerCase();
+				colorValues.push(colorCode);
 				var seriesRow = $(window.utils.formatStr(rowPattern, {
 					"cls": series.group,
 					"colorCode": colorCode
 				}));
 
 				var shapeSelect = $("<select></select>");
-				$.each(symbolPalette, function(i, shape) {
+				$.each(symbolPalette, function(j, shape) {
 					var selected;
 					if (selectedSymbols) {
 						selected = selectedSymbols[idx] == shape[0];
+						if (selected) {
+							symbolValues.push(shape[0]);
+						}
 					} else {
-						selected = idx == i;
-					}
-					if (selected) {
-						symbolValues.push(shape[0]);
+						selected = j == 0;
+						if (selected) {
+							symbolValues.push(symbolPalette[0][0]);
+						}
 					}
 					var optionPattern = "<option value=\"{value}\" {selected}>{label}</option>";
 					var args = {
@@ -263,19 +253,26 @@
 					onSubmit: function(hsb, hex, rgb, el) {
 						var colorCode = '#' + hex;
 						$(el).css('background-color', colorCode);
-						$(el).closest("td").next().find("input").val(colorCode);
 						$(el).colpickHide();
+						$(el).closest("td").next().find("input").val(colorCode).trigger("change");
 					}
 				}).css('background-color', colorCode);
 
 				renderChoicesBody.append(seriesRow);
 			});
 
+			// update image automatically on each color/shape change
+			renderChoicesBody.find("select, input").on("change", function() {
+				window.chart.update(formWindow, window.chart.updateChartColorsSymbols, {
+					renderChoices: formWindow.find(".plot-container .render-choices tbody tr")
+				});
+			});
+
 			plotContainer.css("min-height", 400);
 			plotContainer.css("position", "relative");
 			// append to body temporarily in order for axes labels to be drawn correctly
 			$("body").append(plotContainer);
-			window.chart.renderChart(plotContainer, "body > .plot-container .results-container", dataContent, colorPalette, symbolValues);
+			window.chart.renderChart(plotContainer, "body > .plot-container .results-container", dataContent, colorValues, symbolValues);
 			//append to form after rendering because otherwise axes are not rendered
 			formWindow.append(plotContainer);
 
@@ -310,6 +307,7 @@
 			}
 		},
 
+		// update data from the server and call callback with parameters
 		update: function(formWindow, callback, params) {
 			var data = window.chart.getOutputParamDetails(formWindow);
 			if (!data["dataset_url"]) {
@@ -328,6 +326,11 @@
 				context: container,
 			}).done(function(resp) {
 				$(this).html(resp.html);
+				$(".colpick").remove(); // remove previous color pickers from the DOM
+				$(this).find(".attribute-choices select").on("change", function() {
+					// update image when attributes are changed
+					window.chart.update(formWindow, window.chart.renderChartAndForm);
+				});
 				window.utils.showProgress();
 				if (resp.status == "SUCCESS") {
 					if (params) {
