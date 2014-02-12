@@ -139,7 +139,10 @@
 				var symbol = $(choice).find("select").val();
 				symbols[idx] = symbol ? symbol: symbolPalette[0][0];
 			});
-			window.chart.renderChartAndForm(resp, formWindow, colors, symbols);
+			window.chart.renderChartAndForm(resp, formWindow, {
+				"selectedColors": colors,
+				"selectedSymbols": symbols
+			});
 		},
 
 		// displays a image format selection dialog 
@@ -195,7 +198,10 @@
 
 		// renders the chart and the form with inputs for colors and symbols
 		// for the first time
-		renderChartAndForm: function(resp, formWindow, selectedColors, selectedSymbols) {
+		renderChartAndForm: function(resp, formWindow, params) {
+			var selectedColors = params != null ? params['selectedColors'] : null;
+			var selectedSymbols = params != null ? params['selectedSymbols'] : null;
+
 			var dataContent = resp.content;
 			var colorPalette = window.chart.generateColorPalette(dataContent.data);
 			var symbolPalette = window.chart.generateSymbolPalette();
@@ -205,18 +211,13 @@
 			var plotContainer = formWindow.find(".plot-container");
 			var renderChoicesBody = plotContainer.find(".render-choices tbody");
 
+			// a float attribute was used to determine class
+			var isFloatCls = plotContainer.find(".float-cls-choices").length > 0;
+
 			// fill the form with current color and symbol values
 			$.each(dataContent.data, function(idx, series) {
-				var rowPattern = "<tr><td>{cls}</td>";
-				rowPattern += "<td><div class=\"color-selector\" style=\"background-color: {colorCode};\"></div></td>";
-				rowPattern += "<td class=\"hide\"><input type=\"hidden\" value=\"{colorCode}\"/></td>";
-
 				var colorCode = selectedColors ? selectedColors[idx] : colorPalette[idx].toLowerCase();
 				colorValues.push(colorCode);
-				var seriesRow = $(window.utils.formatStr(rowPattern, {
-					"cls": series.group,
-					"colorCode": colorCode
-				}));
 
 				var shapeSelect = $("<select></select>");
 				$.each(symbolPalette, function(j, shape) {
@@ -241,31 +242,34 @@
 					shapeSelect.append(window.utils.formatStr(optionPattern, args));
 				});
 
-				var shapeCell = $("<td></td>");
-				shapeCell.append(shapeSelect);
-				seriesRow.append(shapeCell);
+				if (!isFloatCls) {
+					var rowPattern = "<tr><td>{cls}</td>";
+					rowPattern += "<td><div class=\"color-selector\" style=\"background-color: {colorCode};\"></div></td>";
+					rowPattern += "<td class=\"hide\"><input type=\"hidden\" value=\"{colorCode}\"/></td>";
+					var seriesRow = $(window.utils.formatStr(rowPattern, {
+						"cls": series.group,
+						"colorCode": colorCode
+					}));
 
-				// add color picker
-				seriesRow.find('.color-selector').colpick({
-					layout: 'rgbhex',
-					color: colorCode,
-					submitText: gettext('OK'),
-					onSubmit: function(hsb, hex, rgb, el) {
-						var colorCode = '#' + hex;
-						$(el).css('background-color', colorCode);
-						$(el).colpickHide();
-						$(el).closest("td").next().find("input").val(colorCode).trigger("change");
-					}
-				}).css('background-color', colorCode);
+					var shapeCell = $("<td></td>");
+					shapeCell.append(shapeSelect);
+					seriesRow.append(shapeCell);
 
-				renderChoicesBody.append(seriesRow);
-			});
+					// add color picker
+					seriesRow.find('.color-selector').colpick({
+						layout: 'rgbhex',
+						color: colorCode,
+						submitText: gettext('OK'),
+						onSubmit: function(hsb, hex, rgb, el) {
+							var colorCode = '#' + hex;
+							$(el).css('background-color', colorCode);
+							$(el).colpickHide();
+							$(el).closest("td").next().find("input").val(colorCode).trigger("change");
+						}
+					}).css('background-color', colorCode);
 
-			// update image automatically on each color/shape change
-			renderChoicesBody.find("select, input").on("change", function() {
-				window.chart.update(formWindow, window.chart.updateChartColorsSymbols, {
-					renderChoices: formWindow.find(".plot-container .render-choices tbody tr")
-				});
+					renderChoicesBody.append(seriesRow);
+				}
 			});
 
 			plotContainer.css("min-height", 400);
@@ -276,7 +280,28 @@
 			//append to form after rendering because otherwise axes are not rendered
 			formWindow.append(plotContainer);
 
-			var renderChoicesDataTable = plotContainer.find(".render-choices").dataTable({
+			if (!isFloatCls) {
+				// update image automatically on each color/shape change
+				plotContainer.find(".render-choices select, .render-choices input").on("change", function() {
+					window.chart.update(formWindow, window.chart.updateChartColorsSymbols, {
+						renderChoices: formWindow.find(".plot-container .render-choices tbody tr")
+					});
+				});
+			} else {
+				var shapeSelector = plotContainer.find(".float-cls-choices select");
+				shapeSelector.on("change", function() {
+					for (i = 0; i < symbolValues.length; i++) {
+						symbolValues[i] = $(this).val();
+					}
+					window.chart.update(formWindow, window.chart.renderChartAndForm, {
+						"selectedSymbols": symbolValues
+					});
+				});
+				shapeSelector.val(symbolValues[0]);
+			}
+
+			// only one of these tables in the selector will be present 
+			var renderChoicesDataTable = plotContainer.find(".render-choices, .float-cls-choices").dataTable({
 				"sScrollY": 400,
 				"bScrollCollapse": true,
 				"bInfo": false,
@@ -307,6 +332,11 @@
 			}
 		},
 
+		cleanupColorpick: function() {
+			$("html").off("mousedown");
+			$(".colpick").remove(); // remove previous color pickers from the DOM
+		},
+
 		// update data from the server and call callback with parameters
 		update: function(formWindow, callback, params) {
 			var data = window.chart.getOutputParamDetails(formWindow);
@@ -326,7 +356,7 @@
 				context: container,
 			}).done(function(resp) {
 				$(this).html(resp.html);
-				$(".colpick").remove(); // remove previous color pickers from the DOM
+				window.chart.cleanupColorpick();
 				$(this).find(".attribute-choices select").on("change", function() {
 					// update image when attributes are changed
 					window.chart.update(formWindow, window.chart.renderChartAndForm);

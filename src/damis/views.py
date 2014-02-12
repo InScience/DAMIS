@@ -791,7 +791,7 @@ def read_classified_data(file_url, x, y, clsCol):
         f = strip_arff_header(f)
 
         step = 1. * (maxCls - minCls) / max_classes
-        groups = [str(t) + "-" + str(t + step) for t in arange(minCls, maxCls, step)]
+        groups = [str(t) + " - " + str(t + step) for t in arange(minCls, maxCls, step)]
         for row in f:
             cells = row.rstrip().split(",")
             val = float(cells[clsCol])
@@ -804,8 +804,12 @@ def read_classified_data(file_url, x, y, clsCol):
             result[cls].append([cells[x], cells[y]])
         f.close()
 
+    try:
+        result = OrderedDict(sorted(result.items(), key=lambda x: float(unicode(x[0]).split(" - ")[0])))
+    except ValueError:
+        result = OrderedDict(sorted(result.items(), key=lambda x: slugify(unicode(x[0]))))
     result = [{"group": cls, "data": data} for cls, data in result.items()]
-    return error, attributes, {"data": result, "minX": minX, "maxX": maxX, "minY": minY, "maxY": maxY}, x, y, clsCol
+    return error, attributes, {"data": result, "minX": minX, "maxX": maxX, "minY": minY, "maxY": maxY, "minCls": minCls, "maxCls": maxCls}, x, y, clsCol
 
 def download_image(image, file_format):
     '''Prepares the HTTP response to download an image in a given format.
@@ -855,7 +859,8 @@ def chart_form_view(request):
         y = int(request.GET.get("y")) if not request.GET.get("y") is None else None
         cls = int(request.GET.get("cls")) if not request.GET.get("cls") is None else None
         error, attributes, content, x, y, cls = read_classified_data(dataset_url, x, y, cls)
-        context = {"attrs": attributes, "error": error, "x": x, "y": y, "cls": cls}
+        float_cls = attributes[cls][1] == "real"
+        context = {"attrs": attributes, "error": error, "x": x, "y": y, "cls": cls, "float_cls": float_cls, "minCls": content["minCls"], "maxCls": content["maxCls"]}
         html = render_to_string("damis/_chart.html", context)
         if error:
             resp = {"status": "ERROR", "html": html}
