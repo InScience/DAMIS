@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-11 23:58+0000\n"
+"POT-Creation-Date: 2014-02-12 00:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -448,8 +448,9 @@ msgstr ""
 #: views.py:767
 msgid ""
 "Please specify columns for rendering, as default choices could not be used."
-msgstr "Nurodykite stulpelius, kuriuos norite vaizduoti, nes taikant "
-"numatytuosius pasirinkimus kilo klaidų."
+msgstr ""
+"Nurodykite stulpelius, kuriuos norite vaizduoti, nes taikant numatytuosius "
+"pasirinkimus kilo klaidų."
 
 #: views.py:819
 msgid "image"
@@ -474,6 +475,10 @@ msgstr "{0}: Patvirtinti {1}"
 #: views.py:984
 msgid "{0} password recovery"
 msgstr "{0} slaptažodžio atstatymas"
+
+#: templates/404.html:13
+msgid "Page not found"
+msgstr "Puslapis nerastas"
 
 #: templates/base.html:77
 msgid "Source code"
@@ -1001,6 +1006,9 @@ msgstr "Sekantis"
 #: templatetags/pagination.py:84
 msgid "Prev"
 msgstr "Ankstesnis"
+
+#~ msgid "404<br/> Not found"
+#~ msgstr "404<br/> Puslapis nerastas"
 
 #~ msgid "Please specify attributes to render you data:"
 #~ msgstr "Pasirinkite atributus, kuriuos norite vaizduoti:"

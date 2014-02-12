@@ -7,7 +7,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class='content-about'>
+    <div class='content-about' style="position:relative; padding:0px;margin:80px;">
         <object data="404.svg" width="600" height="500" type="image/svg+xml" codebase="/static/img/404.svg"></object>
+        <div style="position:absolute; top: 350px; left: 240px; font-family: verdana, sans; font-size: 56px; line-height:0.7;">
+            404<br/><span style="font-size:30px;"> {% trans 'Page not found' %}
+        </div>
     </div>
 {% endblock %}
