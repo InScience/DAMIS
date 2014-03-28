@@ -22,8 +22,12 @@ ShufleObjects::ShufleObjects(){
 ShufleObjects::~ShufleObjects(){
 
 }
-
-std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)   // didejimo tvarka
+/*! \brief Bubble sort shuffling 
+ * 
+ * Shuffling of object in ascending order
+ * \param objectMatrix is a 
+ */
+std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)
 {
     int n = objectMatrix.getObjectCount();
     int tmp_index = 0;
@@ -57,7 +61,11 @@ std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)   // dide
     return  shufledIndexes;
 }
 
-std::vector<int> ShufleObjects::byBubleSortDsc(ObjectMatrix objectMatrix)  // mazejimo tvarka
+/*! \brief Bubble sort shuffling 
+ * 
+ * Shuffling of object in descending order
+ */
+std::vector<int> ShufleObjects::byBubleSortDsc(ObjectMatrix objectMatrix)
 {
     int n = objectMatrix.getObjectCount();
     int tmp_index = 0;
@@ -91,6 +99,10 @@ std::vector<int> ShufleObjects::byBubleSortDsc(ObjectMatrix objectMatrix)  // ma
     return  shufledIndexes;
 }
 
+/*! \brief Random shuffling 
+ * 
+ * Shuffling of object in random order
+ */
 std::vector<int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
 
     unsigned int n = objectMatrix.getObjectCount();
