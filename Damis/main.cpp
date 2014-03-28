@@ -58,8 +58,8 @@ int main(int argc, char** argv) {
     numOfProcs = MPI::COMM_WORLD.Get_size();
     MPI_Status status;
     
-    PCA::PCA mthd1(d);
-    PCA::PCA mthd2(1.0);
+    PCA_::PCA_ mthd1(d);
+    PCA_::PCA_ mthd2(1.0);
     SDS mthd3(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
     SMACOFZEIDEL mthd4 (epsilon, maxIter, d, BUBLESORTDSC);
     SMACOFZEIDEL mthd5 (epsilon, maxIter, d, BUBLESORTASC);

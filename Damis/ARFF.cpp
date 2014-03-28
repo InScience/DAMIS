@@ -132,7 +132,7 @@ ARFF::~ARFF(){
 void ARFF::writeStatData(std::string statFile, double err, double calcTime)
 {
     std::scientific;
-    std::ofstream file (statFile);
+    std::ofstream file (statFile.c_str());
     file << "%"<<std::endl;
     file<<"@ATTRIBUTE algError REAL"<<std::endl;
     file<<"@ATTRIBUTE calcTime REAL"<<std::endl;
