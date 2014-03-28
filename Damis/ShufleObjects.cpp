@@ -26,6 +26,7 @@ ShufleObjects::~ShufleObjects(){
  * 
  * Shuffling of object in ascending order
  * \param objectMatrix is a 
+ * \return 
  */
 std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)
 {
