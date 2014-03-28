@@ -42,12 +42,12 @@ SDS::~SDS(){
 
 }
 
-SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInitt, int nofBaseVect, DistanceMetricsEnum distMetrics){
+SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInit, int nOfBaseVect, DistanceMetricsEnum distMetrics){
     epsilon = eps;
     maxIteration = maxIter;
     d = dim;
-    initMethod = baseVectInitt;
-    nb = nofBaseVect;
+    initMethod = baseVectInit;
+    nb = nOfBaseVect;
     distMethod = distMetrics;
 }
 
