@@ -104,8 +104,8 @@ int main(int argc, char** argv) {
     std::vector<double> stressErrors;
     
     DMA dma(epsilon, iter, d, neighbours);
-    PCA::PCA pca(d);
-    PCA::PCA pca_disp(dispPart);
+    PCA_::PCA_ pca(d);
+    PCA_::PCA_ pca_disp(dispPart);
     SAMANN smnn(mTrain, nNeurons, eta, iter);
     SDS sds_disp(epsilon, iter, d, DISPERSION, 50, EUCLIDEAN);
     SDS sds_pca(epsilon, iter, d, PCA, 50, EUCLIDEAN);
