@@ -33,15 +33,15 @@ std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)
     int n = objectMatrix.getObjectCount();
     int tmp_index = 0;
     double tmp_disp = 0.0;
-    bool shufled = false;
-    std::vector<int> shufledIndexes;
-    shufledIndexes.reserve(n);
+    bool shuffled = false;
+    std::vector<int> shuffledIndexes;
+    shuffledIndexes.reserve(n);
     for (int i = 0; i < n; i++)
-        shufledIndexes.push_back(i);
+        shuffledIndexes.push_back(i);
     
     for (int k = 0; k < n; k++)
     {
-        shufled = false;
+        shuffled = false;
         for (int i = 0; i < n - 1; i++)
         {
             if (objectMatrix.getObjectAt(i).getFeatureAt(0) > objectMatrix.getObjectAt(i + 1).getFeatureAt(0))
@@ -50,16 +50,16 @@ std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)
                 tmp_index = i;
                 objectMatrix.updateDataObject(i, 0, objectMatrix.getObjectAt(i + 1).getFeatureAt(0));
                 objectMatrix.updateDataObject(i + 1, 0, tmp_disp);
-                shufledIndexes[i] = shufledIndexes.at(i + 1);
-                shufledIndexes[i + 1] = tmp_index;
-                shufled = true;
+                shuffledIndexes[i] = shuffledIndexes.at(i + 1);
+                shuffledIndexes[i + 1] = tmp_index;
+                shuffled = true;
             }
         }
-        if (shufled == false)
+        if (shuffled == false)
             break;
     }
     
-    return  shufledIndexes;
+    return  shuffledIndexes;
 }
 
 /*! \brief Bubble sort shuffling 
