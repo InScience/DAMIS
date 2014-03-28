@@ -55,7 +55,7 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
     {
         shufledIndexes = ShufleObjects::shufleObjectMatrix(shufleEnum, Y);
 
-        for (int row=0; row < n; row++)
+        for (int row = 0; row < n; row++)
         {
             i = shufledIndexes.at(row);
             for (int j = 0; j < d; j++)
