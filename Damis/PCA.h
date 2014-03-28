@@ -7,59 +7,64 @@
 /*! \file PCA class
     \brief A class of methods and attributes for PCA algorithm.
  */
-#if !defined(EA_137C79B9_5330_4edc_A6BF_D6D076823555__INCLUDED_)
-#define EA_137C79B9_5330_4edc_A6BF_D6D076823555__INCLUDED_
+#if !defined PCA_H
+#define PCA_H
 
 #include "ObjectMatrix.h"
 #include "DimReductionMethod.h"
 #include "alglib/ap.h"
 
-class PCA : public DimReductionMethod
+class PCA_ : public DimReductionMethod
 {
 
 public:
         /**
         * A default constructor.
         */
-	PCA();
+	PCA_();
         /**
         * A destructor.
         */
-	virtual ~PCA();
+	virtual ~PCA_();
+       // /**
+       //  * An overloaded constructor that accepts the dimension.
+       //  */
+//PCA_(int d);
         /**
-         * An overloaded constructor that accepts the dimension.
+         * An overloaded constructor that accepts the dimension or dispersion part (if disp = true).
          */
-	PCA(int d);
-        /**
-         * An overloaded constructor that accepts the dispersion part.
-         */
-	PCA(double disp);
+	PCA_(double d, bool disp = true);
         /**
          * An overloaded constructor that accepts the ObjectMatrix and dispersion part.
          */
-        PCA(ObjectMatrix objMatrix, double disp);
+    PCA_(ObjectMatrix objMatrix, double disp);
         /**
          * An overloaded constructor that accepts the ObjectMatrix and dimension.
          */
-	PCA(ObjectMatrix objMatrix, int d);
+	PCA_(ObjectMatrix objMatrix, int d);
         /** \fn virtual void toDataType();
-         *  \brief Converts the ObjectMatrix to alglib's real_2d_array. 
+         *  \brief Converts the ObjectMatrix to alglib's real_2d_array.
          */
 	virtual void toDataType();
         /** \fn virtual void fromDataType();
-         *  \brief Converts alglib's real_2d_array to an ObjectMatrix. 
+         *  \brief Converts alglib's real_2d_array to an ObjectMatrix.
          */
 	virtual void fromDataType();
         /** \fn int getDimension();
          *  \brief Returns the dimension.
-         *  \return d - the dimension. 
+         *  \return d - the dimension.
          */
         int getDimension();
         /** \fn double getDispersionPart();
          *  \brief Returns the dispersion part.
-         *  \return dispPart - the dispersion part. 
+         *  \return dispPart - the dispersion part.
          */
         double getDispersionPart();
+        /** \fn double getStress();
+         *  \brief Returns the stress error value.
+         *  \return error - the stress error value.
+         */
+        double getStress();
         /** \fn alglib::real_1d_array getEigenValues();
          *  \brief Returns the eigenvalues of the projection.
          *  \return eigValues - the eigenvalues of the projection.
@@ -82,7 +87,7 @@ private:
         alglib::real_2d_array alglibX;
         /** \fn void ProjectXMatrix();
          *  \brief Calculates the projection of matrix X.
-         * 
+         *
          */
         void ProjectXMatrix();
         /** \var alglib::real_1d_array eigValues;
@@ -90,4 +95,4 @@ private:
          */
         alglib::real_1d_array eigValues;
 };
-#endif // !defined(EA_137C79B9_5330_4edc_A6BF_D6D076823555__INCLUDED_)
+#endif

@@ -12,6 +12,8 @@
 #include "DistanceMetrics.h"
 #include <float.h>
 #include <cstdlib>
+#include <iostream>
+#include "stdio.h"
 
 
 SOM::SOM(){
@@ -38,18 +40,18 @@ SOM::SOM(int rows, int columns, int ehat, ObjectMatrix x){
 ObjectMatrix SOM::getProjection(){
     int n = X.getObjectAt(0).getFeatureCount();
     int m = X.getObjectCount();
-    ObjectMatrix M(k_x, k_y, n);
+    ObjectMatrix *M  = new ObjectMatrix(k_x, k_y, n);
     ObjectMatrix M_w(m);
     std::vector<double> M_Matrix_Row;
     double alpha , win_dist, dist_ij, eta, h, tmp;
     int win_x, win_y;
-    
+
     for (int i = 0; i < k_x; i++)
     {
         for (int j = 0; j < k_y; j++)
         {
             for (int k = 0; k < n; k++)
-                M.updateDataObject(i, j, k, Statistics::getRandom(-1.0, 1.0, (i + j + 5 * k)));;
+                M->updateDataObject(i, j, k, Statistics::getRandom(-1.0, 1.0, (i + j + 5 * k)));
         }
     }
 
@@ -58,14 +60,14 @@ ObjectMatrix SOM::getProjection(){
         alpha = Max((double)(eHat + 1 - e) / eHat, 0.01);
         win_x = 0;
         win_y = 0;
-        for (int l = 0; l < n; l++)
+        for (int l = 0; l < m; l++)
         {
             win_dist = DBL_MAX;
             for (int i = 0; i < k_x; i++)
             {
                 for (int j = 0; j < k_y; j++)
                 {
-                    dist_ij = DistanceMetrics::getDistance(M.getObjectAt(i, j), X.getObjectAt(l), EUCLIDEAN);
+                    dist_ij = DistanceMetrics::getDistance(M->getObjectAt(i, j), X.getObjectAt(l), EUCLIDEAN);
                     if (dist_ij < win_dist)
                     {
                         win_dist = dist_ij;
@@ -78,24 +80,23 @@ ObjectMatrix SOM::getProjection(){
             {
                 for (int j = 0; j < k_y; j++)
                 {
-                    for (int k = 1; k < n; k++)
+                    for (int k = 0; k < n; k++) // k=1
                     {
-                        eta = Max(abs(win_x - i), abs(win_x - i));
+                        eta = Max(abs(win_x - i), abs(win_y - i));
                         h = alpha / (alpha * eta + 1);
                         if (eta > Max(alpha * Max((double)k_x, (double)k_y), 1))
                             h = 0;
-                        tmp = M.getObjectAt(i, j).getFeatureAt(k) + h * (X.getObjectAt(l).getFeatureAt(k) - M.getObjectAt(i, j).getFeatureAt(k));
-                        M.updateDataObject(i, j, k, tmp);
+                        tmp = M->getObjectAt(i, j).getFeatureAt(k) + h * (X.getObjectAt(l).getFeatureAt(k) - M->getObjectAt(i, j).getFeatureAt(k));
+                        M->updateDataObject(i, j, k, tmp);
                     }
                 }
             }
         }
-        
     }
-    
+
     win_x = 0;
     win_y = 0;
-    
+
     for (int l = 0; l < m; l++)
     {
         win_dist = DBL_MAX;
@@ -103,7 +104,7 @@ ObjectMatrix SOM::getProjection(){
         {
             for (int j = 0; j < k_y; j++)
             {
-                dist_ij = DistanceMetrics::getDistance(M.getObjectAt(i, j), X.getObjectAt(l), EUCLIDEAN);
+                dist_ij = DistanceMetrics::getDistance(M->getObjectAt(i, j), X.getObjectAt(l), EUCLIDEAN);
                 if (dist_ij < win_dist)
                 {
                     win_dist = dist_ij;
@@ -112,7 +113,7 @@ ObjectMatrix SOM::getProjection(){
                 }
             }
         }
-        M_w.addObject(M.getObjectAt(win_x, win_y));
+        M_w.addObject(M->getObjectAt(win_x, win_y));
     }
     nWinner = Different(M_w);
     return  nWinner;
@@ -130,15 +131,21 @@ double SOM::getQuantizationError(){
     int m = X.getObjectCount();
     int r = nWinner.getObjectCount();
     double som_qe = 0.0, dist_li = 0.0;
-    
+
     for (int l = 0; l < m; l++)
     {
+      //  dist_li =0.0;
         for (int i = 0; i < r; i++)
-            dist_li = DistanceMetrics::getDistance(nWinner.getObjectAt(i), X.getObjectAt(l), EUCLIDEAN);
-        som_qe += dist_li;          
+            som_qe = DistanceMetrics::getDistance(nWinner.getObjectAt(i), X.getObjectAt(l), EUCLIDEAN);
+       // som_qe += dist_li;
     }
-    
-    return som_qe;
+
+    return som_qe / m; //dalyba is m
+}
+
+double SOM::getStress()
+{
+    return SOM::getQuantizationError();
 }
 
 ObjectMatrix SOM::Different(ObjectMatrix M_w)
@@ -159,6 +166,6 @@ ObjectMatrix SOM::Different(ObjectMatrix M_w)
     }
     if (M_w.getObjectAt(n - 2).IsIdentical(M_w.getObjectAt(n - 1)) == true)
         M_ws.addObject(M_w.getObjectAt(n - 1));
-    
+
     return M_ws;
 }

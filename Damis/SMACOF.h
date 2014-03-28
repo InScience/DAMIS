@@ -7,8 +7,8 @@
 /*! \file SMACOF class
     \brief A class of methods and attributes for SMACOF algorithm.
  */
-#if !defined(EA_33C383A8_AABC_4498_9E97_8D153E43A6A7__INCLUDED_)
-#define EA_33C383A8_AABC_4498_9E97_8D153E43A6A7__INCLUDED_
+#if !defined(SMACOF_H)
+#define SMACOF_H
 
 #include "ObjectMatrix.h"
 #include "MDS.h"
@@ -26,22 +26,22 @@ public:
         */
 	virtual ~SMACOF();
         /**
-         * An overloaded constructor that accepts: epsilon, the maximum number of iterations and 
+         * An overloaded constructor that accepts: epsilon, the maximum number of iterations and
          * projection dimension.
          */
 	SMACOF(double eps, int maxIter, int d);
         /**
-         * An overloaded constructor that accepts: epsilon, the maximum number of iterations, 
+         * An overloaded constructor that accepts: epsilon, the maximum number of iterations,
          * projection dimension, initial data matrix and initial projection matrix.
          */
 	SMACOF(double eps, int maxIter, int d, ObjectMatrix X, ObjectMatrix Y);
         /**
-         * An overloaded constructor that accepts: initial projection matrix, epsilon, 
+         * An overloaded constructor that accepts: initial projection matrix, epsilon,
          * the maximum number of iterations and projection dimension.
          */
         SMACOF(ObjectMatrix initialY, double eps, int maxIter, int d);
         /**
-         * An overloaded constructor that accepts: epsilon, the maximum number of iterations, 
+         * An overloaded constructor that accepts: epsilon, the maximum number of iterations,
          * projection dimension, shuffling strategy and initial data matrix.
          */
         SMACOF(double eps, int maxIter, int d, ObjectMatrix initialMatrix);
@@ -52,13 +52,13 @@ public:
 	virtual ObjectMatrix getProjection();
         /** \fn double getStress();
          *  \brief Returns the stress error value.
-         *  \return error - Stress error value. 
+         *  \return error - Stress error value.
          */
         double getStress();
-        /** \fn ObjectMatrix getGutmanMatrix(); 
+        /** \fn ObjectMatrix getGutmanMatrix();
          *  \brief Returns the Guttman matrix.
          *  \return gutmanMatrix - The Guttman Matrix
          */
-        ObjectMatrix getGutmanMatrix(); 
+        ObjectMatrix getGutmanMatrix();
 };
-#endif // !defined(EA_33C383A8_AABC_4498_9E97_8D153E43A6A7__INCLUDED_)
+#endif // !defined(SMACOF_H)

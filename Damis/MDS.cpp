@@ -34,12 +34,12 @@ MDS::MDS(double eps, int maxIter, int dimension){
     int m = X.getObjectCount();
     gutman = ObjectMatrix(m);
     std::vector<double> gutmanRow;
-    gutmanRow.reserve(m);
-    
+    gutmanRow.reserve(0);
+
     for (int i = 0; i < m; i++)
         gutmanRow.push_back(0.0);
-    
-    for (int i = 0; i < m; i++)       
+
+    for (int i = 0; i < m; i++)
         gutman.addObject(DataObject(gutmanRow));
 }
 
@@ -59,7 +59,7 @@ ObjectMatrix MDS::getGutman(){
     double distXij;
     double distYij;
     double sum = 0.0;
-       
+
     for (int i = 0; i < m; i++)
     {
         sum = 0.0;
@@ -75,7 +75,7 @@ ObjectMatrix MDS::getGutman(){
                 gutman.updateDataObject(i, j, 0.0);
             sum += gutman.getObjectAt(i).getFeatureAt(j);
         }
-        
+
         for (int j = i + 1; j < m; j++)
         {
             distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
@@ -98,12 +98,12 @@ ObjectMatrix MDS::getGutman(int neighbour){
     double distXij;
     double distYij;
     double sum = 0.0;
-       
+
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < m; j++)
             gutman.updateDataObject(i, j, 0.0);
-        
+
         for (int j = (i - neighbour); j <= (i + neighbour); j++)
         {
             if (j >= 0 && j != i && j < m)
@@ -119,16 +119,16 @@ ObjectMatrix MDS::getGutman(int neighbour){
             }
         }
     }
-    
+
     for (int i = 0; i < m; i++)
     {
         sum = 0.0;
         for (int j = 0; j < i; j++)
             sum += gutman.getObjectAt(i).getFeatureAt(j);
-        
+
         for (int j = i + 1; j < m; j++)
             sum += gutman.getObjectAt(i).getFeatureAt(j);
-    
+
         gutman.updateDataObject(i, i, -1 * sum);
     }
 
@@ -140,7 +140,7 @@ ObjectMatrix MDS::getGutman(ObjectMatrix Ynew){
     double distXij;
     double distYij;
     double sum = 0.0;
-       
+
     for (int i = 0; i < m; i++)
     {
         sum = 0.0;
@@ -156,7 +156,7 @@ ObjectMatrix MDS::getGutman(ObjectMatrix Ynew){
                 gutman.updateDataObject(i, j, 0.0);
             sum += gutman.getObjectAt(i).getFeatureAt(j);
         }
-        
+
         for (int j = i + 1; j < m; j++)
         {
             distYij = DistanceMetrics::getDistance(Ynew.getObjectAt(i), Ynew.getObjectAt(j), EUCLIDEAN);
@@ -183,31 +183,31 @@ double MDS::getStress(){
     int m = X.getObjectCount();
     double distX = 0.0;
     double distY = 0.0;
-    
+
     for (int i = 0; i < m - 1; i++)
     {
         for (int j = i + 1; j < m; j++)
         {
             distX = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
             distY = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
-            stress += getWeight(i, j) * std::pow(distX - distY, 2);
+            stress += std::pow(distX - distY, 2);
         }
     }
-    
-    return stress;
+
+    return stress * MDS::getStressWeight();
 }
 
-double MDS::getWeight(int i, int j)
+/*double MDS::getWeight(int i, int j)
 {
-    //double weight = 0.0;
-    //int m = X.getObjectCount();
-    
-    //for (int k = i; k < j; k++)
-    //for (int k = j; k < m; k++)
-    //    weight += std::pow(DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(k), EUCLIDEAN), 2);
-    //return 1 / weight;
-    return 1.0;
-}
+    double weight = 0.0;
+    int m = X.getObjectCount();
+
+    for (int k = i; k < j; k++)
+        for (int k = j; k < m; k++)
+            weight += std::pow(DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(k), EUCLIDEAN),2);
+    return 1 / weight;
+    //return 1.0;
+}*/
 
 void MDS::setEpsilon(double eps){
     epsilon = eps;
@@ -215,6 +215,23 @@ void MDS::setEpsilon(double eps){
 
 void MDS::setMaxIteration(int maxIter){
     maxIteration = maxIter;
+}
+
+double MDS::getStressWeight(int weightType)
+{
+    double weight = 0.0;
+    int m = X.getObjectCount();
+
+    if (weightType == 1)
+        {
+        for (int i = 0; i < m - 1; i++)
+            for (int j = i + 1; j < m; j++)
+                weight += std::pow(DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN),2);
+        }
+    if (weight)
+        return 1./weight;
+    else
+         return 0;
 }
 
 std::vector<double> MDS::getStressErrors()

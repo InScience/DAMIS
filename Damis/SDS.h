@@ -7,8 +7,8 @@
 /*! \file SDS class
     \brief A class of methods and attributes for SDS algorithm.
  */
-#if !defined(EA_BD1F1D91_A491_4a5e_9B31_E250CAE201D5__INCLUDED_)
-#define EA_BD1F1D91_A491_4a5e_9B31_E250CAE201D5__INCLUDED_
+#if !defined(SDS_H)
+#define SDS_H
 
 #include "ObjectMatrix.h"
 #include "PCA.h"
@@ -43,9 +43,9 @@ public:
 	virtual ObjectMatrix getProjection();
         /** \fn virtual double getStress();
          *  \brief Returns the stress error value.
-         *  \return error - Stress error value. 
+         *  \return error - Stress error value.
          */
-	virtual double getStress();        
+	virtual double getStress();
 private:
 	/**
 	 * Base vector initialization method
@@ -64,7 +64,7 @@ private:
 	 */
 	int nb;
         /** \fn void getQN();
-         *  \brief Calculates remainder vectors projection. 
+         *  \brief Calculates remainder vectors projection.
          */
 	void getQN();
         /** \fn void Initialize();
@@ -79,6 +79,6 @@ private:
          *  \param ptr - optional pointer which is passed to func/grad/hess/jac/rep can be NULL
          */
         static void E_SDS(const alglib::real_1d_array &x, double &func, alglib::real_1d_array &grad, void *ptr);
-        
+
 };
-#endif // !defined(EA_BD1F1D91_A491_4a5e_9B31_E250CAE201D5__INCLUDED_)
+#endif // !defined(SDS_H)

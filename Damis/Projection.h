@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Projection.h
  * Author: mindaugas
  *
@@ -20,10 +20,10 @@ public:
 	Projection();
 	virtual ~Projection();
         /** \fn static ObjectMatrix projectMatrix(ProjectionEnum projEnum, ObjectMatrix objectMatrix);
-         *  \brief Orders 
+         *  \brief Orders
          *  \param projEnum - the Enum type of projection.
          *  \param objectMatrix - the ObjectMatrix to project.
-         *  \return ObjectMatrix - the projection by \a projEnum. 
+         *  \return ObjectMatrix - the projection by \a projEnum.
          */
 	static ObjectMatrix projectMatrix(ProjectionEnum projEnum, ObjectMatrix objectMatrix);
 
@@ -40,6 +40,13 @@ private:
          *  \return projectionMatrix - The projected matrix.
          */
 	static ObjectMatrix byPCA(ObjectMatrix objectMatrix);
+        /** \fn static ObjectMatrix byRAND(ObjectMatrix objectMatrix);
+         *  \brief Projects matrix by RAND.
+         *  \param objectMatrix - The matrix that needs to be projected.
+         *  \return projectionMatrix - The projected matrix.
+         */
+	static ObjectMatrix byRand(ObjectMatrix objectMAtrix);
+
 };
 
 #endif	/* PROJECTION_H */

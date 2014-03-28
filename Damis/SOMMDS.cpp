@@ -19,26 +19,31 @@ SOMMDS::~SOMMDS(){
 }
 
 SOMMDS::SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat):SMACOF(eps, max_iter, d), SOM(kx, ky, e_hat){
- 
+
 }
 
 ObjectMatrix SOMMDS::getProjection(){
     ObjectMatrix M_ws;
     M_ws = SOM::getProjection();
-    som_qe = SOM::getQuantizationError();
+//    som_qe = SOM::getQuantizationError();
     SMACOF::X = M_ws;
-    mds_error = SMACOF::getStress();
+   // mds_error = SMACOF::getStress();
     return  SMACOF::getProjection();
 }
 
 double SOMMDS::getSOMQuantizationError()
 {
-    return som_qe;
+    return SOM::getQuantizationError();
 }
 
-double SOMMDS::getMDSStressError()
+/*double SOMMDS::getMDSStressError()
 {
-    return mds_error;
+    return MDS::getStress();
+}*/
+
+double SOMMDS::getStress()
+{
+    return MDS::getStress();
 }
 
 ObjectMatrix SOMMDS::getX()

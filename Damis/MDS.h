@@ -30,7 +30,7 @@ public:
         */
 	MDS(double eps, int maxIter, int d);
         /**
-        * An overloaded constructor that accepts: epsilon, the number of iterations, 
+        * An overloaded constructor that accepts: epsilon, the number of iterations,
          * projection dimension and the initial data matrix.
         */
         MDS(double eps, int maxIter, int d, ObjectMatrix initialMatrix);
@@ -46,18 +46,18 @@ public:
         std::vector<double> getStressErrors();
 protected:
         /** \fn double getEpsilon();
-         *  \brief Returns the value of the \a epsilon. 
+         *  \brief Returns the value of the \a epsilon.
          *  \return epsilon
          */
 	double getEpsilon();
         /** \fn ObjectMatrix getGutman();
-         *  \brief Calculates the matrix of the Guttman. 
+         *  \brief Calculates the matrix of the Guttman.
          *  \return gutman - an object of the class \a ObjectMatrix.
          */
 	ObjectMatrix getGutman();
         /** \fn ObjectMatrix getGutman(int neighbour);
          *  \brief Calculates the matrix of the Guttman.
-         *  \param neighbour - the amount of the neighbours 
+         *  \param neighbour - the amount of the neighbours
          *  \return gutman - an object of the class \a ObjectMatrix.
          */
 	ObjectMatrix getGutman(int neighbour);
@@ -95,10 +95,10 @@ protected:
          *  \brief Maximum value of iterations.
          */
 	int maxIteration;
-        /** \var vector<double> stressErrors; 
+        /** \var vector<double> stressErrors;
          *  \brief The list of stress errors.
          */
-        std::vector<double> stressErrors;        
+        std::vector<double> stressErrors;
 private:
         /** \fn double getWeight(int i, int j);
          *  \brief Calculates the weight of the \a i-th and the \a j-th DataObjects.
@@ -106,7 +106,15 @@ private:
          *  \param j - the \a j-th DataObject in the ObjectMatrix X.
          *  \return weight - the weight of the \a i-th and the \a j-th DataObjects.
          */
-        double getWeight(int i, int j);
+       // double getWeight(int i, int j);
+
+       	        /** \fn double getStressWeight();
+         *  \brief Calculates the weight of the upper left matrix triangle.
+         *  \param weightType - indicates whitch weight should be returned according to MDS error
+         *  \return weight - the weight of the upper left matrix triangle.
+         */
+        virtual double getStressWeight(int weightType = 1);
+
         /** \var ObjectMatrix gutman;
          *  \brief Gutman matrix.
          */

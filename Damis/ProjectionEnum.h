@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   ProjectionEnum.h
  * Author: mindaugas
  *
@@ -13,8 +13,9 @@
  */
 enum ProjectionEnum
 {
-	DISPERSION = 1, /*!< Enum value DISPERSION. */
+	RAND = 1,/*!< Enum value RANDOM. */
 	PCA = 2, /*!< Enum value PCA. */
+    DISPERSION = 3 /*!< Enum value DISPERSION. */
 };
 
 #endif	/* PROJECTIONENUM_H */

@@ -7,8 +7,8 @@
 /*! \file SOMMDS class
     \brief A class of methods and attributes for SOMMDS algorithm.
  */
-#if !defined(EA_7E809A89_6ED7_4e3d_A371_330C18909791__INCLUDED_)
-#define EA_7E809A89_6ED7_4e3d_A371_330C18909791__INCLUDED_
+#if !defined(SOMMDS_H)
+#define SOMMDS_H
 
 #include "ObjectMatrix.h"
 #include "SMACOF.h"
@@ -27,7 +27,7 @@ public:
         */
 	virtual ~SOMMDS();
         /**
-         * An overloaded constructor that accepts: epsilon, maximum number of iterations, 
+         * An overloaded constructor that accepts: epsilon, maximum number of iterations,
          * projection dimension, number of SOM rows, number of SOM columns and hat value.
          */
 	SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat);
@@ -40,7 +40,13 @@ public:
          *  \brief Returns the MDS stress error.
          *  \return mds_error - MDS stress error.
          */
-        double getMDSStressError();
+       // double getMDSStressError();
+
+        /** \fn double getStress();
+         *  \brief Returns the MDS stress error.
+         *  \return mds_error - MDS stress error.
+         */
+        double getStress();
         /** \fn ObjectMatrix getX();
          *  \brief Returns the matrix X.
          *  \return X - The initial data matrix.
@@ -61,4 +67,4 @@ private:
          */
         double mds_error;
 };
-#endif // !defined(EA_7E809A89_6ED7_4e3d_A371_330C18909791__INCLUDED_)
+#endif // !defined(SOMMDS_H)

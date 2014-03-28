@@ -47,9 +47,9 @@ ObjectMatrix DMA::getProjection(){
     int iteration = 0;
     stressErrors.push_back(getStress());
     double Epsilon = DBL_MAX;
-    double sum = 0.0;   
+    double sum = 0.0;
     ObjectMatrix Y_new(m);
-    ObjectMatrix gutman;      
+    ObjectMatrix gutman;
     Y_new = Y;
 
     while (iteration < maxIteration && Epsilon > epsilon)
@@ -58,19 +58,22 @@ ObjectMatrix DMA::getProjection(){
         gutman = getGutman(neighbourNumber);
 
         for (int i = 0; i < m; i++)
-        {            
+        {
             for (int j = 0; j < d; j++)
             {
                 sum = 0.0;
                 for (int k = (i - neighbourNumber); k <= (i + neighbourNumber); k++)
                     if (k >= 0 && k < m)
-                        sum += gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+                        if (k !=i)
+                            sum += gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j); // +1 pridedamas formuojant gutmano matrica
+                        else
+                            sum += (gutman.getObjectAt(i).getFeatureAt(k) - getV(i)) * Y.getObjectAt(k).getFeatureAt(j);
                 Y_new.updateDataObject(i, j, Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / getV(i));
             }
         }
         Y = Y_new;
-        iteration++;        
-        stressErrors.push_back(getStress());        
+        iteration++;
+        stressErrors.push_back(getStress());
         Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
     }
     return  Y;
@@ -106,22 +109,22 @@ void DMA::shuffle()
         Xshuffled.addObject(X.getObjectAt(j));
     }
     X = Xshuffled;
-    
+
     for (int i = 0; i < m; i++)
     {
         j = shufledIndexes.at(i);
         Yshuffled.addObject(Y.getObjectAt(j));
     }
     Y = Yshuffled;
-    
+
 }
 
 double DMA::getStress(){
-    double sum1 = 0.0, sum2 = 0.0, stress = 0.0;
+    /*double sum1 = 0.0, sum2 = 0.0, stress = 0.0;
     int m = X.getObjectCount();
     double distX = 0.0;
     double distY = 0.0;
-    
+
     for (int i = 0; i < m - 1; i++)
     {
         for (int j = i + 1; j < m; j++)
@@ -133,5 +136,6 @@ double DMA::getStress(){
         }
     }
     stress = std::sqrt(sum1 / sum2);
-    return stress;
+    return stress;*/
+    return MDS::getStress();
 }

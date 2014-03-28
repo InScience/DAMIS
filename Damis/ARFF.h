@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   arff.h
  * Author: mindaugas
  *
@@ -7,7 +7,7 @@
 
 /*! \file ARFF class
  *  \brief A class for reading data from or writing data to an arff file.
- 
+
  */
 
 #ifndef ARFF_H
@@ -23,7 +23,7 @@ public:
     /**
      * A default constructor.
      */
-    ARFF();   
+    ARFF();
     /**
      * An overloaded constructor that accepts the path of an arff file.
      */
@@ -32,7 +32,7 @@ public:
      * A destructor.
      */
     ~ARFF();
-    
+
     /*! \fn vector<string> getAttributes();
      *  \brief A method that returns the titles of the features.
      *  \return attributes - the vector of features titles.
@@ -64,7 +64,15 @@ public:
      *  \return readSuccess - boolean value.
      */
     bool isSuccessfullyRead();
-    
+    /*! \fn void writeStatData(std::string statFile, double err, double calcTime);
+    *  \brief Writes algorihtm erro and calculation time to file.
+    *  \param statFile - file path to be written to.
+    *  \param err - algorithm error.
+    *\param calcTime - algorithm run time.
+    *  \return array - a two-dimensional array of doubles.
+    */
+    static void writeStatData(std::string statFile, double err, double calcTime);
+
 private:
     /*! \var vector<vector<double> > data;
      *  \brief The actual data read from an arff file.
@@ -86,7 +94,7 @@ private:
      *  \brief The indicator of the successful file read.
      * If it's value is \a true, the file is successfully read, if \a false, the file is not successfully read.
      */
-    bool readSuccess;    
+    bool readSuccess;
 };
 
 #endif	/* ARFF_H */

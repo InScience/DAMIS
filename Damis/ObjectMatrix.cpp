@@ -14,7 +14,7 @@
 #include "DataObject.h"
 
 ObjectMatrix::ObjectMatrix(){
-    DataObjects.reserve(1);    
+    DataObjects.reserve(0);   //1
 }
 
 ObjectMatrix::~ObjectMatrix(){
@@ -25,8 +25,8 @@ ObjectMatrix::ObjectMatrix(std::string file){
     objectCount = 0;
 }
 
-ObjectMatrix::ObjectMatrix(int count){
-    DataObjects.reserve(count);
+ObjectMatrix::ObjectMatrix(int cnt){
+    DataObjects.reserve(cnt);
     objectCount = 0;
 }
 
@@ -41,7 +41,7 @@ ObjectMatrix::ObjectMatrix(int m, int n, int k){
     std::vector<double> initialFeatures;
     initialFeatures.resize(k, 1.0);
     DataObject initial(initialFeatures);
-    DataObjects2D.resize(m, std::vector<DataObject>( n, initial) );
+    DataObjects2D.resize(m, std::vector<DataObject>( n, initial));
     objectCount = 0;
 }
 
@@ -86,7 +86,7 @@ void ObjectMatrix::loadDataMatrix(){
     ARFF file(path);
     if (file.isSuccessfullyRead() == true)   // successful read
     {
-        std::vector< std::vector<double> > data = file.getData();  
+        std::vector< std::vector<double> > data = file.getData();
         featureTitles = file.getAttributes();
         std::vector< std::vector<double> >::iterator dataObjectIterator;
         std::vector<double>::iterator featureIterator;
@@ -100,8 +100,8 @@ void ObjectMatrix::loadDataMatrix(){
             DataObject tmp(dataObjectItems);
             DataObjects.push_back(tmp);
             dataObjectItems.clear();
-        }  
-        objectCount = DataObjects.size();        
+        }
+        objectCount = DataObjects.size();
     }
     else
         objectCount = 0;

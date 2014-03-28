@@ -38,6 +38,11 @@ public:
          *  \return error - the quantization error.
          */
 	double getQuantizationError();
+	        /** \fn double getStress();
+         *  \brief Returns the quantization error.
+         *  \return error - the quantization error.
+         */
+	double getStress();
         /** \fn virtual ObjectMatrix getProjection();
          *  \brief Returns the projection matrix \a Y of matrix \a X.
          *  \return Y - the projection matrix.
@@ -49,13 +54,13 @@ private:
          *  \brief Returns the bigger number.
          *  \param number1 - The first number.
          *  \param number2 - The second number.
-         *  \return max 
+         *  \return max
          */
         double Max(double number1, double number2);
         /** \fn ObjectMatrix Different(ObjectMatrix matrix);
          *  \brief Returns different DataObjects from the ObjectMatrix.
          *  \param matrix - The ObjectMatrix
-         *  \return uniqeMatrix - The ObjectMatrix with unique DataObjects. 
+         *  \return uniqeMatrix - The ObjectMatrix with unique DataObjects.
          */
         ObjectMatrix Different(ObjectMatrix matrix);
 	/**

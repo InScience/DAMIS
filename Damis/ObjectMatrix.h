@@ -70,7 +70,7 @@ public:
         DataObject getObjectAt(int i, int j);
         /** \fn int getObjectCount();
          *  \brief Returns the number of DataObjects in the set of DataObjects.
-         *  \returns count - the amount of DataObjects in the set of DataObjects. 
+         *  \return count - the amount of DataObjects in the set of DataObjects.
          */
 	int getObjectCount();
         /** \fn void loadDataMatrix();
@@ -88,7 +88,7 @@ public:
          */
 	void saveDataMatrix(const char*);
         /** \fn void clearDataObjects();
-         *  \brief Clears the items from the DataObjects set.         * 
+         *  \brief Clears the items from the DataObjects set.         *
          */
         void clearDataObjects();
         /** \fn void updateDataObject(int objectIndex, int featureIndex, double newValue);
@@ -96,7 +96,7 @@ public:
          *  \param objectIndex - the index of the DataObject.
          *  \param featureIndex - the index of the feature in the DataObject.
          *  \param newValue - the new value of a feature.
-         */        
+         */
         void updateDataObject(int objectIndex, int featureIndex, double newValue);
         /** \fn void updateDataObject(int rowIndex, int colIndex, int featureIndex, double newValue);
          *  \brief Updates the feature value.

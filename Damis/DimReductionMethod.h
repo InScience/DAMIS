@@ -52,9 +52,17 @@ protected:
         /** \fn void setProjectionDimension(int dimension);
          *  \brief Sets the projection dimension.
          *  \param dimension - a value assigned to \a d.
-         * 
+         *
          */
 	void setProjectionDimension(int dimension);
+
+	        /** \fn double getStressWeight();
+         *  \brief Calculates the weight of the upper left matrix triangle.
+         *  \param weightType - indicates whitch weight should be returned according to MDS error
+         *  \return weight - the weight of the upper left matrix triangle.
+         */
+    virtual double getStressWeight(int weightType = 1);
+
 
 };
 #endif // !defined(EA_DC369997_8613_4bb3_AA07_8B266375AA92__INCLUDED_)

@@ -50,11 +50,11 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
     Y_new = Y;
     Gutman = getGutman();
     int iteration = 0;
-    
+
     while (iteration < maxIteration && Epsilon > epsilon)
     {
         shufledIndexes = ShufleObjects::shufleObjectMatrix(shufleEnum, Y);
-        
+
         for (int row=0; row < n; row++)
         {
             i = shufledIndexes.at(row);
@@ -63,14 +63,14 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
                 sum = 0.0;
                 for (int k = 0; k < n; k++)
                         sum += Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
-                Y_new.updateDataObject(i, j, (sum / n));
+                Y_new.updateDataObject(i, j, (sum / (double)n));
             }
             Gutman = getGutman(Y_new);
         }
         Y = Y_new;
-        
-        iteration++;    
-        stressErrors.push_back(getStress());        
+
+        iteration++;
+        stressErrors.push_back(getStress());
         Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
     }
 

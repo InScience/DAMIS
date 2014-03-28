@@ -44,7 +44,7 @@ ObjectMatrix SMACOF::getProjection(){
     stressErrors.reserve(maxIteration);
     int iteration = 0;
     int n = X.getObjectCount();
-    stressErrors.push_back(getStress());
+    stressErrors.push_back(SMACOF::getStress());
     double sum = 0.0;
     double Epsilon = DBL_MAX;
     ObjectMatrix Gutman;
@@ -65,13 +65,13 @@ ObjectMatrix SMACOF::getProjection(){
                 sum = 0.0;
                 for (int k = 0; k < n; k++)
                         sum += Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
-                Y_newRow.push_back(sum / n);                
+                Y_newRow.push_back(sum / n);
             }
             Y_new.addObject(DataObject(Y_newRow));
         }
         Y = Y_new;
-        
-        stressErrors.push_back(getStress());        
+
+        stressErrors.push_back(getStress());
         iteration++;
         Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
     }

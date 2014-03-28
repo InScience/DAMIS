@@ -5,7 +5,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <algorithm>
-#include "DataObject.h"
+//#include "DataObject.h"
 
 /*! \class ARFF
  *  \brief A class for reading data from or writing data to an arff file.
@@ -16,7 +16,7 @@ ARFF::ARFF(){
     attributes.reserve(0);
 }
 
-ARFF::ARFF(const char* path){ 
+ARFF::ARFF(const char* path){
     failReason = "";
     std::stringstream s;
     std::ifstream file (path);
@@ -36,10 +36,10 @@ ARFF::ARFF(const char* path){
                 line_no++;
                 continue;
             }
-            std::istringstream iss(line_from_file);		
+            std::istringstream iss(line_from_file);
             std::string sub;
             iss >> sub;
-            if (sub == "%")	
+            if (sub == "%")
             {
                 line_no++;
                 continue;
@@ -83,7 +83,7 @@ ARFF::ARFF(const char* path){
                                 if (tmp[i] == "?" || tmp[i] == "")
                                 {
                                     readSuccess = false;
-                                    s << "Unexpected symbol found at " << line_no << " line";                                    
+                                    s << "Unexpected symbol found at " << line_no << " line";
                                     failReason = s.str();
                                     break;
                                 }
@@ -129,6 +129,19 @@ ARFF::~ARFF(){
     attributes.clear();
 }
 
+void ARFF::writeStatData(std::string statFile, double err, double calcTime)
+{
+    std::scientific;
+    std::ofstream file (statFile);
+    file << "%"<<std::endl;
+    file<<"@ATTRIBUTE algError REAL"<<std::endl;
+    file<<"@ATTRIBUTE calcTime REAL"<<std::endl;
+    file <<"%"<<std::endl;
+    file<<"@DATA"<<std::endl;
+    file << err << ", "<<calcTime;
+    file.close();
+}
+
 std::vector<std::string> ARFF::getAttributes(){
     return attributes;
 }
@@ -143,16 +156,17 @@ void ARFF::writeData(const char* path, std::vector<DataObject> data)
     int n = data.size();
     int k = 0;
     int featureCount = data.at(0).getFeatureCount();
+    file << "%"<<std::endl;
     for (int i = 0; i < featureCount; i++)
         file<<"@ATTRIBUTE attr_"<<(i + 1)<<" REAL"<<std::endl;
-    
+    file << "%"<<std::endl;
     file<<"@DATA"<<std::endl;
-        
+
     for (int i = 0; i < n; i++)
     {
         k = data.at(i).getFeatureCount();
         for (int j = 0; j < k - 1; j++)
-            file<<data.at(i).getFeatureAt(j)<<",";
+            file<<data.at(i).getFeatureAt(j)<<", ";
         file<<data.at(i).getFeatureAt(k - 1)<<std::endl;
     }
     file.close();
