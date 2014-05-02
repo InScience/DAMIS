@@ -7,42 +7,9 @@
 
 #include "ClusterizationMethods.h"
 
-
-ClusterizationMethod::ClusterizationMethod(){
-
-}
-
-
-
-ClusterizationMethod::~ClusterizationMethod(){
-
-}
-
-
-
-
-
-/**
- * Returns number of classes
- */
-void ClusterizationMethod::getNoOfClases(){
-
-}
-
-
-/**
- * Sets the nuber of found classes (used by kmeans ger_k)
- */
-void ClusterizationMethod::setNoOfClases(int k){
-
-}
-
-
 ClusterizationMethods::ClusterizationMethods(){
 
 }
-
-
 
 ClusterizationMethods::~ClusterizationMethods(){
 

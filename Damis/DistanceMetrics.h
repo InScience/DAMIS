@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   DistanceMetrics.h
  * Author: mindaugas
  *
@@ -24,28 +24,35 @@ public:
      * @return distance - the distance between two DataObjects.
      */
     static double getDistance(DataObject object1, DataObject object2, DistanceMetricsEnum metricsEnum);
+
+  //  static double getDistance(ObjectMatrix dMatrix, int object1, int object2, DistanceMetricsEnum metricsEnum);
 private:
     /** \fn static double getChebyshev(DataObject object1, DataObject object2);
-     *  \brief Calculates the distance between two DataObjects using \a Chebyshev metrics. 
+     *  \brief Calculates the distance between two DataObjects using \a Chebyshev metrics.
      * @param object1 - a DataObject.
      * @param object2 - a DataObject.
      * @return distance - the distance between two DataObjects.
      */
     static double getChebyshev(DataObject object1, DataObject object2);
+ //   static double getChebyshev(ObjectMatrix dMAtrix, int obj1, int obj2);
     /** \fn static double getEuclidean(DataObject object1, DataObject object2);
-     *  \brief Calculates the distance between two DataObjects using \a Euclidean metrics. 
+     *  \brief Calculates the distance between two DataObjects using \a Euclidean metrics.
      * @param object1 - a DataObject.
      * @param object2 - a DataObject.
      * @return distance - the distance between two DataObjects.
      */
     static double getEuclidean(DataObject object1, DataObject object2);
+  //  static double getEuclidean(ObjectMatrix dMAtrix, int obj1, int obj2);
+
     /** \fn static double getManhattan(DataObject object1, DataObject object2);
-     *  \brief Calculates the distance between two DataObjects using \a Manhattan metrics. 
+     *  \brief Calculates the distance between two DataObjects using \a Manhattan metrics.
      * @param object1 - a DataObject.
      * @param object2 - a DataObject.
      * @return distance - the distance between two DataObjects.
      */
     static double getManhattan(DataObject object1, DataObject object2);
+
+//    static double getManhattan(ObjectMatrix dMatrix, int object1, int object2);
 };
 
 #endif	/* DISTANCEMETRICS_H */

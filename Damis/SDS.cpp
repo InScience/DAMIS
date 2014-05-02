@@ -5,9 +5,7 @@
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
 /*! \class SDS
- *  \brief A class of methods and attributes for SDS algorithm.
- * 
- *  A relative MDS method realization
+    \brief A class of methods and attributes for SDS algorithm.
  */
 #include "SDS.h"
 #include "ShufleObjects.h"
@@ -44,22 +42,12 @@ SDS::~SDS(){
 
 }
 
-/*! \brief A default constructor
- * 
- * \param eps a smallest change of error in last iteration
- * \param maxIter a maximal number of iterations
- * \param dim a dimension of projection
- * \param baseVectInit a base vector initialization method
- * \param nOfBaseVect a number of basic vector for MDS projection
- * \param distMetrics a used distance metric (EUCLIDIAN is recommended)
- * 
- */
-SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInit, int nOfBaseVect, DistanceMetricsEnum distMetrics){
+SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInitt, int nofBaseVect, DistanceMetricsEnum distMetrics){
     epsilon = eps;
     maxIteration = maxIter;
     d = dim;
-    initMethod = baseVectInit;
-    nb = nOfBaseVect;
+    initMethod = baseVectInitt;
+    nb = nofBaseVect;
     distMethod = distMetrics;
 }
 
@@ -71,7 +59,7 @@ ObjectMatrix SDS::getProjection(){
     StaticData::Y_base = ObjectMatrix(nb);
     Y_new = ObjectMatrix(m - nb);
     ObjectMatrix proj(m);
-    std::vector<int> index;
+    std::vector<unsigned int> index;
     index.reserve(m);
 
     switch (initMethod)

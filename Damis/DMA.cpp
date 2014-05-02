@@ -13,6 +13,7 @@
 #include "DistanceMetrics.h"
 #include "DistanceMetricsEnum.h"
 #include <cmath>
+#include <iostream>
 
 /*! \class DMA
     \brief A class of methods and attributes for DMA algorithm.
@@ -52,6 +53,10 @@ ObjectMatrix DMA::getProjection(){
     ObjectMatrix gutman;
     Y_new = Y;
 
+ /*   std::vector<unsigned int> objIndexes; objIndexes.reserve(m);
+    for (int i = 0; i < m; i++)
+        objIndexes.push_back(i);*/
+
     while (iteration < maxIteration && Epsilon > epsilon)
     {
         shuffle();
@@ -76,7 +81,18 @@ ObjectMatrix DMA::getProjection(){
         stressErrors.push_back(getStress());
         Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
     }
-    return  Y;
+//restore vector order
+    int elAtIndex;
+    Y_new = Y;
+    for (int i = 0; i < m; i++)
+        {
+            elAtIndex = shufledIndexes.at(i);
+            for (int j = 0; j < d; d++)
+            {
+                Y.updateDataObject(elAtIndex, j, Y_new.getObjectAt(i).getFeatureAt(j));
+            }
+         }
+    return  Y; // grazinant reikia atmaisyti atsizvelgiant i sufleYndexes istorija.
 }
 
 int DMA::getV(int i)
@@ -100,22 +116,29 @@ void DMA::shuffle()
     int j = 0;
     ObjectMatrix Xshuffled(m);
     ObjectMatrix Yshuffled(m);
-    std::vector<int> shufledIndexes;
+
     shufledIndexes.reserve(m);
+
     shufledIndexes = ShufleObjects::shufleObjectMatrix(RANDOM, Y);
-    for (int i = 0; i < m; i++)
-    {
-        j = shufledIndexes.at(i);
-        Xshuffled.addObject(X.getObjectAt(j));
-    }
-    X = Xshuffled;
 
     for (int i = 0; i < m; i++)
     {
         j = shufledIndexes.at(i);
+
+        std::cout << j << std::endl;
+
+        Xshuffled.addObject(X.getObjectAt(j));
         Yshuffled.addObject(Y.getObjectAt(j));
     }
+    X = Xshuffled;
+
+   /* for (int i = 0; i < m; i++)
+    {
+        j = shufledIndexes.at(i);
+        Yshuffled.addObject(Y.getObjectAt(j));
+    }*/
     Y = Yshuffled;
+   // X = Xshuffled;
 
 }
 

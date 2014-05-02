@@ -33,12 +33,12 @@ public:
         /** \fn int getNeighbours();
          *  \brief Returns the number of neighbours.
          *  \return neighbourNumber - the number of neighbours.
-        */  
+        */
 	int getNeighbours();
         /** \fn setNeighbours(int neighbours);
          *  \brief Sets the number of neighbours.
          *  \param neighbours - the number of neighbours.
-        */ 
+        */
 	void setNeighbours(int neighbours);
         /** \fn virtual ObjectMatrix getProjection();
          *  \brief Returns the projection Y of matrix X.
@@ -49,7 +49,8 @@ public:
          *  \brief Returns the stress error value.
          *  \return error - The stress error value.
          */
-        virtual double getStress();
+    virtual double getStress();
+
 private:
         /** \var int neighbourNumber;
          *  \brief A number of neighbours.
@@ -69,5 +70,9 @@ private:
          *  \brief The number of DataObjects in matrix X.
          */
         int m;
+        /** \var  std::vector<unsigned int>;
+         *  \brief Holds shuffling indices of an object matrix.
+         */
+        std::vector<unsigned int> shufledIndexes;
 };
 #endif // !defined(EA_3155AA55_4FD7_44fa_8149_A99119949EDB__INCLUDED_)

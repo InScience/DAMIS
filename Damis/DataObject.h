@@ -23,7 +23,7 @@ public:
         /**
         * A destructor.
         */
-	virtual ~DataObject();   
+	virtual ~DataObject();
         /**
         * An overloaded constructor that accepts the number of the features.
         */
@@ -35,7 +35,7 @@ public:
         /**
         * An overloaded constructor that accepts the vector of the features.
         */
-        DataObject(std::vector<double> v);
+    DataObject(std::vector<double> v);
         /** \fn int getClassLabel();
          *  \brief Returns the class label.
          *  \return classLabel - the class label.
@@ -74,23 +74,25 @@ public:
          *  \param newValue - a new value of a feature.
          */
         void updateFeature(int featureIndex, double newValue);
+        std::vector<double> getFeatures();
+
 
 private:
         /** \var int classLabel;
-        *  \brief The label of the class. 
+        *  \brief The label of the class.
         */
 	int classLabel;
         /** \var int featureCount;
-        *  \brief The number of the features. 
+        *  \brief The number of the features.
         */
 	int featureCount;
         /** \var int index;
-        *  \brief The index of the feature. 
+        *  \brief The index of the feature.
         */
 	int index;
         /** \var vector<double> features;
-        *  \brief The set of the features. 
+        *  \brief The set of the features.
         */
-        std::vector<double> features;
+    std::vector<double> features;
 };
 #endif // !defined(EA_2E0FA64E_418E_4162_A9CF_9091C3861ED8__INCLUDED_)

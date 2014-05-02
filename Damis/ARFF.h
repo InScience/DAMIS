@@ -77,7 +77,7 @@ private:
     /*! \var vector<vector<double> > data;
      *  \brief The actual data read from an arff file.
      */
-    std::vector<std::vector<double> > data;
+    std::vector<std::vector<double>> data;
     /*! \var vector<string> attributes;
      *  \brief The titles of the features.
      */

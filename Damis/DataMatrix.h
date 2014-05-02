@@ -23,7 +23,7 @@ public:
         */
 	DataMatrix() {
         }
-        
+
         /**
         * A destructor.
         */
@@ -37,7 +37,7 @@ public:
          *  \brief A pure virtual method for saving data to an arff file.
          *  \param file - a name of the file to save data to.
          */
-	virtual void saveDataMatrix(const char* file) =0;
+	virtual void saveDataMatrix(const char* file)  =0;
 
 };
 #endif // !defined(EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_)

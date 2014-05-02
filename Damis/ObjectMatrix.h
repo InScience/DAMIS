@@ -7,8 +7,8 @@
 /*! \file ObjectMatrix class
     \brief A class of methods and attributes for manipulating matrices.
  */
-#if !defined(EA_EAE79B7B_5151_41cf_A08C_CE61651B7393__INCLUDED_)
-#define EA_EAE79B7B_5151_41cf_A08C_CE61651B7393__INCLUDED_
+#if !defined(OBJECTMATIRX_H)
+#define OBJECTMATIRX_H
 
 #include "DataObject.h"
 #include "DataMatrix.h"
@@ -68,9 +68,14 @@ public:
          *  \return dataObject - the DataObject at the \a i-th row and the \a j-th column from the set of the DataObjects.
          */
         DataObject getObjectAt(int i, int j);
+        /** \fn double getDataAt(int i, int j);
+         *  \brief Returns the j-th feature of i-th data DataObject.
+         *  \return dataItem - the amount of DataObjects in the set of DataObjects.
+         */
+         //double getDataAt(int i, int j);
         /** \fn int getObjectCount();
          *  \brief Returns the number of DataObjects in the set of DataObjects.
-         *  \return count - the amount of DataObjects in the set of DataObjects.
+         *  \return dataObject - the DataObject at the \a i-th row and the \a j-th column from the set of the DataObjects.
          */
 	int getObjectCount();
         /** \fn void loadDataMatrix();
@@ -86,7 +91,7 @@ public:
          *  \brief Saves the ObjectMatrix data to an arff file.
          *  \param fileName - the name of the file to save data to.
          */
-	void saveDataMatrix(const char*);
+        void saveDataMatrix(const char*);
         /** \fn void clearDataObjects();
          *  \brief Clears the items from the DataObjects set.         *
          */
@@ -106,6 +111,11 @@ public:
          *  \param newValue - the new value of a feature.
          */
         void updateDataObject(int rowIndex, int colIndex, int featureIndex, double newValue);
+        /** \fn void getWeight();
+         *  \brief Returns weight of X matrix (for stress calculation)
+         */
+        double getWeight();
+
 private:
         /** \var vector<DataObject> DataObjects;
          *  \brief The set of DataObjects.
@@ -114,11 +124,15 @@ private:
         /** \var vector<vector<DataObject> > DataObjects2D;
          *  \brief The set of the sets of DataObjects.
          */
-        std::vector<std::vector<DataObject> > DataObjects2D;
+        std::vector<std::vector<DataObject>> DataObjects2D;
         /** \var int objectCount;
          *  \brief The number of DataObjects in the set of the DataObjects.
          */
-	int objectCount;
+        int objectCount;
+        /** \var double weight;
+         *  \brief weight of the distances in X matrix.
+         */
+        double weight;
         /** \var vector<string> featureTitles;
          *  \brief The set of feature titles.
          */
@@ -127,5 +141,6 @@ private:
          *  \brief The file name to read the data from.
          */
         std::string fileName;
+
 };
-#endif // !defined(EA_EAE79B7B_5151_41cf_A08C_CE61651B7393__INCLUDED_)
+#endif // !defined(OBJECTMATIRX_H)

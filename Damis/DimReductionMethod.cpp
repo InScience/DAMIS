@@ -11,7 +11,7 @@
 
 #include "DimReductionMethod.h"
 #include "DistanceMetrics.h"
-#include "PCA.h"
+#include "AdditionalMethods.h"
 #include "Statistics.h"
 #include <cmath>
 
@@ -32,17 +32,14 @@ void DimReductionMethod::initializeProjectionMatrix(){
     int n = X.getObjectCount();
     Y = ObjectMatrix(n);
     std::vector<double> DataObjectItem;
-   // double r = 0.0;
-   // for (int j = 0; j < d; j++)
-        DataObjectItem.reserve(0);//push_back(0.0);
+    DataObjectItem.reserve(0);//push_back(0.0);
 
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < d; j++)
-       // {
-          //  r = ;
+        {
             DataObjectItem.push_back(Statistics::getRandom(-0.1, 0.1, (i + j * 5)));
-     //   }
+        }
         Y.addObject(DataObject(DataObjectItem));
         DataObjectItem.clear();
     }
@@ -52,40 +49,41 @@ void DimReductionMethod::setProjectionDimension(int dimension){
     d = dimension;
 }
 
-/*double DimReductionMethod::getStress()
+double DimReductionMethod::getStress()
 {
-    double stress = 0.0;
-    int m = X.getObjectCount();
-    double distX = 0.0;
-    double distY = 0.0;
+    int m = X.getObjectCount(), n = Y.getObjectAt(0).getFeatureCount(),i, j, z;
+    double stress = 0.0, s, distY, distX, diff;
+    int noOfBytes = sizeof(double); //for file reading
+    std::vector<double> ob1, ob2;
 
-    for (int i = 0; i < m - 1; i++)
+    FILE *distFile;
+    distFile = fopen(AdditionalMethods::tempFileSavePath.c_str(), "rb");
+
+// TODO (Povilas#1#): Check if file exists
+
+    for (i = 0; i < m - 1; i++)
     {
-        for (int j = i + 1; j < m; j++)
+        ob1 = Y.getObjectAt(i).getFeatures();
+        for (j = i + 1; j < m; j++)
         {
-            distX = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
-            distY = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
-            stress += std::pow(distX - distY, 2);
+            ob2 = Y.getObjectAt(j).getFeatures();
+            s = 0.0;
+
+            for (z = 0; z < n; z++)
+            {
+                diff = ob1.at(z) - ob2.at(z);
+                s += diff * diff;
+            }
+            distY = std::sqrt(s);
+
+            fread(&distX, noOfBytes, 1, distFile);
+
+            stress += std::pow((distX - distY), 2);
         }
     }
+    fclose(distFile);
 
-    return stress;
-}*/
-double DimReductionMethod::getStressWeight(int weightType)
-{
-    double weight = 0.0;
-    int m = X.getObjectCount();
-
-    if (weightType == 1)
-        {
-        for (int i = 0; i < m - 1; i++)
-            for (int j = i + 1; j < m; j++)
-                weight += std::pow(DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN),2);
-        }
-    if (weight)
-        return 1./weight;
-    else
-         return 0;
+    return stress * 1. / X.getWeight();
 }
 
 ObjectMatrix DimReductionMethod::getProjection(){

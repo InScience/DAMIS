@@ -1,5 +1,7 @@
 #include <cstdlib>
 #include <sstream>
+#include <iostream>
+#include <time.h>
 #include "AdditionalMethods.h"
 #include "ObjectMatrix.h"
 #include "DataObject.h"
@@ -15,12 +17,38 @@
     \brief A class of static methods for data conversion and static members.
  */
 
+const char* AdditionalMethods::alphanum= "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+std::string AdditionalMethods::tempFileSavePath = "";
+std::string AdditionalMethods::tempPath = "C:\\inetpub\\wwwroot\\Damis\\Data\\tempDist\\";
+
 AdditionalMethods::AdditionalMethods(){
 
 }
 
 AdditionalMethods::~AdditionalMethods(){
 
+}
+
+/**
+ * Method generates random file name and adds to the prefix
+ */
+std::string AdditionalMethods::generateFileName()
+{
+    time_t t;
+    time(&t);
+    srand((unsigned int)(t+rand()));
+
+    std::string catString;
+    catString.assign(AdditionalMethods::tempPath);
+
+    int i;
+    int qty = 20;
+
+    for ( i = 0; i < qty; ++i)
+        catString += (AdditionalMethods::alphanum[rand() % (strlen(AdditionalMethods::alphanum) - 1)]);
+    catString +=".bin";
+//std::cout << catString;
+    return  catString;
 }
 
 

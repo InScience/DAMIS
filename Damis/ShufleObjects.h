@@ -23,9 +23,9 @@ public:
          *  \brief Returns the list of shuffled indexes of the matrix \a objectMatrix DataObjects.
          *  \param shufleEnum - The shuffle strategy.
          *  \param objectMatrix - The matrix that DataObjects needs to be shuffled.
-         *  \return shuffledIndexes - The list of shuffled indexes. 
+         *  \return shuffledIndexes - The list of shuffled indexes.
          */
-	static std::vector<int> shufleObjectMatrix(ShufleEnum shufleEnum, ObjectMatrix matrix);
+	static std::vector<unsigned int> shufleObjectMatrix(ShufleEnum shufleEnum, ObjectMatrix matrix);
 
 private:
         /** \fn static vector<int> byBubleSort(ObjectMatrix objectMatrix);
@@ -33,19 +33,19 @@ private:
          *  \param objectMatrix - The matrix that DataObjects needs to be shuffled.
          *  \return shuffledIndexes - The list of shuffled indexes.
          */
-	static std::vector<int> byBubleSort(ObjectMatrix objectMatrix);
+	static std::vector<unsigned int> byBubleSort(ObjectMatrix objectMatrix);
         /** \fn static vector<int> byBubleSortDsc(ObjectMatrix objectMatrix);
          *  \brief Returns the list of indexes shuffled by descending bubble sort.
          *  \param objectMatrix - The matrix that DataObjects needs to be shuffled.
          *  \return shuffledIndexes - The list of shuffled indexes.
          */
-        static std::vector<int> byBubleSortDsc(ObjectMatrix objectMatrix);
+        static std::vector<unsigned int> byBubleSortDsc(ObjectMatrix objectMatrix);
         /** \fn static vector<int> byRand(ObjectMatrix objectMatrix);
          *  \brief Returns the list of indexes shuffled randomly.
          *  \param objectMatrix - The matrix that DataObjects needs to be shuffled.
          *  \return shuffledIndexes - The list of shuffled indexes.
          */
-	static std::vector<int> byRand(ObjectMatrix objectMatrix);
+	static std::vector<unsigned int> byRand(ObjectMatrix objectMatrix);
 
 };
 #endif // !defined(EA_02DD92AD_FC82_4feb_8A22_24C00CD534BA__INCLUDED_)

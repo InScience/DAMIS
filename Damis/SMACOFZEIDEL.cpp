@@ -45,7 +45,7 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
     double sum = 0.0;
     double Epsilon = DBL_MAX;
     ObjectMatrix Gutman, Y_new(n);
-    std::vector<int> shufledIndexes;
+    std::vector<unsigned int> shufledIndexes;
     shufledIndexes.reserve(n);
     Y_new = Y;
     Gutman = getGutman();
@@ -55,7 +55,7 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
     {
         shufledIndexes = ShufleObjects::shufleObjectMatrix(shufleEnum, Y);
 
-        for (int row = 0; row < n; row++)
+        for (int row=0; row < n; row++)
         {
             i = shufledIndexes.at(row);
             for (int j = 0; j < d; j++)

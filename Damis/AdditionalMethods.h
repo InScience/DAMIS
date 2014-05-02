@@ -77,6 +77,14 @@ class AdditionalMethods
              *  \param elems - an address of vector of tokenized words.
              */
             static std::vector<std::string> split(const std::string &s, char delim, std::vector<std::string> &elems);
+            /**
+            * Function deletes passed file
+            */
+            static int deleteFile();
+            /**
+            * Function that generates file name
+            */
+            static std::string generateFileName();
             /*! \var int PID;
             *  \brief Processor's ID. Used as part of the seed in random numbers generator.
             */
@@ -85,6 +93,20 @@ class AdditionalMethods
             *  \brief File to process.
             */
             static std::string  inputDataFile;
+            /*! \var std::string fileSavePath;
+            *  \brief Location where temporary matrix X distances will be saved.
+            */
+            static std::string tempFileSavePath;
+            /*! \var std::string distFileName;
+            *  \brief Random generated file name of the X distance matrix.
+            */
+            static std::string tempPath;
+
+ private:
+            /**
+            * Aphanumeric pattern for unique input and output file generation
+            */
+            static const char* alphanum;
 };
 
 #endif	/* ADDITIONALMETHODS_H */

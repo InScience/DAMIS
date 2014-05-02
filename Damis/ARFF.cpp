@@ -67,7 +67,9 @@ ARFF::ARFF(const char* path){
                 else
                 {
                     tmp = AdditionalMethods::split(line_from_file, ',');
-                    if (tmp.size() != attributes.size())
+                    int tsize = tmp.size();
+                    int attrSize = attributes.size();
+                    if (tsize != attrSize)
                     {
                         readSuccess = false;
                         s<< "Number of features at line " << line_no << " does not match number of attributes";
@@ -127,12 +129,13 @@ ARFF::ARFF(const char* path){
 ARFF::~ARFF(){
     data.clear();
     attributes.clear();
+    attributesTypes.clear();
 }
 
 void ARFF::writeStatData(std::string statFile, double err, double calcTime)
 {
     std::scientific;
-    std::ofstream file (statFile.c_str());
+    std::ofstream file(statFile.c_str());
     file << "%"<<std::endl;
     file<<"@ATTRIBUTE algError REAL"<<std::endl;
     file<<"@ATTRIBUTE calcTime REAL"<<std::endl;
@@ -140,6 +143,8 @@ void ARFF::writeStatData(std::string statFile, double err, double calcTime)
     file<<"@DATA"<<std::endl;
     file << err << ", "<<calcTime;
     file.close();
+
+    AdditionalMethods::deleteFile();
 }
 
 std::vector<std::string> ARFF::getAttributes(){
@@ -180,4 +185,15 @@ std::string ARFF::getFailReason()
 bool ARFF::isSuccessfullyRead()
 {
     return readSuccess;
+}
+
+/**
+ * Method that deletes single file
+ */
+int AdditionalMethods::deleteFile()
+{
+    if (std::remove(AdditionalMethods::tempFileSavePath.c_str()) != 0)
+        printf("Error deleting file");
+
+return 0;
 }

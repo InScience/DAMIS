@@ -14,13 +14,15 @@
 #include "Statistics.h"
 #include "DistanceMetrics.h"
 #include "alglib/dataanalysis.h"
+#include <iostream>
+#include <iterator>
+#include <algorithm>    // std::transform
+//#include <fstream>
 
 PCA_::PCA_(){
-
 }
 
 PCA_::~PCA_(){
-
 }
 
 PCA_::PCA_(double d, bool disp){
@@ -35,10 +37,14 @@ PCA_::PCA_(double d, bool disp){
         int n = X.getObjectCount();
         int m = X.getObjectAt(0).getFeatureCount();
         int dd = 0;
-        PCA_ pca(X, m);
-        ObjectMatrix Y_visi = pca.getProjection();
-        this->eigValues = pca.getEigenValues();
-        double wholeSum = 0.0, tempSum = 0.0;
+
+        setProjectionDimension(m);
+        initializeProjectionMatrix();
+        ProjectXMatrix();
+
+        ObjectMatrix Y_visi = this->getProjection();
+        this->eigValues = this->getEigenValues();
+        double wholeSum = 0.0, tempSum = 0.0, perc = (double) d / 100.0;
 
         for (int i = 0; i < m; i++)
             wholeSum += eigValues(i);
@@ -47,7 +53,7 @@ PCA_::PCA_(double d, bool disp){
         {
                 tempSum += eigValues(dd);
                 dd++;
-            if (double(tempSum / wholeSum)  > (double) d / 100.0)
+            if (double(tempSum / wholeSum)  > perc)
                 break;
         }
 
@@ -69,6 +75,11 @@ PCA_::PCA_(ObjectMatrix Xmatrix, double disp){
     int m = X.getObjectAt(0).getFeatureCount();
     int dd = 0;
     PCA_ pca(X, m);
+      /*  setProjectionDimension(dim);
+    X = objMatrix;
+    initializeProjectionMatrix();
+    ProjectXMatrix();*/
+
     ObjectMatrix Y_visi = pca.getProjection();
     this->eigValues = pca.getEigenValues();
     double wholeSum = 0.0, tempSum = 0.0;
@@ -90,12 +101,14 @@ PCA_::PCA_(ObjectMatrix Xmatrix, double disp){
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < d; j++)
-            Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));
+            {
+                Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));
+            }
     }
 }
 
 PCA_::PCA_(ObjectMatrix objMatrix, int dim){
-    setProjectionDimension(dim);
+   setProjectionDimension(dim);
     X = objMatrix;
     initializeProjectionMatrix();
     ProjectXMatrix();
@@ -103,29 +116,10 @@ PCA_::PCA_(ObjectMatrix objMatrix, int dim){
 
 double PCA_::getStress()
 {
-    //double stress = 0.0;
-    double stress = 0.0;
-    int m = X.getObjectCount();
-    double distX = 0.0;
-    double distY = 0.0;
-
-    for (int i = 0; i < m - 1; i++)
-    {
-        for (int j = i + 1; j < m; j++)
-        {
-            distX = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
-            distY = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
-            stress += pow(distX - distY, 2);
-        }
-    }
-
-    return stress * DimReductionMethod::getStressWeight();
-
-    //return stress;
+    return DimReductionMethod::getStress();
 }
 
 ObjectMatrix PCA_::getProjection(){
-
     return Y;
 }
 
@@ -146,16 +140,14 @@ void PCA_::ProjectXMatrix()
     int n = X.getObjectAt(0).getFeatureCount();
     std::vector<double> X_vid;
     X_vid.reserve(0);
-    //double X_vid[n],
     double tmp = 0.0;
     double wholeDisp = 0.0, tarpDisp = 0.0;
 
     for (int i = 0; i < n; i++)
-        X_vid.push_back(Statistics::getAverage(X, i)) ;
+        X_vid.push_back(Statistics::getAverage(X, i));
 
     alglib::ae_int_t info;
     alglib::real_2d_array eigVectors;
- //   alglibX.setcontent(m,n,)
     pcabuildbasis(alglibX, m, n, info, eigValues, eigVectors);
 
     if (info == 1)

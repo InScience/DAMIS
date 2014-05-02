@@ -17,6 +17,8 @@
 #include "DistanceMetricsEnum.h"
 #include "ProjectionEnum.h"
 
+
+
 class SDS : public MDS
 {
 
@@ -33,7 +35,7 @@ public:
          * An overloaded constructor that accepts: epsilon, the maximum number of iterations,
          * base vectors initialization method, the number of base vectors and distance metrics.
          */
-	SDS(double eps, int maxIter, int d, ProjectionEnum baseVectInitt, int nOfBaseVect, DistanceMetricsEnum distMetrics);
+	SDS(double eps, int maxIter, int d, ProjectionEnum baseVectInitt, int nofBaseVect, DistanceMetricsEnum distMetrics);
         /** \fn virtual ObjectMatrix getProjection();
          *  \brief Returns the projection matrix \a Y of matrix \a X.
          *  \return Y - the projection matrix.

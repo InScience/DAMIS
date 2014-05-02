@@ -33,13 +33,12 @@ DataObject::DataObject(std::vector<double> vector){
 }
 
 DataObject::DataObject(int feature_count, int class_label){
-    
+
     featureCount = feature_count;
     classLabel = class_label;
 }
 
 int DataObject::getClassLabel(){
-
 	return classLabel;
 }
 
@@ -62,8 +61,7 @@ bool DataObject::IsIdentical(DataObject obj)
             k++;
     if (k == n)
         ats = true;
-    
-    return ats;    
+    return ats;
 }
 
 void DataObject::setNumOfFeatures(int n)
@@ -78,5 +76,10 @@ double DataObject::getFeatureAt(int index)
 
 void DataObject::updateFeature(int featureIndex, double newValue)
 {
-    features[featureIndex] = newValue;
+    features.at(featureIndex) = newValue;
+}
+
+std::vector<double> DataObject::getFeatures()
+{
+    return features;
 }

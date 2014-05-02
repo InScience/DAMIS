@@ -7,8 +7,8 @@
 /*! \file DimReductionMethod class
     \brief A class of methods and attributes for initialization of projection matrix.
  */
-#if !defined(EA_DC369997_8613_4bb3_AA07_8B266375AA92__INCLUDED_)
-#define EA_DC369997_8613_4bb3_AA07_8B266375AA92__INCLUDED_
+#if !defined(DIMREDUCTIONMETHOD_H)
+#define DIMREDUCTIONMETHOD_H
 
 #include "ObjectMatrix.h"
 #include "HPCMethod.h"
@@ -31,6 +31,10 @@ protected:
 	 * Projection Dimmension
 	 */
 	int d;
+    /**
+	 * Stress weight of the X matrix
+	 */
+	double weight;
 	/**
 	 * Projection Matrix
 	 */
@@ -55,14 +59,13 @@ protected:
          *
          */
 	void setProjectionDimension(int dimension);
-
-	        /** \fn double getStressWeight();
-         *  \brief Calculates the weight of the upper left matrix triangle.
-         *  \param weightType - indicates whitch weight should be returned according to MDS error
-         *  \return weight - the weight of the upper left matrix triangle.
+        /** \fn virtual double getStress();
+         *  \brief Returns the stress error value.
+         *  \return error - The stress error value.
          */
-    virtual double getStressWeight(int weightType = 1);
+    virtual double getStress();
+
 
 
 };
-#endif // !defined(EA_DC369997_8613_4bb3_AA07_8B266375AA92__INCLUDED_)
+#endif // !defined(DIMREDUCTIONMETHOD_H)

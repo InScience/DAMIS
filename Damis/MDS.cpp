@@ -34,10 +34,10 @@ MDS::MDS(double eps, int maxIter, int dimension){
     int m = X.getObjectCount();
     gutman = ObjectMatrix(m);
     std::vector<double> gutmanRow;
-    gutmanRow.reserve(0);
+    gutmanRow.reserve(m);
 
-    for (int i = 0; i < m; i++)
-        gutmanRow.push_back(0.0);
+   /* for (int i = 0; i < m; i++)
+        gutmanRow.push_back(0.0);*/
 
     for (int i = 0; i < m; i++)
         gutman.addObject(DataObject(gutmanRow));
@@ -179,7 +179,7 @@ int MDS::getMaxIteration(){
 }
 
 double MDS::getStress(){
-    double stress = 0.0;
+   /* double stress = 0.0;
     int m = X.getObjectCount();
     double distX = 0.0;
     double distY = 0.0;
@@ -194,7 +194,8 @@ double MDS::getStress(){
         }
     }
 
-    return stress * MDS::getStressWeight();
+    return stress * MDS::getStressWeight();*/
+    return DimReductionMethod::getStress();
 }
 
 /*double MDS::getWeight(int i, int j)
