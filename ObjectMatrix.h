@@ -124,7 +124,7 @@ private:
         /** \var vector<vector<DataObject> > DataObjects2D;
          *  \brief The set of the sets of DataObjects.
          */
-        std::vector<std::vector<DataObject>> DataObjects2D;
+        std::vector<std::vector<DataObject> > DataObjects2D;
         /** \var int objectCount;
          *  \brief The number of DataObjects in the set of the DataObjects.
          */

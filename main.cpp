@@ -25,11 +25,11 @@
 #include "SOM.h"
 #include "SOMMDS.h"
 #include "DMA.h"
-#include "mpi_x86\mpi.h"
+#include "mpi_x86/mpi.h"
 #include "Projection.h"
 #include "PCA.h"
 #include "AdditionalMethods.h"
-#include "cmdLineParser\CommandLineParser.h"
+#include "cmdLineParser/CommandLineParser.h"
 
 #include <sstream>
 #include <algorithm>

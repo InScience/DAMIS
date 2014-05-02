@@ -10,7 +10,9 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>.</sourceRootElem>
+                <sourceRootElem>alglib</sourceRootElem>
+                <sourceRootElem>cmdLineParser</sourceRootElem>
+                <sourceRootElem>mpi_x86</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
