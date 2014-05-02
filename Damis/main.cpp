@@ -55,6 +55,7 @@ int main(int argc, char** argv) {
     MPI::Init(argc, argv);
     pid = MPI::COMM_WORLD.Get_rank();
     AdditionalMethods::PID = pid;
+    AdditionalMethods::inputDataFile = "arff_files/iris.arff";
     numOfProcs = MPI::COMM_WORLD.Get_size();
     MPI_Status status;
     
