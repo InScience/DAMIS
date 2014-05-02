@@ -151,7 +151,7 @@ int main(int argc, char** argv) {
     TestMatrixYDimmension(Y, d, "PCA_d");
     std::cout << "%TEST_FINISHED% time=0 TestMatrixYDimmension (PCA) (methodsTest)" << std::endl;
         
-    pca = PCA::PCA(X, d);
+    pca = PCA_::PCA_(X, d);
     Y = pca.getProjection();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (PCA -> d as parameter) (methodsTest)" << std::endl;
     TestMethodWithLargeXMatrix(pca.X, Y, d, "PCA_d");
@@ -167,7 +167,7 @@ int main(int argc, char** argv) {
     TestMatrixYDimmension(Y, n, "PCA_disp");
     std::cout << "%TEST_FINISHED% time=0 TestMatrixYDimmension (PCA) (methodsTest)" << std::endl;
     
-    pca_disp = PCA::PCA(X, dispPart);
+    pca_disp = PCA_::PCA_(X, dispPart);
     Y = pca_disp.getProjection();
     n = X.getObjectAt(0).getFeatureCount();
     std::cout << "%TEST_STARTED% TestMethodWithLargeXMatrix (PCA -> disp as parameter) (methodsTest)" << std::endl;
