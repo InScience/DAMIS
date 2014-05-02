@@ -1,0 +1,48 @@
+        -:    0:Source:DataMatrix.h
+        -:    0:Graph:build/Debug/GNU-Linux-x86/Statistics.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/Statistics.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  DataMatrix.h
+        -:    3://  Implementation of the Interface DataMatrix
+        -:    4://  Created on:      07-Lie-2013 20:07:29
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:
+        -:    8:/** \class DataMatrix
+        -:    9: *  \brief A class of pure virtual methods for manipulating the Objectmatrix.
+        -:   10: */
+        -:   11:
+        -:   12:#if !defined(EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_)
+        -:   13:#define EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_
+        -:   14:
+        -:   15:#include "ObjectMatrix.h"
+        -:   16:
+        -:   17:class DataMatrix
+    #####:   18:{
+        -:   19:
+        -:   20:public:
+        -:   21:        /**
+        -:   22:        * A default constructor.
+        -:   23:        */
+        -:   24:	DataMatrix() {
+        -:   25:        }
+        -:   26:        
+        -:   27:        /**
+        -:   28:        * A destructor.
+        -:   29:        */
+    #####:   30:	virtual ~DataMatrix(){
+    #####:   31:        }
+        -:   32:        /** \fn virtual void loadDataMatrix() =0;
+        -:   33:         *  \brief A pure virtual method for loading data from an arff file.
+        -:   34:         */
+        -:   35:	virtual void loadDataMatrix() =0;
+        -:   36:        /** \fn virtual void saveDataMatrix(const char*) =0;
+        -:   37:         *  \brief A pure virtual method for saving data to an arff file.
+        -:   38:         *  \param file - a name of the file to save data to.
+        -:   39:         */
+        -:   40:	virtual void saveDataMatrix(const char* file) =0;
+        -:   41:
+        -:   42:};
+        -:   43:#endif // !defined(EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_)

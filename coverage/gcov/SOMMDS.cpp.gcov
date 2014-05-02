@@ -1,0 +1,52 @@
+        -:    0:Source:SOMMDS.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/SOMMDS.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/SOMMDS.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  SOMMDS.cpp
+        -:    3://  Implementation of the Class SOMMDS
+        -:    4://  Created on:      07-Lie-2013 20:07:32
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:/*! \class SOMMDS
+        -:    8:    \brief A class of methods and attributes for SOMMDS algorithm.
+        -:    9: */
+        -:   10:#include "SOMMDS.h"
+        -:   11:#include "SOM.h"
+        -:   12:
+    #####:   13:SOMMDS::SOMMDS(){
+        -:   14:
+    #####:   15:}
+        -:   16:
+        1:   17:SOMMDS::~SOMMDS(){
+        -:   18:
+        1:   19:}
+        -:   20:
+        1:   21:SOMMDS::SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat):SMACOF(eps, max_iter, d), SOM(kx, ky, e_hat){
+        -:   22: 
+        1:   23:}
+        -:   24:
+        1:   25:ObjectMatrix SOMMDS::getProjection(){
+        1:   26:    ObjectMatrix M_ws;
+        1:   27:    M_ws = SOM::getProjection();
+        1:   28:    som_qe = SOM::getQuantizationError();
+        1:   29:    SMACOF::X = M_ws;
+        1:   30:    mds_error = SMACOF::getStress();
+        1:   31:    return  SMACOF::getProjection();
+        -:   32:}
+        -:   33:
+    #####:   34:double SOMMDS::getSOMQuantizationError()
+        -:   35:{
+    #####:   36:    return som_qe;
+        -:   37:}
+        -:   38:
+    #####:   39:double SOMMDS::getMDSStressError()
+        -:   40:{
+    #####:   41:    return mds_error;
+        -:   42:}
+        -:   43:
+    #####:   44:ObjectMatrix SOMMDS::getX()
+        -:   45:{
+    #####:   46:    return SMACOF::X;
+        -:   47:}

@@ -1,0 +1,174 @@
+        -:    0:Source:ARFF.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/ARFF.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/ARFF.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "ARFF.h"
+        -:    2:#include "AdditionalMethods.h"
+        -:    3:#include <fstream>
+        -:    4:#include <string>
+        -:    5:#include <sstream>
+        -:    6:#include <stdlib.h>
+        -:    7:#include <algorithm>
+        -:    8:#include "DataObject.h"
+        -:    9:
+        -:   10:/*! \class ARFF
+        -:   11: *  \brief A class for reading data from or writing data to an arff file.
+        -:   12: */
+        -:   13:
+    #####:   14:ARFF::ARFF(){
+    #####:   15:    data.reserve(0);
+    #####:   16:    attributes.reserve(0);
+    #####:   17:}
+        -:   18:
+       60:   19:ARFF::ARFF(const char* path){ 
+       15:   20:    failReason = "";
+       15:   21:    std::stringstream s;
+       15:   22:    std::ifstream file (path);
+        -:   23:    std::string line_from_file;
+        -:   24:    std::string tmp1, tmp2;
+        -:   25:    std::vector<std::string> tmp;
+        -:   26:    std::vector<double> v;
+       15:   27:    readSuccess = false;
+       15:   28:    int line_no = 1;
+       15:   29:    if (file.is_open() != false)
+        -:   30:    {
+       15:   31:        readSuccess = true;
+     4665:   32:        while (std::getline(file, line_from_file))
+        -:   33:        {
+     2325:   34:            if (line_from_file.length() == 0)
+        -:   35:            {
+    #####:   36:                line_no++;
+    #####:   37:                continue;
+        -:   38:            }
+     2325:   39:            std::istringstream iss(line_from_file);		
+        -:   40:            std::string sub;
+     2325:   41:            iss >> sub;
+     2325:   42:            if (sub == "%")	
+        -:   43:            {
+    #####:   44:                line_no++;
+    #####:   45:                continue;
+        -:   46:            }
+        -:   47:            else
+        -:   48:            {
+     2325:   49:                std::transform(sub.begin(), sub.end(), sub.begin(), ::toupper);
+     2325:   50:                if (sub == "@ATTRIBUTE")
+        -:   51:                {
+       60:   52:                    iss >> tmp1;
+       60:   53:                    iss >> tmp2;
+       60:   54:                    std::transform(tmp1.begin(), tmp1.end(), tmp1.begin(), ::toupper);
+       60:   55:                    std::transform(tmp2.begin(), tmp2.end(), tmp2.begin(), ::toupper);
+       60:   56:                    if (tmp2 == "REAL"  || tmp2 == "INTEGER")
+        -:   57:                    {
+       60:   58:                        attributes.push_back(tmp1);
+       60:   59:                        attributesTypes.push_back(tmp2);
+        -:   60:                    }
+        -:   61:                }
+     2265:   62:                else if (sub == "@DATA" || sub == "@RELATION")
+        -:   63:                {
+       15:   64:                    line_no++;
+       15:   65:                    continue;
+        -:   66:                }
+        -:   67:                else
+        -:   68:                {
+     2250:   69:                    tmp = AdditionalMethods::split(line_from_file, ',');
+     4500:   70:                    if (tmp.size() != attributes.size())
+        -:   71:                    {
+    #####:   72:                        readSuccess = false;
+    #####:   73:                        s<< "Number of features at line " << line_no << " does not match number of attributes";
+    #####:   74:                        failReason = s.str();
+        -:   75:                        break;
+        -:   76:                    }
+        -:   77:                    else
+        -:   78:                    {
+    22500:   79:                        for (unsigned int i = 0; i < tmp.size(); i++)
+        -:   80:                        {
+    18000:   81:                            if (attributesTypes[i] == "REAL" || attributesTypes[i] == "INTEGER")
+        -:   82:                            {
+    18000:   83:                                if (tmp[i] == "?" || tmp[i] == "")
+        -:   84:                                {
+    #####:   85:                                    readSuccess = false;
+    #####:   86:                                    s << "Unexpected symbol found at " << line_no << " line";                                    
+    #####:   87:                                    failReason = s.str();
+        -:   88:                                    break;
+        -:   89:                                }
+        -:   90:                                else
+        -:   91:                                {
+        -:   92:                                    try
+        -:   93:                                    {
+     9000:   94:                                        v.push_back(atof(tmp[i].c_str()));
+        -:   95:                                    }
+    #####:   96:                                    catch (int x)
+        -:   97:                                    {
+    #####:   98:                                        s << "Unexpected symbol found at " << line_no << " line";
+    #####:   99:                                        failReason = s.str();
+        -:  100:                                        break;
+        -:  101:                                    }
+        -:  102:                                }
+        -:  103:                            }
+        -:  104:                        }
+     2250:  105:                        if (readSuccess == false)
+        -:  106:                        {
+    #####:  107:                            s << "Unexpected symbol found at " << line_no << " line";
+    #####:  108:                            failReason = s.str();
+        -:  109:                            break;
+        -:  110:                        }
+        -:  111:                        else
+        -:  112:                        {
+     2250:  113:                            data.push_back(v);
+        -:  114:                            v.clear();
+        -:  115:                        }
+        -:  116:                    }
+        -:  117:                }
+        -:  118:            }
+     2310:  119:            line_no++;
+        -:  120:        }
+       15:  121:        file.close();
+        -:  122:    }
+        -:  123:    else
+    #####:  124:        failReason = "Cannot open file!!!";
+    #####:  125:}
+        -:  126:
+       15:  127:ARFF::~ARFF(){
+       15:  128:    data.clear();
+       15:  129:    attributes.clear();
+       15:  130:}
+        -:  131:
+       15:  132:std::vector<std::string> ARFF::getAttributes(){
+       15:  133:    return attributes;
+        -:  134:}
+        -:  135:
+       15:  136:std::vector<std::vector<double> > ARFF::getData(){
+       15:  137:    return data;
+        -:  138:}
+        -:  139:
+    #####:  140:void ARFF::writeData(const char* path, std::vector<DataObject> data)
+        -:  141:{
+    #####:  142:    std::ofstream file (path);
+    #####:  143:    int n = data.size();
+    #####:  144:    int k = 0;
+    #####:  145:    int featureCount = data.at(0).getFeatureCount();
+    #####:  146:    for (int i = 0; i < featureCount; i++)
+    #####:  147:        file<<"@ATTRIBUTE attr_"<<(i + 1)<<" REAL"<<std::endl;
+        -:  148:    
+    #####:  149:    file<<"@DATA"<<std::endl;
+        -:  150:        
+    #####:  151:    for (int i = 0; i < n; i++)
+        -:  152:    {
+    #####:  153:        k = data.at(i).getFeatureCount();
+    #####:  154:        for (int j = 0; j < k - 1; j++)
+    #####:  155:            file<<data.at(i).getFeatureAt(j)<<",";
+    #####:  156:        file<<data.at(i).getFeatureAt(k - 1)<<std::endl;
+        -:  157:    }
+    #####:  158:    file.close();
+    #####:  159:}
+        -:  160:
+    #####:  161:std::string ARFF::getFailReason()
+        -:  162:{
+    #####:  163:    return failReason;
+        -:  164:}
+        -:  165:
+       15:  166:bool ARFF::isSuccessfullyRead()
+        -:  167:{
+       15:  168:    return readSuccess;
+        -:  169:}

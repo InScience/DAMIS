@@ -1,0 +1,59 @@
+        -:    0:Source:DimReductionMethod.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/DimReductionMethod.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/DimReductionMethod.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  DimReductionMethod.cpp
+        -:    3://  Implementation of the Class DimReductionMethod
+        -:    4://  Created on:      07-Lie-2013 20:07:29
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:
+        -:    8:/*! \class DimReductionMethod
+        -:    9:    \brief A class of methods and attributes for initialization of projection matrix.
+        -:   10: */
+        -:   11:
+        -:   12:#include "DimReductionMethod.h"
+        -:   13:#include "PCA.h"
+        -:   14:#include "Statistics.h"
+        -:   15:
+        -:   16:
+       15:   17:DimReductionMethod::DimReductionMethod(){
+       15:   18:    d = 2;
+       15:   19:}
+        -:   20:
+       15:   21:DimReductionMethod::~DimReductionMethod(){
+        -:   22:
+       15:   23:}
+        -:   24:
+    #####:   25:int DimReductionMethod::getProjectionDimension(){
+    #####:   26:	return d;
+        -:   27:}
+        -:   28:
+       14:   29:void DimReductionMethod::initializeProjectionMatrix(){
+       14:   30:    int n = X.getObjectCount();
+       28:   31:    Y = ObjectMatrix(n);
+        -:   32:    std::vector<double> DataObjectItem;
+       14:   33:    double r = 0.0;
+       46:   34:    for (int j = 0; j < d; j++)
+       32:   35:        DataObjectItem.push_back(0.0);
+        -:   36:    
+     2014:   37:    for (int i = 0; i < n; i++)
+        -:   38:    {
+     6600:   39:        for (int j = 0; j < d; j++)
+        -:   40:        {
+     4600:   41:            r = Statistics::getRandom(-0.1, 0.1, (i + j * 5));
+     9200:   42:            DataObjectItem[j] = r;
+        -:   43:        }
+     2000:   44:        Y.addObject(DataObject(DataObjectItem));
+        -:   45:    }
+       14:   46:}
+        -:   47:
+        4:   48:void DimReductionMethod::setProjectionDimension(int dimension){
+        4:   49:    d = dimension;
+        4:   50:}
+        -:   51:
+    #####:   52:ObjectMatrix DimReductionMethod::getProjection(){
+    #####:   53:    return Y;
+        -:   54:}

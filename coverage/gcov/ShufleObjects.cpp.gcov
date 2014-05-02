@@ -1,0 +1,143 @@
+        -:    0:Source:ShufleObjects.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/ShufleObjects.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/ShufleObjects.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  ShufleObjects.cpp
+        -:    3://  Implementation of the Class ShufleObjects
+        -:    4://  Created on:      07-Lie-2013 20:07:32
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:/*! \class ShufleObjects
+        -:    8:    \brief A class of static methods for shuffling the DataObjects in ObjectMatrix.
+        -:    9: */
+        -:   10:#include "ShufleObjects.h"
+        -:   11:#include "DataObject.h"
+        -:   12:#include "Statistics.h"
+        -:   13:#include <time.h>
+        -:   14:#include <stdlib.h>
+        -:   15:#include <list>
+        -:   16:
+        -:   17:
+    #####:   18:ShufleObjects::ShufleObjects(){
+        -:   19:
+    #####:   20:}
+        -:   21:
+    #####:   22:ShufleObjects::~ShufleObjects(){
+        -:   23:
+    #####:   24:}
+        -:   25:
+      100:   26:std::vector<int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix)   // didejimo tvarka
+        -:   27:{
+      100:   28:    int n = objectMatrix.getObjectCount();
+      100:   29:    int tmp_index = 0;
+      100:   30:    double tmp_disp = 0.0;
+      100:   31:    bool shufled = false;
+      100:   32:    std::vector<int> shufledIndexes;
+      100:   33:    shufledIndexes.reserve(n);
+    15100:   34:    for (int i = 0; i < n; i++)
+    15000:   35:        shufledIndexes.push_back(i);
+        -:   36:    
+     5559:   37:    for (int k = 0; k < n; k++)
+        -:   38:    {
+     5559:   39:        shufled = false;
+   833850:   40:        for (int i = 0; i < n - 1; i++)
+        -:   41:        {
+   828291:   42:            if (objectMatrix.getObjectAt(i).getFeatureAt(0) > objectMatrix.getObjectAt(i + 1).getFeatureAt(0))
+        -:   43:            {
+   216734:   44:                tmp_disp = objectMatrix.getObjectAt(i).getFeatureAt(0);
+   216734:   45:                tmp_index = i;
+   216734:   46:                objectMatrix.updateDataObject(i, 0, objectMatrix.getObjectAt(i + 1).getFeatureAt(0));
+   216734:   47:                objectMatrix.updateDataObject(i + 1, 0, tmp_disp);
+   433468:   48:                shufledIndexes[i] = shufledIndexes.at(i + 1);
+   433468:   49:                shufledIndexes[i + 1] = tmp_index;
+   216734:   50:                shufled = true;
+        -:   51:            }
+        -:   52:        }
+     5559:   53:        if (shufled == false)
+        -:   54:            break;
+        -:   55:    }
+        -:   56:    
+    #####:   57:    return  shufledIndexes;
+        -:   58:}
+        -:   59:
+       74:   60:std::vector<int> ShufleObjects::byBubleSortDsc(ObjectMatrix objectMatrix)  // mazejimo tvarka
+        -:   61:{
+       74:   62:    int n = objectMatrix.getObjectCount();
+       74:   63:    int tmp_index = 0;
+       74:   64:    double tmp_disp = 0.0;
+       74:   65:    bool shufled = false;
+       74:   66:    std::vector<int> shufledIndexes;
+       74:   67:    shufledIndexes.reserve(n);
+    11174:   68:    for (int i = 0; i < n; i++)
+    11100:   69:        shufledIndexes.push_back(i);
+        -:   70:    
+     9750:   71:    for (int k = 0; k < n; k++)
+        -:   72:    {
+     9750:   73:        shufled = false;
+  1462500:   74:        for (int i = 0; i < n - 1; i++)
+        -:   75:        {
+  1452750:   76:            if (objectMatrix.getObjectAt(i).getFeatureAt(0) < objectMatrix.getObjectAt(i + 1).getFeatureAt(0))
+        -:   77:            {
+   642528:   78:                tmp_disp = objectMatrix.getObjectAt(i).getFeatureAt(0);
+   642528:   79:                tmp_index = i;
+   642528:   80:                objectMatrix.updateDataObject(i, 0, objectMatrix.getObjectAt(i + 1).getFeatureAt(0));
+   642528:   81:                objectMatrix.updateDataObject(i + 1, 0, tmp_disp);
+  1285056:   82:                shufledIndexes[i] = shufledIndexes.at(i + 1);
+  1285056:   83:                shufledIndexes[i + 1] = tmp_index;
+   642528:   84:                shufled = true;
+        -:   85:            }
+        -:   86:        }
+     9750:   87:        if (shufled == false)
+        -:   88:            break;
+        -:   89:    }
+        -:   90:    
+    #####:   91:    return  shufledIndexes;
+        -:   92:}
+        -:   93:
+      110:   94:std::vector<int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
+        -:   95:
+      110:   96:    unsigned int n = objectMatrix.getObjectCount();
+        -:   97:    std::vector<int> currentIndexes;
+      110:   98:    std::vector<int> shufledIndexes;
+      110:   99:    shufledIndexes.reserve(n);
+      110:  100:    currentIndexes.reserve(n);
+    16610:  101:    for (unsigned int i = 0; i < n; i++)
+    16500:  102:        currentIndexes.push_back(i);
+      110:  103:    double r = 0.0;
+      110:  104:    int index = 0;
+        -:  105:    
+    33000:  106:    do
+        -:  107:    {
+    16500:  108:        r = Statistics::getRandom(0, n, index);
+    16500:  109:        index = static_cast<int>(r);
+   121959:  110:        while (currentIndexes.at(index) == -1)
+    88959:  111:            index = (index + 1) % n;
+        -:  112:        
+    16500:  113:        shufledIndexes.push_back(index);
+    16500:  114:        currentIndexes.at(index) = -1;
+        -:  115:       
+        -:  116:    } while (shufledIndexes.size() < n);
+        -:  117:    
+    #####:  118:    return  shufledIndexes;
+        -:  119:}
+        -:  120:
+        -:  121:
+      284:  122:std::vector<int> ShufleObjects::shufleObjectMatrix(ShufleEnum shufleEnum, ObjectMatrix objectMatrix){
+      284:  123:    std::vector<int> shufled;
+        -:  124:    
+      284:  125:    switch (shufleEnum)
+        -:  126:    {
+      110:  127:        case 1: shufled = ShufleObjects::byRand(objectMatrix);
+        -:  128:                break;
+      100:  129:        case 2: shufled = ShufleObjects::byBubleSort(objectMatrix);
+        -:  130:                break;
+       74:  131:        case 3: shufled = ShufleObjects::byBubleSortDsc(objectMatrix);
+        -:  132:                break;
+    #####:  133:        default: shufled = ShufleObjects::byRand(objectMatrix);
+        -:  134:                break;
+        -:  135:    }
+        -:  136:         
+    #####:  137:    return  shufled;
+        -:  138:}

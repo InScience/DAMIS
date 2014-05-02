@@ -1,0 +1,88 @@
+        -:    0:Source:SMACOFZEIDEL.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/SMACOFZEIDEL.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/SMACOFZEIDEL.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  SMACOFZEIDEL.cpp
+        -:    3://  Implementation of the Class SMACOFZEIDEL
+        -:    4://  Created on:      07-Lie-2013 20:07:32
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:/*! \class SMACOFZEIDEL
+        -:    8:    \brief A class of methods and attributes for SMACOFZEIDEL algorithm.
+        -:    9: */
+        -:   10:#include "SMACOFZEIDEL.h"
+        -:   11:#include "ShufleObjects.h"
+        -:   12:#include <float.h>
+        -:   13:
+        -:   14:
+    #####:   15:SMACOFZEIDEL::SMACOFZEIDEL(){
+        -:   16:
+    #####:   17:}
+        -:   18:
+        3:   19:SMACOFZEIDEL::~SMACOFZEIDEL(){
+        -:   20:
+        3:   21:}
+        -:   22:
+        3:   23:SMACOFZEIDEL::SMACOFZEIDEL(double eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d){
+        3:   24:    shufleEnum = shEnum;
+        3:   25:    initializeProjectionMatrix();
+    #####:   26:}
+        -:   27:
+    #####:   28:SMACOFZEIDEL::SMACOFZEIDEL(ObjectMatrix initProjection, double eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d)
+        -:   29:{
+    #####:   30:    shufleEnum = shEnum;
+    #####:   31:    Y = initProjection;
+    #####:   32:}
+        -:   33:
+    #####:   34:SMACOFZEIDEL::SMACOFZEIDEL(double eps, int maxIter, int d, ShufleEnum shEnum, ObjectMatrix initialX):SMACOF(eps, maxIter, d, initialX)
+        -:   35:{
+    #####:   36:    shufleEnum = shEnum;
+    #####:   37:}
+        -:   38:
+        3:   39:ObjectMatrix SMACOFZEIDEL::getProjection(){
+        -:   40:
+        3:   41:    stressErrors.reserve(maxIteration);
+        -:   42:    int i;
+        3:   43:    int n = X.getObjectCount();
+        3:   44:    stressErrors.push_back(getStress());
+        3:   45:    double sum = 0.0;
+        3:   46:    double Epsilon = DBL_MAX;
+        3:   47:    ObjectMatrix Gutman, Y_new(n);
+        -:   48:    std::vector<int> shufledIndexes;
+        3:   49:    shufledIndexes.reserve(n);
+        3:   50:    Y_new = Y;
+        3:   51:    Gutman = getGutman();
+        3:   52:    int iteration = 0;
+        -:   53:    
+      279:   54:    while (iteration < maxIteration && Epsilon > epsilon)
+        -:   55:    {
+      273:   56:        shufledIndexes = ShufleObjects::shufleObjectMatrix(shufleEnum, Y);
+        -:   57:        
+    41223:   58:        for (int row=0; row < n; row++)
+        -:   59:        {
+    81900:   60:            i = shufledIndexes.at(row);
+   122850:   61:            for (int j = 0; j < d; j++)
+        -:   62:            {
+    81900:   63:                sum = 0.0;
+ 12366900:   64:                for (int k = 0; k < n; k++)
+ 12285000:   65:                        sum += Gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+    81900:   66:                Y_new.updateDataObject(i, j, (sum / n));
+        -:   67:            }
+    40950:   68:            Gutman = getGutman(Y_new);
+        -:   69:        }
+      273:   70:        Y = Y_new;
+        -:   71:        
+      273:   72:        iteration++;    
+      273:   73:        stressErrors.push_back(getStress());        
+      273:   74:        Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
+        -:   75:    }
+        -:   76:
+        3:   77:    return Y;
+        -:   78:}
+        -:   79:
+      276:   80:double SMACOFZEIDEL::getStress()
+        -:   81:{
+      276:   82:    return MDS::getStress();
+        -:   83:}

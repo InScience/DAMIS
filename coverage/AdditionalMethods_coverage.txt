@@ -1,0 +1,84 @@
+File '/usr/include/pthread.h'
+Lines executed:0.00% of 2
+/usr/include/pthread.h:creating 'pthread.h.gcov'
+
+File 'AdditionalMethods.cpp'
+Lines executed:44.23% of 52
+AdditionalMethods.cpp:creating 'AdditionalMethods.cpp.gcov'
+
+File '/usr/include/c++/4.4/bits/basic_string.h'
+Lines executed:95.00% of 20
+/usr/include/c++/4.4/bits/basic_string.h:creating 'basic_string.h.gcov'
+
+File '/usr/include/c++/4.4/i486-linux-gnu/bits/gthr-default.h'
+Lines executed:100.00% of 1
+/usr/include/c++/4.4/i486-linux-gnu/bits/gthr-default.h:creating 'gthr-default.h.gcov'
+
+File '/usr/include/c++/4.4/ext/atomicity.h'
+Lines executed:42.86% of 7
+/usr/include/c++/4.4/ext/atomicity.h:creating 'atomicity.h.gcov'
+
+File '/usr/include/c++/4.4/bits/allocator.h'
+Lines executed:100.00% of 3
+/usr/include/c++/4.4/bits/allocator.h:creating 'allocator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_vector.h'
+Lines executed:83.67% of 49
+/usr/include/c++/4.4/bits/stl_vector.h:creating 'stl_vector.h.gcov'
+
+File '/usr/include/c++/4.4/ext/new_allocator.h'
+Lines executed:71.43% of 7
+/usr/include/c++/4.4/ext/new_allocator.h:creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_construct.h'
+Lines executed:100.00% of 2
+/usr/include/c++/4.4/bits/stl_construct.h:creating 'stl_construct.h.gcov'
+
+File '/usr/include/c++/4.4/istream'
+Lines executed:100.00% of 8
+/usr/include/c++/4.4/istream:creating 'istream.gcov'
+
+File '/usr/include/c++/4.4/ostream'
+Lines executed:100.00% of 3
+/usr/include/c++/4.4/ostream:creating 'ostream.gcov'
+
+File '/usr/include/c++/4.4/bits/basic_ios.h'
+Lines executed:100.00% of 7
+/usr/include/c++/4.4/bits/basic_ios.h:creating 'basic_ios.h.gcov'
+
+File '/usr/include/c++/4.4/streambuf'
+Lines executed:100.00% of 5
+/usr/include/c++/4.4/streambuf:creating 'streambuf.gcov'
+
+File '/usr/include/c++/4.4/sstream'
+Lines executed:93.33% of 15
+/usr/include/c++/4.4/sstream:creating 'sstream.gcov'
+
+File '/usr/include/c++/4.4/bits/ios_base.h'
+Lines executed:100.00% of 4
+/usr/include/c++/4.4/bits/ios_base.h:creating 'ios_base.h.gcov'
+
+File '/usr/include/c++/4.4/iosfwd'
+Lines executed:100.00% of 1
+/usr/include/c++/4.4/iosfwd:creating 'iosfwd.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_uninitialized.h'
+Lines executed:63.64% of 11
+/usr/include/c++/4.4/bits/stl_uninitialized.h:creating 'stl_uninitialized.h.gcov'
+
+File '/usr/include/c++/4.4/new'
+Lines executed:100.00% of 1
+/usr/include/c++/4.4/new:creating 'new.gcov'
+
+File '/usr/include/c++/4.4/bits/vector.tcc'
+Lines executed:27.50% of 40
+/usr/include/c++/4.4/bits/vector.tcc:creating 'vector.tcc.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_iterator.h'
+Lines executed:85.71% of 7
+/usr/include/c++/4.4/bits/stl_iterator.h:creating 'stl_iterator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_algobase.h'
+Lines executed:43.48% of 23
+/usr/include/c++/4.4/bits/stl_algobase.h:creating 'stl_algobase.h.gcov'
+

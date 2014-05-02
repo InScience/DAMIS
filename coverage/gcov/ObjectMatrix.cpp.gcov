@@ -1,0 +1,124 @@
+        -:    0:Source:ObjectMatrix.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/ObjectMatrix.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/ObjectMatrix.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  ObjectMatrix.cpp
+        -:    3://  Implementation of the Class ObjectMatrix
+        -:    4://  Created on:      07-Lie-2013 20:07:30
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:
+        -:    8:/*! \class ObjectMatrix
+        -:    9:    \brief A class of methods and attributes for manipulating matrices.
+        -:   10: */
+        -:   11:#include "ObjectMatrix.h"
+        -:   12:#include <vector>
+        -:   13:#include "ARFF.h"
+        -:   14:#include "DataObject.h"
+        -:   15:
+      300:   16:ObjectMatrix::ObjectMatrix(){
+       60:   17:    DataObjects.reserve(1);    
+    #####:   18:}
+        -:   19:
+    82881:   20:ObjectMatrix::~ObjectMatrix(){
+    82881:   21:}
+        -:   22:
+       75:   23:ObjectMatrix::ObjectMatrix(std::string file){
+       15:   24:    fileName = file;
+       15:   25:    objectCount = 0;
+       15:   26:}
+        -:   27:
+      560:   28:ObjectMatrix::ObjectMatrix(int count){
+      112:   29:    DataObjects.reserve(count);
+      112:   30:    objectCount = 0;
+      112:   31:}
+        -:   32:
+    #####:   33:ObjectMatrix::ObjectMatrix(int n, int m){
+    #####:   34:    DataObjects.reserve(n);
+    #####:   35:    for (int i = 0; i < n; i++)
+    #####:   36:        DataObjects[i].setNumOfFeatures(m);
+    #####:   37:    objectCount = 0;
+    #####:   38:}
+        -:   39:
+       10:   40:ObjectMatrix::ObjectMatrix(int m, int n, int k){
+        -:   41:    std::vector<double> initialFeatures;
+        2:   42:    initialFeatures.resize(k, 1.0);
+        2:   43:    DataObject initial(initialFeatures);
+        2:   44:    DataObjects2D.resize(m, std::vector<DataObject>( n, initial) );
+        2:   45:    objectCount = 0;
+    #####:   46:}
+        -:   47:
+    29280:   48:void ObjectMatrix::addObject(DataObject object){
+    29280:   49:    DataObjects.push_back(object);
+    58560:   50:    objectCount = DataObjects.size();
+    29280:   51:}
+        -:   52:
+    #####:   53:void ObjectMatrix::addObjectTo(int index, DataObject object){
+    #####:   54:    DataObjects2D[index].push_back(object);
+    #####:   55:    objectCount++;
+    #####:   56:}
+        -:   57:
+929150674:   58:void ObjectMatrix::updateDataObject(int objectIndex, int featureIndex, double newValue)
+        -:   59:{
+929150674:   60:    this->DataObjects.at(objectIndex).updateFeature(featureIndex, newValue);
+929150674:   61:}
+        -:   62:
+    38400:   63:void ObjectMatrix::updateDataObject(int rowIndex, int colIndex, int featureIndex, double newValue)
+        -:   64:{
+    76800:   65:    this->DataObjects2D[rowIndex].at(colIndex).updateFeature(featureIndex, newValue);
+    38400:   66:}
+        -:   67:
+4690959741:   68:DataObject ObjectMatrix::getObjectAt(int index){
+4690959741:   69:    return  DataObjects.at(index);
+        -:   70:}
+        -:   71:
+   174300:   72:DataObject ObjectMatrix::getObjectAt(int row_index, int col_index){
+   348600:   73:    return  DataObjects2D[row_index].at(col_index);
+        -:   74:}
+        -:   75:
+    45610:   76:int ObjectMatrix::getObjectCount(){
+    45610:   77:    return objectCount;
+        -:   78:}
+        -:   79:
+    #####:   80:std::vector<std::string> ObjectMatrix::getFeaturesTitle(){
+    #####:   81:    return featureTitles;
+        -:   82:}
+        -:   83:
+       15:   84:void ObjectMatrix::loadDataMatrix(){
+       30:   85:    const char* path = fileName.c_str();
+       15:   86:    ARFF file(path);
+       15:   87:    if (file.isSuccessfullyRead() == true)   // successful read
+        -:   88:    {
+       15:   89:        std::vector< std::vector<double> > data = file.getData();  
+       15:   90:        featureTitles = file.getAttributes();
+        -:   91:        std::vector< std::vector<double> >::iterator dataObjectIterator;
+        -:   92:        std::vector<double>::iterator featureIterator;
+        -:   93:        std::vector<double> dataObjectItems;
+        -:   94:
+     4530:   95:        for(dataObjectIterator = data.begin();dataObjectIterator!=data.end();++dataObjectIterator)
+        -:   96:        {
+    13500:   97:            for(featureIterator = (*dataObjectIterator).begin();featureIterator!=(*dataObjectIterator).end();++featureIterator)
+        -:   98:                dataObjectItems.push_back(*featureIterator);
+        -:   99:
+     2250:  100:            DataObject tmp(dataObjectItems);
+     2250:  101:            DataObjects.push_back(tmp);
+        -:  102:            dataObjectItems.clear();
+        -:  103:        }  
+       30:  104:        objectCount = DataObjects.size();        
+        -:  105:    }
+        -:  106:    else
+    #####:  107:        objectCount = 0;
+       15:  108:}
+        -:  109:
+        -:  110:
+    #####:  111:void ObjectMatrix::saveDataMatrix(const char* path){
+    #####:  112:    ARFF file;
+    #####:  113:    file.writeData(path, this->DataObjects);
+    #####:  114:}
+        -:  115:
+      172:  116:void ObjectMatrix::clearDataObjects()
+        -:  117:{
+      172:  118:    DataObjects.clear();
+      172:  119:}

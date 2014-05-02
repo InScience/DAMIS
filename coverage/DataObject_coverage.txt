@@ -1,0 +1,32 @@
+File 'DataObject.cpp'
+Lines executed:61.90% of 42
+DataObject.cpp:creating 'DataObject.cpp.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_vector.h'
+Lines executed:50.00% of 32
+/usr/include/c++/4.4/bits/stl_vector.h:creating 'stl_vector.h.gcov'
+
+File '/usr/include/c++/4.4/bits/allocator.h'
+Lines executed:100.00% of 2
+/usr/include/c++/4.4/bits/allocator.h:creating 'allocator.h.gcov'
+
+File '/usr/include/c++/4.4/ext/new_allocator.h'
+Lines executed:20.00% of 5
+/usr/include/c++/4.4/ext/new_allocator.h:creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_algobase.h'
+Lines executed:0.00% of 10
+/usr/include/c++/4.4/bits/stl_algobase.h:creating 'stl_algobase.h.gcov'
+
+File '/usr/include/c++/4.4/bits/vector.tcc'
+Lines executed:0.00% of 27
+/usr/include/c++/4.4/bits/vector.tcc:creating 'vector.tcc.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_uninitialized.h'
+Lines executed:0.00% of 3
+/usr/include/c++/4.4/bits/stl_uninitialized.h:creating 'stl_uninitialized.h.gcov'
+
+File '/usr/include/c++/4.4/bits/stl_iterator.h'
+Lines executed:0.00% of 2
+/usr/include/c++/4.4/bits/stl_iterator.h:creating 'stl_iterator.h.gcov'
+
