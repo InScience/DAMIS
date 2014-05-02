@@ -22,3 +22,6 @@
 
 # Build results
 build/
+
+# NetBeans
+nbproject/
