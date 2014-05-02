@@ -30,7 +30,9 @@
 #include "AdditionalMethods.h"
 #include <sstream>
 
+/* Initializaiton of static AdditionalMethods class attributes */
 int AdditionalMethods::PID;    //  seed for random numbers generator
+std::string  AdditionalMethods::inputDataFile; // Input file
 
 void PrintMatrix(ObjectMatrix);                      // Y atvaizdavimas ekrane (testavimui)
 
@@ -52,8 +54,10 @@ int main(int argc, char** argv) {
     maxIter = 10;
     d = 2;
     
+    
     MPI::Init(argc, argv);
     pid = MPI::COMM_WORLD.Get_rank();
+    
     AdditionalMethods::PID = pid;
     AdditionalMethods::inputDataFile = "arff_files/iris.arff";
     numOfProcs = MPI::COMM_WORLD.Get_size();
