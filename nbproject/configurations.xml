@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="89">
+<configurationDescriptor version="94">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="alglib" displayName="alglib" projectFiles="true">
+      <itemPath>alglib/alglibinternal.cpp</itemPath>
+      <itemPath>alglib/alglibinternal.h</itemPath>
+      <itemPath>alglib/alglibmisc.cpp</itemPath>
+      <itemPath>alglib/alglibmisc.h</itemPath>
+      <itemPath>alglib/ap.cpp</itemPath>
+      <itemPath>alglib/ap.h</itemPath>
+      <itemPath>alglib/dataanalysis.cpp</itemPath>
+      <itemPath>alglib/dataanalysis.h</itemPath>
+      <itemPath>alglib/diffequations.cpp</itemPath>
+      <itemPath>alglib/diffequations.h</itemPath>
+      <itemPath>alglib/fasttransforms.cpp</itemPath>
+      <itemPath>alglib/fasttransforms.h</itemPath>
+      <itemPath>alglib/integration.cpp</itemPath>
+      <itemPath>alglib/integration.h</itemPath>
+      <itemPath>alglib/interpolation.cpp</itemPath>
+      <itemPath>alglib/interpolation.h</itemPath>
+      <itemPath>alglib/linalg.cpp</itemPath>
+      <itemPath>alglib/linalg.h</itemPath>
+      <itemPath>alglib/optimization.cpp</itemPath>
+      <itemPath>alglib/optimization.h</itemPath>
+      <itemPath>alglib/solvers.cpp</itemPath>
+      <itemPath>alglib/solvers.h</itemPath>
+      <itemPath>alglib/specialfunctions.cpp</itemPath>
+      <itemPath>alglib/specialfunctions.h</itemPath>
+      <itemPath>alglib/statistics.cpp</itemPath>
+      <itemPath>alglib/statistics.h</itemPath>
+      <itemPath>alglib/stdafx.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="cmdLineParser"
+                   displayName="cmdLineParser"
+                   projectFiles="true">
+      <itemPath>cmdLineParser/CommandLineParser.cpp</itemPath>
+      <itemPath>cmdLineParser/CommandLineParser.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>ARFF.cpp</itemPath>
       <itemPath>ARFF.h</itemPath>
       <itemPath>AdditionalMethods.h</itemPath>
       <itemPath>DMA.h</itemPath>
@@ -29,6 +65,11 @@
       <itemPath>Statistics.h</itemPath>
       <itemPath>WebInterface.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="mpi_x86" displayName="mpi_x86" projectFiles="true">
+      <itemPath>mpi_x86/mpi.h</itemPath>
+      <itemPath>mpi_x86/note_mpi.txt</itemPath>
+      <itemPath>mpi_x86/pmidbg.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
@@ -36,7 +77,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>ARFF.cpp</itemPath>
       <itemPath>AdditionalMethods.cpp</itemPath>
       <itemPath>DMA.cpp</itemPath>
       <itemPath>DataObject.cpp</itemPath>
@@ -84,11 +124,15 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>alglib</Elem>
+    <Elem>cmdLineParser</Elem>
+    <Elem>mpi_x86</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
@@ -106,14 +150,11 @@
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
-          <commandlineTool>mpic++</commandlineTool>
+          <commandlineTool>g++</commandlineTool>
           <incDir>
             <pElem>.</pElem>
-            <pElem>.</pElem>
-            <pElem>.</pElem>
-            <pElem>.</pElem>
-            <pElem>.</pElem>
-            <pElem>.</pElem>
+            <pElem>./mpi_x86</pElem>
+            <pElem>./cmdLineParser</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
@@ -212,6 +253,67 @@
       </item>
       <item path="WebInterface.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="alglib/alglibinternal.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/alglibinternal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/alglibmisc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/alglibmisc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/ap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/ap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/dataanalysis.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/dataanalysis.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/diffequations.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/diffequations.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/fasttransforms.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/fasttransforms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/integration.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/integration.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/interpolation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/interpolation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/linalg.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/linalg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/optimization.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/optimization.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/solvers.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/solvers.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/specialfunctions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/specialfunctions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/statistics.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/statistics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/stdafx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cmdLineParser/CommandLineParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="cmdLineParser/CommandLineParser.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -265,6 +367,12 @@
       </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="mpi_x86/mpi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mpi_x86/note_mpi.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mpi_x86/pmidbg.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tests/arffTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/gutmanTest.cpp" ex="false" tool="1" flavor2="0">
@@ -274,7 +382,6 @@
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
@@ -407,6 +514,67 @@
       </item>
       <item path="WebInterface.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="alglib/alglibinternal.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/alglibinternal.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/alglibmisc.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/alglibmisc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/ap.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/ap.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/dataanalysis.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/dataanalysis.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/diffequations.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/diffequations.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/fasttransforms.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/fasttransforms.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/integration.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/integration.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/interpolation.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/interpolation.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/linalg.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/linalg.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/optimization.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/optimization.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/solvers.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/solvers.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/specialfunctions.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/specialfunctions.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/statistics.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="alglib/statistics.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="alglib/stdafx.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="cmdLineParser/CommandLineParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="cmdLineParser/CommandLineParser.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -459,6 +627,12 @@
         </linkerTool>
       </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mpi_x86/mpi.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mpi_x86/note_mpi.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="mpi_x86/pmidbg.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/arffTest.cpp" ex="false" tool="1" flavor2="0">
       </item>
