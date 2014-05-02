@@ -16216,6 +16216,14 @@ lbl_65:
     
     /*
      * Current point is updated.
+     *
+     * NOTE: below we rely on fact that for MCINFO=5 we ALWAYS have
+     *       Stp=StpMax returned by MCSRCH, even when StpMax<StpMin (it
+     *       is possible because StpMin=1E-50, and sometimes we have to
+     *       perform steps less than 1E-50).
+     *
+     *       Thus, when step activates constraints, we ALWAYS have Stp=StpMax.
+     *       It was not true before bug #570 was fixed.
      */
     ae_v_move(&state->xp.ptr.p_double[0], 1, &state->sas.xc.ptr.p_double[0], 1, ae_v_len(0,n-1));
     ae_v_move(&state->gp.ptr.p_double[0], 1, &state->gc.ptr.p_double[0], 1, ae_v_len(0,n-1));

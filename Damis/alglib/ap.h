@@ -26,7 +26,10 @@ http://www.fsf.org/licensing/licenses
 #include <cstring>
 #include <math.h>
 
-#ifdef __BORLANDC__
+#if defined(__CODEGEARC__)
+#include <list>
+#include <vector>
+#elif defined(__BORLANDC__)
 #include <list.h>
 #include <vector.h>
 #else
@@ -66,6 +69,15 @@ http://www.fsf.org/licensing/licenses
 #define AE_COMPILER AE_MSVC
 #endif
 
+/* compiler-specific definitions */
+#if AE_COMPILER==AE_MSVC
+#define ALIGNED __declspec(align(8))
+#elif AE_COMPILER==AE_GNUC
+#define ALIGNED __attribute__((aligned(8)))
+#else
+#define ALIGNED
+#endif
+
 /* now we are ready to include headers */
 #include <stdlib.h>
 #include <stdio.h>
@@ -73,16 +85,6 @@ http://www.fsf.org/licensing/licenses
 #include <setjmp.h>
 #include <math.h>
 #include <stddef.h>
-
-#if AE_OS==AE_WINDOWS
-#include <windows.h>
-#include <process.h>
-#elif AE_OS==AE_POSIX
-#include <time.h>
-#include <unistd.h>
-#include <pthread.h>
-#include <sched.h>
-#endif
 
 #if defined(AE_HAVE_STDINT)
 #include <stdint.h>
@@ -121,12 +123,6 @@ http://www.fsf.org/licensing/licenses
 #define AE_HAS_SSE2_INTRINSICS
 #endif
 #endif
-#endif
-
-/* Debugging helpers for Windows */
-#ifdef AE_DEBUG4WINDOWS
-#include <windows.h>
-#include <stdio.h>
 #endif
 
 
@@ -234,9 +230,9 @@ Members of this structure are ae_int64_t to avoid alignment problems.
 ************************************************************************/
 typedef struct
 {
-    ae_int64_t     owner;
-    ae_int64_t     last_action;
-    char *ptr;
+    ALIGNED ae_int64_t     owner;
+    ALIGNED ae_int64_t     last_action;
+    ALIGNED char *ptr;
 } x_string;
 
 /************************************************************************
@@ -264,11 +260,11 @@ Members of this structure are ae_int64_t to avoid alignment problems.
 ************************************************************************/
 typedef struct
 {
-    ae_int64_t     cnt;
-    ae_int64_t     datatype;
-    ae_int64_t     owner;
-    ae_int64_t     last_action;
-    void *ptr;
+    ALIGNED ae_int64_t     cnt;
+    ALIGNED ae_int64_t     datatype;
+    ALIGNED ae_int64_t     owner;
+    ALIGNED ae_int64_t     last_action;
+    ALIGNED void *ptr;
 } x_vector;
 
 
@@ -301,13 +297,13 @@ Members of this structure are ae_int64_t to avoid alignment problems.
 ************************************************************************/
 typedef struct
 {
-    ae_int64_t     rows;
-    ae_int64_t     cols;
-    ae_int64_t     stride;
-    ae_int64_t     datatype;
-    ae_int64_t     owner;
-    ae_int64_t     last_action;
-    void *ptr;
+    ALIGNED ae_int64_t     rows;
+    ALIGNED ae_int64_t     cols;
+    ALIGNED ae_int64_t     stride;
+    ALIGNED ae_int64_t     datatype;
+    ALIGNED ae_int64_t     owner;
+    ALIGNED ae_int64_t     last_action;
+    ALIGNED void *ptr;
 } x_matrix;
 
 
@@ -495,14 +491,11 @@ This structure provides OS-independent non-reentrant lock:
 *************************************************************************/
 typedef struct
 {
-#if AE_OS==AE_WINDOWS
-    volatile ae_int_t * volatile p_lock;
-    char buf[sizeof(ae_int_t)+AE_LOCK_ALIGNMENT];
-#elif AE_OS==AE_POSIX
-    pthread_mutex_t mutex;
-#else
-    ae_bool is_locked;
-#endif
+    /*
+     * Pointer to _lock structure. This pointer has type void* in order to
+     * make header file OS-independent (lock declaration depends on OS).
+     */
+    void *ptr;
 } ae_lock;
 
 
@@ -597,6 +590,7 @@ void ae_swap_vectors(ae_vector *vec1, ae_vector *vec2);
 ae_bool ae_matrix_init(ae_matrix *dst, ae_int_t rows, ae_int_t cols, ae_datatype datatype, ae_state *state, ae_bool make_automatic);
 ae_bool ae_matrix_init_copy(ae_matrix *dst, ae_matrix *src, ae_state *state, ae_bool make_automatic);
 void ae_matrix_init_from_x(ae_matrix *dst, x_matrix *src, ae_state *state, ae_bool make_automatic);
+void ae_matrix_attach_to_x(ae_matrix *dst, x_matrix *src, ae_state *state, ae_bool make_automatic);
 ae_bool ae_matrix_set_length(ae_matrix *dst, ae_int_t rows, ae_int_t cols, ae_state *state);
 void ae_matrix_clear(ae_matrix *dst);
 void ae_matrix_destroy(ae_matrix *dst);
@@ -844,9 +838,12 @@ ae_bool _rcommstate_init_copy(rcommstate* dst, rcommstate* src, ae_state *_state
 void _rcommstate_clear(rcommstate* p);
 void _rcommstate_destroy(rcommstate* p);
 
-#ifdef AE_USE_ALLOC_COUNTER
+/************************************************************************
+Allocation counter, inactive by default.
+Turned on when needed for debugging purposes.
+************************************************************************/
 extern ae_int64_t _alloc_counter;
-#endif
+extern ae_bool    _use_alloc_counter;
 
 
 /************************************************************************
@@ -866,11 +863,6 @@ int _tickcount();
 #define flushconsole(s) fflush(stdout)
 #define tickcount(s) _tickcount()
 int _tickcount();
-#endif
-#ifdef AE_DEBUGRNG
-ae_int_t ae_debugrng();
-void ae_set_seed(ae_int_t s0, ae_int_t s1);
-void ae_get_seed(ae_int_t *s0, ae_int_t *s1);
 #endif
 
 

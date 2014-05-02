@@ -2286,36 +2286,62 @@ void barycentricfitfloaterhormann(const real_1d_array &x, const real_1d_array &y
 
 
 /*************************************************************************
-Rational least squares fitting using  Floater-Hormann  rational  functions
-with optimal D chosen from [0,9].
+Fitting by penalized cubic spline.
 
-Equidistant  grid  with M node on [min(x),max(x)]  is  used to build basis
-functions. Different values of D are tried, optimal  D  (least  root  mean
-square error) is chosen.  Task  is  linear, so linear least squares solver
-is used. Complexity  of  this  computational  scheme is  O(N*M^2)  (mostly
-dominated by the least squares solver).
+Equidistant grid with M nodes on [min(x,xc),max(x,xc)] is  used  to  build
+basis functions. Basis functions are cubic splines with  natural  boundary
+conditions. Problem is regularized by  adding non-linearity penalty to the
+usual least squares penalty function:
+
+    S(x) = arg min { LS + P }, where
+    LS   = SUM { w[i]^2*(y[i] - S(x[i]))^2 } - least squares penalty
+    P    = C*10^rho*integral{ S''(x)^2*dx } - non-linearity penalty
+    rho  - tunable constant given by user
+    C    - automatically determined scale parameter,
+           makes penalty invariant with respect to scaling of X, Y, W.
 
 INPUT PARAMETERS:
     X   -   points, array[0..N-1].
     Y   -   function values, array[0..N-1].
-    N   -   number of points, N>0.
-    M   -   number of basis functions ( = number_of_nodes), M>=2.
+    N   -   number of points (optional):
+            * N>0
+            * if given, only first N elements of X/Y are processed
+            * if not given, automatically determined from X/Y sizes
+    M   -   number of basis functions ( = number_of_nodes), M>=4.
+    Rho -   regularization  constant  passed   by   user.   It   penalizes
+            nonlinearity in the regression spline. It  is  logarithmically
+            scaled,  i.e.  actual  value  of  regularization  constant  is
+            calculated as 10^Rho. It is automatically scaled so that:
+            * Rho=2.0 corresponds to moderate amount of nonlinearity
+            * generally, it should be somewhere in the [-8.0,+8.0]
+            If you do not want to penalize nonlineary,
+            pass small Rho. Values as low as -15 should work.
 
 OUTPUT PARAMETERS:
     Info-   same format as in LSFitLinearWC() subroutine.
             * Info>0    task is solved
             * Info<=0   an error occured:
-                        -4 means inconvergence of internal SVD
-                        -3 means inconsistent constraints
-    B   -   barycentric interpolant.
-    Rep -   report, same format as in LSFitLinearWC() subroutine.
-            Following fields are set:
-            * DBest         best value of the D parameter
+                        -4 means inconvergence of internal SVD or
+                           Cholesky decomposition; problem may be
+                           too ill-conditioned (very rare)
+    S   -   spline interpolant.
+    Rep -   Following fields are set:
             * RMSError      rms error on the (X,Y).
             * AvgError      average error on the (X,Y).
             * AvgRelError   average relative error on the non-zero Y
             * MaxError      maximum error
                             NON-WEIGHTED ERRORS ARE CALCULATED
+
+IMPORTANT:
+    this subroitine doesn't calculate task's condition number for K<>0.
+
+NOTE 1: additional nodes are added to the spline outside  of  the  fitting
+interval to force linearity when x<min(x,xc) or x>max(x,xc).  It  is  done
+for consistency - we penalize non-linearity  at [min(x,xc),max(x,xc)],  so
+it is natural to force linearity outside of this interval.
+
+NOTE 2: function automatically sorts points,  so  caller may pass unsorted
+array.
 
   -- ALGLIB PROJECT --
      Copyright 18.08.2009 by Bochkanov Sergey

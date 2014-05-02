@@ -471,7 +471,7 @@ NOTE: it costs twice as much as Ln(x)
   -- ALGLIB --
      Copyright 17.09.2012 by Bochkanov Sergey
 *************************************************************************/
-double log2(double x, ae_state *_state)
+double logbase2(double x, ae_state *_state)
 {
     double result;
 
@@ -11451,7 +11451,7 @@ this routine, you can be sure that last one is the point where we've stopped.
 
 NOTE 2:
 
-when 0<StpMax<StpMin, algorithm will terminate with INFO=5 and Stp=0.0
+when 0<StpMax<StpMin, algorithm will terminate with INFO=5 and Stp=StpMax
 :::::::::::::::::::::::::::::::::::::::::
 
 
@@ -11582,7 +11582,8 @@ void mcsrch(ae_int_t n,
             if( ae_fp_less(stpmax,linmin_stpmin)&&ae_fp_greater(stpmax,0) )
             {
                 *info = 5;
-                *stp = 0.0;
+                *stp = stpmax;
+                *stage = 0;
                 return;
             }
             if( ((((((n<=0||ae_fp_less_eq(*stp,0))||ae_fp_less(linmin_ftol,0))||ae_fp_less(gtol,zero))||ae_fp_less(linmin_xtol,zero))||ae_fp_less(linmin_stpmin,zero))||ae_fp_less(stpmax,linmin_stpmin))||linmin_maxfev<=0 )

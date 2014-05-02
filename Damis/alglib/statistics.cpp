@@ -4894,7 +4894,7 @@ void rankdata(/* Real    */ ae_matrix* xy,
     /*
      * Try to use serial code, no SMP functionality, no shared pools.
      */
-    if( ae_fp_less(inttoreal(npoints, _state)*inttoreal(nfeatures, _state)*log2(nfeatures, _state),basecasecost) )
+    if( ae_fp_less(inttoreal(npoints, _state)*inttoreal(nfeatures, _state)*logbase2(nfeatures, _state),basecasecost) )
     {
         basestat_rankdatabasecase(xy, 0, npoints, nfeatures, ae_false, &buf0, &buf1, _state);
         ae_frame_leave(_state);
@@ -4956,7 +4956,7 @@ void rankdatacentered(/* Real    */ ae_matrix* xy,
     /*
      * Try to use serial code, no SMP functionality, no shared pools.
      */
-    if( ae_fp_less(inttoreal(npoints, _state)*inttoreal(nfeatures, _state)*log2(nfeatures, _state),basecasecost) )
+    if( ae_fp_less(inttoreal(npoints, _state)*inttoreal(nfeatures, _state)*logbase2(nfeatures, _state),basecasecost) )
     {
         basestat_rankdatabasecase(xy, 0, npoints, nfeatures, ae_true, &buf0, &buf1, _state);
         ae_frame_leave(_state);
@@ -5047,7 +5047,7 @@ static void basestat_rankdatarec(/* Real    */ ae_matrix* xy,
     /*
      * Recursively split problem, if it is too large
      */
-    problemcost = inttoreal(i1-i0, _state)*inttoreal(nfeatures, _state)*log2(nfeatures, _state);
+    problemcost = inttoreal(i1-i0, _state)*inttoreal(nfeatures, _state)*logbase2(nfeatures, _state);
     if( i1-i0>=2&&ae_fp_greater(problemcost,basecasecost) )
     {
         im = (i1+i0)/2;
