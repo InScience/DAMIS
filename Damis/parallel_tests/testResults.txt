@@ -1,0 +1,47 @@
+--- Testing methods using different generated initial projection matrix Y ----
+Testing on 4 CPUs
+SMACOF: testing if CPU No. 0 can receive messages from other CPUs
+SMACOF: test passed.
+SMACOF: testing if CPUs: 1, 2, 3 received a message from CPU No. 0 to die.
+SMACOF: test passed.
+SMACOFZEIDEL_BUBLESORTDSC: testing if CPU No. 0 can receive messages from other CPUs
+SMACOFZEIDEL_BUBLESORTDSC: test passed.
+SMACOFZEIDEL_BUBLESORTDSC: testing if CPUs: 1, 3 received a message from CPU No. 0 to die.
+SMACOFZEIDEL_BUBLESORTDSC: test passed.
+SMACOFZEIDEL_BUBLESORTDSC: testing if CPU No. 2 received a message to send back matrix Y.
+SMACOFZEIDEL_BUBLESORTDSC: test passed.
+SMACOFZEIDEL_BUBLESORTDSC: testing if CPU No. 0 succesfully received matrix from CPU No. 2
+SMACOFZEIDEL_BUBLESORTDSC: test passed.
+SMACOFZEIDEL_BUBLESORTDSC: testing if the projection matrix Y is a [150x2] matrix.
+SMACOFZEIDEL_BUBLESORTDSC: test passed.
+SMACOFZEIDEL_BUBLESORTASC: testing if CPU No. 0 can receive messages from other CPUs
+SMACOFZEIDEL_BUBLESORTASC: test passed.
+SMACOFZEIDEL_BUBLESORTASC: testing if CPUs: 1, 2, 3 received a message from CPU No. 0 to die.
+SMACOFZEIDEL_BUBLESORTASC: test passed.
+SMACOFZEIDEL_SORTRANDOM: testing if CPU No. 0 can receive messages from other CPUs
+SMACOFZEIDEL_SORTRANDOM: test passed.
+SMACOFZEIDEL_SORTRANDOM: testing if CPUs: 1, 2 received a message from CPU No. 0 to die.
+SMACOFZEIDEL_SORTRANDOM: test passed.
+SMACOFZEIDEL_SORTRANDOM: testing if CPU No. 3 received a message to send back matrix Y.
+SMACOFZEIDEL_SORTRANDOM: test passed.
+SMACOFZEIDEL_SORTRANDOM: testing if CPU No. 0 succesfully received matrix from CPU No. 3
+SMACOFZEIDEL_SORTRANDOM: test passed.
+SMACOFZEIDEL_SORTRANDOM: testing if the projection matrix Y is a [150x2] matrix.
+SMACOFZEIDEL_SORTRANDOM: test passed.
+SAMANN: testing if CPU No. 0 can receive messages from other CPUs
+SAMANN: test passed.
+SAMANN: testing if CPUs: 1, 2, 3 received a message from CPU No. 0 to die.
+SAMANN: test passed.
+--- Testing methods using the same initial randomly generated projection matrix Y ----
+Testing on 4 CPUs
+SMACOF: testing if the projection matrixes Y are identical.
+SMACOF: test passed.
+SMACOFZEIDEL_BUBLESORTDSC: testing if the projection matrixes Y are identical.
+SMACOFZEIDEL_BUBLESORTDSC: test passed.
+SMACOFZEIDEL_BUBLESORTASC: testing if the projection matrixes Y are identical.
+SMACOFZEIDEL_BUBLESORTASC: test passed.
+SMACOFZEIDEL_SORTRANDOM: testing if the projection matrixes Y are identical.
+SMACOFZEIDEL_SORTRANDOM: test passed.
+SAMANN: testing if the projection matrixes Y are identical.
+SAMANN: test passed.
+

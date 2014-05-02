@@ -1,0 +1,169 @@
+        -:    0:Source:SOM.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/SOM.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/SOM.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  SOM.cpp
+        -:    3://  Implementation of the Class SOM
+        -:    4://  Created on:      07-Lie-2013 20:07:32
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:/*! \class SOM
+        -:    8:    \brief A class of methods and attributes for SOM algorithm.
+        -:    9: */
+        -:   10:#include "SOM.h"
+        -:   11:#include "Statistics.h"
+        -:   12:#include "DistanceMetrics.h"
+        -:   13:#include <float.h>
+        -:   14:#include <cstdlib>
+        -:   15:
+        -:   16:
+    #####:   17:SOM::SOM(){
+        -:   18:
+    #####:   19:}
+        -:   20:
+        2:   21:SOM::~SOM(){
+        -:   22:
+        2:   23:}
+        -:   24:
+        2:   25:SOM::SOM(int rows, int columns, int ehat){
+        2:   26:    k_x = rows;
+        2:   27:    k_y = columns;
+        2:   28:    eHat = ehat;
+        2:   29:}
+        -:   30:
+    #####:   31:SOM::SOM(int rows, int columns, int ehat, ObjectMatrix x){
+    #####:   32:    k_x = rows;
+    #####:   33:    k_y = columns;
+    #####:   34:    eHat = ehat;
+    #####:   35:    X = x;
+    #####:   36:}
+        -:   37:
+        2:   38:ObjectMatrix SOM::getProjection(){
+        2:   39:    int n = X.getObjectAt(0).getFeatureCount();
+        2:   40:    int m = X.getObjectCount();
+        2:   41:    ObjectMatrix M(k_x, k_y, n);
+        2:   42:    ObjectMatrix M_w(m);
+        -:   43:    std::vector<double> M_Matrix_Row;
+        -:   44:    double alpha , win_dist, dist_ij, eta, h, tmp;
+        -:   45:    int win_x, win_y;
+        -:   46:    
+      202:   47:    for (int i = 0; i < k_x; i++)
+        -:   48:    {
+      800:   49:        for (int j = 0; j < k_y; j++)
+        -:   50:        {
+     3000:   51:            for (int k = 0; k < n; k++)
+     2400:   52:                M.updateDataObject(i, j, k, Statistics::getRandom(-1.0, 1.0, (i + j + 5 * k)));;
+        -:   53:        }
+        -:   54:    }
+        -:   55:
+       12:   56:    for (int e = 0; e < eHat; e++)
+        -:   57:    {
+       20:   58:        alpha = Max((double)(eHat + 1 - e) / eHat, 0.01);
+       10:   59:        win_x = 0;
+       10:   60:        win_y = 0;
+       50:   61:        for (int l = 0; l < n; l++)
+        -:   62:        {
+       40:   63:            win_dist = DBL_MAX;
+     4040:   64:            for (int i = 0; i < k_x; i++)
+        -:   65:            {
+    16000:   66:                for (int j = 0; j < k_y; j++)
+        -:   67:                {
+    12000:   68:                    dist_ij = DistanceMetrics::getDistance(M.getObjectAt(i, j), X.getObjectAt(l), EUCLIDEAN);
+    12000:   69:                    if (dist_ij < win_dist)
+        -:   70:                    {
+      588:   71:                        win_dist = dist_ij;
+      588:   72:                        win_x = i;
+      588:   73:                        win_y = j;
+        -:   74:                    }
+        -:   75:                }
+        -:   76:            }
+     4040:   77:            for (int i = 0; i < k_x; i++)
+        -:   78:            {
+    16000:   79:                for (int j = 0; j < k_y; j++)
+        -:   80:                {
+    48000:   81:                    for (int k = 1; k < n; k++)
+        -:   82:                    {
+    72000:   83:                        eta = Max(abs(win_x - i), abs(win_x - i));
+    36000:   84:                        h = alpha / (alpha * eta + 1);
+   108000:   85:                        if (eta > Max(alpha * Max((double)k_x, (double)k_y), 1))
+     2628:   86:                            h = 0;
+    36000:   87:                        tmp = M.getObjectAt(i, j).getFeatureAt(k) + h * (X.getObjectAt(l).getFeatureAt(k) - M.getObjectAt(i, j).getFeatureAt(k));
+    36000:   88:                        M.updateDataObject(i, j, k, tmp);
+        -:   89:                    }
+        -:   90:                }
+        -:   91:            }
+        -:   92:        }
+        -:   93:        
+        -:   94:    }
+        -:   95:    
+        2:   96:    win_x = 0;
+        2:   97:    win_y = 0;
+        -:   98:    
+      302:   99:    for (int l = 0; l < m; l++)
+        -:  100:    {
+      300:  101:        win_dist = DBL_MAX;
+    30300:  102:        for (int i = 0; i < k_x; i++)
+        -:  103:        {
+   120000:  104:            for (int j = 0; j < k_y; j++)
+        -:  105:            {
+    90000:  106:                dist_ij = DistanceMetrics::getDistance(M.getObjectAt(i, j), X.getObjectAt(l), EUCLIDEAN);
+    90000:  107:                if (dist_ij < win_dist)
+        -:  108:                {
+     3914:  109:                    win_dist = dist_ij;
+     3914:  110:                    win_x = i;
+     3914:  111:                    win_y = j;
+        -:  112:                }
+        -:  113:            }
+        -:  114:        }
+      300:  115:        M_w.addObject(M.getObjectAt(win_x, win_y));
+        -:  116:    }
+        2:  117:    nWinner = Different(M_w);
+        2:  118:    return  nWinner;
+        -:  119:}
+        -:  120:
+    #####:  121:double SOM::Max(double d1, double d2)
+        -:  122:{
+   108010:  123:    if (d1 > d2)
+    72010:  124:        return d1;
+        -:  125:    else
+    36000:  126:        return d2;
+        -:  127:}
+        -:  128:
+        1:  129:double SOM::getQuantizationError(){
+        1:  130:    int m = X.getObjectCount();
+        1:  131:    int r = nWinner.getObjectCount();
+        1:  132:    double som_qe = 0.0, dist_li = 0.0;
+        -:  133:    
+      151:  134:    for (int l = 0; l < m; l++)
+        -:  135:    {
+      900:  136:        for (int i = 0; i < r; i++)
+      750:  137:            dist_li = DistanceMetrics::getDistance(nWinner.getObjectAt(i), X.getObjectAt(l), EUCLIDEAN);
+      150:  138:        som_qe += dist_li;          
+        -:  139:    }
+        -:  140:    
+        1:  141:    return som_qe;
+        -:  142:}
+        -:  143:
+        2:  144:ObjectMatrix SOM::Different(ObjectMatrix M_w)
+        -:  145:{
+        2:  146:    ObjectMatrix M_ws;
+        2:  147:    int n = M_w.getObjectCount();
+        2:  148:    int k = 0;
+      300:  149:    for (int i = 0; i < n - 1; i++)
+        -:  150:    {
+      298:  151:        k = 0;
+    22648:  152:        for (int j = i + 1; j<n; j++)
+        -:  153:        {
+    22350:  154:            if (M_w.getObjectAt(i).IsIdentical(M_w.getObjectAt(j)) == true)
+    10848:  155:                k++;
+        -:  156:        }
+      298:  157:        if (k == 0)
+        8:  158:            M_ws.addObject(M_w.getObjectAt(i));
+        -:  159:    }
+        2:  160:    if (M_w.getObjectAt(n - 2).IsIdentical(M_w.getObjectAt(n - 1)) == true)
+        2:  161:        M_ws.addObject(M_w.getObjectAt(n - 1));
+        -:  162:    
+    #####:  163:    return M_ws;
+        -:  164:}

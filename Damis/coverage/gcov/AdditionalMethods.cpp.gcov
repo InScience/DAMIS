@@ -1,0 +1,114 @@
+        -:    0:Source:AdditionalMethods.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/AdditionalMethods.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/AdditionalMethods.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <cstdlib>
+        -:    2:#include <sstream>
+        -:    3:#include "AdditionalMethods.h"
+        -:    4:#include "ObjectMatrix.h"
+        -:    5:#include "DataObject.h"
+        -:    6:
+        -:    7:///////////////////////////////////////////////////////////
+        -:    8://  Projection.cpp
+        -:    9://  Implementation of the Class Projection
+        -:   10://  Created on:      24-Spa-2013 12:20:33
+        -:   11://  Original author: Mindaugas
+        -:   12:///////////////////////////////////////////////////////////
+        -:   13:
+        -:   14:/*! \class AdditionalMethods
+        -:   15:    \brief A class of static methods for data conversion and static members.
+        -:   16: */
+        -:   17:
+    #####:   18:AdditionalMethods::AdditionalMethods(){
+        -:   19:    
+    #####:   20:}
+        -:   21:
+    #####:   22:AdditionalMethods::~AdditionalMethods(){
+        -:   23:    
+    #####:   24:}
+        -:   25:
+    #####:   26:double** AdditionalMethods::ObjectMatrixToDouble(ObjectMatrix matrix){
+    #####:   27:    int numOfObjects = matrix.getObjectCount();
+    #####:   28:    int numOfFeatures = matrix.getObjectAt(0).getFeatureCount();
+        -:   29:    double **matrixToReturn;
+    #####:   30:    matrixToReturn = Array2D(numOfObjects, numOfFeatures);   
+        -:   31:    
+    #####:   32:    for (int i = 0; i < numOfObjects; i++)
+    #####:   33:        for (int j = 0; j < numOfFeatures; j++)
+    #####:   34:            matrixToReturn[i][j] = matrix.getObjectAt(i).getFeatureAt(j);
+        -:   35:        
+    #####:   36:    return matrixToReturn;
+        -:   37:}
+        -:   38:
+    #####:   39:ObjectMatrix AdditionalMethods::DoubleToObjectMatrix(double** matrix, int rows, int cols){
+        -:   40:    std::vector<double> v;
+    #####:   41:    v.reserve(cols);
+    #####:   42:    ObjectMatrix toReturn(rows);
+        -:   43:    
+    #####:   44:    for (int i = 0; i < rows; i++)
+        -:   45:    {
+    #####:   46:        for (int j = 0; j < cols; j++)
+    #####:   47:            v.push_back(matrix[i][j]);
+    #####:   48:        toReturn.addObject(DataObject(v));
+        -:   49:        v.clear();
+        -:   50:    }   
+    #####:   51:    return toReturn;
+        -:   52:}
+        -:   53:
+    #####:   54:double** AdditionalMethods::Array2D(int rows, int cols)      
+        -:   55:{
+    #####:   56:    double *data = (double *)malloc(rows*cols*sizeof(double));
+    #####:   57:    double **array= (double **)malloc(rows*sizeof(double*));
+    #####:   58:    for (int i=0; i<rows; i++)
+    #####:   59:        array[i] = &(data[cols*i]);
+    #####:   60:    return array;
+        -:   61:}
+        -:   62:
+        1:   63:alglib::real_1d_array AdditionalMethods::ObjectMatrixTo1DArray(ObjectMatrix matrix)
+        -:   64:{
+        1:   65:    alglib::real_1d_array toReturn;
+        1:   66:    int m = matrix.getObjectCount();
+        1:   67:    int n = matrix.getObjectAt(0).getFeatureCount();
+        1:   68:    toReturn.setlength(m * n);
+        -:   69:    
+      101:   70:    for (int i = 0; i < m; i++)
+      300:   71:        for (int j = 0; j < n; j++)
+      200:   72:            toReturn(n * i + j) = matrix.getObjectAt(i).getFeatureAt(j);
+        -:   73:    
+    #####:   74:    return toReturn;    
+        -:   75:}
+        -:   76:
+        1:   77:ObjectMatrix AdditionalMethods::alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount)
+        -:   78:{
+        1:   79:    int m = array.length() / featureCount;
+        1:   80:    ObjectMatrix toReturn(m);
+        -:   81:    std::vector<double> dataObjectFeatures;
+        1:   82:    dataObjectFeatures.reserve(featureCount);
+        -:   83:    
+      101:   84:    for (int i = 0; i < m; i++)
+        -:   85:    {
+      300:   86:        for (int j = 0; j < featureCount; j++)
+      200:   87:            dataObjectFeatures.push_back(array(featureCount * i + j));
+      100:   88:        toReturn.addObject(DataObject(dataObjectFeatures));
+        -:   89:        dataObjectFeatures.clear();
+        -:   90:    }
+    #####:   91:    return toReturn;
+        -:   92:}
+        -:   93:
+     2250:   94:std::vector<std::string> AdditionalMethods::split(const std::string &s, char delim, std::vector<std::string> &elems)
+        -:   95:{
+     2250:   96:    std::stringstream ss(s);
+        -:   97:    std::string item;
+    22500:   98:    while (std::getline(ss, item, delim)) {
+        -:   99:        elems.push_back(item);
+        -:  100:    }
+     4500:  101:    return elems;
+        -:  102:}
+        -:  103:    
+     2250:  104:std::vector<std::string> AdditionalMethods::split(const std::string& s, char delim)
+        -:  105:{
+     2250:  106:    std::vector<std::string> elems;
+     2250:  107:    AdditionalMethods::split(s, delim, elems);
+    #####:  108:    return elems;
+        -:  109:}

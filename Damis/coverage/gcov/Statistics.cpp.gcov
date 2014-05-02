@@ -1,0 +1,97 @@
+        -:    0:Source:Statistics.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/Statistics.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/Statistics.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/*! \class Statistics
+        -:    2:    \brief A class of static methods for calculating statistical information.
+        -:    3: */
+        -:    4:#include <cmath>
+        -:    5:#include "Statistics.h"
+        -:    6:#include "AdditionalMethods.h"
+        -:    7:#include "DataObject.h"
+        -:    8:#include <time.h>
+        -:    9:#include <stdlib.h>
+        -:   10:
+       16:   11:double Statistics::getAverage(ObjectMatrix om, int k){
+        -:   12:    double average;
+       16:   13:    int n = om.getObjectCount();
+       16:   14:    double s = 0.0;
+     4032:   15:    for (int i = 0; i < n; i++)
+     2000:   16:        s += om.getObjectAt(i).getFeatureAt(k);
+       16:   17:    average = s / n;
+       16:   18:    return average;
+        -:   19:}
+        -:   20:
+    #####:   21:double Statistics::getCorrCoef(ObjectMatrix om, int k, int l)
+        -:   22:{
+    #####:   23:    double to_return = 0.0;
+    #####:   24:    double avgFeatureK = Statistics::getAverage(om, k);
+    #####:   25:    double avgFeatureL = Statistics::getAverage(om, l);
+    #####:   26:    double fractionTop = 0.0, fractionBottom = 0.1, tmp1 = 0.0, tmp2 = 0.0, diffK, diffL;
+    #####:   27:    int n = om.getObjectCount();
+        -:   28:    
+    #####:   29:    for (int i = 0; i < n; i++)
+        -:   30:    {
+    #####:   31:        diffK = om.getObjectAt(i).getFeatureAt(k) - avgFeatureK;
+    #####:   32:        diffL = om.getObjectAt(i).getFeatureAt(l) - avgFeatureL;
+    #####:   33:        fractionTop += diffK * diffL;
+    #####:   34:        tmp1 += std::pow(diffK, 2);
+    #####:   35:        tmp2 += std::pow(diffL, 2);
+        -:   36:    }
+    #####:   37:    fractionBottom = std::sqrt(tmp1 * tmp2);
+    #####:   38:    to_return = fractionTop / fractionBottom;
+        -:   39:    
+    #####:   40:    return to_return;
+        -:   41:}
+        -:   42:
+    #####:   43:double Statistics::getCovCoef(ObjectMatrix om, int k, int l)
+        -:   44:{
+    #####:   45:    double to_return = 0.0;
+    #####:   46:    double avgFeatureK = Statistics::getAverage(om, k);
+    #####:   47:    double avgFeatureL = Statistics::getAverage(om, l);
+        -:   48:    double diffK, diffL;
+    #####:   49:    int n = om.getObjectCount();
+        -:   50:
+    #####:   51:    for (int i = 0; i < n; i++)
+        -:   52:    {
+    #####:   53:        diffK = om.getObjectAt(i).getFeatureAt(k) - avgFeatureK;
+    #####:   54:        diffL = om.getObjectAt(i).getFeatureAt(l) - avgFeatureL;
+    #####:   55:        to_return += diffK * diffL;
+        -:   56:    }
+        -:   57:    
+    #####:   58:    to_return = to_return / (n - 1);
+    #####:   59:    return to_return;
+        -:   60:}
+        -:   61:
+    23638:   62:double Statistics::getRandom(int n)
+        -:   63:{
+    23638:   64:    srand(time(NULL) + n + AdditionalMethods::PID);
+    23638:   65:    return (double)rand() / RAND_MAX;
+        -:   66:}
+        -:   67:
+    23638:   68:double Statistics::getRandom(double min, double max, int k)
+        -:   69:{
+    23638:   70:    return min + Statistics::getRandom(k)*(max - min);
+        -:   71:}
+        -:   72:
+    #####:   73:ObjectMatrix Statistics::getCovMatrix(ObjectMatrix om)
+        -:   74:{
+    #####:   75:    double tmp = 0.0;
+        -:   76:    std::vector<double> dd;
+    #####:   77:    int n = om.getObjectAt(0).getFeatureCount();
+    #####:   78:    ObjectMatrix cov(n);
+    #####:   79:    for (int i = 0; i < n; i++)
+        -:   80:    {
+    #####:   81:        for (int j = 0; j < n; j++)
+        -:   82:        {
+    #####:   83:            tmp = Statistics::getCovCoef(om, i, j);
+        -:   84:            dd.push_back(tmp);
+        -:   85:        }
+    #####:   86:        DataObject dobj(dd);
+    #####:   87:        cov.addObject(dobj);
+        -:   88:        dd.clear();
+        -:   89:    }
+        -:   90:    
+    #####:   91:    return cov;
+        -:   92:}

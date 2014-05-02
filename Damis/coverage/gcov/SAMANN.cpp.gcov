@@ -1,0 +1,419 @@
+        -:    0:Source:SAMANN.cpp
+        -:    0:Graph:build/Debug/GNU-Linux-x86/SAMANN.gcno
+        -:    0:Data:build/Debug/GNU-Linux-x86/SAMANN.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:///////////////////////////////////////////////////////////
+        -:    2://  SAMANN.cpp
+        -:    3://  Implementation of the Class SAMANN
+        -:    4://  Created on:      07-Lie-2013 20:07:31
+        -:    5://  Original author: Povilas
+        -:    6:///////////////////////////////////////////////////////////
+        -:    7:/*! \class SAMANN
+        -:    8:    \brief A class of methods and attributes for SAMANN algorithm.
+        -:    9: */
+        -:   10:#include "SAMANN.h"
+        -:   11:#include "Statistics.h"
+        -:   12:#include "DistanceMetrics.h"
+        -:   13:#include "math.h"
+        -:   14:#include "AdditionalMethods.h"
+        -:   15:#include <fstream>
+        -:   16:#include <iomanip>
+        -:   17:#include <float.h>
+        -:   18:
+    #####:   19:SAMANN::SAMANN(){
+        -:   20:
+    #####:   21:}
+        -:   22:
+        1:   23:SAMANN::~SAMANN(){
+        -:   24:
+        1:   25:}
+        -:   26:
+        3:   27:SAMANN::SAMANN(int m1, int nl, double e, int maxIter){
+        1:   28:    mTrain = m1;
+        1:   29:    nNeurons = nl;
+        1:   30:    eta = e;
+        1:   31:    maxIteration = maxIter;
+        1:   32:    d = 2;
+        1:   33:    initializeProjectionMatrix();
+        1:   34:    stressErrors.reserve(maxIter);
+    #####:   35:}
+        -:   36:
+        1:   37:double SAMANN::getLambda(){
+        -:   38:
+        1:   39:    double temp = 0.0;
+        1:   40:    int m = X.getObjectCount();
+      150:   41:    for (int i = 0; i < m - 1; i++)
+    11324:   42:        for (int j = i + 1; j < m; j++)
+    11175:   43:            temp = temp + DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+        -:   44:    
+        1:   45:    return 1.0 / temp;
+        -:   46:}
+        -:   47:
+        1:   48:ObjectMatrix SAMANN::getProjection(){
+        -:   49:
+        1:   50:    int n = X.getObjectAt(0).getFeatureCount();
+        1:   51:    int m = X.getObjectCount();
+        1:   52:    double ddelta_L[mTrain][d + 1];
+        1:   53:    double delta_tarp[mTrain];
+        1:   54:    double ddelta_tarp[mTrain];
+        1:   55:    double tarp = 0.0, tarp2 = 0.0, lambda, tmp, distXp, distYis, bestStress = 0.0, currStress = 0.0;
+        -:   56:    std::vector<std::vector<double> > best_w1;
+        -:   57:    std::vector<std::vector<double> > best_w2;
+        1:   58:    initializeWeights();   // w1, w2
+        1:   59:    NormalizeX();
+        1:   60:    initializeExitMatrixes();   // Y_pasl, Y_is
+        1:   61:    initializeDeltaL();    // delta_L
+        -:   62:    
+        -:   63:    std::vector<double> w1Row, w2Row;
+        1:   64:    w1Row.reserve(n + 1);
+        1:   65:    w2Row.reserve(nNeurons + 1);
+       12:   66:    for (int i = 0; i < nNeurons + 1; i++)
+        -:   67:    {
+       66:   68:        for (int j = 0; j < n + 1; j++)
+       55:   69:            w1Row.push_back(0.0);
+       11:   70:        best_w1.push_back(w1Row);
+        -:   71:        w1Row.clear();
+        -:   72:    }
+        -:   73:    
+        4:   74:    for (int i = 0; i < d + 1; i++)
+        -:   75:    {
+       36:   76:        for (int j = 0; j < nNeurons + 1; j++)
+       33:   77:            w2Row.push_back(0.0);
+        3:   78:        best_w2.push_back(w2Row);
+        -:   79:        w2Row.clear();
+        -:   80:    }
+        -:   81:    
+        1:   82:    lambda = getLambda();
+        -:   83:    
+       71:   84:    for (int i = 0; i < mTrain; i++)
+        -:   85:    {
+      280:   86:        for (int j = 0; j < d + 1; j++)
+      210:   87:            ddelta_L[i][j] = 0.0;
+       70:   88:        delta_tarp[i] = 0.0;
+       70:   89:        ddelta_tarp[i] = 0.0;
+        -:   90:    }
+        -:   91:    
+        1:   92:    bestStress = getStress();
+       51:   93:    for (int iter = 0; iter < maxIteration; iter++)
+        -:   94:    {        
+       50:   95:        getXp(); 
+     3500:   96:        for (int miu = 0; miu < mTrain - 1; miu++)
+        -:   97:        {
+   124200:   98:            for (int niu = miu + 1; niu < mTrain; niu++)
+        -:   99:            {             
+  1328250:  100:                for (int j = 1; j <= nNeurons; j++)
+        -:  101:                {
+  1207500:  102:                    tarp = 0.0;
+  1207500:  103:                    tarp2 = 0.0;
+  7245000:  104:                    for (int k = 0; k < n + 1; k++)
+        -:  105:                    {
+ 12075000:  106:                        tarp += w1[j].at(k) * Xp.getObjectAt(miu).getFeatureAt(k);
+ 12075000:  107:                        tarp2 += w1[j].at(k) * Xp.getObjectAt(niu).getFeatureAt(k);                        
+        -:  108:                    }
+        -:  109:
+  1207500:  110:                    Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+  1207500:  111:                    Y_pasl.updateDataObject(niu, j, 1.0 / (1 + exp(-1 * tarp2)));                    
+        -:  112:                }
+        -:  113:                
+   362250:  114:                for (int j = 1; j <= d; j++)
+        -:  115:                {
+   241500:  116:                    tarp = 0.0;
+   241500:  117:                    tarp2 = 0.0;
+  2898000:  118:                    for (int k = 0; k <= nNeurons; k++)
+        -:  119:                    {
+  5313000:  120:                        tarp += w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
+  5313000:  121:                        tarp2 += w2[j].at(k) * Y_pasl.getObjectAt(niu).getFeatureAt(k);                        
+        -:  122:                    }
+   241500:  123:                    Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+   241500:  124:                    Y_is.updateDataObject(niu, j, 1.0 / (1 + exp(-1 * tarp2)));
+        -:  125:                }                
+        -:  126:                
+   120750:  127:                distXp = DistanceMetrics::getDistance(Xp.getObjectAt(miu), Xp.getObjectAt(niu), EUCLIDEAN);
+   120750:  128:                distYis = DistanceMetrics::getDistance(Y_is.getObjectAt(miu), Y_is.getObjectAt(niu), EUCLIDEAN);
+        -:  129:                
+   120750:  130:                if (distXp == 0)
+    #####:  131:                    distXp = 0.000001;
+   120750:  132:                if (distYis == 0)
+    #####:  133:                    distYis = 0.000001;
+        -:  134:                
+   362250:  135:                for (int k = 1; k <= d; k++)
+        -:  136:                {            
+   241500:  137:                    tmp = -2 * lambda * ((distXp - distYis) / (distXp * distYis)) * (Y_is.getObjectAt(miu).getFeatureAt(k) - Y_is.getObjectAt(niu).getFeatureAt(k));
+   241500:  138:                    delta_L.updateDataObject(miu, niu, tmp);
+   241500:  139:                    ddelta_L[miu][k] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(miu).getFeatureAt(k)) * Y_is.getObjectAt(miu).getFeatureAt(k);
+   241500:  140:                    ddelta_L[niu][k] = delta_L.getObjectAt(miu).getFeatureAt(niu) * (1 - Y_is.getObjectAt(niu).getFeatureAt(k)) * Y_is.getObjectAt(niu).getFeatureAt(k);
+  2656500:  141:                    for (int j = 1; j <= nNeurons; j++)
+  7245000:  142:                        w2[k][j] = -1 * eta * (ddelta_L[miu][k] * Y_pasl.getObjectAt(miu).getFeatureAt(j) - ddelta_L[niu][k] * Y_pasl.getObjectAt(niu).getFeatureAt(j)) + w2[k][j];
+        -:  143:                }
+        -:  144:                
+  1328250:  145:                for (int j = 1; j <= nNeurons; j++)
+        -:  146:                {
+  1207500:  147:                    delta_tarp[miu] = 0;
+  1207500:  148:                    delta_tarp[niu] = 0;
+        -:  149:                    
+  3622500:  150:                    for (int k = 1; k <= d; k++)
+        -:  151:                    {
+  4830000:  152:                        delta_tarp[miu] += ddelta_L[miu][k] * w2[k][j];
+  4830000:  153:                        delta_tarp[niu] += ddelta_L[niu][k] * w2[k][j];
+        -:  154:                    }
+        -:  155:                    
+  1207500:  156:                    ddelta_tarp[miu] = delta_tarp[miu] * (1 - Y_pasl.getObjectAt(miu).getFeatureAt(j)) * Y_pasl.getObjectAt(miu).getFeatureAt(j);
+  1207500:  157:                    ddelta_tarp[niu] = delta_tarp[niu] * (1 - Y_pasl.getObjectAt(niu).getFeatureAt(j)) * Y_pasl.getObjectAt(niu).getFeatureAt(j);
+        -:  158:
+  6037500:  159:                    for (int k = 1; k < n + 1; k++)
+ 14490000:  160:                        w1[j][k] = -1 * eta * (ddelta_tarp[miu] * Xp.getObjectAt(miu).getFeatureAt(k) - ddelta_tarp[niu] * Xp.getObjectAt(niu).getFeatureAt(k)) + w1[j][k];  
+        -:  161:                }
+        -:  162:            }             
+        -:  163:        }
+        -:  164:        
+     7550:  165:        for (int niuu = 0; niuu < m; niuu++)
+        -:  166:        {
+    82500:  167:            for (int j = 1; j <= nNeurons; j++)
+        -:  168:            {
+    75000:  169:                tarp = 0.0;
+   450000:  170:                for (int k = 0; k < n + 1; k++)
+   750000:  171:                    tarp += w1[j].at(k) * X.getObjectAt(niuu).getFeatureAt(k);                 
+    75000:  172:                Y_pasl.updateDataObject(niuu, j, 1.0 / (1 + exp(-1 * tarp)));
+        -:  173:            }
+        -:  174:            
+    22500:  175:            for (int j = 1; j <= d; j++)
+        -:  176:            {
+    15000:  177:                tarp2 = 0.0;
+   180000:  178:                for (int k = 0; k <= nNeurons; k++)
+   330000:  179:                    tarp2 += w2[j].at(k) * Y_pasl.getObjectAt(niuu).getFeatureAt(k);
+    15000:  180:                Y_is.updateDataObject(niuu, j, 1.0 / (1 + exp(-1 * tarp2)));
+        -:  181:            }
+        -:  182:        }
+        -:  183:        
+       50:  184:        currStress = getStress();
+       50:  185:        if (currStress < bestStress)
+        -:  186:        {
+      462:  187:            for (int i = 1; i <= nNeurons; i++)
+     2520:  188:                for (int j = 0; j < n + 1; j++)
+     4200:  189:                    best_w1[i][j] = w1.at(i).at(j);
+        -:  190:
+      168:  191:            for (int i = 0; i < d + 1; i++)
+     1512:  192:                for (int j = 0; j < nNeurons + 1; j++)
+     2772:  193:                    best_w2[i][j] = w2.at(i).at(j);
+        -:  194:
+       42:  195:            bestStress = currStress;
+        -:  196:        }       
+       50:  197:        stressErrors.push_back(currStress);
+        -:  198:    }  // iteraciju pabaiga
+        -:  199:    
+      151:  200:    for (int miu = 0; miu < m; miu++)
+        -:  201:    {
+     1650:  202:        for (int j = 1; j < nNeurons + 1; j++)
+        -:  203:        {
+     1500:  204:            tarp = 0.0;
+     9000:  205:            for (int k = 0; k < n + 1; k++)
+    15000:  206:                tarp += best_w1[j].at(k) * X.getObjectAt(miu).getFeatureAt(k);
+     1500:  207:            Y_pasl.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));              
+        -:  208:        }
+      450:  209:        for (int j = 1; j <= d; j++)
+        -:  210:        {
+      300:  211:            tarp = 0.0;
+     3600:  212:            for (int k = 0; k <= nNeurons; k++)
+     6600:  213:                tarp += best_w2[j].at(k) * Y_pasl.getObjectAt(miu).getFeatureAt(k);
+      300:  214:            Y_is.updateDataObject(miu, j, 1.0 / (1 + exp(-1 * tarp)));
+        -:  215:        }
+        -:  216:    }
+        -:  217:        
+        1:  218:    Y = ObjectMatrix(m);
+        -:  219:    std::vector<double> Yrow;
+        1:  220:    Yrow.reserve(d);
+      151:  221:    for (int i = 0; i < m; i++)
+        -:  222:    {
+      450:  223:        for (int j = 1; j <= d; j++)
+      300:  224:            Yrow.push_back(Y_is.getObjectAt(i).getFeatureAt(j));
+      150:  225:        Y.addObject(DataObject(Yrow));
+        -:  226:        Yrow.clear();
+        -:  227:    }
+        1:  228:    return Y;
+        -:  229:}
+        -:  230:
+        1:  231:double SAMANN::getMax()
+        -:  232:{
+        1:  233:    int m = X.getObjectCount();
+        1:  234:    double max = DBL_MIN, dist;
+        -:  235:
+      150:  236:    for (int i = 0; i < m - 1; i++)
+        -:  237:    {
+    11324:  238:        for (int j = i + 1; j < m; j++)
+        -:  239:        {
+    11175:  240:            dist = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+    11175:  241:            if (dist > max)
+       19:  242:                max = dist;
+        -:  243:        }
+        -:  244:    }    
+        1:  245:    return max; 
+        -:  246:}
+        -:  247:
+        1:  248:void SAMANN::NormalizeX()
+        -:  249:{
+        1:  250:    double max = getMax();
+        -:  251:    double value;
+        1:  252:    int m = X.getObjectCount();
+        1:  253:    int n = X.getObjectAt(0).getFeatureCount();
+        -:  254:    std::vector<double> Xrow;
+        1:  255:    Xrow.reserve(n + 1);
+        1:  256:    ObjectMatrix Xtmp(m);
+        -:  257:    
+      151:  258:    for (int i = 0; i < m; i++)
+        -:  259:    {
+      150:  260:        Xrow.push_back(1.0);
+      750:  261:        for (int j = 0; j < n; j++)
+        -:  262:        {
+      600:  263:            value = X.getObjectAt(i).getFeatureAt(j) / max;
+      600:  264:            Xrow.push_back(value);
+        -:  265:        }
+      150:  266:        Xtmp.addObject(DataObject(Xrow));
+        -:  267:        Xrow.clear();
+        -:  268:    }
+        1:  269:    X = Xtmp;
+        1:  270:}
+        -:  271:
+       50:  272:void SAMANN::getXp()
+        -:  273:{
+       50:  274:    int m = X.getObjectCount(), i = 0, k = 0, index = 0;
+       50:  275:    Xp = ObjectMatrix(mTrain);
+       50:  276:    double r = Statistics::getRandom(1, m, k);
+       50:  277:    DataObject dObject; 
+       50:  278:    index = static_cast<int>(r);
+     3560:  279:    while (k < m)
+        -:  280:    {       
+     7020:  281:        dObject = X.getObjectAt(index);
+     3510:  282:        if (isIdentical(dObject) == false)
+        -:  283:        {
+     3500:  284:            Xp.addObject(dObject);
+     3500:  285:            i++;
+     3500:  286:            if (i >= mTrain)
+        -:  287:                break;
+        -:  288:        }
+     3460:  289:        index = (index + 1) % m;
+     3460:  290:        k++;
+        -:  291:    } 
+        -:  292:    
+       50:  293:    if (i < mTrain)
+        -:  294:    {
+    #####:  295:        index = 0;       
+    #####:  296:        while (i < mTrain)
+        -:  297:        {
+    #####:  298:            dObject = X.getObjectAt(index);
+    #####:  299:            Xp.addObject(dObject);
+    #####:  300:            i++;
+    #####:  301:            index = (index + 1) % m;
+        -:  302:        }
+    #####:  303:    }   
+       50:  304:}
+        -:  305:
+     3510:  306:bool SAMANN::isIdentical(DataObject obj)
+        -:  307:{
+     3510:  308:    bool ats = false;
+     3510:  309:    int n = Xp.getObjectCount();
+     3510:  310:    int m = obj.getFeatureCount();
+     3510:  311:    int k = 0;
+        -:  312:    
+   124490:  313:    for (int i = 0; i < n; i++)
+        -:  314:    {
+   120990:  315:        k = 0;
+   725940:  316:        for (int j = 0; j < m; j++)
+   604950:  317:            if (obj.getFeatureAt(j) == Xp.getObjectAt(i).getFeatureAt(j))
+   157931:  318:                k++;
+   120990:  319:        if (k == m)
+        -:  320:        {
+       10:  321:            ats = true;
+       10:  322:            break;
+        -:  323:        }
+        -:  324:    }    
+     3510:  325:    return ats;
+        -:  326:}
+        -:  327:
+       51:  328:double SAMANN::getStress(){
+       51:  329:    double tarp1 = 0.0, tarp2 = 0.0, distX, distY;
+       51:  330:    int m = X.getObjectCount();
+        -:  331:    
+     7650:  332:    for (int miu = 0; miu < m - 1; miu++)
+        -:  333:    {
+   577524:  334:        for (int niu = miu + 1; niu < m; niu++)
+        -:  335:        {
+   569925:  336:            distX = DistanceMetrics::getDistance(X.getObjectAt(miu), X.getObjectAt(niu), EUCLIDEAN);
+   569925:  337:            distY = DistanceMetrics::getDistance(Y_is.getObjectAt(miu), Y_is.getObjectAt(niu), EUCLIDEAN);
+   569925:  338:            tarp1 += distX;
+   569925:  339:            if (distX == 0)
+       51:  340:                distX = 0.000001;
+   569925:  341:            tarp2 += pow(distX - distY, 2) / distX;
+        -:  342:        }
+        -:  343:    }
+       51:  344:    return (1.0 / tarp1) * tarp2;
+        -:  345:}
+        -:  346:
+        1:  347:void SAMANN::initializeWeights()
+        -:  348:{
+        1:  349:    int n = X.getObjectAt(0).getFeatureCount();
+        -:  350:    std::vector<double> w1Row, w2Row;
+        1:  351:    w1Row.reserve(n + 1);
+        1:  352:    w2Row.reserve(nNeurons + 1);
+        -:  353:    
+       12:  354:    for (int i = 0; i < nNeurons + 1; i++)
+        -:  355:    {
+       66:  356:        for (int j = 0; j < n + 1; j++)
+       55:  357:            w1Row.push_back(Statistics::getRandom(-0.1, 0.1, (i + 5 * j)));
+       11:  358:        w1.push_back(w1Row);
+        -:  359:        w1Row.clear();
+        -:  360:    }
+        -:  361:    
+        4:  362:    for (int i = 0; i < d + 1; i++)
+        -:  363:    {
+       36:  364:        for (int j = 0; j < nNeurons + 1; j++)
+       33:  365:            w2Row.push_back(Statistics::getRandom(-0.1, 0.1, (i + 5 * j)));
+        3:  366:        w2.push_back(w2Row);
+        -:  367:        w2Row.clear();
+        -:  368:    }
+        1:  369:}
+        -:  370:
+        1:  371:void SAMANN::initializeExitMatrixes()
+        -:  372:{
+        1:  373:    int m = X.getObjectCount();
+        1:  374:    Y_is = ObjectMatrix(m);
+        1:  375:    Y_pasl = ObjectMatrix(m);
+        -:  376:    std::vector<double> YisRow, YpaslRow;
+        1:  377:    YisRow.reserve(d + 1);
+        1:  378:    YpaslRow.reserve(nNeurons + 1);
+        -:  379:       
+      151:  380:    for (int i = 0; i < m; i++)
+        -:  381:    {
+      600:  382:        for (int j = 0; j < d + 1; j++)
+      450:  383:            YisRow.push_back(1.0);
+      150:  384:        Y_is.addObject(DataObject(YisRow));
+        -:  385:        
+     1800:  386:        for (int j = 0; j < nNeurons + 1; j++)
+     1650:  387:            YpaslRow.push_back(1.0);
+      150:  388:        Y_pasl.addObject(DataObject(YpaslRow));   
+        -:  389:        
+        -:  390:        YisRow.clear();
+        -:  391:        YpaslRow.clear();
+        -:  392:    }   
+        1:  393:}
+        -:  394:
+        1:  395:void SAMANN::initializeDeltaL()
+        -:  396:{
+        1:  397:    delta_L = ObjectMatrix(mTrain);
+        -:  398:
+        -:  399:    std::vector<double> deltaLRow;
+        1:  400:    deltaLRow.reserve(mTrain);
+        -:  401:    
+       71:  402:    for (int i = 0; i < mTrain; i++)
+        -:  403:    {
+     4970:  404:        for (int j = 0; j < mTrain; j++)
+     4900:  405:            deltaLRow.push_back(0.1);
+       70:  406:        delta_L.addObject(DataObject(deltaLRow));        
+        -:  407:        deltaLRow.clear();
+        -:  408:    }   
+        1:  409:}
+        -:  410:
+    #####:  411:std::vector<double> SAMANN::getStressErrors()
+        -:  412:{
+    #####:  413:    return stressErrors;
+        -:  414:}

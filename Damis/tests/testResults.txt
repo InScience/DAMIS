@@ -1,0 +1,95 @@
+-- Testing the read of existing correctly formated data file --
+Test passed.
+
+-- Testing the read of existing uncorrectly formated data file --
+Test passed.
+
+-- Testing the case of trying to read the non existing file --
+Test passed.
+
+-- Testing the capability to read large file --
+Test passed.
+
+-- Testing the capability to read medium large file --
+Test passed.
+
+-- Testing the capability to read very large file --
+Test passed.
+
+-- Testing write data to arff file --
+Test passed.
+
+-- Testing if Gutman matrix is 150x150 matrix --
+Test passed.
+
+-- Testing if [i][i] element is the sum of the remainder elements in the i-th row --
+Test passed.
+
+-- Testing if elements are 0 in the i-th row if objects i and j are identical --
+Test passed.
+
+-- Testing construction of large Gutman matrix --
+Test passed.
+
+DMA: -- Checking if number of rows of matrix Y is the same as X --
+DMA: Test passed.
+DMA: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+DMA: Test passed.
+DMA: -- Checking if Method is Converging --
+DMA: Test passed.
+PCA_d: -- Checking if number of rows of matrix Y is the same as X --
+PCA_d: Test passed.
+PCA_d: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+PCA_d: Test passed.
+PCA_d: -- Checking if Method is Working on Large Set of Data --
+PCA_d: Test passed.
+PCA_disp: -- Checking if number of rows of matrix Y is the same as X --
+PCA_disp: Test passed.
+PCA_disp: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+PCA_disp: Test passed.
+PCA_disp: -- Checking if Method is Working on Large Set of Data --
+PCA_disp: Test passed.
+SAMANN: -- Checking if number of rows of matrix Y is the same as X --
+SAMANN: Test passed.
+SAMANN: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SAMANN: Test passed.
+SDS_disp: -- Checking if number of rows of matrix Y is the same as X --
+SDS_disp: Test passed.
+SDS_disp: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SDS_disp: Test passed.
+SDS_pca: -- Checking if number of rows of matrix Y is the same as X --
+SDS_pca: Test passed.
+SDS_pca: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SDS_pca: Test passed.
+SMACOF: -- Checking if number of rows of matrix Y is the same as X --
+SMACOF: Test passed.
+SMACOF: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SMACOF: Test passed.
+SMACOF: -- Checking if Method is Converging --
+SMACOF: Test passed.
+SMACOFZEIDEL_desc: -- Checking if number of rows of matrix Y is the same as X --
+SMACOFZEIDEL_desc: Test passed.
+SMACOFZEIDEL_desc: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SMACOFZEIDEL_desc: Test passed.
+SMACOFZEIDEL_desc: -- Checking if Method is Converging --
+SMACOFZEIDEL_desc: Test passed.
+SMACOFZEIDEL_asc: -- Checking if number of rows of matrix Y is the same as X --
+SMACOFZEIDEL_asc: Test passed.
+SMACOFZEIDEL_asc: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SMACOFZEIDEL_asc: Test passed.
+SMACOFZEIDEL_asc: -- Checking if Method is Converging --
+SMACOFZEIDEL_asc: Test passed.
+SMACOFZEIDEL_rand: -- Checking if number of rows of matrix Y is the same as X --
+SMACOFZEIDEL_rand: Test passed.
+SMACOFZEIDEL_rand: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SMACOFZEIDEL_rand: Test passed.
+SMACOFZEIDEL_rand: -- Checking if Method is Converging --
+SMACOFZEIDEL_rand: Test passed.
+SOM: -- Checking if number of rows of matrix Y is less or equal to matrix X --
+SOM: Test passed.
+SOM: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SOM: Test passed.
+SOMMDS: -- Checking if number of rows of matrix Y is the same as X --
+SOMMDS: Test passed.
+SOMMDS: -- Checking if number of columns of matrix Y is the same as preffered dimension --
+SOMMDS: Test passed.
