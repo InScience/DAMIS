@@ -38,7 +38,8 @@ void DimReductionMethod::initializeProjectionMatrix(){
     {
         for (int j = 0; j < d; j++)
         {
-            DataObjectItem.push_back(Statistics::getRandom(-0.1, 0.1, (i + j * 5)));
+            double rnd = Statistics::getRandom(-5, 5);
+            DataObjectItem.push_back(rnd);
         }
         Y.addObject(DataObject(DataObjectItem));
         DataObjectItem.clear();

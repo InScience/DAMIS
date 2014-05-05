@@ -107,7 +107,7 @@ std::vector<unsigned int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
 
     do
     {
-        r = Statistics::getRandom(0, n, index);
+        r = Statistics::getRandom(0, n);
         index = static_cast<int>(r);
         while (currentIndexes.at(index) == -1)
             index = (index + 1) % n;

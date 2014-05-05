@@ -93,10 +93,10 @@ void ObjectMatrix::loadDataMatrix(){
 
     if (file.isSuccessfullyRead() == true)   // successful read
     {
-        std::vector< std::vector<double> > data = file.getData();
+        std::vector< std::vector<double>> data = file.getData();
         featureTitles = file.getAttributes();
 
-        std::vector< std::vector<double> > ::iterator dataObjectIterator;
+        std::vector< std::vector<double>> ::iterator dataObjectIterator;
 
         std::vector<double>::iterator featureIterator;
         std::vector<double> dataObjectItems;

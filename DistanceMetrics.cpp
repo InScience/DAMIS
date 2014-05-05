@@ -46,7 +46,8 @@ double DistanceMetrics::getEuclidean(DataObject obj1, DataObject obj2)
         diff = obj1.getFeatureAt(i) - obj2.getFeatureAt(i);
         s += diff * diff;
     }
-    return std::sqrt(s);
+    double to_return = std::sqrt(s);//0.0;
+    return to_return;
 }
 
 double DistanceMetrics::getChebyshev(DataObject obj1, DataObject obj2)

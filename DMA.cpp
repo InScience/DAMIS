@@ -53,10 +53,6 @@ ObjectMatrix DMA::getProjection(){
     ObjectMatrix gutman;
     Y_new = Y;
 
- /*   std::vector<unsigned int> objIndexes; objIndexes.reserve(m);
-    for (int i = 0; i < m; i++)
-        objIndexes.push_back(i);*/
-
     while (iteration < maxIteration && Epsilon > epsilon)
     {
         shuffle();
@@ -87,9 +83,10 @@ ObjectMatrix DMA::getProjection(){
     for (int i = 0; i < m; i++)
         {
             elAtIndex = shufledIndexes.at(i);
-            for (int j = 0; j < d; d++)
+            for (int j = 0; j < d; j++)
             {
                 Y.updateDataObject(elAtIndex, j, Y_new.getObjectAt(i).getFeatureAt(j));
+             //   std::cout << i  << " " << j <<std::endl;
             }
          }
     return  Y; // grazinant reikia atmaisyti atsizvelgiant i sufleYndexes istorija.
@@ -125,7 +122,7 @@ void DMA::shuffle()
     {
         j = shufledIndexes.at(i);
 
-        std::cout << j << std::endl;
+     //   std::cout << j << std::endl;
 
         Xshuffled.addObject(X.getObjectAt(j));
         Yshuffled.addObject(Y.getObjectAt(j));

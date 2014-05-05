@@ -34,7 +34,7 @@ MDS::MDS(double eps, int maxIter, int dimension){
     int m = X.getObjectCount();
     gutman = ObjectMatrix(m);
     std::vector<double> gutmanRow;
-    gutmanRow.reserve(m);
+    gutmanRow.resize(m, 0);
 
    /* for (int i = 0; i < m; i++)
         gutmanRow.push_back(0.0);*/
@@ -112,6 +112,7 @@ ObjectMatrix MDS::getGutman(int neighbour){
                 if (distYij > 0)
                 {
                     distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+                   // gutman.updateDataObject(i, j, -1.0 * distXij/distYij );
                     gutman.updateDataObject(i, j, -1.0 * distXij/distYij + 1.0);
                 }
                 else

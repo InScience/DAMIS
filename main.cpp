@@ -25,11 +25,11 @@
 #include "SOM.h"
 #include "SOMMDS.h"
 #include "DMA.h"
-#include "mpi_x86/mpi.h"
+#include "mpi_x86\mpi.h"
 #include "Projection.h"
 #include "PCA.h"
 #include "AdditionalMethods.h"
-#include "cmdLineParser/CommandLineParser.h"
+#include "cmdLineParser\CommandLineParser.h"
 
 #include <sstream>
 #include <algorithm>
@@ -94,6 +94,8 @@ int main(int argc, char** argv)
         tmp = cmdLine.get_arg("-al");
         std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::toupper);
 
+        Statistics::intSeed();
+
         if (tmp == "PCA")
         {
             tmp = cmdLine.get_arg("-projType");
@@ -107,6 +109,7 @@ int main(int argc, char** argv)
             else
             {
                 PCA_ *method = new PCA_(strToDouble(cmdLine.get_arg("-d")), true);
+
                 paralelCompute(pid, numOfProcs, method, resultFile, statFile);
             }
         }

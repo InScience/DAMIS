@@ -273,7 +273,7 @@ void SAMANN::getXp()
 {
     int m = X.getObjectCount(), i = 0, k = 0, index = 0;
     Xp = ObjectMatrix(mTrain);
-    double r = Statistics::getRandom(1, m, k);
+    double r = Statistics::getRandom(1, m);
     DataObject dObject;
     index = static_cast<int>(r);
     while (k < m)
@@ -354,7 +354,7 @@ void SAMANN::initializeWeights()
     for (int i = 0; i < nNeurons + 1; i++)
     {
         for (int j = 0; j < n + 1; j++)
-            w1Row.push_back(Statistics::getRandom(-0.1, 0.1, (i + 5 * j)));
+            w1Row.push_back(Statistics::getRandom(-1, 1));
         w1.push_back(w1Row);
         w1Row.clear();
     }
@@ -362,7 +362,7 @@ void SAMANN::initializeWeights()
     for (int i = 0; i < d + 1; i++)
     {
         for (int j = 0; j < nNeurons + 1; j++)
-            w2Row.push_back(Statistics::getRandom(-0.1, 0.1, (i + 5 * j)));
+            w2Row.push_back(Statistics::getRandom(-1, 1));
         w2.push_back(w2Row);
         w2Row.clear();
     }
