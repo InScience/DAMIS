@@ -1,0 +1,30 @@
+NetBeans
+-- GCC 4.4.6 --
+Change in main file 
+//#include "mpi_x86/mpi.h"
+#include <mpi.h>
+
+General source folders:
+algib
+cmdLineParser
+
+
+Choose compiler and linker mpic++ in project build properties.
+C++ compiler options:
+Include directories : .;./cmdLineParser
+Tools : mpic++
+AdditionalOptions: -std=c++0x // for enum
+
+
+-- Windows --
+You have to download HPC Pack 2012 R2 MS-MPI Redistributable Package 
+http://www.microsoft.com/en-us/download/confirmation.aspx?id=41634
+and install it.
+
+
+-- Windows MinGW GCC 4.8.2 --
+Choose compiler and linker g++ in project build Tools properties.
+
+
+-- Cygwin 4.8.2 --
+Choose compiler and linker g++ in project build Tools properties.
