@@ -25,6 +25,11 @@ public:
         * A destructor.
         */
 	virtual ~DimReductionMethod();
+        /** \fn virtual double getStress();
+         *  \brief Returns the stress error value.
+         *  \return error - The stress error value.
+         */
+    virtual double getStress();
 
 protected:
 	/**
@@ -34,7 +39,7 @@ protected:
     /**
 	 * Stress weight of the X matrix
 	 */
-	double weight;
+	//double weight;
 	/**
 	 * Projection Matrix
 	 */
@@ -56,14 +61,9 @@ protected:
         /** \fn void setProjectionDimension(int dimension);
          *  \brief Sets the projection dimension.
          *  \param dimension - a value assigned to \a d.
-         *
          */
 	void setProjectionDimension(int dimension);
-        /** \fn virtual double getStress();
-         *  \brief Returns the stress error value.
-         *  \return error - The stress error value.
-         */
-    virtual double getStress();
+
 
 
 

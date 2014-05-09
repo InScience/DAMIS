@@ -17,7 +17,7 @@
 #include <iostream>
 #include <iterator>
 #include <algorithm>    // std::transform
-//#include <fstream>
+#include "AdditionalMethods.h"
 
 PCA_::PCA_(){
 }
@@ -26,49 +26,13 @@ PCA_::~PCA_(){
 }
 
 PCA_::PCA_(double d, bool disp){
-    if (disp)
-    {
-        setProjectionDimension((int)d);
-        initializeProjectionMatrix();
-        ProjectXMatrix();
-    }
-    else
-    {
-        int n = X.getObjectCount();
-        int m = X.getObjectAt(0).getFeatureCount();
-        int dd = 0;
-
-        setProjectionDimension(m);
-        initializeProjectionMatrix();
-        ProjectXMatrix();
-
-        ObjectMatrix Y_visi = this->getProjection();
-        this->eigValues = this->getEigenValues();
-        double wholeSum = 0.0, tempSum = 0.0, perc = (double) d / 100.0;
-
-        for (int i = 0; i < m; i++)
-            wholeSum += eigValues(i);
-
-        for (int i = 0; i < m; i++)
-        {
-                tempSum += eigValues(dd);
-                dd++;
-            if (double(tempSum / wholeSum)  > perc)
-                break;
-        }
-
-        setProjectionDimension(dd);
-        initializeProjectionMatrix();
-
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < dd; j++)
-                Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));
-        }
-    }
+    this->d = d;
+    this->disp = disp;
+    X = ObjectMatrix(AdditionalMethods::inputDataFile);
+    X.loadDataMatrix();
 }
 
-PCA_::PCA_(ObjectMatrix Xmatrix, double disp){
+/*PCA_::PCA_(ObjectMatrix Xmatrix, double disp){
     X = Xmatrix;
     dispPart = disp;
     int n = X.getObjectCount();
@@ -80,7 +44,7 @@ PCA_::PCA_(ObjectMatrix Xmatrix, double disp){
     initializeProjectionMatrix();
     ProjectXMatrix();*/
 
-    ObjectMatrix Y_visi = pca.getProjection();
+   /* ObjectMatrix Y_visi = pca.getProjection();
     this->eigValues = pca.getEigenValues();
     double wholeSum = 0.0, tempSum = 0.0;
 
@@ -105,21 +69,65 @@ PCA_::PCA_(ObjectMatrix Xmatrix, double disp){
                 Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));
             }
     }
-}
+}*/
 
 PCA_::PCA_(ObjectMatrix objMatrix, int dim){
-   setProjectionDimension(dim);
     X = objMatrix;
-    initializeProjectionMatrix();
-    ProjectXMatrix();
+    this->disp = false;
+    this->d = dim;
+  // setProjectionDimension(dim);
+    /*initializeProjectionMatrix();
+    ProjectXMatrix();*/
 }
 
-double PCA_::getStress()
+/*double PCA_::getStress()
 {
     return DimReductionMethod::getStress();
-}
+}*/
 
 ObjectMatrix PCA_::getProjection(){
+
+    if (disp == false)
+    {
+        setProjectionDimension((int)d);
+        initializeProjectionMatrix();
+        ProjectXMatrix();
+    }
+    else
+    {
+        int n = X.getObjectCount();
+        int m = X.getObjectAt(0).getFeatureCount();
+        int dd = 0;
+
+        setProjectionDimension(m);
+        initializeProjectionMatrix();
+        ProjectXMatrix();
+
+        ObjectMatrix Y_visi = Y;
+        this->eigValues = this->getEigenValues();
+        double wholeSum = 0.0, tempSum = 0.0, perc = (double) d / 100.0;
+
+        for (int i = 0; i < m; i++)
+            wholeSum += eigValues(i);
+
+        for (int i = 0; i < m; i++)
+        {
+                tempSum += eigValues(dd);
+                dd++;
+            if (double(tempSum / wholeSum)  > perc)
+                break;
+        }
+
+        setProjectionDimension(dd);
+        initializeProjectionMatrix();
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < dd; j++)
+                Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));
+        }
+    }
+
     return Y;
 }
 
@@ -167,7 +175,7 @@ void PCA_::ProjectXMatrix()
         for (int i = 0; i < n; i++)
             wholeDisp += eigValues[i];
 
-        dispPart = tarpDisp / wholeDisp;
+    //    dispPart = tarpDisp / wholeDisp;
     }
 }
 
@@ -181,15 +189,15 @@ void PCA_::fromDataType(){
 
 }
 
-int PCA_::getDimension()
+/*int PCA_::getDimension()
 {
     return d;
-}
+}*/
 
-double PCA_::getDispersionPart()
+/*double PCA_::getDispersionPart()
 {
     return dispPart;
-}
+}*/
 
 alglib::real_1d_array PCA_::getEigenValues()
 {

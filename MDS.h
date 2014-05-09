@@ -7,8 +7,8 @@
 /*! \file MDS class
     \brief A class of methods and attributes for MDS algorithms.
  */
-#if !defined(EA_CDF28449_1ACC_4a74_A6EB_47124922ACEA__INCLUDED_)
-#define EA_CDF28449_1ACC_4a74_A6EB_47124922ACEA__INCLUDED_
+#if !defined(MDS_H)
+#define MDS_H
 
 #include "ObjectMatrix.h"
 #include "DimReductionMethod.h"
@@ -33,23 +33,23 @@ public:
         * An overloaded constructor that accepts: epsilon, the number of iterations,
          * projection dimension and the initial data matrix.
         */
-        MDS(double eps, int maxIter, int d, ObjectMatrix initialMatrix);
+    MDS(double eps, int maxIter, int d, ObjectMatrix initialMatrix);
         /** \fn int getIteration();
          *  \brief Returns the number of iterations performed.
          * \return iteration - the number of iterations performed.
          */
-        int getIteration();
+ //   int getIteration();
         /** \fn vector<double> getStressErrors();
          *  \brief Returns the list of stress errors.
          * \return stressErrors - the list of the stress errors.
          */
-        std::vector<double> getStressErrors();
+ //       std::vector<double> getStressErrors();
 protected:
         /** \fn double getEpsilon();
          *  \brief Returns the value of the \a epsilon.
          *  \return epsilon
          */
-	double getEpsilon();
+//	double getEpsilon();
         /** \fn ObjectMatrix getGutman();
          *  \brief Calculates the matrix of the Guttman.
          *  \return gutman - an object of the class \a ObjectMatrix.
@@ -66,27 +66,34 @@ protected:
          *  \param Y_new - projection matrix.
          *  \return gutman - an object of the class \a ObjectMatrix.
          */
-        ObjectMatrix getGutman(ObjectMatrix Y_new);
+    ObjectMatrix getGutman(ObjectMatrix Y_new);
+        /** \fn ObjectMatrix getGutman(ObjectMatrix Y_new, int j);
+         *  \brief Recalculates jth row and column of the matrix of the Guttman.
+         *  \param Y_new - projection matrix.
+         *  \param j - columns/row to recalculate.
+         *  \return gutman - an object of the class \a ObjectMatrix.
+         */
+    ObjectMatrix getGutman(ObjectMatrix Y_new, int j);
         /** \fn int getMaxIteration();
          *  \brief Returns the maximum number of iterations.
          * \return maxIteration - the maximum number of iterations.
          */
-	int getMaxIteration();
+///	int getMaxIteration();
         /** \fn virtual double getStress();
          *  \brief Returns the stress error value.
          *  \return error - the stress error value.
          */
-	virtual double getStress();
+	//virtual double getStress();
         /** \fn void setEpsilon(double eps);
          *  \brief Sets the value of epsilon.
          *  \param eps - the epsilon value.
          */
-	void setEpsilon(double eps);
+	//void setEpsilon(double eps);
         /** \fn void setMaxIteration(int maxIter);
          *  \brief Sets the maximum number of iterations.
          *  \param maxIter - the number of iterations.
          */
-	void setMaxIteration(int maxIter);
+	//void setMaxIteration(int maxIter);
         /** \var double epsilon;
          *  \brief Epsilon value.
          */
@@ -99,6 +106,15 @@ protected:
          *  \brief The list of stress errors.
          */
         std::vector<double> stressErrors;
+
+        /** \var ObjectMatrix gutman;
+         *  \brief Gutman matrix.
+         */
+        ObjectMatrix gutman;
+
+
+        //void initGutmanMatrix(int mSize);
+
 private:
         /** \fn double getWeight(int i, int j);
          *  \brief Calculates the weight of the \a i-th and the \a j-th DataObjects.
@@ -110,14 +126,10 @@ private:
 
        	        /** \fn double getStressWeight();
          *  \brief Calculates the weight of the upper left matrix triangle.
-         *  \param weightType - indicates whitch weight should be returned according to MDS error
+         *  \param weightType - indicates which weight should be returned according to MDS error
          *  \return weight - the weight of the upper left matrix triangle.
          */
-        virtual double getStressWeight(int weightType = 1);
+//        virtual double getStressWeight(int weightType = 1);
 
-        /** \var ObjectMatrix gutman;
-         *  \brief Gutman matrix.
-         */
-        ObjectMatrix gutman;
 };
-#endif // !defined(EA_CDF28449_1ACC_4a74_A6EB_47124922ACEA__INCLUDED_)
+#endif // !defined(MDS_H)

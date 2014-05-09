@@ -104,6 +104,20 @@ alglib::real_1d_array AdditionalMethods::ObjectMatrixTo1DArray(ObjectMatrix matr
     return toReturn;
 }
 
+alglib::real_1d_array AdditionalMethods::DataObjectTo1DArray(DataObject dataObject)
+{
+    alglib::real_1d_array toReturn;
+//    int m = matrix.getObjectCount();
+    int n = dataObject.getFeatureCount();
+    toReturn.setlength(n);
+
+   // for (int i = 0; i < m; i++)
+        for (int j = 0; j < n; j++)
+            toReturn(j) = dataObject.getFeatureAt(j);
+
+    return toReturn;
+}
+
 ObjectMatrix AdditionalMethods::alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount)
 {
     int m = array.length() / featureCount;
@@ -118,6 +132,24 @@ ObjectMatrix AdditionalMethods::alglib1DArrayToObjectMatrix(alglib::real_1d_arra
         toReturn.addObject(DataObject(dataObjectFeatures));
         dataObjectFeatures.clear();
     }
+    return toReturn;
+}
+
+DataObject AdditionalMethods::alglib1DArrayToDataObject(alglib::real_1d_array array)
+{
+    int m = array.length();// / featureCount;
+    DataObject toReturn;
+    std::vector<double> dataObjectFeatures;
+    dataObjectFeatures.reserve(m);
+
+ /*   for (int i = 0; i < m; i++)
+    {*/
+        for (int j = 0; j < m; j++)
+            dataObjectFeatures.push_back(array(j));
+        /*toReturn.addObject(DataObject(dataObjectFeatures));
+        dataObjectFeatures.clear();*/
+        toReturn = DataObject(dataObjectFeatures);
+    //}
     return toReturn;
 }
 

@@ -62,9 +62,25 @@ private:
          *  \brief SOM quantization error.
          */
         double som_qe;
+        /** \var double eps;
+         *  \brief Difference between SMACOF errors.
+         */
+        double eps;
+        /** \var double eps;
+         *  \brief Difference between SMACOF errors.
+         */
+        int maxIter;
+        /** \var int maxIter
+         *  \brief Number of SMACOF iterations.
+         */
+        double d;
         /** \var double mds_error;
          *  \brief MDS error.
          */
         double mds_error;
+        /** \var SMACOF smcf;
+         *  \brief POinter to SMACOF object.
+         */
+        SMACOF *smcf;
 };
 #endif // !defined(SOMMDS_H)

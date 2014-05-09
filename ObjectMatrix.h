@@ -43,12 +43,12 @@ public:
         /**
         * An overloaded constructor that accepts the integer numbers \a m, \a n and \a k as the size dimensions of the an ObjectMatrix.
         */
-	ObjectMatrix(int m, int n, int k);
+        ObjectMatrix(int m, int n, int k);
         /** \fn void addObject(DataObject object);
          *  \brief Adds the DataObject to the set of DataObjects.
          *  \param dataObject - the DataObject that needs to be added to the DataObjects list.
          */
-	void addObject(DataObject dataObject);
+        void addObject(DataObject dataObject);
         /** \fn void addObjectTo(int index, DataObject dataObject);
          *  \brief Adds the DataObject to the set of DataObjects.
          *  \param index - the index of the row.
@@ -60,7 +60,7 @@ public:
          *  \param i - the index of the DataObject that needs to be returned from the DataObjects list.
          *  \return dataObject - the \a i-th DataObject from the set of the DataObjects.
          */
-	DataObject getObjectAt(int i);
+        DataObject getObjectAt(int i);
         /** \fn DataObject getObjectAt(int i, int j);
          *  \brief Returns the DataObject at index \a i and \a j from the set of the DataObjects.
          *  \param i - the row number of the DataObject that needs to be returned from the DataObjects list.
@@ -124,7 +124,7 @@ private:
         /** \var vector<vector<DataObject> > DataObjects2D;
          *  \brief The set of the sets of DataObjects.
          */
-        std::vector<std::vector<DataObject> > DataObjects2D;
+        std::vector<std::vector<DataObject>> DataObjects2D;
         /** \var int objectCount;
          *  \brief The number of DataObjects in the set of the DataObjects.
          */
@@ -132,7 +132,7 @@ private:
         /** \var double weight;
          *  \brief weight of the distances in X matrix.
          */
-        double weight;
+        double _weight;
         /** \var vector<string> featureTitles;
          *  \brief The set of feature titles.
          */

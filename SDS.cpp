@@ -17,8 +17,9 @@
 #include "AdditionalMethods.h"
 #include "ObjectMatrix.h"
 #include <float.h>
-#include <fstream>
+//#include <fstream>
 #include <cmath>
+#include <iostream>
 
 /** \class StaticData
  *  \brief A class of static attributes for passing data to alglib's static method.
@@ -42,11 +43,13 @@ SDS::~SDS(){
 
 }
 
-SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInitt, int nofBaseVect, DistanceMetricsEnum distMetrics){
+SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInit, int nofBaseVect, DistanceMetricsEnum distMetrics):MDS(eps, maxIter, dim){
+    X = ObjectMatrix(AdditionalMethods::inputDataFile);
+    X.loadDataMatrix();
     epsilon = eps;
     maxIteration = maxIter;
-    d = dim;
-    initMethod = baseVectInitt;
+  //  d = dim;
+    initMethod = baseVectInit;
     nb = nofBaseVect;
     distMethod = distMetrics;
 }
@@ -65,38 +68,22 @@ ObjectMatrix SDS::getProjection(){
     switch (initMethod)
     {
         case 1: proj = Projection::projectMatrix(RAND, X);
-                index = ShufleObjects::shufleObjectMatrix(BUBLESORTDSC, proj);
-                step = m / nb;
-                for (int i = 0; i < nb; i++)
-                {
-                    rest = index.at(i);
-                    index[i] = index.at(i * step);
-                    index[i * step] = rest;
-                }
                 break;
         case 2: proj = Projection::projectMatrix(PCA, X);
-                index = ShufleObjects::shufleObjectMatrix(BUBLESORTDSC, proj);
-                step = m / nb;
-                for (int i = 0; i < nb; i++)
-                {
-                    rest = index.at(i);
-                    index[i] = index.at(i * step);
-                    index[i * step] = rest;
-                }
                 break;
         case 3: proj = Projection::projectMatrix(DISPERSION, X);
-                index = ShufleObjects::shufleObjectMatrix(BUBLESORTDSC, proj);
-                step = m / nb;
-                for (int i = 0; i < nb; i++)
-                {
-                    rest = index.at(i);
-                    index[i] = index.at(i * step);
-                    index[i * step] = rest;
-                }
                 break;
         default: proj = Projection::projectMatrix(DISPERSION, X);
-                index = ShufleObjects::shufleObjectMatrix(RANDOM, proj);
                 break;
+    }
+
+    index = ShufleObjects::shufleObjectMatrix(BUBLESORTDSC, proj); //works slow
+    step = m / nb;
+    for (int i = 0; i < nb; i++)
+    {
+        rest = index.at(i);
+        index.at(i) = index.at(i * step);
+        index.at(i * step) = rest;
     }
 
     for (int i = 0; i < m; i++)
@@ -112,23 +99,37 @@ ObjectMatrix SDS::getProjection(){
     SMACOF smcf(epsilon, maxIteration, d, StaticData::X_base, StaticData::Y_base);
     StaticData::Y_base = smcf.getProjection();
 
-    Initialize();
-
-    getQN();
+    Initialize(); // get the nearest
 
     Y.clearDataObjects();
 
     for (int i = 0; i < nb; i++)
         Y.addObject(StaticData::Y_base.getObjectAt(i));
 
-    for (int i = 0; i < m - nb; i++)
-        Y.addObject(Y_new.getObjectAt(i));
+//sudedam tai kas grazinama is QN
+ObjectMatrix tmpX;
+//ObjectMatrix retMat;
+    for (int i = 0; i < m - nb; i++) //redo slow call and much more
+        {
+            //StaticData::X_new.clearDataObjects();
+            tmpX.addObject(X.getObjectAt(index.at(nb + i)));
+            StaticData::X_new = tmpX;
 
+           // StaticData::X_new.addObject(X.getObjectAt(index.at(nb + i)));
+           // tmpY.addObject(Y_new.getObjectAt(i));
+            //std::cout << tmpY.getObjectAt(0).getFeatureAt(0) <<" " << tmpY.getObjectAt(0).getFeatureAt(1) << std::endl;
+            //std::cout << i << std::endl;
+           // retMat = getQN(tmpY);
+            Y.addObject(getQN(Y_new.getObjectAt(i))) ;//retMat.getObjectAt(0));
+         //   tmpY.clearDataObjects();
+            tmpX.clearDataObjects();
+        }
     return  Y;
 }
 
-void SDS::getQN(){
-    int m = Y_new.getObjectCount();
+DataObject SDS::getQN(DataObject Yqn)
+{
+    int m = 1; // number of objects that will be passed to Newton
     alglib::minlbfgsstate state;
     alglib::minlbfgsreport rep;
     double epsg = epsilon;
@@ -136,18 +137,18 @@ void SDS::getQN(){
     double epsx = 0;
     alglib::ae_int_t maxits = maxIteration;
     alglib::real_1d_array Ynew;
-    Ynew = AdditionalMethods::ObjectMatrixTo1DArray(Y_new);
+    Ynew = AdditionalMethods::DataObjectTo1DArray(Yqn);
 
     alglib::minlbfgscreate(m, Ynew, state);
     alglib::minlbfgssetcond(state, epsg, epsf, epsx, maxits);
     alglib::minlbfgsoptimize(state,  E_SDS, NULL, NULL);
     alglib::minlbfgsresults(state, Ynew, rep);
 
-    Y_new = AdditionalMethods::alglib1DArrayToObjectMatrix(Ynew, d);
+    return AdditionalMethods::alglib1DArrayToDataObject(Ynew);
 }
 
-double SDS::getStress(){
-    return MDS::getStress();
+/*double SDS::getStress(){
+    return DimReductionMethod::getStress();
 
    /* int m = X.getObjectCount();
     double dist1 = 0.0, dist2 = 0.0;
@@ -169,8 +170,8 @@ double SDS::getStress(){
             dist2 += pow(distX - distY, 2);
         }
 
-    return dist1 + dist2;*/
-}
+    return dist1 + dist2;
+}*/
 
 void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d_array &grad, void *ptr)
 {
@@ -190,13 +191,26 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
         items.clear();
     }
 
-    for (int i = 0; i < sm - 1; i++)
+    double tmp;
+
+    for (int i = 0; i < d * sm; i++)
+        grad[i] = 0.0;
+
+    for (int i = 0; i < sm ; i++)
     {
-        for (int j = i + 1; j < sm; j++)
+        for (int j = 0; j < sm; j++)
         {
             distX = DistanceMetrics::getDistance(StaticData::X_new.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
             distY = DistanceMetrics::getDistance(dd[i], dd[j], EUCLIDEAN);
-            f1 += std::pow(distX - distY, 2);
+            tmp = distX - distY;
+            f1 += tmp * tmp;
+            if (distY != 0)
+            {
+                for (int  k = 0; k < d; k++)
+                {
+                    grad[j + k] += 2 * (distX - distY) / distY * (Ynew[d * i + k] - Ynew[d * j + k]);
+                }
+            }
         }
     }
 
@@ -206,50 +220,64 @@ void SDS::E_SDS(const alglib::real_1d_array &Ynew, double &func, alglib::real_1d
         {
             distX = DistanceMetrics::getDistance(StaticData::X_base.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
             distY = DistanceMetrics::getDistance(StaticData::Y_base.getObjectAt(i), dd[j], EUCLIDEAN);
-            f2 += std::pow(distX - distY, 2);
+            tmp = distX - distY;
+            f2 += tmp * tmp;
+            if (distY != 0)
+            {
+                for (int  k = 0; k < d; k++)
+                {
+                    grad[j + k] += 2 * (distX - distY) / distY * (StaticData::Y_base.getObjectAt(i).getFeatureAt(k) - Ynew[d * j + k]);
+                }
+            }
         }
     }
 
     func = f1 + f2;
 
-    for (int i = 0; i < sm - 1; i++)
+
+    /*for (int i = 0; i < sm; i++)
     {
-        grad[i] = 0.0;
-        for (int j = i + 1; j < sm; j++)
+        for (int j = 0; j < sm; j++)
         {
             distX = DistanceMetrics::getDistance(StaticData::X_new.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
             distY = DistanceMetrics::getDistance(dd[i], dd[j], EUCLIDEAN);
             if (distY != 0)
-                grad[i] += (distX - distY) / distY;
+                for (int  k = 0; k < d; k++)
+                    {
+                        grad[j + k] += 2 * (distX - distY) / distY * (Ynew[d * i + k] - Ynew[d * j + k]);
+                    }
         }
     }
-
     for (int i = 0; i < nb; i++)
     {
         for (int j = 0; j < sm; j++)
         {
             distX = DistanceMetrics::getDistance(StaticData::X_base.getObjectAt(i), StaticData::X_new.getObjectAt(j), EUCLIDEAN);
             distY = DistanceMetrics::getDistance(StaticData::Y_base.getObjectAt(i), dd[j], EUCLIDEAN);
-            if (distY != 0)
-                grad[j] += (distX - distY) / distY;
+
         }
-    }
+    }*/
 }
 
 void SDS::Initialize()
 {
     int m = X.getObjectCount();
-    int closest_base = 0;
-    double min_dist = DBL_MAX;
+    int closest_base;
+    double min_dist;
     double dist_ij;
+    DataObject objXi;
+
+
 
     for (int i = 0; i < m - nb; i++)
     {
         min_dist = DBL_MAX;
         closest_base = 0;
+
+        objXi = StaticData::X_new.getObjectAt(i);
         for (int j = 0; j < nb; j++)
         {
-            dist_ij = DistanceMetrics::getDistance(StaticData::X_base.getObjectAt(j), StaticData::X_new.getObjectAt(i), EUCLIDEAN);
+            dist_ij = DistanceMetrics::getDistance(StaticData::X_base.getObjectAt(j), objXi, EUCLIDEAN);
             if (dist_ij < min_dist)
             {
                 min_dist = dist_ij;

@@ -7,8 +7,8 @@
 /*! \file DMA class
     \brief A class of methods and attributes for DMA algorithm.
  */
-#if !defined(EA_3155AA55_4FD7_44fa_8149_A99119949EDB__INCLUDED_)
-#define EA_3155AA55_4FD7_44fa_8149_A99119949EDB__INCLUDED_
+#if !defined(DMA_H)
+#define DMA_H
 
 #include "ObjectMatrix.h"
 #include "MDS.h"
@@ -25,7 +25,7 @@ public:
         /**
         * An overloaded constructor that accepts epsilon (\a eps), number of iterations (\a maxIter), dimension (\a d), number of neighbors (\a neighbors) and initial ObjectMatrix (\a initialX) that needs to be projected.
         */
-        DMA(double eps, int maxIter, int d, int neighbors, ObjectMatrix initialX);
+ //       DMA(double eps, int maxIter, int d, int neighbors, ObjectMatrix initialX);
         /**
         * An overloaded constructor that accepts epsilon (\a eps), number of iterations (\a maxIter), dimension (\a d), number of neighbors (\a neighbors).
         */
@@ -49,7 +49,7 @@ public:
          *  \brief Returns the stress error value.
          *  \return error - The stress error value.
          */
-    virtual double getStress();
+ //   virtual double getStress();
 
 private:
         /** \var int neighbourNumber;
@@ -75,4 +75,4 @@ private:
          */
         std::vector<unsigned int> shufledIndexes;
 };
-#endif // !defined(EA_3155AA55_4FD7_44fa_8149_A99119949EDB__INCLUDED_)
+#endif // !defined(DMA_H)

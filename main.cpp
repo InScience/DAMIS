@@ -73,10 +73,6 @@ int main(int argc, char** argv)
 
     if (!inputFile.empty() || !resultFile.empty() || !statFile.empty())
     {
-        /*std::cout <<"Input file: " << inputFile << std::endl;
-        std::cout <<"Result file: " << resultFile << std::endl;
-        std::cout <<"Stat file: " << statFile << std::endl;*/
-
         AdditionalMethods::inputDataFile.assign(inputFile);
 
             //generate file name for X distance matrix
@@ -94,7 +90,7 @@ int main(int argc, char** argv)
         tmp = cmdLine.get_arg("-al");
         std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::toupper);
 
-        Statistics::intSeed();
+        Statistics::initSeed();
 
         if (tmp == "PCA")
         {
@@ -153,7 +149,7 @@ int main(int argc, char** argv)
             else
             {
                 //SMACOFZEIDEL(double eps, int maxIter, int d, ShufleEnum shEnum);
-                SMACOFZEIDEL *method = new SMACOFZEIDEL(strToDouble(cmdLine.get_arg("-eps")), strToInt(cmdLine.get_arg("-maxIter")), strToInt(cmdLine.get_arg("-d")), BUBLESORTDSC); // sorting method may be other
+                SMACOFZEIDEL *method = new SMACOFZEIDEL(strToDouble(cmdLine.get_arg("-eps")), strToInt(cmdLine.get_arg("-maxIter")), strToInt(cmdLine.get_arg("-d")), RANDOM); // sorting method may be other
                 //std::cout << strToDouble(cmdLine.get_arg("-eps")) << strToInt(cmdLine.get_arg("-maxIter")) << strToInt(cmdLine.get_arg("-d")) << BUBLESORTDSC << (cmdLine.get_arg("-zeidel"));
                 paralelCompute(pid, numOfProcs, method, resultFile, statFile);
             }
@@ -171,7 +167,7 @@ int main(int argc, char** argv)
             //SOMMDS mthd11(epsilon, maxIter, d, 100, 3, 5);
             SOMMDS *method = new SOMMDS(strToDouble(cmdLine.get_arg("-eps")), strToInt(cmdLine.get_arg("-maxIter")), strToInt(cmdLine.get_arg("-mdsProjection")),strToInt(cmdLine.get_arg("-rows")),strToInt(cmdLine.get_arg("-columns")), strToInt(cmdLine.get_arg("-eHat")));
             //method.
-            std::cout << strToDouble(cmdLine.get_arg("-eps")) << strToInt(cmdLine.get_arg("-maxIter")) << strToInt(cmdLine.get_arg("-mdsProjection")) << strToInt(cmdLine.get_arg("-rows")) << strToInt(cmdLine.get_arg("-columns")) << strToInt(cmdLine.get_arg("-eHat"));
+//            std::cout << strToDouble(cmdLine.get_arg("-eps")) << strToInt(cmdLine.get_arg("-maxIter")) << strToInt(cmdLine.get_arg("-mdsProjection")) << strToInt(cmdLine.get_arg("-rows")) << strToInt(cmdLine.get_arg("-columns")) << strToInt(cmdLine.get_arg("-eHat"));
             paralelCompute(pid, numOfProcs, method, resultFile, statFile);
         }
         else if (tmp == "SOM")
@@ -189,22 +185,6 @@ int main(int argc, char** argv)
     {
         std::cout << "Input/output file parameter(s) not found";
     }
-
-    /*PCA_ mthd1(d);
-    PCA_ mthd2(80.0, true);*/
-    //PCA mthd1((int)2);
-    //PCA mthd2((double)10.0);
-    //SDS mthd3(epsilon, maxIter, d, DISPERSION, 50, EUCLIDEAN);
-    /*SMACOFZEIDEL mthd4 (epsilon, maxIter, d, BUBLESORTDSC);
-    SMACOFZEIDEL mthd5 (epsilon, maxIter, d, BUBLESORTASC);
-    SMACOFZEIDEL mthd6 (epsilon, maxIter, d, RANDOM);
-    SMACOF mthd7 (epsilon, maxIter, d);*/
-    //SAMANN mthd8(70, 10, 10.0, 50);
-    //DMA mthd9(epsilon, 10, d, 15);
-    //SOM mthd10(100, 3, 5);
-    //mthd10.getProjection();
-    //SOMMDS mthd11(epsilon, maxIter, d, 100, 3, 5);
-
 
     MPI_Finalize();
     return 0;
@@ -229,29 +209,17 @@ void paralelCompute(int pid, int numOfProcs, T *mthd, std::string resultFile, st
         if (numOfProcs == 1)
         {
             Y = mthd->getProjection();
-            /* Y = mthd2.getProjection();
-             Y = mthd3.getProjection();
-             Y = mthd4.getProjection();
-             Y = mthd5.getProjection();
-             Y = mthd6.getProjection();
-             Y = mthd7.getProjection();
-             Y = mthd8.getProjection();
-             Y = mthd9.getProjection();
-             Y = mthd10.getProjection();
-             Y = mthd11.getProjection();*/
-                Y.saveDataMatrix(resultFile.c_str());
-                ARFF::writeStatData(statFile, mthd->getStress(), MPI_Wtime() - t_start);
+            Y.saveDataMatrix(resultFile.c_str());
+            ARFF::writeStatData(statFile, mthd->getStress(), MPI_Wtime() - t_start);
         }
         else
         {
             stressErrors = new double[numOfProcs];     // surinktu paklaidu masyvas (testavimui)
-            //Y = mthd7.getProjection();
             Y = mthd->getProjection();
             int n = Y.getObjectCount();
             int m = Y.getObjectAt(0).getFeatureCount();
 
              stressErrors[0] = mthd->getStress();
-            //stressErrors[0] = method.getQuantizationError(); // SOM does not have get stress
 
             for (int i = 1; i < numOfProcs; i++)
             {
@@ -301,14 +269,12 @@ void paralelCompute(int pid, int numOfProcs, T *mthd, std::string resultFile, st
 
             }
         }
-        //std::cout<<"Calculation time: "<<t_end - t_start<<" s."<<std::endl;
     }
     else
     {
         Y = mthd->getProjection();
 
         double stress = mthd->getStress();
-        //double stress = method.getQuantizationError(); // SOM does not have get stress
         MPI_Send(&stress, 1, MPI_DOUBLE, 0, pid, MPI_COMM_WORLD);  // siunciama paklaida teviniam procesui
         MPI_Recv(&send, 1, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimamas pranesimas ar siusti Y
 
@@ -346,7 +312,6 @@ double strToDouble(std::string cmdParam)
     double x = strtod(str, &err);
     if (*err == 0 && cmdParam !="")
     {
-        //return x; //atof(cmdParam.c_str());
         return atof(cmdParam.c_str());
     }
 }
@@ -358,7 +323,6 @@ int strToInt(std::string cmdParam)
     double x = strtod(str, &err);
     if (*err == 0 && cmdParam !="")
     {
-        //return x; //atof(cmdParam.c_str());
         return atoi(cmdParam.c_str());
     }
 }

@@ -45,7 +45,7 @@ public:
          *  \brief Returns the stress error value.
          *  \return error - Stress error value.
          */
-	virtual double getStress();
+	//virtual double getStress();
 private:
 	/**
 	 * Base vector initialization method
@@ -63,10 +63,11 @@ private:
 	 * Number of base vectors
 	 */
 	int nb;
-        /** \fn void getQN();
-         *  \brief Calculates remainder vectors projection.
+        /** \fn DataObject getQN();
+         *  \brief Calculates one dataobject projection.
+         *  \param Yqn - one dataObject for projection calculation.
          */
-	void getQN();
+	DataObject getQN(DataObject Yqn);
         /** \fn void Initialize();
          *  \brief Initialization of remainder vectors matrix \a Y_new.
          */

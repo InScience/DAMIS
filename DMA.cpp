@@ -12,6 +12,7 @@
 #include <fstream>
 #include "DistanceMetrics.h"
 #include "DistanceMetricsEnum.h"
+#include "AdditionalMethods.h"
 #include <cmath>
 #include <iostream>
 
@@ -29,14 +30,32 @@ DMA::~DMA(){
 
 DMA::DMA(double eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
+    X = ObjectMatrix(AdditionalMethods::inputDataFile);
+    X.loadDataMatrix();
+    int m = X.getObjectCount();
+    gutman = ObjectMatrix(m);
+    std::vector<double> gutmanRow;
+    gutmanRow.resize(m, 0);
+
+    for (int i = 0; i < m; i++)
+        gutman.addObject(DataObject(gutmanRow));
+
     initializeProjectionMatrix();
 }
 
-DMA::DMA(double eps, int maxIter, int d, int neighbours, ObjectMatrix x):MDS(eps, maxIter, d){
+/*DMA::DMA(double eps, int maxIter, int d, int neighbours, ObjectMatrix x):MDS(eps, maxIter, d){
     neighbourNumber = neighbours;
     X = x;
+    int m = X.getObjectCount();
+    gutman = ObjectMatrix(m);
+    std::vector<double> gutmanRow;
+    gutmanRow.resize(m, 0);
+
+    for (int i = 0; i < m; i++)
+        gutman.addObject(DataObject(gutmanRow));
+
     initializeProjectionMatrix();
-}
+}*/
 
 int DMA::getNeighbours(){
     return neighbourNumber;
@@ -44,19 +63,22 @@ int DMA::getNeighbours(){
 
 ObjectMatrix DMA::getProjection(){
     stressErrors.reserve(maxIteration);
-    m = X.getObjectCount();
+    int m = X.getObjectCount();
     int iteration = 0;
-    stressErrors.push_back(getStress());
+
+    stressErrors.push_back(DimReductionMethod::getStress());
+
     double Epsilon = DBL_MAX;
-    double sum = 0.0;
-    ObjectMatrix Y_new(m);
+    double sum;// = 0.0;
+    ObjectMatrix Y_new(m), Xinit(m);
     ObjectMatrix gutman;
-    Y_new = Y;
+    Y_new = Y; //keeps order of the object such as it is at X matrix
+    Xinit = X;
 
     while (iteration < maxIteration && Epsilon > epsilon)
     {
         shuffle();
-        gutman = getGutman(neighbourNumber);
+        gutman = getGutman(neighbourNumber);  //atsizvelgiant i naujus indeksus
 
         for (int i = 0; i < m; i++)
         {
@@ -66,30 +88,19 @@ ObjectMatrix DMA::getProjection(){
                 for (int k = (i - neighbourNumber); k <= (i + neighbourNumber); k++)
                     if (k >= 0 && k < m)
                         if (k !=i)
-                            sum += gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j); // +1 pridedamas formuojant gutmano matrica
+                            sum += gutman.getObjectAt(i).getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j); // +1 pridedamas formuojant gutmano matrica //Y u=tikrina nauj1 tvarka po sumai6ymo
                         else
                             sum += (gutman.getObjectAt(i).getFeatureAt(k) - getV(i)) * Y.getObjectAt(k).getFeatureAt(j);
-                Y_new.updateDataObject(i, j, Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / getV(i));
+                Y_new.updateDataObject(shufledIndexes.at(i), j, Y.getObjectAt(i).getFeatureAt(j) + 0.5 * sum / getV(i)); //atnaujinam ne i6 eiles o tai ka k1 rodo sumai6ymas
             }
         }
-        Y = Y_new;
+        Y = Y_new; //permetam atgal eik6mes kad nereiktu keisti stress skaiciavimo
+        X = Xinit;
         iteration++;
-        stressErrors.push_back(getStress());
-        Epsilon = stressErrors.at(iteration - 1) - stressErrors.at(iteration);
+        stressErrors.push_back(DimReductionMethod::getStress());
+        Epsilon = std::fabs(stressErrors.at(iteration - 1) - stressErrors.at(iteration));
     }
-//restore vector order
-    int elAtIndex;
-    Y_new = Y;
-    for (int i = 0; i < m; i++)
-        {
-            elAtIndex = shufledIndexes.at(i);
-            for (int j = 0; j < d; j++)
-            {
-                Y.updateDataObject(elAtIndex, j, Y_new.getObjectAt(i).getFeatureAt(j));
-             //   std::cout << i  << " " << j <<std::endl;
-            }
-         }
-    return  Y; // grazinant reikia atmaisyti atsizvelgiant i sufleYndexes istorija.
+    return  Y;
 }
 
 int DMA::getV(int i)
@@ -114,32 +125,19 @@ void DMA::shuffle()
     ObjectMatrix Xshuffled(m);
     ObjectMatrix Yshuffled(m);
 
-    shufledIndexes.reserve(m);
-
     shufledIndexes = ShufleObjects::shufleObjectMatrix(RANDOM, Y);
 
     for (int i = 0; i < m; i++)
     {
         j = shufledIndexes.at(i);
-
-     //   std::cout << j << std::endl;
-
         Xshuffled.addObject(X.getObjectAt(j));
         Yshuffled.addObject(Y.getObjectAt(j));
     }
     X = Xshuffled;
-
-   /* for (int i = 0; i < m; i++)
-    {
-        j = shufledIndexes.at(i);
-        Yshuffled.addObject(Y.getObjectAt(j));
-    }*/
     Y = Yshuffled;
-   // X = Xshuffled;
-
 }
 
-double DMA::getStress(){
+/*double DMA::getStress(){
     /*double sum1 = 0.0, sum2 = 0.0, stress = 0.0;
     int m = X.getObjectCount();
     double distX = 0.0;
@@ -156,6 +154,6 @@ double DMA::getStress(){
         }
     }
     stress = std::sqrt(sum1 / sum2);
-    return stress;*/
+    return stress;
     return MDS::getStress();
-}
+}*/

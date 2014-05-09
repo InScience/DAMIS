@@ -15,10 +15,10 @@
 
 
 HPCMethod::HPCMethod(){
-    std::string file_name = AdditionalMethods::inputDataFile;
+ //   std::string file_name = AdditionalMethods::inputDataFile;
     //std::string file_name = "arff_files/iris.arff";
-    X = ObjectMatrix(file_name);
-    X.loadDataMatrix();
+   /* X = ObjectMatrix(file_name);
+    X.loadDataMatrix();*/
 }
 
 
@@ -26,6 +26,7 @@ HPCMethod::~HPCMethod(){
 
 }
 
-void HPCMethod::sendMessage(){
+void HPCMethod::sendMessage()
+{
 
 }

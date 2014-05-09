@@ -16,7 +16,7 @@
 #include <cmath>
 #include <iostream>
 
-
+//double ObjectMatrix::_weight = 0;
 
 ObjectMatrix::ObjectMatrix(){
     DataObjects.reserve(0);   //1
@@ -91,6 +91,8 @@ void ObjectMatrix::loadDataMatrix(){
     const char* path = fileName.c_str();
     ARFF file(path);
 
+    ObjectMatrix::_weight = 0;
+
     if (file.isSuccessfullyRead() == true)   // successful read
     {
         std::vector< std::vector<double>> data = file.getData();
@@ -114,7 +116,7 @@ void ObjectMatrix::loadDataMatrix(){
 
         //Calculate matrix X distances between vectors
 
-        weight = 0;
+        //ObjectMatrix::_weight = 0;
         int i, j, z;
         int n =  data.at(0).size(); //features
         double diff, sRow, tmpVal;
@@ -126,7 +128,7 @@ void ObjectMatrix::loadDataMatrix(){
         {
             for (j = i + 1; j < objectCount; j++)
             {
-                sRow = 0;
+                sRow = 0.0;
                 for (z = 0; z < n; z++)
                 {
                     diff  = data.at(i).at(z) - data.at(j).at(z);
@@ -134,7 +136,7 @@ void ObjectMatrix::loadDataMatrix(){
                 }
                 tmpVal = std::sqrt(sRow);
                 fwrite(&tmpVal, sizeof(double), 1, distFile);
-                weight += sRow;
+                ObjectMatrix::_weight += sRow;
             }
         }
     fclose(distFile);
@@ -142,7 +144,7 @@ void ObjectMatrix::loadDataMatrix(){
     }
     else
         {
-            weight = 0;
+            //_weight = 0;
             objectCount = 0;
         }
 }
@@ -155,6 +157,9 @@ void ObjectMatrix::saveDataMatrix(const char* path){
 void ObjectMatrix::clearDataObjects()
 {
     DataObjects.clear();
+   /* int c = DataObjects.size();
+    c++;*/
+    objectCount = 0;
 }
 
  /*double ObjectMatrix::getDistanceBetween(int i, int j)
@@ -180,5 +185,5 @@ void ObjectMatrix::clearDataObjects()
 
  double ObjectMatrix::getWeight()
  {
-    return weight;
+    return ObjectMatrix::_weight;
  }

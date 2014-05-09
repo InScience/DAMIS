@@ -39,7 +39,7 @@ public:
          * An overloaded constructor that accepts: initial projection matrix, epsilon,
          * the maximum number of iterations and projection dimension.
          */
-        SMACOF(ObjectMatrix initialY, double eps, int maxIter, int d);
+ //       SMACOF(ObjectMatrix initialY, double eps, int maxIter, int d);
         /**
          * An overloaded constructor that accepts: epsilon, the maximum number of iterations,
          * projection dimension, shuffling strategy and initial data matrix.
@@ -54,11 +54,16 @@ public:
          *  \brief Returns the stress error value.
          *  \return error - Stress error value.
          */
-        double getStress();
+    double getStress();
         /** \fn ObjectMatrix getGutmanMatrix();
          *  \brief Returns the Guttman matrix.
          *  \return gutmanMatrix - The Guttman Matrix
          */
-        ObjectMatrix getGutmanMatrix();
+  //      ObjectMatrix getGutmanMatrix();
+private:
+        /** \var bool readFile;
+         *  \brief Shows how stress should be calculated either read from file o  calc on the fly X distances.
+         */
+    bool readFile;
 };
 #endif // !defined(SMACOF_H)

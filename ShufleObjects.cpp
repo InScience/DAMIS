@@ -10,9 +10,10 @@
 #include "ShufleObjects.h"
 #include "DataObject.h"
 #include "Statistics.h"
-#include <time.h>
-#include <stdlib.h>
-#include <list>
+//#include <time.h>
+//#include <stdlib.h>
+//#include <list>
+#include <iostream>
 
 
 ShufleObjects::ShufleObjects(){
@@ -34,25 +35,23 @@ std::vector<unsigned int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix) 
     for (int i = 0; i < n; i++)
         shufledIndexes.push_back(i);
 
-    for (int k = 0; k < n; k++)
+   int l = 1;
+    do
     {
-        shufled = false;
-        for (int i = 0; i < n - 1; i++)
+        shufled = true;
+        for (int i = 0; i < n - l; i++)
         {
-            if (objectMatrix.getObjectAt(i).getFeatureAt(0) > objectMatrix.getObjectAt(i + 1).getFeatureAt(0))
+            if (objectMatrix.getObjectAt(shufledIndexes.at(i)).getFeatureAt(0) > objectMatrix.getObjectAt(shufledIndexes.at(i + 1)).getFeatureAt(0))
             {
-                tmp_disp = objectMatrix.getObjectAt(i).getFeatureAt(0);
-                tmp_index = i;
-                objectMatrix.updateDataObject(i, 0, objectMatrix.getObjectAt(i + 1).getFeatureAt(0));
-                objectMatrix.updateDataObject(i + 1, 0, tmp_disp);
-                shufledIndexes[i] = shufledIndexes.at(i + 1);
-                shufledIndexes[i + 1] = tmp_index;
-                shufled = true;
+                tmp_index = shufledIndexes.at(i);
+                shufledIndexes.at(i) = shufledIndexes.at(i + 1);
+                shufledIndexes.at(i + 1) = tmp_index;
+                shufled = false;
             }
         }
-        if (shufled == false)
-            break;
+        l++;
     }
+    while (!shufled);
 
     return  shufledIndexes;
 }
@@ -68,25 +67,26 @@ std::vector<unsigned int> ShufleObjects::byBubleSortDsc(ObjectMatrix objectMatri
     for (int i = 0; i < n; i++)
         shufledIndexes.push_back(i);
 
-    for (int k = 0; k < n; k++)
+    int l = 1;
+    do
     {
-        shufled = false;
-        for (int i = 0; i < n - 1; i++)
+        shufled = true;
+        for (int i = 0; i < n - l; i++)
         {
-            if (objectMatrix.getObjectAt(i).getFeatureAt(0) < objectMatrix.getObjectAt(i + 1).getFeatureAt(0))
+            if (objectMatrix.getObjectAt(shufledIndexes.at(i)).getFeatureAt(0) < objectMatrix.getObjectAt(shufledIndexes.at(i + 1)).getFeatureAt(0))
             {
-                tmp_disp = objectMatrix.getObjectAt(i).getFeatureAt(0);
-                tmp_index = i;
-                objectMatrix.updateDataObject(i, 0, objectMatrix.getObjectAt(i + 1).getFeatureAt(0));
-                objectMatrix.updateDataObject(i + 1, 0, tmp_disp);
-                shufledIndexes[i] = shufledIndexes.at(i + 1);
-                shufledIndexes[i + 1] = tmp_index;
-                shufled = true;
+                tmp_index = shufledIndexes.at(i);
+                shufledIndexes.at(i) = shufledIndexes.at(i + 1);
+                shufledIndexes.at(i + 1) = tmp_index;
+                shufled = false;
             }
         }
-        if (shufled == false)
-            break;
+        l++;
     }
+    while (!shufled);
+
+  /*  for (int i = 0; i < n; i++)
+        std::cout << objectMatrix.getObjectAt(shufledIndexes.at(i)).getFeatureAt(0) << std::endl;*/
 
     return  shufledIndexes;
 }
@@ -107,7 +107,7 @@ std::vector<unsigned int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
 
     do
     {
-        r = Statistics::getRandom(0, n);
+        r = Statistics::getRandom(0, n - 1); //-1 since 0 is included
         index = static_cast<int>(r);
         while (currentIndexes.at(index) == -1)
             index = (index + 1) % n;

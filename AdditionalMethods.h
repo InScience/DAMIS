@@ -56,11 +56,23 @@ class AdditionalMethods
              *  \return array - an alglib's one-dimensional array.
              */
             static alglib::real_1d_array ObjectMatrixTo1DArray(ObjectMatrix matrix);
+                        /*! \fn alglib::real_1d_array ObjectMatrixTo1DArray(ObjectMatrix matrix);
+             *  \brief Converts the ObjectMatrix DataObjects to alglib's one-dimensional array.
+             *  \param matrix - an ObjectMatrix object that needs to be converted.
+             *  \return array - an alglib's one-dimensional array.
+             */
+            static alglib::real_1d_array DataObjectTo1DArray(DataObject dataObject);
             /*! \fn ObjectMatrix alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount);
              *  \brief Converts the alglib's one-dimensional array to an ObjectMatrix object.
              *  \param array - an alglib's one-dimensional array that needs to be converted to an ObjectMatrix object.
              *  \param featureCount - a number of features in DataObject.
              *  \return ObjectMatrix - an ObjectMatrix object.
+             */
+            static DataObject alglib1DArrayToDataObject(alglib::real_1d_array array);
+            /*! \fn DataObject alglib1DArrayToDataObject(alglib::real_1d_array array);
+             *  \brief Converts the alglib's one-dimensional array to an DataObject object.
+             *  \param array - an alglib's one-dimensional array that needs to be converted to an DataObject object.
+             *  \return DataObject - an DataObject object.
              */
             static ObjectMatrix alglib1DArrayToObjectMatrix(alglib::real_1d_array array, int featureCount);
             /*! \fn vector<string> split(const string &s, char delim);

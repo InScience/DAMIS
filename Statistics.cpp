@@ -17,6 +17,25 @@ double Statistics::getAverage(ObjectMatrix om, int k){
     average = s / n;
     return average;
 }
+std::vector<double> Statistics::getAverageColumns(ObjectMatrix om){
+
+    std::vector<double> columnSum;
+    int n = om.getObjectCount(), i, j;
+    int m = om.getObjectAt(0).getFeatureCount();
+    std::vector<double> average; average.reserve(m);
+
+    double s, oCaunt = float(n);
+    for (i = 0; i < m; i++) //hold features
+    {
+        s = 0.0;
+        for (j = 0; j < n; j++) //for each object
+            s += om.getObjectAt(j).getFeatureAt(i);
+
+        average.push_back(s / oCaunt);
+    }
+    return average;
+}
+
 
 double Statistics::getCorrCoef(ObjectMatrix om, int k, int l)
 {
@@ -91,7 +110,7 @@ ObjectMatrix Statistics::getCovMatrix(ObjectMatrix om)
     return cov;
 }
 
-void Statistics::intSeed()
+void Statistics::initSeed()
 {
     srand(time(NULL) + AdditionalMethods::PID);
 }

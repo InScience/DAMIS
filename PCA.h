@@ -37,7 +37,7 @@ public:
         /**
          * An overloaded constructor that accepts the ObjectMatrix and dispersion part.
          */
-    PCA_(ObjectMatrix objMatrix, double disp);
+   // PCA_(ObjectMatrix objMatrix, double disp);
         /**
          * An overloaded constructor that accepts the ObjectMatrix and dimension.
          */
@@ -54,17 +54,17 @@ public:
          *  \brief Returns the dimension.
          *  \return d - the dimension.
          */
-        int getDimension();
+   //     int getDimension();
         /** \fn double getDispersionPart();
          *  \brief Returns the dispersion part.
          *  \return dispPart - the dispersion part.
          */
-        double getDispersionPart();
+        //double getDispersionPart();
         /** \fn double getStress();
          *  \brief Returns the stress error value.
          *  \return error - the stress error value.
          */
-        double getStress();
+    //    double getStress();
         /** \fn alglib::real_1d_array getEigenValues();
          *  \brief Returns the eigenvalues of the projection.
          *  \return eigValues - the eigenvalues of the projection.
@@ -80,7 +80,16 @@ private:
 	/**
 	 * Dispersion part to retain in resulting projection
 	 */
-	double dispPart;
+	//double dispPart;
+    /**
+	 * Dispersion part to retain in resulting projection
+	 */
+	double d;
+    /**
+	 * Indicates whether dispersion part must be returned
+	 */
+	bool disp;
+
         /** \var alglib::real_2d_array alglibX;
          *  \brief The 2D alglib type matrix.
          */

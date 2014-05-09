@@ -49,6 +49,7 @@ void DimReductionMethod::initializeProjectionMatrix(){
 void DimReductionMethod::setProjectionDimension(int dimension){
     d = dimension;
 }
+// TODO (Povilas#1#): Rewrite stress calculation without sqrt
 
 double DimReductionMethod::getStress()
 {
@@ -59,7 +60,7 @@ double DimReductionMethod::getStress()
 
     FILE *distFile;
     distFile = fopen(AdditionalMethods::tempFileSavePath.c_str(), "rb");
-
+    double tmpDist;
 // TODO (Povilas#1#): Check if file exists
 
     for (i = 0; i < m - 1; i++)
@@ -78,8 +79,8 @@ double DimReductionMethod::getStress()
             distY = std::sqrt(s);
 
             fread(&distX, noOfBytes, 1, distFile);
-
-            stress += std::pow((distX - distY), 2);
+            tmpDist = distX - distY;
+            stress += tmpDist * tmpDist;
         }
     }
     fclose(distFile);
@@ -87,6 +88,6 @@ double DimReductionMethod::getStress()
     return stress * 1. / X.getWeight();
 }
 
-ObjectMatrix DimReductionMethod::getProjection(){
+/*ObjectMatrix DimReductionMethod::getProjection(){
     return Y;
-}
+}*/

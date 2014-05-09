@@ -22,6 +22,12 @@ public:
      *  \return average - The average of the features in a \a col column.
      */
     static double getAverage(ObjectMatrix matrix, int col);
+        /** \fn static double getAverage(ObjectMatrix matrix);
+     *  \brief Calculates the average value of each feature (column) of whole object matrix.
+     *  \param matrix - The ObjectMatrix.
+     *  \return vector average - The average of the features in a all columns.
+     */
+    static std::vector<double> getAverageColumns(ObjectMatrix matrix);
     /** \fn static double getCorrCoef(ObjectMatrix matrix, int i, int j);
      *  \brief Calculates the correlation coefficient between the \a i-th and the \a j-th DataObjects.
      *  \param matrix - The ObjectMatrix.
@@ -60,7 +66,7 @@ public:
     /** \fn static double initSeed();
      *  \brief Initiates seed for each processor.
      */
-    static void intSeed();
+    static void initSeed();
     //static double getDispersion(ObjectMatrix , int);
     //static double getSum(ObjectMatrix, int);
 };
