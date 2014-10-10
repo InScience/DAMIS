@@ -3820,7 +3820,7 @@ Subroutine sets following fields of the Rep structure:
 *************************************************************************/
 void rmatrixluinverse(real_2d_array &a, const integer_1d_array &pivots, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.cols()!=a.rows()) || (a.cols()!=pivots.length()))
         throw ap_error("Error while calling 'rmatrixluinverse': looks like one of arguments has wrong size");
@@ -3903,7 +3903,7 @@ Result:
 *************************************************************************/
 void rmatrixinverse(real_2d_array &a, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.cols()!=a.rows()))
         throw ap_error("Error while calling 'rmatrixinverse': looks like one of arguments has wrong size");
@@ -3986,7 +3986,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void cmatrixluinverse(complex_2d_array &a, const integer_1d_array &pivots, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.cols()!=a.rows()) || (a.cols()!=pivots.length()))
         throw ap_error("Error while calling 'cmatrixluinverse': looks like one of arguments has wrong size");
@@ -4061,7 +4061,7 @@ Output parameters:
 *************************************************************************/
 void cmatrixinverse(complex_2d_array &a, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.cols()!=a.rows()))
         throw ap_error("Error while calling 'cmatrixinverse': looks like one of arguments has wrong size");
@@ -4160,7 +4160,7 @@ Output parameters:
 *************************************************************************/
 void spdmatrixcholeskyinverse(real_2d_array &a, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     bool isupper;
     if( (a.cols()!=a.rows()))
@@ -4267,7 +4267,7 @@ Output parameters:
 *************************************************************************/
 void spdmatrixinverse(real_2d_array &a, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     bool isupper;
     if( (a.cols()!=a.rows()))
@@ -4371,7 +4371,7 @@ Output parameters:
 *************************************************************************/
 void hpdmatrixcholeskyinverse(complex_2d_array &a, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     bool isupper;
     if( (a.cols()!=a.rows()))
@@ -4478,7 +4478,7 @@ Output parameters:
 *************************************************************************/
 void hpdmatrixinverse(complex_2d_array &a, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     bool isupper;
     if( (a.cols()!=a.rows()))
@@ -4596,7 +4596,7 @@ Output parameters:
 *************************************************************************/
 void rmatrixtrinverse(real_2d_array &a, const bool isupper, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     bool isunit;
     if( (a.cols()!=a.rows()))
@@ -4711,7 +4711,7 @@ Output parameters:
 *************************************************************************/
 void cmatrixtrinverse(complex_2d_array &a, const bool isupper, ae_int_t &info, matinvreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     bool isunit;
     if( (a.cols()!=a.rows()))
@@ -4781,11 +4781,11 @@ alglib_impl::sparsematrix* _sparsematrix_owner::c_ptr() const
 {
     return const_cast<alglib_impl::sparsematrix*>(p_struct);
 }
-sparsematrix::sparsematrix() : _sparsematrix_owner() 
+sparsematrix::sparsematrix() : _sparsematrix_owner()
 {
 }
 
-sparsematrix::sparsematrix(const sparsematrix &rhs):_sparsematrix_owner(rhs) 
+sparsematrix::sparsematrix(const sparsematrix &rhs):_sparsematrix_owner(rhs)
 {
 }
 
@@ -4967,7 +4967,7 @@ memory will be freed.
 *************************************************************************/
 void sparsecreate(const ae_int_t m, const ae_int_t n, sparsematrix &s)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t k;
 
     k = 0;
@@ -6098,11 +6098,11 @@ alglib_impl::normestimatorstate* _normestimatorstate_owner::c_ptr() const
 {
     return const_cast<alglib_impl::normestimatorstate*>(p_struct);
 }
-normestimatorstate::normestimatorstate() : _normestimatorstate_owner() 
+normestimatorstate::normestimatorstate() : _normestimatorstate_owner()
 {
 }
 
-normestimatorstate::normestimatorstate(const normestimatorstate &rhs):_normestimatorstate_owner(rhs) 
+normestimatorstate::normestimatorstate(const normestimatorstate &rhs):_normestimatorstate_owner(rhs)
 {
 }
 
@@ -6315,7 +6315,7 @@ Result: matrix determinant.
 *************************************************************************/
 double rmatrixludet(const real_2d_array &a, const integer_1d_array &pivots)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.rows()!=a.cols()) || (a.rows()!=pivots.length()))
         throw ap_error("Error while calling 'rmatrixludet': looks like one of arguments has wrong size");
@@ -6384,7 +6384,7 @@ Result: determinant of matrix A.
 *************************************************************************/
 double rmatrixdet(const real_2d_array &a)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.rows()!=a.cols()))
         throw ap_error("Error while calling 'rmatrixdet': looks like one of arguments has wrong size");
@@ -6461,7 +6461,7 @@ Result: matrix determinant.
 *************************************************************************/
 alglib::complex cmatrixludet(const complex_2d_array &a, const integer_1d_array &pivots)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.rows()!=a.cols()) || (a.rows()!=pivots.length()))
         throw ap_error("Error while calling 'cmatrixludet': looks like one of arguments has wrong size");
@@ -6530,7 +6530,7 @@ Result: determinant of matrix A.
 *************************************************************************/
 alglib::complex cmatrixdet(const complex_2d_array &a)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.rows()!=a.cols()))
         throw ap_error("Error while calling 'cmatrixdet': looks like one of arguments has wrong size");
@@ -6611,7 +6611,7 @@ Result:
 *************************************************************************/
 double spdmatrixcholeskydet(const real_2d_array &a)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (a.rows()!=a.cols()))
         throw ap_error("Error while calling 'spdmatrixcholeskydet': looks like one of arguments has wrong size");
@@ -6702,7 +6702,7 @@ Result:
 *************************************************************************/
 double spdmatrixdet(const real_2d_array &a)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     bool isupper;
     if( (a.rows()!=a.cols()))
@@ -7074,514 +7074,514 @@ namespace alglib_impl
 static ae_int_t ablas_rgemmparallelsize = 64;
 static ae_int_t ablas_cgemmparallelsize = 64;
 static void ablas_ablasinternalsplitlength(ae_int_t n,
-     ae_int_t nb,
-     ae_int_t* n1,
-     ae_int_t* n2,
-     ae_state *_state);
+        ae_int_t nb,
+        ae_int_t* n1,
+        ae_int_t* n2,
+        ae_state *_state);
 static void ablas_cmatrixrighttrsm2(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Complex */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state);
+                                    ae_int_t n,
+                                    /* Complex */ ae_matrix* a,
+                                    ae_int_t i1,
+                                    ae_int_t j1,
+                                    ae_bool isupper,
+                                    ae_bool isunit,
+                                    ae_int_t optype,
+                                    /* Complex */ ae_matrix* x,
+                                    ae_int_t i2,
+                                    ae_int_t j2,
+                                    ae_state *_state);
 static void ablas_cmatrixlefttrsm2(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Complex */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state);
+                                   ae_int_t n,
+                                   /* Complex */ ae_matrix* a,
+                                   ae_int_t i1,
+                                   ae_int_t j1,
+                                   ae_bool isupper,
+                                   ae_bool isunit,
+                                   ae_int_t optype,
+                                   /* Complex */ ae_matrix* x,
+                                   ae_int_t i2,
+                                   ae_int_t j2,
+                                   ae_state *_state);
 static void ablas_rmatrixrighttrsm2(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Real    */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state);
+                                    ae_int_t n,
+                                    /* Real    */ ae_matrix* a,
+                                    ae_int_t i1,
+                                    ae_int_t j1,
+                                    ae_bool isupper,
+                                    ae_bool isunit,
+                                    ae_int_t optype,
+                                    /* Real    */ ae_matrix* x,
+                                    ae_int_t i2,
+                                    ae_int_t j2,
+                                    ae_state *_state);
 static void ablas_rmatrixlefttrsm2(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Real    */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state);
+                                   ae_int_t n,
+                                   /* Real    */ ae_matrix* a,
+                                   ae_int_t i1,
+                                   ae_int_t j1,
+                                   ae_bool isupper,
+                                   ae_bool isunit,
+                                   ae_int_t optype,
+                                   /* Real    */ ae_matrix* x,
+                                   ae_int_t i2,
+                                   ae_int_t j2,
+                                   ae_state *_state);
 static void ablas_cmatrixsyrk2(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Complex */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state);
+                               ae_int_t k,
+                               double alpha,
+                               /* Complex */ ae_matrix* a,
+                               ae_int_t ia,
+                               ae_int_t ja,
+                               ae_int_t optypea,
+                               double beta,
+                               /* Complex */ ae_matrix* c,
+                               ae_int_t ic,
+                               ae_int_t jc,
+                               ae_bool isupper,
+                               ae_state *_state);
 static void ablas_rmatrixsyrk2(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state);
+                               ae_int_t k,
+                               double alpha,
+                               /* Real    */ ae_matrix* a,
+                               ae_int_t ia,
+                               ae_int_t ja,
+                               ae_int_t optypea,
+                               double beta,
+                               /* Real    */ ae_matrix* c,
+                               ae_int_t ic,
+                               ae_int_t jc,
+                               ae_bool isupper,
+                               ae_state *_state);
 
 
 static void ortfac_cmatrixqrbasecase(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_vector* work,
-     /* Complex */ ae_vector* t,
-     /* Complex */ ae_vector* tau,
-     ae_state *_state);
+        ae_int_t m,
+        ae_int_t n,
+        /* Complex */ ae_vector* work,
+        /* Complex */ ae_vector* t,
+        /* Complex */ ae_vector* tau,
+        ae_state *_state);
 static void ortfac_cmatrixlqbasecase(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_vector* work,
-     /* Complex */ ae_vector* t,
-     /* Complex */ ae_vector* tau,
-     ae_state *_state);
+        ae_int_t m,
+        ae_int_t n,
+        /* Complex */ ae_vector* work,
+        /* Complex */ ae_vector* t,
+        /* Complex */ ae_vector* tau,
+        ae_state *_state);
 static void ortfac_rmatrixblockreflector(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_vector* tau,
-     ae_bool columnwisea,
-     ae_int_t lengtha,
-     ae_int_t blocksize,
-     /* Real    */ ae_matrix* t,
-     /* Real    */ ae_vector* work,
-     ae_state *_state);
+        /* Real    */ ae_vector* tau,
+        ae_bool columnwisea,
+        ae_int_t lengtha,
+        ae_int_t blocksize,
+        /* Real    */ ae_matrix* t,
+        /* Real    */ ae_vector* work,
+        ae_state *_state);
 static void ortfac_cmatrixblockreflector(/* Complex */ ae_matrix* a,
-     /* Complex */ ae_vector* tau,
-     ae_bool columnwisea,
-     ae_int_t lengtha,
-     ae_int_t blocksize,
-     /* Complex */ ae_matrix* t,
-     /* Complex */ ae_vector* work,
-     ae_state *_state);
+        /* Complex */ ae_vector* tau,
+        ae_bool columnwisea,
+        ae_int_t lengtha,
+        ae_int_t blocksize,
+        /* Complex */ ae_matrix* t,
+        /* Complex */ ae_vector* work,
+        ae_state *_state);
 
 
 static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isfractionalaccuracyrequired,
-     /* Real    */ ae_matrix* u,
-     ae_int_t ustart,
-     ae_int_t nru,
-     /* Real    */ ae_matrix* c,
-     ae_int_t cstart,
-     ae_int_t ncc,
-     /* Real    */ ae_matrix* vt,
-     ae_int_t vstart,
-     ae_int_t ncvt,
-     ae_state *_state);
+        /* Real    */ ae_vector* e,
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isfractionalaccuracyrequired,
+        /* Real    */ ae_matrix* u,
+        ae_int_t ustart,
+        ae_int_t nru,
+        /* Real    */ ae_matrix* c,
+        ae_int_t cstart,
+        ae_int_t ncc,
+        /* Real    */ ae_matrix* vt,
+        ae_int_t vstart,
+        ae_int_t ncvt,
+        ae_state *_state);
 static double bdsvd_extsignbdsqr(double a, double b, ae_state *_state);
 static void bdsvd_svd2x2(double f,
-     double g,
-     double h,
-     double* ssmin,
-     double* ssmax,
-     ae_state *_state);
+                         double g,
+                         double h,
+                         double* ssmin,
+                         double* ssmax,
+                         ae_state *_state);
 static void bdsvd_svdv2x2(double f,
-     double g,
-     double h,
-     double* ssmin,
-     double* ssmax,
-     double* snr,
-     double* csr,
-     double* snl,
-     double* csl,
-     ae_state *_state);
+                          double g,
+                          double h,
+                          double* ssmin,
+                          double* ssmax,
+                          double* snr,
+                          double* csr,
+                          double* snl,
+                          double* csl,
+                          ae_state *_state);
 
 
 
 
 static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_int_t zneeded,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state);
+        /* Real    */ ae_vector* e,
+        ae_int_t n,
+        ae_int_t zneeded,
+        /* Real    */ ae_matrix* z,
+        ae_state *_state);
 static void evd_tdevde2(double a,
-     double b,
-     double c,
-     double* rt1,
-     double* rt2,
-     ae_state *_state);
+                        double b,
+                        double c,
+                        double* rt1,
+                        double* rt2,
+                        ae_state *_state);
 static void evd_tdevdev2(double a,
-     double b,
-     double c,
-     double* rt1,
-     double* rt2,
-     double* cs1,
-     double* sn1,
-     ae_state *_state);
+                         double b,
+                         double c,
+                         double* rt1,
+                         double* rt2,
+                         double* cs1,
+                         double* sn1,
+                         ae_state *_state);
 static double evd_tdevdpythag(double a, double b, ae_state *_state);
 static double evd_tdevdextsign(double a, double b, ae_state *_state);
 static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_int_t irange,
-     ae_int_t iorder,
-     double vl,
-     double vu,
-     ae_int_t il,
-     ae_int_t iu,
-     double abstol,
-     /* Real    */ ae_vector* w,
-     ae_int_t* m,
-     ae_int_t* nsplit,
-     /* Integer */ ae_vector* iblock,
-     /* Integer */ ae_vector* isplit,
-     ae_int_t* errorcode,
-     ae_state *_state);
+        /* Real    */ ae_vector* e,
+        ae_int_t n,
+        ae_int_t irange,
+        ae_int_t iorder,
+        double vl,
+        double vu,
+        ae_int_t il,
+        ae_int_t iu,
+        double abstol,
+        /* Real    */ ae_vector* w,
+        ae_int_t* m,
+        ae_int_t* nsplit,
+        /* Integer */ ae_vector* iblock,
+        /* Integer */ ae_vector* isplit,
+        ae_int_t* errorcode,
+        ae_state *_state);
 static void evd_internaldstein(ae_int_t n,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t m,
-     /* Real    */ ae_vector* w,
-     /* Integer */ ae_vector* iblock,
-     /* Integer */ ae_vector* isplit,
-     /* Real    */ ae_matrix* z,
-     /* Integer */ ae_vector* ifail,
-     ae_int_t* info,
-     ae_state *_state);
+                               /* Real    */ ae_vector* d,
+                               /* Real    */ ae_vector* e,
+                               ae_int_t m,
+                               /* Real    */ ae_vector* w,
+                               /* Integer */ ae_vector* iblock,
+                               /* Integer */ ae_vector* isplit,
+                               /* Real    */ ae_matrix* z,
+                               /* Integer */ ae_vector* ifail,
+                               ae_int_t* info,
+                               ae_state *_state);
 static void evd_tdininternaldlagtf(ae_int_t n,
-     /* Real    */ ae_vector* a,
-     double lambdav,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* c,
-     double tol,
-     /* Real    */ ae_vector* d,
-     /* Integer */ ae_vector* iin,
-     ae_int_t* info,
-     ae_state *_state);
+                                   /* Real    */ ae_vector* a,
+                                   double lambdav,
+                                   /* Real    */ ae_vector* b,
+                                   /* Real    */ ae_vector* c,
+                                   double tol,
+                                   /* Real    */ ae_vector* d,
+                                   /* Integer */ ae_vector* iin,
+                                   ae_int_t* info,
+                                   ae_state *_state);
 static void evd_tdininternaldlagts(ae_int_t n,
-     /* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_vector* d,
-     /* Integer */ ae_vector* iin,
-     /* Real    */ ae_vector* y,
-     double* tol,
-     ae_int_t* info,
-     ae_state *_state);
+                                   /* Real    */ ae_vector* a,
+                                   /* Real    */ ae_vector* b,
+                                   /* Real    */ ae_vector* c,
+                                   /* Real    */ ae_vector* d,
+                                   /* Integer */ ae_vector* iin,
+                                   /* Real    */ ae_vector* y,
+                                   double* tol,
+                                   ae_int_t* info,
+                                   ae_state *_state);
 static void evd_internaldlaebz(ae_int_t ijob,
-     ae_int_t nitmax,
-     ae_int_t n,
-     ae_int_t mmax,
-     ae_int_t minp,
-     double abstol,
-     double reltol,
-     double pivmin,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     /* Real    */ ae_vector* e2,
-     /* Integer */ ae_vector* nval,
-     /* Real    */ ae_matrix* ab,
-     /* Real    */ ae_vector* c,
-     ae_int_t* mout,
-     /* Integer */ ae_matrix* nab,
-     /* Real    */ ae_vector* work,
-     /* Integer */ ae_vector* iwork,
-     ae_int_t* info,
-     ae_state *_state);
+                               ae_int_t nitmax,
+                               ae_int_t n,
+                               ae_int_t mmax,
+                               ae_int_t minp,
+                               double abstol,
+                               double reltol,
+                               double pivmin,
+                               /* Real    */ ae_vector* d,
+                               /* Real    */ ae_vector* e,
+                               /* Real    */ ae_vector* e2,
+                               /* Integer */ ae_vector* nval,
+                               /* Real    */ ae_matrix* ab,
+                               /* Real    */ ae_vector* c,
+                               ae_int_t* mout,
+                               /* Integer */ ae_matrix* nab,
+                               /* Real    */ ae_vector* work,
+                               /* Integer */ ae_vector* iwork,
+                               ae_int_t* info,
+                               ae_state *_state);
 static void evd_internaltrevc(/* Real    */ ae_matrix* t,
-     ae_int_t n,
-     ae_int_t side,
-     ae_int_t howmny,
-     /* Boolean */ ae_vector* vselect,
-     /* Real    */ ae_matrix* vl,
-     /* Real    */ ae_matrix* vr,
-     ae_int_t* m,
-     ae_int_t* info,
-     ae_state *_state);
+        ae_int_t n,
+        ae_int_t side,
+        ae_int_t howmny,
+        /* Boolean */ ae_vector* vselect,
+        /* Real    */ ae_matrix* vl,
+        /* Real    */ ae_matrix* vr,
+        ae_int_t* m,
+        ae_int_t* info,
+        ae_state *_state);
 static void evd_internalhsevdlaln2(ae_bool ltrans,
-     ae_int_t na,
-     ae_int_t nw,
-     double smin,
-     double ca,
-     /* Real    */ ae_matrix* a,
-     double d1,
-     double d2,
-     /* Real    */ ae_matrix* b,
-     double wr,
-     double wi,
-     /* Boolean */ ae_vector* rswap4,
-     /* Boolean */ ae_vector* zswap4,
-     /* Integer */ ae_matrix* ipivot44,
-     /* Real    */ ae_vector* civ4,
-     /* Real    */ ae_vector* crv4,
-     /* Real    */ ae_matrix* x,
-     double* scl,
-     double* xnorm,
-     ae_int_t* info,
-     ae_state *_state);
+                                   ae_int_t na,
+                                   ae_int_t nw,
+                                   double smin,
+                                   double ca,
+                                   /* Real    */ ae_matrix* a,
+                                   double d1,
+                                   double d2,
+                                   /* Real    */ ae_matrix* b,
+                                   double wr,
+                                   double wi,
+                                   /* Boolean */ ae_vector* rswap4,
+                                   /* Boolean */ ae_vector* zswap4,
+                                   /* Integer */ ae_matrix* ipivot44,
+                                   /* Real    */ ae_vector* civ4,
+                                   /* Real    */ ae_vector* crv4,
+                                   /* Real    */ ae_matrix* x,
+                                   double* scl,
+                                   double* xnorm,
+                                   ae_int_t* info,
+                                   ae_state *_state);
 static void evd_internalhsevdladiv(double a,
-     double b,
-     double c,
-     double d,
-     double* p,
-     double* q,
-     ae_state *_state);
+                                   double b,
+                                   double c,
+                                   double d,
+                                   double* p,
+                                   double* q,
+                                   ae_state *_state);
 static ae_bool evd_nonsymmetricevd(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t vneeded,
-     /* Real    */ ae_vector* wr,
-     /* Real    */ ae_vector* wi,
-     /* Real    */ ae_matrix* vl,
-     /* Real    */ ae_matrix* vr,
-     ae_state *_state);
+        ae_int_t n,
+        ae_int_t vneeded,
+        /* Real    */ ae_vector* wr,
+        /* Real    */ ae_vector* wi,
+        /* Real    */ ae_matrix* vl,
+        /* Real    */ ae_matrix* vr,
+        ae_state *_state);
 static void evd_toupperhessenberg(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     ae_state *_state);
+        ae_int_t n,
+        /* Real    */ ae_vector* tau,
+        ae_state *_state);
 static void evd_unpackqfromupperhessenberg(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     /* Real    */ ae_matrix* q,
-     ae_state *_state);
+        ae_int_t n,
+        /* Real    */ ae_vector* tau,
+        /* Real    */ ae_matrix* q,
+        ae_state *_state);
 
 
 
 
 static void trfac_cmatrixluprec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 static void trfac_rmatrixluprec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state);
 static void trfac_cmatrixplurec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 static void trfac_rmatrixplurec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state);
 static void trfac_cmatrixlup2(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 static void trfac_rmatrixlup2(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state);
 static void trfac_cmatrixplu2(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 static void trfac_rmatrixplu2(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state);
 static ae_bool trfac_hpdmatrixcholeskyrec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 static ae_bool trfac_hpdmatrixcholesky2(/* Complex */ ae_matrix* aaa,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 static ae_bool trfac_spdmatrixcholesky2(/* Real    */ ae_matrix* aaa,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state);
 
 
 static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_bool onenorm,
-     double anorm,
-     double* rc,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isunit,
+        ae_bool onenorm,
+        double anorm,
+        double* rc,
+        ae_state *_state);
 static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_bool onenorm,
-     double anorm,
-     double* rc,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isunit,
+        ae_bool onenorm,
+        double anorm,
+        double* rc,
+        ae_state *_state);
 static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isnormprovided,
-     double anorm,
-     double* rc,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isnormprovided,
+        double anorm,
+        double* rc,
+        ae_state *_state);
 static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isnormprovided,
-     double anorm,
-     double* rc,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isnormprovided,
+        double anorm,
+        double* rc,
+        ae_state *_state);
 static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
-     ae_int_t n,
-     ae_bool onenorm,
-     ae_bool isanormprovided,
-     double anorm,
-     double* rc,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool onenorm,
+        ae_bool isanormprovided,
+        double anorm,
+        double* rc,
+        ae_state *_state);
 static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
-     ae_int_t n,
-     ae_bool onenorm,
-     ae_bool isanormprovided,
-     double anorm,
-     double* rc,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool onenorm,
+        ae_bool isanormprovided,
+        double anorm,
+        double* rc,
+        ae_state *_state);
 static void rcond_rmatrixestimatenorm(ae_int_t n,
-     /* Real    */ ae_vector* v,
-     /* Real    */ ae_vector* x,
-     /* Integer */ ae_vector* isgn,
-     double* est,
-     ae_int_t* kase,
-     ae_state *_state);
+                                      /* Real    */ ae_vector* v,
+                                      /* Real    */ ae_vector* x,
+                                      /* Integer */ ae_vector* isgn,
+                                      double* est,
+                                      ae_int_t* kase,
+                                      ae_state *_state);
 static void rcond_cmatrixestimatenorm(ae_int_t n,
-     /* Complex */ ae_vector* v,
-     /* Complex */ ae_vector* x,
-     double* est,
-     ae_int_t* kase,
-     /* Integer */ ae_vector* isave,
-     /* Real    */ ae_vector* rsave,
-     ae_state *_state);
+                                      /* Complex */ ae_vector* v,
+                                      /* Complex */ ae_vector* x,
+                                      double* est,
+                                      ae_int_t* kase,
+                                      /* Integer */ ae_vector* isave,
+                                      /* Real    */ ae_vector* rsave,
+                                      ae_state *_state);
 static double rcond_internalcomplexrcondscsum1(/* Complex */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state);
+        ae_int_t n,
+        ae_state *_state);
 static ae_int_t rcond_internalcomplexrcondicmax1(/* Complex */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state);
+        ae_int_t n,
+        ae_state *_state);
 static void rcond_internalcomplexrcondsaveall(/* Integer */ ae_vector* isave,
-     /* Real    */ ae_vector* rsave,
-     ae_int_t* i,
-     ae_int_t* iter,
-     ae_int_t* j,
-     ae_int_t* jlast,
-     ae_int_t* jump,
-     double* absxi,
-     double* altsgn,
-     double* estold,
-     double* temp,
-     ae_state *_state);
+        /* Real    */ ae_vector* rsave,
+        ae_int_t* i,
+        ae_int_t* iter,
+        ae_int_t* j,
+        ae_int_t* jlast,
+        ae_int_t* jump,
+        double* absxi,
+        double* altsgn,
+        double* estold,
+        double* temp,
+        ae_state *_state);
 static void rcond_internalcomplexrcondloadall(/* Integer */ ae_vector* isave,
-     /* Real    */ ae_vector* rsave,
-     ae_int_t* i,
-     ae_int_t* iter,
-     ae_int_t* j,
-     ae_int_t* jlast,
-     ae_int_t* jump,
-     double* absxi,
-     double* altsgn,
-     double* estold,
-     double* temp,
-     ae_state *_state);
+        /* Real    */ ae_vector* rsave,
+        ae_int_t* i,
+        ae_int_t* iter,
+        ae_int_t* j,
+        ae_int_t* jlast,
+        ae_int_t* jump,
+        double* absxi,
+        double* altsgn,
+        double* estold,
+        double* temp,
+        ae_state *_state);
 
 
 static void matinv_rmatrixtrinverserec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     /* Real    */ ae_vector* tmp,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isunit,
+        /* Real    */ ae_vector* tmp,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state);
 static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     /* Complex */ ae_vector* tmp,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isunit,
+        /* Complex */ ae_vector* tmp,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state);
 static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     /* Real    */ ae_vector* work,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        /* Real    */ ae_vector* work,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state);
 static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     /* Complex */ ae_vector* work,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        /* Complex */ ae_vector* work,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state);
 static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state);
 static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 
 
 static double sparse_desiredloadfactor = 0.66;
@@ -7591,9 +7591,9 @@ static ae_int_t sparse_additional = 10;
 static ae_int_t sparse_linalgswitch = 16;
 static void sparse_sparseinitduidx(sparsematrix* s, ae_state *_state);
 static ae_int_t sparse_hash(ae_int_t i,
-     ae_int_t j,
-     ae_int_t tabsize,
-     ae_state *_state);
+                            ae_int_t j,
+                            ae_int_t tabsize,
+                            ae_state *_state);
 
 
 
@@ -7631,10 +7631,10 @@ N1+N2=N, N1>=N2, N2 may be zero
      Bochkanov Sergey
 *************************************************************************/
 void ablassplitlength(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t* n1,
-     ae_int_t* n2,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_int_t* n1,
+                                    ae_int_t* n2,
+                                    ae_state *_state)
 {
 
     *n1 = 0;
@@ -7659,10 +7659,10 @@ Complex ABLASSplitLength
      Bochkanov Sergey
 *************************************************************************/
 void ablascomplexsplitlength(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t* n1,
-     ae_int_t* n2,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t* n1,
+        ae_int_t* n2,
+        ae_state *_state)
 {
 
     *n1 = 0;
@@ -7710,7 +7710,7 @@ Block size for complex subroutines.
      Bochkanov Sergey
 *************************************************************************/
 ae_int_t ablascomplexblocksize(/* Complex */ ae_matrix* a,
-     ae_state *_state)
+        ae_state *_state)
 {
     ae_int_t result;
 
@@ -7751,14 +7751,14 @@ Input parameters:
     JB  -   submatrix offset (column index)
 *************************************************************************/
 void cmatrixtranspose(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Complex */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_state *_state)
+                      ae_int_t n,
+                      /* Complex */ ae_matrix* a,
+                      ae_int_t ia,
+                      ae_int_t ja,
+                      /* Complex */ ae_matrix* b,
+                      ae_int_t ib,
+                      ae_int_t jb,
+                      ae_state *_state)
 {
     ae_int_t i;
     ae_int_t s1;
@@ -7767,7 +7767,7 @@ void cmatrixtranspose(ae_int_t m,
 
     if( m<=2*ablascomplexblocksize(a, _state)&&n<=2*ablascomplexblocksize(a, _state) )
     {
-        
+
         /*
          * base case
          */
@@ -7778,7 +7778,7 @@ void cmatrixtranspose(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Cache-oblivious recursion
          */
@@ -7812,14 +7812,14 @@ Input parameters:
     JB  -   submatrix offset (column index)
 *************************************************************************/
 void rmatrixtranspose(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_state *_state)
+                      ae_int_t n,
+                      /* Real    */ ae_matrix* a,
+                      ae_int_t ia,
+                      ae_int_t ja,
+                      /* Real    */ ae_matrix* b,
+                      ae_int_t ib,
+                      ae_int_t jb,
+                      ae_state *_state)
 {
     ae_int_t i;
     ae_int_t s1;
@@ -7828,7 +7828,7 @@ void rmatrixtranspose(ae_int_t m,
 
     if( m<=2*ablasblocksize(a, _state)&&n<=2*ablasblocksize(a, _state) )
     {
-        
+
         /*
          * base case
          */
@@ -7839,7 +7839,7 @@ void rmatrixtranspose(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Cache-oblivious recursion
          */
@@ -7870,9 +7870,9 @@ INPUT PARAMETERS:
             or vice versa (False).
 *************************************************************************/
 void rmatrixenforcesymmetricity(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -7915,14 +7915,14 @@ Input parameters:
     JB  -   submatrix offset (column index)
 *************************************************************************/
 void cmatrixcopy(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Complex */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_state *_state)
+                 ae_int_t n,
+                 /* Complex */ ae_matrix* a,
+                 ae_int_t ia,
+                 ae_int_t ja,
+                 /* Complex */ ae_matrix* b,
+                 ae_int_t ib,
+                 ae_int_t jb,
+                 ae_state *_state)
 {
     ae_int_t i;
 
@@ -7952,14 +7952,14 @@ Input parameters:
     JB  -   submatrix offset (column index)
 *************************************************************************/
 void rmatrixcopy(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_state *_state)
+                 ae_int_t n,
+                 /* Real    */ ae_matrix* a,
+                 ae_int_t ia,
+                 ae_int_t ja,
+                 /* Real    */ ae_matrix* b,
+                 ae_int_t ib,
+                 ae_int_t jb,
+                 ae_state *_state)
 {
     ae_int_t i;
 
@@ -7990,15 +7990,15 @@ INPUT PARAMETERS:
     IV  -   subvector offset
 *************************************************************************/
 void cmatrixrank1(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Complex */ ae_vector* u,
-     ae_int_t iu,
-     /* Complex */ ae_vector* v,
-     ae_int_t iv,
-     ae_state *_state)
+                  ae_int_t n,
+                  /* Complex */ ae_matrix* a,
+                  ae_int_t ia,
+                  ae_int_t ja,
+                  /* Complex */ ae_vector* u,
+                  ae_int_t iu,
+                  /* Complex */ ae_vector* v,
+                  ae_int_t iv,
+                  ae_state *_state)
 {
     ae_int_t i;
     ae_complex s;
@@ -8035,15 +8035,15 @@ INPUT PARAMETERS:
     IV  -   subvector offset
 *************************************************************************/
 void rmatrixrank1(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Real    */ ae_vector* u,
-     ae_int_t iu,
-     /* Real    */ ae_vector* v,
-     ae_int_t iv,
-     ae_state *_state)
+                  ae_int_t n,
+                  /* Real    */ ae_matrix* a,
+                  ae_int_t ia,
+                  ae_int_t ja,
+                  /* Real    */ ae_vector* u,
+                  ae_int_t iu,
+                  /* Real    */ ae_vector* v,
+                  ae_int_t iv,
+                  ae_state *_state)
 {
     ae_int_t i;
     double s;
@@ -8098,16 +8098,16 @@ if N=0, Y is filled by zeros.
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixmv(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t opa,
-     /* Complex */ ae_vector* x,
-     ae_int_t ix,
-     /* Complex */ ae_vector* y,
-     ae_int_t iy,
-     ae_state *_state)
+               ae_int_t n,
+               /* Complex */ ae_matrix* a,
+               ae_int_t ia,
+               ae_int_t ja,
+               ae_int_t opa,
+               /* Complex */ ae_vector* x,
+               ae_int_t ix,
+               /* Complex */ ae_vector* y,
+               ae_int_t iy,
+               ae_state *_state)
 {
     ae_int_t i;
     ae_complex v;
@@ -8131,7 +8131,7 @@ void cmatrixmv(ae_int_t m,
     }
     if( opa==0 )
     {
-        
+
         /*
          * y = A*x
          */
@@ -8144,7 +8144,7 @@ void cmatrixmv(ae_int_t m,
     }
     if( opa==1 )
     {
-        
+
         /*
          * y = A^T*x
          */
@@ -8161,7 +8161,7 @@ void cmatrixmv(ae_int_t m,
     }
     if( opa==2 )
     {
-        
+
         /*
          * y = A^H*x
          */
@@ -8209,16 +8209,16 @@ if N=0, Y is filled by zeros.
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixmv(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t opa,
-     /* Real    */ ae_vector* x,
-     ae_int_t ix,
-     /* Real    */ ae_vector* y,
-     ae_int_t iy,
-     ae_state *_state)
+               ae_int_t n,
+               /* Real    */ ae_matrix* a,
+               ae_int_t ia,
+               ae_int_t ja,
+               ae_int_t opa,
+               /* Real    */ ae_vector* x,
+               ae_int_t ix,
+               /* Real    */ ae_vector* y,
+               ae_int_t iy,
+               ae_state *_state)
 {
     ae_int_t i;
     double v;
@@ -8242,7 +8242,7 @@ void rmatrixmv(ae_int_t m,
     }
     if( opa==0 )
     {
-        
+
         /*
          * y = A*x
          */
@@ -8255,7 +8255,7 @@ void rmatrixmv(ae_int_t m,
     }
     if( opa==1 )
     {
-        
+
         /*
          * y = A^T*x
          */
@@ -8274,17 +8274,17 @@ void rmatrixmv(ae_int_t m,
 
 
 void cmatrixrighttrsm(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Complex */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                      ae_int_t n,
+                      /* Complex */ ae_matrix* a,
+                      ae_int_t i1,
+                      ae_int_t j1,
+                      ae_bool isupper,
+                      ae_bool isunit,
+                      ae_int_t optype,
+                      /* Complex */ ae_matrix* x,
+                      ae_int_t i2,
+                      ae_int_t j2,
+                      ae_state *_state)
 {
     ae_int_t s1;
     ae_int_t s2;
@@ -8299,7 +8299,7 @@ void cmatrixrighttrsm(ae_int_t m,
     }
     if( m>=n )
     {
-        
+
         /*
          * Split X: X*A = (X1 X2)^T*A
          */
@@ -8310,7 +8310,7 @@ void cmatrixrighttrsm(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Split A:
          *               (A1  A12)
@@ -8323,7 +8323,7 @@ void cmatrixrighttrsm(ae_int_t m,
         ablascomplexsplitlength(a, n, &s1, &s2, _state);
         if( isupper&&optype==0 )
         {
-            
+
             /*
              *                  (A1  A12)-1
              * X*A^-1 = (X1 X2)*(       )
@@ -8336,7 +8336,7 @@ void cmatrixrighttrsm(ae_int_t m,
         }
         if( isupper&&optype!=0 )
         {
-            
+
             /*
              *                  (A1'     )-1
              * X*A^-1 = (X1 X2)*(        )
@@ -8349,7 +8349,7 @@ void cmatrixrighttrsm(ae_int_t m,
         }
         if( !isupper&&optype==0 )
         {
-            
+
             /*
              *                  (A1     )-1
              * X*A^-1 = (X1 X2)*(       )
@@ -8362,7 +8362,7 @@ void cmatrixrighttrsm(ae_int_t m,
         }
         if( !isupper&&optype!=0 )
         {
-            
+
             /*
              *                  (A1' A21')-1
              * X*A^-1 = (X1 X2)*(        )
@@ -8381,33 +8381,33 @@ void cmatrixrighttrsm(ae_int_t m,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_cmatrixrighttrsm(ae_int_t m,
-    ae_int_t n,
-    /* Complex */ ae_matrix* a,
-    ae_int_t i1,
-    ae_int_t j1,
-    ae_bool isupper,
-    ae_bool isunit,
-    ae_int_t optype,
-    /* Complex */ ae_matrix* x,
-    ae_int_t i2,
-    ae_int_t j2, ae_state *_state)
+                             ae_int_t n,
+                             /* Complex */ ae_matrix* a,
+                             ae_int_t i1,
+                             ae_int_t j1,
+                             ae_bool isupper,
+                             ae_bool isunit,
+                             ae_int_t optype,
+                             /* Complex */ ae_matrix* x,
+                             ae_int_t i2,
+                             ae_int_t j2, ae_state *_state)
 {
     cmatrixrighttrsm(m,n,a,i1,j1,isupper,isunit,optype,x,i2,j2, _state);
 }
 
 
 void cmatrixlefttrsm(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Complex */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                     ae_int_t n,
+                     /* Complex */ ae_matrix* a,
+                     ae_int_t i1,
+                     ae_int_t j1,
+                     ae_bool isupper,
+                     ae_bool isunit,
+                     ae_int_t optype,
+                     /* Complex */ ae_matrix* x,
+                     ae_int_t i2,
+                     ae_int_t j2,
+                     ae_state *_state)
 {
     ae_int_t s1;
     ae_int_t s2;
@@ -8422,7 +8422,7 @@ void cmatrixlefttrsm(ae_int_t m,
     }
     if( n>=m )
     {
-        
+
         /*
          * Split X: op(A)^-1*X = op(A)^-1*(X1 X2)
          */
@@ -8433,14 +8433,14 @@ void cmatrixlefttrsm(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Split A
          */
         ablascomplexsplitlength(a, m, &s1, &s2, _state);
         if( isupper&&optype==0 )
         {
-            
+
             /*
              *           (A1  A12)-1  ( X1 )
              * A^-1*X* = (       )   *(    )
@@ -8453,7 +8453,7 @@ void cmatrixlefttrsm(ae_int_t m,
         }
         if( isupper&&optype!=0 )
         {
-            
+
             /*
              *          (A1'     )-1 ( X1 )
              * A^-1*X = (        )  *(    )
@@ -8466,7 +8466,7 @@ void cmatrixlefttrsm(ae_int_t m,
         }
         if( !isupper&&optype==0 )
         {
-            
+
             /*
              *          (A1     )-1 ( X1 )
              * A^-1*X = (       )  *(    )
@@ -8479,7 +8479,7 @@ void cmatrixlefttrsm(ae_int_t m,
         }
         if( !isupper&&optype!=0 )
         {
-            
+
             /*
              *          (A1' A21')-1 ( X1 )
              * A^-1*X = (        )  *(    )
@@ -8498,33 +8498,33 @@ void cmatrixlefttrsm(ae_int_t m,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_cmatrixlefttrsm(ae_int_t m,
-    ae_int_t n,
-    /* Complex */ ae_matrix* a,
-    ae_int_t i1,
-    ae_int_t j1,
-    ae_bool isupper,
-    ae_bool isunit,
-    ae_int_t optype,
-    /* Complex */ ae_matrix* x,
-    ae_int_t i2,
-    ae_int_t j2, ae_state *_state)
+                            ae_int_t n,
+                            /* Complex */ ae_matrix* a,
+                            ae_int_t i1,
+                            ae_int_t j1,
+                            ae_bool isupper,
+                            ae_bool isunit,
+                            ae_int_t optype,
+                            /* Complex */ ae_matrix* x,
+                            ae_int_t i2,
+                            ae_int_t j2, ae_state *_state)
 {
     cmatrixlefttrsm(m,n,a,i1,j1,isupper,isunit,optype,x,i2,j2, _state);
 }
 
 
 void rmatrixrighttrsm(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Real    */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                      ae_int_t n,
+                      /* Real    */ ae_matrix* a,
+                      ae_int_t i1,
+                      ae_int_t j1,
+                      ae_bool isupper,
+                      ae_bool isunit,
+                      ae_int_t optype,
+                      /* Real    */ ae_matrix* x,
+                      ae_int_t i2,
+                      ae_int_t j2,
+                      ae_state *_state)
 {
     ae_int_t s1;
     ae_int_t s2;
@@ -8539,7 +8539,7 @@ void rmatrixrighttrsm(ae_int_t m,
     }
     if( m>=n )
     {
-        
+
         /*
          * Split X: X*A = (X1 X2)^T*A
          */
@@ -8550,7 +8550,7 @@ void rmatrixrighttrsm(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Split A:
          *               (A1  A12)
@@ -8563,7 +8563,7 @@ void rmatrixrighttrsm(ae_int_t m,
         ablassplitlength(a, n, &s1, &s2, _state);
         if( isupper&&optype==0 )
         {
-            
+
             /*
              *                  (A1  A12)-1
              * X*A^-1 = (X1 X2)*(       )
@@ -8576,7 +8576,7 @@ void rmatrixrighttrsm(ae_int_t m,
         }
         if( isupper&&optype!=0 )
         {
-            
+
             /*
              *                  (A1'     )-1
              * X*A^-1 = (X1 X2)*(        )
@@ -8589,7 +8589,7 @@ void rmatrixrighttrsm(ae_int_t m,
         }
         if( !isupper&&optype==0 )
         {
-            
+
             /*
              *                  (A1     )-1
              * X*A^-1 = (X1 X2)*(       )
@@ -8602,7 +8602,7 @@ void rmatrixrighttrsm(ae_int_t m,
         }
         if( !isupper&&optype!=0 )
         {
-            
+
             /*
              *                  (A1' A21')-1
              * X*A^-1 = (X1 X2)*(        )
@@ -8621,33 +8621,33 @@ void rmatrixrighttrsm(ae_int_t m,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_rmatrixrighttrsm(ae_int_t m,
-    ae_int_t n,
-    /* Real    */ ae_matrix* a,
-    ae_int_t i1,
-    ae_int_t j1,
-    ae_bool isupper,
-    ae_bool isunit,
-    ae_int_t optype,
-    /* Real    */ ae_matrix* x,
-    ae_int_t i2,
-    ae_int_t j2, ae_state *_state)
+                             ae_int_t n,
+                             /* Real    */ ae_matrix* a,
+                             ae_int_t i1,
+                             ae_int_t j1,
+                             ae_bool isupper,
+                             ae_bool isunit,
+                             ae_int_t optype,
+                             /* Real    */ ae_matrix* x,
+                             ae_int_t i2,
+                             ae_int_t j2, ae_state *_state)
 {
     rmatrixrighttrsm(m,n,a,i1,j1,isupper,isunit,optype,x,i2,j2, _state);
 }
 
 
 void rmatrixlefttrsm(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Real    */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                     ae_int_t n,
+                     /* Real    */ ae_matrix* a,
+                     ae_int_t i1,
+                     ae_int_t j1,
+                     ae_bool isupper,
+                     ae_bool isunit,
+                     ae_int_t optype,
+                     /* Real    */ ae_matrix* x,
+                     ae_int_t i2,
+                     ae_int_t j2,
+                     ae_state *_state)
 {
     ae_int_t s1;
     ae_int_t s2;
@@ -8662,7 +8662,7 @@ void rmatrixlefttrsm(ae_int_t m,
     }
     if( n>=m )
     {
-        
+
         /*
          * Split X: op(A)^-1*X = op(A)^-1*(X1 X2)
          */
@@ -8672,14 +8672,14 @@ void rmatrixlefttrsm(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Split A
          */
         ablassplitlength(a, m, &s1, &s2, _state);
         if( isupper&&optype==0 )
         {
-            
+
             /*
              *           (A1  A12)-1  ( X1 )
              * A^-1*X* = (       )   *(    )
@@ -8692,7 +8692,7 @@ void rmatrixlefttrsm(ae_int_t m,
         }
         if( isupper&&optype!=0 )
         {
-            
+
             /*
              *          (A1'     )-1 ( X1 )
              * A^-1*X = (        )  *(    )
@@ -8705,7 +8705,7 @@ void rmatrixlefttrsm(ae_int_t m,
         }
         if( !isupper&&optype==0 )
         {
-            
+
             /*
              *          (A1     )-1 ( X1 )
              * A^-1*X = (       )  *(    )
@@ -8718,7 +8718,7 @@ void rmatrixlefttrsm(ae_int_t m,
         }
         if( !isupper&&optype!=0 )
         {
-            
+
             /*
              *          (A1' A21')-1 ( X1 )
              * A^-1*X = (        )  *(    )
@@ -8737,34 +8737,34 @@ void rmatrixlefttrsm(ae_int_t m,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_rmatrixlefttrsm(ae_int_t m,
-    ae_int_t n,
-    /* Real    */ ae_matrix* a,
-    ae_int_t i1,
-    ae_int_t j1,
-    ae_bool isupper,
-    ae_bool isunit,
-    ae_int_t optype,
-    /* Real    */ ae_matrix* x,
-    ae_int_t i2,
-    ae_int_t j2, ae_state *_state)
+                            ae_int_t n,
+                            /* Real    */ ae_matrix* a,
+                            ae_int_t i1,
+                            ae_int_t j1,
+                            ae_bool isupper,
+                            ae_bool isunit,
+                            ae_int_t optype,
+                            /* Real    */ ae_matrix* x,
+                            ae_int_t i2,
+                            ae_int_t j2, ae_state *_state)
 {
     rmatrixlefttrsm(m,n,a,i1,j1,isupper,isunit,optype,x,i2,j2, _state);
 }
 
 
 void cmatrixsyrk(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Complex */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state)
+                 ae_int_t k,
+                 double alpha,
+                 /* Complex */ ae_matrix* a,
+                 ae_int_t ia,
+                 ae_int_t ja,
+                 ae_int_t optypea,
+                 double beta,
+                 /* Complex */ ae_matrix* c,
+                 ae_int_t ic,
+                 ae_int_t jc,
+                 ae_bool isupper,
+                 ae_state *_state)
 {
     ae_int_t s1;
     ae_int_t s2;
@@ -8779,7 +8779,7 @@ void cmatrixsyrk(ae_int_t n,
     }
     if( k>=n )
     {
-        
+
         /*
          * Split K
          */
@@ -8797,7 +8797,7 @@ void cmatrixsyrk(ae_int_t n,
     }
     else
     {
-        
+
         /*
          * Split N
          */
@@ -8838,35 +8838,35 @@ void cmatrixsyrk(ae_int_t n,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_cmatrixsyrk(ae_int_t n,
-    ae_int_t k,
-    double alpha,
-    /* Complex */ ae_matrix* a,
-    ae_int_t ia,
-    ae_int_t ja,
-    ae_int_t optypea,
-    double beta,
-    /* Complex */ ae_matrix* c,
-    ae_int_t ic,
-    ae_int_t jc,
-    ae_bool isupper, ae_state *_state)
+                        ae_int_t k,
+                        double alpha,
+                        /* Complex */ ae_matrix* a,
+                        ae_int_t ia,
+                        ae_int_t ja,
+                        ae_int_t optypea,
+                        double beta,
+                        /* Complex */ ae_matrix* c,
+                        ae_int_t ic,
+                        ae_int_t jc,
+                        ae_bool isupper, ae_state *_state)
 {
     cmatrixsyrk(n,k,alpha,a,ia,ja,optypea,beta,c,ic,jc,isupper, _state);
 }
 
 
 void rmatrixsyrk(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state)
+                 ae_int_t k,
+                 double alpha,
+                 /* Real    */ ae_matrix* a,
+                 ae_int_t ia,
+                 ae_int_t ja,
+                 ae_int_t optypea,
+                 double beta,
+                 /* Real    */ ae_matrix* c,
+                 ae_int_t ic,
+                 ae_int_t jc,
+                 ae_bool isupper,
+                 ae_state *_state)
 {
     ae_int_t s1;
     ae_int_t s2;
@@ -8874,7 +8874,7 @@ void rmatrixsyrk(ae_int_t n,
 
 
     bs = ablasblocksize(a, _state);
-    
+
     /*
      * Use MKL or generic basecase code
      */
@@ -8887,13 +8887,13 @@ void rmatrixsyrk(ae_int_t n,
         ablas_rmatrixsyrk2(n, k, alpha, a, ia, ja, optypea, beta, c, ic, jc, isupper, _state);
         return;
     }
-    
+
     /*
      * Recursive subdivision of the problem
      */
     if( k>=n )
     {
-        
+
         /*
          * Split K
          */
@@ -8911,7 +8911,7 @@ void rmatrixsyrk(ae_int_t n,
     }
     else
     {
-        
+
         /*
          * Split N
          */
@@ -8952,39 +8952,39 @@ void rmatrixsyrk(ae_int_t n,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_rmatrixsyrk(ae_int_t n,
-    ae_int_t k,
-    double alpha,
-    /* Real    */ ae_matrix* a,
-    ae_int_t ia,
-    ae_int_t ja,
-    ae_int_t optypea,
-    double beta,
-    /* Real    */ ae_matrix* c,
-    ae_int_t ic,
-    ae_int_t jc,
-    ae_bool isupper, ae_state *_state)
+                        ae_int_t k,
+                        double alpha,
+                        /* Real    */ ae_matrix* a,
+                        ae_int_t ia,
+                        ae_int_t ja,
+                        ae_int_t optypea,
+                        double beta,
+                        /* Real    */ ae_matrix* c,
+                        ae_int_t ic,
+                        ae_int_t jc,
+                        ae_bool isupper, ae_state *_state)
 {
     rmatrixsyrk(n,k,alpha,a,ia,ja,optypea,beta,c,ic,jc,isupper, _state);
 }
 
 
 void cmatrixgemm(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     ae_complex alpha,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     /* Complex */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     ae_complex beta,
-     /* Complex */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                 ae_int_t n,
+                 ae_int_t k,
+                 ae_complex alpha,
+                 /* Complex */ ae_matrix* a,
+                 ae_int_t ia,
+                 ae_int_t ja,
+                 ae_int_t optypea,
+                 /* Complex */ ae_matrix* b,
+                 ae_int_t ib,
+                 ae_int_t jb,
+                 ae_int_t optypeb,
+                 ae_complex beta,
+                 /* Complex */ ae_matrix* c,
+                 ae_int_t ic,
+                 ae_int_t jc,
+                 ae_state *_state)
 {
     ae_int_t s1;
     ae_int_t s2;
@@ -8997,19 +8997,19 @@ void cmatrixgemm(ae_int_t m,
         cmatrixgemmk(m, n, k, alpha, a, ia, ja, optypea, b, ib, jb, optypeb, beta, c, ic, jc, _state);
         return;
     }
-    
+
     /*
      * SMP support is turned on when M or N are larger than some boundary value.
      * Magnitude of K is not taken into account because splitting on K does not
      * allow us to spawn child tasks.
      */
-    
+
     /*
      * Recursive algorithm: parallel splitting on M/N
      */
     if( m>=n&&m>=k )
     {
-        
+
         /*
          * A*B = (A1 A2)^T*B
          */
@@ -9027,7 +9027,7 @@ void cmatrixgemm(ae_int_t m,
     }
     if( n>=m&&n>=k )
     {
-        
+
         /*
          * A*B = A*(B1 B2)
          */
@@ -9044,11 +9044,11 @@ void cmatrixgemm(ae_int_t m,
         }
         return;
     }
-    
+
     /*
      * Recursive algorithm: serial splitting on K
      */
-    
+
     /*
      * A*B = (A1 A2)*(B1 B2)^T
      */
@@ -9081,43 +9081,43 @@ void cmatrixgemm(ae_int_t m,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_cmatrixgemm(ae_int_t m,
-    ae_int_t n,
-    ae_int_t k,
-    ae_complex alpha,
-    /* Complex */ ae_matrix* a,
-    ae_int_t ia,
-    ae_int_t ja,
-    ae_int_t optypea,
-    /* Complex */ ae_matrix* b,
-    ae_int_t ib,
-    ae_int_t jb,
-    ae_int_t optypeb,
-    ae_complex beta,
-    /* Complex */ ae_matrix* c,
-    ae_int_t ic,
-    ae_int_t jc, ae_state *_state)
+                        ae_int_t n,
+                        ae_int_t k,
+                        ae_complex alpha,
+                        /* Complex */ ae_matrix* a,
+                        ae_int_t ia,
+                        ae_int_t ja,
+                        ae_int_t optypea,
+                        /* Complex */ ae_matrix* b,
+                        ae_int_t ib,
+                        ae_int_t jb,
+                        ae_int_t optypeb,
+                        ae_complex beta,
+                        /* Complex */ ae_matrix* c,
+                        ae_int_t ic,
+                        ae_int_t jc, ae_state *_state)
 {
     cmatrixgemm(m,n,k,alpha,a,ia,ja,optypea,b,ib,jb,optypeb,beta,c,ic,jc, _state);
 }
 
 
 void rmatrixgemm(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                 ae_int_t n,
+                 ae_int_t k,
+                 double alpha,
+                 /* Real    */ ae_matrix* a,
+                 ae_int_t ia,
+                 ae_int_t ja,
+                 ae_int_t optypea,
+                 /* Real    */ ae_matrix* b,
+                 ae_int_t ib,
+                 ae_int_t jb,
+                 ae_int_t optypeb,
+                 double beta,
+                 /* Real    */ ae_matrix* c,
+                 ae_int_t ic,
+                 ae_int_t jc,
+                 ae_state *_state)
 {
     ae_int_t s1;
     ae_int_t s2;
@@ -9125,7 +9125,7 @@ void rmatrixgemm(ae_int_t m,
 
 
     bs = ablasblocksize(a, _state);
-    
+
     /*
      * Check input sizes for correctness
      */
@@ -9133,7 +9133,7 @@ void rmatrixgemm(ae_int_t m,
     ae_assert(optypeb==0||optypeb==1, "RMatrixGEMM: incorrect OpTypeB (must be 0 or 1)", _state);
     ae_assert(ic+m<=c->rows, "RMatrixGEMM: incorect size of output matrix C", _state);
     ae_assert(jc+n<=c->cols, "RMatrixGEMM: incorect size of output matrix C", _state);
-    
+
     /*
      * Use MKL or ALGLIB basecase code
      */
@@ -9146,19 +9146,19 @@ void rmatrixgemm(ae_int_t m,
         rmatrixgemmk(m, n, k, alpha, a, ia, ja, optypea, b, ib, jb, optypeb, beta, c, ic, jc, _state);
         return;
     }
-    
+
     /*
      * SMP support is turned on when M or N are larger than some boundary value.
      * Magnitude of K is not taken into account because splitting on K does not
      * allow us to spawn child tasks.
      */
-    
+
     /*
      * Recursive algorithm: split on M or N
      */
     if( m>=n&&m>=k )
     {
-        
+
         /*
          * A*B = (A1 A2)^T*B
          */
@@ -9177,7 +9177,7 @@ void rmatrixgemm(ae_int_t m,
     }
     if( n>=m&&n>=k )
     {
-        
+
         /*
          * A*B = A*(B1 B2)
          */
@@ -9194,11 +9194,11 @@ void rmatrixgemm(ae_int_t m,
         }
         return;
     }
-    
+
     /*
      * Recursive algorithm: split on K
      */
-    
+
     /*
      * A*B = (A1 A2)*(B1 B2)^T
      */
@@ -9231,21 +9231,21 @@ void rmatrixgemm(ae_int_t m,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_rmatrixgemm(ae_int_t m,
-    ae_int_t n,
-    ae_int_t k,
-    double alpha,
-    /* Real    */ ae_matrix* a,
-    ae_int_t ia,
-    ae_int_t ja,
-    ae_int_t optypea,
-    /* Real    */ ae_matrix* b,
-    ae_int_t ib,
-    ae_int_t jb,
-    ae_int_t optypeb,
-    double beta,
-    /* Real    */ ae_matrix* c,
-    ae_int_t ic,
-    ae_int_t jc, ae_state *_state)
+                        ae_int_t n,
+                        ae_int_t k,
+                        double alpha,
+                        /* Real    */ ae_matrix* a,
+                        ae_int_t ia,
+                        ae_int_t ja,
+                        ae_int_t optypea,
+                        /* Real    */ ae_matrix* b,
+                        ae_int_t ib,
+                        ae_int_t jb,
+                        ae_int_t optypeb,
+                        double beta,
+                        /* Real    */ ae_matrix* c,
+                        ae_int_t ic,
+                        ae_int_t jc, ae_state *_state)
 {
     rmatrixgemm(m,n,k,alpha,a,ia,ja,optypea,b,ib,jb,optypeb,beta,c,ic,jc, _state);
 }
@@ -9259,10 +9259,10 @@ Complex ABLASSplitLength
      Bochkanov Sergey
 *************************************************************************/
 static void ablas_ablasinternalsplitlength(ae_int_t n,
-     ae_int_t nb,
-     ae_int_t* n1,
-     ae_int_t* n2,
-     ae_state *_state)
+        ae_int_t nb,
+        ae_int_t* n1,
+        ae_int_t* n2,
+        ae_state *_state)
 {
     ae_int_t r;
 
@@ -9271,7 +9271,7 @@ static void ablas_ablasinternalsplitlength(ae_int_t n,
 
     if( n<=nb )
     {
-        
+
         /*
          * Block size, no further splitting
          */
@@ -9280,13 +9280,13 @@ static void ablas_ablasinternalsplitlength(ae_int_t n,
     }
     else
     {
-        
+
         /*
          * Greater than block size
          */
         if( n%nb!=0 )
         {
-            
+
             /*
              * Split remainder
              */
@@ -9295,7 +9295,7 @@ static void ablas_ablasinternalsplitlength(ae_int_t n,
         }
         else
         {
-            
+
             /*
              * Split on block boundaries
              */
@@ -9317,17 +9317,17 @@ static void ablas_ablasinternalsplitlength(ae_int_t n,
 Level 2 variant of CMatrixRightTRSM
 *************************************************************************/
 static void ablas_cmatrixrighttrsm2(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Complex */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    /* Complex */ ae_matrix* a,
+                                    ae_int_t i1,
+                                    ae_int_t j1,
+                                    ae_bool isupper,
+                                    ae_bool isunit,
+                                    ae_int_t optype,
+                                    /* Complex */ ae_matrix* x,
+                                    ae_int_t i2,
+                                    ae_int_t j2,
+                                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -9335,7 +9335,7 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
     ae_complex vd;
 
 
-    
+
     /*
      * Special case
      */
@@ -9343,7 +9343,7 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * Try to call fast TRSM
      */
@@ -9351,19 +9351,19 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * General case
      */
     if( isupper )
     {
-        
+
         /*
          * Upper triangular matrix
          */
         if( optype==0 )
         {
-            
+
             /*
              * X*A^(-1)
              */
@@ -9391,7 +9391,7 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
         }
         if( optype==1 )
         {
-            
+
             /*
              * X*A^(-T)
              */
@@ -9416,7 +9416,7 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
         }
         if( optype==2 )
         {
-            
+
             /*
              * X*A^(-H)
              */
@@ -9442,13 +9442,13 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Lower triangular matrix
          */
         if( optype==0 )
         {
-            
+
             /*
              * X*A^(-1)
              */
@@ -9476,7 +9476,7 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
         }
         if( optype==1 )
         {
-            
+
             /*
              * X*A^(-T)
              */
@@ -9501,7 +9501,7 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
         }
         if( optype==2 )
         {
-            
+
             /*
              * X*A^(-H)
              */
@@ -9532,17 +9532,17 @@ static void ablas_cmatrixrighttrsm2(ae_int_t m,
 Level-2 subroutine
 *************************************************************************/
 static void ablas_cmatrixlefttrsm2(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Complex */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                                   ae_int_t n,
+                                   /* Complex */ ae_matrix* a,
+                                   ae_int_t i1,
+                                   ae_int_t j1,
+                                   ae_bool isupper,
+                                   ae_bool isunit,
+                                   ae_int_t optype,
+                                   /* Complex */ ae_matrix* x,
+                                   ae_int_t i2,
+                                   ae_int_t j2,
+                                   ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -9550,7 +9550,7 @@ static void ablas_cmatrixlefttrsm2(ae_int_t m,
     ae_complex vd;
 
 
-    
+
     /*
      * Special case
      */
@@ -9558,7 +9558,7 @@ static void ablas_cmatrixlefttrsm2(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * Try to call fast TRSM
      */
@@ -9566,19 +9566,19 @@ static void ablas_cmatrixlefttrsm2(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * General case
      */
     if( isupper )
     {
-        
+
         /*
          * Upper triangular matrix
          */
         if( optype==0 )
         {
-            
+
             /*
              * A^(-1)*X
              */
@@ -9599,7 +9599,7 @@ static void ablas_cmatrixlefttrsm2(ae_int_t m,
         }
         if( optype==1 )
         {
-            
+
             /*
              * A^(-T)*X
              */
@@ -9624,7 +9624,7 @@ static void ablas_cmatrixlefttrsm2(ae_int_t m,
         }
         if( optype==2 )
         {
-            
+
             /*
              * A^(-H)*X
              */
@@ -9650,13 +9650,13 @@ static void ablas_cmatrixlefttrsm2(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Lower triangular matrix
          */
         if( optype==0 )
         {
-            
+
             /*
              * A^(-1)*X
              */
@@ -9681,7 +9681,7 @@ static void ablas_cmatrixlefttrsm2(ae_int_t m,
         }
         if( optype==1 )
         {
-            
+
             /*
              * A^(-T)*X
              */
@@ -9706,7 +9706,7 @@ static void ablas_cmatrixlefttrsm2(ae_int_t m,
         }
         if( optype==2 )
         {
-            
+
             /*
              * A^(-H)*X
              */
@@ -9741,17 +9741,17 @@ Level 2 subroutine
      Bochkanov Sergey
 *************************************************************************/
 static void ablas_rmatrixrighttrsm2(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Real    */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    /* Real    */ ae_matrix* a,
+                                    ae_int_t i1,
+                                    ae_int_t j1,
+                                    ae_bool isupper,
+                                    ae_bool isunit,
+                                    ae_int_t optype,
+                                    /* Real    */ ae_matrix* x,
+                                    ae_int_t i2,
+                                    ae_int_t j2,
+                                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -9759,7 +9759,7 @@ static void ablas_rmatrixrighttrsm2(ae_int_t m,
     double vd;
 
 
-    
+
     /*
      * Special case
      */
@@ -9767,7 +9767,7 @@ static void ablas_rmatrixrighttrsm2(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * Try to use "fast" code
      */
@@ -9775,19 +9775,19 @@ static void ablas_rmatrixrighttrsm2(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * General case
      */
     if( isupper )
     {
-        
+
         /*
          * Upper triangular matrix
          */
         if( optype==0 )
         {
-            
+
             /*
              * X*A^(-1)
              */
@@ -9815,7 +9815,7 @@ static void ablas_rmatrixrighttrsm2(ae_int_t m,
         }
         if( optype==1 )
         {
-            
+
             /*
              * X*A^(-T)
              */
@@ -9841,13 +9841,13 @@ static void ablas_rmatrixrighttrsm2(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Lower triangular matrix
          */
         if( optype==0 )
         {
-            
+
             /*
              * X*A^(-1)
              */
@@ -9875,7 +9875,7 @@ static void ablas_rmatrixrighttrsm2(ae_int_t m,
         }
         if( optype==1 )
         {
-            
+
             /*
              * X*A^(-T)
              */
@@ -9906,17 +9906,17 @@ static void ablas_rmatrixrighttrsm2(ae_int_t m,
 Level 2 subroutine
 *************************************************************************/
 static void ablas_rmatrixlefttrsm2(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Real    */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                                   ae_int_t n,
+                                   /* Real    */ ae_matrix* a,
+                                   ae_int_t i1,
+                                   ae_int_t j1,
+                                   ae_bool isupper,
+                                   ae_bool isunit,
+                                   ae_int_t optype,
+                                   /* Real    */ ae_matrix* x,
+                                   ae_int_t i2,
+                                   ae_int_t j2,
+                                   ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -9924,7 +9924,7 @@ static void ablas_rmatrixlefttrsm2(ae_int_t m,
     double vd;
 
 
-    
+
     /*
      * Special case
      */
@@ -9932,7 +9932,7 @@ static void ablas_rmatrixlefttrsm2(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * Try fast code
      */
@@ -9940,19 +9940,19 @@ static void ablas_rmatrixlefttrsm2(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * General case
      */
     if( isupper )
     {
-        
+
         /*
          * Upper triangular matrix
          */
         if( optype==0 )
         {
-            
+
             /*
              * A^(-1)*X
              */
@@ -9973,7 +9973,7 @@ static void ablas_rmatrixlefttrsm2(ae_int_t m,
         }
         if( optype==1 )
         {
-            
+
             /*
              * A^(-T)*X
              */
@@ -9999,13 +9999,13 @@ static void ablas_rmatrixlefttrsm2(ae_int_t m,
     }
     else
     {
-        
+
         /*
          * Lower triangular matrix
          */
         if( optype==0 )
         {
-            
+
             /*
              * A^(-1)*X
              */
@@ -10030,7 +10030,7 @@ static void ablas_rmatrixlefttrsm2(ae_int_t m,
         }
         if( optype==1 )
         {
-            
+
             /*
              * A^(-T)*X
              */
@@ -10061,18 +10061,18 @@ static void ablas_rmatrixlefttrsm2(ae_int_t m,
 Level 2 subroutine
 *************************************************************************/
 static void ablas_cmatrixsyrk2(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Complex */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state)
+                               ae_int_t k,
+                               double alpha,
+                               /* Complex */ ae_matrix* a,
+                               ae_int_t ia,
+                               ae_int_t ja,
+                               ae_int_t optypea,
+                               double beta,
+                               /* Complex */ ae_matrix* c,
+                               ae_int_t ic,
+                               ae_int_t jc,
+                               ae_bool isupper,
+                               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -10081,7 +10081,7 @@ static void ablas_cmatrixsyrk2(ae_int_t n,
     ae_complex v;
 
 
-    
+
     /*
      * Fast exit (nothing to be done)
      */
@@ -10089,7 +10089,7 @@ static void ablas_cmatrixsyrk2(ae_int_t n,
     {
         return;
     }
-    
+
     /*
      * Try to call fast SYRK
      */
@@ -10097,13 +10097,13 @@ static void ablas_cmatrixsyrk2(ae_int_t n,
     {
         return;
     }
-    
+
     /*
      * SYRK
      */
     if( optypea==0 )
     {
-        
+
         /*
          * C=alpha*A*A^H+beta*C
          */
@@ -10143,7 +10143,7 @@ static void ablas_cmatrixsyrk2(ae_int_t n,
     }
     else
     {
-        
+
         /*
          * C=alpha*A^H*A+beta*C
          */
@@ -10198,18 +10198,18 @@ static void ablas_cmatrixsyrk2(ae_int_t n,
 Level 2 subrotuine
 *************************************************************************/
 static void ablas_rmatrixsyrk2(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state)
+                               ae_int_t k,
+                               double alpha,
+                               /* Real    */ ae_matrix* a,
+                               ae_int_t ia,
+                               ae_int_t ja,
+                               ae_int_t optypea,
+                               double beta,
+                               /* Real    */ ae_matrix* c,
+                               ae_int_t ic,
+                               ae_int_t jc,
+                               ae_bool isupper,
+                               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -10218,7 +10218,7 @@ static void ablas_rmatrixsyrk2(ae_int_t n,
     double v;
 
 
-    
+
     /*
      * Fast exit (nothing to be done)
      */
@@ -10226,7 +10226,7 @@ static void ablas_rmatrixsyrk2(ae_int_t n,
     {
         return;
     }
-    
+
     /*
      * Try to call fast SYRK
      */
@@ -10234,13 +10234,13 @@ static void ablas_rmatrixsyrk2(ae_int_t n,
     {
         return;
     }
-    
+
     /*
      * SYRK
      */
     if( optypea==0 )
     {
-        
+
         /*
          * C=alpha*A*A^H+beta*C
          */
@@ -10280,7 +10280,7 @@ static void ablas_rmatrixsyrk2(ae_int_t n,
     }
     else
     {
-        
+
         /*
          * C=alpha*A^H*A+beta*C
          */
@@ -10369,10 +10369,10 @@ so that v(0:i-1) = 0, v(i) = 1, v(i+1:m-1) stored in A(i+1:m-1,i).
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixqr(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     ae_state *_state)
+                             ae_int_t m,
+                             ae_int_t n,
+                             /* Real    */ ae_vector* tau,
+                             ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -10409,14 +10409,14 @@ void rmatrixqr(/* Real    */ ae_matrix* a,
     ae_matrix_set_length(&tmpa, m, ablasblocksize(a, _state), _state);
     ae_matrix_set_length(&tmpt, ablasblocksize(a, _state), 2*ablasblocksize(a, _state), _state);
     ae_matrix_set_length(&tmpr, 2*ablasblocksize(a, _state), n, _state);
-    
+
     /*
      * Blocked code
      */
     blockstart = 0;
     while(blockstart!=minmn)
     {
-        
+
         /*
          * Determine block size
          */
@@ -10426,7 +10426,7 @@ void rmatrixqr(/* Real    */ ae_matrix* a,
             blocksize = ablasblocksize(a, _state);
         }
         rowscount = m-blockstart;
-        
+
         /*
          * QR decomposition of submatrix.
          * Matrix is copied to temporary storage to solve
@@ -10437,7 +10437,7 @@ void rmatrixqr(/* Real    */ ae_matrix* a,
         rmatrixqrbasecase(&tmpa, rowscount, blocksize, &work, &t, &taubuf, _state);
         rmatrixcopy(rowscount, blocksize, &tmpa, 0, 0, a, blockstart, blockstart, _state);
         ae_v_move(&tau->ptr.p_double[blockstart], 1, &taubuf.ptr.p_double[0], 1, ae_v_len(blockstart,blockstart+blocksize-1));
-        
+
         /*
          * Update the rest, choose between:
          * a) Level 2 algorithm (when the rest of the matrix is small enough)
@@ -10449,12 +10449,12 @@ void rmatrixqr(/* Real    */ ae_matrix* a,
         {
             if( n-blockstart-blocksize>=2*ablasblocksize(a, _state)||rowscount>=4*ablasblocksize(a, _state) )
             {
-                
+
                 /*
                  * Prepare block reflector
                  */
                 ortfac_rmatrixblockreflector(&tmpa, &taubuf, ae_true, rowscount, blocksize, &tmpt, &work, _state);
-                
+
                 /*
                  * Multiply the rest of A by Q'.
                  *
@@ -10467,7 +10467,7 @@ void rmatrixqr(/* Real    */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Level 2 algorithm
                  */
@@ -10479,7 +10479,7 @@ void rmatrixqr(/* Real    */ ae_matrix* a,
                 }
             }
         }
-        
+
         /*
          * Advance
          */
@@ -10525,10 +10525,10 @@ v(i) = 1, v(i+1:n-1) stored in A(i,i+1:n-1).
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixlq(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     ae_state *_state)
+                             ae_int_t m,
+                             ae_int_t n,
+                             /* Real    */ ae_vector* tau,
+                             ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -10565,14 +10565,14 @@ void rmatrixlq(/* Real    */ ae_matrix* a,
     ae_matrix_set_length(&tmpa, ablasblocksize(a, _state), n, _state);
     ae_matrix_set_length(&tmpt, ablasblocksize(a, _state), 2*ablasblocksize(a, _state), _state);
     ae_matrix_set_length(&tmpr, m, 2*ablasblocksize(a, _state), _state);
-    
+
     /*
      * Blocked code
      */
     blockstart = 0;
     while(blockstart!=minmn)
     {
-        
+
         /*
          * Determine block size
          */
@@ -10582,7 +10582,7 @@ void rmatrixlq(/* Real    */ ae_matrix* a,
             blocksize = ablasblocksize(a, _state);
         }
         columnscount = n-blockstart;
-        
+
         /*
          * LQ decomposition of submatrix.
          * Matrix is copied to temporary storage to solve
@@ -10593,7 +10593,7 @@ void rmatrixlq(/* Real    */ ae_matrix* a,
         rmatrixlqbasecase(&tmpa, blocksize, columnscount, &work, &t, &taubuf, _state);
         rmatrixcopy(blocksize, columnscount, &tmpa, 0, 0, a, blockstart, blockstart, _state);
         ae_v_move(&tau->ptr.p_double[blockstart], 1, &taubuf.ptr.p_double[0], 1, ae_v_len(blockstart,blockstart+blocksize-1));
-        
+
         /*
          * Update the rest, choose between:
          * a) Level 2 algorithm (when the rest of the matrix is small enough)
@@ -10605,12 +10605,12 @@ void rmatrixlq(/* Real    */ ae_matrix* a,
         {
             if( m-blockstart-blocksize>=2*ablasblocksize(a, _state) )
             {
-                
+
                 /*
                  * Prepare block reflector
                  */
                 ortfac_rmatrixblockreflector(&tmpa, &taubuf, ae_false, columnscount, blocksize, &tmpt, &work, _state);
-                
+
                 /*
                  * Multiply the rest of A by Q.
                  *
@@ -10622,7 +10622,7 @@ void rmatrixlq(/* Real    */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Level 2 algorithm
                  */
@@ -10634,7 +10634,7 @@ void rmatrixlq(/* Real    */ ae_matrix* a,
                 }
             }
         }
-        
+
         /*
          * Advance
          */
@@ -10666,10 +10666,10 @@ MxM, R - upper triangular (or upper trapezoid) matrix of size MxN.
      September 30, 1994
 *************************************************************************/
 void cmatrixqr(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_vector* tau,
-     ae_state *_state)
+                             ae_int_t m,
+                             ae_int_t n,
+                             /* Complex */ ae_vector* tau,
+                             ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -10706,14 +10706,14 @@ void cmatrixqr(/* Complex */ ae_matrix* a,
     ae_matrix_set_length(&tmpa, m, ablascomplexblocksize(a, _state), _state);
     ae_matrix_set_length(&tmpt, ablascomplexblocksize(a, _state), ablascomplexblocksize(a, _state), _state);
     ae_matrix_set_length(&tmpr, 2*ablascomplexblocksize(a, _state), n, _state);
-    
+
     /*
      * Blocked code
      */
     blockstart = 0;
     while(blockstart!=minmn)
     {
-        
+
         /*
          * Determine block size
          */
@@ -10723,7 +10723,7 @@ void cmatrixqr(/* Complex */ ae_matrix* a,
             blocksize = ablascomplexblocksize(a, _state);
         }
         rowscount = m-blockstart;
-        
+
         /*
          * QR decomposition of submatrix.
          * Matrix is copied to temporary storage to solve
@@ -10734,7 +10734,7 @@ void cmatrixqr(/* Complex */ ae_matrix* a,
         ortfac_cmatrixqrbasecase(&tmpa, rowscount, blocksize, &work, &t, &taubuf, _state);
         cmatrixcopy(rowscount, blocksize, &tmpa, 0, 0, a, blockstart, blockstart, _state);
         ae_v_cmove(&tau->ptr.p_complex[blockstart], 1, &taubuf.ptr.p_complex[0], 1, "N", ae_v_len(blockstart,blockstart+blocksize-1));
-        
+
         /*
          * Update the rest, choose between:
          * a) Level 2 algorithm (when the rest of the matrix is small enough)
@@ -10746,12 +10746,12 @@ void cmatrixqr(/* Complex */ ae_matrix* a,
         {
             if( n-blockstart-blocksize>=2*ablascomplexblocksize(a, _state) )
             {
-                
+
                 /*
                  * Prepare block reflector
                  */
                 ortfac_cmatrixblockreflector(&tmpa, &taubuf, ae_true, rowscount, blocksize, &tmpt, &work, _state);
-                
+
                 /*
                  * Multiply the rest of A by Q'.
                  *
@@ -10764,7 +10764,7 @@ void cmatrixqr(/* Complex */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Level 2 algorithm
                  */
@@ -10776,7 +10776,7 @@ void cmatrixqr(/* Complex */ ae_matrix* a,
                 }
             }
         }
-        
+
         /*
          * Advance
          */
@@ -10808,10 +10808,10 @@ MxM, L - lower triangular (or lower trapezoid) matrix of size MxN.
      September 30, 1994
 *************************************************************************/
 void cmatrixlq(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_vector* tau,
-     ae_state *_state)
+                             ae_int_t m,
+                             ae_int_t n,
+                             /* Complex */ ae_vector* tau,
+                             ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -10848,14 +10848,14 @@ void cmatrixlq(/* Complex */ ae_matrix* a,
     ae_matrix_set_length(&tmpa, ablascomplexblocksize(a, _state), n, _state);
     ae_matrix_set_length(&tmpt, ablascomplexblocksize(a, _state), ablascomplexblocksize(a, _state), _state);
     ae_matrix_set_length(&tmpr, m, 2*ablascomplexblocksize(a, _state), _state);
-    
+
     /*
      * Blocked code
      */
     blockstart = 0;
     while(blockstart!=minmn)
     {
-        
+
         /*
          * Determine block size
          */
@@ -10865,7 +10865,7 @@ void cmatrixlq(/* Complex */ ae_matrix* a,
             blocksize = ablascomplexblocksize(a, _state);
         }
         columnscount = n-blockstart;
-        
+
         /*
          * LQ decomposition of submatrix.
          * Matrix is copied to temporary storage to solve
@@ -10876,7 +10876,7 @@ void cmatrixlq(/* Complex */ ae_matrix* a,
         ortfac_cmatrixlqbasecase(&tmpa, blocksize, columnscount, &work, &t, &taubuf, _state);
         cmatrixcopy(blocksize, columnscount, &tmpa, 0, 0, a, blockstart, blockstart, _state);
         ae_v_cmove(&tau->ptr.p_complex[blockstart], 1, &taubuf.ptr.p_complex[0], 1, "N", ae_v_len(blockstart,blockstart+blocksize-1));
-        
+
         /*
          * Update the rest, choose between:
          * a) Level 2 algorithm (when the rest of the matrix is small enough)
@@ -10888,12 +10888,12 @@ void cmatrixlq(/* Complex */ ae_matrix* a,
         {
             if( m-blockstart-blocksize>=2*ablascomplexblocksize(a, _state) )
             {
-                
+
                 /*
                  * Prepare block reflector
                  */
                 ortfac_cmatrixblockreflector(&tmpa, &taubuf, ae_false, columnscount, blocksize, &tmpt, &work, _state);
-                
+
                 /*
                  * Multiply the rest of A by Q.
                  *
@@ -10905,7 +10905,7 @@ void cmatrixlq(/* Complex */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Level 2 algorithm
                  */
@@ -10917,7 +10917,7 @@ void cmatrixlq(/* Complex */ ae_matrix* a,
                 }
             }
         }
-        
+
         /*
          * Advance
          */
@@ -10949,12 +10949,12 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixqrunpackq(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     ae_int_t qcolumns,
-     /* Real    */ ae_matrix* q,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Real    */ ae_vector* tau,
+                                    ae_int_t qcolumns,
+                                    /* Real    */ ae_matrix* q,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -10986,7 +10986,7 @@ void rmatrixqrunpackq(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * init
      */
@@ -11013,7 +11013,7 @@ void rmatrixqrunpackq(/* Real    */ ae_matrix* a,
     ae_matrix_set_length(&tmpa, m, ablasblocksize(a, _state), _state);
     ae_matrix_set_length(&tmpt, ablasblocksize(a, _state), 2*ablasblocksize(a, _state), _state);
     ae_matrix_set_length(&tmpr, 2*ablasblocksize(a, _state), qcolumns, _state);
-    
+
     /*
      * Blocked code
      */
@@ -11024,13 +11024,13 @@ void rmatrixqrunpackq(/* Real    */ ae_matrix* a,
         rowscount = m-blockstart;
         if( blocksize>0 )
         {
-            
+
             /*
              * Copy current block
              */
             rmatrixcopy(rowscount, blocksize, a, blockstart, blockstart, &tmpa, 0, 0, _state);
             ae_v_move(&taubuf.ptr.p_double[0], 1, &tau->ptr.p_double[blockstart], 1, ae_v_len(0,blocksize-1));
-            
+
             /*
              * Update, choose between:
              * a) Level 2 algorithm (when the rest of the matrix is small enough)
@@ -11040,12 +11040,12 @@ void rmatrixqrunpackq(/* Real    */ ae_matrix* a,
              */
             if( qcolumns>=2*ablasblocksize(a, _state) )
             {
-                
+
                 /*
                  * Prepare block reflector
                  */
                 ortfac_rmatrixblockreflector(&tmpa, &taubuf, ae_true, rowscount, blocksize, &tmpt, &work, _state);
-                
+
                 /*
                  * Multiply matrix by Q.
                  *
@@ -11057,7 +11057,7 @@ void rmatrixqrunpackq(/* Real    */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Level 2 algorithm
                  */
@@ -11069,7 +11069,7 @@ void rmatrixqrunpackq(/* Real    */ ae_matrix* a,
                 }
             }
         }
-        
+
         /*
          * Advance
          */
@@ -11097,10 +11097,10 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixqrunpackr(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* r,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Real    */ ae_matrix* r,
+                                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -11150,12 +11150,12 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixlqunpackq(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     ae_int_t qrows,
-     /* Real    */ ae_matrix* q,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Real    */ ae_vector* tau,
+                                    ae_int_t qrows,
+                                    /* Real    */ ae_matrix* q,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -11187,7 +11187,7 @@ void rmatrixlqunpackq(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * init
      */
@@ -11214,7 +11214,7 @@ void rmatrixlqunpackq(/* Real    */ ae_matrix* a,
             }
         }
     }
-    
+
     /*
      * Blocked code
      */
@@ -11225,13 +11225,13 @@ void rmatrixlqunpackq(/* Real    */ ae_matrix* a,
         columnscount = n-blockstart;
         if( blocksize>0 )
         {
-            
+
             /*
              * Copy submatrix
              */
             rmatrixcopy(blocksize, columnscount, a, blockstart, blockstart, &tmpa, 0, 0, _state);
             ae_v_move(&taubuf.ptr.p_double[0], 1, &tau->ptr.p_double[blockstart], 1, ae_v_len(0,blocksize-1));
-            
+
             /*
              * Update matrix, choose between:
              * a) Level 2 algorithm (when the rest of the matrix is small enough)
@@ -11241,12 +11241,12 @@ void rmatrixlqunpackq(/* Real    */ ae_matrix* a,
              */
             if( qrows>=2*ablasblocksize(a, _state) )
             {
-                
+
                 /*
                  * Prepare block reflector
                  */
                 ortfac_rmatrixblockreflector(&tmpa, &taubuf, ae_false, columnscount, blocksize, &tmpt, &work, _state);
-                
+
                 /*
                  * Multiply the rest of A by Q'.
                  *
@@ -11258,7 +11258,7 @@ void rmatrixlqunpackq(/* Real    */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Level 2 algorithm
                  */
@@ -11270,7 +11270,7 @@ void rmatrixlqunpackq(/* Real    */ ae_matrix* a,
                 }
             }
         }
-        
+
         /*
          * Advance
          */
@@ -11298,10 +11298,10 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixlqunpackl(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* l,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Real    */ ae_matrix* l,
+                                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -11351,12 +11351,12 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixqrunpackq(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_vector* tau,
-     ae_int_t qcolumns,
-     /* Complex */ ae_matrix* q,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Complex */ ae_vector* tau,
+                                    ae_int_t qcolumns,
+                                    /* Complex */ ae_matrix* q,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -11388,7 +11388,7 @@ void cmatrixqrunpackq(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * init
      */
@@ -11415,7 +11415,7 @@ void cmatrixqrunpackq(/* Complex */ ae_matrix* a,
             }
         }
     }
-    
+
     /*
      * Blocked code
      */
@@ -11426,7 +11426,7 @@ void cmatrixqrunpackq(/* Complex */ ae_matrix* a,
         rowscount = m-blockstart;
         if( blocksize>0 )
         {
-            
+
             /*
              * QR decomposition of submatrix.
              * Matrix is copied to temporary storage to solve
@@ -11435,7 +11435,7 @@ void cmatrixqrunpackq(/* Complex */ ae_matrix* a,
              */
             cmatrixcopy(rowscount, blocksize, a, blockstart, blockstart, &tmpa, 0, 0, _state);
             ae_v_cmove(&taubuf.ptr.p_complex[0], 1, &tau->ptr.p_complex[blockstart], 1, "N", ae_v_len(0,blocksize-1));
-            
+
             /*
              * Update matrix, choose between:
              * a) Level 2 algorithm (when the rest of the matrix is small enough)
@@ -11445,12 +11445,12 @@ void cmatrixqrunpackq(/* Complex */ ae_matrix* a,
              */
             if( qcolumns>=2*ablascomplexblocksize(a, _state) )
             {
-                
+
                 /*
                  * Prepare block reflector
                  */
                 ortfac_cmatrixblockreflector(&tmpa, &taubuf, ae_true, rowscount, blocksize, &tmpt, &work, _state);
-                
+
                 /*
                  * Multiply the rest of A by Q.
                  *
@@ -11462,7 +11462,7 @@ void cmatrixqrunpackq(/* Complex */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Level 2 algorithm
                  */
@@ -11474,7 +11474,7 @@ void cmatrixqrunpackq(/* Complex */ ae_matrix* a,
                 }
             }
         }
-        
+
         /*
          * Advance
          */
@@ -11502,10 +11502,10 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixqrunpackr(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* r,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Complex */ ae_matrix* r,
+                                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -11555,12 +11555,12 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixlqunpackq(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_vector* tau,
-     ae_int_t qrows,
-     /* Complex */ ae_matrix* q,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Complex */ ae_vector* tau,
+                                    ae_int_t qrows,
+                                    /* Complex */ ae_matrix* q,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -11591,7 +11591,7 @@ void cmatrixlqunpackq(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Init
      */
@@ -11618,7 +11618,7 @@ void cmatrixlqunpackq(/* Complex */ ae_matrix* a,
             }
         }
     }
-    
+
     /*
      * Blocked code
      */
@@ -11629,7 +11629,7 @@ void cmatrixlqunpackq(/* Complex */ ae_matrix* a,
         columnscount = n-blockstart;
         if( blocksize>0 )
         {
-            
+
             /*
              * LQ decomposition of submatrix.
              * Matrix is copied to temporary storage to solve
@@ -11638,7 +11638,7 @@ void cmatrixlqunpackq(/* Complex */ ae_matrix* a,
              */
             cmatrixcopy(blocksize, columnscount, a, blockstart, blockstart, &tmpa, 0, 0, _state);
             ae_v_cmove(&taubuf.ptr.p_complex[0], 1, &tau->ptr.p_complex[blockstart], 1, "N", ae_v_len(0,blocksize-1));
-            
+
             /*
              * Update matrix, choose between:
              * a) Level 2 algorithm (when the rest of the matrix is small enough)
@@ -11648,12 +11648,12 @@ void cmatrixlqunpackq(/* Complex */ ae_matrix* a,
              */
             if( qrows>=2*ablascomplexblocksize(a, _state) )
             {
-                
+
                 /*
                  * Prepare block reflector
                  */
                 ortfac_cmatrixblockreflector(&tmpa, &taubuf, ae_false, columnscount, blocksize, &tmpt, &work, _state);
-                
+
                 /*
                  * Multiply the rest of A by Q'.
                  *
@@ -11665,7 +11665,7 @@ void cmatrixlqunpackq(/* Complex */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Level 2 algorithm
                  */
@@ -11677,7 +11677,7 @@ void cmatrixlqunpackq(/* Complex */ ae_matrix* a,
                 }
             }
         }
-        
+
         /*
          * Advance
          */
@@ -11705,10 +11705,10 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixlqunpackl(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* l,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Complex */ ae_matrix* l,
+                                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -11747,12 +11747,12 @@ Base case for real QR
      pseudocode, 2007-2010.
 *************************************************************************/
 void rmatrixqrbasecase(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* work,
-     /* Real    */ ae_vector* t,
-     /* Real    */ ae_vector* tau,
-     ae_state *_state)
+                                     ae_int_t m,
+                                     ae_int_t n,
+                                     /* Real    */ ae_vector* work,
+                                     /* Real    */ ae_vector* t,
+                                     /* Real    */ ae_vector* tau,
+                                     ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -11761,14 +11761,14 @@ void rmatrixqrbasecase(/* Real    */ ae_matrix* a,
 
 
     minmn = ae_minint(m, n, _state);
-    
+
     /*
      * Test the input arguments
      */
     k = minmn;
     for(i=0; i<=k-1; i++)
     {
-        
+
         /*
          * Generate elementary reflector H(i) to annihilate A(i+1:m,i)
          */
@@ -11779,7 +11779,7 @@ void rmatrixqrbasecase(/* Real    */ ae_matrix* a,
         t->ptr.p_double[1] = 1;
         if( i<n )
         {
-            
+
             /*
              * Apply H(i) to A(i:m-1,i+1:n-1) from the left
              */
@@ -11800,12 +11800,12 @@ Base case for real LQ
      pseudocode, 2007-2010.
 *************************************************************************/
 void rmatrixlqbasecase(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* work,
-     /* Real    */ ae_vector* t,
-     /* Real    */ ae_vector* tau,
-     ae_state *_state)
+                                     ae_int_t m,
+                                     ae_int_t n,
+                                     /* Real    */ ae_vector* work,
+                                     /* Real    */ ae_vector* t,
+                                     /* Real    */ ae_vector* tau,
+                                     ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -11815,7 +11815,7 @@ void rmatrixlqbasecase(/* Real    */ ae_matrix* a,
     k = ae_minint(m, n, _state);
     for(i=0; i<=k-1; i++)
     {
-        
+
         /*
          * Generate elementary reflector H(i) to annihilate A(i,i+1:n-1)
          */
@@ -11826,7 +11826,7 @@ void rmatrixlqbasecase(/* Real    */ ae_matrix* a,
         t->ptr.p_double[1] = 1;
         if( i<n )
         {
-            
+
             /*
              * Apply H(i) to A(i+1:m,i:n) from the right
              */
@@ -11894,11 +11894,11 @@ are the diagonal and off-diagonal elements of matrix B.
      pseudocode, 2007-2010.
 *************************************************************************/
 void rmatrixbd(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* tauq,
-     /* Real    */ ae_vector* taup,
-     ae_state *_state)
+                             ae_int_t m,
+                             ae_int_t n,
+                             /* Real    */ ae_vector* tauq,
+                             /* Real    */ ae_vector* taup,
+                             ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -11913,7 +11913,7 @@ void rmatrixbd(/* Real    */ ae_matrix* a,
     ae_vector_init(&work, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&t, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Prepare
      */
@@ -11937,13 +11937,13 @@ void rmatrixbd(/* Real    */ ae_matrix* a,
     }
     if( m>=n )
     {
-        
+
         /*
          * Reduce to upper bidiagonal form
          */
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Generate elementary reflector H(i) to annihilate A(i+1:m-1,i)
              */
@@ -11952,14 +11952,14 @@ void rmatrixbd(/* Real    */ ae_matrix* a,
             tauq->ptr.p_double[i] = ltau;
             ae_v_move(&a->ptr.pp_double[i][i], a->stride, &t.ptr.p_double[1], 1, ae_v_len(i,m-1));
             t.ptr.p_double[1] = 1;
-            
+
             /*
              * Apply H(i) to A(i:m-1,i+1:n-1) from the left
              */
             applyreflectionfromtheleft(a, ltau, &t, i, m-1, i+1, n-1, &work, _state);
             if( i<n-1 )
             {
-                
+
                 /*
                  * Generate elementary reflector G(i) to annihilate
                  * A(i,i+2:n-1)
@@ -11969,7 +11969,7 @@ void rmatrixbd(/* Real    */ ae_matrix* a,
                 taup->ptr.p_double[i] = ltau;
                 ae_v_move(&a->ptr.pp_double[i][i+1], 1, &t.ptr.p_double[1], 1, ae_v_len(i+1,n-1));
                 t.ptr.p_double[1] = 1;
-                
+
                 /*
                  * Apply G(i) to A(i+1:m-1,i+1:n-1) from the right
                  */
@@ -11983,13 +11983,13 @@ void rmatrixbd(/* Real    */ ae_matrix* a,
     }
     else
     {
-        
+
         /*
          * Reduce to lower bidiagonal form
          */
         for(i=0; i<=m-1; i++)
         {
-            
+
             /*
              * Generate elementary reflector G(i) to annihilate A(i,i+1:n-1)
              */
@@ -11998,14 +11998,14 @@ void rmatrixbd(/* Real    */ ae_matrix* a,
             taup->ptr.p_double[i] = ltau;
             ae_v_move(&a->ptr.pp_double[i][i], 1, &t.ptr.p_double[1], 1, ae_v_len(i,n-1));
             t.ptr.p_double[1] = 1;
-            
+
             /*
              * Apply G(i) to A(i+1:m-1,i:n-1) from the right
              */
             applyreflectionfromtheright(a, ltau, &t, i+1, m-1, i, n-1, &work, _state);
             if( i<m-1 )
             {
-                
+
                 /*
                  * Generate elementary reflector H(i) to annihilate
                  * A(i+2:m-1,i)
@@ -12015,7 +12015,7 @@ void rmatrixbd(/* Real    */ ae_matrix* a,
                 tauq->ptr.p_double[i] = ltau;
                 ae_v_move(&a->ptr.pp_double[i+1][i], a->stride, &t.ptr.p_double[1], 1, ae_v_len(i+1,m-1));
                 t.ptr.p_double[1] = 1;
-                
+
                 /*
                  * Apply H(i) to A(i+1:m-1,i+1:n-1) from the left
                  */
@@ -12054,12 +12054,12 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixbdunpackq(/* Real    */ ae_matrix* qp,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* tauq,
-     ae_int_t qcolumns,
-     /* Real    */ ae_matrix* q,
-     ae_state *_state)
+                                    ae_int_t m,
+                                    ae_int_t n,
+                                    /* Real    */ ae_vector* tauq,
+                                    ae_int_t qcolumns,
+                                    /* Real    */ ae_matrix* q,
+                                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -12072,7 +12072,7 @@ void rmatrixbdunpackq(/* Real    */ ae_matrix* qp,
     {
         return;
     }
-    
+
     /*
      * prepare Q
      */
@@ -12091,7 +12091,7 @@ void rmatrixbdunpackq(/* Real    */ ae_matrix* qp,
             }
         }
     }
-    
+
     /*
      * Calculate
      */
@@ -12130,15 +12130,15 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixbdmultiplybyq(/* Real    */ ae_matrix* qp,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* tauq,
-     /* Real    */ ae_matrix* z,
-     ae_int_t zrows,
-     ae_int_t zcolumns,
-     ae_bool fromtheright,
-     ae_bool dotranspose,
-     ae_state *_state)
+                                        ae_int_t m,
+                                        ae_int_t n,
+                                        /* Real    */ ae_vector* tauq,
+                                        /* Real    */ ae_matrix* z,
+                                        ae_int_t zrows,
+                                        ae_int_t zcolumns,
+                                        ae_bool fromtheright,
+                                        ae_bool dotranspose,
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12159,7 +12159,7 @@ void rmatrixbdmultiplybyq(/* Real    */ ae_matrix* qp,
         return;
     }
     ae_assert((fromtheright&&zcolumns==m)||(!fromtheright&&zrows==m), "RMatrixBDMultiplyByQ: incorrect Z size!", _state);
-    
+
     /*
      * init
      */
@@ -12170,7 +12170,7 @@ void rmatrixbdmultiplybyq(/* Real    */ ae_matrix* qp,
     ae_vector_set_length(&work, mx+1, _state);
     if( m>=n )
     {
-        
+
         /*
          * setup
          */
@@ -12193,7 +12193,7 @@ void rmatrixbdmultiplybyq(/* Real    */ ae_matrix* qp,
             i2 = i;
             istep = -istep;
         }
-        
+
         /*
          * Process
          */
@@ -12216,7 +12216,7 @@ void rmatrixbdmultiplybyq(/* Real    */ ae_matrix* qp,
     }
     else
     {
-        
+
         /*
          * setup
          */
@@ -12239,7 +12239,7 @@ void rmatrixbdmultiplybyq(/* Real    */ ae_matrix* qp,
             i2 = i;
             istep = -istep;
         }
-        
+
         /*
          * Process
          */
@@ -12290,12 +12290,12 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixbdunpackpt(/* Real    */ ae_matrix* qp,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* taup,
-     ae_int_t ptrows,
-     /* Real    */ ae_matrix* pt,
-     ae_state *_state)
+                                     ae_int_t m,
+                                     ae_int_t n,
+                                     /* Real    */ ae_vector* taup,
+                                     ae_int_t ptrows,
+                                     /* Real    */ ae_matrix* pt,
+                                     ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -12308,7 +12308,7 @@ void rmatrixbdunpackpt(/* Real    */ ae_matrix* qp,
     {
         return;
     }
-    
+
     /*
      * prepare PT
      */
@@ -12327,7 +12327,7 @@ void rmatrixbdunpackpt(/* Real    */ ae_matrix* qp,
             }
         }
     }
-    
+
     /*
      * Calculate
      */
@@ -12366,15 +12366,15 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixbdmultiplybyp(/* Real    */ ae_matrix* qp,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* taup,
-     /* Real    */ ae_matrix* z,
-     ae_int_t zrows,
-     ae_int_t zcolumns,
-     ae_bool fromtheright,
-     ae_bool dotranspose,
-     ae_state *_state)
+                                        ae_int_t m,
+                                        ae_int_t n,
+                                        /* Real    */ ae_vector* taup,
+                                        /* Real    */ ae_matrix* z,
+                                        ae_int_t zrows,
+                                        ae_int_t zcolumns,
+                                        ae_bool fromtheright,
+                                        ae_bool dotranspose,
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12395,7 +12395,7 @@ void rmatrixbdmultiplybyp(/* Real    */ ae_matrix* qp,
         return;
     }
     ae_assert((fromtheright&&zcolumns==n)||(!fromtheright&&zrows==n), "RMatrixBDMultiplyByP: incorrect Z size!", _state);
-    
+
     /*
      * init
      */
@@ -12406,7 +12406,7 @@ void rmatrixbdmultiplybyp(/* Real    */ ae_matrix* qp,
     ae_vector_set_length(&work, mx+1, _state);
     if( m>=n )
     {
-        
+
         /*
          * setup
          */
@@ -12429,7 +12429,7 @@ void rmatrixbdmultiplybyp(/* Real    */ ae_matrix* qp,
             i2 = i;
             istep = -istep;
         }
-        
+
         /*
          * Process
          */
@@ -12455,7 +12455,7 @@ void rmatrixbdmultiplybyp(/* Real    */ ae_matrix* qp,
     }
     else
     {
-        
+
         /*
          * setup
          */
@@ -12478,7 +12478,7 @@ void rmatrixbdmultiplybyp(/* Real    */ ae_matrix* qp,
             i2 = i;
             istep = -istep;
         }
-        
+
         /*
          * Process
          */
@@ -12527,12 +12527,12 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixbdunpackdiagonals(/* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t n,
-     ae_bool* isupper,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_bool* isupper,
+        /* Real    */ ae_vector* d,
+        /* Real    */ ae_vector* e,
+        ae_state *_state)
 {
     ae_int_t i;
 
@@ -12605,9 +12605,9 @@ so that v(0:i) = 0, v(i+1) = 1, v(i+2:n-1) stored in A(i+2:n-1,i).
      October 31, 1992
 *************************************************************************/
 void rmatrixhessenberg(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     /* Real    */ ae_vector* tau,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12621,7 +12621,7 @@ void rmatrixhessenberg(/* Real    */ ae_matrix* a,
     ae_vector_init(&work, 0, DT_REAL, _state, ae_true);
 
     ae_assert(n>=0, "RMatrixHessenberg: incorrect N!", _state);
-    
+
     /*
      * Quick return if possible
      */
@@ -12635,7 +12635,7 @@ void rmatrixhessenberg(/* Real    */ ae_matrix* a,
     ae_vector_set_length(&work, n-1+1, _state);
     for(i=0; i<=n-2; i++)
     {
-        
+
         /*
          * Compute elementary reflector H(i) to annihilate A(i+2:ihi,i)
          */
@@ -12644,12 +12644,12 @@ void rmatrixhessenberg(/* Real    */ ae_matrix* a,
         ae_v_move(&a->ptr.pp_double[i+1][i], a->stride, &t.ptr.p_double[1], 1, ae_v_len(i+1,n-1));
         tau->ptr.p_double[i] = v;
         t.ptr.p_double[1] = 1;
-        
+
         /*
          * Apply H(i) to A(1:ihi,i+1:ihi) from the right
          */
         applyreflectionfromtheright(a, v, &t, 0, n-1, i+1, n-1, &work, _state);
-        
+
         /*
          * Apply H(i) to A(i+1:ihi,i+1:n) from the left
          */
@@ -12677,10 +12677,10 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixhessenbergunpackq(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     /* Real    */ ae_matrix* q,
-     ae_state *_state)
+        ae_int_t n,
+        /* Real    */ ae_vector* tau,
+        /* Real    */ ae_matrix* q,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12698,7 +12698,7 @@ void rmatrixhessenbergunpackq(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * init
      */
@@ -12719,13 +12719,13 @@ void rmatrixhessenbergunpackq(/* Real    */ ae_matrix* a,
             }
         }
     }
-    
+
     /*
      * unpack Q
      */
     for(i=0; i<=n-2; i++)
     {
-        
+
         /*
          * Apply H(i)
          */
@@ -12752,9 +12752,9 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixhessenbergunpackh(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_matrix* h,
-     ae_state *_state)
+        ae_int_t n,
+        /* Real    */ ae_matrix* h,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12856,12 +12856,12 @@ Output parameters:
      October 31, 1992
 *************************************************************************/
 void smatrixtd(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* tau,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_state *_state)
+                             ae_int_t n,
+                             ae_bool isupper,
+                             /* Real    */ ae_vector* tau,
+                             /* Real    */ ae_vector* d,
+                             /* Real    */ ae_vector* e,
+                             ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12899,13 +12899,13 @@ void smatrixtd(/* Real    */ ae_matrix* a,
     }
     if( isupper )
     {
-        
+
         /*
          * Reduce the upper triangle of A
          */
         for(i=n-2; i>=0; i--)
         {
-            
+
             /*
              * Generate elementary reflector H() = E - tau * v * v'
              */
@@ -12923,26 +12923,26 @@ void smatrixtd(/* Real    */ ae_matrix* a,
             e->ptr.p_double[i] = a->ptr.pp_double[i][i+1];
             if( ae_fp_neq(taui,0) )
             {
-                
+
                 /*
                  * Apply H from both sides to A
                  */
                 a->ptr.pp_double[i][i+1] = 1;
-                
+
                 /*
                  * Compute  x := tau * A * v  storing x in TAU
                  */
                 ae_v_move(&t.ptr.p_double[1], 1, &a->ptr.pp_double[0][i+1], a->stride, ae_v_len(1,i+1));
                 symmetricmatrixvectormultiply(a, isupper, 0, i, &t, taui, &t3, _state);
                 ae_v_move(&tau->ptr.p_double[0], 1, &t3.ptr.p_double[1], 1, ae_v_len(0,i));
-                
+
                 /*
                  * Compute  w := x - 1/2 * tau * (x'*v) * v
                  */
                 v = ae_v_dotproduct(&tau->ptr.p_double[0], 1, &a->ptr.pp_double[0][i+1], a->stride, ae_v_len(0,i));
                 alpha = -0.5*taui*v;
                 ae_v_addd(&tau->ptr.p_double[0], 1, &a->ptr.pp_double[0][i+1], a->stride, ae_v_len(0,i), alpha);
-                
+
                 /*
                  * Apply the transformation as a rank-2 update:
                  *    A := A - v * w' - w * v'
@@ -12959,13 +12959,13 @@ void smatrixtd(/* Real    */ ae_matrix* a,
     }
     else
     {
-        
+
         /*
          * Reduce the lower triangle of A
          */
         for(i=0; i<=n-2; i++)
         {
-            
+
             /*
              * Generate elementary reflector H = E - tau * v * v'
              */
@@ -12975,26 +12975,26 @@ void smatrixtd(/* Real    */ ae_matrix* a,
             e->ptr.p_double[i] = a->ptr.pp_double[i+1][i];
             if( ae_fp_neq(taui,0) )
             {
-                
+
                 /*
                  * Apply H from both sides to A
                  */
                 a->ptr.pp_double[i+1][i] = 1;
-                
+
                 /*
                  * Compute  x := tau * A * v  storing y in TAU
                  */
                 ae_v_move(&t.ptr.p_double[1], 1, &a->ptr.pp_double[i+1][i], a->stride, ae_v_len(1,n-i-1));
                 symmetricmatrixvectormultiply(a, isupper, i+1, n-1, &t, taui, &t2, _state);
                 ae_v_move(&tau->ptr.p_double[i], 1, &t2.ptr.p_double[1], 1, ae_v_len(i,n-2));
-                
+
                 /*
                  * Compute  w := x - 1/2 * tau * (x'*v) * v
                  */
                 v = ae_v_dotproduct(&tau->ptr.p_double[i], 1, &a->ptr.pp_double[i+1][i], a->stride, ae_v_len(i,n-2));
                 alpha = -0.5*taui*v;
                 ae_v_addd(&tau->ptr.p_double[i], 1, &a->ptr.pp_double[i+1][i], a->stride, ae_v_len(i,n-2), alpha);
-                
+
                 /*
                  * Apply the transformation as a rank-2 update:
                  *     A := A - v * w' - w * v'
@@ -13032,11 +13032,11 @@ Output parameters:
      Copyright 2005-2010 by Bochkanov Sergey
 *************************************************************************/
 void smatrixtdunpackq(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* tau,
-     /* Real    */ ae_matrix* q,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_bool isupper,
+                                    /* Real    */ ae_vector* tau,
+                                    /* Real    */ ae_matrix* q,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -13054,7 +13054,7 @@ void smatrixtdunpackq(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * init
      */
@@ -13075,7 +13075,7 @@ void smatrixtdunpackq(/* Real    */ ae_matrix* a,
             }
         }
     }
-    
+
     /*
      * unpack Q
      */
@@ -13083,7 +13083,7 @@ void smatrixtdunpackq(/* Real    */ ae_matrix* a,
     {
         for(i=0; i<=n-2; i++)
         {
-            
+
             /*
              * Apply H(i)
              */
@@ -13096,7 +13096,7 @@ void smatrixtdunpackq(/* Real    */ ae_matrix* a,
     {
         for(i=n-2; i>=0; i--)
         {
-            
+
             /*
              * Apply H(i)
              */
@@ -13179,12 +13179,12 @@ denotes an element of the vector defining H(i).
      October 31, 1992
 *************************************************************************/
 void hmatrixtd(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* tau,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_state *_state)
+                             ae_int_t n,
+                             ae_bool isupper,
+                             /* Complex */ ae_vector* tau,
+                             /* Real    */ ae_vector* d,
+                             /* Real    */ ae_vector* e,
+                             ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -13223,14 +13223,14 @@ void hmatrixtd(/* Complex */ ae_matrix* a,
     ae_vector_set_length(&t3, n-1+1, _state);
     if( isupper )
     {
-        
+
         /*
          * Reduce the upper triangle of A
          */
         a->ptr.pp_complex[n-1][n-1] = ae_complex_from_d(a->ptr.pp_complex[n-1][n-1].x);
         for(i=n-2; i>=0; i--)
         {
-            
+
             /*
              * Generate elementary reflector H = I+1 - tau * v * v'
              */
@@ -13249,26 +13249,26 @@ void hmatrixtd(/* Complex */ ae_matrix* a,
             e->ptr.p_double[i] = alpha.x;
             if( ae_c_neq_d(taui,0) )
             {
-                
+
                 /*
                  * Apply H(I+1) from both sides to A
                  */
                 a->ptr.pp_complex[i][i+1] = ae_complex_from_d(1);
-                
+
                 /*
                  * Compute  x := tau * A * v  storing x in TAU
                  */
                 ae_v_cmove(&t.ptr.p_complex[1], 1, &a->ptr.pp_complex[0][i+1], a->stride, "N", ae_v_len(1,i+1));
                 hermitianmatrixvectormultiply(a, isupper, 0, i, &t, taui, &t2, _state);
                 ae_v_cmove(&tau->ptr.p_complex[0], 1, &t2.ptr.p_complex[1], 1, "N", ae_v_len(0,i));
-                
+
                 /*
                  * Compute  w := x - 1/2 * tau * (x'*v) * v
                  */
                 v = ae_v_cdotproduct(&tau->ptr.p_complex[0], 1, "Conj", &a->ptr.pp_complex[0][i+1], a->stride, "N", ae_v_len(0,i));
                 alpha = ae_c_neg(ae_c_mul(ae_c_mul_d(taui,0.5),v));
                 ae_v_caddc(&tau->ptr.p_complex[0], 1, &a->ptr.pp_complex[0][i+1], a->stride, "N", ae_v_len(0,i), alpha);
-                
+
                 /*
                  * Apply the transformation as a rank-2 update:
                  *    A := A - v * w' - w * v'
@@ -13289,14 +13289,14 @@ void hmatrixtd(/* Complex */ ae_matrix* a,
     }
     else
     {
-        
+
         /*
          * Reduce the lower triangle of A
          */
         a->ptr.pp_complex[0][0] = ae_complex_from_d(a->ptr.pp_complex[0][0].x);
         for(i=0; i<=n-2; i++)
         {
-            
+
             /*
              * Generate elementary reflector H = I - tau * v * v'
              */
@@ -13306,26 +13306,26 @@ void hmatrixtd(/* Complex */ ae_matrix* a,
             e->ptr.p_double[i] = a->ptr.pp_complex[i+1][i].x;
             if( ae_c_neq_d(taui,0) )
             {
-                
+
                 /*
                  * Apply H(i) from both sides to A(i+1:n,i+1:n)
                  */
                 a->ptr.pp_complex[i+1][i] = ae_complex_from_d(1);
-                
+
                 /*
                  * Compute  x := tau * A * v  storing y in TAU
                  */
                 ae_v_cmove(&t.ptr.p_complex[1], 1, &a->ptr.pp_complex[i+1][i], a->stride, "N", ae_v_len(1,n-i-1));
                 hermitianmatrixvectormultiply(a, isupper, i+1, n-1, &t, taui, &t2, _state);
                 ae_v_cmove(&tau->ptr.p_complex[i], 1, &t2.ptr.p_complex[1], 1, "N", ae_v_len(i,n-2));
-                
+
                 /*
                  * Compute  w := x - 1/2 * tau * (x'*v) * v
                  */
                 v = ae_v_cdotproduct(&tau->ptr.p_complex[i], 1, "Conj", &a->ptr.pp_complex[i+1][i], a->stride, "N", ae_v_len(i,n-2));
                 alpha = ae_c_neg(ae_c_mul(ae_c_mul_d(taui,0.5),v));
                 ae_v_caddc(&tau->ptr.p_complex[i], 1, &a->ptr.pp_complex[i+1][i], a->stride, "N", ae_v_len(i,n-2), alpha);
-                
+
                 /*
                  * Apply the transformation as a rank-2 update:
                  * A := A - v * w' - w * v'
@@ -13366,11 +13366,11 @@ Output parameters:
      Copyright 2005-2010 by Bochkanov Sergey
 *************************************************************************/
 void hmatrixtdunpackq(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* tau,
-     /* Complex */ ae_matrix* q,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_bool isupper,
+                                    /* Complex */ ae_vector* tau,
+                                    /* Complex */ ae_matrix* q,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -13388,7 +13388,7 @@ void hmatrixtdunpackq(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * init
      */
@@ -13409,7 +13409,7 @@ void hmatrixtdunpackq(/* Complex */ ae_matrix* a,
             }
         }
     }
-    
+
     /*
      * unpack Q
      */
@@ -13417,7 +13417,7 @@ void hmatrixtdunpackq(/* Complex */ ae_matrix* a,
     {
         for(i=0; i<=n-2; i++)
         {
-            
+
             /*
              * Apply H(i)
              */
@@ -13430,7 +13430,7 @@ void hmatrixtdunpackq(/* Complex */ ae_matrix* a,
     {
         for(i=n-2; i>=0; i--)
         {
-            
+
             /*
              * Apply H(i)
              */
@@ -13454,12 +13454,12 @@ Base case for complex QR
      pseudocode, 2007-2010.
 *************************************************************************/
 static void ortfac_cmatrixqrbasecase(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_vector* work,
-     /* Complex */ ae_vector* t,
-     /* Complex */ ae_vector* tau,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        /* Complex */ ae_vector* work,
+        /* Complex */ ae_vector* t,
+        /* Complex */ ae_vector* tau,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -13473,14 +13473,14 @@ static void ortfac_cmatrixqrbasecase(/* Complex */ ae_matrix* a,
     {
         return;
     }
-    
+
     /*
      * Test the input arguments
      */
     k = ae_minint(m, n, _state);
     for(i=0; i<=k-1; i++)
     {
-        
+
         /*
          * Generate elementary reflector H(i) to annihilate A(i+1:m,i)
          */
@@ -13492,7 +13492,7 @@ static void ortfac_cmatrixqrbasecase(/* Complex */ ae_matrix* a,
         t->ptr.p_complex[1] = ae_complex_from_d(1);
         if( i<n-1 )
         {
-            
+
             /*
              * Apply H'(i) to A(i:m,i+1:n) from the left
              */
@@ -13513,12 +13513,12 @@ Base case for complex LQ
      pseudocode, 2007-2010.
 *************************************************************************/
 static void ortfac_cmatrixlqbasecase(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_vector* work,
-     /* Complex */ ae_vector* t,
-     /* Complex */ ae_vector* tau,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        /* Complex */ ae_vector* work,
+        /* Complex */ ae_vector* t,
+        /* Complex */ ae_vector* tau,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t minmn;
@@ -13530,13 +13530,13 @@ static void ortfac_cmatrixlqbasecase(/* Complex */ ae_matrix* a,
     {
         return;
     }
-    
+
     /*
      * Test the input arguments
      */
     for(i=0; i<=minmn-1; i++)
     {
-        
+
         /*
          * Generate elementary reflector H(i)
          *
@@ -13552,7 +13552,7 @@ static void ortfac_cmatrixlqbasecase(/* Complex */ ae_matrix* a,
         t->ptr.p_complex[1] = ae_complex_from_d(1);
         if( i<m-1 )
         {
-            
+
             /*
              * Apply H'(i)
              */
@@ -13580,19 +13580,19 @@ PARAMETERS:
     T           -   array[BlockSize,2*BlockSize]. Left BlockSize*BlockSize
                     submatrix stores triangular factor on exit.
     WORK        -   array[BlockSize]
-    
+
   -- ALGLIB routine --
      17.02.2010
      Bochkanov Sergey
 *************************************************************************/
 static void ortfac_rmatrixblockreflector(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_vector* tau,
-     ae_bool columnwisea,
-     ae_int_t lengtha,
-     ae_int_t blocksize,
-     /* Real    */ ae_matrix* t,
-     /* Real    */ ae_vector* work,
-     ae_state *_state)
+        /* Real    */ ae_vector* tau,
+        ae_bool columnwisea,
+        ae_int_t lengtha,
+        ae_int_t blocksize,
+        /* Real    */ ae_matrix* t,
+        /* Real    */ ae_vector* work,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -13600,7 +13600,7 @@ static void ortfac_rmatrixblockreflector(/* Real    */ ae_matrix* a,
     double v;
 
 
-    
+
     /*
      * fill beginning of new column with zeros,
      * load 1.0 in the first non-zero element
@@ -13623,7 +13623,7 @@ static void ortfac_rmatrixblockreflector(/* Real    */ ae_matrix* a,
         }
         a->ptr.pp_double[k][k] = 1;
     }
-    
+
     /*
      * Calculate Gram matrix of A
      */
@@ -13656,13 +13656,13 @@ static void ortfac_rmatrixblockreflector(/* Real    */ ae_matrix* a,
             }
         }
     }
-    
+
     /*
      * Prepare Y (stored in TmpA) and T (stored in TmpT)
      */
     for(k=0; k<=blocksize-1; k++)
     {
-        
+
         /*
          * fill non-zero part of T, use pre-calculated Gram matrix
          */
@@ -13673,7 +13673,7 @@ static void ortfac_rmatrixblockreflector(/* Real    */ ae_matrix* a,
             t->ptr.pp_double[i][k] = -tau->ptr.p_double[k]*v;
         }
         t->ptr.pp_double[k][k] = -tau->ptr.p_double[k];
-        
+
         /*
          * Rest of T is filled by zeros
          */
@@ -13697,26 +13697,26 @@ Generate block reflector (complex):
      Bochkanov Sergey
 *************************************************************************/
 static void ortfac_cmatrixblockreflector(/* Complex */ ae_matrix* a,
-     /* Complex */ ae_vector* tau,
-     ae_bool columnwisea,
-     ae_int_t lengtha,
-     ae_int_t blocksize,
-     /* Complex */ ae_matrix* t,
-     /* Complex */ ae_vector* work,
-     ae_state *_state)
+        /* Complex */ ae_vector* tau,
+        ae_bool columnwisea,
+        ae_int_t lengtha,
+        ae_int_t blocksize,
+        /* Complex */ ae_matrix* t,
+        /* Complex */ ae_vector* work,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
     ae_complex v;
 
 
-    
+
     /*
      * Prepare Y (stored in TmpA) and T (stored in TmpT)
      */
     for(k=0; k<=blocksize-1; k++)
     {
-        
+
         /*
          * fill beginning of new column with zeros,
          * load 1.0 in the first non-zero element
@@ -13736,7 +13736,7 @@ static void ortfac_cmatrixblockreflector(/* Complex */ ae_matrix* a,
             }
         }
         a->ptr.pp_complex[k][k] = ae_complex_from_d(1);
-        
+
         /*
          * fill non-zero part of T,
          */
@@ -13758,7 +13758,7 @@ static void ortfac_cmatrixblockreflector(/* Complex */ ae_matrix* a,
             t->ptr.pp_complex[i][k] = ae_c_neg(ae_c_mul(tau->ptr.p_complex[k],v));
         }
         t->ptr.pp_complex[k][k] = ae_c_neg(tau->ptr.p_complex[k]);
-        
+
         /*
          * Rest of T is filled by zeros
          */
@@ -13852,17 +13852,17 @@ History:
      October 31, 1999.
 *************************************************************************/
 ae_bool rmatrixbdsvd(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isfractionalaccuracyrequired,
-     /* Real    */ ae_matrix* u,
-     ae_int_t nru,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ncc,
-     /* Real    */ ae_matrix* vt,
-     ae_int_t ncvt,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* e,
+                                   ae_int_t n,
+                                   ae_bool isupper,
+                                   ae_bool isfractionalaccuracyrequired,
+                                   /* Real    */ ae_matrix* u,
+                                   ae_int_t nru,
+                                   /* Real    */ ae_matrix* c,
+                                   ae_int_t ncc,
+                                   /* Real    */ ae_matrix* vt,
+                                   ae_int_t ncvt,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _e;
@@ -13891,17 +13891,17 @@ ae_bool rmatrixbdsvd(/* Real    */ ae_vector* d,
 
 
 ae_bool bidiagonalsvddecomposition(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isfractionalaccuracyrequired,
-     /* Real    */ ae_matrix* u,
-     ae_int_t nru,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ncc,
-     /* Real    */ ae_matrix* vt,
-     ae_int_t ncvt,
-     ae_state *_state)
+        /* Real    */ ae_vector* e,
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isfractionalaccuracyrequired,
+        /* Real    */ ae_matrix* u,
+        ae_int_t nru,
+        /* Real    */ ae_matrix* c,
+        ae_int_t ncc,
+        /* Real    */ ae_matrix* vt,
+        ae_int_t ncvt,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _e;
@@ -13921,20 +13921,20 @@ ae_bool bidiagonalsvddecomposition(/* Real    */ ae_vector* d,
 Internal working subroutine for bidiagonal decomposition
 *************************************************************************/
 static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isfractionalaccuracyrequired,
-     /* Real    */ ae_matrix* u,
-     ae_int_t ustart,
-     ae_int_t nru,
-     /* Real    */ ae_matrix* c,
-     ae_int_t cstart,
-     ae_int_t ncc,
-     /* Real    */ ae_matrix* vt,
-     ae_int_t vstart,
-     ae_int_t ncvt,
-     ae_state *_state)
+        /* Real    */ ae_vector* e,
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isfractionalaccuracyrequired,
+        /* Real    */ ae_matrix* u,
+        ae_int_t ustart,
+        ae_int_t nru,
+        /* Real    */ ae_matrix* c,
+        ae_int_t cstart,
+        ae_int_t ncc,
+        /* Real    */ ae_matrix* vt,
+        ae_int_t vstart,
+        ae_int_t ncvt,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _e;
@@ -14029,14 +14029,14 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * these initializers are not really necessary,
      * but without them compiler complains about uninitialized locals
      */
     ll = 0;
     oldsn = 0;
-    
+
     /*
      * init
      */
@@ -14052,7 +14052,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
     ae_vector_set_length(&ctemp, cend+1, _state);
     maxitr = 12;
     fwddir = ae_true;
-    
+
     /*
      * resize E from N-1 to N
      */
@@ -14068,13 +14068,13 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
     }
     e->ptr.p_double[n] = 0;
     idir = 0;
-    
+
     /*
      * Get machine constants
      */
     eps = ae_machineepsilon;
     unfl = ae_minrealnumber;
-    
+
     /*
      * If matrix lower bidiagonal, rotate to be upper bidiagonal
      * by applying Givens rotations on the left
@@ -14090,7 +14090,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             work0.ptr.p_double[i] = cs;
             work1.ptr.p_double[i] = sn;
         }
-        
+
         /*
          * Update singular vectors if desired
          */
@@ -14103,7 +14103,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             applyrotationsfromtheleft(fwddir, 1+cstart-1, n+cstart-1, cstart, cend, &work0, &work1, c, &ctemp, _state);
         }
     }
-    
+
     /*
      * Compute singular values to relative accuracy TOL
      * (By setting TOL to be negative, algorithm will compute
@@ -14111,7 +14111,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
      */
     tolmul = ae_maxreal(10, ae_minreal(100, ae_pow(eps, -0.125, _state), _state), _state);
     tol = tolmul*eps;
-    
+
     /*
      * Compute approximate maximum, minimum singular values
      */
@@ -14127,7 +14127,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
     sminl = 0;
     if( ae_fp_greater_eq(tol,0) )
     {
-        
+
         /*
          * Relative accuracy desired
          */
@@ -14150,13 +14150,13 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
     }
     else
     {
-        
+
         /*
          * Absolute accuracy desired
          */
         thresh = ae_maxreal(ae_fabs(tol, _state)*smax, maxitr*n*n*unfl, _state);
     }
-    
+
     /*
      * Prepare for main iteration loop for the singular values
      * (MAXIT is the maximum number of passes through the inner
@@ -14166,18 +14166,18 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
     iter = 0;
     oldll = -1;
     oldm = -1;
-    
+
     /*
      * M points to last element of unconverged part of matrix
      */
     m = n;
-    
+
     /*
      * Begin main iteration loop
      */
     for(;;)
     {
-        
+
         /*
          * Check for convergence or exceeding iteration count
          */
@@ -14191,7 +14191,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             ae_frame_leave(_state);
             return result;
         }
-        
+
         /*
          * Find diagonal block of matrix to work on
          */
@@ -14225,14 +14225,14 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         }
         else
         {
-            
+
             /*
              * Matrix splits since E(LL) = 0
              */
             e->ptr.p_double[ll] = 0;
             if( ll==m-1 )
             {
-                
+
                 /*
                  * Convergence of bottom singular value, return to top of loop
                  */
@@ -14241,13 +14241,13 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             }
         }
         ll = ll+1;
-        
+
         /*
          * E(LL) through E(M-1) are nonzero, E(LL-1) is zero
          */
         if( ll==m-1 )
         {
-            
+
             /*
              * 2 by 2 block, handle separately
              */
@@ -14255,7 +14255,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             d->ptr.p_double[m-1] = sigmx;
             e->ptr.p_double[m-1] = 0;
             d->ptr.p_double[m] = sigmn;
-            
+
             /*
              * Compute singular vectors, if desired
              */
@@ -14292,7 +14292,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             m = m-2;
             continue;
         }
-        
+
         /*
          * If working on new submatrix, choose shift direction
          * (from larger end diagonal element towards smaller)
@@ -14315,7 +14315,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         {
             if( ae_fp_greater_eq(ae_fabs(d->ptr.p_double[ll], _state),ae_fabs(d->ptr.p_double[m], _state)) )
             {
-                
+
                 /*
                  * Chase bulge from top (big end) to bottom (small end)
                  */
@@ -14323,20 +14323,20 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             }
             else
             {
-                
+
                 /*
                  * Chase bulge from bottom (big end) to top (small end)
                  */
                 idir = 2;
             }
         }
-        
+
         /*
          * Apply convergence tests
          */
         if( idir==1 )
         {
-            
+
             /*
              * Run convergence test in forward direction
              * First apply standard test to bottom of matrix
@@ -14348,7 +14348,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             }
             if( ae_fp_greater_eq(tol,0) )
             {
-                
+
                 /*
                  * If relative accuracy desired,
                  * apply convergence criterion forward
@@ -14375,7 +14375,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         }
         else
         {
-            
+
             /*
              * Run convergence test in backward direction
              * First apply standard test to top of matrix
@@ -14387,7 +14387,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             }
             if( ae_fp_greater_eq(tol,0) )
             {
-                
+
                 /*
                  * If relative accuracy desired,
                  * apply convergence criterion backward
@@ -14414,14 +14414,14 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         }
         oldll = ll;
         oldm = m;
-        
+
         /*
          * Compute shift.  First, test if shifting would ruin relative
          * accuracy, and if so set the shift to zero.
          */
         if( ae_fp_greater_eq(tol,0)&&ae_fp_less_eq(n*tol*(sminl/smax),ae_maxreal(eps, 0.01*tol, _state)) )
         {
-            
+
             /*
              * Use a zero shift to avoid loss of relative accuracy
              */
@@ -14429,7 +14429,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         }
         else
         {
-            
+
             /*
              * Compute the shift from 2-by-2 block at end of matrix
              */
@@ -14443,7 +14443,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 sll = ae_fabs(d->ptr.p_double[m], _state);
                 bdsvd_svd2x2(d->ptr.p_double[ll], e->ptr.p_double[ll], d->ptr.p_double[ll+1], &shift, &r, _state);
             }
-            
+
             /*
              * Test if shift negligible, and if so set to zero
              */
@@ -14455,12 +14455,12 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 }
             }
         }
-        
+
         /*
          * Increment iteration count
          */
         iter = iter+m-ll;
-        
+
         /*
          * If SHIFT = 0, do simplified QR iteration
          */
@@ -14468,7 +14468,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         {
             if( idir==1 )
             {
-                
+
                 /*
                  * Chase bulge from top to bottom
                  * Save cosines and sines for later singular vector updates
@@ -14492,7 +14492,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 h = d->ptr.p_double[m]*cs;
                 d->ptr.p_double[m] = h*oldcs;
                 e->ptr.p_double[m-1] = h*oldsn;
-                
+
                 /*
                  * Update singular vectors
                  */
@@ -14508,7 +14508,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 {
                     applyrotationsfromtheleft(fwddir, ll+cstart-1, m+cstart-1, cstart, cend, &work2, &work3, c, &ctemp, _state);
                 }
-                
+
                 /*
                  * Test convergence
                  */
@@ -14519,7 +14519,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             }
             else
             {
-                
+
                 /*
                  * Chase bulge from bottom to top
                  * Save cosines and sines for later singular vector updates
@@ -14543,7 +14543,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 h = d->ptr.p_double[ll]*cs;
                 d->ptr.p_double[ll] = h*oldcs;
                 e->ptr.p_double[ll] = h*oldsn;
-                
+
                 /*
                  * Update singular vectors
                  */
@@ -14559,7 +14559,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 {
                     applyrotationsfromtheleft(!fwddir, ll+cstart-1, m+cstart-1, cstart, cend, &work0, &work1, c, &ctemp, _state);
                 }
-                
+
                 /*
                  * Test convergence
                  */
@@ -14571,13 +14571,13 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         }
         else
         {
-            
+
             /*
              * Use nonzero shift
              */
             if( idir==1 )
             {
-                
+
                 /*
                  * Chase bulge from top to bottom
                  * Save cosines and sines for later singular vector updates
@@ -14610,7 +14610,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                     work3.ptr.p_double[i-ll+1] = sinl;
                 }
                 e->ptr.p_double[m-1] = f;
-                
+
                 /*
                  * Update singular vectors
                  */
@@ -14626,7 +14626,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 {
                     applyrotationsfromtheleft(fwddir, ll+cstart-1, m+cstart-1, cstart, cend, &work2, &work3, c, &ctemp, _state);
                 }
-                
+
                 /*
                  * Test convergence
                  */
@@ -14637,7 +14637,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             }
             else
             {
-                
+
                 /*
                  * Chase bulge from bottom to top
                  * Save cosines and sines for later singular vector updates
@@ -14670,7 +14670,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                     work3.ptr.p_double[i-ll] = -sinl;
                 }
                 e->ptr.p_double[ll] = f;
-                
+
                 /*
                  * Test convergence
                  */
@@ -14678,7 +14678,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 {
                     e->ptr.p_double[ll] = 0;
                 }
-                
+
                 /*
                  * Update singular vectors if desired
                  */
@@ -14696,13 +14696,13 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
                 }
             }
         }
-        
+
         /*
          * QR iteration finished, go back and check convergence
          */
         continue;
     }
-    
+
     /*
      * All singular values converged, so make them positive
      */
@@ -14711,7 +14711,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         if( ae_fp_less(d->ptr.p_double[i],0) )
         {
             d->ptr.p_double[i] = -d->ptr.p_double[i];
-            
+
             /*
              * Change sign of singular vectors, if desired
              */
@@ -14721,14 +14721,14 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
             }
         }
     }
-    
+
     /*
      * Sort the singular values into decreasing order (insertion sort on
      * singular values, but only one transposition per singular vector)
      */
     for(i=1; i<=n-1; i++)
     {
-        
+
         /*
          * Scan for smallest D(I)
          */
@@ -14744,7 +14744,7 @@ static ae_bool bdsvd_bidiagonalsvddecompositioninternal(/* Real    */ ae_vector*
         }
         if( isub!=n+1-i )
         {
-            
+
             /*
              * Swap singular values and vectors
              */
@@ -14796,11 +14796,11 @@ static double bdsvd_extsignbdsqr(double a, double b, ae_state *_state)
 
 
 static void bdsvd_svd2x2(double f,
-     double g,
-     double h,
-     double* ssmin,
-     double* ssmax,
-     ae_state *_state)
+                         double g,
+                         double h,
+                         double* ssmin,
+                         double* ssmax,
+                         ae_state *_state)
 {
     double aas;
     double at;
@@ -14848,7 +14848,7 @@ static void bdsvd_svd2x2(double f,
             au = fhmx/ga;
             if( ae_fp_eq(au,0) )
             {
-                
+
                 /*
                  * Avoid possible harmful underflow if exponent range
                  * asymmetric (true SSMIN may not underflow even if
@@ -14872,15 +14872,15 @@ static void bdsvd_svd2x2(double f,
 
 
 static void bdsvd_svdv2x2(double f,
-     double g,
-     double h,
-     double* ssmin,
-     double* ssmax,
-     double* snr,
-     double* csr,
-     double* snl,
-     double* csl,
-     ae_state *_state)
+                          double g,
+                          double h,
+                          double* ssmin,
+                          double* ssmax,
+                          double* snr,
+                          double* csr,
+                          double* snl,
+                          double* csl,
+                          ae_state *_state)
 {
     ae_bool gasmal;
     ae_bool swp;
@@ -14919,7 +14919,7 @@ static void bdsvd_svdv2x2(double f,
     fa = ae_fabs(ft, _state);
     ht = h;
     ha = ae_fabs(h, _state);
-    
+
     /*
      * these initializers are not really necessary,
      * but without them compiler complains about uninitialized locals
@@ -14929,7 +14929,7 @@ static void bdsvd_svdv2x2(double f,
     slt = 0;
     srt = 0;
     tsign = 0;
-    
+
     /*
      * PMAX points to the maximum absolute element of matrix
      *  PMAX = 1 if F largest in absolute values
@@ -14940,7 +14940,7 @@ static void bdsvd_svdv2x2(double f,
     swp = ae_fp_greater(ha,fa);
     if( swp )
     {
-        
+
         /*
          * Now FA .ge. HA
          */
@@ -14956,7 +14956,7 @@ static void bdsvd_svdv2x2(double f,
     ga = ae_fabs(gt, _state);
     if( ae_fp_eq(ga,0) )
     {
-        
+
         /*
          * Diagonal matrix
          */
@@ -14975,7 +14975,7 @@ static void bdsvd_svdv2x2(double f,
             pmax = 2;
             if( ae_fp_less(fa/ga,ae_machineepsilon) )
             {
-                
+
                 /*
                  * Case of very large GA
                  */
@@ -14999,7 +14999,7 @@ static void bdsvd_svdv2x2(double f,
         }
         if( gasmal )
         {
-            
+
             /*
              * Normal case
              */
@@ -15030,7 +15030,7 @@ static void bdsvd_svdv2x2(double f,
             *ssmax = fa*a;
             if( ae_fp_eq(mm,0) )
             {
-                
+
                 /*
                  * Note that M is very tiny
                  */
@@ -15069,7 +15069,7 @@ static void bdsvd_svdv2x2(double f,
         *csr = crt;
         *snr = srt;
     }
-    
+
     /*
      * Correct signs of SSMAX and SSMIN
      */
@@ -15145,15 +15145,15 @@ Output parameters:
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     ae_int_t uneeded,
-     ae_int_t vtneeded,
-     ae_int_t additionalmemory,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* u,
-     /* Real    */ ae_matrix* vt,
-     ae_state *_state)
+                                 ae_int_t m,
+                                 ae_int_t n,
+                                 ae_int_t uneeded,
+                                 ae_int_t vtneeded,
+                                 ae_int_t additionalmemory,
+                                 /* Real    */ ae_vector* w,
+                                 /* Real    */ ae_matrix* u,
+                                 /* Real    */ ae_matrix* vt,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -15195,7 +15195,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
     ae_assert(uneeded>=0&&uneeded<=2, "SVDDecomposition: wrong parameters!", _state);
     ae_assert(vtneeded>=0&&vtneeded<=2, "SVDDecomposition: wrong parameters!", _state);
     ae_assert(additionalmemory>=0&&additionalmemory<=2, "SVDDecomposition: wrong parameters!", _state);
-    
+
     /*
      * initialize
      */
@@ -15229,7 +15229,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
         ncvt = n;
         ae_matrix_set_length(vt, nrvt-1+1, ncvt-1+1, _state);
     }
-    
+
     /*
      * M much larger than N
      * Use bidiagonal reduction with QR-decomposition
@@ -15238,7 +15238,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
     {
         if( uneeded==0 )
         {
-            
+
             /*
              * No left singular vectors to be computed
              */
@@ -15259,7 +15259,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * Left singular vectors (may be full matrix U) to be computed
              */
@@ -15277,7 +15277,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
             rmatrixbdunpackdiagonals(a, n, n, &isupper, w, &e, _state);
             if( additionalmemory<1 )
             {
-                
+
                 /*
                  * No additional memory can be used
                  */
@@ -15286,7 +15286,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Large U. Transforming intermediate matrix T2
                  */
@@ -15301,7 +15301,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
             return result;
         }
     }
-    
+
     /*
      * N much larger than M
      * Use bidiagonal reduction with LQ-decomposition
@@ -15310,7 +15310,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
     {
         if( vtneeded==0 )
         {
-            
+
             /*
              * No right singular vectors to be computed
              */
@@ -15334,7 +15334,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * Right singular vectors (may be full matrix VT) to be computed
              */
@@ -15354,7 +15354,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
             inplacetranspose(u, 0, nru-1, 0, ncu-1, &work, _state);
             if( additionalmemory<1 )
             {
-                
+
                 /*
                  * No additional memory available
                  */
@@ -15363,7 +15363,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * Large VT. Transforming intermediate matrix T2
                  */
@@ -15377,7 +15377,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
             return result;
         }
     }
-    
+
     /*
      * M<=N
      * We can use inplace transposition of U to get rid of columnwise operations
@@ -15395,7 +15395,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Simple bidiagonal reduction
      */
@@ -15405,7 +15405,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
     rmatrixbdunpackdiagonals(a, m, n, &isupper, w, &e, _state);
     if( additionalmemory<2||uneeded==0 )
     {
-        
+
         /*
          * We cant use additional memory or there is no need in such operations
          */
@@ -15413,7 +15413,7 @@ ae_bool rmatrixsvd(/* Real    */ ae_matrix* a,
     }
     else
     {
-        
+
         /*
          * We can use additional memory
          */
@@ -15463,12 +15463,12 @@ Result:
      Copyright 2005-2008 by Bochkanov Sergey
 *************************************************************************/
 ae_bool smatrixevd(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t zneeded,
-     ae_bool isupper,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 ae_int_t zneeded,
+                                 ae_bool isupper,
+                                 /* Real    */ ae_vector* d,
+                                 /* Real    */ ae_matrix* z,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -15537,15 +15537,15 @@ Result:
      Copyright 07.01.2006 by Bochkanov Sergey
 *************************************************************************/
 ae_bool smatrixevdr(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t zneeded,
-     ae_bool isupper,
-     double b1,
-     double b2,
-     ae_int_t* m,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_int_t zneeded,
+                                  ae_bool isupper,
+                                  double b1,
+                                  double b2,
+                                  ae_int_t* m,
+                                  /* Real    */ ae_vector* w,
+                                  /* Real    */ ae_matrix* z,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -15612,14 +15612,14 @@ Result:
      Copyright 07.01.2006 by Bochkanov Sergey
 *************************************************************************/
 ae_bool smatrixevdi(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t zneeded,
-     ae_bool isupper,
-     ae_int_t i1,
-     ae_int_t i2,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_int_t zneeded,
+                                  ae_bool isupper,
+                                  ae_int_t i1,
+                                  ae_int_t i2,
+                                  /* Real    */ ae_vector* w,
+                                  /* Real    */ ae_matrix* z,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -15685,12 +15685,12 @@ Note:
      Copyright 2005, 23 March 2007 by Bochkanov Sergey
 *************************************************************************/
 ae_bool hmatrixevd(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t zneeded,
-     ae_bool isupper,
-     /* Real    */ ae_vector* d,
-     /* Complex */ ae_matrix* z,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 ae_int_t zneeded,
+                                 ae_bool isupper,
+                                 /* Real    */ ae_vector* d,
+                                 /* Complex */ ae_matrix* z,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -15716,7 +15716,7 @@ ae_bool hmatrixevd(/* Complex */ ae_matrix* a,
     ae_matrix_init(&q, 0, 0, DT_COMPLEX, _state, ae_true);
 
     ae_assert(zneeded==0||zneeded==1, "HermitianEVD: incorrect ZNeeded", _state);
-    
+
     /*
      * Reduce to tridiagonal form
      */
@@ -15726,12 +15726,12 @@ ae_bool hmatrixevd(/* Complex */ ae_matrix* a,
         hmatrixtdunpackq(a, n, isupper, &tau, &q, _state);
         zneeded = 2;
     }
-    
+
     /*
      * TDEVD
      */
     result = smatrixtdevd(d, &e, n, zneeded, &t, _state);
-    
+
     /*
      * Eigenvectors are needed
      * Calculate Z = Q*T = Re(Q)*T + i*Im(Q)*T
@@ -15742,7 +15742,7 @@ ae_bool hmatrixevd(/* Complex */ ae_matrix* a,
         ae_matrix_set_length(z, n-1+1, n-1+1, _state);
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Calculate real part
              */
@@ -15759,7 +15759,7 @@ ae_bool hmatrixevd(/* Complex */ ae_matrix* a,
             {
                 z->ptr.pp_complex[i][k].x = work.ptr.p_double[k];
             }
-            
+
             /*
              * Calculate imaginary part
              */
@@ -15829,15 +15829,15 @@ Note:
      Copyright 07.01.2006, 24.03.2007 by Bochkanov Sergey.
 *************************************************************************/
 ae_bool hmatrixevdr(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t zneeded,
-     ae_bool isupper,
-     double b1,
-     double b2,
-     ae_int_t* m,
-     /* Real    */ ae_vector* w,
-     /* Complex */ ae_matrix* z,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_int_t zneeded,
+                                  ae_bool isupper,
+                                  double b1,
+                                  double b2,
+                                  ae_int_t* m,
+                                  /* Real    */ ae_vector* w,
+                                  /* Complex */ ae_matrix* z,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -15864,7 +15864,7 @@ ae_bool hmatrixevdr(/* Complex */ ae_matrix* a,
     ae_vector_init(&work, 0, DT_REAL, _state, ae_true);
 
     ae_assert(zneeded==0||zneeded==1, "HermitianEigenValuesAndVectorsInInterval: incorrect ZNeeded", _state);
-    
+
     /*
      * Reduce to tridiagonal form
      */
@@ -15874,12 +15874,12 @@ ae_bool hmatrixevdr(/* Complex */ ae_matrix* a,
         hmatrixtdunpackq(a, n, isupper, &tau, &q, _state);
         zneeded = 2;
     }
-    
+
     /*
      * Bisection and inverse iteration
      */
     result = smatrixtdevdr(w, &e, n, zneeded, b1, b2, m, &t, _state);
-    
+
     /*
      * Eigenvectors are needed
      * Calculate Z = Q*T = Re(Q)*T + i*Im(Q)*T
@@ -15890,7 +15890,7 @@ ae_bool hmatrixevdr(/* Complex */ ae_matrix* a,
         ae_matrix_set_length(z, n-1+1, *m-1+1, _state);
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Calculate real part
              */
@@ -15907,7 +15907,7 @@ ae_bool hmatrixevdr(/* Complex */ ae_matrix* a,
             {
                 z->ptr.pp_complex[i][k].x = work.ptr.p_double[k];
             }
-            
+
             /*
              * Calculate imaginary part
              */
@@ -15975,14 +15975,14 @@ Note:
      Copyright 07.01.2006, 24.03.2007 by Bochkanov Sergey.
 *************************************************************************/
 ae_bool hmatrixevdi(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t zneeded,
-     ae_bool isupper,
-     ae_int_t i1,
-     ae_int_t i2,
-     /* Real    */ ae_vector* w,
-     /* Complex */ ae_matrix* z,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_int_t zneeded,
+                                  ae_bool isupper,
+                                  ae_int_t i1,
+                                  ae_int_t i2,
+                                  /* Real    */ ae_vector* w,
+                                  /* Complex */ ae_matrix* z,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -16009,7 +16009,7 @@ ae_bool hmatrixevdi(/* Complex */ ae_matrix* a,
     ae_vector_init(&work, 0, DT_REAL, _state, ae_true);
 
     ae_assert(zneeded==0||zneeded==1, "HermitianEigenValuesAndVectorsByIndexes: incorrect ZNeeded", _state);
-    
+
     /*
      * Reduce to tridiagonal form
      */
@@ -16019,12 +16019,12 @@ ae_bool hmatrixevdi(/* Complex */ ae_matrix* a,
         hmatrixtdunpackq(a, n, isupper, &tau, &q, _state);
         zneeded = 2;
     }
-    
+
     /*
      * Bisection and inverse iteration
      */
     result = smatrixtdevdi(w, &e, n, zneeded, i1, i2, &t, _state);
-    
+
     /*
      * Eigenvectors are needed
      * Calculate Z = Q*T = Re(Q)*T + i*Im(Q)*T
@@ -16036,7 +16036,7 @@ ae_bool hmatrixevdi(/* Complex */ ae_matrix* a,
         ae_matrix_set_length(z, n-1+1, m-1+1, _state);
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Calculate real part
              */
@@ -16053,7 +16053,7 @@ ae_bool hmatrixevdi(/* Complex */ ae_matrix* a,
             {
                 z->ptr.pp_complex[i][k].x = work.ptr.p_double[k];
             }
-            
+
             /*
              * Calculate imaginary part
              */
@@ -16127,11 +16127,11 @@ Result:
      September 30, 1994
 *************************************************************************/
 ae_bool smatrixtdevd(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_int_t zneeded,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* e,
+                                   ae_int_t n,
+                                   ae_int_t zneeded,
+                                   /* Real    */ ae_matrix* z,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _e;
@@ -16148,7 +16148,7 @@ ae_bool smatrixtdevd(/* Real    */ ae_vector* d,
     ae_vector_init(&e1, 0, DT_REAL, _state, ae_true);
     ae_matrix_init(&z1, 0, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Prepare 1-based task
      */
@@ -16167,7 +16167,7 @@ ae_bool smatrixtdevd(/* Real    */ ae_vector* d,
             ae_v_move(&z1.ptr.pp_double[i][1], 1, &z->ptr.pp_double[i-1][0], 1, ae_v_len(1,n));
         }
     }
-    
+
     /*
      * Solve 1-based task
      */
@@ -16177,7 +16177,7 @@ ae_bool smatrixtdevd(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Convert back to 0-based result
      */
@@ -16271,14 +16271,14 @@ Result:
      Copyright 31.03.2008 by Bochkanov Sergey
 *************************************************************************/
 ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_int_t zneeded,
-     double a,
-     double b,
-     ae_int_t* m,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state)
+                                    /* Real    */ ae_vector* e,
+                                    ae_int_t n,
+                                    ae_int_t zneeded,
+                                    double a,
+                                    double b,
+                                    ae_int_t* m,
+                                    /* Real    */ ae_matrix* z,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t errorcode;
@@ -16310,7 +16310,7 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
     ae_matrix_init(&z3, 0, 0, DT_REAL, _state, ae_true);
 
     ae_assert(zneeded>=0&&zneeded<=2, "SMatrixTDEVDR: incorrect ZNeeded!", _state);
-    
+
     /*
      * Special cases
      */
@@ -16328,7 +16328,7 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Copy D,E to D1, E1
      */
@@ -16339,7 +16339,7 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
         ae_vector_set_length(&e1, n-1+1, _state);
         ae_v_move(&e1.ptr.p_double[1], 1, &e->ptr.p_double[0], 1, ae_v_len(1,n-1));
     }
-    
+
     /*
      * No eigen vectors
      */
@@ -16357,13 +16357,13 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Eigen vectors are multiplied by Z
      */
     if( zneeded==1 )
     {
-        
+
         /*
          * Find eigen pairs
          */
@@ -16382,7 +16382,7 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
             ae_frame_leave(_state);
             return result;
         }
-        
+
         /*
          * Sort eigen values and vectors
          */
@@ -16406,7 +16406,7 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
                 z2.ptr.pp_double[j][k] = v;
             }
         }
-        
+
         /*
          * Transform Z2 and overwrite Z
          */
@@ -16428,7 +16428,7 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
         {
             ae_v_move(&z->ptr.pp_double[0][i-1], z->stride, &z2.ptr.pp_double[1][i], z2.stride, ae_v_len(0,n-1));
         }
-        
+
         /*
          * Store W
          */
@@ -16440,13 +16440,13 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Eigen vectors are stored in Z
      */
     if( zneeded==2 )
     {
-        
+
         /*
          * Find eigen pairs
          */
@@ -16465,7 +16465,7 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
             ae_frame_leave(_state);
             return result;
         }
-        
+
         /*
          * Sort eigen values and vectors
          */
@@ -16489,7 +16489,7 @@ ae_bool smatrixtdevdr(/* Real    */ ae_vector* d,
                 z2.ptr.pp_double[j][k] = v;
             }
         }
-        
+
         /*
          * Store W
          */
@@ -16566,13 +16566,13 @@ Result:
      Copyright 25.12.2005 by Bochkanov Sergey
 *************************************************************************/
 ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_int_t zneeded,
-     ae_int_t i1,
-     ae_int_t i2,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state)
+                                    /* Real    */ ae_vector* e,
+                                    ae_int_t n,
+                                    ae_int_t zneeded,
+                                    ae_int_t i1,
+                                    ae_int_t i2,
+                                    /* Real    */ ae_matrix* z,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t errorcode;
@@ -16604,7 +16604,7 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
     ae_matrix_init(&z3, 0, 0, DT_REAL, _state, ae_true);
 
     ae_assert((0<=i1&&i1<=i2)&&i2<n, "SMatrixTDEVDI: incorrect I1/I2!", _state);
-    
+
     /*
      * Copy D,E to D1, E1
      */
@@ -16615,7 +16615,7 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
         ae_vector_set_length(&e1, n-1+1, _state);
         ae_v_move(&e1.ptr.p_double[1], 1, &e->ptr.p_double[0], 1, ae_v_len(1,n-1));
     }
-    
+
     /*
      * No eigen vectors
      */
@@ -16641,13 +16641,13 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Eigen vectors are multiplied by Z
      */
     if( zneeded==1 )
     {
-        
+
         /*
          * Find eigen pairs
          */
@@ -16670,7 +16670,7 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
             ae_frame_leave(_state);
             return result;
         }
-        
+
         /*
          * Sort eigen values and vectors
          */
@@ -16694,7 +16694,7 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
                 z2.ptr.pp_double[j][k] = v;
             }
         }
-        
+
         /*
          * Transform Z2 and overwrite Z
          */
@@ -16716,7 +16716,7 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
         {
             ae_v_move(&z->ptr.pp_double[0][i-1], z->stride, &z2.ptr.pp_double[1][i], z2.stride, ae_v_len(0,n-1));
         }
-        
+
         /*
          * Store W
          */
@@ -16728,13 +16728,13 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Eigen vectors are stored in Z
      */
     if( zneeded==2 )
     {
-        
+
         /*
          * Find eigen pairs
          */
@@ -16757,7 +16757,7 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
             ae_frame_leave(_state);
             return result;
         }
-        
+
         /*
          * Sort eigen values and vectors
          */
@@ -16781,7 +16781,7 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
                 z2.ptr.pp_double[j][k] = v;
             }
         }
-        
+
         /*
          * Store Z
          */
@@ -16790,7 +16790,7 @@ ae_bool smatrixtdevdi(/* Real    */ ae_vector* d,
         {
             ae_v_move(&z->ptr.pp_double[0][i-1], z->stride, &z2.ptr.pp_double[1][i], z2.stride, ae_v_len(0,n-1));
         }
-        
+
         /*
          * Store W
          */
@@ -16876,13 +16876,13 @@ See also the InternalTREVC subroutine.
 The algorithm is based on the LAPACK 3.0 library.
 *************************************************************************/
 ae_bool rmatrixevd(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t vneeded,
-     /* Real    */ ae_vector* wr,
-     /* Real    */ ae_vector* wi,
-     /* Real    */ ae_matrix* vl,
-     /* Real    */ ae_matrix* vr,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 ae_int_t vneeded,
+                                 /* Real    */ ae_vector* wr,
+                                 /* Real    */ ae_vector* wi,
+                                 /* Real    */ ae_matrix* vl,
+                                 /* Real    */ ae_matrix* vr,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -16943,11 +16943,11 @@ ae_bool rmatrixevd(/* Real    */ ae_matrix* a,
 
 
 static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_int_t zneeded,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state)
+        /* Real    */ ae_vector* e,
+        ae_int_t n,
+        ae_int_t zneeded,
+        /* Real    */ ae_matrix* z,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _e;
@@ -17010,7 +17010,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
     ae_vector_init(&wtemp, 0, DT_REAL, _state, ae_true);
 
     ae_assert(zneeded>=0&&zneeded<=3, "TridiagonalEVD: Incorrent ZNeeded", _state);
-    
+
     /*
      * Quick return if possible
      */
@@ -17037,7 +17037,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
         return result;
     }
     maxit = 30;
-    
+
     /*
      * Initialize arrays
      */
@@ -17046,7 +17046,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
     ae_vector_set_length(&work2, n-1+1, _state);
     ae_vector_set_length(&workc, n+1, _state);
     ae_vector_set_length(&works, n+1, _state);
-    
+
     /*
      * Determine the unit roundoff and over/underflow thresholds.
      */
@@ -17056,7 +17056,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
     safmax = ae_maxrealnumber;
     ssfmax = ae_sqrt(safmax, _state)/3;
     ssfmin = ae_sqrt(safmin, _state)/eps2;
-    
+
     /*
      * Prepare Z
      *
@@ -17119,7 +17119,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
     }
     nmaxit = n*maxit;
     jtot = 0;
-    
+
     /*
      * Determine where the matrix splits and choose QL or QR iteration
      * for each block, according to whether top or bottom diagonal
@@ -17161,7 +17161,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
         {
             m = n;
         }
-        
+
         /*
          * label 30:
          */
@@ -17174,7 +17174,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
         {
             continue;
         }
-        
+
         /*
          * Scale submatrix in rows and columns L to LEND
          */
@@ -17211,7 +17211,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
             ae_v_muld(&d->ptr.p_double[l], 1, ae_v_len(l,lend), tmp);
             ae_v_muld(&e->ptr.p_double[l], 1, ae_v_len(l,tmpint), tmp);
         }
-        
+
         /*
          * Choose between QL and QR iteration
          */
@@ -17222,7 +17222,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
         }
         if( lend>l )
         {
-            
+
             /*
              * QL Iteration
              *
@@ -17255,7 +17255,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                 p = d->ptr.p_double[l];
                 if( m!=l )
                 {
-                    
+
                     /*
                      * If remaining matrix is 2-by-2, use DLAE2 or SLAEV2
                      * to compute its eigensystem.
@@ -17290,7 +17290,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                         {
                             continue;
                         }
-                        
+
                         /*
                          * GOTO 140
                          */
@@ -17298,14 +17298,14 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                     }
                     if( jtot==nmaxit )
                     {
-                        
+
                         /*
                          * GOTO 140
                          */
                         break;
                     }
                     jtot = jtot+1;
-                    
+
                     /*
                      * Form shift.
                      */
@@ -17315,7 +17315,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                     s = 1;
                     c = 1;
                     p = 0;
-                    
+
                     /*
                      * Inner loop
                      */
@@ -17334,7 +17334,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                         p = s*r;
                         d->ptr.p_double[i+1] = g+p;
                         g = c*r-b;
-                        
+
                         /*
                          * If eigenvectors are desired, then save rotations.
                          */
@@ -17344,7 +17344,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                             work2.ptr.p_double[i] = -s;
                         }
                     }
-                    
+
                     /*
                      * If eigenvectors are desired, then apply saved rotations.
                      */
@@ -17368,7 +17368,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                     e->ptr.p_double[l] = g;
                     continue;
                 }
-                
+
                 /*
                  * Eigenvalue found.
                  */
@@ -17383,7 +17383,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
         }
         else
         {
-            
+
             /*
              * QR Iteration
              *
@@ -17416,7 +17416,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                 p = d->ptr.p_double[l];
                 if( m!=l )
                 {
-                    
+
                     /*
                      * If remaining matrix is 2-by-2, use DLAE2 or SLAEV2
                      * to compute its eigensystem.
@@ -17458,7 +17458,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                         break;
                     }
                     jtot = jtot+1;
-                    
+
                     /*
                      * Form shift.
                      */
@@ -17468,7 +17468,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                     s = 1;
                     c = 1;
                     p = 0;
-                    
+
                     /*
                      * Inner loop
                      */
@@ -17487,7 +17487,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                         p = s*r;
                         d->ptr.p_double[i] = g+p;
                         g = c*r-b;
-                        
+
                         /*
                          * If eigenvectors are desired, then save rotations.
                          */
@@ -17497,7 +17497,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                             work2.ptr.p_double[i] = s;
                         }
                     }
-                    
+
                     /*
                      * If eigenvectors are desired, then apply saved rotations.
                      */
@@ -17521,7 +17521,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                     e->ptr.p_double[lm1] = g;
                     continue;
                 }
-                
+
                 /*
                  * Eigenvalue found.
                  */
@@ -17534,7 +17534,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
                 break;
             }
         }
-        
+
         /*
          * Undo scaling if necessary
          */
@@ -17552,7 +17552,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
             ae_v_muld(&d->ptr.p_double[lsv], 1, ae_v_len(lsv,lendsv), tmp);
             ae_v_muld(&e->ptr.p_double[lsv], 1, ae_v_len(lsv,tmpint), tmp);
         }
-        
+
         /*
          * Check for no convergence to an eigenvalue after a total
          * of N*MAXIT iterations.
@@ -17568,13 +17568,13 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
             return result;
         }
     }
-    
+
     /*
      * Order eigenvalues and eigenvectors.
      */
     if( zneeded==0 )
     {
-        
+
         /*
          * Sort
          */
@@ -17658,7 +17658,7 @@ static ae_bool evd_tridiagonalevd(/* Real    */ ae_vector* d,
     }
     else
     {
-        
+
         /*
          * Use Selection Sort to minimize swaps of eigenvectors
          */
@@ -17716,11 +17716,11 @@ is the eigenvalue of smaller absolute value.
      October 31, 1992
 *************************************************************************/
 static void evd_tdevde2(double a,
-     double b,
-     double c,
-     double* rt1,
-     double* rt2,
-     ae_state *_state)
+                        double b,
+                        double c,
+                        double* rt1,
+                        double* rt2,
+                        ae_state *_state)
 {
     double ab;
     double acmn;
@@ -17761,7 +17761,7 @@ static void evd_tdevde2(double a,
         }
         else
         {
-            
+
             /*
              * Includes case AB=ADF=0
              */
@@ -17771,7 +17771,7 @@ static void evd_tdevde2(double a,
     if( ae_fp_less(sm,0) )
     {
         *rt1 = 0.5*(sm-rt);
-        
+
         /*
          * Order of execution important.
          * To get fully accurate smaller eigenvalue,
@@ -17784,7 +17784,7 @@ static void evd_tdevde2(double a,
         if( ae_fp_greater(sm,0) )
         {
             *rt1 = 0.5*(sm+rt);
-            
+
             /*
              * Order of execution important.
              * To get fully accurate smaller eigenvalue,
@@ -17794,7 +17794,7 @@ static void evd_tdevde2(double a,
         }
         else
         {
-            
+
             /*
              * Includes case RT1 = RT2 = 0
              */
@@ -17825,13 +17825,13 @@ eigenvector for RT1, giving the decomposition
      October 31, 1992
 *************************************************************************/
 static void evd_tdevdev2(double a,
-     double b,
-     double c,
-     double* rt1,
-     double* rt2,
-     double* cs1,
-     double* sn1,
-     ae_state *_state)
+                         double b,
+                         double c,
+                         double* rt1,
+                         double* rt2,
+                         double* cs1,
+                         double* sn1,
+                         ae_state *_state)
 {
     ae_int_t sgn1;
     ae_int_t sgn2;
@@ -17853,7 +17853,7 @@ static void evd_tdevdev2(double a,
     *cs1 = 0;
     *sn1 = 0;
 
-    
+
     /*
      * Compute the eigenvalues
      */
@@ -17884,7 +17884,7 @@ static void evd_tdevdev2(double a,
         }
         else
         {
-            
+
             /*
              * Includes case AB=ADF=0
              */
@@ -17895,7 +17895,7 @@ static void evd_tdevdev2(double a,
     {
         *rt1 = 0.5*(sm-rt);
         sgn1 = -1;
-        
+
         /*
          * Order of execution important.
          * To get fully accurate smaller eigenvalue,
@@ -17909,7 +17909,7 @@ static void evd_tdevdev2(double a,
         {
             *rt1 = 0.5*(sm+rt);
             sgn1 = 1;
-            
+
             /*
              * Order of execution important.
              * To get fully accurate smaller eigenvalue,
@@ -17919,7 +17919,7 @@ static void evd_tdevdev2(double a,
         }
         else
         {
-            
+
             /*
              * Includes case RT1 = RT2 = 0
              */
@@ -17928,7 +17928,7 @@ static void evd_tdevdev2(double a,
             sgn1 = 1;
         }
     }
-    
+
     /*
      * Compute the eigenvector
      */
@@ -18013,22 +18013,22 @@ static double evd_tdevdextsign(double a, double b, ae_state *_state)
 
 
 static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t n,
-     ae_int_t irange,
-     ae_int_t iorder,
-     double vl,
-     double vu,
-     ae_int_t il,
-     ae_int_t iu,
-     double abstol,
-     /* Real    */ ae_vector* w,
-     ae_int_t* m,
-     ae_int_t* nsplit,
-     /* Integer */ ae_vector* iblock,
-     /* Integer */ ae_vector* isplit,
-     ae_int_t* errorcode,
-     ae_state *_state)
+        /* Real    */ ae_vector* e,
+        ae_int_t n,
+        ae_int_t irange,
+        ae_int_t iorder,
+        double vl,
+        double vu,
+        ae_int_t il,
+        ae_int_t iu,
+        double abstol,
+        /* Real    */ ae_vector* w,
+        ae_int_t* m,
+        ae_int_t* nsplit,
+        /* Integer */ ae_vector* iblock,
+        /* Integer */ ae_vector* isplit,
+        ae_int_t* errorcode,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _d;
@@ -18121,7 +18121,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
     ae_vector_init(&iworkspace, 0, DT_INT, _state, ae_true);
     ae_vector_init(&rworkspace, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Quick return if possible
      */
@@ -18132,7 +18132,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Get machine constants
      * NB is the minimum vector length for vector bisection, or 0
@@ -18161,14 +18161,14 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
     ae_matrix_set_length(&ia1siinx2, n+1, 2+1, _state);
     ae_vector_set_length(&iworkspace, n+1, _state);
     ae_vector_set_length(&rworkspace, n+1, _state);
-    
+
     /*
      * these initializers are not really necessary,
      * but without them compiler complains about uninitialized locals
      */
     wlu = 0;
     wul = 0;
-    
+
     /*
      * Check for Errors
      */
@@ -18203,13 +18203,13 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Initialize error flags
      */
     ncnvrg = ae_false;
     toofew = ae_false;
-    
+
     /*
      * Simplifications:
      */
@@ -18217,7 +18217,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
     {
         irange = 1;
     }
-    
+
     /*
      * Special Case when N=1
      */
@@ -18239,7 +18239,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Scaling
      */
@@ -18267,7 +18267,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         }
         d->ptr.p_double[n] = d->ptr.p_double[n]/scalefactor;
     }
-    
+
     /*
      * Compute Splitting Points
      */
@@ -18291,13 +18291,13 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
     }
     isplit->ptr.p_int[*nsplit] = n;
     pivmin = pivmin*safemn;
-    
+
     /*
      * Compute Interval and ATOLI
      */
     if( irange==3 )
     {
-        
+
         /*
          * RANGE='I': Compute the interval containing eigenvalues
          *     IL through IU.
@@ -18320,7 +18320,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         tnorm = ae_maxreal(ae_fabs(gl, _state), ae_fabs(gu, _state), _state);
         gl = gl-fudge*tnorm*ulp*n-fudge*2*pivmin;
         gu = gu+fudge*tnorm*ulp*n+fudge*pivmin;
-        
+
         /*
          * Compute Iteration parameters
          */
@@ -18345,7 +18345,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         iwork.ptr.p_int[4] = n+1;
         iwork.ptr.p_int[5] = il-1;
         iwork.ptr.p_int[6] = iu;
-        
+
         /*
          * Calling DLAEBZ
          *
@@ -18406,7 +18406,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
     }
     else
     {
-        
+
         /*
          * RANGE='A' or 'V' -- Set ATOLI
          */
@@ -18434,7 +18434,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
             wu = 0;
         }
     }
-    
+
     /*
      * Find Eigenvalues -- Loop Over Blocks and recompute NWL and NWU.
      * NWL accumulates the number of eigenvalues .le. WL,
@@ -18453,7 +18453,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         iin = iend-ioff;
         if( iin==1 )
         {
-            
+
             /*
              * Special Case -- IIN=1
              */
@@ -18474,7 +18474,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         }
         else
         {
-            
+
             /*
              * General Case -- IIN > 1
              *
@@ -18496,7 +18496,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
             bnorm = ae_maxreal(ae_fabs(gl, _state), ae_fabs(gu, _state), _state);
             gl = gl-fudge*bnorm*ulp*iin-fudge*pivmin;
             gu = gu+fudge*bnorm*ulp*iin+fudge*pivmin;
-            
+
             /*
              * Compute ATOLI for the current submatrix
              */
@@ -18523,13 +18523,13 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
                     continue;
                 }
             }
-            
+
             /*
              * Set Up Initial Interval
              */
             work.ptr.p_double[n+1] = gl;
             work.ptr.p_double[n+iin+1] = gu;
-            
+
             /*
              * Calling DLAEBZ
              *
@@ -18568,12 +18568,12 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
             nwl = nwl+iwork.ptr.p_int[1];
             nwu = nwu+iwork.ptr.p_int[iin+1];
             iwoff = *m-iwork.ptr.p_int[1];
-            
+
             /*
              * Compute Eigenvalues
              */
             itmax = ae_iceil((ae_log(gu-gl+pivmin, _state)-ae_log(pivmin, _state))/ae_log(2, _state), _state)+2;
-            
+
             /*
              * Calling DLAEBZ
              *
@@ -18609,7 +18609,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
                 iwork.ptr.p_int[tmpi] = ia1siinx2.ptr.pp_int[tmpi][1];
                 iwork.ptr.p_int[tmpi+iin] = ia1siinx2.ptr.pp_int[tmpi][2];
             }
-            
+
             /*
              * Copy Eigenvalues Into W and IBLOCK
              * Use -JB for block number for unconverged eigenvalues.
@@ -18617,7 +18617,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
             for(j=1; j<=iout; j++)
             {
                 tmp1 = 0.5*(work.ptr.p_double[j+n]+work.ptr.p_double[j+iin+n]);
-                
+
                 /*
                  * Flag non-convergence.
                  */
@@ -18639,7 +18639,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
             *m = *m+im;
         }
     }
-    
+
     /*
      * If RANGE='I', then (WL,WU) contains eigenvalues NWL+1,...,NWU
      * If NWL+1 < IL or NWU > IU, discard extra eigenvalues.
@@ -18675,7 +18675,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
         }
         if( idiscl>0||idiscu>0 )
         {
-            
+
             /*
              * Code to deal with effects of bad arithmetic:
              * Some low eigenvalues to be discarded are not in (WL,WLU],
@@ -18738,7 +18738,7 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
             toofew = ae_true;
         }
     }
-    
+
     /*
      * If ORDER='B', do nothing -- the eigenvalues are already sorted
      *    by block.
@@ -18788,16 +18788,16 @@ static ae_bool evd_internalbisectioneigenvalues(/* Real    */ ae_vector* d,
 
 
 static void evd_internaldstein(ae_int_t n,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     ae_int_t m,
-     /* Real    */ ae_vector* w,
-     /* Integer */ ae_vector* iblock,
-     /* Integer */ ae_vector* isplit,
-     /* Real    */ ae_matrix* z,
-     /* Integer */ ae_vector* ifail,
-     ae_int_t* info,
-     ae_state *_state)
+                               /* Real    */ ae_vector* d,
+                               /* Real    */ ae_vector* e,
+                               ae_int_t m,
+                               /* Real    */ ae_vector* w,
+                               /* Integer */ ae_vector* iblock,
+                               /* Integer */ ae_vector* isplit,
+                               /* Real    */ ae_matrix* z,
+                               /* Integer */ ae_vector* ifail,
+                               ae_int_t* info,
+                               ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _e;
@@ -18867,7 +18867,7 @@ static void evd_internaldstein(ae_int_t n,
     ae_vector_set_length(&iwork, ae_maxint(n, 1, _state)+1, _state);
     ae_vector_set_length(ifail, ae_maxint(m, 1, _state)+1, _state);
     ae_matrix_set_length(z, ae_maxint(n, 1, _state)+1, ae_maxint(m, 1, _state)+1, _state);
-    
+
     /*
      * these initializers are not really necessary,
      * but without them compiler complains about uninitialized locals
@@ -18877,7 +18877,7 @@ static void evd_internaldstein(ae_int_t n,
     ortol = 0;
     dtpcrt = 0;
     xjm = 0;
-    
+
     /*
      * Test the input parameters.
      */
@@ -18916,7 +18916,7 @@ static void evd_internaldstein(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Quick return if possible
      */
@@ -18931,7 +18931,7 @@ static void evd_internaldstein(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Some preparations
      */
@@ -18942,19 +18942,19 @@ static void evd_internaldstein(ae_int_t n,
     ae_v_move(&work1.ptr.p_double[1], 1, &w->ptr.p_double[1], 1, ae_v_len(1,m));
     ae_vector_set_length(w, n+1, _state);
     ae_v_move(&w->ptr.p_double[1], 1, &work1.ptr.p_double[1], 1, ae_v_len(1,m));
-    
+
     /*
      * Get machine constants.
      */
     eps = ae_machineepsilon;
-    
+
     /*
      * Compute eigenvectors of matrix blocks.
      */
     j1 = 1;
     for(nblk=1; nblk<=iblock->ptr.p_int[m]; nblk++)
     {
-        
+
         /*
          * Find starting and ending indices of block nblk.
          */
@@ -18970,7 +18970,7 @@ static void evd_internaldstein(ae_int_t n,
         blksiz = bn-b1+1;
         if( blksiz!=1 )
         {
-            
+
             /*
              * Compute reorthogonalization criterion and stopping criterion.
              */
@@ -18984,7 +18984,7 @@ static void evd_internaldstein(ae_int_t n,
             ortol = 0.001*onenrm;
             dtpcrt = ae_sqrt(0.1/blksiz, _state);
         }
-        
+
         /*
          * Loop through eigenvalues of block nblk.
          */
@@ -19000,7 +19000,7 @@ static void evd_internaldstein(ae_int_t n,
             xj = w->ptr.p_double[j];
             if( blksiz==1 )
             {
-                
+
                 /*
                  * Skip all the work if the block size is one.
                  */
@@ -19008,7 +19008,7 @@ static void evd_internaldstein(ae_int_t n,
             }
             else
             {
-                
+
                 /*
                  * If eigenvalues j and j-1 are too close, add a relatively
                  * small perturbation.
@@ -19025,7 +19025,7 @@ static void evd_internaldstein(ae_int_t n,
                 }
                 its = 0;
                 nrmchk = 0;
-                
+
                 /*
                  * Get random starting vector.
                  */
@@ -19033,7 +19033,7 @@ static void evd_internaldstein(ae_int_t n,
                 {
                     work1.ptr.p_double[ti] = 2*ae_randomreal(_state)-1;
                 }
-                
+
                 /*
                  * Copy the matrix T so it won't be destroyed in factorization.
                  */
@@ -19044,13 +19044,13 @@ static void evd_internaldstein(ae_int_t n,
                     work4.ptr.p_double[ti] = d->ptr.p_double[b1+ti-1];
                 }
                 work4.ptr.p_double[blksiz] = d->ptr.p_double[b1+blksiz-1];
-                
+
                 /*
                  * Compute LU factors with partial pivoting  ( PT = LU )
                  */
                 tol = 0;
                 evd_tdininternaldlagtf(blksiz, &work4, xj, &work2, &work3, tol, &work5, &iwork, &iinfo, _state);
-                
+
                 /*
                  * Update iteration count.
                  */
@@ -19059,7 +19059,7 @@ static void evd_internaldstein(ae_int_t n,
                     its = its+1;
                     if( its>maxits )
                     {
-                        
+
                         /*
                          * If stopping criterion was not satisfied, update info and
                          * store eigenvector number in array ifail.
@@ -19068,7 +19068,7 @@ static void evd_internaldstein(ae_int_t n,
                         ifail->ptr.p_int[*info] = j;
                         break;
                     }
-                    
+
                     /*
                      * Normalize and scale the righthand side vector Pb.
                      */
@@ -19079,12 +19079,12 @@ static void evd_internaldstein(ae_int_t n,
                     }
                     scl = blksiz*onenrm*ae_maxreal(eps, ae_fabs(work4.ptr.p_double[blksiz], _state), _state)/v;
                     ae_v_muld(&work1.ptr.p_double[1], 1, ae_v_len(1,blksiz), scl);
-                    
+
                     /*
                      * Solve the system LU = Pb.
                      */
                     evd_tdininternaldlagts(blksiz, &work4, &work2, &work3, &work5, &iwork, &work1, &tol, &iinfo, _state);
-                    
+
                     /*
                      * Reorthogonalize by modified Gram-Schmidt if eigenvalues are
                      * close enough.
@@ -19107,13 +19107,13 @@ static void evd_internaldstein(ae_int_t n,
                             }
                         }
                     }
-                    
+
                     /*
                      * Check the infinity norm of the iterate.
                      */
                     jmax = vectoridxabsmax(&work1, 1, blksiz, _state);
                     nrm = ae_fabs(work1.ptr.p_double[jmax], _state);
-                    
+
                     /*
                      * Continue for additional iterations after norm reaches
                      * stopping criterion.
@@ -19133,7 +19133,7 @@ static void evd_internaldstein(ae_int_t n,
                     }
                 }
                 while(tmpcriterion);
-                
+
                 /*
                  * Accept iterate as jth eigenvector.
                  */
@@ -19153,7 +19153,7 @@ static void evd_internaldstein(ae_int_t n,
             {
                 z->ptr.pp_double[b1+i-1][j] = work1.ptr.p_double[i];
             }
-            
+
             /*
              * Save the shift to check eigenvalue spacing at next
              * iteration.
@@ -19166,15 +19166,15 @@ static void evd_internaldstein(ae_int_t n,
 
 
 static void evd_tdininternaldlagtf(ae_int_t n,
-     /* Real    */ ae_vector* a,
-     double lambdav,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* c,
-     double tol,
-     /* Real    */ ae_vector* d,
-     /* Integer */ ae_vector* iin,
-     ae_int_t* info,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* a,
+                                   double lambdav,
+                                   /* Real    */ ae_vector* b,
+                                   /* Real    */ ae_vector* c,
+                                   double tol,
+                                   /* Real    */ ae_vector* d,
+                                   /* Integer */ ae_vector* iin,
+                                   ae_int_t* info,
+                                   ae_state *_state)
 {
     ae_int_t k;
     double eps;
@@ -19280,15 +19280,15 @@ static void evd_tdininternaldlagtf(ae_int_t n,
 
 
 static void evd_tdininternaldlagts(ae_int_t n,
-     /* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_vector* d,
-     /* Integer */ ae_vector* iin,
-     /* Real    */ ae_vector* y,
-     double* tol,
-     ae_int_t* info,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* a,
+                                   /* Real    */ ae_vector* b,
+                                   /* Real    */ ae_vector* c,
+                                   /* Real    */ ae_vector* d,
+                                   /* Integer */ ae_vector* iin,
+                                   /* Real    */ ae_vector* y,
+                                   double* tol,
+                                   ae_int_t* info,
+                                   ae_state *_state)
 {
     ae_int_t k;
     double absak;
@@ -19404,25 +19404,25 @@ static void evd_tdininternaldlagts(ae_int_t n,
 
 
 static void evd_internaldlaebz(ae_int_t ijob,
-     ae_int_t nitmax,
-     ae_int_t n,
-     ae_int_t mmax,
-     ae_int_t minp,
-     double abstol,
-     double reltol,
-     double pivmin,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* e,
-     /* Real    */ ae_vector* e2,
-     /* Integer */ ae_vector* nval,
-     /* Real    */ ae_matrix* ab,
-     /* Real    */ ae_vector* c,
-     ae_int_t* mout,
-     /* Integer */ ae_matrix* nab,
-     /* Real    */ ae_vector* work,
-     /* Integer */ ae_vector* iwork,
-     ae_int_t* info,
-     ae_state *_state)
+                               ae_int_t nitmax,
+                               ae_int_t n,
+                               ae_int_t mmax,
+                               ae_int_t minp,
+                               double abstol,
+                               double reltol,
+                               double pivmin,
+                               /* Real    */ ae_vector* d,
+                               /* Real    */ ae_vector* e,
+                               /* Real    */ ae_vector* e2,
+                               /* Integer */ ae_vector* nval,
+                               /* Real    */ ae_matrix* ab,
+                               /* Real    */ ae_vector* c,
+                               ae_int_t* mout,
+                               /* Integer */ ae_matrix* nab,
+                               /* Real    */ ae_vector* work,
+                               /* Integer */ ae_vector* iwork,
+                               ae_int_t* info,
+                               ae_state *_state)
 {
     ae_int_t itmp1;
     ae_int_t itmp2;
@@ -19446,18 +19446,18 @@ static void evd_internaldlaebz(ae_int_t ijob,
         *info = -1;
         return;
     }
-    
+
     /*
      * Initialize NAB
      */
     if( ijob==1 )
     {
-        
+
         /*
          * Compute the number of eigenvalues in the initial intervals.
          */
         *mout = 0;
-        
+
         /*
          *DIR$ NOVECTOR
          */
@@ -19492,7 +19492,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
         }
         return;
     }
-    
+
     /*
      * Initialize for loop
      *
@@ -19502,7 +19502,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
      */
     kf = 1;
     kl = minp;
-    
+
     /*
      * If IJOB=2, initialize C.
      * If IJOB=3, use the user-supplied starting point.
@@ -19514,13 +19514,13 @@ static void evd_internaldlaebz(ae_int_t ijob,
             c->ptr.p_double[ji] = 0.5*(ab->ptr.pp_double[ji][1]+ab->ptr.pp_double[ji][2]);
         }
     }
-    
+
     /*
      * Iteration loop
      */
     for(jit=1; jit<=nitmax; jit++)
     {
-        
+
         /*
          * Loop over intervals
          *
@@ -19530,7 +19530,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
         klnew = kl;
         for(ji=kf; ji<=kl; ji++)
         {
-            
+
             /*
              * Compute N(w), the number of eigenvalues less than w
              */
@@ -19542,7 +19542,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
                 itmp1 = 1;
                 tmp2 = ae_minreal(tmp2, -pivmin, _state);
             }
-            
+
             /*
              * A series of compiler directives to defeat vectorization
              * for the next loop
@@ -19570,21 +19570,21 @@ static void evd_internaldlaebz(ae_int_t ijob,
             }
             if( ijob<=2 )
             {
-                
+
                 /*
                  * IJOB=2: Choose all intervals containing eigenvalues.
                  *
                  * Insure that N(w) is monotone
                  */
                 itmp1 = ae_minint(nab->ptr.pp_int[ji][2], ae_maxint(nab->ptr.pp_int[ji][1], itmp1, _state), _state);
-                
+
                 /*
                  * Update the Queue -- add intervals if both halves
                  * contain eigenvalues.
                  */
                 if( itmp1==nab->ptr.pp_int[ji][2] )
                 {
-                    
+
                     /*
                      * No eigenvalue in the upper interval:
                      * just use the lower interval.
@@ -19595,7 +19595,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
                 {
                     if( itmp1==nab->ptr.pp_int[ji][1] )
                     {
-                        
+
                         /*
                          * No eigenvalue in the lower interval:
                          * just use the upper interval.
@@ -19606,7 +19606,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
                     {
                         if( klnew<mmax )
                         {
-                            
+
                             /*
                              * Eigenvalue in both intervals -- add upper to queue.
                              */
@@ -19628,7 +19628,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
             }
             else
             {
-                
+
                 /*
                  * IJOB=3: Binary search.  Keep only the interval
                  * containing  w  s.t. N(w) = NVAL
@@ -19646,7 +19646,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
             }
         }
         kl = klnew;
-        
+
         /*
          * Check for convergence
          */
@@ -19657,7 +19657,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
             tmp2 = ae_maxreal(ae_fabs(ab->ptr.pp_double[ji][2], _state), ae_fabs(ab->ptr.pp_double[ji][1], _state), _state);
             if( ae_fp_less(tmp1,ae_maxreal(abstol, ae_maxreal(pivmin, reltol*tmp2, _state), _state))||nab->ptr.pp_int[ji][1]>=nab->ptr.pp_int[ji][2] )
             {
-                
+
                 /*
                  * Converged -- Swap with position KFNEW,
                  * then increment KFNEW
@@ -19687,7 +19687,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
             }
         }
         kf = kfnew;
-        
+
         /*
          * Choose Midpoints
          */
@@ -19695,7 +19695,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
         {
             c->ptr.p_double[ji] = 0.5*(ab->ptr.pp_double[ji][1]+ab->ptr.pp_double[ji][2]);
         }
-        
+
         /*
          * If no more intervals to refine, quit.
          */
@@ -19704,7 +19704,7 @@ static void evd_internaldlaebz(ae_int_t ijob,
             break;
         }
     }
-    
+
     /*
      * Converged
      */
@@ -19722,15 +19722,15 @@ Internal subroutine
      June 30, 1999
 *************************************************************************/
 static void evd_internaltrevc(/* Real    */ ae_matrix* t,
-     ae_int_t n,
-     ae_int_t side,
-     ae_int_t howmny,
-     /* Boolean */ ae_vector* vselect,
-     /* Real    */ ae_matrix* vl,
-     /* Real    */ ae_matrix* vr,
-     ae_int_t* m,
-     ae_int_t* info,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t side,
+        ae_int_t howmny,
+        /* Boolean */ ae_vector* vselect,
+        /* Real    */ ae_matrix* vl,
+        /* Real    */ ae_matrix* vr,
+        ae_int_t* m,
+        ae_int_t* info,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _vselect;
@@ -19834,7 +19834,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
             ae_matrix_set_length(vl, n+1, n+1, _state);
         }
     }
-    
+
     /*
      * Decode and test the input parameters
      */
@@ -19863,7 +19863,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Set M to the number of columns required to store the selected
      * eigenvectors, standardize the array SELECT if necessary, and
@@ -19915,7 +19915,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
     {
         *m = n;
     }
-    
+
     /*
      * Quick return if possible.
      */
@@ -19924,7 +19924,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Set the constants to control overflow.
      */
@@ -19932,7 +19932,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
     ulp = ae_machineepsilon;
     smlnum = unfl*(n/ulp);
     bignum = (1-ulp)/smlnum;
-    
+
     /*
      * Compute 1-norm of each column of strictly upper triangular
      * part of T to control overflow in triangular solver.
@@ -19946,7 +19946,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
             work.ptr.p_double[j] = work.ptr.p_double[j]+ae_fabs(t->ptr.pp_double[i][j], _state);
         }
     }
-    
+
     /*
      * Index IP is used to specify the real or complex eigenvalue:
      * IP = 0, real eigenvalue,
@@ -19956,7 +19956,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
     n2 = 2*n;
     if( rightv )
     {
-        
+
         /*
          * Compute right eigenvectors.
          */
@@ -19998,7 +19998,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
             }
             if( !skipflag )
             {
-                
+
                 /*
                  * Compute the KI-th eigenvalue (WR,WI).
                  */
@@ -20011,12 +20011,12 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                 smin = ae_maxreal(ulp*(ae_fabs(wr, _state)+ae_fabs(wi, _state)), smlnum, _state);
                 if( ip==0 )
                 {
-                    
+
                     /*
                      * Real right eigenvector
                      */
                     work.ptr.p_double[ki+n] = 1;
-                    
+
                     /*
                      * Form right-hand side
                      */
@@ -20024,7 +20024,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                     {
                         work.ptr.p_double[k+n] = -t->ptr.pp_double[k][ki];
                     }
-                    
+
                     /*
                      * Solve the upper quasi-triangular system:
                      *   (T(1:KI-1,1:KI-1) - WR)*X = SCALE*WORK.
@@ -20049,14 +20049,14 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         }
                         if( j1==j2 )
                         {
-                            
+
                             /*
                              * 1-by-1 diagonal block
                              */
                             temp11.ptr.pp_double[1][1] = t->ptr.pp_double[j][j];
                             temp11b.ptr.pp_double[1][1] = work.ptr.p_double[j+n];
                             evd_internalhsevdlaln2(ae_false, 1, 1, smin, 1, &temp11, 1.0, 1.0, &temp11b, wr, 0.0, &rswap4, &zswap4, &ipivot44, &civ4, &crv4, &x, &scl, &xnorm, &ierr, _state);
-                            
+
                             /*
                              * Scale X(1,1) to avoid overflow when updating
                              * the right-hand side.
@@ -20069,7 +20069,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                                     scl = scl/xnorm;
                                 }
                             }
-                            
+
                             /*
                              * Scale if necessary
                              */
@@ -20080,7 +20080,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                                 ae_v_muld(&work.ptr.p_double[k1], 1, ae_v_len(k1,k2), scl);
                             }
                             work.ptr.p_double[j+n] = x.ptr.pp_double[1][1];
-                            
+
                             /*
                              * Update right-hand side
                              */
@@ -20092,7 +20092,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         }
                         else
                         {
-                            
+
                             /*
                              * 2-by-2 diagonal block
                              */
@@ -20103,7 +20103,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             temp21b.ptr.pp_double[1][1] = work.ptr.p_double[j-1+n];
                             temp21b.ptr.pp_double[2][1] = work.ptr.p_double[j+n];
                             evd_internalhsevdlaln2(ae_false, 2, 1, smin, 1.0, &temp22, 1.0, 1.0, &temp21b, wr, 0, &rswap4, &zswap4, &ipivot44, &civ4, &crv4, &x, &scl, &xnorm, &ierr, _state);
-                            
+
                             /*
                              * Scale X(1,1) and X(2,1) to avoid overflow when
                              * updating the right-hand side.
@@ -20118,7 +20118,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                                     scl = scl/xnorm;
                                 }
                             }
-                            
+
                             /*
                              * Scale if necessary
                              */
@@ -20130,7 +20130,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             }
                             work.ptr.p_double[j-1+n] = x.ptr.pp_double[1][1];
                             work.ptr.p_double[j+n] = x.ptr.pp_double[2][1];
-                            
+
                             /*
                              * Update right-hand side
                              */
@@ -20144,7 +20144,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             ae_v_addd(&work.ptr.p_double[k1], 1, &t->ptr.pp_double[1][j], t->stride, ae_v_len(k1,k2), vt);
                         }
                     }
-                    
+
                     /*
                      * Copy the vector x or Q*x to VR and normalize.
                      */
@@ -20176,7 +20176,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                 }
                 else
                 {
-                    
+
                     /*
                      * Complex right eigenvector.
                      *
@@ -20196,7 +20196,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                     }
                     work.ptr.p_double[ki+n] = 0;
                     work.ptr.p_double[ki-1+n2] = 0;
-                    
+
                     /*
                      * Form right-hand side
                      */
@@ -20205,7 +20205,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         work.ptr.p_double[k+n] = -work.ptr.p_double[ki-1+n]*t->ptr.pp_double[k][ki-1];
                         work.ptr.p_double[k+n2] = -work.ptr.p_double[ki+n2]*t->ptr.pp_double[k][ki];
                     }
-                    
+
                     /*
                      * Solve upper quasi-triangular system:
                      * (T(1:KI-2,1:KI-2) - (WR+i*WI))*X = SCALE*(WORK+i*WORK2)
@@ -20230,7 +20230,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         }
                         if( j1==j2 )
                         {
-                            
+
                             /*
                              * 1-by-1 diagonal block
                              */
@@ -20238,7 +20238,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             temp12b.ptr.pp_double[1][1] = work.ptr.p_double[j+n];
                             temp12b.ptr.pp_double[1][2] = work.ptr.p_double[j+n+n];
                             evd_internalhsevdlaln2(ae_false, 1, 2, smin, 1.0, &temp11, 1.0, 1.0, &temp12b, wr, wi, &rswap4, &zswap4, &ipivot44, &civ4, &crv4, &x, &scl, &xnorm, &ierr, _state);
-                            
+
                             /*
                              * Scale X(1,1) and X(1,2) to avoid overflow when
                              * updating the right-hand side.
@@ -20252,7 +20252,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                                     scl = scl/xnorm;
                                 }
                             }
-                            
+
                             /*
                              * Scale if necessary
                              */
@@ -20267,7 +20267,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             }
                             work.ptr.p_double[j+n] = x.ptr.pp_double[1][1];
                             work.ptr.p_double[j+n2] = x.ptr.pp_double[1][2];
-                            
+
                             /*
                              * Update the right-hand side
                              */
@@ -20286,7 +20286,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         }
                         else
                         {
-                            
+
                             /*
                              * 2-by-2 diagonal block
                              */
@@ -20299,7 +20299,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             temp22b.ptr.pp_double[2][1] = work.ptr.p_double[j+n];
                             temp22b.ptr.pp_double[2][2] = work.ptr.p_double[j+n+n];
                             evd_internalhsevdlaln2(ae_false, 2, 2, smin, 1.0, &temp22, 1.0, 1.0, &temp22b, wr, wi, &rswap4, &zswap4, &ipivot44, &civ4, &crv4, &x, &scl, &xnorm, &ierr, _state);
-                            
+
                             /*
                              * Scale X to avoid overflow when updating
                              * the right-hand side.
@@ -20317,7 +20317,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                                     scl = scl*rec;
                                 }
                             }
-                            
+
                             /*
                              * Scale if necessary
                              */
@@ -20330,7 +20330,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             work.ptr.p_double[j+n] = x.ptr.pp_double[2][1];
                             work.ptr.p_double[j-1+n2] = x.ptr.pp_double[1][2];
                             work.ptr.p_double[j+n2] = x.ptr.pp_double[2][2];
-                            
+
                             /*
                              * Update the right-hand side
                              */
@@ -20344,7 +20344,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             ae_v_addd(&work.ptr.p_double[n2+1], 1, &t->ptr.pp_double[1][j], t->stride, ae_v_len(n2+1,n2+j-2), vt);
                         }
                     }
-                    
+
                     /*
                      * Copy the vector x or Q*x to VR and normalize.
                      */
@@ -20412,7 +20412,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
     }
     if( leftv )
     {
-        
+
         /*
          * Compute left eigenvectors.
          */
@@ -20444,7 +20444,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
             }
             if( !skipflag )
             {
-                
+
                 /*
                  * Compute the KI-th eigenvalue (WR,WI).
                  */
@@ -20457,12 +20457,12 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                 smin = ae_maxreal(ulp*(ae_fabs(wr, _state)+ae_fabs(wi, _state)), smlnum, _state);
                 if( ip==0 )
                 {
-                    
+
                     /*
                      * Real left eigenvector.
                      */
                     work.ptr.p_double[ki+n] = 1;
-                    
+
                     /*
                      * Form right-hand side
                      */
@@ -20470,7 +20470,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                     {
                         work.ptr.p_double[k+n] = -t->ptr.pp_double[ki][k];
                     }
-                    
+
                     /*
                      * Solve the quasi-triangular system:
                      * (T(KI+1:N,KI+1:N) - WR)'*X = SCALE*WORK
@@ -20497,7 +20497,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         }
                         if( j1==j2 )
                         {
-                            
+
                             /*
                              * 1-by-1 diagonal block
                              *
@@ -20513,14 +20513,14 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             }
                             vt = ae_v_dotproduct(&t->ptr.pp_double[ki+1][j], t->stride, &work.ptr.p_double[ki+1+n], 1, ae_v_len(ki+1,j-1));
                             work.ptr.p_double[j+n] = work.ptr.p_double[j+n]-vt;
-                            
+
                             /*
                              * Solve (T(J,J)-WR)'*X = WORK
                              */
                             temp11.ptr.pp_double[1][1] = t->ptr.pp_double[j][j];
                             temp11b.ptr.pp_double[1][1] = work.ptr.p_double[j+n];
                             evd_internalhsevdlaln2(ae_false, 1, 1, smin, 1.0, &temp11, 1.0, 1.0, &temp11b, wr, 0, &rswap4, &zswap4, &ipivot44, &civ4, &crv4, &x, &scl, &xnorm, &ierr, _state);
-                            
+
                             /*
                              * Scale if necessary
                              */
@@ -20534,7 +20534,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         }
                         else
                         {
-                            
+
                             /*
                              * 2-by-2 diagonal block
                              *
@@ -20553,7 +20553,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             work.ptr.p_double[j+n] = work.ptr.p_double[j+n]-vt;
                             vt = ae_v_dotproduct(&t->ptr.pp_double[ki+1][j+1], t->stride, &work.ptr.p_double[ki+1+n], 1, ae_v_len(ki+1,j-1));
                             work.ptr.p_double[j+1+n] = work.ptr.p_double[j+1+n]-vt;
-                            
+
                             /*
                              * Solve
                              *    [T(J,J)-WR   T(J,J+1)     ]'* X = SCALE*( WORK1 )
@@ -20566,7 +20566,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             temp21b.ptr.pp_double[1][1] = work.ptr.p_double[j+n];
                             temp21b.ptr.pp_double[2][1] = work.ptr.p_double[j+1+n];
                             evd_internalhsevdlaln2(ae_true, 2, 1, smin, 1.0, &temp22, 1.0, 1.0, &temp21b, wr, 0, &rswap4, &zswap4, &ipivot44, &civ4, &crv4, &x, &scl, &xnorm, &ierr, _state);
-                            
+
                             /*
                              * Scale if necessary
                              */
@@ -20580,7 +20580,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             vcrit = bignum/vmax;
                         }
                     }
-                    
+
                     /*
                      * Copy the vector x or Q*x to VL and normalize.
                      */
@@ -20610,7 +20610,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                 }
                 else
                 {
-                    
+
                     /*
                      * Complex left eigenvector.
                      *
@@ -20630,7 +20630,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                     }
                     work.ptr.p_double[ki+1+n] = 0;
                     work.ptr.p_double[ki+n2] = 0;
-                    
+
                     /*
                      * Form right-hand side
                      */
@@ -20639,7 +20639,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         work.ptr.p_double[k+n] = -work.ptr.p_double[ki+n]*t->ptr.pp_double[ki][k];
                         work.ptr.p_double[k+n2] = -work.ptr.p_double[ki+1+n2]*t->ptr.pp_double[ki+1][k];
                     }
-                    
+
                     /*
                      * Solve complex quasi-triangular system:
                      * ( T(KI+2,N:KI+2,N) - (WR-i*WI) )*X = WORK1+i*WORK2
@@ -20666,7 +20666,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         }
                         if( j1==j2 )
                         {
-                            
+
                             /*
                              * 1-by-1 diagonal block
                              *
@@ -20685,7 +20685,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             work.ptr.p_double[j+n] = work.ptr.p_double[j+n]-vt;
                             vt = ae_v_dotproduct(&t->ptr.pp_double[ki+2][j], t->stride, &work.ptr.p_double[ki+2+n2], 1, ae_v_len(ki+2,j-1));
                             work.ptr.p_double[j+n2] = work.ptr.p_double[j+n2]-vt;
-                            
+
                             /*
                              * Solve (T(J,J)-(WR-i*WI))*(X11+i*X12)= WK+I*WK2
                              */
@@ -20693,7 +20693,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             temp12b.ptr.pp_double[1][1] = work.ptr.p_double[j+n];
                             temp12b.ptr.pp_double[1][2] = work.ptr.p_double[j+n+n];
                             evd_internalhsevdlaln2(ae_false, 1, 2, smin, 1.0, &temp11, 1.0, 1.0, &temp12b, wr, -wi, &rswap4, &zswap4, &ipivot44, &civ4, &crv4, &x, &scl, &xnorm, &ierr, _state);
-                            
+
                             /*
                              * Scale if necessary
                              */
@@ -20709,7 +20709,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                         }
                         else
                         {
-                            
+
                             /*
                              * 2-by-2 diagonal block
                              *
@@ -20733,7 +20733,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             work.ptr.p_double[j+1+n] = work.ptr.p_double[j+1+n]-vt;
                             vt = ae_v_dotproduct(&t->ptr.pp_double[ki+2][j+1], t->stride, &work.ptr.p_double[ki+2+n2], 1, ae_v_len(ki+2,j-1));
                             work.ptr.p_double[j+1+n2] = work.ptr.p_double[j+1+n2]-vt;
-                            
+
                             /*
                              * Solve 2-by-2 complex linear equation
                              *   ([T(j,j)   T(j,j+1)  ]'-(wr-i*wi)*I)*X = SCALE*B
@@ -20748,7 +20748,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             temp22b.ptr.pp_double[2][1] = work.ptr.p_double[j+1+n];
                             temp22b.ptr.pp_double[2][2] = work.ptr.p_double[j+1+n+n];
                             evd_internalhsevdlaln2(ae_true, 2, 2, smin, 1.0, &temp22, 1.0, 1.0, &temp22b, wr, -wi, &rswap4, &zswap4, &ipivot44, &civ4, &crv4, &x, &scl, &xnorm, &ierr, _state);
-                            
+
                             /*
                              * Scale if necessary
                              */
@@ -20768,7 +20768,7 @@ static void evd_internaltrevc(/* Real    */ ae_matrix* t,
                             vcrit = bignum/vmax;
                         }
                     }
-                    
+
                     /*
                      * Copy the vector x or Q*x to VL and normalize.
                      */
@@ -20876,26 +20876,26 @@ by a reasonable factor.  (See BIGNUM.)
      October 31, 1992
 *************************************************************************/
 static void evd_internalhsevdlaln2(ae_bool ltrans,
-     ae_int_t na,
-     ae_int_t nw,
-     double smin,
-     double ca,
-     /* Real    */ ae_matrix* a,
-     double d1,
-     double d2,
-     /* Real    */ ae_matrix* b,
-     double wr,
-     double wi,
-     /* Boolean */ ae_vector* rswap4,
-     /* Boolean */ ae_vector* zswap4,
-     /* Integer */ ae_matrix* ipivot44,
-     /* Real    */ ae_vector* civ4,
-     /* Real    */ ae_vector* crv4,
-     /* Real    */ ae_matrix* x,
-     double* scl,
-     double* xnorm,
-     ae_int_t* info,
-     ae_state *_state)
+                                   ae_int_t na,
+                                   ae_int_t nw,
+                                   double smin,
+                                   double ca,
+                                   /* Real    */ ae_matrix* a,
+                                   double d1,
+                                   double d2,
+                                   /* Real    */ ae_matrix* b,
+                                   double wr,
+                                   double wi,
+                                   /* Boolean */ ae_vector* rswap4,
+                                   /* Boolean */ ae_vector* zswap4,
+                                   /* Integer */ ae_matrix* ipivot44,
+                                   /* Real    */ ae_vector* civ4,
+                                   /* Real    */ ae_vector* crv4,
+                                   /* Real    */ ae_matrix* x,
+                                   double* scl,
+                                   double* xnorm,
+                                   ae_int_t* info,
+                                   ae_state *_state)
 {
     ae_int_t icmax;
     ae_int_t j;
@@ -20968,25 +20968,25 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
     smlnum = 2*ae_minrealnumber;
     bignum = 1/smlnum;
     smini = ae_maxreal(smin, smlnum, _state);
-    
+
     /*
      * Don't check for input errors
      */
     *info = 0;
-    
+
     /*
      * Standard Initializations
      */
     *scl = 1;
     if( na==1 )
     {
-        
+
         /*
          * 1 x 1  (i.e., scalar) system   C X = B
          */
         if( nw==1 )
         {
-            
+
             /*
              * Real 1x1 system.
              *
@@ -20994,7 +20994,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
              */
             csr = ca*a->ptr.pp_double[1][1]-wr*d1;
             cnorm = ae_fabs(csr, _state);
-            
+
             /*
              * If | C | < SMINI, use C = SMINI
              */
@@ -21004,7 +21004,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                 cnorm = smini;
                 *info = 1;
             }
-            
+
             /*
              * Check scaling for  X = B / C
              */
@@ -21016,7 +21016,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                     *scl = 1/bnorm;
                 }
             }
-            
+
             /*
              * Compute X
              */
@@ -21025,7 +21025,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
         }
         else
         {
-            
+
             /*
              * Complex 1x1 system (w is complex)
              *
@@ -21034,7 +21034,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
             csr = ca*a->ptr.pp_double[1][1]-wr*d1;
             csi = -wi*d1;
             cnorm = ae_fabs(csr, _state)+ae_fabs(csi, _state);
-            
+
             /*
              * If | C | < SMINI, use C = SMINI
              */
@@ -21045,7 +21045,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                 cnorm = smini;
                 *info = 1;
             }
-            
+
             /*
              * Check scaling for  X = B / C
              */
@@ -21057,7 +21057,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                     *scl = 1/bnorm;
                 }
             }
-            
+
             /*
              * Compute X
              */
@@ -21069,7 +21069,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
     }
     else
     {
-        
+
         /*
          * 2x2 System
          *
@@ -21089,7 +21089,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
         }
         if( nw==1 )
         {
-            
+
             /*
              * Real 2x2 system  (w is real)
              *
@@ -21105,7 +21105,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                     icmax = j;
                 }
             }
-            
+
             /*
              * If norm(C) < SMINI, use SMINI*identity.
              */
@@ -21126,7 +21126,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                 *info = 1;
                 return;
             }
-            
+
             /*
              * Gaussian elimination with complete pivoting.
              */
@@ -21137,7 +21137,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
             ur11r = 1/ur11;
             lr21 = ur11r*cr21;
             ur22 = cr22-ur12*lr21;
-            
+
             /*
              * If smaller pivot < SMINI, use SMINI
              */
@@ -21178,7 +21178,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                 x->ptr.pp_double[2][1] = xr2;
             }
             *xnorm = ae_maxreal(ae_fabs(xr1, _state), ae_fabs(xr2, _state), _state);
-            
+
             /*
              * Further scaling if  norm(A) norm(X) > overflow
              */
@@ -21196,7 +21196,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
         }
         else
         {
-            
+
             /*
              * Complex 2x2 system  (w is complex)
              *
@@ -21216,7 +21216,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                     icmax = j;
                 }
             }
-            
+
             /*
              * If norm(C) < SMINI, use SMINI*identity.
              */
@@ -21239,7 +21239,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                 *info = 1;
                 return;
             }
-            
+
             /*
              * Gaussian elimination with complete pivoting.
              */
@@ -21253,7 +21253,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
             ci22 = civ4->ptr.p_double[ipivot44->ptr.pp_int[4][icmax]];
             if( icmax==1||icmax==4 )
             {
-                
+
                 /*
                  * Code when off-diagonals of pivoted C are real
                  */
@@ -21278,7 +21278,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
             }
             else
             {
-                
+
                 /*
                  * Code when diagonals of pivoted C are real
                  */
@@ -21292,7 +21292,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                 ui22 = -ur12*li21-ui12*lr21;
             }
             u22abs = ae_fabs(ur22, _state)+ae_fabs(ui22, _state);
-            
+
             /*
              * If smaller pivot < SMINI, use SMINI
              */
@@ -21348,7 +21348,7 @@ static void evd_internalhsevdlaln2(ae_bool ltrans,
                 x->ptr.pp_double[2][2] = xi2;
             }
             *xnorm = ae_maxreal(ae_fabs(xr1, _state)+ae_fabs(xi1, _state), ae_fabs(xr2, _state)+ae_fabs(xi2, _state), _state);
-            
+
             /*
              * Further scaling if  norm(A) norm(X) > overflow
              */
@@ -21386,12 +21386,12 @@ in D. Knuth, The art of Computer Programming, Vol.2, p.195
      October 31, 1992
 *************************************************************************/
 static void evd_internalhsevdladiv(double a,
-     double b,
-     double c,
-     double d,
-     double* p,
-     double* q,
-     ae_state *_state)
+                                   double b,
+                                   double c,
+                                   double d,
+                                   double* p,
+                                   double* q,
+                                   ae_state *_state)
 {
     double e;
     double f;
@@ -21417,13 +21417,13 @@ static void evd_internalhsevdladiv(double a,
 
 
 static ae_bool evd_nonsymmetricevd(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t vneeded,
-     /* Real    */ ae_vector* wr,
-     /* Real    */ ae_vector* wi,
-     /* Real    */ ae_matrix* vl,
-     /* Real    */ ae_matrix* vr,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t vneeded,
+        /* Real    */ ae_vector* wr,
+        /* Real    */ ae_vector* wi,
+        /* Real    */ ae_matrix* vl,
+        /* Real    */ ae_matrix* vr,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -21449,7 +21449,7 @@ static ae_bool evd_nonsymmetricevd(/* Real    */ ae_matrix* a,
     ae_assert(vneeded>=0&&vneeded<=3, "NonSymmetricEVD: incorrect VNeeded!", _state);
     if( vneeded==0 )
     {
-        
+
         /*
          * Eigen values only
          */
@@ -21459,7 +21459,7 @@ static ae_bool evd_nonsymmetricevd(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Eigen values and vectors
      */
@@ -21496,9 +21496,9 @@ static ae_bool evd_nonsymmetricevd(/* Real    */ ae_matrix* a,
 
 
 static void evd_toupperhessenberg(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     ae_state *_state)
+        ae_int_t n,
+        /* Real    */ ae_vector* tau,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -21514,7 +21514,7 @@ static void evd_toupperhessenberg(/* Real    */ ae_matrix* a,
     ae_vector_init(&work, 0, DT_REAL, _state, ae_true);
 
     ae_assert(n>=0, "ToUpperHessenberg: incorrect N!", _state);
-    
+
     /*
      * Quick return if possible
      */
@@ -21528,7 +21528,7 @@ static void evd_toupperhessenberg(/* Real    */ ae_matrix* a,
     ae_vector_set_length(&work, n+1, _state);
     for(i=1; i<=n-1; i++)
     {
-        
+
         /*
          * Compute elementary reflector H(i) to annihilate A(i+2:ihi,i)
          */
@@ -21539,12 +21539,12 @@ static void evd_toupperhessenberg(/* Real    */ ae_matrix* a,
         ae_v_move(&a->ptr.pp_double[ip1][i], a->stride, &t.ptr.p_double[1], 1, ae_v_len(ip1,n));
         tau->ptr.p_double[i] = v;
         t.ptr.p_double[1] = 1;
-        
+
         /*
          * Apply H(i) to A(1:ihi,i+1:ihi) from the right
          */
         applyreflectionfromtheright(a, v, &t, 1, n, i+1, n, &work, _state);
-        
+
         /*
          * Apply H(i) to A(i+1:ihi,i+1:n) from the left
          */
@@ -21555,10 +21555,10 @@ static void evd_toupperhessenberg(/* Real    */ ae_matrix* a,
 
 
 static void evd_unpackqfromupperhessenberg(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* tau,
-     /* Real    */ ae_matrix* q,
-     ae_state *_state)
+        ae_int_t n,
+        /* Real    */ ae_vector* tau,
+        /* Real    */ ae_matrix* q,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -21578,7 +21578,7 @@ static void evd_unpackqfromupperhessenberg(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * init
      */
@@ -21599,13 +21599,13 @@ static void evd_unpackqfromupperhessenberg(/* Real    */ ae_matrix* a,
             }
         }
     }
-    
+
     /*
      * unpack Q
      */
     for(i=1; i<=n-1; i++)
     {
-        
+
         /*
          * Apply H(i)
          */
@@ -21626,7 +21626,7 @@ Generation of a random uniformly distributed (Haar) orthogonal matrix
 
 INPUT PARAMETERS:
     N   -   matrix size, N>=1
-    
+
 OUTPUT PARAMETERS:
     A   -   orthogonal NxN matrix, array[0..N-1,0..N-1]
 
@@ -21635,8 +21635,8 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixrndorthogonal(ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_state *_state)
+                          /* Real    */ ae_matrix* a,
+                          ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -21678,9 +21678,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixrndcond(ae_int_t n,
-     double c,
-     /* Real    */ ae_matrix* a,
-     ae_state *_state)
+                    double c,
+                    /* Real    */ ae_matrix* a,
+                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -21697,7 +21697,7 @@ void rmatrixrndcond(ae_int_t n,
     ae_matrix_set_length(a, n, n, _state);
     if( n==1 )
     {
-        
+
         /*
          * special case
          */
@@ -21741,8 +21741,8 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixrndorthogonal(ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_state *_state)
+                          /* Complex */ ae_matrix* a,
+                          ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -21785,9 +21785,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixrndcond(ae_int_t n,
-     double c,
-     /* Complex */ ae_matrix* a,
-     ae_state *_state)
+                    double c,
+                    /* Complex */ ae_matrix* a,
+                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -21805,7 +21805,7 @@ void cmatrixrndcond(ae_int_t n,
     ae_matrix_set_length(a, n, n, _state);
     if( n==1 )
     {
-        
+
         /*
          * special case
          */
@@ -21853,9 +21853,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void smatrixrndcond(ae_int_t n,
-     double c,
-     /* Real    */ ae_matrix* a,
-     ae_state *_state)
+                    double c,
+                    /* Real    */ ae_matrix* a,
+                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -21872,7 +21872,7 @@ void smatrixrndcond(ae_int_t n,
     ae_matrix_set_length(a, n, n, _state);
     if( n==1 )
     {
-        
+
         /*
          * special case
          */
@@ -21880,7 +21880,7 @@ void smatrixrndcond(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Prepare matrix
      */
@@ -21900,7 +21900,7 @@ void smatrixrndcond(ae_int_t n,
         a->ptr.pp_double[i][i] = (2*hqrnduniformi(&rs, 2, _state)-1)*ae_exp(hqrnduniformr(&rs, _state)*(l2-l1)+l1, _state);
     }
     a->ptr.pp_double[n-1][n-1] = ae_exp(l2, _state);
-    
+
     /*
      * Multiply
      */
@@ -21925,9 +21925,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void spdmatrixrndcond(ae_int_t n,
-     double c,
-     /* Real    */ ae_matrix* a,
-     ae_state *_state)
+                      double c,
+                      /* Real    */ ae_matrix* a,
+                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -21940,7 +21940,7 @@ void spdmatrixrndcond(ae_int_t n,
     ae_matrix_clear(a);
     _hqrndstate_init(&rs, _state, ae_true);
 
-    
+
     /*
      * Special cases
      */
@@ -21956,7 +21956,7 @@ void spdmatrixrndcond(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Prepare matrix
      */
@@ -21976,7 +21976,7 @@ void spdmatrixrndcond(ae_int_t n,
         a->ptr.pp_double[i][i] = ae_exp(hqrnduniformr(&rs, _state)*(l2-l1)+l1, _state);
     }
     a->ptr.pp_double[n-1][n-1] = ae_exp(l2, _state);
-    
+
     /*
      * Multiply
      */
@@ -22001,9 +22001,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void hmatrixrndcond(ae_int_t n,
-     double c,
-     /* Complex */ ae_matrix* a,
-     ae_state *_state)
+                    double c,
+                    /* Complex */ ae_matrix* a,
+                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -22020,7 +22020,7 @@ void hmatrixrndcond(ae_int_t n,
     ae_matrix_set_length(a, n, n, _state);
     if( n==1 )
     {
-        
+
         /*
          * special case
          */
@@ -22028,7 +22028,7 @@ void hmatrixrndcond(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Prepare matrix
      */
@@ -22048,12 +22048,12 @@ void hmatrixrndcond(ae_int_t n,
         a->ptr.pp_complex[i][i] = ae_complex_from_d((2*hqrnduniformi(&rs, 2, _state)-1)*ae_exp(hqrnduniformr(&rs, _state)*(l2-l1)+l1, _state));
     }
     a->ptr.pp_complex[n-1][n-1] = ae_complex_from_d(ae_exp(l2, _state));
-    
+
     /*
      * Multiply
      */
     hmatrixrndmultiply(a, n, _state);
-    
+
     /*
      * post-process to ensure that matrix diagonal is real
      */
@@ -22081,9 +22081,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void hpdmatrixrndcond(ae_int_t n,
-     double c,
-     /* Complex */ ae_matrix* a,
-     ae_state *_state)
+                      double c,
+                      /* Complex */ ae_matrix* a,
+                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -22096,7 +22096,7 @@ void hpdmatrixrndcond(ae_int_t n,
     ae_matrix_clear(a);
     _hqrndstate_init(&rs, _state, ae_true);
 
-    
+
     /*
      * Special cases
      */
@@ -22112,7 +22112,7 @@ void hpdmatrixrndcond(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Prepare matrix
      */
@@ -22132,12 +22132,12 @@ void hpdmatrixrndcond(ae_int_t n,
         a->ptr.pp_complex[i][i] = ae_complex_from_d(ae_exp(hqrnduniformr(&rs, _state)*(l2-l1)+l1, _state));
     }
     a->ptr.pp_complex[n-1][n-1] = ae_complex_from_d(ae_exp(l2, _state));
-    
+
     /*
      * Multiply
      */
     hmatrixrndmultiply(a, n, _state);
-    
+
     /*
      * post-process to ensure that matrix diagonal is real
      */
@@ -22164,9 +22164,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixrndorthogonalfromtheright(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     double tau;
@@ -22187,7 +22187,7 @@ void rmatrixrndorthogonalfromtheright(/* Real    */ ae_matrix* a,
     ae_assert(n>=1&&m>=1, "RMatrixRndOrthogonalFromTheRight: N<1 or M<1!", _state);
     if( n==1 )
     {
-        
+
         /*
          * Special case
          */
@@ -22199,7 +22199,7 @@ void rmatrixrndorthogonalfromtheright(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * General case.
      * First pass.
@@ -22209,7 +22209,7 @@ void rmatrixrndorthogonalfromtheright(/* Real    */ ae_matrix* a,
     hqrndrandomize(&state, _state);
     for(s=2; s<=n; s++)
     {
-        
+
         /*
          * Prepare random normal v
          */
@@ -22229,7 +22229,7 @@ void rmatrixrndorthogonalfromtheright(/* Real    */ ae_matrix* a,
             lambdav = ae_v_dotproduct(&v.ptr.p_double[1], 1, &v.ptr.p_double[1], 1, ae_v_len(1,s));
         }
         while(ae_fp_eq(lambdav,0));
-        
+
         /*
          * Prepare and apply reflection
          */
@@ -22237,7 +22237,7 @@ void rmatrixrndorthogonalfromtheright(/* Real    */ ae_matrix* a,
         v.ptr.p_double[1] = 1;
         applyreflectionfromtheright(a, tau, &v, 0, m-1, n-s, n-1, &w, _state);
     }
-    
+
     /*
      * Second pass.
      */
@@ -22265,9 +22265,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixrndorthogonalfromtheleft(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     double tau;
@@ -22289,7 +22289,7 @@ void rmatrixrndorthogonalfromtheleft(/* Real    */ ae_matrix* a,
     ae_assert(n>=1&&m>=1, "RMatrixRndOrthogonalFromTheRight: N<1 or M<1!", _state);
     if( m==1 )
     {
-        
+
         /*
          * special case
          */
@@ -22301,7 +22301,7 @@ void rmatrixrndorthogonalfromtheleft(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * General case.
      * First pass.
@@ -22311,7 +22311,7 @@ void rmatrixrndorthogonalfromtheleft(/* Real    */ ae_matrix* a,
     hqrndrandomize(&state, _state);
     for(s=2; s<=m; s++)
     {
-        
+
         /*
          * Prepare random normal v
          */
@@ -22331,7 +22331,7 @@ void rmatrixrndorthogonalfromtheleft(/* Real    */ ae_matrix* a,
             lambdav = ae_v_dotproduct(&v.ptr.p_double[1], 1, &v.ptr.p_double[1], 1, ae_v_len(1,s));
         }
         while(ae_fp_eq(lambdav,0));
-        
+
         /*
          * Prepare and apply reflection
          */
@@ -22339,7 +22339,7 @@ void rmatrixrndorthogonalfromtheleft(/* Real    */ ae_matrix* a,
         v.ptr.p_double[1] = 1;
         applyreflectionfromtheleft(a, tau, &v, m-s, m-1, 0, n-1, &w, _state);
     }
-    
+
     /*
      * Second pass.
      */
@@ -22368,9 +22368,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixrndorthogonalfromtheright(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_complex lambdav;
@@ -22389,7 +22389,7 @@ void cmatrixrndorthogonalfromtheright(/* Complex */ ae_matrix* a,
     ae_assert(n>=1&&m>=1, "CMatrixRndOrthogonalFromTheRight: N<1 or M<1!", _state);
     if( n==1 )
     {
-        
+
         /*
          * Special case
          */
@@ -22402,7 +22402,7 @@ void cmatrixrndorthogonalfromtheright(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * General case.
      * First pass.
@@ -22412,7 +22412,7 @@ void cmatrixrndorthogonalfromtheright(/* Complex */ ae_matrix* a,
     hqrndrandomize(&state, _state);
     for(s=2; s<=n; s++)
     {
-        
+
         /*
          * Prepare random normal v
          */
@@ -22426,7 +22426,7 @@ void cmatrixrndorthogonalfromtheright(/* Complex */ ae_matrix* a,
             lambdav = ae_v_cdotproduct(&v.ptr.p_complex[1], 1, "N", &v.ptr.p_complex[1], 1, "Conj", ae_v_len(1,s));
         }
         while(ae_c_eq_d(lambdav,0));
-        
+
         /*
          * Prepare and apply reflection
          */
@@ -22434,7 +22434,7 @@ void cmatrixrndorthogonalfromtheright(/* Complex */ ae_matrix* a,
         v.ptr.p_complex[1] = ae_complex_from_d(1);
         complexapplyreflectionfromtheright(a, tau, &v, 0, m-1, n-s, n-1, &w, _state);
     }
-    
+
     /*
      * Second pass.
      */
@@ -22463,9 +22463,9 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixrndorthogonalfromtheleft(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_complex tau;
@@ -22485,7 +22485,7 @@ void cmatrixrndorthogonalfromtheleft(/* Complex */ ae_matrix* a,
     ae_assert(n>=1&&m>=1, "CMatrixRndOrthogonalFromTheRight: N<1 or M<1!", _state);
     if( m==1 )
     {
-        
+
         /*
          * special case
          */
@@ -22498,7 +22498,7 @@ void cmatrixrndorthogonalfromtheleft(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * General case.
      * First pass.
@@ -22508,7 +22508,7 @@ void cmatrixrndorthogonalfromtheleft(/* Complex */ ae_matrix* a,
     hqrndrandomize(&state, _state);
     for(s=2; s<=m; s++)
     {
-        
+
         /*
          * Prepare random normal v
          */
@@ -22522,7 +22522,7 @@ void cmatrixrndorthogonalfromtheleft(/* Complex */ ae_matrix* a,
             lambdav = ae_v_cdotproduct(&v.ptr.p_complex[1], 1, "N", &v.ptr.p_complex[1], 1, "Conj", ae_v_len(1,s));
         }
         while(ae_c_eq_d(lambdav,0));
-        
+
         /*
          * Prepare and apply reflection
          */
@@ -22530,7 +22530,7 @@ void cmatrixrndorthogonalfromtheleft(/* Complex */ ae_matrix* a,
         v.ptr.p_complex[1] = ae_complex_from_d(1);
         complexapplyreflectionfromtheleft(a, tau, &v, m-s, m-1, 0, n-1, &w, _state);
     }
-    
+
     /*
      * Second pass.
      */
@@ -22559,8 +22559,8 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void smatrixrndmultiply(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+                                      ae_int_t n,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     double tau;
@@ -22578,7 +22578,7 @@ void smatrixrndmultiply(/* Real    */ ae_matrix* a,
     ae_vector_init(&v, 0, DT_REAL, _state, ae_true);
     _hqrndstate_init(&state, _state, ae_true);
 
-    
+
     /*
      * General case.
      */
@@ -22587,7 +22587,7 @@ void smatrixrndmultiply(/* Real    */ ae_matrix* a,
     hqrndrandomize(&state, _state);
     for(s=2; s<=n; s++)
     {
-        
+
         /*
          * Prepare random normal v
          */
@@ -22607,7 +22607,7 @@ void smatrixrndmultiply(/* Real    */ ae_matrix* a,
             lambdav = ae_v_dotproduct(&v.ptr.p_double[1], 1, &v.ptr.p_double[1], 1, ae_v_len(1,s));
         }
         while(ae_fp_eq(lambdav,0));
-        
+
         /*
          * Prepare and apply reflection
          */
@@ -22616,7 +22616,7 @@ void smatrixrndmultiply(/* Real    */ ae_matrix* a,
         applyreflectionfromtheright(a, tau, &v, 0, n-1, n-s, n-1, &w, _state);
         applyreflectionfromtheleft(a, tau, &v, n-s, n-1, 0, n-1, &w, _state);
     }
-    
+
     /*
      * Second pass.
      */
@@ -22626,7 +22626,7 @@ void smatrixrndmultiply(/* Real    */ ae_matrix* a,
         ae_v_muld(&a->ptr.pp_double[0][i], a->stride, ae_v_len(0,n-1), tau);
         ae_v_muld(&a->ptr.pp_double[i][0], 1, ae_v_len(0,n-1), tau);
     }
-    
+
     /*
      * Copy upper triangle to lower
      */
@@ -22654,8 +22654,8 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void hmatrixrndmultiply(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+                                      ae_int_t n,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_complex tau;
@@ -22671,7 +22671,7 @@ void hmatrixrndmultiply(/* Complex */ ae_matrix* a,
     ae_vector_init(&v, 0, DT_COMPLEX, _state, ae_true);
     _hqrndstate_init(&state, _state, ae_true);
 
-    
+
     /*
      * General case.
      */
@@ -22680,7 +22680,7 @@ void hmatrixrndmultiply(/* Complex */ ae_matrix* a,
     hqrndrandomize(&state, _state);
     for(s=2; s<=n; s++)
     {
-        
+
         /*
          * Prepare random normal v
          */
@@ -22694,7 +22694,7 @@ void hmatrixrndmultiply(/* Complex */ ae_matrix* a,
             lambdav = ae_v_cdotproduct(&v.ptr.p_complex[1], 1, "N", &v.ptr.p_complex[1], 1, "Conj", ae_v_len(1,s));
         }
         while(ae_c_eq_d(lambdav,0));
-        
+
         /*
          * Prepare and apply reflection
          */
@@ -22703,7 +22703,7 @@ void hmatrixrndmultiply(/* Complex */ ae_matrix* a,
         complexapplyreflectionfromtheright(a, tau, &v, 0, n-1, n-s, n-1, &w, _state);
         complexapplyreflectionfromtheleft(a, ae_c_conj(tau, _state), &v, n-s, n-1, 0, n-1, &w, _state);
     }
-    
+
     /*
      * Second pass.
      */
@@ -22714,7 +22714,7 @@ void hmatrixrndmultiply(/* Complex */ ae_matrix* a,
         tau = ae_c_conj(tau, _state);
         ae_v_cmulc(&a->ptr.pp_complex[i][0], 1, ae_v_len(0,n-1), tau);
     }
-    
+
     /*
      * Change all values from lower triangle by complex-conjugate values
      * from upper one
@@ -22768,10 +22768,10 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixlu(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     ae_state *_state)
+                             ae_int_t m,
+                             ae_int_t n,
+                             /* Integer */ ae_vector* pivots,
+                             ae_state *_state)
 {
 
     ae_vector_clear(pivots);
@@ -22814,10 +22814,10 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixlu(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     ae_state *_state)
+                             ae_int_t m,
+                             ae_int_t n,
+                             /* Integer */ ae_vector* pivots,
+                             ae_state *_state)
 {
 
     ae_vector_clear(pivots);
@@ -22858,9 +22858,9 @@ RESULT:
      Bochkanov Sergey
 *************************************************************************/
 ae_bool hpdmatrixcholesky(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+                                        ae_int_t n,
+                                        ae_bool isupper,
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector tmp;
@@ -22911,9 +22911,9 @@ RESULT:
      Bochkanov Sergey
 *************************************************************************/
 ae_bool spdmatrixcholesky(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+                                        ae_int_t n,
+                                        ae_bool isupper,
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector tmp;
@@ -22935,10 +22935,10 @@ ae_bool spdmatrixcholesky(/* Real    */ ae_matrix* a,
 
 
 void rmatrixlup(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     ae_state *_state)
+                              ae_int_t m,
+                              ae_int_t n,
+                              /* Integer */ ae_vector* pivots,
+                              ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector tmp;
@@ -22951,14 +22951,14 @@ void rmatrixlup(/* Real    */ ae_matrix* a,
     ae_vector_clear(pivots);
     ae_vector_init(&tmp, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Internal LU decomposition subroutine.
      * Never call it directly.
      */
     ae_assert(m>0, "RMatrixLUP: incorrect M!", _state);
     ae_assert(n>0, "RMatrixLUP: incorrect N!", _state);
-    
+
     /*
      * Scale matrix to avoid overflows,
      * decompose it, then scale back.
@@ -22995,10 +22995,10 @@ void rmatrixlup(/* Real    */ ae_matrix* a,
 
 
 void cmatrixlup(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     ae_state *_state)
+                              ae_int_t m,
+                              ae_int_t n,
+                              /* Integer */ ae_vector* pivots,
+                              ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector tmp;
@@ -23011,14 +23011,14 @@ void cmatrixlup(/* Complex */ ae_matrix* a,
     ae_vector_clear(pivots);
     ae_vector_init(&tmp, 0, DT_COMPLEX, _state, ae_true);
 
-    
+
     /*
      * Internal LU decomposition subroutine.
      * Never call it directly.
      */
     ae_assert(m>0, "CMatrixLUP: incorrect M!", _state);
     ae_assert(n>0, "CMatrixLUP: incorrect N!", _state);
-    
+
     /*
      * Scale matrix to avoid overflows,
      * decompose it, then scale back.
@@ -23055,10 +23055,10 @@ void cmatrixlup(/* Complex */ ae_matrix* a,
 
 
 void rmatrixplu(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     ae_state *_state)
+                              ae_int_t m,
+                              ae_int_t n,
+                              /* Integer */ ae_vector* pivots,
+                              ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector tmp;
@@ -23071,7 +23071,7 @@ void rmatrixplu(/* Real    */ ae_matrix* a,
     ae_vector_clear(pivots);
     ae_vector_init(&tmp, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Internal LU decomposition subroutine.
      * Never call it directly.
@@ -23080,7 +23080,7 @@ void rmatrixplu(/* Real    */ ae_matrix* a,
     ae_assert(n>0, "RMatrixPLU: incorrect N!", _state);
     ae_vector_set_length(&tmp, 2*ae_maxint(m, n, _state), _state);
     ae_vector_set_length(pivots, ae_minint(m, n, _state), _state);
-    
+
     /*
      * Scale matrix to avoid overflows,
      * decompose it, then scale back.
@@ -23115,10 +23115,10 @@ void rmatrixplu(/* Real    */ ae_matrix* a,
 
 
 void cmatrixplu(/* Complex */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     ae_state *_state)
+                              ae_int_t m,
+                              ae_int_t n,
+                              /* Integer */ ae_vector* pivots,
+                              ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector tmp;
@@ -23131,7 +23131,7 @@ void cmatrixplu(/* Complex */ ae_matrix* a,
     ae_vector_clear(pivots);
     ae_vector_init(&tmp, 0, DT_COMPLEX, _state, ae_true);
 
-    
+
     /*
      * Internal LU decomposition subroutine.
      * Never call it directly.
@@ -23140,7 +23140,7 @@ void cmatrixplu(/* Complex */ ae_matrix* a,
     ae_assert(n>0, "CMatrixPLU: incorrect N!", _state);
     ae_vector_set_length(&tmp, 2*ae_maxint(m, n, _state), _state);
     ae_vector_set_length(pivots, ae_minint(m, n, _state), _state);
-    
+
     /*
      * Scale matrix to avoid overflows,
      * decompose it, then scale back.
@@ -23184,7 +23184,7 @@ INPUT PARAMETERS:
     IsUpper -   what half is given
     Tmp     -   temporary array; allocated by function, if its size is too
                 small; can be reused on subsequent calls.
-                
+
 OUTPUT PARAMETERS:
     A       -   upper (or lower) triangle contains Cholesky decomposition
 
@@ -23197,18 +23197,18 @@ RESULT:
      Bochkanov Sergey
 *************************************************************************/
 ae_bool spdmatrixcholeskyrec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t n1;
     ae_int_t n2;
     ae_bool result;
 
 
-    
+
     /*
      * check N
      */
@@ -23217,7 +23217,7 @@ ae_bool spdmatrixcholeskyrec(/* Real    */ ae_matrix* a,
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Prepare buffer
      */
@@ -23225,7 +23225,7 @@ ae_bool spdmatrixcholeskyrec(/* Real    */ ae_matrix* a,
     {
         ae_vector_set_length(tmp, 2*n, _state);
     }
-    
+
     /*
      * special cases
      */
@@ -23247,7 +23247,7 @@ ae_bool spdmatrixcholeskyrec(/* Real    */ ae_matrix* a,
         result = trfac_spdmatrixcholesky2(a, offs, n, isupper, tmp, _state);
         return result;
     }
-    
+
     /*
      * general case: split task in cache-oblivious manner
      */
@@ -23289,19 +23289,19 @@ Never call it directly.
      Bochkanov Sergey
 *************************************************************************/
 static void trfac_cmatrixluprec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t m1;
     ae_int_t m2;
 
 
-    
+
     /*
      * Kernel case
      */
@@ -23310,7 +23310,7 @@ static void trfac_cmatrixluprec(/* Complex */ ae_matrix* a,
         trfac_cmatrixlup2(a, offs, m, n, pivots, tmp, _state);
         return;
     }
-    
+
     /*
      * Preliminary step, make N>=M
      *
@@ -23332,7 +23332,7 @@ static void trfac_cmatrixluprec(/* Complex */ ae_matrix* a,
         cmatrixrighttrsm(m-n, n, a, offs, offs, ae_true, ae_true, 0, a, offs+n, offs, _state);
         return;
     }
-    
+
     /*
      * Non-kernel case
      */
@@ -23374,19 +23374,19 @@ Never call it directly.
      Bochkanov Sergey
 *************************************************************************/
 static void trfac_rmatrixluprec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t m1;
     ae_int_t m2;
 
 
-    
+
     /*
      * Kernel case
      */
@@ -23395,7 +23395,7 @@ static void trfac_rmatrixluprec(/* Real    */ ae_matrix* a,
         trfac_rmatrixlup2(a, offs, m, n, pivots, tmp, _state);
         return;
     }
-    
+
     /*
      * Preliminary step, make N>=M
      *
@@ -23420,7 +23420,7 @@ static void trfac_rmatrixluprec(/* Real    */ ae_matrix* a,
         rmatrixrighttrsm(m-n, n, a, offs, offs, ae_true, ae_true, 0, a, offs+n, offs, _state);
         return;
     }
-    
+
     /*
      * Non-kernel case
      */
@@ -23462,19 +23462,19 @@ Never call it directly.
      Bochkanov Sergey
 *************************************************************************/
 static void trfac_cmatrixplurec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t n1;
     ae_int_t n2;
 
 
-    
+
     /*
      * Kernel case
      */
@@ -23483,7 +23483,7 @@ static void trfac_cmatrixplurec(/* Complex */ ae_matrix* a,
         trfac_cmatrixplu2(a, offs, m, n, pivots, tmp, _state);
         return;
     }
-    
+
     /*
      * Preliminary step, make M>=N.
      *
@@ -23502,7 +23502,7 @@ static void trfac_cmatrixplurec(/* Complex */ ae_matrix* a,
         cmatrixlefttrsm(m, n-m, a, offs, offs, ae_false, ae_true, 0, a, offs, offs+m, _state);
         return;
     }
-    
+
     /*
      * Non-kernel case
      */
@@ -23544,19 +23544,19 @@ Never call it directly.
      Bochkanov Sergey
 *************************************************************************/
 static void trfac_rmatrixplurec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t n1;
     ae_int_t n2;
 
 
-    
+
     /*
      * Kernel case
      */
@@ -23565,7 +23565,7 @@ static void trfac_rmatrixplurec(/* Real    */ ae_matrix* a,
         trfac_rmatrixplu2(a, offs, m, n, pivots, tmp, _state);
         return;
     }
-    
+
     /*
      * Preliminary step, make M>=N.
      *
@@ -23584,7 +23584,7 @@ static void trfac_rmatrixplurec(/* Real    */ ae_matrix* a,
         rmatrixlefttrsm(m, n-m, a, offs, offs, ae_false, ae_true, 0, a, offs, offs+m, _state);
         return;
     }
-    
+
     /*
      * Non-kernel case
      */
@@ -23625,12 +23625,12 @@ Complex LUP kernel
      Bochkanov Sergey
 *************************************************************************/
 static void trfac_cmatrixlup2(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -23638,7 +23638,7 @@ static void trfac_cmatrixlup2(/* Complex */ ae_matrix* a,
     ae_complex s;
 
 
-    
+
     /*
      * Quick return if possible
      */
@@ -23646,13 +23646,13 @@ static void trfac_cmatrixlup2(/* Complex */ ae_matrix* a,
     {
         return;
     }
-    
+
     /*
      * main cycle
      */
     for(j=0; j<=ae_minint(m-1, n-1, _state); j++)
     {
-        
+
         /*
          * Find pivot, swap columns
          */
@@ -23671,7 +23671,7 @@ static void trfac_cmatrixlup2(/* Complex */ ae_matrix* a,
             ae_v_cmove(&a->ptr.pp_complex[offs][offs+j], a->stride, &a->ptr.pp_complex[offs][offs+jp], a->stride, "N", ae_v_len(offs,offs+m-1));
             ae_v_cmove(&a->ptr.pp_complex[offs][offs+jp], a->stride, &tmp->ptr.p_complex[0], 1, "N", ae_v_len(offs,offs+m-1));
         }
-        
+
         /*
          * LU decomposition of 1x(N-J) matrix
          */
@@ -23680,7 +23680,7 @@ static void trfac_cmatrixlup2(/* Complex */ ae_matrix* a,
             s = ae_c_d_div(1,a->ptr.pp_complex[offs+j][offs+j]);
             ae_v_cmulc(&a->ptr.pp_complex[offs+j][offs+j+1], 1, ae_v_len(offs+j+1,offs+n-1), s);
         }
-        
+
         /*
          * Update trailing (M-J-1)x(N-J-1) matrix
          */
@@ -23702,12 +23702,12 @@ Real LUP kernel
      Bochkanov Sergey
 *************************************************************************/
 static void trfac_rmatrixlup2(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -23715,7 +23715,7 @@ static void trfac_rmatrixlup2(/* Real    */ ae_matrix* a,
     double s;
 
 
-    
+
     /*
      * Quick return if possible
      */
@@ -23723,13 +23723,13 @@ static void trfac_rmatrixlup2(/* Real    */ ae_matrix* a,
     {
         return;
     }
-    
+
     /*
      * main cycle
      */
     for(j=0; j<=ae_minint(m-1, n-1, _state); j++)
     {
-        
+
         /*
          * Find pivot, swap columns
          */
@@ -23748,7 +23748,7 @@ static void trfac_rmatrixlup2(/* Real    */ ae_matrix* a,
             ae_v_move(&a->ptr.pp_double[offs][offs+j], a->stride, &a->ptr.pp_double[offs][offs+jp], a->stride, ae_v_len(offs,offs+m-1));
             ae_v_move(&a->ptr.pp_double[offs][offs+jp], a->stride, &tmp->ptr.p_double[0], 1, ae_v_len(offs,offs+m-1));
         }
-        
+
         /*
          * LU decomposition of 1x(N-J) matrix
          */
@@ -23757,7 +23757,7 @@ static void trfac_rmatrixlup2(/* Real    */ ae_matrix* a,
             s = 1/a->ptr.pp_double[offs+j][offs+j];
             ae_v_muld(&a->ptr.pp_double[offs+j][offs+j+1], 1, ae_v_len(offs+j+1,offs+n-1), s);
         }
-        
+
         /*
          * Update trailing (M-J-1)x(N-J-1) matrix
          */
@@ -23780,12 +23780,12 @@ Complex PLU kernel
      June 30, 1992
 *************************************************************************/
 static void trfac_cmatrixplu2(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -23793,7 +23793,7 @@ static void trfac_cmatrixplu2(/* Complex */ ae_matrix* a,
     ae_complex s;
 
 
-    
+
     /*
      * Quick return if possible
      */
@@ -23803,7 +23803,7 @@ static void trfac_cmatrixplu2(/* Complex */ ae_matrix* a,
     }
     for(j=0; j<=ae_minint(m-1, n-1, _state); j++)
     {
-        
+
         /*
          * Find pivot and test for singularity.
          */
@@ -23818,7 +23818,7 @@ static void trfac_cmatrixplu2(/* Complex */ ae_matrix* a,
         pivots->ptr.p_int[offs+j] = offs+jp;
         if( ae_c_neq_d(a->ptr.pp_complex[offs+jp][offs+j],0) )
         {
-            
+
             /*
              *Apply the interchange to rows
              */
@@ -23831,7 +23831,7 @@ static void trfac_cmatrixplu2(/* Complex */ ae_matrix* a,
                     a->ptr.pp_complex[offs+jp][offs+i] = s;
                 }
             }
-            
+
             /*
              *Compute elements J+1:M of J-th column.
              */
@@ -23843,7 +23843,7 @@ static void trfac_cmatrixplu2(/* Complex */ ae_matrix* a,
         }
         if( j<ae_minint(m, n, _state)-1 )
         {
-            
+
             /*
              *Update trailing submatrix.
              */
@@ -23864,12 +23864,12 @@ Real PLU kernel
      June 30, 1992
 *************************************************************************/
 static void trfac_rmatrixplu2(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* pivots,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t m,
+        ae_int_t n,
+        /* Integer */ ae_vector* pivots,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -23877,7 +23877,7 @@ static void trfac_rmatrixplu2(/* Real    */ ae_matrix* a,
     double s;
 
 
-    
+
     /*
      * Quick return if possible
      */
@@ -23887,7 +23887,7 @@ static void trfac_rmatrixplu2(/* Real    */ ae_matrix* a,
     }
     for(j=0; j<=ae_minint(m-1, n-1, _state); j++)
     {
-        
+
         /*
          * Find pivot and test for singularity.
          */
@@ -23902,7 +23902,7 @@ static void trfac_rmatrixplu2(/* Real    */ ae_matrix* a,
         pivots->ptr.p_int[offs+j] = offs+jp;
         if( ae_fp_neq(a->ptr.pp_double[offs+jp][offs+j],0) )
         {
-            
+
             /*
              *Apply the interchange to rows
              */
@@ -23915,7 +23915,7 @@ static void trfac_rmatrixplu2(/* Real    */ ae_matrix* a,
                     a->ptr.pp_double[offs+jp][offs+i] = s;
                 }
             }
-            
+
             /*
              *Compute elements J+1:M of J-th column.
              */
@@ -23927,7 +23927,7 @@ static void trfac_rmatrixplu2(/* Real    */ ae_matrix* a,
         }
         if( j<ae_minint(m, n, _state)-1 )
         {
-            
+
             /*
              *Update trailing submatrix.
              */
@@ -23947,18 +23947,18 @@ Recursive computational subroutine for HPDMatrixCholesky
      Bochkanov Sergey
 *************************************************************************/
 static ae_bool trfac_hpdmatrixcholeskyrec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t n1;
     ae_int_t n2;
     ae_bool result;
 
 
-    
+
     /*
      * check N
      */
@@ -23967,7 +23967,7 @@ static ae_bool trfac_hpdmatrixcholeskyrec(/* Complex */ ae_matrix* a,
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Prepare buffer
      */
@@ -23975,7 +23975,7 @@ static ae_bool trfac_hpdmatrixcholeskyrec(/* Complex */ ae_matrix* a,
     {
         ae_vector_set_length(tmp, 2*n, _state);
     }
-    
+
     /*
      * special cases
      */
@@ -23997,7 +23997,7 @@ static ae_bool trfac_hpdmatrixcholeskyrec(/* Complex */ ae_matrix* a,
         result = trfac_hpdmatrixcholesky2(a, offs, n, isupper, tmp, _state);
         return result;
     }
-    
+
     /*
      * general case: split task in cache-oblivious manner
      */
@@ -24039,11 +24039,11 @@ Level-2 Hermitian Cholesky subroutine.
      February 29, 1992
 *************************************************************************/
 static ae_bool trfac_hpdmatrixcholesky2(/* Complex */ ae_matrix* aaa,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -24059,7 +24059,7 @@ static ae_bool trfac_hpdmatrixcholesky2(/* Complex */ ae_matrix* aaa,
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Quick return if possible
      */
@@ -24069,13 +24069,13 @@ static ae_bool trfac_hpdmatrixcholesky2(/* Complex */ ae_matrix* aaa,
     }
     if( isupper )
     {
-        
+
         /*
          * Compute the Cholesky factorization A = U'*U.
          */
         for(j=0; j<=n-1; j++)
         {
-            
+
             /*
              * Compute U(J,J) and test for non-positive-definiteness.
              */
@@ -24089,7 +24089,7 @@ static ae_bool trfac_hpdmatrixcholesky2(/* Complex */ ae_matrix* aaa,
             }
             ajj = ae_sqrt(ajj, _state);
             aaa->ptr.pp_complex[offs+j][offs+j] = ae_complex_from_d(ajj);
-            
+
             /*
              * Compute elements J+1:N-1 of row J.
              */
@@ -24108,13 +24108,13 @@ static ae_bool trfac_hpdmatrixcholesky2(/* Complex */ ae_matrix* aaa,
     }
     else
     {
-        
+
         /*
          * Compute the Cholesky factorization A = L*L'.
          */
         for(j=0; j<=n-1; j++)
         {
-            
+
             /*
              * Compute L(J+1,J+1) and test for non-positive-definiteness.
              */
@@ -24128,7 +24128,7 @@ static ae_bool trfac_hpdmatrixcholesky2(/* Complex */ ae_matrix* aaa,
             }
             ajj = ae_sqrt(ajj, _state);
             aaa->ptr.pp_complex[offs+j][offs+j] = ae_complex_from_d(ajj);
-            
+
             /*
              * Compute elements J+1:N of column J.
              */
@@ -24166,11 +24166,11 @@ Level-2 Cholesky subroutine
      February 29, 1992
 *************************************************************************/
 static ae_bool trfac_spdmatrixcholesky2(/* Real    */ ae_matrix* aaa,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -24186,7 +24186,7 @@ static ae_bool trfac_spdmatrixcholesky2(/* Real    */ ae_matrix* aaa,
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Quick return if possible
      */
@@ -24196,13 +24196,13 @@ static ae_bool trfac_spdmatrixcholesky2(/* Real    */ ae_matrix* aaa,
     }
     if( isupper )
     {
-        
+
         /*
          * Compute the Cholesky factorization A = U'*U.
          */
         for(j=0; j<=n-1; j++)
         {
-            
+
             /*
              * Compute U(J,J) and test for non-positive-definiteness.
              */
@@ -24216,7 +24216,7 @@ static ae_bool trfac_spdmatrixcholesky2(/* Real    */ ae_matrix* aaa,
             }
             ajj = ae_sqrt(ajj, _state);
             aaa->ptr.pp_double[offs+j][offs+j] = ajj;
-            
+
             /*
              * Compute elements J+1:N-1 of row J.
              */
@@ -24235,13 +24235,13 @@ static ae_bool trfac_spdmatrixcholesky2(/* Real    */ ae_matrix* aaa,
     }
     else
     {
-        
+
         /*
          * Compute the Cholesky factorization A = L*L'.
          */
         for(j=0; j<=n-1; j++)
         {
-            
+
             /*
              * Compute L(J+1,J+1) and test for non-positive-definiteness.
              */
@@ -24255,7 +24255,7 @@ static ae_bool trfac_spdmatrixcholesky2(/* Real    */ ae_matrix* aaa,
             }
             ajj = ae_sqrt(ajj, _state);
             aaa->ptr.pp_double[offs+j][offs+j] = ajj;
-            
+
             /*
              * Compute elements J+1:N of column J.
              */
@@ -24304,8 +24304,8 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double rmatrixrcond1(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+                                   ae_int_t n,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -24367,8 +24367,8 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double rmatrixrcondinf(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -24431,9 +24431,9 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double spdmatrixrcond(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_bool isupper,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -24520,10 +24520,10 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double rmatrixtrrcond1(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     ae_bool isupper,
+                                     ae_bool isunit,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -24603,10 +24603,10 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double rmatrixtrrcondinf(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_state *_state)
+                                       ae_int_t n,
+                                       ae_bool isupper,
+                                       ae_bool isunit,
+                                       ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -24685,9 +24685,9 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double hpdmatrixrcond(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_bool isupper,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -24772,8 +24772,8 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double cmatrixrcond1(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+                                   ae_int_t n,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -24835,8 +24835,8 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double cmatrixrcondinf(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -24890,8 +24890,8 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double rmatrixlurcond1(/* Real    */ ae_matrix* lua,
-     ae_int_t n,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     ae_state *_state)
 {
     double v;
     double result;
@@ -24923,8 +24923,8 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double rmatrixlurcondinf(/* Real    */ ae_matrix* lua,
-     ae_int_t n,
-     ae_state *_state)
+                                       ae_int_t n,
+                                       ae_state *_state)
 {
     double v;
     double result;
@@ -24960,9 +24960,9 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double spdmatrixcholeskyrcond(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_state *_state)
 {
     double v;
     double result;
@@ -24998,9 +24998,9 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double hpdmatrixcholeskyrcond(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_state *_state)
 {
     double v;
     double result;
@@ -25031,8 +25031,8 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double cmatrixlurcond1(/* Complex */ ae_matrix* lua,
-     ae_int_t n,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     ae_state *_state)
 {
     double v;
     double result;
@@ -25065,8 +25065,8 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double cmatrixlurcondinf(/* Complex */ ae_matrix* lua,
-     ae_int_t n,
-     ae_state *_state)
+                                       ae_int_t n,
+                                       ae_state *_state)
 {
     double v;
     double result;
@@ -25099,10 +25099,10 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double cmatrixtrrcond1(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     ae_bool isupper,
+                                     ae_bool isunit,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -25182,10 +25182,10 @@ NOTE:
     0.0 is returned in such cases.
 *************************************************************************/
 double cmatrixtrrcondinf(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_state *_state)
+                                       ae_int_t n,
+                                       ae_bool isupper,
+                                       ae_bool isunit,
+                                       ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -25262,13 +25262,13 @@ Internal subroutine for condition number estimation
      February 29, 1992
 *************************************************************************/
 static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_bool onenorm,
-     double anorm,
-     double* rc,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isunit,
+        ae_bool onenorm,
+        double anorm,
+        double* rc,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector ex;
@@ -25292,12 +25292,12 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
     ae_vector_init(&iwork, 0, DT_INT, _state, ae_true);
     ae_vector_init(&tmp, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * RC=0 if something happens
      */
     *rc = 0;
-    
+
     /*
      * init
      */
@@ -25311,7 +25311,7 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
     }
     ae_vector_set_length(&iwork, n+1, _state);
     ae_vector_set_length(&tmp, n, _state);
-    
+
     /*
      * prepare parameters for triangular solver
      */
@@ -25347,12 +25347,12 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
         s = 1;
     }
     s = 1/s;
-    
+
     /*
      * Scale according to S
      */
     anorm = anorm*s;
-    
+
     /*
      * Quick return if possible
      * We assume that ANORM<>0 after this block
@@ -25368,7 +25368,7 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Estimate the norm of inv(A).
      */
@@ -25381,7 +25381,7 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
         {
             break;
         }
-        
+
         /*
          * from 1-based array to 0-based
          */
@@ -25389,13 +25389,13 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
         {
             ex.ptr.p_double[i] = ex.ptr.p_double[i+1];
         }
-        
+
         /*
          * multiply by inv(A) or inv(A')
          */
         if( kase==kase1 )
         {
-            
+
             /*
              * multiply by inv(A)
              */
@@ -25407,7 +25407,7 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * multiply by inv(A')
              */
@@ -25417,7 +25417,7 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
                 return;
             }
         }
-        
+
         /*
          * from 0-based array to 1-based
          */
@@ -25426,7 +25426,7 @@ static void rcond_rmatrixrcondtrinternal(/* Real    */ ae_matrix* a,
             ex.ptr.p_double[i+1] = ex.ptr.p_double[i];
         }
     }
-    
+
     /*
      * Compute the estimate of the reciprocal condition number.
      */
@@ -25452,13 +25452,13 @@ Condition number estimation
      March 31, 1993
 *************************************************************************/
 static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_bool onenorm,
-     double anorm,
-     double* rc,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isunit,
+        ae_bool onenorm,
+        double anorm,
+        double* rc,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector ex;
@@ -25486,12 +25486,12 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
     ae_vector_init(&isave, 0, DT_INT, _state, ae_true);
     ae_vector_init(&rsave, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * RC=0 if something happens
      */
     *rc = 0;
-    
+
     /*
      * init
      */
@@ -25507,7 +25507,7 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
         return;
     }
     ae_vector_set_length(&cwork2, n+1, _state);
-    
+
     /*
      * prepare parameters for triangular solver
      */
@@ -25543,12 +25543,12 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
         s = 1;
     }
     s = 1/s;
-    
+
     /*
      * Scale according to S
      */
     anorm = anorm*s;
-    
+
     /*
      * Quick return if possible
      */
@@ -25557,7 +25557,7 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Estimate the norm of inv(A).
      */
@@ -25578,7 +25578,7 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
         {
             break;
         }
-        
+
         /*
          * From 1-based to 0-based
          */
@@ -25586,13 +25586,13 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
         {
             ex.ptr.p_complex[i] = ex.ptr.p_complex[i+1];
         }
-        
+
         /*
          * multiply by inv(A) or inv(A')
          */
         if( kase==kase1 )
         {
-            
+
             /*
              * multiply by inv(A)
              */
@@ -25604,7 +25604,7 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * multiply by inv(A')
              */
@@ -25614,7 +25614,7 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
                 return;
             }
         }
-        
+
         /*
          * from 0-based to 1-based
          */
@@ -25623,7 +25623,7 @@ static void rcond_cmatrixrcondtrinternal(/* Complex */ ae_matrix* a,
             ex.ptr.p_complex[i+1] = ex.ptr.p_complex[i];
         }
     }
-    
+
     /*
      * Compute the estimate of the reciprocal condition number.
      */
@@ -25649,12 +25649,12 @@ Internal subroutine for condition number estimation
      February 29, 1992
 *************************************************************************/
 static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isnormprovided,
-     double anorm,
-     double* rc,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isnormprovided,
+        double anorm,
+        double* rc,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -25678,12 +25678,12 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
 
     ae_assert(n>=1, "Assertion failed", _state);
     ae_vector_set_length(&tmp, n, _state);
-    
+
     /*
      * RC=0 if something happens
      */
     *rc = 0;
-    
+
     /*
      * prepare parameters for triangular solver
      */
@@ -25714,7 +25714,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
         sa = 1;
     }
     sa = 1/sa;
-    
+
     /*
      * Estimate the norm of A.
      */
@@ -25731,7 +25731,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
             }
             if( isupper )
             {
-                
+
                 /*
                  * Multiply by U
                  */
@@ -25741,7 +25741,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
                     ex.ptr.p_double[i] = v;
                 }
                 ae_v_muld(&ex.ptr.p_double[1], 1, ae_v_len(1,n), sa);
-                
+
                 /*
                  * Multiply by U'
                  */
@@ -25759,7 +25759,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
             }
             else
             {
-                
+
                 /*
                  * Multiply by L'
                  */
@@ -25774,7 +25774,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
                 }
                 ae_v_move(&ex.ptr.p_double[1], 1, &tmp.ptr.p_double[0], 1, ae_v_len(1,n));
                 ae_v_muld(&ex.ptr.p_double[1], 1, ae_v_len(1,n), sa);
-                
+
                 /*
                  * Multiply by L
                  */
@@ -25787,7 +25787,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
             }
         }
     }
-    
+
     /*
      * Quick return if possible
      */
@@ -25802,7 +25802,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Estimate the 1-norm of inv(A).
      */
@@ -25820,7 +25820,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
         }
         if( isupper )
         {
-            
+
             /*
              * Multiply by inv(U').
              */
@@ -25829,7 +25829,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * Multiply by inv(U).
              */
@@ -25841,7 +25841,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
         }
         else
         {
-            
+
             /*
              * Multiply by inv(L).
              */
@@ -25850,7 +25850,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * Multiply by inv(L').
              */
@@ -25865,7 +25865,7 @@ static void rcond_spdmatrixrcondcholeskyinternal(/* Real    */ ae_matrix* cha,
             ex.ptr.p_double[i+1] = ex.ptr.p_double[i];
         }
     }
-    
+
     /*
      * Compute the estimate of the reciprocal condition number.
      */
@@ -25891,12 +25891,12 @@ Internal subroutine for condition number estimation
      February 29, 1992
 *************************************************************************/
 static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isnormprovided,
-     double anorm,
-     double* rc,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isnormprovided,
+        double anorm,
+        double* rc,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector isave;
@@ -25922,12 +25922,12 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
 
     ae_assert(n>=1, "Assertion failed", _state);
     ae_vector_set_length(&tmp, n, _state);
-    
+
     /*
      * RC=0 if something happens
      */
     *rc = 0;
-    
+
     /*
      * prepare parameters for triangular solver
      */
@@ -25958,7 +25958,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
         sa = 1;
     }
     sa = 1/sa;
-    
+
     /*
      * Estimate the norm of A
      */
@@ -25975,7 +25975,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
             }
             if( isupper )
             {
-                
+
                 /*
                  * Multiply by U
                  */
@@ -25985,7 +25985,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
                     ex.ptr.p_complex[i] = v;
                 }
                 ae_v_cmuld(&ex.ptr.p_complex[1], 1, ae_v_len(1,n), sa);
-                
+
                 /*
                  * Multiply by U'
                  */
@@ -26003,7 +26003,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
             }
             else
             {
-                
+
                 /*
                  * Multiply by L'
                  */
@@ -26018,7 +26018,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
                 }
                 ae_v_cmove(&ex.ptr.p_complex[1], 1, &tmp.ptr.p_complex[0], 1, "N", ae_v_len(1,n));
                 ae_v_cmuld(&ex.ptr.p_complex[1], 1, ae_v_len(1,n), sa);
-                
+
                 /*
                  * Multiply by L
                  */
@@ -26031,7 +26031,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
             }
         }
     }
-    
+
     /*
      * Quick return if possible
      * After this block we assume that ANORM<>0
@@ -26047,7 +26047,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Estimate the norm of inv(A).
      */
@@ -26066,7 +26066,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
         }
         if( isupper )
         {
-            
+
             /*
              * Multiply by inv(U').
              */
@@ -26075,7 +26075,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * Multiply by inv(U).
              */
@@ -26087,7 +26087,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
         }
         else
         {
-            
+
             /*
              * Multiply by inv(L).
              */
@@ -26096,7 +26096,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * Multiply by inv(L').
              */
@@ -26111,7 +26111,7 @@ static void rcond_hpdmatrixrcondcholeskyinternal(/* Complex */ ae_matrix* cha,
             ex.ptr.p_complex[i+1] = ex.ptr.p_complex[i];
         }
     }
-    
+
     /*
      * Compute the estimate of the reciprocal condition number.
      */
@@ -26137,12 +26137,12 @@ Internal subroutine for condition number estimation
      February 29, 1992
 *************************************************************************/
 static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
-     ae_int_t n,
-     ae_bool onenorm,
-     ae_bool isanormprovided,
-     double anorm,
-     double* rc,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool onenorm,
+        ae_bool isanormprovided,
+        double anorm,
+        double* rc,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector ex;
@@ -26168,12 +26168,12 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
     ae_vector_init(&iwork, 0, DT_INT, _state, ae_true);
     ae_vector_init(&tmp, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * RC=0 if something happens
      */
     *rc = 0;
-    
+
     /*
      * init
      */
@@ -26189,7 +26189,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
     munit = ae_true;
     ae_vector_set_length(&iwork, n+1, _state);
     ae_vector_set_length(&tmp, n, _state);
-    
+
     /*
      * prepare parameters for triangular solver
      */
@@ -26213,7 +26213,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
     }
     su = 1/su;
     sl = 1/sl;
-    
+
     /*
      * Estimate the norm of A.
      */
@@ -26230,7 +26230,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
             }
             if( kase==kase1 )
             {
-                
+
                 /*
                  * Multiply by U
                  */
@@ -26239,7 +26239,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
                     v = ae_v_dotproduct(&lua->ptr.pp_double[i-1][i-1], 1, &ex.ptr.p_double[i], 1, ae_v_len(i-1,n-1));
                     ex.ptr.p_double[i] = v;
                 }
-                
+
                 /*
                  * Multiply by L
                  */
@@ -26258,7 +26258,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
             }
             else
             {
-                
+
                 /*
                  * Multiply by L'
                  */
@@ -26276,7 +26276,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
                     tmp.ptr.p_double[i] = tmp.ptr.p_double[i]+v;
                 }
                 ae_v_move(&ex.ptr.p_double[1], 1, &tmp.ptr.p_double[0], 1, ae_v_len(1,n));
-                
+
                 /*
                  * Multiply by U'
                  */
@@ -26293,12 +26293,12 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
             }
         }
     }
-    
+
     /*
      * Scale according to SU/SL
      */
     anorm = anorm*su*sl;
-    
+
     /*
      * Quick return if possible
      * We assume that ANORM<>0 after this block
@@ -26314,7 +26314,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Estimate the norm of inv(A).
      */
@@ -26327,7 +26327,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
         {
             break;
         }
-        
+
         /*
          * from 1-based array to 0-based
          */
@@ -26335,13 +26335,13 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
         {
             ex.ptr.p_double[i] = ex.ptr.p_double[i+1];
         }
-        
+
         /*
          * multiply by inv(A) or inv(A')
          */
         if( kase==kase1 )
         {
-            
+
             /*
              * Multiply by inv(L).
              */
@@ -26350,7 +26350,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * Multiply by inv(U).
              */
@@ -26362,7 +26362,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
         }
         else
         {
-            
+
             /*
              * Multiply by inv(U').
              */
@@ -26371,7 +26371,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * Multiply by inv(L').
              */
@@ -26381,7 +26381,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
                 return;
             }
         }
-        
+
         /*
          * from 0-based array to 1-based
          */
@@ -26390,7 +26390,7 @@ static void rcond_rmatrixrcondluinternal(/* Real    */ ae_matrix* lua,
             ex.ptr.p_double[i+1] = ex.ptr.p_double[i];
         }
     }
-    
+
     /*
      * Compute the estimate of the reciprocal condition number.
      */
@@ -26416,12 +26416,12 @@ Condition number estimation
      March 31, 1993
 *************************************************************************/
 static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
-     ae_int_t n,
-     ae_bool onenorm,
-     ae_bool isanormprovided,
-     double anorm,
-     double* rc,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool onenorm,
+        ae_bool isanormprovided,
+        double anorm,
+        double* rc,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector ex;
@@ -26462,7 +26462,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * prepare parameters for triangular solver
      */
@@ -26486,7 +26486,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
     }
     su = 1/su;
     sl = 1/sl;
-    
+
     /*
      * Estimate the norm of SU*SL*A.
      */
@@ -26509,7 +26509,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
             {
                 if( kase==kase1 )
                 {
-                    
+
                     /*
                      * Multiply by U
                      */
@@ -26518,7 +26518,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
                         v = ae_v_cdotproduct(&lua->ptr.pp_complex[i-1][i-1], 1, "N", &ex.ptr.p_complex[i], 1, "N", ae_v_len(i-1,n-1));
                         ex.ptr.p_complex[i] = v;
                     }
-                    
+
                     /*
                      * Multiply by L
                      */
@@ -26534,7 +26534,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
                 }
                 else
                 {
-                    
+
                     /*
                      * Multiply by L'
                      */
@@ -26551,7 +26551,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
                         }
                         cwork2.ptr.p_complex[i] = ae_c_add(cwork2.ptr.p_complex[i],v);
                     }
-                    
+
                     /*
                      * Multiply by U'
                      */
@@ -26569,12 +26569,12 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
         }
         while(kase!=0);
     }
-    
+
     /*
      * Scale according to SU/SL
      */
     anorm = anorm*su*sl;
-    
+
     /*
      * Quick return if possible
      */
@@ -26583,7 +26583,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Estimate the norm of inv(A).
      */
@@ -26604,7 +26604,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
         {
             break;
         }
-        
+
         /*
          * From 1-based to 0-based
          */
@@ -26612,13 +26612,13 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
         {
             ex.ptr.p_complex[i] = ex.ptr.p_complex[i+1];
         }
-        
+
         /*
          * multiply by inv(A) or inv(A')
          */
         if( kase==kase1 )
         {
-            
+
             /*
              * Multiply by inv(L).
              */
@@ -26628,7 +26628,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * Multiply by inv(U).
              */
@@ -26641,7 +26641,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
         }
         else
         {
-            
+
             /*
              * Multiply by inv(U').
              */
@@ -26651,7 +26651,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * Multiply by inv(L').
              */
@@ -26662,7 +26662,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
                 return;
             }
         }
-        
+
         /*
          * from 0-based to 1-based
          */
@@ -26671,7 +26671,7 @@ static void rcond_cmatrixrcondluinternal(/* Complex */ ae_matrix* lua,
             ex.ptr.p_complex[i+1] = ex.ptr.p_complex[i];
         }
     }
-    
+
     /*
      * Compute the estimate of the reciprocal condition number.
      */
@@ -26697,12 +26697,12 @@ Internal subroutine for matrix norm estimation
      February 29, 1992
 *************************************************************************/
 static void rcond_rmatrixestimatenorm(ae_int_t n,
-     /* Real    */ ae_vector* v,
-     /* Real    */ ae_vector* x,
-     /* Integer */ ae_vector* isgn,
-     double* est,
-     ae_int_t* kase,
-     ae_state *_state)
+                                      /* Real    */ ae_vector* v,
+                                      /* Real    */ ae_vector* x,
+                                      /* Integer */ ae_vector* isgn,
+                                      double* est,
+                                      ae_int_t* kase,
+                                      ae_state *_state)
 {
     ae_int_t itmax;
     ae_int_t i;
@@ -26739,7 +26739,7 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
         isgn->ptr.p_int[posjump] = 1;
         return;
     }
-    
+
     /*
      *     ................ ENTRY   (JUMP = 1)
      *     FIRST ITERATION.  X HAS BEEN OVERWRITTEN BY A*X.
@@ -26774,7 +26774,7 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
         isgn->ptr.p_int[posjump] = 2;
         return;
     }
-    
+
     /*
      *     ................ ENTRY   (JUMP = 2)
      *     FIRST ITERATION.  X HAS BEEN OVERWRITTEN BY TRANDPOSE(A)*X.
@@ -26790,7 +26790,7 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
             }
         }
         isgn->ptr.p_int[positer] = 2;
-        
+
         /*
          * MAIN LOOP - ITERATIONS 2,3,...,ITMAX.
          */
@@ -26803,7 +26803,7 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
         isgn->ptr.p_int[posjump] = 3;
         return;
     }
-    
+
     /*
      *     ................ ENTRY   (JUMP = 3)
      *     X HAS BEEN OVERWRITTEN BY A*X.
@@ -26825,7 +26825,7 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
                 flg = ae_true;
             }
         }
-        
+
         /*
          * REPEATED SIGN VECTOR DETECTED, HENCE ALGORITHM HAS CONVERGED.
          * OR MAY BE CYCLING.
@@ -26859,7 +26859,7 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
         isgn->ptr.p_int[posjump] = 4;
         return;
     }
-    
+
     /*
      *     ................ ENTRY   (JUMP = 4)
      *     X HAS BEEN OVERWRITTEN BY TRANDPOSE(A)*X.
@@ -26887,7 +26887,7 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
             isgn->ptr.p_int[posjump] = 3;
             return;
         }
-        
+
         /*
          * ITERATION COMPLETE.  FINAL STAGE.
          */
@@ -26901,7 +26901,7 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
         isgn->ptr.p_int[posjump] = 5;
         return;
     }
-    
+
     /*
      *     ................ ENTRY   (JUMP = 5)
      *     X HAS BEEN OVERWRITTEN BY A*X.
@@ -26926,13 +26926,13 @@ static void rcond_rmatrixestimatenorm(ae_int_t n,
 
 
 static void rcond_cmatrixestimatenorm(ae_int_t n,
-     /* Complex */ ae_vector* v,
-     /* Complex */ ae_vector* x,
-     double* est,
-     ae_int_t* kase,
-     /* Integer */ ae_vector* isave,
-     /* Real    */ ae_vector* rsave,
-     ae_state *_state)
+                                      /* Complex */ ae_vector* v,
+                                      /* Complex */ ae_vector* x,
+                                      double* est,
+                                      ae_int_t* kase,
+                                      /* Integer */ ae_vector* isave,
+                                      /* Real    */ ae_vector* rsave,
+                                      ae_state *_state)
 {
     ae_int_t itmax;
     ae_int_t i;
@@ -26947,7 +26947,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
     double temp;
 
 
-    
+
     /*
      *Executable Statements ..
      */
@@ -26969,7 +26969,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
         return;
     }
     rcond_internalcomplexrcondloadall(isave, rsave, &i, &iter, &j, &jlast, &jump, &absxi, &altsgn, &estold, &temp, _state);
-    
+
     /*
      * ENTRY   (JUMP = 1)
      * FIRST ITERATION.  X HAS BEEN OVERWRITTEN BY A*X.
@@ -27002,7 +27002,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
         rcond_internalcomplexrcondsaveall(isave, rsave, &i, &iter, &j, &jlast, &jump, &absxi, &altsgn, &estold, &temp, _state);
         return;
     }
-    
+
     /*
      * ENTRY   (JUMP = 2)
      * FIRST ITERATION.  X HAS BEEN OVERWRITTEN BY CTRANS(A)*X.
@@ -27011,7 +27011,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
     {
         j = rcond_internalcomplexrcondicmax1(x, n, _state);
         iter = 2;
-        
+
         /*
          * MAIN LOOP - ITERATIONS 2,3,...,ITMAX.
          */
@@ -27025,7 +27025,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
         rcond_internalcomplexrcondsaveall(isave, rsave, &i, &iter, &j, &jlast, &jump, &absxi, &altsgn, &estold, &temp, _state);
         return;
     }
-    
+
     /*
      * ENTRY   (JUMP = 3)
      * X HAS BEEN OVERWRITTEN BY A*X.
@@ -27035,13 +27035,13 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
         ae_v_cmove(&v->ptr.p_complex[1], 1, &x->ptr.p_complex[1], 1, "N", ae_v_len(1,n));
         estold = *est;
         *est = rcond_internalcomplexrcondscsum1(v, n, _state);
-        
+
         /*
          * TEST FOR CYCLING.
          */
         if( ae_fp_less_eq(*est,estold) )
         {
-            
+
             /*
              * ITERATION COMPLETE.  FINAL STAGE.
              */
@@ -27073,7 +27073,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
         rcond_internalcomplexrcondsaveall(isave, rsave, &i, &iter, &j, &jlast, &jump, &absxi, &altsgn, &estold, &temp, _state);
         return;
     }
-    
+
     /*
      * ENTRY   (JUMP = 4)
      * X HAS BEEN OVERWRITTEN BY CTRANS(A)*X.
@@ -27085,7 +27085,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
         if( ae_fp_neq(ae_c_abs(x->ptr.p_complex[jlast], _state),ae_c_abs(x->ptr.p_complex[j], _state))&&iter<itmax )
         {
             iter = iter+1;
-            
+
             /*
              * MAIN LOOP - ITERATIONS 2,3,...,ITMAX.
              */
@@ -27099,7 +27099,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
             rcond_internalcomplexrcondsaveall(isave, rsave, &i, &iter, &j, &jlast, &jump, &absxi, &altsgn, &estold, &temp, _state);
             return;
         }
-        
+
         /*
          * ITERATION COMPLETE.  FINAL STAGE.
          */
@@ -27114,7 +27114,7 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
         rcond_internalcomplexrcondsaveall(isave, rsave, &i, &iter, &j, &jlast, &jump, &absxi, &altsgn, &estold, &temp, _state);
         return;
     }
-    
+
     /*
      * ENTRY   (JUMP = 5)
      * X HAS BEEN OVERWRITTEN BY A*X.
@@ -27135,8 +27135,8 @@ static void rcond_cmatrixestimatenorm(ae_int_t n,
 
 
 static double rcond_internalcomplexrcondscsum1(/* Complex */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_int_t i;
     double result;
@@ -27152,8 +27152,8 @@ static double rcond_internalcomplexrcondscsum1(/* Complex */ ae_vector* x,
 
 
 static ae_int_t rcond_internalcomplexrcondicmax1(/* Complex */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_int_t i;
     double m;
@@ -27175,17 +27175,17 @@ static ae_int_t rcond_internalcomplexrcondicmax1(/* Complex */ ae_vector* x,
 
 
 static void rcond_internalcomplexrcondsaveall(/* Integer */ ae_vector* isave,
-     /* Real    */ ae_vector* rsave,
-     ae_int_t* i,
-     ae_int_t* iter,
-     ae_int_t* j,
-     ae_int_t* jlast,
-     ae_int_t* jump,
-     double* absxi,
-     double* altsgn,
-     double* estold,
-     double* temp,
-     ae_state *_state)
+        /* Real    */ ae_vector* rsave,
+        ae_int_t* i,
+        ae_int_t* iter,
+        ae_int_t* j,
+        ae_int_t* jlast,
+        ae_int_t* jump,
+        double* absxi,
+        double* altsgn,
+        double* estold,
+        double* temp,
+        ae_state *_state)
 {
 
 
@@ -27202,17 +27202,17 @@ static void rcond_internalcomplexrcondsaveall(/* Integer */ ae_vector* isave,
 
 
 static void rcond_internalcomplexrcondloadall(/* Integer */ ae_vector* isave,
-     /* Real    */ ae_vector* rsave,
-     ae_int_t* i,
-     ae_int_t* iter,
-     ae_int_t* j,
-     ae_int_t* jlast,
-     ae_int_t* jump,
-     double* absxi,
-     double* altsgn,
-     double* estold,
-     double* temp,
-     ae_state *_state)
+        /* Real    */ ae_vector* rsave,
+        ae_int_t* i,
+        ae_int_t* iter,
+        ae_int_t* j,
+        ae_int_t* jlast,
+        ae_int_t* jump,
+        double* absxi,
+        double* altsgn,
+        double* estold,
+        double* temp,
+        ae_state *_state)
 {
 
 
@@ -27265,11 +27265,11 @@ Subroutine sets following fields of the Rep structure:
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixluinverse(/* Real    */ ae_matrix* a,
-     /* Integer */ ae_vector* pivots,
-     ae_int_t n,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+                                    /* Integer */ ae_vector* pivots,
+                                    ae_int_t n,
+                                    ae_int_t* info,
+                                    matinvreport* rep,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -27297,7 +27297,7 @@ void rmatrixluinverse(/* Real    */ ae_matrix* a,
         }
     }
     ae_assert(*info>0, "RMatrixLUInverse: incorrect Pivots array!", _state);
-    
+
     /*
      * calculate condition numbers
      */
@@ -27318,13 +27318,13 @@ void rmatrixluinverse(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Call cache-oblivious code
      */
     ae_vector_set_length(&work, n, _state);
     matinv_rmatrixluinverserec(a, 0, n, &work, info, rep, _state);
-    
+
     /*
      * apply permutations
      */
@@ -27366,10 +27366,10 @@ Result:
      Copyright 2005-2010 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixinverse(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_int_t* info,
+                                  matinvreport* rep,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector pivots;
@@ -27413,11 +27413,11 @@ OUTPUT PARAMETERS:
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixluinverse(/* Complex */ ae_matrix* a,
-     /* Integer */ ae_vector* pivots,
-     ae_int_t n,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+                                    /* Integer */ ae_vector* pivots,
+                                    ae_int_t n,
+                                    ae_int_t* info,
+                                    matinvreport* rep,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -27445,7 +27445,7 @@ void cmatrixluinverse(/* Complex */ ae_matrix* a,
         }
     }
     ae_assert(*info>0, "CMatrixLUInverse: incorrect Pivots array!", _state);
-    
+
     /*
      * calculate condition numbers
      */
@@ -27466,13 +27466,13 @@ void cmatrixluinverse(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Call cache-oblivious code
      */
     ae_vector_set_length(&work, n, _state);
     matinv_cmatrixluinverserec(a, 0, n, &work, info, rep, _state);
-    
+
     /*
      * apply permutations
      */
@@ -27510,10 +27510,10 @@ Output parameters:
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 void cmatrixinverse(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_int_t* info,
+                                  matinvreport* rep,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector pivots;
@@ -27565,11 +27565,11 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void spdmatrixcholeskyinverse(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -27594,7 +27594,7 @@ void spdmatrixcholeskyinverse(/* Real    */ ae_matrix* a,
         f = f&&ae_isfinite(a->ptr.pp_double[i][i], _state);
     }
     ae_assert(f, "SPDMatrixCholeskyInverse: A contains infinite or NaN values!", _state);
-    
+
     /*
      * calculate condition numbers
      */
@@ -27628,7 +27628,7 @@ void spdmatrixcholeskyinverse(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Inverse
      */
@@ -27673,11 +27673,11 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void spdmatrixinverse(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_bool isupper,
+                                    ae_int_t* info,
+                                    matinvreport* rep,
+                                    ae_state *_state)
 {
 
     *info = 0;
@@ -27731,11 +27731,11 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void hpdmatrixcholeskyinverse(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -27760,7 +27760,7 @@ void hpdmatrixcholeskyinverse(/* Complex */ ae_matrix* a,
     }
     ae_assert(f, "HPDMatrixCholeskyInverse: A contains infinite or NaN values!", _state);
     *info = 1;
-    
+
     /*
      * calculate condition numbers
      */
@@ -27794,7 +27794,7 @@ void hpdmatrixcholeskyinverse(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Inverse
      */
@@ -27839,11 +27839,11 @@ Output parameters:
      Bochkanov Sergey
 *************************************************************************/
 void hpdmatrixinverse(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_bool isupper,
+                                    ae_int_t* info,
+                                    matinvreport* rep,
+                                    ae_state *_state)
 {
 
     *info = 0;
@@ -27904,12 +27904,12 @@ Output parameters:
      Copyright 05.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixtrinverse(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_bool isupper,
+                                    ae_bool isunit,
+                                    ae_int_t* info,
+                                    matinvreport* rep,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -27926,7 +27926,7 @@ void rmatrixtrinverse(/* Real    */ ae_matrix* a,
     ae_assert(a->rows>=n, "RMatrixTRInverse: rows(A)<N!", _state);
     ae_assert(isfinitertrmatrix(a, n, isupper, _state), "RMatrixTRInverse: A contains infinite or NaN values!", _state);
     *info = 1;
-    
+
     /*
      * calculate condition numbers
      */
@@ -27947,7 +27947,7 @@ void rmatrixtrinverse(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Invert
      */
@@ -27996,12 +27996,12 @@ Output parameters:
      Copyright 05.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void cmatrixtrinverse(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_bool isupper,
+                                    ae_bool isunit,
+                                    ae_int_t* info,
+                                    matinvreport* rep,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -28018,7 +28018,7 @@ void cmatrixtrinverse(/* Complex */ ae_matrix* a,
     ae_assert(a->rows>=n, "CMatrixTRInverse: rows(A)<N!", _state);
     ae_assert(apservisfinitectrmatrix(a, n, isupper, _state), "CMatrixTRInverse: A contains infinite or NaN values!", _state);
     *info = 1;
-    
+
     /*
      * calculate condition numbers
      */
@@ -28039,7 +28039,7 @@ void cmatrixtrinverse(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Invert
      */
@@ -28059,14 +28059,14 @@ Triangular matrix inversion, recursive subroutine
      February 29, 1992.
 *************************************************************************/
 static void matinv_rmatrixtrinverserec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     /* Real    */ ae_vector* tmp,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isunit,
+        /* Real    */ ae_vector* tmp,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state)
 {
     ae_int_t n1;
     ae_int_t n2;
@@ -28081,7 +28081,7 @@ static void matinv_rmatrixtrinverserec(/* Real    */ ae_matrix* a,
         *info = -1;
         return;
     }
-    
+
     /*
      * Base case
      */
@@ -28089,7 +28089,7 @@ static void matinv_rmatrixtrinverserec(/* Real    */ ae_matrix* a,
     {
         if( isupper )
         {
-            
+
             /*
              * Compute inverse of upper triangular matrix.
              */
@@ -28109,7 +28109,7 @@ static void matinv_rmatrixtrinverserec(/* Real    */ ae_matrix* a,
                 {
                     ajj = -1;
                 }
-                
+
                 /*
                  * Compute elements 1:j-1 of j-th column.
                  */
@@ -28141,7 +28141,7 @@ static void matinv_rmatrixtrinverserec(/* Real    */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * Compute inverse of lower triangular matrix.
              */
@@ -28163,7 +28163,7 @@ static void matinv_rmatrixtrinverserec(/* Real    */ ae_matrix* a,
                 }
                 if( j<n-1 )
                 {
-                    
+
                     /*
                      * Compute elements j+1:n of j-th column.
                      */
@@ -28193,7 +28193,7 @@ static void matinv_rmatrixtrinverserec(/* Real    */ ae_matrix* a,
         }
         return;
     }
-    
+
     /*
      * Recursive case
      */
@@ -28234,14 +28234,14 @@ Triangular matrix inversion, recursive subroutine
      February 29, 1992.
 *************************************************************************/
 static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_bool isunit,
-     /* Complex */ ae_vector* tmp,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        ae_bool isunit,
+        /* Complex */ ae_vector* tmp,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state)
 {
     ae_int_t n1;
     ae_int_t n2;
@@ -28256,7 +28256,7 @@ static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
         *info = -1;
         return;
     }
-    
+
     /*
      * Base case
      */
@@ -28264,7 +28264,7 @@ static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
     {
         if( isupper )
         {
-            
+
             /*
              * Compute inverse of upper triangular matrix.
              */
@@ -28284,7 +28284,7 @@ static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
                 {
                     ajj = ae_complex_from_d(-1);
                 }
-                
+
                 /*
                  * Compute elements 1:j-1 of j-th column.
                  */
@@ -28316,7 +28316,7 @@ static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * Compute inverse of lower triangular matrix.
              */
@@ -28338,7 +28338,7 @@ static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
                 }
                 if( j<n-1 )
                 {
-                    
+
                     /*
                      * Compute elements j+1:n of j-th column.
                      */
@@ -28368,7 +28368,7 @@ static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
         }
         return;
     }
-    
+
     /*
      * Recursive case
      */
@@ -28400,12 +28400,12 @@ static void matinv_cmatrixtrinverserec(/* Complex */ ae_matrix* a,
 
 
 static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     /* Real    */ ae_vector* work,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        /* Real    */ ae_vector* work,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -28419,13 +28419,13 @@ static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
         *info = -1;
         return;
     }
-    
+
     /*
      * Base case
      */
     if( n<=ablasblocksize(a, _state) )
     {
-        
+
         /*
          * Form inv(U)
          */
@@ -28434,13 +28434,13 @@ static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
         {
             return;
         }
-        
+
         /*
          * Solve the equation inv(A)*L = inv(U) for inv(A).
          */
         for(j=n-1; j>=0; j--)
         {
-            
+
             /*
              * Copy current column of L to WORK and replace with zeros.
              */
@@ -28449,7 +28449,7 @@ static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
                 work->ptr.p_double[i] = a->ptr.pp_double[offs+i][offs+j];
                 a->ptr.pp_double[offs+i][offs+j] = 0;
             }
-            
+
             /*
              * Compute current column of inv(A).
              */
@@ -28464,7 +28464,7 @@ static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
         }
         return;
     }
-    
+
     /*
      * Recursive code:
      *
@@ -28478,19 +28478,19 @@ static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
      */
     ablassplitlength(a, n, &n1, &n2, _state);
     ae_assert(n2>0, "LUInverseRec: internal error!", _state);
-    
+
     /*
      * X := inv(U1)*U12*inv(U2)
      */
     rmatrixlefttrsm(n1, n2, a, offs, offs, ae_true, ae_false, 0, a, offs, offs+n1, _state);
     rmatrixrighttrsm(n1, n2, a, offs+n1, offs+n1, ae_true, ae_false, 0, a, offs, offs+n1, _state);
-    
+
     /*
      * Y := inv(L2)*L12*inv(L1)
      */
     rmatrixlefttrsm(n2, n1, a, offs+n1, offs+n1, ae_false, ae_true, 0, a, offs+n1, offs, _state);
     rmatrixrighttrsm(n2, n1, a, offs, offs, ae_false, ae_true, 0, a, offs+n1, offs, _state);
-    
+
     /*
      * W := inv(L1*U1)+X*Y
      */
@@ -28500,7 +28500,7 @@ static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
         return;
     }
     rmatrixgemm(n1, n1, n2, 1.0, a, offs, offs+n1, 0, a, offs+n1, offs, 0, 1.0, a, offs, offs, _state);
-    
+
     /*
      * X := -X*inv(L2)
      * Y := -inv(U2)*Y
@@ -28515,7 +28515,7 @@ static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
     {
         ae_v_muld(&a->ptr.pp_double[offs+n1+i][offs], 1, ae_v_len(offs,offs+n1-1), -1);
     }
-    
+
     /*
      * Z := inv(L2*U2)
      */
@@ -28524,12 +28524,12 @@ static void matinv_rmatrixluinverserec(/* Real    */ ae_matrix* a,
 
 
 static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     /* Complex */ ae_vector* work,
-     ae_int_t* info,
-     matinvreport* rep,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        /* Complex */ ae_vector* work,
+        ae_int_t* info,
+        matinvreport* rep,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -28543,13 +28543,13 @@ static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
         *info = -1;
         return;
     }
-    
+
     /*
      * Base case
      */
     if( n<=ablascomplexblocksize(a, _state) )
     {
-        
+
         /*
          * Form inv(U)
          */
@@ -28558,13 +28558,13 @@ static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
         {
             return;
         }
-        
+
         /*
          * Solve the equation inv(A)*L = inv(U) for inv(A).
          */
         for(j=n-1; j>=0; j--)
         {
-            
+
             /*
              * Copy current column of L to WORK and replace with zeros.
              */
@@ -28573,7 +28573,7 @@ static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
                 work->ptr.p_complex[i] = a->ptr.pp_complex[offs+i][offs+j];
                 a->ptr.pp_complex[offs+i][offs+j] = ae_complex_from_d(0);
             }
-            
+
             /*
              * Compute current column of inv(A).
              */
@@ -28588,7 +28588,7 @@ static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
         }
         return;
     }
-    
+
     /*
      * Recursive code:
      *
@@ -28602,19 +28602,19 @@ static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
      */
     ablascomplexsplitlength(a, n, &n1, &n2, _state);
     ae_assert(n2>0, "LUInverseRec: internal error!", _state);
-    
+
     /*
      * X := inv(U1)*U12*inv(U2)
      */
     cmatrixlefttrsm(n1, n2, a, offs, offs, ae_true, ae_false, 0, a, offs, offs+n1, _state);
     cmatrixrighttrsm(n1, n2, a, offs+n1, offs+n1, ae_true, ae_false, 0, a, offs, offs+n1, _state);
-    
+
     /*
      * Y := inv(L2)*L12*inv(L1)
      */
     cmatrixlefttrsm(n2, n1, a, offs+n1, offs+n1, ae_false, ae_true, 0, a, offs+n1, offs, _state);
     cmatrixrighttrsm(n2, n1, a, offs, offs, ae_false, ae_true, 0, a, offs+n1, offs, _state);
-    
+
     /*
      * W := inv(L1*U1)+X*Y
      */
@@ -28624,7 +28624,7 @@ static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
         return;
     }
     cmatrixgemm(n1, n1, n2, ae_complex_from_d(1.0), a, offs, offs+n1, 0, a, offs+n1, offs, 0, ae_complex_from_d(1.0), a, offs, offs, _state);
-    
+
     /*
      * X := -X*inv(L2)
      * Y := -inv(U2)*Y
@@ -28639,7 +28639,7 @@ static void matinv_cmatrixluinverserec(/* Complex */ ae_matrix* a,
     {
         ae_v_cmuld(&a->ptr.pp_complex[offs+n1+i][offs], 1, ae_v_len(offs,offs+n1-1), -1);
     }
-    
+
     /*
      * Z := inv(L2*U2)
      */
@@ -28655,11 +28655,11 @@ Recursive subroutine for SPD inversion.
      Bochkanov Sergey
 *************************************************************************/
 static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -28678,7 +28678,7 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Base case
      */
@@ -28687,7 +28687,7 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
         matinv_rmatrixtrinverserec(a, offs, n, isupper, ae_false, tmp, &info2, &rep2, _state);
         if( isupper )
         {
-            
+
             /*
              * Compute the product U * U'.
              * NOTE: we never assume that diagonal of U is real
@@ -28696,7 +28696,7 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
             {
                 if( i==0 )
                 {
-                    
+
                     /*
                      * 1x1 matrix
                      */
@@ -28704,7 +28704,7 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
                 }
                 else
                 {
-                    
+
                     /*
                      * (I+1)x(I+1) matrix,
                      *
@@ -28728,7 +28728,7 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * Compute the product L' * L
              * NOTE: we never assume that diagonal of L is real
@@ -28737,7 +28737,7 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
             {
                 if( i==0 )
                 {
-                    
+
                     /*
                      * 1x1 matrix
                      */
@@ -28745,7 +28745,7 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
                 }
                 else
                 {
-                    
+
                     /*
                      * (I+1)x(I+1) matrix,
                      *
@@ -28770,13 +28770,13 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Recursive code: triangular factor inversion merged with
      * UU' or L'L multiplication
      */
     ablassplitlength(a, n, &n1, &n2, _state);
-    
+
     /*
      * form off-diagonal block of trangular inverse
      */
@@ -28798,12 +28798,12 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
         rmatrixrighttrsm(n2, n1, a, offs, offs, isupper, ae_false, 0, a, offs+n1, offs, _state);
         rmatrixlefttrsm(n2, n1, a, offs+n1, offs+n1, isupper, ae_false, 0, a, offs+n1, offs, _state);
     }
-    
+
     /*
      * invert first diagonal block
      */
     matinv_spdmatrixcholeskyinverserec(a, offs, n1, isupper, tmp, _state);
-    
+
     /*
      * update first diagonal block with off-diagonal block,
      * update off-diagonal block
@@ -28818,7 +28818,7 @@ static void matinv_spdmatrixcholeskyinverserec(/* Real    */ ae_matrix* a,
         rmatrixsyrk(n1, n2, 1.0, a, offs+n1, offs, 1, 1.0, a, offs, offs, isupper, _state);
         rmatrixlefttrsm(n2, n1, a, offs+n1, offs+n1, isupper, ae_false, 1, a, offs+n1, offs, _state);
     }
-    
+
     /*
      * invert second diagonal block
      */
@@ -28835,11 +28835,11 @@ Recursive subroutine for HPD inversion.
      Bochkanov Sergey
 *************************************************************************/
 static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
-     ae_int_t offs,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -28858,7 +28858,7 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Base case
      */
@@ -28867,7 +28867,7 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
         matinv_cmatrixtrinverserec(a, offs, n, isupper, ae_false, tmp, &info2, &rep2, _state);
         if( isupper )
         {
-            
+
             /*
              * Compute the product U * U'.
              * NOTE: we never assume that diagonal of U is real
@@ -28876,7 +28876,7 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
             {
                 if( i==0 )
                 {
-                    
+
                     /*
                      * 1x1 matrix
                      */
@@ -28884,7 +28884,7 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
                 }
                 else
                 {
-                    
+
                     /*
                      * (I+1)x(I+1) matrix,
                      *
@@ -28908,7 +28908,7 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * Compute the product L' * L
              * NOTE: we never assume that diagonal of L is real
@@ -28917,7 +28917,7 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
             {
                 if( i==0 )
                 {
-                    
+
                     /*
                      * 1x1 matrix
                      */
@@ -28925,7 +28925,7 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
                 }
                 else
                 {
-                    
+
                     /*
                      * (I+1)x(I+1) matrix,
                      *
@@ -28950,13 +28950,13 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Recursive code: triangular factor inversion merged with
      * UU' or L'L multiplication
      */
     ablascomplexsplitlength(a, n, &n1, &n2, _state);
-    
+
     /*
      * form off-diagonal block of trangular inverse
      */
@@ -28978,12 +28978,12 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
         cmatrixrighttrsm(n2, n1, a, offs, offs, isupper, ae_false, 0, a, offs+n1, offs, _state);
         cmatrixlefttrsm(n2, n1, a, offs+n1, offs+n1, isupper, ae_false, 0, a, offs+n1, offs, _state);
     }
-    
+
     /*
      * invert first diagonal block
      */
     matinv_hpdmatrixcholeskyinverserec(a, offs, n1, isupper, tmp, _state);
-    
+
     /*
      * update first diagonal block with off-diagonal block,
      * update off-diagonal block
@@ -28998,7 +28998,7 @@ static void matinv_hpdmatrixcholeskyinverserec(/* Complex */ ae_matrix* a,
         cmatrixsyrk(n1, n2, 1.0, a, offs+n1, offs, 2, 1.0, a, offs, offs, isupper, _state);
         cmatrixlefttrsm(n2, n1, a, offs+n1, offs+n1, isupper, ae_false, 2, a, offs+n1, offs, _state);
     }
-    
+
     /*
      * invert second diagonal block
      */
@@ -29060,7 +29060,7 @@ INPUT PARAMETERS
     N           -   number of columns in a matrix, N>=1
     K           -   K>=0, expected number of non-zero elements in a matrix.
                     K can be inexact approximation, can be less than actual
-                    number  of  elements  (table will grow when needed) or 
+                    number  of  elements  (table will grow when needed) or
                     even zero).
                     It is important to understand that although hash-table
                     may grow automatically, it is better to  provide  good
@@ -29075,13 +29075,13 @@ NOTE 1.
 Sparse matrices can be stored using either Hash-Table  representation  or
 Compressed  Row  Storage  representation. Hast-table is better suited for
 querying   and   dynamic   operations   (thus,  it  is  used  for  matrix
-initialization), but it is inefficient when you want to make some  linear 
+initialization), but it is inefficient when you want to make some  linear
 algebra operations.
 
 From the other side, CRS is better suited for linear algebra  operations,
 but initialization is less convenient - you have to tell row sizes at the
-initialization,  and  you  can  fill matrix only row by row, from left to 
-right. CRS is also very inefficient when you want to find matrix  element 
+initialization,  and  you  can  fill matrix only row by row, from left to
+right. CRS is also very inefficient when you want to find matrix  element
 by its index.
 
 Thus,  Hash-Table  representation   does   not   support  linear  algebra
@@ -29091,7 +29091,7 @@ Tables below outline information about these two formats:
     OPERATIONS WITH MATRIX      HASH        CRS
     create                      +           +
     read element                +           +
-    modify element              +           
+    modify element              +
     add value to element        +
     A*x  (dense vector)                     +
     A'*x (dense vector)                     +
@@ -29116,10 +29116,10 @@ memory will be freed.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsecreate(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     sparsematrix* s,
-     ae_state *_state)
+                  ae_int_t n,
+                  ae_int_t k,
+                  sparsematrix* s,
+                  ae_state *_state)
 {
     ae_int_t i;
     ae_int_t sz;
@@ -29147,16 +29147,16 @@ void sparsecreate(ae_int_t m,
 This function creates sparse matrix in a CRS format (expert function for
 situations when you are running out of memory).
 
-This function creates CRS matrix. Typical usage scenario for a CRS matrix 
+This function creates CRS matrix. Typical usage scenario for a CRS matrix
 is:
-1. creation (you have to tell number of non-zero elements at each row  at 
+1. creation (you have to tell number of non-zero elements at each row  at
    this moment)
-2. insertion of the matrix elements (row by row, from left to right) 
+2. insertion of the matrix elements (row by row, from left to right)
 3. matrix is passed to some linear algebra algorithm
 
 This function is a memory-efficient alternative to SparseCreate(), but it
 is more complex because it requires you to know in advance how large your
-matrix is. Some  information about  different matrix formats can be found 
+matrix is. Some  information about  different matrix formats can be found
 below, in the "NOTES" section.
 
 INPUT PARAMETERS
@@ -29174,13 +29174,13 @@ NOTE 1.
 Sparse matrices can be stored using either Hash-Table  representation  or
 Compressed  Row  Storage  representation. Hast-table is better suited for
 querying   and   dynamic   operations   (thus,  it  is  used  for  matrix
-initialization), but it is inefficient when you want to make some  linear 
+initialization), but it is inefficient when you want to make some  linear
 algebra operations.
 
 From the other side, CRS is better suited for linear algebra  operations,
 but initialization is less convenient - you have to tell row sizes at the
-initialization,  and  you  can  fill matrix only row by row, from left to 
-right. CRS is also very inefficient when you want to find matrix  element 
+initialization,  and  you  can  fill matrix only row by row, from left to
+right. CRS is also very inefficient when you want to find matrix  element
 by its index.
 
 Thus,  Hash-Table  representation   does   not   support  linear  algebra
@@ -29190,7 +29190,7 @@ Tables below outline information about these two formats:
     OPERATIONS WITH MATRIX      HASH        CRS
     create                      +           +
     read element                +           +
-    modify element              +           
+    modify element              +
     add value to element        +
     A*x  (dense vector)                     +
     A'*x (dense vector)                     +
@@ -29215,10 +29215,10 @@ memory will be freed.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsecreatecrs(ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_vector* ner,
-     sparsematrix* s,
-     ae_state *_state)
+                     ae_int_t n,
+                     /* Integer */ ae_vector* ner,
+                     sparsematrix* s,
+                     ae_state *_state)
 {
     ae_int_t i;
     ae_int_t noe;
@@ -29271,7 +29271,7 @@ void sparsecopy(sparsematrix* s0, sparsematrix* s1, ae_state *_state)
     s1->n = s0->n;
     s1->nfree = s0->nfree;
     s1->ninitialized = s0->ninitialized;
-    
+
     /*
      * Initialization for arrays
      */
@@ -29293,7 +29293,7 @@ void sparsecopy(sparsematrix* s0, sparsematrix* s1, ae_state *_state)
     {
         s1->idx.ptr.p_int[i] = s0->idx.ptr.p_int[i];
     }
-    
+
     /*
      * Initalization for CRS-parameters
      */
@@ -29329,7 +29329,7 @@ INPUT PARAMETERS
 
 OUTPUT PARAMETERS
     S           -   modified matrix
-    
+
 NOTE 1:  when  S[i,j]  is exactly zero after modification, it is  deleted
 from the table.
 
@@ -29337,10 +29337,10 @@ from the table.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparseadd(sparsematrix* s,
-     ae_int_t i,
-     ae_int_t j,
-     double v,
-     ae_state *_state)
+               ae_int_t i,
+               ae_int_t j,
+               double v,
+               ae_state *_state)
 {
     ae_int_t hashcode;
     ae_int_t tcode;
@@ -29393,7 +29393,7 @@ void sparseadd(sparsematrix* s,
                 }
                 return;
             }
-            
+
             /*
              * Is it deleted element?
              */
@@ -29401,7 +29401,7 @@ void sparseadd(sparsematrix* s,
             {
                 tcode = hashcode;
             }
-            
+
             /*
              * Next step
              */
@@ -29438,10 +29438,10 @@ OUTPUT PARAMETERS
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparseset(sparsematrix* s,
-     ae_int_t i,
-     ae_int_t j,
-     double v,
-     ae_state *_state)
+               ae_int_t i,
+               ae_int_t j,
+               double v,
+               ae_state *_state)
 {
     ae_int_t hashcode;
     ae_int_t tcode;
@@ -29453,7 +29453,7 @@ void sparseset(sparsematrix* s,
     ae_assert(j>=0, "SparseSet: J<0", _state);
     ae_assert(j<s->n, "SparseSet: J>=N", _state);
     ae_assert(ae_isfinite(v, _state), "SparseSet: V is not finite number", _state);
-    
+
     /*
      * Hash-table matrix
      */
@@ -29505,7 +29505,7 @@ void sparseset(sparsematrix* s,
                 {
                     tcode = hashcode;
                 }
-                
+
                 /*
                  * Next step
                  */
@@ -29513,7 +29513,7 @@ void sparseset(sparsematrix* s,
             }
         }
     }
-    
+
     /*
      * CRS matrix
      */
@@ -29526,7 +29526,7 @@ void sparseset(sparsematrix* s,
         s->vals.ptr.p_double[s->ninitialized] = v;
         s->idx.ptr.p_int[s->ninitialized] = j;
         s->ninitialized = s->ninitialized+1;
-        
+
         /*
          * If matrix has been created then
          * initiale 'S.UIdx' and 'S.DIdx'
@@ -29542,7 +29542,7 @@ void sparseset(sparsematrix* s,
 /*************************************************************************
 This function returns S[i,j] - element of the sparse matrix.  Matrix  can
 be in any mode (Hash-Table or CRS), but this function is  less  efficient
-for CRS matrices.  Hash-Table  matrices can  find element  in O(1)  time, 
+for CRS matrices.  Hash-Table  matrices can  find element  in O(1)  time,
 while  CRS  matrices  need O(log(RS)) time, where RS is an number of non-
 zero elements in a row.
 
@@ -29559,9 +29559,9 @@ RESULT
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 double sparseget(sparsematrix* s,
-     ae_int_t i,
-     ae_int_t j,
-     ae_state *_state)
+                 ae_int_t i,
+                 ae_int_t j,
+                 ae_state *_state)
 {
     ae_int_t hashcode;
     ae_int_t k;
@@ -29677,8 +29677,8 @@ INPUT PARAMETERS
 
 OUTPUT PARAMETERS
     S           -   matrix in CRS format
-    
-NOTE:  this  function  has  no  effect  when  called with matrix which is 
+
+NOTE:  this  function  has  no  effect  when  called with matrix which is
 already in CRS mode.
 
   -- ALGLIB PROJECT --
@@ -29720,7 +29720,7 @@ void sparseconverttocrs(sparsematrix* s, ae_state *_state)
     {
         temp.ptr.p_int[i] = 0;
     }
-    
+
     /*
      * Number of elements per row
      */
@@ -29732,7 +29732,7 @@ void sparseconverttocrs(sparsematrix* s, ae_state *_state)
             nonne = nonne+1;
         }
     }
-    
+
     /*
      * Fill RIdx (offsets of rows)
      */
@@ -29740,7 +29740,7 @@ void sparseconverttocrs(sparsematrix* s, ae_state *_state)
     {
         s->ridx.ptr.p_int[i+1] = s->ridx.ptr.p_int[i+1]+s->ridx.ptr.p_int[i];
     }
-    
+
     /*
      * Allocate memory
      */
@@ -29755,12 +29755,12 @@ void sparseconverttocrs(sparsematrix* s, ae_state *_state)
             temp.ptr.p_int[tidx.ptr.p_int[2*i]] = temp.ptr.p_int[tidx.ptr.p_int[2*i]]+1;
         }
     }
-    
+
     /*
      * Set NInitialized
      */
     s->ninitialized = s->ridx.ptr.p_int[s->m];
-    
+
     /*
      * Sorting of elements
      */
@@ -29768,7 +29768,7 @@ void sparseconverttocrs(sparsematrix* s, ae_state *_state)
     {
         tagsortmiddleir(&s->idx, &s->vals, s->ridx.ptr.p_int[i], s->ridx.ptr.p_int[i+1]-s->ridx.ptr.p_int[i], _state);
     }
-    
+
     /*
      * Initialization 'S.UIdx' and 'S.DIdx'
      */
@@ -29784,16 +29784,16 @@ stored in CRS format (exception will be thrown otherwise).
 INPUT PARAMETERS
     S           -   sparse M*N matrix in CRS format (you MUST convert  it
                     to CRS before calling this function).
-    X           -   array[N], input vector. For  performance  reasons  we 
+    X           -   array[N], input vector. For  performance  reasons  we
                     make only quick checks - we check that array size  is
                     at least N, but we do not check for NAN's or INF's.
     Y           -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
-    
+
 OUTPUT PARAMETERS
     Y           -   array[M], S*x
-    
+
 NOTE: this function throws exception when called for non-CRS matrix.  You
 must convert your matrix  with  SparseConvertToCRS()  before  using  this
 function.
@@ -29802,9 +29802,9 @@ function.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsemv(sparsematrix* s,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+              /* Real    */ ae_vector* x,
+              /* Real    */ ae_vector* y,
+              ae_state *_state)
 {
     double tval;
     ae_int_t i;
@@ -29838,16 +29838,16 @@ stored in CRS format (exception will be thrown otherwise).
 INPUT PARAMETERS
     S           -   sparse M*N matrix in CRS format (you MUST convert  it
                     to CRS before calling this function).
-    X           -   array[M], input vector. For  performance  reasons  we 
+    X           -   array[M], input vector. For  performance  reasons  we
                     make only quick checks - we check that array size  is
                     at least M, but we do not check for NAN's or INF's.
     Y           -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
-    
+
 OUTPUT PARAMETERS
     Y           -   array[N], S^T*x
-    
+
 NOTE: this function throws exception when called for non-CRS matrix.  You
 must convert your matrix  with  SparseConvertToCRS()  before  using  this
 function.
@@ -29856,9 +29856,9 @@ function.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsemtv(sparsematrix* s,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+               /* Real    */ ae_vector* x,
+               /* Real    */ ae_vector* y,
+               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -29893,13 +29893,13 @@ void sparsemtv(sparsematrix* s,
 /*************************************************************************
 This function simultaneously calculates two matrix-vector products:
     S*x and S^T*x.
-S must be square (non-rectangular) matrix stored in CRS format (exception  
+S must be square (non-rectangular) matrix stored in CRS format (exception
 will be thrown otherwise).
 
 INPUT PARAMETERS
     S           -   sparse N*N matrix in CRS format (you MUST convert  it
                     to CRS before calling this function).
-    X           -   array[N], input vector. For  performance  reasons  we 
+    X           -   array[N], input vector. For  performance  reasons  we
                     make only quick checks - we check that array size  is
                     at least N, but we do not check for NAN's or INF's.
     Y0          -   output buffer, possibly preallocated. In case  buffer
@@ -29908,11 +29908,11 @@ INPUT PARAMETERS
     Y1          -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
-    
+
 OUTPUT PARAMETERS
     Y0          -   array[N], S*x
     Y1          -   array[N], S^T*x
-    
+
 NOTE: this function throws exception when called for non-CRS matrix.  You
 must convert your matrix  with  SparseConvertToCRS()  before  using  this
 function. It also throws exception when S is non-square.
@@ -29921,10 +29921,10 @@ function. It also throws exception when S is non-square.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsemv2(sparsematrix* s,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y0,
-     /* Real    */ ae_vector* y1,
-     ae_state *_state)
+               /* Real    */ ae_vector* x,
+               /* Real    */ ae_vector* y0,
+               /* Real    */ ae_vector* y1,
+               ae_state *_state)
 {
     ae_int_t l;
     double tval;
@@ -29980,16 +29980,16 @@ INPUT PARAMETERS
                       empty - these elements are not referenced at all).
                     * if lower triangle is given,  only   S[i,j] for j<=i
                       are used, and upper triangle is ignored.
-    X           -   array[N], input vector. For  performance  reasons  we 
+    X           -   array[N], input vector. For  performance  reasons  we
                     make only quick checks - we check that array size  is
                     at least N, but we do not check for NAN's or INF's.
     Y           -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
-    
+
 OUTPUT PARAMETERS
     Y           -   array[M], S*x
-    
+
 NOTE: this function throws exception when called for non-CRS matrix.  You
 must convert your matrix  with  SparseConvertToCRS()  before  using  this
 function.
@@ -29998,10 +29998,10 @@ function.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsesmv(sparsematrix* s,
-     ae_bool isupper,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+               ae_bool isupper,
+               /* Real    */ ae_vector* x,
+               /* Real    */ ae_vector* y,
+               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -30070,16 +30070,16 @@ INPUT PARAMETERS
     S           -   sparse M*N matrix in CRS format (you MUST convert  it
                     to CRS before calling this function).
     A           -   array[N][K], input dense matrix. For  performance reasons
-                    we make only quick checks - we check that array size  
+                    we make only quick checks - we check that array size
                     is at least N, but we do not check for NAN's or INF's.
     K           -   number of columns of matrix (A).
     B           -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
-    
+
 OUTPUT PARAMETERS
     B           -   array[M][K], S*A
-    
+
 NOTE: this function throws exception when called for non-CRS matrix.  You
 must convert your matrix  with  SparseConvertToCRS()  before  using  this
 function.
@@ -30088,10 +30088,10 @@ function.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsemm(sparsematrix* s,
-     /* Real    */ ae_matrix* a,
-     ae_int_t k,
-     /* Real    */ ae_matrix* b,
-     ae_state *_state)
+              /* Real    */ ae_matrix* a,
+              ae_int_t k,
+              /* Real    */ ae_matrix* b,
+              ae_state *_state)
 {
     double tval;
     double v;
@@ -30159,14 +30159,14 @@ INPUT PARAMETERS
     A           -   array[M][K], input dense matrix. For performance reasons
                     we make only quick checks - we check that array size  is
                     at least M, but we do not check for NAN's or INF's.
-    K           -   number of columns of matrix (A).                    
+    K           -   number of columns of matrix (A).
     B           -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
-    
+
 OUTPUT PARAMETERS
     B           -   array[N][K], S^T*A
-    
+
 NOTE: this function throws exception when called for non-CRS matrix.  You
 must convert your matrix  with  SparseConvertToCRS()  before  using  this
 function.
@@ -30175,10 +30175,10 @@ function.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsemtm(sparsematrix* s,
-     /* Real    */ ae_matrix* a,
-     ae_int_t k,
-     /* Real    */ ae_matrix* b,
-     ae_state *_state)
+               /* Real    */ ae_matrix* a,
+               ae_int_t k,
+               /* Real    */ ae_matrix* b,
+               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -30238,7 +30238,7 @@ void sparsemtm(sparsematrix* s,
 /*************************************************************************
 This function simultaneously calculates two matrix-matrix products:
     S*A and S^T*A.
-S must be square (non-rectangular) matrix stored in CRS format (exception  
+S must be square (non-rectangular) matrix stored in CRS format (exception
 will be thrown otherwise).
 
 INPUT PARAMETERS
@@ -30247,18 +30247,18 @@ INPUT PARAMETERS
     A           -   array[N][K], input dense matrix. For performance reasons
                     we make only quick checks - we check that array size  is
                     at least N, but we do not check for NAN's or INF's.
-    K           -   number of columns of matrix (A).                    
+    K           -   number of columns of matrix (A).
     B0          -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
     B1          -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
-    
+
 OUTPUT PARAMETERS
     B0          -   array[N][K], S*A
     B1          -   array[N][K], S^T*A
-    
+
 NOTE: this function throws exception when called for non-CRS matrix.  You
 must convert your matrix  with  SparseConvertToCRS()  before  using  this
 function. It also throws exception when S is non-square.
@@ -30267,11 +30267,11 @@ function. It also throws exception when S is non-square.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsemm2(sparsematrix* s,
-     /* Real    */ ae_matrix* a,
-     ae_int_t k,
-     /* Real    */ ae_matrix* b0,
-     /* Real    */ ae_matrix* b1,
-     ae_state *_state)
+               /* Real    */ ae_matrix* a,
+               ae_int_t k,
+               /* Real    */ ae_matrix* b0,
+               /* Real    */ ae_matrix* b1,
+               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -30359,14 +30359,14 @@ INPUT PARAMETERS
     A           -   array[N][K], input dense matrix. For performance reasons
                     we make only quick checks - we check that array size is
                     at least N, but we do not check for NAN's or INF's.
-    K           -   number of columns of matrix (A).  
+    K           -   number of columns of matrix (A).
     B           -   output buffer, possibly preallocated. In case  buffer
                     size is too small to store  result,  this  buffer  is
                     automatically resized.
-    
+
 OUTPUT PARAMETERS
     B           -   array[M][K], S*A
-    
+
 NOTE: this function throws exception when called for non-CRS matrix.  You
 must convert your matrix  with  SparseConvertToCRS()  before  using  this
 function.
@@ -30375,11 +30375,11 @@ function.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 void sparsesmm(sparsematrix* s,
-     ae_bool isupper,
-     /* Real    */ ae_matrix* a,
-     ae_int_t k,
-     /* Real    */ ae_matrix* b,
-     ae_state *_state)
+               ae_bool isupper,
+               /* Real    */ ae_matrix* a,
+               ae_int_t k,
+               /* Real    */ ae_matrix* b,
+               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -30509,13 +30509,13 @@ void sparseresizematrix(sparsematrix* s, ae_state *_state)
     ae_vector_init(&tidx, 0, DT_INT, _state, ae_true);
 
     ae_assert(s->matrixtype==0, "SparseResizeMatrix: incorrect matrix type", _state);
-    
+
     /*
      * Initialization for length and number of non-null elementd
      */
     k = s->vals.cnt;
     k1 = 0;
-    
+
     /*
      * Calculating number of non-null elements
      */
@@ -30526,7 +30526,7 @@ void sparseresizematrix(sparsematrix* s, ae_state *_state)
             k1 = k1+1;
         }
     }
-    
+
     /*
      * Initialization value for free space
      */
@@ -30568,7 +30568,7 @@ double sparsegetaveragelengthofchain(sparsematrix* s, ae_state *_state)
     double result;
 
 
-    
+
     /*
      * If matrix represent in CRS then return zero and exit
      */
@@ -30632,14 +30632,14 @@ INPUT PARAMETERS
     S           -   sparse M*N matrix in Hash-Table or CRS representation.
     T0          -   internal counter
     T1          -   internal counter
-    
+
 OUTPUT PARAMETERS
     T0          -   new value of the internal counter
     T1          -   new value of the internal counter
     I           -   row index of non-zero element, 0<=I<M.
     J           -   column index of non-zero element, 0<=J<N
     V           -   value of the T-th element
-    
+
 RESULT
     True in case of success (next non-zero element was retrieved)
     False in case all non-zero elements were enumerated
@@ -30648,12 +30648,12 @@ RESULT
      Copyright 14.03.2012 by Bochkanov Sergey
 *************************************************************************/
 ae_bool sparseenumerate(sparsematrix* s,
-     ae_int_t* t0,
-     ae_int_t* t1,
-     ae_int_t* i,
-     ae_int_t* j,
-     double* v,
-     ae_state *_state)
+                        ae_int_t* t0,
+                        ae_int_t* t1,
+                        ae_int_t* i,
+                        ae_int_t* j,
+                        double* v,
+                        ae_state *_state)
 {
     ae_int_t sz;
     ae_int_t i0;
@@ -30668,7 +30668,7 @@ ae_bool sparseenumerate(sparsematrix* s,
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Hash-table matrix
      */
@@ -30695,7 +30695,7 @@ ae_bool sparseenumerate(sparsematrix* s,
         result = ae_false;
         return result;
     }
-    
+
     /*
      * CRS matrix
      */
@@ -30741,15 +30741,15 @@ OUTPUT PARAMETERS
 RESULT
     True in case when element exists
     False in case when element doesn't exist or it is zero
-    
+
   -- ALGLIB PROJECT --
      Copyright 14.03.2012 by Bochkanov Sergey
 *************************************************************************/
 ae_bool sparserewriteexisting(sparsematrix* s,
-     ae_int_t i,
-     ae_int_t j,
-     double v,
-     ae_state *_state)
+                              ae_int_t i,
+                              ae_int_t j,
+                              double v,
+                              ae_state *_state)
 {
     ae_int_t hashcode;
     ae_int_t k;
@@ -30762,7 +30762,7 @@ ae_bool sparserewriteexisting(sparsematrix* s,
     ae_assert(0<=j&&j<s->n, "SparseRewriteExisting: invalid argument J(either J<0 or J>=S.N)", _state);
     ae_assert(ae_isfinite(v, _state), "SparseRewriteExisting: invalid argument V(either V is infinite or V is NaN)", _state);
     result = ae_false;
-    
+
     /*
      * Hash-table matrix
      */
@@ -30785,7 +30785,7 @@ ae_bool sparserewriteexisting(sparsematrix* s,
             hashcode = (hashcode+1)%k;
         }
     }
-    
+
     /*
      * CRS matrix
      */
@@ -30829,7 +30829,7 @@ INPUT PARAMETERS:
     IRow        -   output buffer, can be  preallocated.  In  case  buffer
                     size  is  too  small  to  store  I-th   row,   it   is
                     automatically reallocated.
- 
+
 OUTPUT PARAMETERS:
     IRow        -   array[M], I-th row.
 
@@ -30838,9 +30838,9 @@ OUTPUT PARAMETERS:
      Copyright 20.07.2012 by Bochkanov Sergey
 *************************************************************************/
 void sparsegetrow(sparsematrix* s,
-     ae_int_t i,
-     /* Real    */ ae_vector* irow,
-     ae_state *_state)
+                  ae_int_t i,
+                  /* Real    */ ae_vector* irow,
+                  ae_state *_state)
 {
     ae_int_t i0;
 
@@ -30869,9 +30869,9 @@ INPUT PARAMETERS
 OUTPUT PARAMETERS
     S           -   sparse matrix in Hash table format.
 
-NOTE:  this  function  has  no  effect  when  called with matrix which is 
+NOTE:  this  function  has  no  effect  when  called with matrix which is
 already in Hash table mode.
-    
+
   -- ALGLIB PROJECT --
      Copyright 20.07.2012 by Bochkanov Sergey
 *************************************************************************/
@@ -30903,13 +30903,13 @@ void sparseconverttohash(sparsematrix* s, ae_state *_state)
     ae_swap_vectors(&s->idx, &tidx);
     ae_swap_vectors(&s->ridx, &tridx);
     ae_swap_vectors(&s->vals, &tvals);
-    
+
     /*
      * Delete RIdx
      */
     ae_vector_set_length(&s->ridx, 0, _state);
     sparsecreate(tm, tn, tridx.ptr.p_int[tm], s, _state);
-    
+
     /*
      * Fill the matrix
      */
@@ -30940,8 +30940,8 @@ NOTE: if S0 is stored as Hash-table, it is just copied without conversion.
      Copyright 20.07.2012 by Bochkanov Sergey
 *************************************************************************/
 void sparsecopytohash(sparsematrix* s0,
-     sparsematrix* s1,
-     ae_state *_state)
+                      sparsematrix* s1,
+                      ae_state *_state)
 {
     double val;
     ae_int_t t0;
@@ -30978,7 +30978,7 @@ INPUT PARAMETERS
 
 OUTPUT PARAMETERS
     S1          -   sparse matrix in CRS format.
-    
+
 NOTE: if S0 is stored as CRS, it is just copied without conversion.
 
   -- ALGLIB PROJECT --
@@ -31003,7 +31003,7 @@ void sparsecopytocrs(sparsematrix* s0, sparsematrix* s1, ae_state *_state)
     }
     else
     {
-        
+
         /*
          * Done like ConvertToCRS function
          */
@@ -31023,7 +31023,7 @@ void sparsecopytocrs(sparsematrix* s0, sparsematrix* s1, ae_state *_state)
         {
             temp.ptr.p_int[i] = 0;
         }
-        
+
         /*
          * Number of elements per row
          */
@@ -31035,7 +31035,7 @@ void sparsecopytocrs(sparsematrix* s0, sparsematrix* s1, ae_state *_state)
                 nonne = nonne+1;
             }
         }
-        
+
         /*
          * Fill RIdx (offsets of rows)
          */
@@ -31043,7 +31043,7 @@ void sparsecopytocrs(sparsematrix* s0, sparsematrix* s1, ae_state *_state)
         {
             s1->ridx.ptr.p_int[i+1] = s1->ridx.ptr.p_int[i+1]+s1->ridx.ptr.p_int[i];
         }
-        
+
         /*
          * Allocate memory
          */
@@ -31058,12 +31058,12 @@ void sparsecopytocrs(sparsematrix* s0, sparsematrix* s1, ae_state *_state)
                 temp.ptr.p_int[s0->idx.ptr.p_int[2*i]] = temp.ptr.p_int[s0->idx.ptr.p_int[2*i]]+1;
             }
         }
-        
+
         /*
          * Set NInitialized
          */
         s1->ninitialized = s1->ridx.ptr.p_int[s1->m];
-        
+
         /*
          * Sorting of elements
          */
@@ -31071,7 +31071,7 @@ void sparsecopytocrs(sparsematrix* s0, sparsematrix* s1, ae_state *_state)
         {
             tagsortmiddleir(&s1->idx, &s1->vals, s1->ridx.ptr.p_int[i], s1->ridx.ptr.p_int[i+1]-s1->ridx.ptr.p_int[i], _state);
         }
-        
+
         /*
          * Initialization 'S.UIdx' and 'S.DIdx'
          */
@@ -31095,7 +31095,7 @@ RESULT:
 NOTE: future  versions  of  ALGLIB  may  include additional sparse storage
       formats.
 
-    
+
   -- ALGLIB PROJECT --
      Copyright 20.07.2012 by Bochkanov Sergey
 *************************************************************************/
@@ -31119,8 +31119,8 @@ INPUT PARAMETERS:
 
 RESULT:
     True if matrix type is Hash table
-    False if matrix type is not Hash table 
-    
+    False if matrix type is not Hash table
+
   -- ALGLIB PROJECT --
      Copyright 20.07.2012 by Bochkanov Sergey
 *************************************************************************/
@@ -31145,7 +31145,7 @@ INPUT PARAMETERS:
 RESULT:
     True if matrix type is CRS
     False if matrix type is not CRS
-    
+
   -- ALGLIB PROJECT --
      Copyright 20.07.2012 by Bochkanov Sergey
 *************************************************************************/
@@ -31166,7 +31166,7 @@ structure becomes unusable after this call.
 
 OUTPUT PARAMETERS
     S   -   sparse matrix to delete
-    
+
   -- ALGLIB PROJECT --
      Copyright 24.07.2012 by Bochkanov Sergey
 *************************************************************************/
@@ -31187,7 +31187,7 @@ void sparsefree(sparsematrix* s, ae_state *_state)
 The function returns number of rows of a sparse matrix.
 
 RESULT: number of rows of a sparse matrix.
-    
+
   -- ALGLIB PROJECT --
      Copyright 23.08.2012 by Bochkanov Sergey
 *************************************************************************/
@@ -31205,7 +31205,7 @@ ae_int_t sparsegetnrows(sparsematrix* s, ae_state *_state)
 The function returns number of columns of a sparse matrix.
 
 RESULT: number of columns of a sparse matrix.
-    
+
   -- ALGLIB PROJECT --
      Copyright 23.08.2012 by Bochkanov Sergey
 *************************************************************************/
@@ -31276,9 +31276,9 @@ This is hash function.
      Copyright 14.10.2011 by Bochkanov Sergey
 *************************************************************************/
 static ae_int_t sparse_hash(ae_int_t i,
-     ae_int_t j,
-     ae_int_t tabsize,
-     ae_state *_state)
+                            ae_int_t j,
+                            ae_int_t tabsize,
+                            ae_state *_state)
 {
     ae_frame _frame_block;
     hqrndstate r;
@@ -31377,7 +31377,7 @@ INPUT PARAMETERS:
     Tmp     -   buffer; function automatically allocates it, if it is  too
                 small.  It  can  be  reused  if function is called several
                 times.
-                
+
 OUTPUT PARAMETERS:
     XB      -   solution
 
@@ -31388,12 +31388,12 @@ NOTE 2: N=0 will force algorithm to silently return
      Copyright 13.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void fblscholeskysolve(/* Real    */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* xb,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+                                     double sqrtscalea,
+                                     ae_int_t n,
+                                     ae_bool isupper,
+                                     /* Real    */ ae_vector* xb,
+                                     /* Real    */ ae_vector* tmp,
+                                     ae_state *_state)
 {
     ae_int_t i;
     double v;
@@ -31407,13 +31407,13 @@ void fblscholeskysolve(/* Real    */ ae_matrix* cha,
     {
         ae_vector_set_length(tmp, n, _state);
     }
-    
+
     /*
      * A = L*L' or A=U'*U
      */
     if( isupper )
     {
-        
+
         /*
          * Solve U'*y=b first.
          */
@@ -31427,7 +31427,7 @@ void fblscholeskysolve(/* Real    */ ae_matrix* cha,
                 ae_v_subd(&xb->ptr.p_double[i+1], 1, &tmp->ptr.p_double[i+1], 1, ae_v_len(i+1,n-1), v);
             }
         }
-        
+
         /*
          * Solve U*x=y then.
          */
@@ -31444,7 +31444,7 @@ void fblscholeskysolve(/* Real    */ ae_matrix* cha,
     }
     else
     {
-        
+
         /*
          * Solve L*y=b first
          */
@@ -31458,7 +31458,7 @@ void fblscholeskysolve(/* Real    */ ae_matrix* cha,
             }
             xb->ptr.p_double[i] = xb->ptr.p_double[i]/(sqrtscalea*cha->ptr.pp_double[i][i]);
         }
-        
+
         /*
          * Solve L'*x=y then.
          */
@@ -31497,28 +31497,28 @@ INPUT PARAMETERS:
     Buf -   buffer; function automatically allocates it, if it is too
             small. It can be reused if function is called several times
             with same M and N.
-            
+
 OUTPUT PARAMETERS:
     X   -   improved solution
-    
+
 NOTES:
 *   solver checks quality of improved solution. If (because of problem
     condition number, numerical noise, etc.) new solution is WORSE than
     original approximation, then original approximation is returned.
 *   solver assumes that both A, B, Alpha are well scaled (i.e. they are
     less than sqrt(overflow) and greater than sqrt(underflow)).
-    
+
   -- ALGLIB --
      Copyright 20.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void fblssolvecgx(/* Real    */ ae_matrix* a,
-     ae_int_t m,
-     ae_int_t n,
-     double alpha,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* buf,
-     ae_state *_state)
+                                ae_int_t m,
+                                ae_int_t n,
+                                double alpha,
+                                /* Real    */ ae_vector* b,
+                                /* Real    */ ae_vector* x,
+                                /* Real    */ ae_vector* buf,
+                                ae_state *_state)
 {
     ae_int_t k;
     ae_int_t offsrk;
@@ -31541,7 +31541,7 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
     double v2;
 
 
-    
+
     /*
      * Test for special case: B=0
      */
@@ -31554,7 +31554,7 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
         }
         return;
     }
-    
+
     /*
      * Offsets inside Buf for:
      * * R[K], R[K+1]
@@ -31575,12 +31575,12 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
     {
         ae_vector_set_length(buf, bs, _state);
     }
-    
+
     /*
      * x(0) = x
      */
     ae_v_move(&buf->ptr.p_double[offsxk], 1, &x->ptr.p_double[0], 1, ae_v_len(offsxk,offsxk+n-1));
-    
+
     /*
      * r(0) = b-A*x(0)
      * RK2 = r(0)'*r(0)
@@ -31593,13 +31593,13 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
     rk2 = ae_v_dotproduct(&buf->ptr.p_double[offsrk], 1, &buf->ptr.p_double[offsrk], 1, ae_v_len(offsrk,offsrk+n-1));
     ae_v_move(&buf->ptr.p_double[offspk], 1, &buf->ptr.p_double[offsrk], 1, ae_v_len(offspk,offspk+n-1));
     e1 = ae_sqrt(rk2, _state);
-    
+
     /*
      * Cycle
      */
     for(k=0; k<=n-1; k++)
     {
-        
+
         /*
          * Calculate A*p(k) - store in Buf[OffsTmp2:OffsTmp2+N-1]
          * and p(k)'*A*p(k)  - store in PAP
@@ -31616,18 +31616,18 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
         {
             break;
         }
-        
+
         /*
          * S = (r(k)'*r(k))/(p(k)'*A*p(k))
          */
         s = rk2/pap;
-        
+
         /*
          * x(k+1) = x(k) + S*p(k)
          */
         ae_v_move(&buf->ptr.p_double[offsxk1], 1, &buf->ptr.p_double[offsxk], 1, ae_v_len(offsxk1,offsxk1+n-1));
         ae_v_addd(&buf->ptr.p_double[offsxk1], 1, &buf->ptr.p_double[offspk], 1, ae_v_len(offsxk1,offsxk1+n-1), s);
-        
+
         /*
          * r(k+1) = r(k) - S*A*p(k)
          * RK12 = r(k+1)'*r(k+1)
@@ -31639,7 +31639,7 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
         rk12 = ae_v_dotproduct(&buf->ptr.p_double[offsrk1], 1, &buf->ptr.p_double[offsrk1], 1, ae_v_len(offsrk1,offsrk1+n-1));
         if( ae_fp_less_eq(ae_sqrt(rk12, _state),100*ae_machineepsilon*ae_sqrt(rk2, _state)) )
         {
-            
+
             /*
              * X(k) = x(k+1) before exit -
              * - because we expect to find solution at x(k)
@@ -31647,7 +31647,7 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
             ae_v_move(&buf->ptr.p_double[offsxk], 1, &buf->ptr.p_double[offsxk1], 1, ae_v_len(offsxk,offsxk+n-1));
             break;
         }
-        
+
         /*
          * BetaK = RK12/RK2
          * p(k+1) = r(k+1)+betak*p(k)
@@ -31655,7 +31655,7 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
         betak = rk12/rk2;
         ae_v_move(&buf->ptr.p_double[offspk1], 1, &buf->ptr.p_double[offsrk1], 1, ae_v_len(offspk1,offspk1+n-1));
         ae_v_addd(&buf->ptr.p_double[offspk1], 1, &buf->ptr.p_double[offspk], 1, ae_v_len(offspk1,offspk1+n-1), betak);
-        
+
         /*
          * r(k) := r(k+1)
          * x(k) := x(k+1)
@@ -31666,7 +31666,7 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
         ae_v_move(&buf->ptr.p_double[offspk], 1, &buf->ptr.p_double[offspk1], 1, ae_v_len(offspk,offspk+n-1));
         rk2 = rk12;
     }
-    
+
     /*
      * Calculate E2
      */
@@ -31677,7 +31677,7 @@ void fblssolvecgx(/* Real    */ ae_matrix* a,
     ae_v_sub(&buf->ptr.p_double[offsrk], 1, &buf->ptr.p_double[offstmp2], 1, ae_v_len(offsrk,offsrk+n-1));
     v1 = ae_v_dotproduct(&buf->ptr.p_double[offsrk], 1, &buf->ptr.p_double[offsrk], 1, ae_v_len(offsrk,offsrk+n-1));
     e2 = ae_sqrt(v1, _state);
-    
+
     /*
      * Output result (if it was improved)
      */
@@ -31712,10 +31712,10 @@ NOTE: no error checking is done; caller must check all parameters, prevent
      Copyright 22.10.2009 by Bochkanov Sergey
 *************************************************************************/
 void fblscgcreate(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* b,
-     ae_int_t n,
-     fblslincgstate* state,
-     ae_state *_state)
+                                /* Real    */ ae_vector* b,
+                                ae_int_t n,
+                                fblslincgstate* state,
+                                ae_state *_state)
 {
 
 
@@ -31791,7 +31791,7 @@ ae_bool fblscgiteration(fblslincgstate* state, ae_state *_state)
     ae_bool result;
 
 
-    
+
     /*
      * Reverse communication preparations
      * I know it looks ugly, but it works the same way
@@ -31838,16 +31838,16 @@ ae_bool fblscgiteration(fblslincgstate* state, ae_state *_state)
     {
         goto lbl_2;
     }
-    
+
     /*
      * Routine body
      */
-    
+
     /*
      * prepare locals
      */
     n = state->n;
-    
+
     /*
      * Test for special case: B=0
      */
@@ -31861,7 +31861,7 @@ ae_bool fblscgiteration(fblslincgstate* state, ae_state *_state)
         result = ae_false;
         return result;
     }
-    
+
     /*
      * r(0) = b-A*x(0)
      * RK2 = r(0)'*r(0)
@@ -31875,7 +31875,7 @@ lbl_0:
     rk2 = ae_v_dotproduct(&state->rk.ptr.p_double[0], 1, &state->rk.ptr.p_double[0], 1, ae_v_len(0,n-1));
     ae_v_move(&state->pk.ptr.p_double[0], 1, &state->rk.ptr.p_double[0], 1, ae_v_len(0,n-1));
     state->e1 = ae_sqrt(rk2, _state);
-    
+
     /*
      * Cycle
      */
@@ -31885,7 +31885,7 @@ lbl_3:
     {
         goto lbl_5;
     }
-    
+
     /*
      * Calculate A*p(k) - store in State.Tmp2
      * and p(k)'*A*p(k)  - store in PAP
@@ -31906,18 +31906,18 @@ lbl_1:
     {
         goto lbl_5;
     }
-    
+
     /*
      * S = (r(k)'*r(k))/(p(k)'*A*p(k))
      */
     s = rk2/pap;
-    
+
     /*
      * x(k+1) = x(k) + S*p(k)
      */
     ae_v_move(&state->xk1.ptr.p_double[0], 1, &state->xk.ptr.p_double[0], 1, ae_v_len(0,n-1));
     ae_v_addd(&state->xk1.ptr.p_double[0], 1, &state->pk.ptr.p_double[0], 1, ae_v_len(0,n-1), s);
-    
+
     /*
      * r(k+1) = r(k) - S*A*p(k)
      * RK12 = r(k+1)'*r(k+1)
@@ -31929,7 +31929,7 @@ lbl_1:
     rk12 = ae_v_dotproduct(&state->rk1.ptr.p_double[0], 1, &state->rk1.ptr.p_double[0], 1, ae_v_len(0,n-1));
     if( ae_fp_less_eq(ae_sqrt(rk12, _state),100*ae_machineepsilon*state->e1) )
     {
-        
+
         /*
          * X(k) = x(k+1) before exit -
          * - because we expect to find solution at x(k)
@@ -31937,7 +31937,7 @@ lbl_1:
         ae_v_move(&state->xk.ptr.p_double[0], 1, &state->xk1.ptr.p_double[0], 1, ae_v_len(0,n-1));
         goto lbl_5;
     }
-    
+
     /*
      * BetaK = RK12/RK2
      * p(k+1) = r(k+1)+betak*p(k)
@@ -31948,7 +31948,7 @@ lbl_1:
     betak = rk12/rk2;
     ae_v_move(&state->pk1.ptr.p_double[0], 1, &state->rk1.ptr.p_double[0], 1, ae_v_len(0,n-1));
     ae_v_addd(&state->pk1.ptr.p_double[0], 1, &state->pk.ptr.p_double[0], 1, ae_v_len(0,n-1), betak);
-    
+
     /*
      * r(k) := r(k+1)
      * x(k) := x(k+1)
@@ -31961,7 +31961,7 @@ lbl_1:
     k = k+1;
     goto lbl_3;
 lbl_5:
-    
+
     /*
      * Calculate E2
      */
@@ -31975,7 +31975,7 @@ lbl_2:
     state->e2 = ae_sqrt(v1, _state);
     result = ae_false;
     return result;
-    
+
     /*
      * Saving state
      */
@@ -32011,9 +32011,9 @@ INPUT PARAMETERS:
     N       -   number of variables, N<=M
     Tmp0, Tmp1, Tmp2-
                 buffers; function automatically allocates them, if they are
-                too  small. They can  be  reused  if  function  is   called 
+                too  small. They can  be  reused  if  function  is   called
                 several times.
-                
+
 OUTPUT PARAMETERS:
     B       -   solution (first N components, next M-N are zero)
 
@@ -32021,13 +32021,13 @@ OUTPUT PARAMETERS:
      Copyright 20.01.2012 by Bochkanov Sergey
 *************************************************************************/
 void fblssolvels(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_vector* b,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_vector* tmp0,
-     /* Real    */ ae_vector* tmp1,
-     /* Real    */ ae_vector* tmp2,
-     ae_state *_state)
+                               /* Real    */ ae_vector* b,
+                               ae_int_t m,
+                               ae_int_t n,
+                               /* Real    */ ae_vector* tmp0,
+                               /* Real    */ ae_vector* tmp1,
+                               /* Real    */ ae_vector* tmp2,
+                               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -32039,19 +32039,19 @@ void fblssolvels(/* Real    */ ae_matrix* a,
     ae_assert(a->rows>=m, "FBLSSolveLS: Rows(A)<M", _state);
     ae_assert(a->cols>=n, "FBLSSolveLS: Cols(A)<N", _state);
     ae_assert(b->cnt>=m, "FBLSSolveLS: Length(B)<M", _state);
-    
+
     /*
      * Allocate temporaries
      */
     rvectorsetlengthatleast(tmp0, ae_maxint(m, n, _state)+1, _state);
     rvectorsetlengthatleast(tmp1, ae_maxint(m, n, _state)+1, _state);
     rvectorsetlengthatleast(tmp2, ae_minint(m, n, _state), _state);
-    
+
     /*
      * Call basecase QR
      */
     rmatrixqrbasecase(a, m, n, tmp0, tmp1, tmp2, _state);
-    
+
     /*
      * Multiply B by Q'
      */
@@ -32067,7 +32067,7 @@ void fblssolvels(/* Real    */ ae_matrix* a,
         v = v*tmp2->ptr.p_double[k];
         ae_v_subd(&b->ptr.p_double[k], 1, &tmp0->ptr.p_double[k], 1, ae_v_len(k,m-1), v);
     }
-    
+
     /*
      * Solve triangular system
      */
@@ -32193,7 +32193,7 @@ USAGE:
 1. User initializes algorithm state with NormEstimatorCreate() call
 2. User calls NormEstimatorEstimateSparse() (or NormEstimatorIteration())
 3. User calls NormEstimatorResults() to get solution.
-   
+
 INPUT PARAMETERS:
     M       -   number of rows in the matrix being estimated, M>0
     N       -   number of columns in the matrix being estimated, N>0
@@ -32205,7 +32205,7 @@ INPUT PARAMETERS:
 OUTPUT PARAMETERS:
     State   -   structure which stores algorithm state
 
-    
+
 NOTE: this algorithm is effectively deterministic, i.e. it always  returns
 same result when repeatedly called for the same matrix. In fact, algorithm
 uses randomized starting vectors, but internal  random  numbers  generator
@@ -32218,11 +32218,11 @@ Algorithm can be made non-deterministic with NormEstimatorSetSeed(0) call.
      Copyright 06.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void normestimatorcreate(ae_int_t m,
-     ae_int_t n,
-     ae_int_t nstart,
-     ae_int_t nits,
-     normestimatorstate* state,
-     ae_state *_state)
+                         ae_int_t n,
+                         ae_int_t nstart,
+                         ae_int_t nits,
+                         normestimatorstate* state,
+                         ae_state *_state)
 {
 
     _normestimatorstate_clear(state);
@@ -32256,7 +32256,7 @@ deterministic processing, i.e. subsequent calls must return equal results,
 in other cases we need non-deterministic algorithm which returns different
 results for the same matrix on every pass.
 
-Setting zero seed will lead to non-deterministic algorithm, while non-zero 
+Setting zero seed will lead to non-deterministic algorithm, while non-zero
 value will make our algorithm deterministic.
 
 INPUT PARAMETERS:
@@ -32268,8 +32268,8 @@ INPUT PARAMETERS:
      Copyright 06.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void normestimatorsetseed(normestimatorstate* state,
-     ae_int_t seedval,
-     ae_state *_state)
+                          ae_int_t seedval,
+                          ae_state *_state)
 {
 
 
@@ -32284,7 +32284,7 @@ void normestimatorsetseed(normestimatorstate* state,
      Copyright 06.12.2011 by Bochkanov Sergey
 *************************************************************************/
 ae_bool normestimatoriteration(normestimatorstate* state,
-     ae_state *_state)
+                               ae_state *_state)
 {
     ae_int_t n;
     ae_int_t m;
@@ -32296,7 +32296,7 @@ ae_bool normestimatoriteration(normestimatorstate* state,
     ae_bool result;
 
 
-    
+
     /*
      * Reverse communication preparations
      * I know it looks ugly, but it works the same way
@@ -32343,7 +32343,7 @@ ae_bool normestimatoriteration(normestimatorstate* state,
     {
         goto lbl_3;
     }
-    
+
     /*
      * Routine body
      */
@@ -32441,7 +32441,7 @@ lbl_3:
 lbl_9:
     result = ae_false;
     return result;
-    
+
     /*
      * Saving state
      */
@@ -32467,15 +32467,15 @@ INPUT PARAMETERS:
     A           -   sparse M*N matrix, must be converted to CRS format
                     prior to calling this function.
 
-After this function  is  over  you can call NormEstimatorResults() to get 
+After this function  is  over  you can call NormEstimatorResults() to get
 estimate of the norm(A).
 
   -- ALGLIB --
      Copyright 06.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void normestimatorestimatesparse(normestimatorstate* state,
-     sparsematrix* a,
-     ae_state *_state)
+                                 sparsematrix* a,
+                                 ae_state *_state)
 {
 
 
@@ -32509,8 +32509,8 @@ OUTPUT PARAMETERS:
      Copyright 06.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void normestimatorresults(normestimatorstate* state,
-     double* nrm,
-     ae_state *_state)
+                          double* nrm,
+                          ae_state *_state)
 {
 
     *nrm = 0;
@@ -32653,9 +32653,9 @@ Result: matrix determinant.
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 double rmatrixludet(/* Real    */ ae_matrix* a,
-     /* Integer */ ae_vector* pivots,
-     ae_int_t n,
-     ae_state *_state)
+                                  /* Integer */ ae_vector* pivots,
+                                  ae_int_t n,
+                                  ae_state *_state)
 {
     ae_int_t i;
     ae_int_t s;
@@ -32699,8 +32699,8 @@ Result: determinant of matrix A.
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 double rmatrixdet(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+                                ae_int_t n,
+                                ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -32744,9 +32744,9 @@ Result: matrix determinant.
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 ae_complex cmatrixludet(/* Complex */ ae_matrix* a,
-     /* Integer */ ae_vector* pivots,
-     ae_int_t n,
-     ae_state *_state)
+                                      /* Integer */ ae_vector* pivots,
+                                      ae_int_t n,
+                                      ae_state *_state)
 {
     ae_int_t i;
     ae_int_t s;
@@ -32790,8 +32790,8 @@ Result: determinant of matrix A.
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 ae_complex cmatrixdet(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -32837,8 +32837,8 @@ Result:
      Copyright 2005-2008 by Bochkanov Sergey
 *************************************************************************/
 double spdmatrixcholeskydet(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_bool f;
@@ -32891,9 +32891,9 @@ Result:
      Copyright 2005-2008 by Bochkanov Sergey
 *************************************************************************/
 double spdmatrixdet(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_bool isupper,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -32969,15 +32969,15 @@ See also the GeneralizedSymmetricDefiniteEVDReduce subroutine.
      Copyright 1.28.2006 by Bochkanov Sergey
 *************************************************************************/
 ae_bool smatrixgevd(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isuppera,
-     /* Real    */ ae_matrix* b,
-     ae_bool isupperb,
-     ae_int_t zneeded,
-     ae_int_t problemtype,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_matrix* z,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_bool isuppera,
+                                  /* Real    */ ae_matrix* b,
+                                  ae_bool isupperb,
+                                  ae_int_t zneeded,
+                                  ae_int_t problemtype,
+                                  /* Real    */ ae_vector* d,
+                                  /* Real    */ ae_matrix* z,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _a;
@@ -33001,7 +33001,7 @@ ae_bool smatrixgevd(/* Real    */ ae_matrix* a,
     ae_matrix_init(&r, 0, 0, DT_REAL, _state, ae_true);
     ae_matrix_init(&t, 0, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Reduce and solve
      */
@@ -33017,13 +33017,13 @@ ae_bool smatrixgevd(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Transform eigenvectors if needed
      */
     if( zneeded!=0 )
     {
-        
+
         /*
          * fill Z with zeros
          */
@@ -33036,7 +33036,7 @@ ae_bool smatrixgevd(/* Real    */ ae_matrix* a,
         {
             ae_v_move(&z->ptr.pp_double[i][0], 1, &z->ptr.pp_double[0][0], 1, ae_v_len(0,n-1));
         }
-        
+
         /*
          * Setup R properties
          */
@@ -33054,7 +33054,7 @@ ae_bool smatrixgevd(/* Real    */ ae_matrix* a,
             j1inc = 0;
             j2inc = 1;
         }
-        
+
         /*
          * Calculate R*Z
          */
@@ -33127,14 +33127,14 @@ Result:
      Copyright 1.28.2006 by Bochkanov Sergey
 *************************************************************************/
 ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isuppera,
-     /* Real    */ ae_matrix* b,
-     ae_bool isupperb,
-     ae_int_t problemtype,
-     /* Real    */ ae_matrix* r,
-     ae_bool* isupperr,
-     ae_state *_state)
+                                        ae_int_t n,
+                                        ae_bool isuppera,
+                                        /* Real    */ ae_matrix* b,
+                                        ae_bool isupperb,
+                                        ae_int_t problemtype,
+                                        /* Real    */ ae_matrix* r,
+                                        ae_bool* isupperr,
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix t;
@@ -33160,7 +33160,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
     ae_assert(n>0, "SMatrixGEVDReduce: N<=0!", _state);
     ae_assert((problemtype==1||problemtype==2)||problemtype==3, "SMatrixGEVDReduce: incorrect ProblemType!", _state);
     result = ae_true;
-    
+
     /*
      * Problem 1:  A*x = lambda*B*x
      *
@@ -33171,7 +33171,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
      */
     if( problemtype==1 )
     {
-        
+
         /*
          * Factorize B in T: B = LL'
          */
@@ -33196,7 +33196,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
             ae_frame_leave(_state);
             return result;
         }
-        
+
         /*
          * Invert L in T
          */
@@ -33207,7 +33207,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
             ae_frame_leave(_state);
             return result;
         }
-        
+
         /*
          * Build L^(-1) * A * L^(-T) in R
          */
@@ -33216,7 +33216,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
         ae_matrix_set_length(r, n-1+1, n-1+1, _state);
         for(j=1; j<=n; j++)
         {
-            
+
             /*
              * Form w2 = A * l'(j) (here l'(j) is j-th column of L^(-T))
              */
@@ -33230,7 +33230,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
             {
                 matrixvectormultiply(a, j, n-1, 0, j-1, ae_false, &w1, 1, j, 1.0, &w2, j+1, n, 0.0, _state);
             }
-            
+
             /*
              * Form l(i)*w2 (here l(i) is i-th row of L^(-1))
              */
@@ -33240,7 +33240,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
                 r->ptr.pp_double[i-1][j-1] = v;
             }
         }
-        
+
         /*
          * Copy R to A
          */
@@ -33248,7 +33248,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
         {
             ae_v_move(&a->ptr.pp_double[i][0], 1, &r->ptr.pp_double[i][0], 1, ae_v_len(0,n-1));
         }
-        
+
         /*
          * Copy L^(-1) from T to R and transpose
          */
@@ -33267,7 +33267,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Problem 2:  A*B*x = lambda*x
      * or
@@ -33280,7 +33280,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
      */
     if( problemtype==2||problemtype==3 )
     {
-        
+
         /*
          * Factorize B in T: B = U'*U
          */
@@ -33305,7 +33305,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
             ae_frame_leave(_state);
             return result;
         }
-        
+
         /*
          * Build U * A * U' in R
          */
@@ -33315,7 +33315,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
         ae_matrix_set_length(r, n-1+1, n-1+1, _state);
         for(j=1; j<=n; j++)
         {
-            
+
             /*
              * Form w2 = A * u'(j) (here u'(j) is j-th column of U')
              */
@@ -33331,7 +33331,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
             {
                 matrixvectormultiply(a, j-1, n-1, 0, j-2, ae_true, &w1, j, n, 1.0, &w2, 1, j-1, 0.0, _state);
             }
-            
+
             /*
              * Form u(i)*w2 (here u(i) is i-th row of U)
              */
@@ -33341,7 +33341,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
                 r->ptr.pp_double[i-1][j-1] = v;
             }
         }
-        
+
         /*
          * Copy R to A
          */
@@ -33351,7 +33351,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
         }
         if( problemtype==2 )
         {
-            
+
             /*
              * Invert U in T
              */
@@ -33362,7 +33362,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
                 ae_frame_leave(_state);
                 return result;
             }
-            
+
             /*
              * Copy U^-1 from T to R
              */
@@ -33381,7 +33381,7 @@ ae_bool smatrixgevdreduce(/* Real    */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * Copy U from T to R and transpose
              */
@@ -33428,11 +33428,11 @@ Output parameters:
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixinvupdatesimple(/* Real    */ ae_matrix* inva,
-     ae_int_t n,
-     ae_int_t updrow,
-     ae_int_t updcolumn,
-     double updval,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t updrow,
+        ae_int_t updcolumn,
+        double updval,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector t1;
@@ -33449,22 +33449,22 @@ void rmatrixinvupdatesimple(/* Real    */ ae_matrix* inva,
     ae_assert(updcolumn>=0&&updcolumn<n, "RMatrixInvUpdateSimple: incorrect UpdColumn!", _state);
     ae_vector_set_length(&t1, n-1+1, _state);
     ae_vector_set_length(&t2, n-1+1, _state);
-    
+
     /*
      * T1 = InvA * U
      */
     ae_v_move(&t1.ptr.p_double[0], 1, &inva->ptr.pp_double[0][updrow], inva->stride, ae_v_len(0,n-1));
-    
+
     /*
      * T2 = v*InvA
      */
     ae_v_move(&t2.ptr.p_double[0], 1, &inva->ptr.pp_double[updcolumn][0], 1, ae_v_len(0,n-1));
-    
+
     /*
      * Lambda = v * InvA * U
      */
     lambdav = updval*inva->ptr.pp_double[updcolumn][updrow];
-    
+
     /*
      * InvA = InvA - correction
      */
@@ -33500,10 +33500,10 @@ Output parameters:
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixinvupdaterow(/* Real    */ ae_matrix* inva,
-     ae_int_t n,
-     ae_int_t updrow,
-     /* Real    */ ae_vector* v,
-     ae_state *_state)
+                                       ae_int_t n,
+                                       ae_int_t updrow,
+                                       /* Real    */ ae_vector* v,
+                                       ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector t1;
@@ -33519,12 +33519,12 @@ void rmatrixinvupdaterow(/* Real    */ ae_matrix* inva,
 
     ae_vector_set_length(&t1, n-1+1, _state);
     ae_vector_set_length(&t2, n-1+1, _state);
-    
+
     /*
      * T1 = InvA * U
      */
     ae_v_move(&t1.ptr.p_double[0], 1, &inva->ptr.pp_double[0][updrow], inva->stride, ae_v_len(0,n-1));
-    
+
     /*
      * T2 = v*InvA
      * Lambda = v * InvA * U
@@ -33535,7 +33535,7 @@ void rmatrixinvupdaterow(/* Real    */ ae_matrix* inva,
         t2.ptr.p_double[j] = vt;
     }
     lambdav = t2.ptr.p_double[updrow];
-    
+
     /*
      * InvA = InvA - correction
      */
@@ -33570,10 +33570,10 @@ Output parameters:
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixinvupdatecolumn(/* Real    */ ae_matrix* inva,
-     ae_int_t n,
-     ae_int_t updcolumn,
-     /* Real    */ ae_vector* u,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t updcolumn,
+        /* Real    */ ae_vector* u,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector t1;
@@ -33588,7 +33588,7 @@ void rmatrixinvupdatecolumn(/* Real    */ ae_matrix* inva,
 
     ae_vector_set_length(&t1, n-1+1, _state);
     ae_vector_set_length(&t2, n-1+1, _state);
-    
+
     /*
      * T1 = InvA * U
      * Lambda = v * InvA * U
@@ -33599,12 +33599,12 @@ void rmatrixinvupdatecolumn(/* Real    */ ae_matrix* inva,
         t1.ptr.p_double[i] = vt;
     }
     lambdav = t1.ptr.p_double[updcolumn];
-    
+
     /*
      * T2 = v*InvA
      */
     ae_v_move(&t2.ptr.p_double[0], 1, &inva->ptr.pp_double[updcolumn][0], 1, ae_v_len(0,n-1));
-    
+
     /*
      * InvA = InvA - correction
      */
@@ -33639,10 +33639,10 @@ Output parameters:
      Copyright 2005 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixinvupdateuv(/* Real    */ ae_matrix* inva,
-     ae_int_t n,
-     /* Real    */ ae_vector* u,
-     /* Real    */ ae_vector* v,
-     ae_state *_state)
+                                      ae_int_t n,
+                                      /* Real    */ ae_vector* u,
+                                      /* Real    */ ae_vector* v,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector t1;
@@ -33658,7 +33658,7 @@ void rmatrixinvupdateuv(/* Real    */ ae_matrix* inva,
 
     ae_vector_set_length(&t1, n-1+1, _state);
     ae_vector_set_length(&t2, n-1+1, _state);
-    
+
     /*
      * T1 = InvA * U
      * Lambda = v * T1
@@ -33669,7 +33669,7 @@ void rmatrixinvupdateuv(/* Real    */ ae_matrix* inva,
         t1.ptr.p_double[i] = vt;
     }
     lambdav = ae_v_dotproduct(&v->ptr.p_double[0], 1, &t1.ptr.p_double[0], 1, ae_v_len(0,n-1));
-    
+
     /*
      * T2 = v*InvA
      */
@@ -33678,7 +33678,7 @@ void rmatrixinvupdateuv(/* Real    */ ae_matrix* inva,
         vt = ae_v_dotproduct(&v->ptr.p_double[0], 1, &inva->ptr.pp_double[0][j], inva->stride, ae_v_len(0,n-1));
         t2.ptr.p_double[j] = vt;
     }
-    
+
     /*
      * InvA = InvA - correction
      */
@@ -33734,9 +33734,9 @@ Result:
 Algorithm implemented on the basis of the DHSEQR subroutine (LAPACK 3.0 library).
 *************************************************************************/
 ae_bool rmatrixschur(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_matrix* s,
-     ae_state *_state)
+                                   ae_int_t n,
+                                   /* Real    */ ae_matrix* s,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector tau;
@@ -33757,13 +33757,13 @@ ae_bool rmatrixschur(/* Real    */ ae_matrix* a,
     ae_matrix_init(&a1, 0, 0, DT_REAL, _state, ae_true);
     ae_matrix_init(&s1, 0, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Upper Hessenberg form of the 0-based matrix
      */
     rmatrixhessenberg(a, n, &tau, _state);
     rmatrixhessenbergunpackq(a, n, &tau, s, _state);
-    
+
     /*
      * Convert from 0-based arrays to 1-based,
      * then call InternalSchurDecomposition
@@ -33783,7 +33783,7 @@ ae_bool rmatrixschur(/* Real    */ ae_matrix* a,
     }
     internalschurdecomposition(&a1, n, 1, 1, &wr, &wi, &s1, &info, _state);
     result = info==0;
-    
+
     /*
      * convert from 1-based arrays to -based
      */

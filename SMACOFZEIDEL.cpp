@@ -14,15 +14,18 @@
 #include <cmath>
 
 
-SMACOFZEIDEL::SMACOFZEIDEL(){
+SMACOFZEIDEL::SMACOFZEIDEL()
+{
 
 }
 
-SMACOFZEIDEL::~SMACOFZEIDEL(){
+SMACOFZEIDEL::~SMACOFZEIDEL()
+{
 
 }
 
-SMACOFZEIDEL::SMACOFZEIDEL(double eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d){
+SMACOFZEIDEL::SMACOFZEIDEL(double eps, int maxIter, int d, ShufleEnum shEnum):SMACOF(eps, maxIter, d)
+{
     shufleEnum = shEnum;
     initializeProjectionMatrix();
 }
@@ -38,13 +41,14 @@ SMACOFZEIDEL::SMACOFZEIDEL(double eps, int maxIter, int d, ShufleEnum shEnum, Ob
     shufleEnum = shEnum;
 }*/
 
-ObjectMatrix SMACOFZEIDEL::getProjection(){
+ObjectMatrix SMACOFZEIDEL::getProjection()
+{
 
     stressErrors.reserve(maxIteration);
     int i;
     int m = X.getObjectCount();
     double sum = 0.0;
-   // str = getStress();
+    // str = getStress();
     stressErrors.push_back(getStress());
 
     double Epsilon = DBL_MAX;
@@ -68,19 +72,21 @@ ObjectMatrix SMACOFZEIDEL::getProjection(){
             {
                 sum = 0.0;
                 for (int k = 0; k < m; k++)
-                        sum += objGutmani.getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
+                    sum += objGutmani.getFeatureAt(k) * Y.getObjectAt(k).getFeatureAt(j);
                 Y_new.updateDataObject(i, j, (sum / (float) m));
             }
             Gutman = getGutman(Y_new, i); //change ith row
+            Y_new.updateDataObjectClass(i, X.getObjectAt(i).getClassLabel());
         }
         Y = Y_new;
 
         iteration++;
-       // str = getStress();
+        // str = getStress();
         stressErrors.push_back(getStress());
         Epsilon = std::fabs((stressErrors.at(iteration - 1) - stressErrors.at(iteration)));
-      //  std::cout <<iteration << " " << Epsilon << " " << str <<  std::endl;
+        //  std::cout <<iteration << " " << Epsilon << " " << str <<  std::endl;
     }
+    Y.setPrintClass(X.getStringClassAttributes());
     return Y;
 }
 

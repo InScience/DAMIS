@@ -271,17 +271,17 @@ Important properties of s_out:
 * it contains alphanumeric characters, dots, underscores, minus signs
 * these symbols are grouped into words, which are separated by spaces
   and Windows-style (CR+LF) newlines
-* although  serializer  uses  spaces and CR+LF as separators, you can 
+* although  serializer  uses  spaces and CR+LF as separators, you can
   replace any separator character by arbitrary combination of spaces,
   tabs, Windows or Unix newlines. It allows flexible reformatting  of
-  the  string  in  case you want to include it into text or XML file. 
+  the  string  in  case you want to include it into text or XML file.
   But you should not insert separators into the middle of the "words"
   nor you should change case of letters.
 * s_out can be freely moved between 32-bit and 64-bit systems, little
   and big endian machines, and so on. You can serialize structure  on
   32-bit machine and unserialize it on 64-bit one (or vice versa), or
-  serialize  it  on  SPARC  and  unserialize  on  x86.  You  can also 
-  serialize  it  in  C++ version of ALGLIB and unserialize in C# one, 
+  serialize  it  on  SPARC  and  unserialize  on  x86.  You  can also
+  serialize  it  in  C++ version of ALGLIB and unserialize in C# one,
   and vice versa.
 *************************************************************************/
 void kdtreeserialize(kdtree &obj, std::string &s_out);
@@ -1100,87 +1100,87 @@ namespace alglib_impl
 {
 void hqrndrandomize(hqrndstate* state, ae_state *_state);
 void hqrndseed(ae_int_t s1,
-     ae_int_t s2,
-     hqrndstate* state,
-     ae_state *_state);
+               ae_int_t s2,
+               hqrndstate* state,
+               ae_state *_state);
 double hqrnduniformr(hqrndstate* state, ae_state *_state);
 ae_int_t hqrnduniformi(hqrndstate* state, ae_int_t n, ae_state *_state);
 double hqrndnormal(hqrndstate* state, ae_state *_state);
 void hqrndunit2(hqrndstate* state, double* x, double* y, ae_state *_state);
 void hqrndnormal2(hqrndstate* state,
-     double* x1,
-     double* x2,
-     ae_state *_state);
+                  double* x1,
+                  double* x2,
+                  ae_state *_state);
 double hqrndexponential(hqrndstate* state,
-     double lambdav,
-     ae_state *_state);
+                        double lambdav,
+                        ae_state *_state);
 double hqrnddiscrete(hqrndstate* state,
-     /* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     ae_int_t n,
+                     ae_state *_state);
 double hqrndcontinuous(hqrndstate* state,
-     /* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state);
+                       /* Real    */ ae_vector* x,
+                       ae_int_t n,
+                       ae_state *_state);
 ae_bool _hqrndstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _hqrndstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _hqrndstate_clear(void* _p);
 void _hqrndstate_destroy(void* _p);
 void kdtreebuild(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t nx,
-     ae_int_t ny,
-     ae_int_t normtype,
-     kdtree* kdt,
-     ae_state *_state);
+                               ae_int_t n,
+                               ae_int_t nx,
+                               ae_int_t ny,
+                               ae_int_t normtype,
+                               kdtree* kdt,
+                               ae_state *_state);
 void kdtreebuildtagged(/* Real    */ ae_matrix* xy,
-     /* Integer */ ae_vector* tags,
-     ae_int_t n,
-     ae_int_t nx,
-     ae_int_t ny,
-     ae_int_t normtype,
-     kdtree* kdt,
-     ae_state *_state);
+                                     /* Integer */ ae_vector* tags,
+                                     ae_int_t n,
+                                     ae_int_t nx,
+                                     ae_int_t ny,
+                                     ae_int_t normtype,
+                                     kdtree* kdt,
+                                     ae_state *_state);
 ae_int_t kdtreequeryknn(kdtree* kdt,
-     /* Real    */ ae_vector* x,
-     ae_int_t k,
-     ae_bool selfmatch,
-     ae_state *_state);
+                        /* Real    */ ae_vector* x,
+                        ae_int_t k,
+                        ae_bool selfmatch,
+                        ae_state *_state);
 ae_int_t kdtreequeryrnn(kdtree* kdt,
-     /* Real    */ ae_vector* x,
-     double r,
-     ae_bool selfmatch,
-     ae_state *_state);
+                        /* Real    */ ae_vector* x,
+                        double r,
+                        ae_bool selfmatch,
+                        ae_state *_state);
 ae_int_t kdtreequeryaknn(kdtree* kdt,
-     /* Real    */ ae_vector* x,
-     ae_int_t k,
-     ae_bool selfmatch,
-     double eps,
-     ae_state *_state);
+                         /* Real    */ ae_vector* x,
+                         ae_int_t k,
+                         ae_bool selfmatch,
+                         double eps,
+                         ae_state *_state);
 void kdtreequeryresultsx(kdtree* kdt,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+                         /* Real    */ ae_matrix* x,
+                         ae_state *_state);
 void kdtreequeryresultsxy(kdtree* kdt,
-     /* Real    */ ae_matrix* xy,
-     ae_state *_state);
+                          /* Real    */ ae_matrix* xy,
+                          ae_state *_state);
 void kdtreequeryresultstags(kdtree* kdt,
-     /* Integer */ ae_vector* tags,
-     ae_state *_state);
+                            /* Integer */ ae_vector* tags,
+                            ae_state *_state);
 void kdtreequeryresultsdistances(kdtree* kdt,
-     /* Real    */ ae_vector* r,
-     ae_state *_state);
+                                 /* Real    */ ae_vector* r,
+                                 ae_state *_state);
 void kdtreequeryresultsxi(kdtree* kdt,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+                          /* Real    */ ae_matrix* x,
+                          ae_state *_state);
 void kdtreequeryresultsxyi(kdtree* kdt,
-     /* Real    */ ae_matrix* xy,
-     ae_state *_state);
+                           /* Real    */ ae_matrix* xy,
+                           ae_state *_state);
 void kdtreequeryresultstagsi(kdtree* kdt,
-     /* Integer */ ae_vector* tags,
-     ae_state *_state);
+                             /* Integer */ ae_vector* tags,
+                             ae_state *_state);
 void kdtreequeryresultsdistancesi(kdtree* kdt,
-     /* Real    */ ae_vector* r,
-     ae_state *_state);
+                                  /* Real    */ ae_vector* r,
+                                  ae_state *_state);
 void kdtreealloc(ae_serializer* s, kdtree* tree, ae_state *_state);
 void kdtreeserialize(ae_serializer* s, kdtree* tree, ae_state *_state);
 void kdtreeunserialize(ae_serializer* s, kdtree* tree, ae_state *_state);
@@ -1192,60 +1192,60 @@ ae_int_t xdebugb1count(/* Boolean */ ae_vector* a, ae_state *_state);
 void xdebugb1not(/* Boolean */ ae_vector* a, ae_state *_state);
 void xdebugb1appendcopy(/* Boolean */ ae_vector* a, ae_state *_state);
 void xdebugb1outeven(ae_int_t n,
-     /* Boolean */ ae_vector* a,
-     ae_state *_state);
+                     /* Boolean */ ae_vector* a,
+                     ae_state *_state);
 ae_int_t xdebugi1sum(/* Integer */ ae_vector* a, ae_state *_state);
 void xdebugi1neg(/* Integer */ ae_vector* a, ae_state *_state);
 void xdebugi1appendcopy(/* Integer */ ae_vector* a, ae_state *_state);
 void xdebugi1outeven(ae_int_t n,
-     /* Integer */ ae_vector* a,
-     ae_state *_state);
+                     /* Integer */ ae_vector* a,
+                     ae_state *_state);
 double xdebugr1sum(/* Real    */ ae_vector* a, ae_state *_state);
 void xdebugr1neg(/* Real    */ ae_vector* a, ae_state *_state);
 void xdebugr1appendcopy(/* Real    */ ae_vector* a, ae_state *_state);
 void xdebugr1outeven(ae_int_t n,
-     /* Real    */ ae_vector* a,
-     ae_state *_state);
+                     /* Real    */ ae_vector* a,
+                     ae_state *_state);
 ae_complex xdebugc1sum(/* Complex */ ae_vector* a, ae_state *_state);
 void xdebugc1neg(/* Complex */ ae_vector* a, ae_state *_state);
 void xdebugc1appendcopy(/* Complex */ ae_vector* a, ae_state *_state);
 void xdebugc1outeven(ae_int_t n,
-     /* Complex */ ae_vector* a,
-     ae_state *_state);
+                     /* Complex */ ae_vector* a,
+                     ae_state *_state);
 ae_int_t xdebugb2count(/* Boolean */ ae_matrix* a, ae_state *_state);
 void xdebugb2not(/* Boolean */ ae_matrix* a, ae_state *_state);
 void xdebugb2transpose(/* Boolean */ ae_matrix* a, ae_state *_state);
 void xdebugb2outsin(ae_int_t m,
-     ae_int_t n,
-     /* Boolean */ ae_matrix* a,
-     ae_state *_state);
+                    ae_int_t n,
+                    /* Boolean */ ae_matrix* a,
+                    ae_state *_state);
 ae_int_t xdebugi2sum(/* Integer */ ae_matrix* a, ae_state *_state);
 void xdebugi2neg(/* Integer */ ae_matrix* a, ae_state *_state);
 void xdebugi2transpose(/* Integer */ ae_matrix* a, ae_state *_state);
 void xdebugi2outsin(ae_int_t m,
-     ae_int_t n,
-     /* Integer */ ae_matrix* a,
-     ae_state *_state);
+                    ae_int_t n,
+                    /* Integer */ ae_matrix* a,
+                    ae_state *_state);
 double xdebugr2sum(/* Real    */ ae_matrix* a, ae_state *_state);
 void xdebugr2neg(/* Real    */ ae_matrix* a, ae_state *_state);
 void xdebugr2transpose(/* Real    */ ae_matrix* a, ae_state *_state);
 void xdebugr2outsin(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_state *_state);
+                    ae_int_t n,
+                    /* Real    */ ae_matrix* a,
+                    ae_state *_state);
 ae_complex xdebugc2sum(/* Complex */ ae_matrix* a, ae_state *_state);
 void xdebugc2neg(/* Complex */ ae_matrix* a, ae_state *_state);
 void xdebugc2transpose(/* Complex */ ae_matrix* a, ae_state *_state);
 void xdebugc2outsincos(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_state *_state);
+                       ae_int_t n,
+                       /* Complex */ ae_matrix* a,
+                       ae_state *_state);
 double xdebugmaskedbiasedproductsum(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     /* Real    */ ae_matrix* b,
-     /* Boolean */ ae_matrix* c,
-     ae_state *_state);
+                                    ae_int_t n,
+                                    /* Real    */ ae_matrix* a,
+                                    /* Real    */ ae_matrix* b,
+                                    /* Boolean */ ae_matrix* c,
+                                    ae_state *_state);
 
 }
 #endif

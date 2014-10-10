@@ -17,15 +17,18 @@
 #include "PCA.h"
 #include <cmath>
 
-Projection::Projection(){
+Projection::Projection()
+{
 
 }
 
-Projection::~Projection(){
+Projection::~Projection()
+{
 
 }
 
-ObjectMatrix Projection::byRand(ObjectMatrix objectMatrix){
+ObjectMatrix Projection::byRand(ObjectMatrix objectMatrix)
+{
 
     int n = objectMatrix.getObjectCount();
     unsigned int max = objectMatrix.getObjectAt(0).getFeatureCount();
@@ -49,7 +52,8 @@ ObjectMatrix Projection::byRand(ObjectMatrix objectMatrix){
     return  projection;
 }
 
-ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix){
+ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix)
+{
     int n = objectMatrix.getObjectCount();
     int m = objectMatrix.getObjectAt(0).getFeatureCount();
     int maxDispersionCol = 0;
@@ -61,8 +65,8 @@ ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix){
     dispersion.reserve(m);
     average.reserve(m);
 
-  /*  for (int j = 0; j < m; j++)
-        average.push_back(Statistics::getAverage(objectMatrix, j));*/
+    /*  for (int j = 0; j < m; j++)
+          average.push_back(Statistics::getAverage(objectMatrix, j));*/
 
     average = Statistics::getAverageColumns(objectMatrix);
 
@@ -70,10 +74,10 @@ ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix){
     {
         tmp = 0.0;
         for (int i = 0; i < n; i++)
-            {
-                tmpDiff = objectMatrix.getObjectAt(i).getFeatureAt(j) - average.at(j);
-                tmp += tmpDiff;
-            }
+        {
+            tmpDiff = objectMatrix.getObjectAt(i).getFeatureAt(j) - average.at(j);
+            tmp += tmpDiff;
+        }
         dispersion.push_back(std::sqrt(tmp)); //got rid of the 1/n multiplier
     }
 
@@ -96,7 +100,8 @@ ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix){
 }
 
 
-ObjectMatrix Projection::byPCA(ObjectMatrix objectMatrix){
+ObjectMatrix Projection::byPCA(ObjectMatrix objectMatrix)
+{
     int n = objectMatrix.getObjectCount();
     ObjectMatrix projection(n);
     PCA_ pca(objectMatrix, 1);
@@ -104,19 +109,24 @@ ObjectMatrix Projection::byPCA(ObjectMatrix objectMatrix){
     return  projection;
 }
 
-ObjectMatrix Projection::projectMatrix(ProjectionEnum projEnum, ObjectMatrix objectMatrix){
+ObjectMatrix Projection::projectMatrix(ProjectionEnum projEnum, ObjectMatrix objectMatrix)
+{
     ObjectMatrix projection;
 
     switch (projEnum)
     {
-        case 1: projection = Projection::byRand(objectMatrix);
-                break;
-        case 2: projection = Projection::byPCA(objectMatrix);
-                break;
-        case 3: projection = Projection::byDispersion(objectMatrix);
-                break;
-        default: projection = Projection::byDispersion(objectMatrix);
-                break;
+    case 1:
+        projection = Projection::byRand(objectMatrix);
+        break;
+    case 2:
+        projection = Projection::byPCA(objectMatrix);
+        break;
+    case 3:
+        projection = Projection::byDispersion(objectMatrix);
+        break;
+    default:
+        projection = Projection::byDispersion(objectMatrix);
+        break;
     }
 
     return  projection;

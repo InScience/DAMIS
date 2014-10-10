@@ -16,11 +16,13 @@
 #include <iostream>
 
 
-ShufleObjects::ShufleObjects(){
+ShufleObjects::ShufleObjects()
+{
 
 }
 
-ShufleObjects::~ShufleObjects(){
+ShufleObjects::~ShufleObjects()
+{
 
 }
 
@@ -35,7 +37,7 @@ std::vector<unsigned int> ShufleObjects::byBubleSort(ObjectMatrix objectMatrix) 
     for (int i = 0; i < n; i++)
         shufledIndexes.push_back(i);
 
-   int l = 1;
+    int l = 1;
     do
     {
         shufled = true;
@@ -85,13 +87,14 @@ std::vector<unsigned int> ShufleObjects::byBubleSortDsc(ObjectMatrix objectMatri
     }
     while (!shufled);
 
-  /*  for (int i = 0; i < n; i++)
-        std::cout << objectMatrix.getObjectAt(shufledIndexes.at(i)).getFeatureAt(0) << std::endl;*/
+    /*  for (int i = 0; i < n; i++)
+          std::cout << objectMatrix.getObjectAt(shufledIndexes.at(i)).getFeatureAt(0) << std::endl;*/
 
     return  shufledIndexes;
 }
 
-std::vector<unsigned int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
+std::vector<unsigned int> ShufleObjects::byRand(ObjectMatrix objectMatrix)
+{
 
     unsigned int n = objectMatrix.getObjectCount();
     std::vector<unsigned int> currentIndexes;
@@ -115,25 +118,31 @@ std::vector<unsigned int> ShufleObjects::byRand(ObjectMatrix objectMatrix){
         shufledIndexes.push_back(index);
         currentIndexes.at(index) = -1;
 
-    } while (shufledIndexes.size() < n);
+    }
+    while (shufledIndexes.size() < n);
 
     return  shufledIndexes;
 }
 
 
-std::vector<unsigned int> ShufleObjects::shufleObjectMatrix(ShufleEnum shufleEnum, ObjectMatrix objectMatrix){
+std::vector<unsigned int> ShufleObjects::shufleObjectMatrix(ShufleEnum shufleEnum, ObjectMatrix objectMatrix)
+{
     std::vector<unsigned int> shufled;
 
     switch (shufleEnum)
     {
-        case 1: shufled = ShufleObjects::byRand(objectMatrix);
-                break;
-        case 2: shufled = ShufleObjects::byBubleSort(objectMatrix);
-                break;
-        case 3: shufled = ShufleObjects::byBubleSortDsc(objectMatrix);
-                break;
-        default: shufled = ShufleObjects::byRand(objectMatrix);
-                break;
+    case 1:
+        shufled = ShufleObjects::byRand(objectMatrix);
+        break;
+    case 2:
+        shufled = ShufleObjects::byBubleSort(objectMatrix);
+        break;
+    case 3:
+        shufled = ShufleObjects::byBubleSortDsc(objectMatrix);
+        break;
+    default:
+        shufled = ShufleObjects::byRand(objectMatrix);
+        break;
     }
 
     return  shufled;

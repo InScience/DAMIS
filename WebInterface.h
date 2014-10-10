@@ -15,15 +15,17 @@ class WebInterface
 {
 
 public:
-	WebInterface() {
+    WebInterface()
+    {
 
-	}
+    }
 
-	virtual ~WebInterface() {
+    virtual ~WebInterface()
+    {
 
-	}
+    }
 
-	virtual void sendMessage() =0;
+    virtual void sendMessage() =0;
 
 };
 #endif // !defined(EA_708FAA0D_9033_4bbe_8F5F_F9D38B70F1A2__INCLUDED_)

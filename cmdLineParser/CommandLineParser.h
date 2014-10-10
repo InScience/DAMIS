@@ -10,7 +10,7 @@ class CommandLineParser
 public:
 
     CommandLineParser(int argc_, char * argv_[],bool switches_on_=false);
-    ~CommandLineParser(){}
+    ~CommandLineParser() {}
 
     std::string get_arg(int i);
     std::string get_arg(std::string s);

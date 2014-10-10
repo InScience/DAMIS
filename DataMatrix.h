@@ -9,35 +9,39 @@
  *  \brief A class of pure virtual methods for manipulating the Objectmatrix.
  */
 
-#if !defined(EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_)
-#define EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_
+#if !defined(DATAMATIRX_H)
+#define DATAMATIRX_H
 
 #include "ObjectMatrix.h"
-
+    /*! \file DataMatrix
+    * \brief Class that represents the matrix of the data objects
+    */
 class DataMatrix
 {
 
 public:
-        /**
-        * A default constructor.
-        */
-	DataMatrix() {
-        }
+    /*! \fn DataMatrix()
+    * \brief A default constructor.
+    */
+    DataMatrix()
+    {
+    }
 
-        /**
-        * A destructor.
-        */
-	virtual ~DataMatrix(){
-        }
-        /** \fn virtual void loadDataMatrix() =0;
-         *  \brief A pure virtual method for loading data from an arff file.
-         */
-	virtual void loadDataMatrix() =0;
-        /** \fn virtual void saveDataMatrix(const char*) =0;
-         *  \brief A pure virtual method for saving data to an arff file.
-         *  \param file - a name of the file to save data to.
-         */
-	virtual void saveDataMatrix(const char* file)  =0;
+    /*! \fn virtual ~DataMatrix()
+    *  \brief A destructor.
+    */
+    virtual ~DataMatrix()
+    {
+    }
+    /*! \fn virtual void loadDataMatrix() =0;
+     *  \brief A pure virtual method for loading data from an arff file.
+     */
+    virtual void loadDataMatrix() =0;
+    /*! \fn virtual void saveDataMatrix(const char*) =0;
+     *  \brief A pure virtual method for saving data to an arff file.
+     *  \param file - a name of the file to save data to.
+     */
+    virtual void saveDataMatrix(const char* file)  =0;
 
 };
-#endif // !defined(EA_0D61ACEF_288D_4949_AB18_4545C1E57302__INCLUDED_)
+#endif //!defined(DATAMATIRX_H)

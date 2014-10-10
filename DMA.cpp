@@ -20,15 +20,18 @@
     \brief A class of methods and attributes for DMA algorithm.
  */
 
-DMA::DMA(){
+DMA::DMA()
+{
 
 }
 
-DMA::~DMA(){
+DMA::~DMA()
+{
 
 }
 
-DMA::DMA(double eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
+DMA::DMA(double eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d)
+{
     neighbourNumber = neighbours;
     X = ObjectMatrix(AdditionalMethods::inputDataFile);
     X.loadDataMatrix();
@@ -57,11 +60,13 @@ DMA::DMA(double eps, int maxIter, int d, int neighbours):MDS(eps, maxIter, d){
     initializeProjectionMatrix();
 }*/
 
-int DMA::getNeighbours(){
+int DMA::getNeighbours()
+{
     return neighbourNumber;
 }
 
-ObjectMatrix DMA::getProjection(){
+ObjectMatrix DMA::getProjection()
+{
     stressErrors.reserve(maxIteration);
     int m = X.getObjectCount();
     int iteration = 0;
@@ -100,6 +105,7 @@ ObjectMatrix DMA::getProjection(){
         stressErrors.push_back(DimReductionMethod::getStress());
         Epsilon = std::fabs(stressErrors.at(iteration - 1) - stressErrors.at(iteration));
     }
+    Y.setPrintClass(X.getStringClassAttributes());
     return  Y;
 }
 
@@ -114,7 +120,8 @@ int DMA::getV(int i)
     return k2 - k1;
 }
 
-void DMA::setNeighbours(int neighbours){
+void DMA::setNeighbours(int neighbours)
+{
     neighbourNumber = neighbours;
 }
 

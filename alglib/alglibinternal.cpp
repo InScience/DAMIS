@@ -51,24 +51,24 @@ namespace alglib_impl
 
 
 static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
-     /* Integer */ ae_vector* b,
-     /* Real    */ ae_vector* bufa,
-     /* Integer */ ae_vector* bufb,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_state *_state);
+        /* Integer */ ae_vector* b,
+        /* Real    */ ae_vector* bufa,
+        /* Integer */ ae_vector* bufb,
+        ae_int_t i1,
+        ae_int_t i2,
+        ae_state *_state);
 static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* bufa,
-     /* Real    */ ae_vector* bufb,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_state *_state);
+        /* Real    */ ae_vector* b,
+        /* Real    */ ae_vector* bufa,
+        /* Real    */ ae_vector* bufb,
+        ae_int_t i1,
+        ae_int_t i2,
+        ae_state *_state);
 static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* bufa,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_state *_state);
+        /* Real    */ ae_vector* bufa,
+        ae_int_t i1,
+        ae_int_t i2,
+        ae_state *_state);
 
 
 
@@ -90,33 +90,33 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
 
 
 static void hsschur_internalauxschur(ae_bool wantt,
-     ae_bool wantz,
-     ae_int_t n,
-     ae_int_t ilo,
-     ae_int_t ihi,
-     /* Real    */ ae_matrix* h,
-     /* Real    */ ae_vector* wr,
-     /* Real    */ ae_vector* wi,
-     ae_int_t iloz,
-     ae_int_t ihiz,
-     /* Real    */ ae_matrix* z,
-     /* Real    */ ae_vector* work,
-     /* Real    */ ae_vector* workv3,
-     /* Real    */ ae_vector* workc1,
-     /* Real    */ ae_vector* works1,
-     ae_int_t* info,
-     ae_state *_state);
+                                     ae_bool wantz,
+                                     ae_int_t n,
+                                     ae_int_t ilo,
+                                     ae_int_t ihi,
+                                     /* Real    */ ae_matrix* h,
+                                     /* Real    */ ae_vector* wr,
+                                     /* Real    */ ae_vector* wi,
+                                     ae_int_t iloz,
+                                     ae_int_t ihiz,
+                                     /* Real    */ ae_matrix* z,
+                                     /* Real    */ ae_vector* work,
+                                     /* Real    */ ae_vector* workv3,
+                                     /* Real    */ ae_vector* workc1,
+                                     /* Real    */ ae_vector* works1,
+                                     ae_int_t* info,
+                                     ae_state *_state);
 static void hsschur_aux2x2schur(double* a,
-     double* b,
-     double* c,
-     double* d,
-     double* rt1r,
-     double* rt1i,
-     double* rt2r,
-     double* rt2i,
-     double* cs,
-     double* sn,
-     ae_state *_state);
+                                double* b,
+                                double* c,
+                                double* d,
+                                double* rt1r,
+                                double* rt1i,
+                                double* rt2r,
+                                double* rt2i,
+                                double* cs,
+                                double* sn,
+                                ae_state *_state);
 static double hsschur_extschursign(double a, double b, ae_state *_state);
 static ae_int_t hsschur_extschursigntoone(double b, ae_state *_state);
 
@@ -124,31 +124,31 @@ static ae_int_t hsschur_extschursigntoone(double b, ae_state *_state);
 
 
 static ae_bool safesolve_cbasicsolveandupdate(ae_complex alpha,
-     ae_complex beta,
-     double lnmax,
-     double bnorm,
-     double maxgrowth,
-     double* xnorm,
-     ae_complex* x,
-     ae_state *_state);
+        ae_complex beta,
+        double lnmax,
+        double bnorm,
+        double maxgrowth,
+        double* xnorm,
+        ae_complex* x,
+        ae_state *_state);
 
 
 static ae_bool hpccores_hpcpreparechunkedgradientx(/* Real    */ ae_vector* weights,
-     ae_int_t wcount,
-     /* Real    */ ae_vector* hpcbuf,
-     ae_state *_state);
+        ae_int_t wcount,
+        /* Real    */ ae_vector* hpcbuf,
+        ae_state *_state);
 static ae_bool hpccores_hpcfinalizechunkedgradientx(/* Real    */ ae_vector* buf,
-     ae_int_t wcount,
-     /* Real    */ ae_vector* grad,
-     ae_state *_state);
+        ae_int_t wcount,
+        /* Real    */ ae_vector* grad,
+        ae_state *_state);
 
 
 static void xblas_xsum(/* Real    */ ae_vector* w,
-     double mx,
-     ae_int_t n,
-     double* r,
-     double* rerr,
-     ae_state *_state);
+                                     double mx,
+                                     ae_int_t n,
+                                     double* r,
+                                     double* rerr,
+                                     ae_state *_state);
 static double xblas_xfastpow(double r, ae_int_t n, ae_state *_state);
 
 
@@ -159,30 +159,30 @@ static double linmin_stpmin = 1.0E-50;
 static double linmin_defstpmax = 1.0E+50;
 static double linmin_armijofactor = 1.3;
 static void linmin_mcstep(double* stx,
-     double* fx,
-     double* dx,
-     double* sty,
-     double* fy,
-     double* dy,
-     double* stp,
-     double fp,
-     double dp,
-     ae_bool* brackt,
-     double stmin,
-     double stmax,
-     ae_int_t* info,
-     ae_state *_state);
+                          double* fx,
+                          double* dx,
+                          double* sty,
+                          double* fy,
+                          double* dy,
+                          double* stp,
+                          double fp,
+                          double dp,
+                          ae_bool* brackt,
+                          double stmin,
+                          double stmax,
+                          ae_int_t* info,
+                          ae_state *_state);
 
 
 static ae_bool ntheory_isprime(ae_int_t n, ae_state *_state);
 static ae_int_t ntheory_modmul(ae_int_t a,
-     ae_int_t b,
-     ae_int_t n,
-     ae_state *_state);
+                               ae_int_t b,
+                               ae_int_t n,
+                               ae_state *_state);
 static ae_int_t ntheory_modexp(ae_int_t a,
-     ae_int_t b,
-     ae_int_t n,
-     ae_state *_state);
+                               ae_int_t b,
+                               ae_int_t n,
+                               ae_state *_state);
 
 
 static ae_int_t ftbase_coltype = 0;
@@ -213,151 +213,151 @@ static ae_int_t ftbase_ftbasecodeletrecommended = 5;
 static double ftbase_ftbaseinefficiencyfactor = 1.3;
 static ae_int_t ftbase_ftbasemaxsmoothfactor = 5;
 static void ftbase_ftdeterminespacerequirements(ae_int_t n,
-     ae_int_t* precrsize,
-     ae_int_t* precisize,
-     ae_state *_state);
+        ae_int_t* precrsize,
+        ae_int_t* precisize,
+        ae_state *_state);
 static void ftbase_ftcomplexfftplanrec(ae_int_t n,
-     ae_int_t k,
-     ae_bool childplan,
-     ae_bool topmostplan,
-     ae_int_t* rowptr,
-     ae_int_t* bluesteinsize,
-     ae_int_t* precrptr,
-     ae_int_t* preciptr,
-     fasttransformplan* plan,
-     ae_state *_state);
+                                       ae_int_t k,
+                                       ae_bool childplan,
+                                       ae_bool topmostplan,
+                                       ae_int_t* rowptr,
+                                       ae_int_t* bluesteinsize,
+                                       ae_int_t* precrptr,
+                                       ae_int_t* preciptr,
+                                       fasttransformplan* plan,
+                                       ae_state *_state);
 static void ftbase_ftpushentry(fasttransformplan* plan,
-     ae_int_t* rowptr,
-     ae_int_t etype,
-     ae_int_t eopcnt,
-     ae_int_t eopsize,
-     ae_int_t emcvsize,
-     ae_int_t eparam0,
-     ae_state *_state);
+                               ae_int_t* rowptr,
+                               ae_int_t etype,
+                               ae_int_t eopcnt,
+                               ae_int_t eopsize,
+                               ae_int_t emcvsize,
+                               ae_int_t eparam0,
+                               ae_state *_state);
 static void ftbase_ftpushentry2(fasttransformplan* plan,
-     ae_int_t* rowptr,
-     ae_int_t etype,
-     ae_int_t eopcnt,
-     ae_int_t eopsize,
-     ae_int_t emcvsize,
-     ae_int_t eparam0,
-     ae_int_t eparam1,
-     ae_state *_state);
+                                ae_int_t* rowptr,
+                                ae_int_t etype,
+                                ae_int_t eopcnt,
+                                ae_int_t eopsize,
+                                ae_int_t emcvsize,
+                                ae_int_t eparam0,
+                                ae_int_t eparam1,
+                                ae_state *_state);
 static void ftbase_ftpushentry4(fasttransformplan* plan,
-     ae_int_t* rowptr,
-     ae_int_t etype,
-     ae_int_t eopcnt,
-     ae_int_t eopsize,
-     ae_int_t emcvsize,
-     ae_int_t eparam0,
-     ae_int_t eparam1,
-     ae_int_t eparam2,
-     ae_int_t eparam3,
-     ae_state *_state);
+                                ae_int_t* rowptr,
+                                ae_int_t etype,
+                                ae_int_t eopcnt,
+                                ae_int_t eopsize,
+                                ae_int_t emcvsize,
+                                ae_int_t eparam0,
+                                ae_int_t eparam1,
+                                ae_int_t eparam2,
+                                ae_int_t eparam3,
+                                ae_state *_state);
 static void ftbase_ftapplysubplan(fasttransformplan* plan,
-     ae_int_t subplan,
-     /* Real    */ ae_vector* a,
-     ae_int_t abase,
-     ae_int_t aoffset,
-     /* Real    */ ae_vector* buf,
-     ae_int_t repcnt,
-     ae_state *_state);
+                                  ae_int_t subplan,
+                                  /* Real    */ ae_vector* a,
+                                  ae_int_t abase,
+                                  ae_int_t aoffset,
+                                  /* Real    */ ae_vector* buf,
+                                  ae_int_t repcnt,
+                                  ae_state *_state);
 static void ftbase_ftapplycomplexreffft(/* Real    */ ae_vector* a,
-     ae_int_t offs,
-     ae_int_t operandscnt,
-     ae_int_t operandsize,
-     ae_int_t microvectorsize,
-     /* Real    */ ae_vector* buf,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t operandscnt,
+        ae_int_t operandsize,
+        ae_int_t microvectorsize,
+        /* Real    */ ae_vector* buf,
+        ae_state *_state);
 static void ftbase_ftapplycomplexcodeletfft(/* Real    */ ae_vector* a,
-     ae_int_t offs,
-     ae_int_t operandscnt,
-     ae_int_t operandsize,
-     ae_int_t microvectorsize,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t operandscnt,
+        ae_int_t operandsize,
+        ae_int_t microvectorsize,
+        ae_state *_state);
 static void ftbase_ftapplycomplexcodelettwfft(/* Real    */ ae_vector* a,
-     ae_int_t offs,
-     ae_int_t operandscnt,
-     ae_int_t operandsize,
-     ae_int_t microvectorsize,
-     ae_state *_state);
+        ae_int_t offs,
+        ae_int_t operandscnt,
+        ae_int_t operandsize,
+        ae_int_t microvectorsize,
+        ae_state *_state);
 static void ftbase_ftprecomputebluesteinsfft(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* precr,
-     ae_int_t offs,
-     ae_state *_state);
+        ae_int_t m,
+        /* Real    */ ae_vector* precr,
+        ae_int_t offs,
+        ae_state *_state);
 static void ftbase_ftbluesteinsfft(fasttransformplan* plan,
-     /* Real    */ ae_vector* a,
-     ae_int_t abase,
-     ae_int_t aoffset,
-     ae_int_t operandscnt,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t precoffs,
-     ae_int_t subplan,
-     /* Real    */ ae_vector* bufa,
-     /* Real    */ ae_vector* bufb,
-     /* Real    */ ae_vector* bufc,
-     /* Real    */ ae_vector* bufd,
-     ae_state *_state);
+                                   /* Real    */ ae_vector* a,
+                                   ae_int_t abase,
+                                   ae_int_t aoffset,
+                                   ae_int_t operandscnt,
+                                   ae_int_t n,
+                                   ae_int_t m,
+                                   ae_int_t precoffs,
+                                   ae_int_t subplan,
+                                   /* Real    */ ae_vector* bufa,
+                                   /* Real    */ ae_vector* bufb,
+                                   /* Real    */ ae_vector* bufc,
+                                   /* Real    */ ae_vector* bufd,
+                                   ae_state *_state);
 static void ftbase_ftprecomputeradersfft(ae_int_t n,
-     ae_int_t rq,
-     ae_int_t riq,
-     /* Real    */ ae_vector* precr,
-     ae_int_t offs,
-     ae_state *_state);
+        ae_int_t rq,
+        ae_int_t riq,
+        /* Real    */ ae_vector* precr,
+        ae_int_t offs,
+        ae_state *_state);
 static void ftbase_ftradersfft(fasttransformplan* plan,
-     /* Real    */ ae_vector* a,
-     ae_int_t abase,
-     ae_int_t aoffset,
-     ae_int_t operandscnt,
-     ae_int_t n,
-     ae_int_t subplan,
-     ae_int_t rq,
-     ae_int_t riq,
-     ae_int_t precoffs,
-     /* Real    */ ae_vector* buf,
-     ae_state *_state);
+                               /* Real    */ ae_vector* a,
+                               ae_int_t abase,
+                               ae_int_t aoffset,
+                               ae_int_t operandscnt,
+                               ae_int_t n,
+                               ae_int_t subplan,
+                               ae_int_t rq,
+                               ae_int_t riq,
+                               ae_int_t precoffs,
+                               /* Real    */ ae_vector* buf,
+                               ae_state *_state);
 static void ftbase_ftfactorize(ae_int_t n,
-     ae_bool isroot,
-     ae_int_t* n1,
-     ae_int_t* n2,
-     ae_state *_state);
+                               ae_bool isroot,
+                               ae_int_t* n1,
+                               ae_int_t* n2,
+                               ae_state *_state);
 static ae_int_t ftbase_ftoptimisticestimate(ae_int_t n, ae_state *_state);
 static void ftbase_ffttwcalc(/* Real    */ ae_vector* a,
-     ae_int_t aoffset,
-     ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+        ae_int_t aoffset,
+        ae_int_t n1,
+        ae_int_t n2,
+        ae_state *_state);
 static void ftbase_internalcomplexlintranspose(/* Real    */ ae_vector* a,
-     ae_int_t m,
-     ae_int_t n,
-     ae_int_t astart,
-     /* Real    */ ae_vector* buf,
-     ae_state *_state);
+        ae_int_t m,
+        ae_int_t n,
+        ae_int_t astart,
+        /* Real    */ ae_vector* buf,
+        ae_state *_state);
 static void ftbase_ffticltrec(/* Real    */ ae_vector* a,
-     ae_int_t astart,
-     ae_int_t astride,
-     /* Real    */ ae_vector* b,
-     ae_int_t bstart,
-     ae_int_t bstride,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state);
+        ae_int_t astart,
+        ae_int_t astride,
+        /* Real    */ ae_vector* b,
+        ae_int_t bstart,
+        ae_int_t bstride,
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state);
 static void ftbase_fftirltrec(/* Real    */ ae_vector* a,
-     ae_int_t astart,
-     ae_int_t astride,
-     /* Real    */ ae_vector* b,
-     ae_int_t bstart,
-     ae_int_t bstride,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state);
+        ae_int_t astart,
+        ae_int_t astride,
+        /* Real    */ ae_vector* b,
+        ae_int_t bstart,
+        ae_int_t bstride,
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state);
 static void ftbase_ftbasefindsmoothrec(ae_int_t n,
-     ae_int_t seed,
-     ae_int_t leastfactor,
-     ae_int_t* best,
-     ae_state *_state);
+                                       ae_int_t seed,
+                                       ae_int_t leastfactor,
+                                       ae_int_t* best,
+                                       ae_state *_state);
 
 
 
@@ -395,7 +395,7 @@ ae_bool seterrorflag(ae_bool* flag, ae_bool cond, ae_state *_state)
 Internally calls SetErrorFlag() with condition:
 
     Abs(Val-RefVal)>Tol*Max(Abs(RefVal),S)
-    
+
 This function is used to test relative error in Val against  RefVal,  with
 relative error being replaced by absolute when scale  of  RefVal  is  less
 than S.
@@ -403,11 +403,11 @@ than S.
 This function returns value of COND.
 *************************************************************************/
 ae_bool seterrorflagdiff(ae_bool* flag,
-     double val,
-     double refval,
-     double tol,
-     double s,
-     ae_state *_state)
+                         double val,
+                         double refval,
+                         double tol,
+                         double s,
+                         ae_state *_state)
 {
     ae_bool result;
 
@@ -509,11 +509,11 @@ If N=1 then suborutine generates only one point at the middle of [A,B]
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void taskgenint1d(double a,
-     double b,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+                  double b,
+                  ae_int_t n,
+                  /* Real    */ ae_vector* x,
+                  /* Real    */ ae_vector* y,
+                  ae_state *_state)
 {
     ae_int_t i;
     double h;
@@ -560,11 +560,11 @@ If N=1 then suborutine generates only one point at the middle of [A,B]
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void taskgenint1dequidist(double a,
-     double b,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+                          double b,
+                          ae_int_t n,
+                          /* Real    */ ae_vector* x,
+                          /* Real    */ ae_vector* y,
+                          ae_state *_state)
 {
     ae_int_t i;
     double h;
@@ -604,11 +604,11 @@ If N=1 then suborutine generates only one point at the middle of [A,B]
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void taskgenint1dcheb1(double a,
-     double b,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+                       double b,
+                       ae_int_t n,
+                       /* Real    */ ae_vector* x,
+                       /* Real    */ ae_vector* y,
+                       ae_state *_state)
 {
     ae_int_t i;
 
@@ -651,11 +651,11 @@ If N=1 then suborutine generates only one point at the middle of [A,B]
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void taskgenint1dcheb2(double a,
-     double b,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+                       double b,
+                       ae_int_t n,
+                       /* Real    */ ae_vector* x,
+                       /* Real    */ ae_vector* y,
+                       ae_state *_state)
 {
     ae_int_t i;
 
@@ -705,8 +705,8 @@ NOTE:
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 ae_bool aredistinct(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_state *_state)
 {
     double a;
     double b;
@@ -718,7 +718,7 @@ ae_bool aredistinct(/* Real    */ ae_vector* x,
     ae_assert(n>=1, "APSERVAreDistinct: internal error (N<1)", _state);
     if( n==1 )
     {
-        
+
         /*
          * everything is alright, it is up to caller to decide whether it
          * can interpolate something with just one point
@@ -750,7 +750,7 @@ ae_bool aredistinct(/* Real    */ ae_vector* x,
 
 
 /*************************************************************************
-This function checks that two boolean values are the same (both  are  True 
+This function checks that two boolean values are the same (both  are  True
 or both are False).
 
   -- ALGLIB --
@@ -773,8 +773,8 @@ If Length(X)<N, resizes X
      Copyright 20.03.2009 by Bochkanov Sergey
 *************************************************************************/
 void bvectorsetlengthatleast(/* Boolean */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t n,
+        ae_state *_state)
 {
 
 
@@ -792,8 +792,8 @@ If Length(X)<N, resizes X
      Copyright 20.03.2009 by Bochkanov Sergey
 *************************************************************************/
 void ivectorsetlengthatleast(/* Integer */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t n,
+        ae_state *_state)
 {
 
 
@@ -811,8 +811,8 @@ If Length(X)<N, resizes X
      Copyright 20.03.2009 by Bochkanov Sergey
 *************************************************************************/
 void rvectorsetlengthatleast(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t n,
+        ae_state *_state)
 {
 
 
@@ -830,9 +830,9 @@ If Cols(X)<N or Rows(X)<M, resizes X
      Copyright 20.03.2009 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixsetlengthatleast(/* Real    */ ae_matrix* x,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
 
 
@@ -855,9 +855,9 @@ Resizes X and:
      Copyright 20.03.2009 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixresize(/* Real    */ ae_matrix* x,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+                                 ae_int_t m,
+                                 ae_int_t n,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix oldx;
@@ -900,9 +900,9 @@ Resizes X and:
      Copyright 20.03.2009 by Bochkanov Sergey
 *************************************************************************/
 void imatrixresize(/* Integer */ ae_matrix* x,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+                                 ae_int_t m,
+                                 ae_int_t n,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix oldx;
@@ -944,8 +944,8 @@ X[] are finite
      Copyright 18.06.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_bool isfinitevector(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     ae_state *_state)
 {
     ae_int_t i;
     ae_bool result;
@@ -982,8 +982,8 @@ This function checks that first N values from X[] are finite
      Copyright 18.06.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_bool isfinitecvector(/* Complex */ ae_vector* z,
-     ae_int_t n,
-     ae_state *_state)
+                                      ae_int_t n,
+                                      ae_state *_state)
 {
     ae_int_t i;
     ae_bool result;
@@ -1011,9 +1011,9 @@ X[0..M-1,0..N-1] are finite.
      Copyright 18.06.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_bool apservisfinitematrix(/* Real    */ ae_matrix* x,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -1055,9 +1055,9 @@ This function checks that all values from X[0..M-1,0..N-1] are finite
      Copyright 18.06.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_bool apservisfinitecmatrix(/* Complex */ ae_matrix* x,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -1090,9 +1090,9 @@ upper/lower triangle of X[0..N-1,0..N-1] are finite
      Copyright 18.06.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_bool isfinitertrmatrix(/* Real    */ ae_matrix* x,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+                                        ae_int_t n,
+                                        ae_bool isupper,
+                                        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j1;
@@ -1146,9 +1146,9 @@ X[0..N-1,0..N-1] are finite
      Copyright 18.06.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_bool apservisfinitectrmatrix(/* Complex */ ae_matrix* x,
-     ae_int_t n,
-     ae_bool isupper,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j1;
@@ -1192,9 +1192,9 @@ NaN's.
      Copyright 18.06.2010 by Bochkanov Sergey
 *************************************************************************/
 ae_bool apservisfiniteornanmatrix(/* Real    */ ae_matrix* x,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -1300,7 +1300,7 @@ ae_int_t saferdiv(double x, double y, double* r, ae_state *_state)
 
     *r = 0;
 
-    
+
     /*
      * Two special cases:
      * * Y=0
@@ -1329,7 +1329,7 @@ ae_int_t saferdiv(double x, double y, double* r, ae_state *_state)
         result = 0;
         return result;
     }
-    
+
     /*
      * make Y>0
      */
@@ -1338,7 +1338,7 @@ ae_int_t saferdiv(double x, double y, double* r, ae_state *_state)
         x = -x;
         y = -y;
     }
-    
+
     /*
      *
      */
@@ -1394,7 +1394,7 @@ double safeminposrv(double x, double y, double v, ae_state *_state)
 
     if( ae_fp_greater_eq(y,1) )
     {
-        
+
         /*
          * Y>=1, we can safely divide by Y
          */
@@ -1411,7 +1411,7 @@ double safeminposrv(double x, double y, double v, ae_state *_state)
     }
     else
     {
-        
+
         /*
          * Y<1, we can safely multiply by Y
          */
@@ -1443,10 +1443,10 @@ NOTES:
      Copyright by Bochkanov Sergey
 *************************************************************************/
 void apperiodicmap(double* x,
-     double a,
-     double b,
-     double* k,
-     ae_state *_state)
+                   double a,
+                   double b,
+                   double* k,
+                   ae_state *_state)
 {
 
     *k = 0;
@@ -1490,7 +1490,7 @@ double randomnormal(ae_state *_state)
         s = ae_sqr(u, _state)+ae_sqr(v, _state);
         if( ae_fp_greater(s,0)&&ae_fp_less(s,1) )
         {
-            
+
             /*
              * two Sqrt's instead of one to
              * avoid overflow when S is too small
@@ -1653,9 +1653,9 @@ ae_complex unserializecomplex(ae_serializer* s, ae_state *_state)
 Allocation of serializer: real array
 *************************************************************************/
 void allocrealarray(ae_serializer* s,
-     /* Real    */ ae_vector* v,
-     ae_int_t n,
-     ae_state *_state)
+                    /* Real    */ ae_vector* v,
+                    ae_int_t n,
+                    ae_state *_state)
 {
     ae_int_t i;
 
@@ -1676,9 +1676,9 @@ void allocrealarray(ae_serializer* s,
 Serialization: complex value
 *************************************************************************/
 void serializerealarray(ae_serializer* s,
-     /* Real    */ ae_vector* v,
-     ae_int_t n,
-     ae_state *_state)
+                        /* Real    */ ae_vector* v,
+                        ae_int_t n,
+                        ae_state *_state)
 {
     ae_int_t i;
 
@@ -1699,8 +1699,8 @@ void serializerealarray(ae_serializer* s,
 Unserialization: complex value
 *************************************************************************/
 void unserializerealarray(ae_serializer* s,
-     /* Real    */ ae_vector* v,
-     ae_state *_state)
+                          /* Real    */ ae_vector* v,
+                          ae_state *_state)
 {
     ae_int_t n;
     ae_int_t i;
@@ -1726,9 +1726,9 @@ void unserializerealarray(ae_serializer* s,
 Allocation of serializer: Integer array
 *************************************************************************/
 void allocintegerarray(ae_serializer* s,
-     /* Integer */ ae_vector* v,
-     ae_int_t n,
-     ae_state *_state)
+                       /* Integer */ ae_vector* v,
+                       ae_int_t n,
+                       ae_state *_state)
 {
     ae_int_t i;
 
@@ -1749,9 +1749,9 @@ void allocintegerarray(ae_serializer* s,
 Serialization: Integer array
 *************************************************************************/
 void serializeintegerarray(ae_serializer* s,
-     /* Integer */ ae_vector* v,
-     ae_int_t n,
-     ae_state *_state)
+                           /* Integer */ ae_vector* v,
+                           ae_int_t n,
+                           ae_state *_state)
 {
     ae_int_t i;
 
@@ -1772,8 +1772,8 @@ void serializeintegerarray(ae_serializer* s,
 Unserialization: complex value
 *************************************************************************/
 void unserializeintegerarray(ae_serializer* s,
-     /* Integer */ ae_vector* v,
-     ae_state *_state)
+                             /* Integer */ ae_vector* v,
+                             ae_state *_state)
 {
     ae_int_t n;
     ae_int_t i;
@@ -1799,10 +1799,10 @@ void unserializeintegerarray(ae_serializer* s,
 Allocation of serializer: real matrix
 *************************************************************************/
 void allocrealmatrix(ae_serializer* s,
-     /* Real    */ ae_matrix* v,
-     ae_int_t n0,
-     ae_int_t n1,
-     ae_state *_state)
+                     /* Real    */ ae_matrix* v,
+                     ae_int_t n0,
+                     ae_int_t n1,
+                     ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -1832,10 +1832,10 @@ void allocrealmatrix(ae_serializer* s,
 Serialization: complex value
 *************************************************************************/
 void serializerealmatrix(ae_serializer* s,
-     /* Real    */ ae_matrix* v,
-     ae_int_t n0,
-     ae_int_t n1,
-     ae_state *_state)
+                         /* Real    */ ae_matrix* v,
+                         ae_int_t n0,
+                         ae_int_t n1,
+                         ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -1865,8 +1865,8 @@ void serializerealmatrix(ae_serializer* s,
 Unserialization: complex value
 *************************************************************************/
 void unserializerealmatrix(ae_serializer* s,
-     /* Real    */ ae_matrix* v,
-     ae_state *_state)
+                           /* Real    */ ae_matrix* v,
+                           ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -1898,8 +1898,8 @@ void unserializerealmatrix(ae_serializer* s,
 Copy integer array
 *************************************************************************/
 void copyintegerarray(/* Integer */ ae_vector* src,
-     /* Integer */ ae_vector* dst,
-     ae_state *_state)
+                                    /* Integer */ ae_vector* dst,
+                                    ae_state *_state)
 {
     ae_int_t i;
 
@@ -1920,8 +1920,8 @@ void copyintegerarray(/* Integer */ ae_vector* src,
 Copy real array
 *************************************************************************/
 void copyrealarray(/* Real    */ ae_vector* src,
-     /* Real    */ ae_vector* dst,
-     ae_state *_state)
+                                 /* Real    */ ae_vector* dst,
+                                 ae_state *_state)
 {
     ae_int_t i;
 
@@ -1942,8 +1942,8 @@ void copyrealarray(/* Real    */ ae_vector* src,
 Copy real matrix
 *************************************************************************/
 void copyrealmatrix(/* Real    */ ae_matrix* src,
-     /* Real    */ ae_matrix* dst,
-     ae_state *_state)
+                                  /* Real    */ ae_matrix* dst,
+                                  ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -1979,12 +1979,12 @@ header B. It returns index of this record (not offset!), or -1 on failure.
      Copyright 28.03.2011 by Bochkanov Sergey
 *************************************************************************/
 ae_int_t recsearch(/* Integer */ ae_vector* a,
-     ae_int_t nrec,
-     ae_int_t nheader,
-     ae_int_t i0,
-     ae_int_t i1,
-     /* Integer */ ae_vector* b,
-     ae_state *_state)
+                                 ae_int_t nrec,
+                                 ae_int_t nheader,
+                                 ae_int_t i0,
+                                 ae_int_t i1,
+                                 /* Integer */ ae_vector* b,
+                                 ae_state *_state)
 {
     ae_int_t mididx;
     ae_int_t cflag;
@@ -2049,9 +2049,9 @@ It has following properties:
      Copyright 07.04.2013 by Bochkanov Sergey
 *************************************************************************/
 void splitlengtheven(ae_int_t tasksize,
-     ae_int_t* task0,
-     ae_int_t* task1,
-     ae_state *_state)
+                     ae_int_t* task0,
+                     ae_int_t* task1,
+                     ae_state *_state)
 {
 
     *task0 = 0;
@@ -2066,7 +2066,7 @@ void splitlengtheven(ae_int_t tasksize,
     }
     if( tasksize%2==0 )
     {
-        
+
         /*
          * Even division
          */
@@ -2080,7 +2080,7 @@ void splitlengtheven(ae_int_t tasksize,
     }
     else
     {
-        
+
         /*
          * Odd task size, split trailing odd part from it.
          */
@@ -2107,10 +2107,10 @@ It has following properties:
      Copyright 07.04.2013 by Bochkanov Sergey
 *************************************************************************/
 void splitlength(ae_int_t tasksize,
-     ae_int_t chunksize,
-     ae_int_t* task0,
-     ae_int_t* task1,
-     ae_state *_state)
+                 ae_int_t chunksize,
+                 ae_int_t* task0,
+                 ae_int_t* task1,
+                 ae_state *_state)
 {
 
     *task0 = 0;
@@ -2541,7 +2541,7 @@ Algorithm outputs permutation tables using two formats:
   value which was moved there from J-th position.
 * as a sequence of pairwise permutations. Sorted A[] may  be  obtained  by
   swaping A[i] and A[P2[i]] for all i from 0 to N-1.
-  
+
 INPUT PARAMETERS:
     A       -   unsorted array
     N       -   array size
@@ -2549,7 +2549,7 @@ INPUT PARAMETERS:
 OUPUT PARAMETERS:
     A       -   sorted array
     P1, P2  -   permutation tables, array[N]
-    
+
 NOTES:
     this function assumes that A[] is finite; it doesn't checks that
     condition. All other conditions (size of input arrays, etc.) are not
@@ -2559,10 +2559,10 @@ NOTES:
      Copyright 14.05.2008 by Bochkanov Sergey
 *************************************************************************/
 void tagsort(/* Real    */ ae_vector* a,
-     ae_int_t n,
-     /* Integer */ ae_vector* p1,
-     /* Integer */ ae_vector* p2,
-     ae_state *_state)
+                           ae_int_t n,
+                           /* Integer */ ae_vector* p1,
+                           /* Integer */ ae_vector* p2,
+                           ae_state *_state)
 {
     ae_frame _frame_block;
     apbuffers buf;
@@ -2590,11 +2590,11 @@ additional allocations can lead to severe performance degradation
      Copyright 14.05.2008 by Bochkanov Sergey
 *************************************************************************/
 void tagsortbuf(/* Real    */ ae_vector* a,
-     ae_int_t n,
-     /* Integer */ ae_vector* p1,
-     /* Integer */ ae_vector* p2,
-     apbuffers* buf,
-     ae_state *_state)
+                              ae_int_t n,
+                              /* Integer */ ae_vector* p1,
+                              /* Integer */ ae_vector* p2,
+                              apbuffers* buf,
+                              ae_state *_state)
 {
     ae_int_t i;
     ae_int_t lv;
@@ -2603,7 +2603,7 @@ void tagsortbuf(/* Real    */ ae_vector* a,
     ae_int_t rp;
 
 
-    
+
     /*
      * Special cases
      */
@@ -2619,7 +2619,7 @@ void tagsortbuf(/* Real    */ ae_vector* a,
         p2->ptr.p_int[0] = 0;
         return;
     }
-    
+
     /*
      * General case, N>1: prepare permutations table P1
      */
@@ -2628,14 +2628,14 @@ void tagsortbuf(/* Real    */ ae_vector* a,
     {
         p1->ptr.p_int[i] = i;
     }
-    
+
     /*
      * General case, N>1: sort, update P1
      */
     rvectorsetlengthatleast(&buf->ra0, n, _state);
     ivectorsetlengthatleast(&buf->ia0, n, _state);
     tagsortfasti(a, p1, &buf->ra0, &buf->ia0, n, _state);
-    
+
     /*
      * General case, N>1: fill permutations table P2
      *
@@ -2658,7 +2658,7 @@ void tagsortbuf(/* Real    */ ae_vector* a,
     }
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * calculate LP, LV, RP, RV
          */
@@ -2666,12 +2666,12 @@ void tagsortbuf(/* Real    */ ae_vector* a,
         lv = buf->ia1.ptr.p_int[lp];
         rv = p1->ptr.p_int[i];
         rp = buf->ia0.ptr.p_int[rv];
-        
+
         /*
          * Fill P2
          */
         p2->ptr.p_int[i] = rp;
-        
+
         /*
          * update PV and VP
          */
@@ -2700,11 +2700,11 @@ NOTES:
      Copyright 11.12.2008 by Bochkanov Sergey
 *************************************************************************/
 void tagsortfasti(/* Real    */ ae_vector* a,
-     /* Integer */ ae_vector* b,
-     /* Real    */ ae_vector* bufa,
-     /* Integer */ ae_vector* bufb,
-     ae_int_t n,
-     ae_state *_state)
+                                /* Integer */ ae_vector* b,
+                                /* Real    */ ae_vector* bufa,
+                                /* Integer */ ae_vector* bufb,
+                                ae_int_t n,
+                                ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -2714,7 +2714,7 @@ void tagsortfasti(/* Real    */ ae_vector* a,
     ae_int_t tmpi;
 
 
-    
+
     /*
      * Special case
      */
@@ -2722,7 +2722,7 @@ void tagsortfasti(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * Test for already sorted set
      */
@@ -2755,7 +2755,7 @@ void tagsortfasti(/* Real    */ ae_vector* a,
         }
         return;
     }
-    
+
     /*
      * General case
      */
@@ -2788,11 +2788,11 @@ NOTES:
      Copyright 11.12.2008 by Bochkanov Sergey
 *************************************************************************/
 void tagsortfastr(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* bufa,
-     /* Real    */ ae_vector* bufb,
-     ae_int_t n,
-     ae_state *_state)
+                                /* Real    */ ae_vector* b,
+                                /* Real    */ ae_vector* bufa,
+                                /* Real    */ ae_vector* bufb,
+                                ae_int_t n,
+                                ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -2801,7 +2801,7 @@ void tagsortfastr(/* Real    */ ae_vector* a,
     double tmpr;
 
 
-    
+
     /*
      * Special case
      */
@@ -2809,7 +2809,7 @@ void tagsortfastr(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * Test for already sorted set
      */
@@ -2842,7 +2842,7 @@ void tagsortfastr(/* Real    */ ae_vector* a,
         }
         return;
     }
-    
+
     /*
      * General case
      */
@@ -2875,9 +2875,9 @@ NOTES:
      Copyright 11.12.2008 by Bochkanov Sergey
 *************************************************************************/
 void tagsortfast(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* bufa,
-     ae_int_t n,
-     ae_state *_state)
+                               /* Real    */ ae_vector* bufa,
+                               ae_int_t n,
+                               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -2886,7 +2886,7 @@ void tagsortfast(/* Real    */ ae_vector* a,
     double tmpr;
 
 
-    
+
     /*
      * Special case
      */
@@ -2894,7 +2894,7 @@ void tagsortfast(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * Test for already sorted set
      */
@@ -2924,7 +2924,7 @@ void tagsortfast(/* Real    */ ae_vector* a,
         }
         return;
     }
-    
+
     /*
      * General case
      */
@@ -2951,10 +2951,10 @@ NOTES:
      Copyright 11.12.2008 by Bochkanov Sergey
 *************************************************************************/
 void tagsortmiddleir(/* Integer */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     ae_int_t offset,
-     ae_int_t n,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* b,
+                                   ae_int_t offset,
+                                   ae_int_t n,
+                                   ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -2963,7 +2963,7 @@ void tagsortmiddleir(/* Integer */ ae_vector* a,
     double tmpr;
 
 
-    
+
     /*
      * Special cases
      */
@@ -2971,7 +2971,7 @@ void tagsortmiddleir(/* Integer */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * General case, N>1: sort, update B
      */
@@ -3064,11 +3064,11 @@ PARAMETERS:
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void tagheappushi(/* Real    */ ae_vector* a,
-     /* Integer */ ae_vector* b,
-     ae_int_t* n,
-     double va,
-     ae_int_t vb,
-     ae_state *_state)
+                                /* Integer */ ae_vector* b,
+                                ae_int_t* n,
+                                double va,
+                                ae_int_t vb,
+                                ae_state *_state)
 {
     ae_int_t j;
     ae_int_t k;
@@ -3079,7 +3079,7 @@ void tagheappushi(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * N=0 is a special case
      */
@@ -3090,7 +3090,7 @@ void tagheappushi(/* Real    */ ae_vector* a,
         *n = *n+1;
         return;
     }
-    
+
     /*
      * add current point to the heap
      * (add to the bottom, then move up)
@@ -3107,7 +3107,7 @@ void tagheappushi(/* Real    */ ae_vector* a,
         v = a->ptr.p_double[k];
         if( ae_fp_less(v,va) )
         {
-            
+
             /*
              * swap with higher element
              */
@@ -3117,7 +3117,7 @@ void tagheappushi(/* Real    */ ae_vector* a,
         }
         else
         {
-            
+
             /*
              * element in its place. terminate.
              */
@@ -3145,11 +3145,11 @@ PARAMETERS:
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void tagheapreplacetopi(/* Real    */ ae_vector* a,
-     /* Integer */ ae_vector* b,
-     ae_int_t n,
-     double va,
-     ae_int_t vb,
-     ae_state *_state)
+                                      /* Integer */ ae_vector* b,
+                                      ae_int_t n,
+                                      double va,
+                                      ae_int_t vb,
+                                      ae_state *_state)
 {
     ae_int_t j;
     ae_int_t k1;
@@ -3163,7 +3163,7 @@ void tagheapreplacetopi(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * N=1 is a special case
      */
@@ -3173,7 +3173,7 @@ void tagheapreplacetopi(/* Real    */ ae_vector* a,
         b->ptr.p_int[0] = vb;
         return;
     }
-    
+
     /*
      * move down through heap:
      * * J  -   current element
@@ -3191,7 +3191,7 @@ void tagheapreplacetopi(/* Real    */ ae_vector* a,
     {
         if( k2>=n )
         {
-            
+
             /*
              * only one child.
              *
@@ -3209,7 +3209,7 @@ void tagheapreplacetopi(/* Real    */ ae_vector* a,
         }
         else
         {
-            
+
             /*
              * two childs
              */
@@ -3266,9 +3266,9 @@ decreased by 1.
      Copyright 28.02.2010 by Bochkanov Sergey
 *************************************************************************/
 void tagheappopi(/* Real    */ ae_vector* a,
-     /* Integer */ ae_vector* b,
-     ae_int_t* n,
-     ae_state *_state)
+                               /* Integer */ ae_vector* b,
+                               ae_int_t* n,
+                               ae_state *_state)
 {
     double va;
     ae_int_t vb;
@@ -3278,7 +3278,7 @@ void tagheappopi(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * N=1 is a special case
      */
@@ -3287,7 +3287,7 @@ void tagheappopi(/* Real    */ ae_vector* a,
         *n = 0;
         return;
     }
-    
+
     /*
      * swap top element and last element,
      * then reorder heap
@@ -3314,9 +3314,9 @@ RESULT:
 In the case when there aren't such elements, returns N.
 *************************************************************************/
 ae_int_t lowerbound(/* Real    */ ae_vector* a,
-     ae_int_t n,
-     double t,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  double t,
+                                  ae_state *_state)
 {
     ae_int_t l;
     ae_int_t half;
@@ -3359,9 +3359,9 @@ PARAMETERS:
 In the case when there aren't such elements, returns N.
 *************************************************************************/
 ae_int_t upperbound(/* Real    */ ae_vector* a,
-     ae_int_t n,
-     double t,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  double t,
+                                  ae_state *_state)
 {
     ae_int_t l;
     ae_int_t half;
@@ -3399,12 +3399,12 @@ applies same permutations to B.
      Copyright 06.09.2010 by Bochkanov Sergey
 *************************************************************************/
 static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
-     /* Integer */ ae_vector* b,
-     /* Real    */ ae_vector* bufa,
-     /* Integer */ ae_vector* bufb,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_state *_state)
+        /* Integer */ ae_vector* b,
+        /* Real    */ ae_vector* bufa,
+        /* Integer */ ae_vector* bufb,
+        ae_int_t i1,
+        ae_int_t i2,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -3420,7 +3420,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
     double vp;
 
 
-    
+
     /*
      * Fast exit
      */
@@ -3428,7 +3428,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * Non-recursive sort for small arrays
      */
@@ -3436,7 +3436,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
     {
         for(j=i1+1; j<=i2; j++)
         {
-            
+
             /*
              * Search elements [I1..J-1] for place to insert Jth element.
              *
@@ -3454,7 +3454,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
                 tmpi = k;
             }
             k = tmpi;
-            
+
             /*
              * Insert Jth element into Kth position
              */
@@ -3473,7 +3473,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
         }
         return;
     }
-    
+
     /*
      * Quicksort: choose pivot
      * Here we assume that I2-I1>=2
@@ -3500,7 +3500,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
         v0 = tmpr;
     }
     vp = v1;
-    
+
     /*
      * now pass through A/B and:
      * * move elements that are LESS than VP to the left of A/B
@@ -3517,7 +3517,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
         v0 = a->ptr.p_double[i];
         if( v0<vp )
         {
-            
+
             /*
              * LESS
              */
@@ -3532,7 +3532,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
         }
         if( v0==vp )
         {
-            
+
             /*
              * EQUAL
              */
@@ -3542,7 +3542,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
             cnteq = cnteq+1;
             continue;
         }
-        
+
         /*
          * GREATER
          */
@@ -3565,7 +3565,7 @@ static void tsort_tagsortfastirec(/* Real    */ ae_vector* a,
         a->ptr.p_double[j] = bufa->ptr.p_double[k];
         b->ptr.p_int[j] = bufb->ptr.p_int[k];
     }
-    
+
     /*
      * Sort left and right parts of the array (ignoring middle part)
      */
@@ -3582,12 +3582,12 @@ applies same permutations to B.
      Copyright 06.09.2010 by Bochkanov Sergey
 *************************************************************************/
 static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* bufa,
-     /* Real    */ ae_vector* bufb,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_state *_state)
+        /* Real    */ ae_vector* b,
+        /* Real    */ ae_vector* bufa,
+        /* Real    */ ae_vector* bufb,
+        ae_int_t i1,
+        ae_int_t i2,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -3604,7 +3604,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
     double vp;
 
 
-    
+
     /*
      * Fast exit
      */
@@ -3612,7 +3612,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * Non-recursive sort for small arrays
      */
@@ -3620,7 +3620,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
     {
         for(j=i1+1; j<=i2; j++)
         {
-            
+
             /*
              * Search elements [I1..J-1] for place to insert Jth element.
              *
@@ -3638,7 +3638,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
                 tmpi = k;
             }
             k = tmpi;
-            
+
             /*
              * Insert Jth element into Kth position
              */
@@ -3657,7 +3657,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
         }
         return;
     }
-    
+
     /*
      * Quicksort: choose pivot
      * Here we assume that I2-I1>=16
@@ -3684,7 +3684,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
         v0 = tmpr;
     }
     vp = v1;
-    
+
     /*
      * now pass through A/B and:
      * * move elements that are LESS than VP to the left of A/B
@@ -3701,7 +3701,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
         v0 = a->ptr.p_double[i];
         if( v0<vp )
         {
-            
+
             /*
              * LESS
              */
@@ -3716,7 +3716,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
         }
         if( v0==vp )
         {
-            
+
             /*
              * EQUAL
              */
@@ -3726,7 +3726,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
             cnteq = cnteq+1;
             continue;
         }
-        
+
         /*
          * GREATER
          */
@@ -3749,7 +3749,7 @@ static void tsort_tagsortfastrrec(/* Real    */ ae_vector* a,
         a->ptr.p_double[j] = bufa->ptr.p_double[k];
         b->ptr.p_double[j] = bufb->ptr.p_double[k];
     }
-    
+
     /*
      * Sort left and right parts of the array (ignoring middle part)
      */
@@ -3766,10 +3766,10 @@ applies same permutations to B.
      Copyright 06.09.2010 by Bochkanov Sergey
 *************************************************************************/
 static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* bufa,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_state *_state)
+        /* Real    */ ae_vector* bufa,
+        ae_int_t i1,
+        ae_int_t i2,
+        ae_state *_state)
 {
     ae_int_t cntless;
     ae_int_t cnteq;
@@ -3785,7 +3785,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
     double vp;
 
 
-    
+
     /*
      * Fast exit
      */
@@ -3793,7 +3793,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
     {
         return;
     }
-    
+
     /*
      * Non-recursive sort for small arrays
      */
@@ -3801,7 +3801,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
     {
         for(j=i1+1; j<=i2; j++)
         {
-            
+
             /*
              * Search elements [I1..J-1] for place to insert Jth element.
              *
@@ -3819,7 +3819,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
                 tmpi = k;
             }
             k = tmpi;
-            
+
             /*
              * Insert Jth element into Kth position
              */
@@ -3835,7 +3835,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
         }
         return;
     }
-    
+
     /*
      * Quicksort: choose pivot
      * Here we assume that I2-I1>=16
@@ -3862,7 +3862,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
         v0 = tmpr;
     }
     vp = v1;
-    
+
     /*
      * now pass through A/B and:
      * * move elements that are LESS than VP to the left of A/B
@@ -3879,7 +3879,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
         v0 = a->ptr.p_double[i];
         if( v0<vp )
         {
-            
+
             /*
              * LESS
              */
@@ -3893,7 +3893,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
         }
         if( v0==vp )
         {
-            
+
             /*
              * EQUAL
              */
@@ -3902,7 +3902,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
             cnteq = cnteq+1;
             continue;
         }
-        
+
         /*
          * GREATER
          */
@@ -3922,7 +3922,7 @@ static void tsort_tagsortfastrec(/* Real    */ ae_vector* a,
         k = i1+i;
         a->ptr.p_double[j] = bufa->ptr.p_double[k];
     }
-    
+
     /*
      * Sort left and right parts of the array (ignoring middle part)
      */
@@ -3944,16 +3944,16 @@ INPUT PARAMETERS:
                                 sum is zero
                 * False     -   ranks are not centered
     Buf     -   temporary buffers
-    
+
 NOTE: when IsCentered is True and all X[] are equal, this  function  fills
       X by zeros (exact zeros are used, not sum which is only approximately
       equal to zero).
 *************************************************************************/
 void rankx(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_bool iscentered,
-     apbuffers* buf,
-     ae_state *_state)
+                         ae_int_t n,
+                         ae_bool iscentered,
+                         apbuffers* buf,
+                         ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -3962,7 +3962,7 @@ void rankx(/* Real    */ ae_vector* x,
     double voffs;
 
 
-    
+
     /*
      * Prepare
      */
@@ -3989,7 +3989,7 @@ void rankx(/* Real    */ ae_vector* x,
         buf->ia1.ptr.p_int[i] = i;
     }
     tagsortfasti(&buf->ra1, &buf->ia1, &buf->ra2, &buf->ia2, n, _state);
-    
+
     /*
      * Special test for all values being equal
      */
@@ -4009,7 +4009,7 @@ void rankx(/* Real    */ ae_vector* x,
         }
         return;
     }
-    
+
     /*
      * compute tied ranks
      */
@@ -4031,7 +4031,7 @@ void rankx(/* Real    */ ae_vector* x,
         }
         i = j;
     }
-    
+
     /*
      * back to x
      */
@@ -4060,15 +4060,15 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool cmatrixrank1f(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Complex */ ae_vector* u,
-     ae_int_t iu,
-     /* Complex */ ae_vector* v,
-     ae_int_t iv,
-     ae_state *_state)
+                      ae_int_t n,
+                      /* Complex */ ae_matrix* a,
+                      ae_int_t ia,
+                      ae_int_t ja,
+                      /* Complex */ ae_vector* u,
+                      ae_int_t iu,
+                      /* Complex */ ae_vector* v,
+                      ae_int_t iv,
+                      ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4090,15 +4090,15 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixrank1f(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Real    */ ae_vector* u,
-     ae_int_t iu,
-     /* Real    */ ae_vector* v,
-     ae_int_t iv,
-     ae_state *_state)
+                      ae_int_t n,
+                      /* Real    */ ae_matrix* a,
+                      ae_int_t ia,
+                      ae_int_t ja,
+                      /* Real    */ ae_vector* u,
+                      ae_int_t iu,
+                      /* Real    */ ae_vector* v,
+                      ae_int_t iv,
+                      ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4120,16 +4120,16 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool cmatrixmvf(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t opa,
-     /* Complex */ ae_vector* x,
-     ae_int_t ix,
-     /* Complex */ ae_vector* y,
-     ae_int_t iy,
-     ae_state *_state)
+                   ae_int_t n,
+                   /* Complex */ ae_matrix* a,
+                   ae_int_t ia,
+                   ae_int_t ja,
+                   ae_int_t opa,
+                   /* Complex */ ae_vector* x,
+                   ae_int_t ix,
+                   /* Complex */ ae_vector* y,
+                   ae_int_t iy,
+                   ae_state *_state)
 {
     ae_bool result;
 
@@ -4147,16 +4147,16 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixmvf(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t opa,
-     /* Real    */ ae_vector* x,
-     ae_int_t ix,
-     /* Real    */ ae_vector* y,
-     ae_int_t iy,
-     ae_state *_state)
+                   ae_int_t n,
+                   /* Real    */ ae_matrix* a,
+                   ae_int_t ia,
+                   ae_int_t ja,
+                   ae_int_t opa,
+                   /* Real    */ ae_vector* x,
+                   ae_int_t ix,
+                   /* Real    */ ae_vector* y,
+                   ae_int_t iy,
+                   ae_state *_state)
 {
     ae_bool result;
 
@@ -4174,17 +4174,17 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool cmatrixrighttrsmf(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Complex */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                          ae_int_t n,
+                          /* Complex */ ae_matrix* a,
+                          ae_int_t i1,
+                          ae_int_t j1,
+                          ae_bool isupper,
+                          ae_bool isunit,
+                          ae_int_t optype,
+                          /* Complex */ ae_matrix* x,
+                          ae_int_t i2,
+                          ae_int_t j2,
+                          ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4206,17 +4206,17 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool cmatrixlefttrsmf(ae_int_t m,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Complex */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                         ae_int_t n,
+                         /* Complex */ ae_matrix* a,
+                         ae_int_t i1,
+                         ae_int_t j1,
+                         ae_bool isupper,
+                         ae_bool isunit,
+                         ae_int_t optype,
+                         /* Complex */ ae_matrix* x,
+                         ae_int_t i2,
+                         ae_int_t j2,
+                         ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4238,17 +4238,17 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixrighttrsmf(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Real    */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                          ae_int_t n,
+                          /* Real    */ ae_matrix* a,
+                          ae_int_t i1,
+                          ae_int_t j1,
+                          ae_bool isupper,
+                          ae_bool isunit,
+                          ae_int_t optype,
+                          /* Real    */ ae_matrix* x,
+                          ae_int_t i2,
+                          ae_int_t j2,
+                          ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4270,17 +4270,17 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixlefttrsmf(ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     /* Real    */ ae_matrix* x,
-     ae_int_t i2,
-     ae_int_t j2,
-     ae_state *_state)
+                         ae_int_t n,
+                         /* Real    */ ae_matrix* a,
+                         ae_int_t i1,
+                         ae_int_t j1,
+                         ae_bool isupper,
+                         ae_bool isunit,
+                         ae_int_t optype,
+                         /* Real    */ ae_matrix* x,
+                         ae_int_t i2,
+                         ae_int_t j2,
+                         ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4302,18 +4302,18 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool cmatrixsyrkf(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Complex */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state)
+                     ae_int_t k,
+                     double alpha,
+                     /* Complex */ ae_matrix* a,
+                     ae_int_t ia,
+                     ae_int_t ja,
+                     ae_int_t optypea,
+                     double beta,
+                     /* Complex */ ae_matrix* c,
+                     ae_int_t ic,
+                     ae_int_t jc,
+                     ae_bool isupper,
+                     ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4335,18 +4335,18 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixsyrkf(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state)
+                     ae_int_t k,
+                     double alpha,
+                     /* Real    */ ae_matrix* a,
+                     ae_int_t ia,
+                     ae_int_t ja,
+                     ae_int_t optypea,
+                     double beta,
+                     /* Real    */ ae_matrix* c,
+                     ae_int_t ic,
+                     ae_int_t jc,
+                     ae_bool isupper,
+                     ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4368,22 +4368,22 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixgemmf(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                     ae_int_t n,
+                     ae_int_t k,
+                     double alpha,
+                     /* Real    */ ae_matrix* a,
+                     ae_int_t ia,
+                     ae_int_t ja,
+                     ae_int_t optypea,
+                     /* Real    */ ae_matrix* b,
+                     ae_int_t ib,
+                     ae_int_t jb,
+                     ae_int_t optypeb,
+                     double beta,
+                     /* Real    */ ae_matrix* c,
+                     ae_int_t ic,
+                     ae_int_t jc,
+                     ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4405,22 +4405,22 @@ Fast kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool cmatrixgemmf(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     ae_complex alpha,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     /* Complex */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     ae_complex beta,
-     /* Complex */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                     ae_int_t n,
+                     ae_int_t k,
+                     ae_complex alpha,
+                     /* Complex */ ae_matrix* a,
+                     ae_int_t ia,
+                     ae_int_t ja,
+                     ae_int_t optypea,
+                     /* Complex */ ae_matrix* b,
+                     ae_int_t ib,
+                     ae_int_t jb,
+                     ae_int_t optypeb,
+                     ae_complex beta,
+                     /* Complex */ ae_matrix* c,
+                     ae_int_t ic,
+                     ae_int_t jc,
+                     ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_ABLAS
     ae_bool result;
@@ -4484,22 +4484,22 @@ INPUT PARAMETERS
      Bochkanov Sergey
 *************************************************************************/
 void cmatrixgemmk(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     ae_complex alpha,
-     /* Complex */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     /* Complex */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     ae_complex beta,
-     /* Complex */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                  ae_int_t n,
+                  ae_int_t k,
+                  ae_complex alpha,
+                  /* Complex */ ae_matrix* a,
+                  ae_int_t ia,
+                  ae_int_t ja,
+                  ae_int_t optypea,
+                  /* Complex */ ae_matrix* b,
+                  ae_int_t ib,
+                  ae_int_t jb,
+                  ae_int_t optypeb,
+                  ae_complex beta,
+                  /* Complex */ ae_matrix* c,
+                  ae_int_t ic,
+                  ae_int_t jc,
+                  ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -4539,7 +4539,7 @@ void cmatrixgemmk(ae_int_t m,
     ae_int_t offsb;
 
 
-    
+
     /*
      * if matrix size is zero
      */
@@ -4547,7 +4547,7 @@ void cmatrixgemmk(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * Try optimized code
      */
@@ -4555,7 +4555,7 @@ void cmatrixgemmk(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * if K=0, then C=Beta*C
      */
@@ -4586,7 +4586,7 @@ void cmatrixgemmk(ae_int_t m,
         }
         return;
     }
-    
+
     /*
      * This phase is not really necessary, but compiler complains
      * about "possibly uninitialized variables"
@@ -4599,7 +4599,7 @@ void cmatrixgemmk(ae_int_t m,
     b0y = 0;
     b1x = 0;
     b1y = 0;
-    
+
     /*
      * General case
      */
@@ -4609,13 +4609,13 @@ void cmatrixgemmk(ae_int_t m,
         j = 0;
         while(j<n)
         {
-            
+
             /*
              * Choose between specialized 4x4 code and general code
              */
             if( i+2<=m&&j+2<=n )
             {
-                
+
                 /*
                  * Specialized 4x4 code for [I..I+3]x[J..J+3] submatrix of C.
                  *
@@ -4735,7 +4735,7 @@ void cmatrixgemmk(ae_int_t m,
             }
             else
             {
-                
+
                 /*
                  * Determine submatrix [I0..I1]x[J0..J1] to process
                  */
@@ -4743,7 +4743,7 @@ void cmatrixgemmk(ae_int_t m,
                 i1 = ae_minint(i+1, m-1, _state);
                 j0 = j;
                 j1 = ae_minint(j+1, n-1, _state);
-                
+
                 /*
                  * Process submatrix
                  */
@@ -4861,28 +4861,28 @@ INPUT PARAMETERS
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixgemmk(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                  ae_int_t n,
+                  ae_int_t k,
+                  double alpha,
+                  /* Real    */ ae_matrix* a,
+                  ae_int_t ia,
+                  ae_int_t ja,
+                  ae_int_t optypea,
+                  /* Real    */ ae_matrix* b,
+                  ae_int_t ib,
+                  ae_int_t jb,
+                  ae_int_t optypeb,
+                  double beta,
+                  /* Real    */ ae_matrix* c,
+                  ae_int_t ic,
+                  ae_int_t jc,
+                  ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
 
 
-    
+
     /*
      * if matrix size is zero
      */
@@ -4890,7 +4890,7 @@ void rmatrixgemmk(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * Try optimized code
      */
@@ -4898,7 +4898,7 @@ void rmatrixgemmk(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * if K=0, then C=Beta*C
      */
@@ -4929,7 +4929,7 @@ void rmatrixgemmk(ae_int_t m,
         }
         return;
     }
-    
+
     /*
      * Call specialized code.
      *
@@ -4984,20 +4984,20 @@ INPUT PARAMETERS
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixgemmk44v00(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                       ae_int_t n,
+                       ae_int_t k,
+                       double alpha,
+                       /* Real    */ ae_matrix* a,
+                       ae_int_t ia,
+                       ae_int_t ja,
+                       /* Real    */ ae_matrix* b,
+                       ae_int_t ib,
+                       ae_int_t jb,
+                       double beta,
+                       /* Real    */ ae_matrix* c,
+                       ae_int_t ic,
+                       ae_int_t jc,
+                       ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -5046,7 +5046,7 @@ void rmatrixgemmk44v00(ae_int_t m,
 
 
     ae_assert(ae_fp_neq(alpha,0), "RMatrixGEMMK44V00: internal error (Alpha=0)", _state);
-    
+
     /*
      * if matrix size is zero
      */
@@ -5054,7 +5054,7 @@ void rmatrixgemmk44v00(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * A*B
      */
@@ -5064,13 +5064,13 @@ void rmatrixgemmk44v00(ae_int_t m,
         j = 0;
         while(j<n)
         {
-            
+
             /*
              * Choose between specialized 4x4 code and general code
              */
             if( i+4<=m&&j+4<=n )
             {
-                
+
                 /*
                  * Specialized 4x4 code for [I..I+3]x[J..J+3] submatrix of C.
                  *
@@ -5104,7 +5104,7 @@ void rmatrixgemmk44v00(ae_int_t m,
                 v31 = 0.0;
                 v32 = 0.0;
                 v33 = 0.0;
-                
+
                 /*
                  * Different variants of internal loop
                  */
@@ -5178,7 +5178,7 @@ void rmatrixgemmk44v00(ae_int_t m,
             }
             else
             {
-                
+
                 /*
                  * Determine submatrix [I0..I1]x[J0..J1] to process
                  */
@@ -5186,7 +5186,7 @@ void rmatrixgemmk44v00(ae_int_t m,
                 i1 = ae_minint(i+3, m-1, _state);
                 j0 = j;
                 j1 = ae_minint(j+3, n-1, _state);
-                
+
                 /*
                  * Process submatrix
                  */
@@ -5248,20 +5248,20 @@ INPUT PARAMETERS
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixgemmk44v01(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                       ae_int_t n,
+                       ae_int_t k,
+                       double alpha,
+                       /* Real    */ ae_matrix* a,
+                       ae_int_t ia,
+                       ae_int_t ja,
+                       /* Real    */ ae_matrix* b,
+                       ae_int_t ib,
+                       ae_int_t jb,
+                       double beta,
+                       /* Real    */ ae_matrix* c,
+                       ae_int_t ic,
+                       ae_int_t jc,
+                       ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -5310,7 +5310,7 @@ void rmatrixgemmk44v01(ae_int_t m,
 
 
     ae_assert(ae_fp_neq(alpha,0), "RMatrixGEMMK44V00: internal error (Alpha=0)", _state);
-    
+
     /*
      * if matrix size is zero
      */
@@ -5318,7 +5318,7 @@ void rmatrixgemmk44v01(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * A*B'
      */
@@ -5328,13 +5328,13 @@ void rmatrixgemmk44v01(ae_int_t m,
         j = 0;
         while(j<n)
         {
-            
+
             /*
              * Choose between specialized 4x4 code and general code
              */
             if( i+4<=m&&j+4<=n )
             {
-                
+
                 /*
                  * Specialized 4x4 code for [I..I+3]x[J..J+3] submatrix of C.
                  *
@@ -5438,7 +5438,7 @@ void rmatrixgemmk44v01(ae_int_t m,
             }
             else
             {
-                
+
                 /*
                  * Determine submatrix [I0..I1]x[J0..J1] to process
                  */
@@ -5446,7 +5446,7 @@ void rmatrixgemmk44v01(ae_int_t m,
                 i1 = ae_minint(i+3, m-1, _state);
                 j0 = j;
                 j1 = ae_minint(j+3, n-1, _state);
-                
+
                 /*
                  * Process submatrix
                  */
@@ -5508,20 +5508,20 @@ INPUT PARAMETERS
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixgemmk44v10(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                       ae_int_t n,
+                       ae_int_t k,
+                       double alpha,
+                       /* Real    */ ae_matrix* a,
+                       ae_int_t ia,
+                       ae_int_t ja,
+                       /* Real    */ ae_matrix* b,
+                       ae_int_t ib,
+                       ae_int_t jb,
+                       double beta,
+                       /* Real    */ ae_matrix* c,
+                       ae_int_t ic,
+                       ae_int_t jc,
+                       ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -5570,7 +5570,7 @@ void rmatrixgemmk44v10(ae_int_t m,
 
 
     ae_assert(ae_fp_neq(alpha,0), "RMatrixGEMMK44V00: internal error (Alpha=0)", _state);
-    
+
     /*
      * if matrix size is zero
      */
@@ -5578,7 +5578,7 @@ void rmatrixgemmk44v10(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * A'*B
      */
@@ -5588,13 +5588,13 @@ void rmatrixgemmk44v10(ae_int_t m,
         j = 0;
         while(j<n)
         {
-            
+
             /*
              * Choose between specialized 4x4 code and general code
              */
             if( i+4<=m&&j+4<=n )
             {
-                
+
                 /*
                  * Specialized 4x4 code for [I..I+3]x[J..J+3] submatrix of C.
                  *
@@ -5698,7 +5698,7 @@ void rmatrixgemmk44v10(ae_int_t m,
             }
             else
             {
-                
+
                 /*
                  * Determine submatrix [I0..I1]x[J0..J1] to process
                  */
@@ -5706,7 +5706,7 @@ void rmatrixgemmk44v10(ae_int_t m,
                 i1 = ae_minint(i+3, m-1, _state);
                 j0 = j;
                 j1 = ae_minint(j+3, n-1, _state);
-                
+
                 /*
                  * Process submatrix
                  */
@@ -5769,20 +5769,20 @@ INPUT PARAMETERS
      Bochkanov Sergey
 *************************************************************************/
 void rmatrixgemmk44v11(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                       ae_int_t n,
+                       ae_int_t k,
+                       double alpha,
+                       /* Real    */ ae_matrix* a,
+                       ae_int_t ia,
+                       ae_int_t ja,
+                       /* Real    */ ae_matrix* b,
+                       ae_int_t ib,
+                       ae_int_t jb,
+                       double beta,
+                       /* Real    */ ae_matrix* c,
+                       ae_int_t ic,
+                       ae_int_t jc,
+                       ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -5831,7 +5831,7 @@ void rmatrixgemmk44v11(ae_int_t m,
 
 
     ae_assert(ae_fp_neq(alpha,0), "RMatrixGEMMK44V00: internal error (Alpha=0)", _state);
-    
+
     /*
      * if matrix size is zero
      */
@@ -5839,7 +5839,7 @@ void rmatrixgemmk44v11(ae_int_t m,
     {
         return;
     }
-    
+
     /*
      * A'*B'
      */
@@ -5849,13 +5849,13 @@ void rmatrixgemmk44v11(ae_int_t m,
         j = 0;
         while(j<n)
         {
-            
+
             /*
              * Choose between specialized 4x4 code and general code
              */
             if( i+4<=m&&j+4<=n )
             {
-                
+
                 /*
                  * Specialized 4x4 code for [I..I+3]x[J..J+3] submatrix of C.
                  *
@@ -5959,7 +5959,7 @@ void rmatrixgemmk44v11(ae_int_t m,
             }
             else
             {
-                
+
                 /*
                  * Determine submatrix [I0..I1]x[J0..J1] to process
                  */
@@ -5967,7 +5967,7 @@ void rmatrixgemmk44v11(ae_int_t m,
                 i1 = ae_minint(i+3, m-1, _state);
                 j0 = j;
                 j1 = ae_minint(j+3, n-1, _state);
-                
+
                 /*
                  * Process submatrix
                  */
@@ -6012,18 +6012,18 @@ MKL-based kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixsyrkmkl(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper,
-     ae_state *_state)
+                       ae_int_t k,
+                       double alpha,
+                       /* Real    */ ae_matrix* a,
+                       ae_int_t ia,
+                       ae_int_t ja,
+                       ae_int_t optypea,
+                       double beta,
+                       /* Real    */ ae_matrix* c,
+                       ae_int_t ic,
+                       ae_int_t jc,
+                       ae_bool isupper,
+                       ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_MKL
     ae_bool result;
@@ -6045,22 +6045,22 @@ MKL-based kernel
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixgemmmkl(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     /* Real    */ ae_matrix* a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     /* Real    */ ae_matrix* b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     double beta,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_state *_state)
+                       ae_int_t n,
+                       ae_int_t k,
+                       double alpha,
+                       /* Real    */ ae_matrix* a,
+                       ae_int_t ia,
+                       ae_int_t ja,
+                       ae_int_t optypea,
+                       /* Real    */ ae_matrix* b,
+                       ae_int_t ib,
+                       ae_int_t jb,
+                       ae_int_t optypeb,
+                       double beta,
+                       /* Real    */ ae_matrix* c,
+                       ae_int_t ic,
+                       ae_int_t jc,
+                       ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_MKL
     ae_bool result;
@@ -6077,9 +6077,9 @@ ae_bool rmatrixgemmmkl(ae_int_t m,
 
 
 double vectornorm2(/* Real    */ ae_vector* x,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_state *_state)
+                                 ae_int_t i1,
+                                 ae_int_t i2,
+                                 ae_state *_state)
 {
     ae_int_t n;
     ae_int_t ix;
@@ -6124,9 +6124,9 @@ double vectornorm2(/* Real    */ ae_vector* x,
 
 
 ae_int_t vectoridxabsmax(/* Real    */ ae_vector* x,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_state *_state)
+                                       ae_int_t i1,
+                                       ae_int_t i2,
+                                       ae_state *_state)
 {
     ae_int_t i;
     ae_int_t result;
@@ -6145,10 +6145,10 @@ ae_int_t vectoridxabsmax(/* Real    */ ae_vector* x,
 
 
 ae_int_t columnidxabsmax(/* Real    */ ae_matrix* x,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_int_t j,
-     ae_state *_state)
+                                       ae_int_t i1,
+                                       ae_int_t i2,
+                                       ae_int_t j,
+                                       ae_state *_state)
 {
     ae_int_t i;
     ae_int_t result;
@@ -6167,10 +6167,10 @@ ae_int_t columnidxabsmax(/* Real    */ ae_matrix* x,
 
 
 ae_int_t rowidxabsmax(/* Real    */ ae_matrix* x,
-     ae_int_t j1,
-     ae_int_t j2,
-     ae_int_t i,
-     ae_state *_state)
+                                    ae_int_t j1,
+                                    ae_int_t j2,
+                                    ae_int_t i,
+                                    ae_state *_state)
 {
     ae_int_t j;
     ae_int_t result;
@@ -6189,12 +6189,12 @@ ae_int_t rowidxabsmax(/* Real    */ ae_matrix* x,
 
 
 double upperhessenberg1norm(/* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_int_t j1,
-     ae_int_t j2,
-     /* Real    */ ae_vector* work,
-     ae_state *_state)
+        ae_int_t i1,
+        ae_int_t i2,
+        ae_int_t j1,
+        ae_int_t j2,
+        /* Real    */ ae_vector* work,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -6223,16 +6223,16 @@ double upperhessenberg1norm(/* Real    */ ae_matrix* a,
 
 
 void copymatrix(/* Real    */ ae_matrix* a,
-     ae_int_t is1,
-     ae_int_t is2,
-     ae_int_t js1,
-     ae_int_t js2,
-     /* Real    */ ae_matrix* b,
-     ae_int_t id1,
-     ae_int_t id2,
-     ae_int_t jd1,
-     ae_int_t jd2,
-     ae_state *_state)
+                              ae_int_t is1,
+                              ae_int_t is2,
+                              ae_int_t js1,
+                              ae_int_t js2,
+                              /* Real    */ ae_matrix* b,
+                              ae_int_t id1,
+                              ae_int_t id2,
+                              ae_int_t jd1,
+                              ae_int_t jd2,
+                              ae_state *_state)
 {
     ae_int_t isrc;
     ae_int_t idst;
@@ -6253,12 +6253,12 @@ void copymatrix(/* Real    */ ae_matrix* a,
 
 
 void inplacetranspose(/* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_int_t j1,
-     ae_int_t j2,
-     /* Real    */ ae_vector* work,
-     ae_state *_state)
+                                    ae_int_t i1,
+                                    ae_int_t i2,
+                                    ae_int_t j1,
+                                    ae_int_t j2,
+                                    /* Real    */ ae_vector* work,
+                                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -6286,16 +6286,16 @@ void inplacetranspose(/* Real    */ ae_matrix* a,
 
 
 void copyandtranspose(/* Real    */ ae_matrix* a,
-     ae_int_t is1,
-     ae_int_t is2,
-     ae_int_t js1,
-     ae_int_t js2,
-     /* Real    */ ae_matrix* b,
-     ae_int_t id1,
-     ae_int_t id2,
-     ae_int_t jd1,
-     ae_int_t jd2,
-     ae_state *_state)
+                                    ae_int_t is1,
+                                    ae_int_t is2,
+                                    ae_int_t js1,
+                                    ae_int_t js2,
+                                    /* Real    */ ae_matrix* b,
+                                    ae_int_t id1,
+                                    ae_int_t id2,
+                                    ae_int_t jd1,
+                                    ae_int_t jd2,
+                                    ae_state *_state)
 {
     ae_int_t isrc;
     ae_int_t jdst;
@@ -6316,20 +6316,20 @@ void copyandtranspose(/* Real    */ ae_matrix* a,
 
 
 void matrixvectormultiply(/* Real    */ ae_matrix* a,
-     ae_int_t i1,
-     ae_int_t i2,
-     ae_int_t j1,
-     ae_int_t j2,
-     ae_bool trans,
-     /* Real    */ ae_vector* x,
-     ae_int_t ix1,
-     ae_int_t ix2,
-     double alpha,
-     /* Real    */ ae_vector* y,
-     ae_int_t iy1,
-     ae_int_t iy2,
-     double beta,
-     ae_state *_state)
+                                        ae_int_t i1,
+                                        ae_int_t i2,
+                                        ae_int_t j1,
+                                        ae_int_t j2,
+                                        ae_bool trans,
+                                        /* Real    */ ae_vector* x,
+                                        ae_int_t ix1,
+                                        ae_int_t ix2,
+                                        double alpha,
+                                        /* Real    */ ae_vector* y,
+                                        ae_int_t iy1,
+                                        ae_int_t iy2,
+                                        double beta,
+                                        ae_state *_state)
 {
     ae_int_t i;
     double v;
@@ -6337,7 +6337,7 @@ void matrixvectormultiply(/* Real    */ ae_matrix* a,
 
     if( !trans )
     {
-        
+
         /*
          * y := alpha*A*x + beta*y;
          */
@@ -6347,7 +6347,7 @@ void matrixvectormultiply(/* Real    */ ae_matrix* a,
         }
         ae_assert(j2-j1==ix2-ix1, "MatrixVectorMultiply: A and X dont match!", _state);
         ae_assert(i2-i1==iy2-iy1, "MatrixVectorMultiply: A and Y dont match!", _state);
-        
+
         /*
          * beta*y
          */
@@ -6362,7 +6362,7 @@ void matrixvectormultiply(/* Real    */ ae_matrix* a,
         {
             ae_v_muld(&y->ptr.p_double[iy1], 1, ae_v_len(iy1,iy2), beta);
         }
-        
+
         /*
          * alpha*A*x
          */
@@ -6374,7 +6374,7 @@ void matrixvectormultiply(/* Real    */ ae_matrix* a,
     }
     else
     {
-        
+
         /*
          * y := alpha*A'*x + beta*y;
          */
@@ -6384,7 +6384,7 @@ void matrixvectormultiply(/* Real    */ ae_matrix* a,
         }
         ae_assert(i2-i1==ix2-ix1, "MatrixVectorMultiply: A and X dont match!", _state);
         ae_assert(j2-j1==iy2-iy1, "MatrixVectorMultiply: A and Y dont match!", _state);
-        
+
         /*
          * beta*y
          */
@@ -6399,7 +6399,7 @@ void matrixvectormultiply(/* Real    */ ae_matrix* a,
         {
             ae_v_muld(&y->ptr.p_double[iy1], 1, ae_v_len(iy1,iy2), beta);
         }
-        
+
         /*
          * alpha*A'*x
          */
@@ -6438,26 +6438,26 @@ double pythag2(double x, double y, ae_state *_state)
 
 
 void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
-     ae_int_t ai1,
-     ae_int_t ai2,
-     ae_int_t aj1,
-     ae_int_t aj2,
-     ae_bool transa,
-     /* Real    */ ae_matrix* b,
-     ae_int_t bi1,
-     ae_int_t bi2,
-     ae_int_t bj1,
-     ae_int_t bj2,
-     ae_bool transb,
-     double alpha,
-     /* Real    */ ae_matrix* c,
-     ae_int_t ci1,
-     ae_int_t ci2,
-     ae_int_t cj1,
-     ae_int_t cj2,
-     double beta,
-     /* Real    */ ae_vector* work,
-     ae_state *_state)
+                                        ae_int_t ai1,
+                                        ae_int_t ai2,
+                                        ae_int_t aj1,
+                                        ae_int_t aj2,
+                                        ae_bool transa,
+                                        /* Real    */ ae_matrix* b,
+                                        ae_int_t bi1,
+                                        ae_int_t bi2,
+                                        ae_int_t bj1,
+                                        ae_int_t bj2,
+                                        ae_bool transb,
+                                        double alpha,
+                                        /* Real    */ ae_matrix* c,
+                                        ae_int_t ci1,
+                                        ae_int_t ci2,
+                                        ae_int_t cj1,
+                                        ae_int_t cj2,
+                                        double beta,
+                                        /* Real    */ ae_vector* work,
+                                        ae_state *_state)
 {
     ae_int_t arows;
     ae_int_t acols;
@@ -6472,7 +6472,7 @@ void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
     double v;
 
 
-    
+
     /*
      * Setup
      */
@@ -6502,7 +6502,7 @@ void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
         return;
     }
     crows = arows;
-    
+
     /*
      * Test WORK
      */
@@ -6511,7 +6511,7 @@ void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
     i = ae_maxint(i, bcols, _state);
     work->ptr.p_double[1] = 0;
     work->ptr.p_double[i] = 0;
-    
+
     /*
      * Prepare C
      */
@@ -6532,7 +6532,7 @@ void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
             ae_v_muld(&c->ptr.pp_double[i][cj1], 1, ae_v_len(cj1,cj2), beta);
         }
     }
-    
+
     /*
      * A*B
      */
@@ -6549,7 +6549,7 @@ void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
         }
         return;
     }
-    
+
     /*
      * A*B'
      */
@@ -6580,7 +6580,7 @@ void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
             return;
         }
     }
-    
+
     /*
      * A'*B
      */
@@ -6597,7 +6597,7 @@ void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
         }
         return;
     }
-    
+
     /*
      * A'*B'
      */
@@ -6642,13 +6642,13 @@ void matrixmatrixmultiply(/* Real    */ ae_matrix* a,
 
 
 void hermitianmatrixvectormultiply(/* Complex */ ae_matrix* a,
-     ae_bool isupper,
-     ae_int_t i1,
-     ae_int_t i2,
-     /* Complex */ ae_vector* x,
-     ae_complex alpha,
-     /* Complex */ ae_vector* y,
-     ae_state *_state)
+        ae_bool isupper,
+        ae_int_t i1,
+        ae_int_t i2,
+        /* Complex */ ae_vector* x,
+        ae_complex alpha,
+        /* Complex */ ae_vector* y,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t ba1;
@@ -6665,7 +6665,7 @@ void hermitianmatrixvectormultiply(/* Complex */ ae_matrix* a,
     {
         return;
     }
-    
+
     /*
      * Let A = L + D + U, where
      *  L is strictly lower triangular (main diagonal is zero)
@@ -6680,7 +6680,7 @@ void hermitianmatrixvectormultiply(/* Complex */ ae_matrix* a,
     {
         y->ptr.p_complex[i-i1+1] = ae_c_mul(a->ptr.pp_complex[i][i],x->ptr.p_complex[i-i1+1]);
     }
-    
+
     /*
      * Add L*x + U*x
      */
@@ -6688,7 +6688,7 @@ void hermitianmatrixvectormultiply(/* Complex */ ae_matrix* a,
     {
         for(i=i1; i<=i2-1; i++)
         {
-            
+
             /*
              * Add L*x to the result
              */
@@ -6697,7 +6697,7 @@ void hermitianmatrixvectormultiply(/* Complex */ ae_matrix* a,
             by2 = n;
             ba1 = i+1;
             ae_v_caddc(&y->ptr.p_complex[by1], 1, &a->ptr.pp_complex[i][ba1], 1, "Conj", ae_v_len(by1,by2), v);
-            
+
             /*
              * Add U*x to the result
              */
@@ -6712,7 +6712,7 @@ void hermitianmatrixvectormultiply(/* Complex */ ae_matrix* a,
     {
         for(i=i1+1; i<=i2; i++)
         {
-            
+
             /*
              * Add L*x to the result
              */
@@ -6721,7 +6721,7 @@ void hermitianmatrixvectormultiply(/* Complex */ ae_matrix* a,
             ba1 = i1;
             v = ae_v_cdotproduct(&x->ptr.p_complex[bx1], 1, "N", &a->ptr.pp_complex[i][ba1], 1, "N", ae_v_len(bx1,bx2));
             y->ptr.p_complex[i-i1+1] = ae_c_add(y->ptr.p_complex[i-i1+1],v);
-            
+
             /*
              * Add U*x to the result
              */
@@ -6737,14 +6737,14 @@ void hermitianmatrixvectormultiply(/* Complex */ ae_matrix* a,
 
 
 void hermitianrank2update(/* Complex */ ae_matrix* a,
-     ae_bool isupper,
-     ae_int_t i1,
-     ae_int_t i2,
-     /* Complex */ ae_vector* x,
-     /* Complex */ ae_vector* y,
-     /* Complex */ ae_vector* t,
-     ae_complex alpha,
-     ae_state *_state)
+                                        ae_bool isupper,
+                                        ae_int_t i1,
+                                        ae_int_t i2,
+                                        /* Complex */ ae_vector* x,
+                                        /* Complex */ ae_vector* y,
+                                        /* Complex */ ae_vector* t,
+                                        ae_complex alpha,
+                                        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t tp1;
@@ -6822,9 +6822,9 @@ MODIFICATIONS:
      September 30, 1994
 *************************************************************************/
 void generatereflection(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double* tau,
-     ae_state *_state)
+                                      ae_int_t n,
+                                      double* tau,
+                                      ae_state *_state)
 {
     ae_int_t j;
     double alpha;
@@ -6841,7 +6841,7 @@ void generatereflection(/* Real    */ ae_vector* x,
         *tau = 0;
         return;
     }
-    
+
     /*
      * Scale if needed (to avoid overflow/underflow during intermediate
      * calculations).
@@ -6872,7 +6872,7 @@ void generatereflection(/* Real    */ ae_vector* x,
             }
         }
     }
-    
+
     /*
      * XNORM = DNRM2( N-1, X, INCX )
      */
@@ -6888,7 +6888,7 @@ void generatereflection(/* Real    */ ae_vector* x,
     }
     if( ae_fp_eq(xnorm,0) )
     {
-        
+
         /*
          * H  =  I
          */
@@ -6896,7 +6896,7 @@ void generatereflection(/* Real    */ ae_vector* x,
         x->ptr.p_double[1] = x->ptr.p_double[1]*s;
         return;
     }
-    
+
     /*
      * general case
      */
@@ -6910,7 +6910,7 @@ void generatereflection(/* Real    */ ae_vector* x,
     v = 1/(alpha-beta);
     ae_v_muld(&x->ptr.p_double[2], 1, ae_v_len(2,n), v);
     x->ptr.p_double[1] = beta;
-    
+
     /*
      * Scale back outputs
      */
@@ -6947,14 +6947,14 @@ Output parameters:
      September 30, 1994
 *************************************************************************/
 void applyreflectionfromtheleft(/* Real    */ ae_matrix* c,
-     double tau,
-     /* Real    */ ae_vector* v,
-     ae_int_t m1,
-     ae_int_t m2,
-     ae_int_t n1,
-     ae_int_t n2,
-     /* Real    */ ae_vector* work,
-     ae_state *_state)
+        double tau,
+        /* Real    */ ae_vector* v,
+        ae_int_t m1,
+        ae_int_t m2,
+        ae_int_t n1,
+        ae_int_t n2,
+        /* Real    */ ae_vector* work,
+        ae_state *_state)
 {
     double t;
     ae_int_t i;
@@ -6964,7 +6964,7 @@ void applyreflectionfromtheleft(/* Real    */ ae_matrix* c,
     {
         return;
     }
-    
+
     /*
      * w := C' * v
      */
@@ -6977,7 +6977,7 @@ void applyreflectionfromtheleft(/* Real    */ ae_matrix* c,
         t = v->ptr.p_double[i+1-m1];
         ae_v_addd(&work->ptr.p_double[n1], 1, &c->ptr.pp_double[i][n1], 1, ae_v_len(n1,n2), t);
     }
-    
+
     /*
      * C := C - tau * v * w'
      */
@@ -7018,14 +7018,14 @@ Output parameters:
      September 30, 1994
 *************************************************************************/
 void applyreflectionfromtheright(/* Real    */ ae_matrix* c,
-     double tau,
-     /* Real    */ ae_vector* v,
-     ae_int_t m1,
-     ae_int_t m2,
-     ae_int_t n1,
-     ae_int_t n2,
-     /* Real    */ ae_vector* work,
-     ae_state *_state)
+        double tau,
+        /* Real    */ ae_vector* v,
+        ae_int_t m1,
+        ae_int_t m2,
+        ae_int_t n1,
+        ae_int_t n2,
+        /* Real    */ ae_vector* work,
+        ae_state *_state)
 {
     double t;
     ae_int_t i;
@@ -7043,7 +7043,7 @@ void applyreflectionfromtheright(/* Real    */ ae_matrix* c,
         t = t*tau;
         ae_v_subd(&c->ptr.pp_double[i][n1], 1, &v->ptr.p_double[1], 1, ae_v_len(n1,n2), t);
     }
-    
+
     /*
      * This line is necessary to avoid spurious compiler warnings
      */
@@ -7090,9 +7090,9 @@ handle errors when intermediate results cause an overflow.
      September 30, 1994
 *************************************************************************/
 void complexgeneratereflection(/* Complex */ ae_vector* x,
-     ae_int_t n,
-     ae_complex* tau,
-     ae_state *_state)
+        ae_int_t n,
+        ae_complex* tau,
+        ae_state *_state)
 {
     ae_int_t j;
     ae_complex alpha;
@@ -7113,7 +7113,7 @@ void complexgeneratereflection(/* Complex */ ae_vector* x,
         *tau = ae_complex_from_d(0);
         return;
     }
-    
+
     /*
      * Scale if needed (to avoid overflow/underflow during intermediate
      * calculations).
@@ -7139,7 +7139,7 @@ void complexgeneratereflection(/* Complex */ ae_vector* x,
             ae_v_cmulc(&x->ptr.p_complex[1], 1, ae_v_len(1,n), v);
         }
     }
-    
+
     /*
      * calculate
      */
@@ -7183,7 +7183,7 @@ void complexgeneratereflection(/* Complex */ ae_vector* x,
     }
     alpha = ae_complex_from_d(beta);
     x->ptr.p_complex[1] = alpha;
-    
+
     /*
      * Scale back
      */
@@ -7223,14 +7223,14 @@ Output parameters:
      September 30, 1994
 *************************************************************************/
 void complexapplyreflectionfromtheleft(/* Complex */ ae_matrix* c,
-     ae_complex tau,
-     /* Complex */ ae_vector* v,
-     ae_int_t m1,
-     ae_int_t m2,
-     ae_int_t n1,
-     ae_int_t n2,
-     /* Complex */ ae_vector* work,
-     ae_state *_state)
+        ae_complex tau,
+        /* Complex */ ae_vector* v,
+        ae_int_t m1,
+        ae_int_t m2,
+        ae_int_t n1,
+        ae_int_t n2,
+        /* Complex */ ae_vector* work,
+        ae_state *_state)
 {
     ae_complex t;
     ae_int_t i;
@@ -7240,7 +7240,7 @@ void complexapplyreflectionfromtheleft(/* Complex */ ae_matrix* c,
     {
         return;
     }
-    
+
     /*
      * w := C^T * conj(v)
      */
@@ -7253,7 +7253,7 @@ void complexapplyreflectionfromtheleft(/* Complex */ ae_matrix* c,
         t = ae_c_conj(v->ptr.p_complex[i+1-m1], _state);
         ae_v_caddc(&work->ptr.p_complex[n1], 1, &c->ptr.pp_complex[i][n1], 1, "N", ae_v_len(n1,n2), t);
     }
-    
+
     /*
      * C := C - tau * v * w^T
      */
@@ -7294,14 +7294,14 @@ Output parameters:
      September 30, 1994
 *************************************************************************/
 void complexapplyreflectionfromtheright(/* Complex */ ae_matrix* c,
-     ae_complex tau,
-     /* Complex */ ae_vector* v,
-     ae_int_t m1,
-     ae_int_t m2,
-     ae_int_t n1,
-     ae_int_t n2,
-     /* Complex */ ae_vector* work,
-     ae_state *_state)
+        ae_complex tau,
+        /* Complex */ ae_vector* v,
+        ae_int_t m1,
+        ae_int_t m2,
+        ae_int_t n1,
+        ae_int_t n2,
+        /* Complex */ ae_vector* work,
+        ae_state *_state)
 {
     ae_complex t;
     ae_int_t i;
@@ -7312,7 +7312,7 @@ void complexapplyreflectionfromtheright(/* Complex */ ae_matrix* c,
     {
         return;
     }
-    
+
     /*
      * w := C * v
      */
@@ -7322,7 +7322,7 @@ void complexapplyreflectionfromtheright(/* Complex */ ae_matrix* c,
         t = ae_v_cdotproduct(&c->ptr.pp_complex[i][n1], 1, "N", &v->ptr.p_complex[1], 1, "N", ae_v_len(n1,n2));
         work->ptr.p_complex[i] = t;
     }
-    
+
     /*
      * C := C - w * conj(v^T)
      */
@@ -7339,13 +7339,13 @@ void complexapplyreflectionfromtheright(/* Complex */ ae_matrix* c,
 
 
 void symmetricmatrixvectormultiply(/* Real    */ ae_matrix* a,
-     ae_bool isupper,
-     ae_int_t i1,
-     ae_int_t i2,
-     /* Real    */ ae_vector* x,
-     double alpha,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+        ae_bool isupper,
+        ae_int_t i1,
+        ae_int_t i2,
+        /* Real    */ ae_vector* x,
+        double alpha,
+        /* Real    */ ae_vector* y,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t ba1;
@@ -7363,7 +7363,7 @@ void symmetricmatrixvectormultiply(/* Real    */ ae_matrix* a,
     {
         return;
     }
-    
+
     /*
      * Let A = L + D + U, where
      *  L is strictly lower triangular (main diagonal is zero)
@@ -7378,7 +7378,7 @@ void symmetricmatrixvectormultiply(/* Real    */ ae_matrix* a,
     {
         y->ptr.p_double[i-i1+1] = a->ptr.pp_double[i][i]*x->ptr.p_double[i-i1+1];
     }
-    
+
     /*
      * Add L*x + U*x
      */
@@ -7386,7 +7386,7 @@ void symmetricmatrixvectormultiply(/* Real    */ ae_matrix* a,
     {
         for(i=i1; i<=i2-1; i++)
         {
-            
+
             /*
              * Add L*x to the result
              */
@@ -7396,7 +7396,7 @@ void symmetricmatrixvectormultiply(/* Real    */ ae_matrix* a,
             ba1 = i+1;
             ba2 = i2;
             ae_v_addd(&y->ptr.p_double[by1], 1, &a->ptr.pp_double[i][ba1], 1, ae_v_len(by1,by2), v);
-            
+
             /*
              * Add U*x to the result
              */
@@ -7412,7 +7412,7 @@ void symmetricmatrixvectormultiply(/* Real    */ ae_matrix* a,
     {
         for(i=i1+1; i<=i2; i++)
         {
-            
+
             /*
              * Add L*x to the result
              */
@@ -7422,7 +7422,7 @@ void symmetricmatrixvectormultiply(/* Real    */ ae_matrix* a,
             ba2 = i-1;
             v = ae_v_dotproduct(&x->ptr.p_double[bx1], 1, &a->ptr.pp_double[i][ba1], 1, ae_v_len(bx1,bx2));
             y->ptr.p_double[i-i1+1] = y->ptr.p_double[i-i1+1]+v;
-            
+
             /*
              * Add U*x to the result
              */
@@ -7440,14 +7440,14 @@ void symmetricmatrixvectormultiply(/* Real    */ ae_matrix* a,
 
 
 void symmetricrank2update(/* Real    */ ae_matrix* a,
-     ae_bool isupper,
-     ae_int_t i1,
-     ae_int_t i2,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* t,
-     double alpha,
-     ae_state *_state)
+                                        ae_bool isupper,
+                                        ae_int_t i1,
+                                        ae_int_t i2,
+                                        /* Real    */ ae_vector* x,
+                                        /* Real    */ ae_vector* y,
+                                        /* Real    */ ae_vector* t,
+                                        double alpha,
+                                        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t tp1;
@@ -7514,15 +7514,15 @@ Output parameters:
 Utility subroutine.
 *************************************************************************/
 void applyrotationsfromtheleft(ae_bool isforward,
-     ae_int_t m1,
-     ae_int_t m2,
-     ae_int_t n1,
-     ae_int_t n2,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_vector* s,
-     /* Real    */ ae_matrix* a,
-     /* Real    */ ae_vector* work,
-     ae_state *_state)
+                               ae_int_t m1,
+                               ae_int_t m2,
+                               ae_int_t n1,
+                               ae_int_t n2,
+                               /* Real    */ ae_vector* c,
+                               /* Real    */ ae_vector* s,
+                               /* Real    */ ae_matrix* a,
+                               /* Real    */ ae_vector* work,
+                               ae_state *_state)
 {
     ae_int_t j;
     ae_int_t jp1;
@@ -7535,7 +7535,7 @@ void applyrotationsfromtheleft(ae_bool isforward,
     {
         return;
     }
-    
+
     /*
      * Form  P * A
      */
@@ -7543,7 +7543,7 @@ void applyrotationsfromtheleft(ae_bool isforward,
     {
         if( n1!=n2 )
         {
-            
+
             /*
              * Common case: N1<>N2
              */
@@ -7564,7 +7564,7 @@ void applyrotationsfromtheleft(ae_bool isforward,
         }
         else
         {
-            
+
             /*
              * Special case: N1=N2
              */
@@ -7585,7 +7585,7 @@ void applyrotationsfromtheleft(ae_bool isforward,
     {
         if( n1!=n2 )
         {
-            
+
             /*
              * Common case: N1<>N2
              */
@@ -7606,7 +7606,7 @@ void applyrotationsfromtheleft(ae_bool isforward,
         }
         else
         {
-            
+
             /*
              * Special case: N1=N2
              */
@@ -7652,15 +7652,15 @@ Output parameters:
 Utility subroutine.
 *************************************************************************/
 void applyrotationsfromtheright(ae_bool isforward,
-     ae_int_t m1,
-     ae_int_t m2,
-     ae_int_t n1,
-     ae_int_t n2,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_vector* s,
-     /* Real    */ ae_matrix* a,
-     /* Real    */ ae_vector* work,
-     ae_state *_state)
+                                ae_int_t m1,
+                                ae_int_t m2,
+                                ae_int_t n1,
+                                ae_int_t n2,
+                                /* Real    */ ae_vector* c,
+                                /* Real    */ ae_vector* s,
+                                /* Real    */ ae_matrix* a,
+                                /* Real    */ ae_vector* work,
+                                ae_state *_state)
 {
     ae_int_t j;
     ae_int_t jp1;
@@ -7669,7 +7669,7 @@ void applyrotationsfromtheright(ae_bool isforward,
     double temp;
 
 
-    
+
     /*
      * Form A * P'
      */
@@ -7677,7 +7677,7 @@ void applyrotationsfromtheright(ae_bool isforward,
     {
         if( m1!=m2 )
         {
-            
+
             /*
              * Common case: M1<>M2
              */
@@ -7698,7 +7698,7 @@ void applyrotationsfromtheright(ae_bool isforward,
         }
         else
         {
-            
+
             /*
              * Special case: M1=M2
              */
@@ -7719,7 +7719,7 @@ void applyrotationsfromtheright(ae_bool isforward,
     {
         if( m1!=m2 )
         {
-            
+
             /*
              * Common case: M1<>M2
              */
@@ -7740,7 +7740,7 @@ void applyrotationsfromtheright(ae_bool isforward,
         }
         else
         {
-            
+
             /*
              * Special case: M1=M2
              */
@@ -7769,11 +7769,11 @@ The subroutine generates the elementary rotation, so that:
 CS**2 + SN**2 = 1
 *************************************************************************/
 void generaterotation(double f,
-     double g,
-     double* cs,
-     double* sn,
-     double* r,
-     ae_state *_state)
+                      double g,
+                      double* cs,
+                      double* sn,
+                      double* r,
+                      ae_state *_state)
 {
     double f1;
     double g1;
@@ -7867,9 +7867,9 @@ Result:
 Algorithm implemented on the basis of subroutine DHSEQR (LAPACK 3.0 library).
 *************************************************************************/
 ae_bool upperhessenbergschurdecomposition(/* Real    */ ae_matrix* h,
-     ae_int_t n,
-     /* Real    */ ae_matrix* s,
-     ae_state *_state)
+        ae_int_t n,
+        /* Real    */ ae_matrix* s,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector wi;
@@ -7890,14 +7890,14 @@ ae_bool upperhessenbergschurdecomposition(/* Real    */ ae_matrix* h,
 
 
 void internalschurdecomposition(/* Real    */ ae_matrix* h,
-     ae_int_t n,
-     ae_int_t tneeded,
-     ae_int_t zneeded,
-     /* Real    */ ae_vector* wr,
-     /* Real    */ ae_vector* wi,
-     /* Real    */ ae_matrix* z,
-     ae_int_t* info,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t tneeded,
+        ae_int_t zneeded,
+        /* Real    */ ae_vector* wr,
+        /* Real    */ ae_vector* wi,
+        /* Real    */ ae_matrix* z,
+        ae_int_t* info,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector work;
@@ -7954,20 +7954,20 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
     ae_vector_init(&tmpwr, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&tmpwi, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Set the order of the multi-shift QR algorithm to be used.
      * If you want to tune algorithm, change this values
      */
     ns = 12;
     maxb = 50;
-    
+
     /*
      * Now 2 < NS <= MAXB < NH.
      */
     maxb = ae_maxint(3, maxb, _state);
     ns = ae_minint(maxb, ns, _state);
-    
+
     /*
      * Initialize
      */
@@ -7990,7 +7990,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
     initz = zneeded==2;
     wantz = zneeded!=0;
     *info = 0;
-    
+
     /*
      * Initialize Z, if necessary
      */
@@ -8012,7 +8012,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
             }
         }
     }
-    
+
     /*
      * Quick return if possible
      */
@@ -8028,7 +8028,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Set rows and columns 1 to N to zero below the first
      * subdiagonal.
@@ -8040,18 +8040,18 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
             h->ptr.pp_double[i][j] = 0;
         }
     }
-    
+
     /*
      * Test if N is sufficiently small
      */
     if( (ns<=2||ns>n)||maxb>=n )
     {
-        
+
         /*
          * Use the standard double-shift algorithm
          */
         hsschur_internalauxschur(wantt, wantz, n, 1, n, h, wr, wi, 1, n, z, &work, &workv3, &workc1, &works1, info, _state);
-        
+
         /*
          * fill entries under diagonal blocks of T with zeros
          */
@@ -8085,7 +8085,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
     unfl = ae_minrealnumber;
     ulp = 2*ae_machineepsilon;
     smlnum = unfl*(n/ulp);
-    
+
     /*
      * I1 and I2 are the indices of the first row and last column of H
      * to which transformations must be applied. If eigenvalues only are
@@ -8093,12 +8093,12 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
      */
     i1 = 1;
     i2 = n;
-    
+
     /*
      * ITN is the total number of multiple-shift QR iterations allowed.
      */
     itn = 30*n;
-    
+
     /*
      * The main loop begins here. I is the loop index and decreases from
      * IHI to ILO in steps of at most MAXB. Each iteration of the loop
@@ -8112,7 +8112,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
         l = 1;
         if( i<1 )
         {
-            
+
             /*
              * fill entries under diagonal blocks of T with zeros
              */
@@ -8140,14 +8140,14 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                     }
                 }
             }
-            
+
             /*
              * Exit
              */
             ae_frame_leave(_state);
             return;
         }
-        
+
         /*
          * Perform multiple-shift QR iterations on rows and columns ILO to I
          * until a submatrix of order at most MAXB splits off at the bottom
@@ -8156,7 +8156,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
         failflag = ae_true;
         for(its=0; its<=itn; its++)
         {
-            
+
             /*
              * Look for a single small subdiagonal element.
              */
@@ -8175,13 +8175,13 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
             l = k;
             if( l>1 )
             {
-                
+
                 /*
                  * H(L,L-1) is negligible.
                  */
                 h->ptr.pp_double[l][l-1] = 0;
             }
-            
+
             /*
              * Exit from loop if a submatrix of order <= MAXB has split off.
              */
@@ -8190,7 +8190,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                 failflag = ae_false;
                 break;
             }
-            
+
             /*
              * Now the active submatrix is in rows and columns L to I. If
              * eigenvalues only are being computed, only the active submatrix
@@ -8198,7 +8198,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
              */
             if( its==20||its==30 )
             {
-                
+
                 /*
                  * Exceptional shifts.
                  */
@@ -8210,7 +8210,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
             }
             else
             {
-                
+
                 /*
                  * Use eigenvalues of trailing submatrix of order NS as shifts.
                  */
@@ -8223,7 +8223,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                 }
                 if( ierr>0 )
                 {
-                    
+
                     /*
                      * If DLAHQR failed to compute all NS eigenvalues, use the
                      * unconverged diagonal elements as the remaining shifts.
@@ -8235,7 +8235,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                     }
                 }
             }
-            
+
             /*
              * Form the first column of (G-w(1)) (G-w(2)) . . . (G-w(ns))
              * where G is the Hessenberg submatrix H(L:I,L:I) and w is
@@ -8254,7 +8254,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                 {
                     if( ae_fp_eq(wi->ptr.p_double[j],0) )
                     {
-                        
+
                         /*
                          * real shift
                          */
@@ -8267,7 +8267,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                     {
                         if( ae_fp_greater(wi->ptr.p_double[j],0) )
                         {
-                            
+
                             /*
                              * complex conjugate pair of shifts
                              */
@@ -8284,7 +8284,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                             nv = nv+2;
                         }
                     }
-                    
+
                     /*
                      * Scale V(1:NV) so that max(abs(V(i))) = 1. If V is zero,
                      * reset it to the unit vector.
@@ -8307,13 +8307,13 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                     }
                 }
             }
-            
+
             /*
              * Multiple-shift QR step
              */
             for(k=l; k<=i-1; k++)
             {
-                
+
                 /*
                  * The first iteration of this loop determines a reflection G
                  * from the vector V and applies it from left and right to H,
@@ -8342,13 +8342,13 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                     }
                 }
                 v.ptr.p_double[1] = 1;
-                
+
                 /*
                  * Apply G from the left to transform the rows of the matrix in
                  * columns K to I2.
                  */
                 applyreflectionfromtheleft(h, tau, &v, k, k+nr-1, k, i2, &work, _state);
-                
+
                 /*
                  * Apply G from the right to transform the columns of the
                  * matrix in rows I1 to min(K+NR,I).
@@ -8356,7 +8356,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                 applyreflectionfromtheright(h, tau, &v, i1, ae_minint(k+nr, i, _state), k, k+nr-1, &work, _state);
                 if( wantz )
                 {
-                    
+
                     /*
                      * Accumulate transformations in the matrix Z
                      */
@@ -8364,7 +8364,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
                 }
             }
         }
-        
+
         /*
          * Failure to converge in remaining number of iterations
          */
@@ -8374,7 +8374,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
             ae_frame_leave(_state);
             return;
         }
-        
+
         /*
          * A submatrix of order <= MAXB in rows and columns L to I has split
          * off. Use the double-shift QR algorithm to handle it.
@@ -8385,7 +8385,7 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
             ae_frame_leave(_state);
             return;
         }
-        
+
         /*
          * Decrement number of remaining iterations, and return to start of
          * the main loop with a new value of I.
@@ -8398,22 +8398,22 @@ void internalschurdecomposition(/* Real    */ ae_matrix* h,
 
 
 static void hsschur_internalauxschur(ae_bool wantt,
-     ae_bool wantz,
-     ae_int_t n,
-     ae_int_t ilo,
-     ae_int_t ihi,
-     /* Real    */ ae_matrix* h,
-     /* Real    */ ae_vector* wr,
-     /* Real    */ ae_vector* wi,
-     ae_int_t iloz,
-     ae_int_t ihiz,
-     /* Real    */ ae_matrix* z,
-     /* Real    */ ae_vector* work,
-     /* Real    */ ae_vector* workv3,
-     /* Real    */ ae_vector* workc1,
-     /* Real    */ ae_vector* works1,
-     ae_int_t* info,
-     ae_state *_state)
+                                     ae_bool wantz,
+                                     ae_int_t n,
+                                     ae_int_t ilo,
+                                     ae_int_t ihi,
+                                     /* Real    */ ae_matrix* h,
+                                     /* Real    */ ae_vector* wr,
+                                     /* Real    */ ae_vector* wi,
+                                     ae_int_t iloz,
+                                     ae_int_t ihiz,
+                                     /* Real    */ ae_matrix* z,
+                                     /* Real    */ ae_vector* work,
+                                     /* Real    */ ae_vector* workv3,
+                                     /* Real    */ ae_vector* workc1,
+                                     /* Real    */ ae_vector* works1,
+                                     ae_int_t* info,
+                                     ae_state *_state)
 {
     ae_int_t i;
     ae_int_t i1;
@@ -8473,7 +8473,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
     dat1 = 0.75;
     dat2 = -0.4375;
     ulp = ae_machineepsilon;
-    
+
     /*
      * Quick return if possible
      */
@@ -8489,14 +8489,14 @@ static void hsschur_internalauxschur(ae_bool wantt,
     }
     nh = ihi-ilo+1;
     nz = ihiz-iloz+1;
-    
+
     /*
      * Set machine-dependent constants for the stopping criterion.
      * If norm(H) <= sqrt(MaxRealNumber), overflow should not occur.
      */
     unfl = ae_minrealnumber;
     smlnum = unfl*(nh/ulp);
-    
+
     /*
      * I1 and I2 are the indices of the first row and last column of H
      * to which transformations must be applied. If eigenvalues only are
@@ -8504,12 +8504,12 @@ static void hsschur_internalauxschur(ae_bool wantt,
      */
     i1 = 1;
     i2 = n;
-    
+
     /*
      * ITN is the total number of QR iterations allowed.
      */
     itn = 30*nh;
-    
+
     /*
      * The main loop begins here. I is the loop index and decreases from
      * IHI to ILO in steps of 1 or 2. Each iteration of the loop works
@@ -8525,7 +8525,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
         {
             return;
         }
-        
+
         /*
          * Perform QR iterations on rows and columns ILO to I until a
          * submatrix of order 1 or 2 splits off at the bottom because a
@@ -8534,7 +8534,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
         failflag = ae_true;
         for(its=0; its<=itn; its++)
         {
-            
+
             /*
              * Look for a single small subdiagonal element.
              */
@@ -8553,13 +8553,13 @@ static void hsschur_internalauxschur(ae_bool wantt,
             l = k;
             if( l>ilo )
             {
-                
+
                 /*
                  * H(L,L-1) is negligible
                  */
                 h->ptr.pp_double[l][l-1] = 0;
             }
-            
+
             /*
              * Exit from loop if a submatrix of order 1 or 2 has split off.
              */
@@ -8568,7 +8568,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                 failflag = ae_false;
                 break;
             }
-            
+
             /*
              * Now the active submatrix is in rows and columns L to I. If
              * eigenvalues only are being computed, only the active submatrix
@@ -8576,7 +8576,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
              */
             if( its==10||its==20 )
             {
-                
+
                 /*
                  * Exceptional shift.
                  */
@@ -8587,7 +8587,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
             }
             else
             {
-                
+
                 /*
                  * Prepare to use Francis' double shift
                  * (i.e. 2nd degree generalized Rayleigh quotient)
@@ -8600,7 +8600,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                 disc = disc*disc+h43h34;
                 if( ae_fp_greater(disc,0) )
                 {
-                    
+
                     /*
                      * Real roots: use Wilkinson's shift twice
                      */
@@ -8619,13 +8619,13 @@ static void hsschur_internalauxschur(ae_bool wantt,
                     h43h34 = 0;
                 }
             }
-            
+
             /*
              * Look for two consecutive small subdiagonal elements.
              */
             for(m=i-2; m>=l; m--)
             {
-                
+
                 /*
                  * Determine the effect of starting the double-shift QR
                  * iteration at row M, and see if this would make H(M,M-1)
@@ -8659,13 +8659,13 @@ static void hsschur_internalauxschur(ae_bool wantt,
                     break;
                 }
             }
-            
+
             /*
              * Double-shift QR step
              */
             for(k=m; k<=i-1; k++)
             {
-                
+
                 /*
                  * The first iteration of this loop determines a reflection G
                  * from the vector V and applies it from left and right to H,
@@ -8707,7 +8707,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                 {
                     v3 = workv3->ptr.p_double[3];
                     t3 = t1*v3;
-                    
+
                     /*
                      * Apply G from the left to transform the rows of the matrix
                      * in columns K to I2.
@@ -8719,7 +8719,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                         h->ptr.pp_double[k+1][j] = h->ptr.pp_double[k+1][j]-sum*t2;
                         h->ptr.pp_double[k+2][j] = h->ptr.pp_double[k+2][j]-sum*t3;
                     }
-                    
+
                     /*
                      * Apply G from the right to transform the columns of the
                      * matrix in rows I1 to min(K+3,I).
@@ -8733,7 +8733,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                     }
                     if( wantz )
                     {
-                        
+
                         /*
                          * Accumulate transformations in the matrix Z
                          */
@@ -8750,7 +8750,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                 {
                     if( nr==2 )
                     {
-                        
+
                         /*
                          * Apply G from the left to transform the rows of the matrix
                          * in columns K to I2.
@@ -8761,7 +8761,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                             h->ptr.pp_double[k][j] = h->ptr.pp_double[k][j]-sum*t1;
                             h->ptr.pp_double[k+1][j] = h->ptr.pp_double[k+1][j]-sum*t2;
                         }
-                        
+
                         /*
                          * Apply G from the right to transform the columns of the
                          * matrix in rows I1 to min(K+3,I).
@@ -8774,7 +8774,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                         }
                         if( wantz )
                         {
-                            
+
                             /*
                              * Accumulate transformations in the matrix Z
                              */
@@ -8791,7 +8791,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
         }
         if( failflag )
         {
-            
+
             /*
              * Failure to converge in remaining number of iterations
              */
@@ -8800,7 +8800,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
         }
         if( l==i )
         {
-            
+
             /*
              * H(I,I-1) is negligible: one eigenvalue has converged.
              */
@@ -8811,7 +8811,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
         {
             if( l==i-1 )
             {
-                
+
                 /*
                  * H(I-1,I-2) is negligible: a pair of eigenvalues have converged.
                  *
@@ -8833,7 +8833,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                 h->ptr.pp_double[i][i] = hii;
                 if( wantt )
                 {
-                    
+
                     /*
                      * Apply the transformation to the rest of H.
                      */
@@ -8849,7 +8849,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                 }
                 if( wantz )
                 {
-                    
+
                     /*
                      * Apply the transformation to Z.
                      */
@@ -8859,7 +8859,7 @@ static void hsschur_internalauxschur(ae_bool wantt,
                 }
             }
         }
-        
+
         /*
          * Decrement number of remaining iterations, and return to start of
          * the main loop with new value of I.
@@ -8871,16 +8871,16 @@ static void hsschur_internalauxschur(ae_bool wantt,
 
 
 static void hsschur_aux2x2schur(double* a,
-     double* b,
-     double* c,
-     double* d,
-     double* rt1r,
-     double* rt1i,
-     double* rt2r,
-     double* rt2i,
-     double* cs,
-     double* sn,
-     ae_state *_state)
+                                double* b,
+                                double* c,
+                                double* d,
+                                double* rt1r,
+                                double* rt1i,
+                                double* rt2r,
+                                double* rt2i,
+                                double* cs,
+                                double* sn,
+                                ae_state *_state)
 {
     double multpl;
     double aa;
@@ -8919,7 +8919,7 @@ static void hsschur_aux2x2schur(double* a,
     {
         if( ae_fp_eq(*b,0) )
         {
-            
+
             /*
              * Swap rows and columns
              */
@@ -8946,21 +8946,21 @@ static void hsschur_aux2x2schur(double* a,
                 bcmis = ae_minreal(ae_fabs(*b, _state), ae_fabs(*c, _state), _state)*hsschur_extschursigntoone(*b, _state)*hsschur_extschursigntoone(*c, _state);
                 scl = ae_maxreal(ae_fabs(p, _state), bcmax, _state);
                 z = p/scl*p+bcmax/scl*bcmis;
-                
+
                 /*
                  * If Z is of the order of the machine accuracy, postpone the
                  * decision on the nature of eigenvalues
                  */
                 if( ae_fp_greater_eq(z,multpl*eps) )
                 {
-                    
+
                     /*
                      * Real eigenvalues. Compute A and D.
                      */
                     z = p+hsschur_extschursign(ae_sqrt(scl, _state)*ae_sqrt(z, _state), p, _state);
                     *a = *d+z;
                     *d = *d-bcmax/z*bcmis;
-                    
+
                     /*
                      * Compute B and the rotation matrix
                      */
@@ -8972,7 +8972,7 @@ static void hsschur_aux2x2schur(double* a,
                 }
                 else
                 {
-                    
+
                     /*
                      * Complex eigenvalues, or real (almost) equal eigenvalues.
                      * Make diagonal elements equal.
@@ -8981,7 +8981,7 @@ static void hsschur_aux2x2schur(double* a,
                     tau = pythag2(sigma, temp, _state);
                     *cs = ae_sqrt(0.5*(1+ae_fabs(sigma, _state)/tau), _state);
                     *sn = -p/(tau*(*cs))*hsschur_extschursign(1, sigma, _state);
-                    
+
                     /*
                      * Compute [ AA  BB ] = [ A  B ] [ CS -SN ]
                      *         [ CC  DD ]   [ C  D ] [ SN  CS ]
@@ -8990,7 +8990,7 @@ static void hsschur_aux2x2schur(double* a,
                     bb = -*a*(*sn)+*b*(*cs);
                     cc = *c*(*cs)+*d*(*sn);
                     dd = -*c*(*sn)+*d*(*cs);
-                    
+
                     /*
                      * Compute [ A  B ] = [ CS  SN ] [ AA  BB ]
                      *         [ C  D ]   [-SN  CS ] [ CC  DD ]
@@ -9008,7 +9008,7 @@ static void hsschur_aux2x2schur(double* a,
                         {
                             if( hsschur_extschursigntoone(*b, _state)==hsschur_extschursigntoone(*c, _state) )
                             {
-                                
+
                                 /*
                                  * Real eigenvalues: reduce to upper triangular form
                                  */
@@ -9040,7 +9040,7 @@ static void hsschur_aux2x2schur(double* a,
             }
         }
     }
-    
+
     /*
      * Store eigenvalues in (RT1R,RT1I) and (RT2R,RT2I).
      */
@@ -9137,13 +9137,13 @@ Output parameters:
      June 30, 1992
 *************************************************************************/
 void rmatrixtrsafesolve(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     double* s,
-     ae_bool isupper,
-     ae_bool istrans,
-     ae_bool isunit,
-     ae_state *_state)
+                                      ae_int_t n,
+                                      /* Real    */ ae_vector* x,
+                                      double* s,
+                                      ae_bool isupper,
+                                      ae_bool istrans,
+                                      ae_bool isunit,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_bool normin;
@@ -9158,7 +9158,7 @@ void rmatrixtrsafesolve(/* Real    */ ae_matrix* a,
     ae_matrix_init(&a1, 0, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&x1, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * From 0-based to 1-based
      */
@@ -9170,12 +9170,12 @@ void rmatrixtrsafesolve(/* Real    */ ae_matrix* a,
         ae_v_move(&a1.ptr.pp_double[i][1], 1, &a->ptr.pp_double[i-1][0], 1, ae_v_len(1,n));
     }
     ae_v_move(&x1.ptr.p_double[1], 1, &x->ptr.p_double[0], 1, ae_v_len(1,n));
-    
+
     /*
      * Solve 1-based
      */
     safesolvetriangular(&a1, n, &x1, s, isupper, istrans, isunit, normin, &cnorm, _state);
-    
+
     /*
      * From 1-based to 0-based
      */
@@ -9189,15 +9189,15 @@ Obsolete 1-based subroutine.
 See RMatrixTRSafeSolve for 0-based replacement.
 *************************************************************************/
 void safesolvetriangular(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     double* s,
-     ae_bool isupper,
-     ae_bool istrans,
-     ae_bool isunit,
-     ae_bool normin,
-     /* Real    */ ae_vector* cnorm,
-     ae_state *_state)
+                                       ae_int_t n,
+                                       /* Real    */ ae_vector* x,
+                                       double* s,
+                                       ae_bool isupper,
+                                       ae_bool istrans,
+                                       ae_bool isunit,
+                                       ae_bool normin,
+                                       /* Real    */ ae_vector* cnorm,
+                                       ae_state *_state)
 {
     ae_int_t i;
     ae_int_t imax;
@@ -9235,13 +9235,13 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
     upper = isupper;
     notran = !istrans;
     nounit = !isunit;
-    
+
     /*
      * these initializers are not really necessary,
      * but without them compiler complains about uninitialized locals
      */
     tjjs = 0;
-    
+
     /*
      * Quick return if possible
      */
@@ -9249,7 +9249,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
     {
         return;
     }
-    
+
     /*
      * Determine machine dependent parameters to control overflow.
      */
@@ -9259,13 +9259,13 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
     if( !normin )
     {
         ae_vector_set_length(cnorm, n+1, _state);
-        
+
         /*
          * Compute the 1-norm of each column, not including the diagonal.
          */
         if( upper )
         {
-            
+
             /*
              * A is upper triangular.
              */
@@ -9281,7 +9281,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * A is lower triangular.
              */
@@ -9297,7 +9297,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
             cnorm->ptr.p_double[n] = 0;
         }
     }
-    
+
     /*
      * Scale the column norms by TSCAL if the maximum element in CNORM is
      * greater than BIGNUM.
@@ -9320,7 +9320,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
         tscal = 1/(smlnum*tmax);
         ae_v_muld(&cnorm->ptr.p_double[1], 1, ae_v_len(1,n), tscal);
     }
-    
+
     /*
      * Compute a bound on the computed solution vector to see if the
      * Level 2 BLAS routine DTRSV can be used.
@@ -9337,7 +9337,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
     xbnd = xmax;
     if( notran )
     {
-        
+
         /*
          * Compute the growth in A * x = b.
          */
@@ -9361,7 +9361,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
         {
             if( nounit )
             {
-                
+
                 /*
                  * A is non-unit triangular.
                  *
@@ -9373,7 +9373,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 j = jfirst;
                 while((jinc>0&&j<=jlast)||(jinc<0&&j>=jlast))
                 {
-                    
+
                     /*
                      * Exit the loop if the growth factor is too small.
                      */
@@ -9381,7 +9381,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     {
                         break;
                     }
-                    
+
                     /*
                      * M(j) = G(j-1) / abs(A(j,j))
                      */
@@ -9389,7 +9389,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     xbnd = ae_minreal(xbnd, ae_minreal(1, tjj, _state)*grow, _state);
                     if( ae_fp_greater_eq(tjj+cnorm->ptr.p_double[j],smlnum) )
                     {
-                        
+
                         /*
                          * G(j) = G(j-1)*( 1 + CNORM(j) / abs(A(j,j)) )
                          */
@@ -9397,7 +9397,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     }
                     else
                     {
-                        
+
                         /*
                          * G(j) could overflow, set GROW to 0.
                          */
@@ -9412,7 +9412,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * A is unit triangular.
                  *
@@ -9422,7 +9422,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 j = jfirst;
                 while((jinc>0&&j<=jlast)||(jinc<0&&j>=jlast))
                 {
-                    
+
                     /*
                      * Exit the loop if the growth factor is too small.
                      */
@@ -9430,7 +9430,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     {
                         break;
                     }
-                    
+
                     /*
                      * G(j) = G(j-1)*( 1 + CNORM(j) )
                      */
@@ -9442,7 +9442,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
     }
     else
     {
-        
+
         /*
          * Compute the growth in A' * x = b.
          */
@@ -9466,7 +9466,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
         {
             if( nounit )
             {
-                
+
                 /*
                  * A is non-unit triangular.
                  *
@@ -9478,7 +9478,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 j = jfirst;
                 while((jinc>0&&j<=jlast)||(jinc<0&&j>=jlast))
                 {
-                    
+
                     /*
                      * Exit the loop if the growth factor is too small.
                      */
@@ -9486,13 +9486,13 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     {
                         break;
                     }
-                    
+
                     /*
                      * G(j) = max( G(j-1), M(j-1)*( 1 + CNORM(j) ) )
                      */
                     xj = 1+cnorm->ptr.p_double[j];
                     grow = ae_minreal(grow, xbnd/xj, _state);
-                    
+
                     /*
                      * M(j) = M(j-1)*( 1 + CNORM(j) ) / abs(A(j,j))
                      */
@@ -9510,7 +9510,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
             }
             else
             {
-                
+
                 /*
                  * A is unit triangular.
                  *
@@ -9520,7 +9520,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 j = jfirst;
                 while((jinc>0&&j<=jlast)||(jinc<0&&j>=jlast))
                 {
-                    
+
                     /*
                      * Exit the loop if the growth factor is too small.
                      */
@@ -9528,7 +9528,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     {
                         break;
                     }
-                    
+
                     /*
                      * G(j) = ( 1 + CNORM(j) )*G(j-1)
                      */
@@ -9541,7 +9541,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
     }
     if( ae_fp_greater(grow*tscal,smlnum) )
     {
-        
+
         /*
          * Use the Level 2 BLAS solve if the reciprocal of the bound on
          * elements of X is not too small.
@@ -9615,13 +9615,13 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
     }
     else
     {
-        
+
         /*
          * Use a Level 1 BLAS solve, scaling intermediate results.
          */
         if( ae_fp_greater(xmax,bignum) )
         {
-            
+
             /*
              * Scale X so that its components are less than or equal to
              * BIGNUM in absolute value.
@@ -9632,14 +9632,14 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
         }
         if( notran )
         {
-            
+
             /*
              * Solve A * x = b
              */
             j = jfirst;
             while((jinc>0&&j<=jlast)||(jinc<0&&j>=jlast))
             {
-                
+
                 /*
                  * Compute x(j) = b(j) / A(j,j), scaling x if necessary.
                  */
@@ -9662,7 +9662,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     tjj = ae_fabs(tjjs, _state);
                     if( ae_fp_greater(tjj,smlnum) )
                     {
-                        
+
                         /*
                          * abs(A(j,j)) > SMLNUM:
                          */
@@ -9670,7 +9670,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                         {
                             if( ae_fp_greater(xj,tjj*bignum) )
                             {
-                                
+
                                 /*
                                  * Scale x by 1/b(j).
                                  */
@@ -9687,13 +9687,13 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     {
                         if( ae_fp_greater(tjj,0) )
                         {
-                            
+
                             /*
                              * 0 < abs(A(j,j)) <= SMLNUM:
                              */
                             if( ae_fp_greater(xj,tjj*bignum) )
                             {
-                                
+
                                 /*
                                  * Scale x by (1/abs(x(j)))*abs(A(j,j))*BIGNUM
                                  * to avoid overflow when dividing by A(j,j).
@@ -9701,7 +9701,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                                 rec = tjj*bignum/xj;
                                 if( ae_fp_greater(cnorm->ptr.p_double[j],1) )
                                 {
-                                    
+
                                     /*
                                      * Scale by 1/CNORM(j) to avoid overflow when
                                      * multiplying x(j) times column j.
@@ -9717,7 +9717,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                         }
                         else
                         {
-                            
+
                             /*
                              * A(j,j) = 0:  Set x(1:n) = 0, x(j) = 1, and
                              * scale = 0, and compute a solution to A*x = 0.
@@ -9733,7 +9733,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                         }
                     }
                 }
-                
+
                 /*
                  * Scale x if necessary to avoid overflow when adding a
                  * multiple of column j of A.
@@ -9743,7 +9743,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     rec = 1/xj;
                     if( ae_fp_greater(cnorm->ptr.p_double[j],(bignum-xmax)*rec) )
                     {
-                        
+
                         /*
                          * Scale x by 1/(2*abs(x(j))).
                          */
@@ -9756,7 +9756,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 {
                     if( ae_fp_greater(xj*cnorm->ptr.p_double[j],bignum-xmax) )
                     {
-                        
+
                         /*
                          * Scale x by 1/2.
                          */
@@ -9768,7 +9768,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 {
                     if( j>1 )
                     {
-                        
+
                         /*
                          * Compute the update
                          * x(1:j-1) := x(1:j-1) - x(j) * A(1:j-1,j)
@@ -9791,7 +9791,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 {
                     if( j<n )
                     {
-                        
+
                         /*
                          * Compute the update
                          * x(j+1:n) := x(j+1:n) - x(j) * A(j+1:n,j)
@@ -9815,14 +9815,14 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
         }
         else
         {
-            
+
             /*
              * Solve A' * x = b
              */
             j = jfirst;
             while((jinc>0&&j<=jlast)||(jinc<0&&j>=jlast))
             {
-                
+
                 /*
                  * Compute x(j) = b(j) - sum A(k,j)*x(k).
                  *   k<>j
@@ -9832,7 +9832,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 rec = 1/ae_maxreal(xmax, 1, _state);
                 if( ae_fp_greater(cnorm->ptr.p_double[j],(bignum-xj)*rec) )
                 {
-                    
+
                     /*
                      * If x(j) could overflow, scale x by 1/(2*XMAX).
                      */
@@ -9848,7 +9848,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                     tjj = ae_fabs(tjjs, _state);
                     if( ae_fp_greater(tjj,1) )
                     {
-                        
+
                         /*
                          * Divide by A(j,j) when scaling x if A(j,j) > 1.
                          */
@@ -9865,7 +9865,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 sumj = 0;
                 if( ae_fp_eq(uscal,1) )
                 {
-                    
+
                     /*
                      * If the scaling needed for A in the dot product is 1,
                      * call DDOT to perform the dot product.
@@ -9893,7 +9893,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 }
                 else
                 {
-                    
+
                     /*
                      * Otherwise, use in-line code for the dot product.
                      */
@@ -9919,7 +9919,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 }
                 if( ae_fp_eq(uscal,tscal) )
                 {
-                    
+
                     /*
                      * Compute x(j) := ( x(j) - sumj ) / A(j,j) if 1/A(j,j)
                      * was not used to scale the dotproduct.
@@ -9939,7 +9939,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                             flg = 150;
                         }
                     }
-                    
+
                     /*
                      * Compute x(j) = x(j) / A(j,j), scaling if necessary.
                      */
@@ -9948,7 +9948,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                         tjj = ae_fabs(tjjs, _state);
                         if( ae_fp_greater(tjj,smlnum) )
                         {
-                            
+
                             /*
                              * abs(A(j,j)) > SMLNUM:
                              */
@@ -9956,7 +9956,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                             {
                                 if( ae_fp_greater(xj,tjj*bignum) )
                                 {
-                                    
+
                                     /*
                                      * Scale X by 1/abs(x(j)).
                                      */
@@ -9972,13 +9972,13 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                         {
                             if( ae_fp_greater(tjj,0) )
                             {
-                                
+
                                 /*
                                  * 0 < abs(A(j,j)) <= SMLNUM:
                                  */
                                 if( ae_fp_greater(xj,tjj*bignum) )
                                 {
-                                    
+
                                     /*
                                      * Scale x by (1/abs(x(j)))*abs(A(j,j))*BIGNUM.
                                      */
@@ -9991,7 +9991,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                             }
                             else
                             {
-                                
+
                                 /*
                                  * A(j,j) = 0:  Set x(1:n) = 0, x(j) = 1, and
                                  * scale = 0, and compute a solution to A'*x = 0.
@@ -10009,7 +10009,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
                 }
                 else
                 {
-                    
+
                     /*
                      * Compute x(j) := x(j) / A(j,j)  - sumj if the dot
                      * product has already been divided by 1/A(j,j).
@@ -10022,7 +10022,7 @@ void safesolvetriangular(/* Real    */ ae_matrix* a,
         }
         *s = *s/tscal;
     }
-    
+
     /*
      * Scale the column norms by 1/TSCAL for return.
      */
@@ -10044,14 +10044,14 @@ Real implementation of CMatrixScaledTRSafeSolve
      Bochkanov Sergey
 *************************************************************************/
 ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
-     double sa,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     ae_bool isupper,
-     ae_int_t trans,
-     ae_bool isunit,
-     double maxgrowth,
-     ae_state *_state)
+        double sa,
+        ae_int_t n,
+        /* Real    */ ae_vector* x,
+        ae_bool isupper,
+        ae_int_t trans,
+        ae_bool isunit,
+        double maxgrowth,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     double lnmax;
@@ -10072,7 +10072,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
     ae_assert(trans==0||trans==1, "RMatrixTRSafeSolve: incorrect Trans!", _state);
     result = ae_true;
     lnmax = ae_log(ae_maxrealnumber, _state);
-    
+
     /*
      * Quick return if possible
      */
@@ -10081,7 +10081,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Load norms: right part and X
      */
@@ -10091,7 +10091,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
         nrmb = ae_maxreal(nrmb, ae_fabs(x->ptr.p_double[i], _state), _state);
     }
     nrmx = 0;
-    
+
     /*
      * Solve
      */
@@ -10099,13 +10099,13 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
     result = ae_true;
     if( isupper&&trans==0 )
     {
-        
+
         /*
          * U*x = b
          */
         for(i=n-1; i>=0; i--)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10127,7 +10127,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
             {
                 beta = ae_complex_from_d(x->ptr.p_double[i]);
             }
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10144,13 +10144,13 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
     }
     if( !isupper&&trans==0 )
     {
-        
+
         /*
          * L*x = b
          */
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10172,7 +10172,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
             {
                 beta = ae_complex_from_d(x->ptr.p_double[i]);
             }
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10189,13 +10189,13 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
     }
     if( isupper&&trans==1 )
     {
-        
+
         /*
          * U^T*x = b
          */
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10208,7 +10208,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
                 alpha = ae_complex_from_d(a->ptr.pp_double[i][i]*sa);
             }
             beta = ae_complex_from_d(x->ptr.p_double[i]);
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10219,7 +10219,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
                 return result;
             }
             x->ptr.p_double[i] = cx.x;
-            
+
             /*
              * update the rest of right part
              */
@@ -10235,13 +10235,13 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
     }
     if( !isupper&&trans==1 )
     {
-        
+
         /*
          * L^T*x = b
          */
         for(i=n-1; i>=0; i--)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10254,7 +10254,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
                 alpha = ae_complex_from_d(a->ptr.pp_double[i][i]*sa);
             }
             beta = ae_complex_from_d(x->ptr.p_double[i]);
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10265,7 +10265,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
                 return result;
             }
             x->ptr.p_double[i] = cx.x;
-            
+
             /*
              * update the rest of right part
              */
@@ -10289,7 +10289,7 @@ ae_bool rmatrixscaledtrsafesolve(/* Real    */ ae_matrix* a,
 Internal subroutine for safe solution of
 
     SA*op(A)=b
-    
+
 where  A  is  NxN  upper/lower  triangular/unitriangular  matrix, op(A) is
 either identity transform, transposition or Hermitian transposition, SA is
 a scaling factor such that max(|SA*A[i,j]|) is close to 1.0 in magnutude.
@@ -10304,14 +10304,14 @@ as MaxGrowth is significantly less than MaxRealNumber/norm(b).
      Bochkanov Sergey
 *************************************************************************/
 ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
-     double sa,
-     ae_int_t n,
-     /* Complex */ ae_vector* x,
-     ae_bool isupper,
-     ae_int_t trans,
-     ae_bool isunit,
-     double maxgrowth,
-     ae_state *_state)
+        double sa,
+        ae_int_t n,
+        /* Complex */ ae_vector* x,
+        ae_bool isupper,
+        ae_int_t trans,
+        ae_bool isunit,
+        double maxgrowth,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     double lnmax;
@@ -10331,7 +10331,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
     ae_assert((trans==0||trans==1)||trans==2, "CMatrixTRSafeSolve: incorrect Trans!", _state);
     result = ae_true;
     lnmax = ae_log(ae_maxrealnumber, _state);
-    
+
     /*
      * Quick return if possible
      */
@@ -10340,7 +10340,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Load norms: right part and X
      */
@@ -10350,7 +10350,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
         nrmb = ae_maxreal(nrmb, ae_c_abs(x->ptr.p_complex[i], _state), _state);
     }
     nrmx = 0;
-    
+
     /*
      * Solve
      */
@@ -10358,13 +10358,13 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
     result = ae_true;
     if( isupper&&trans==0 )
     {
-        
+
         /*
          * U*x = b
          */
         for(i=n-1; i>=0; i--)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10386,7 +10386,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
             {
                 beta = x->ptr.p_complex[i];
             }
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10403,13 +10403,13 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
     }
     if( !isupper&&trans==0 )
     {
-        
+
         /*
          * L*x = b
          */
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10431,7 +10431,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
             {
                 beta = x->ptr.p_complex[i];
             }
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10448,13 +10448,13 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
     }
     if( isupper&&trans==1 )
     {
-        
+
         /*
          * U^T*x = b
          */
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10467,7 +10467,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
                 alpha = ae_c_mul_d(a->ptr.pp_complex[i][i],sa);
             }
             beta = x->ptr.p_complex[i];
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10478,7 +10478,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
                 return result;
             }
             x->ptr.p_complex[i] = vc;
-            
+
             /*
              * update the rest of right part
              */
@@ -10493,13 +10493,13 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
     }
     if( !isupper&&trans==1 )
     {
-        
+
         /*
          * L^T*x = b
          */
         for(i=n-1; i>=0; i--)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10512,7 +10512,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
                 alpha = ae_c_mul_d(a->ptr.pp_complex[i][i],sa);
             }
             beta = x->ptr.p_complex[i];
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10523,7 +10523,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
                 return result;
             }
             x->ptr.p_complex[i] = vc;
-            
+
             /*
              * update the rest of right part
              */
@@ -10538,13 +10538,13 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
     }
     if( isupper&&trans==2 )
     {
-        
+
         /*
          * U^H*x = b
          */
         for(i=0; i<=n-1; i++)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10557,7 +10557,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
                 alpha = ae_c_mul_d(ae_c_conj(a->ptr.pp_complex[i][i], _state),sa);
             }
             beta = x->ptr.p_complex[i];
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10568,7 +10568,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
                 return result;
             }
             x->ptr.p_complex[i] = vc;
-            
+
             /*
              * update the rest of right part
              */
@@ -10583,13 +10583,13 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
     }
     if( !isupper&&trans==2 )
     {
-        
+
         /*
          * L^T*x = b
          */
         for(i=n-1; i>=0; i--)
         {
-            
+
             /*
              * Task is reduced to alpha*x[i] = beta
              */
@@ -10602,7 +10602,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
                 alpha = ae_c_mul_d(ae_c_conj(a->ptr.pp_complex[i][i], _state),sa);
             }
             beta = x->ptr.p_complex[i];
-            
+
             /*
              * solve alpha*x[i] = beta
              */
@@ -10613,7 +10613,7 @@ ae_bool cmatrixscaledtrsafesolve(/* Complex */ ae_matrix* a,
                 return result;
             }
             x->ptr.p_complex[i] = vc;
-            
+
             /*
              * update the rest of right part
              */
@@ -10655,13 +10655,13 @@ Parameters:
      Bochkanov Sergey
 *************************************************************************/
 static ae_bool safesolve_cbasicsolveandupdate(ae_complex alpha,
-     ae_complex beta,
-     double lnmax,
-     double bnorm,
-     double maxgrowth,
-     double* xnorm,
-     ae_complex* x,
-     ae_state *_state)
+        ae_complex beta,
+        double lnmax,
+        double bnorm,
+        double maxgrowth,
+        double* xnorm,
+        ae_complex* x,
+        ae_state *_state)
 {
     double v;
     ae_bool result;
@@ -10676,7 +10676,7 @@ static ae_bool safesolve_cbasicsolveandupdate(ae_complex alpha,
     }
     if( ae_c_neq_d(beta,0) )
     {
-        
+
         /*
          * alpha*x[i]=beta
          */
@@ -10689,13 +10689,13 @@ static ae_bool safesolve_cbasicsolveandupdate(ae_complex alpha,
     }
     else
     {
-        
+
         /*
          * alpha*x[i]=0
          */
         *x = ae_complex_from_d(0);
     }
-    
+
     /*
      * update NrmX, test growth limit
      */
@@ -10725,12 +10725,12 @@ HOW TO PROCESS DATASET WITH THIS FUNCTION:
 
 *************************************************************************/
 void hpcpreparechunkedgradient(/* Real    */ ae_vector* weights,
-     ae_int_t wcount,
-     ae_int_t ntotal,
-     ae_int_t nin,
-     ae_int_t nout,
-     mlpbuffers* buf,
-     ae_state *_state)
+        ae_int_t wcount,
+        ae_int_t ntotal,
+        ae_int_t nin,
+        ae_int_t nout,
+        mlpbuffers* buf,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t batch4size;
@@ -10804,8 +10804,8 @@ HOW TO PROCESS DATASET WITH THIS FUNCTION:
 
 *************************************************************************/
 void hpcfinalizechunkedgradient(mlpbuffers* buf,
-     /* Real    */ ae_vector* grad,
-     ae_state *_state)
+                                /* Real    */ ae_vector* grad,
+                                ae_state *_state)
 {
     ae_int_t i;
 
@@ -10825,17 +10825,17 @@ Fast kernel for chunked gradient.
 
 *************************************************************************/
 ae_bool hpcchunkedgradient(/* Real    */ ae_vector* weights,
-     /* Integer */ ae_vector* structinfo,
-     /* Real    */ ae_vector* columnmeans,
-     /* Real    */ ae_vector* columnsigmas,
-     /* Real    */ ae_matrix* xy,
-     ae_int_t cstart,
-     ae_int_t csize,
-     /* Real    */ ae_vector* batch4buf,
-     /* Real    */ ae_vector* hpcbuf,
-     double* e,
-     ae_bool naturalerrorfunc,
-     ae_state *_state)
+        /* Integer */ ae_vector* structinfo,
+        /* Real    */ ae_vector* columnmeans,
+        /* Real    */ ae_vector* columnsigmas,
+        /* Real    */ ae_matrix* xy,
+        ae_int_t cstart,
+        ae_int_t csize,
+        /* Real    */ ae_vector* batch4buf,
+        /* Real    */ ae_vector* hpcbuf,
+        double* e,
+        ae_bool naturalerrorfunc,
+        ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_SSE2
     ae_bool result;
@@ -10854,15 +10854,15 @@ Fast kernel for chunked processing.
 
 *************************************************************************/
 ae_bool hpcchunkedprocess(/* Real    */ ae_vector* weights,
-     /* Integer */ ae_vector* structinfo,
-     /* Real    */ ae_vector* columnmeans,
-     /* Real    */ ae_vector* columnsigmas,
-     /* Real    */ ae_matrix* xy,
-     ae_int_t cstart,
-     ae_int_t csize,
-     /* Real    */ ae_vector* batch4buf,
-     /* Real    */ ae_vector* hpcbuf,
-     ae_state *_state)
+                                        /* Integer */ ae_vector* structinfo,
+                                        /* Real    */ ae_vector* columnmeans,
+                                        /* Real    */ ae_vector* columnsigmas,
+                                        /* Real    */ ae_matrix* xy,
+                                        ae_int_t cstart,
+                                        ae_int_t csize,
+                                        /* Real    */ ae_vector* batch4buf,
+                                        /* Real    */ ae_vector* hpcbuf,
+                                        ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_SSE2
     ae_bool result;
@@ -10884,9 +10884,9 @@ Stub function.
      Bochkanov Sergey
 *************************************************************************/
 static ae_bool hpccores_hpcpreparechunkedgradientx(/* Real    */ ae_vector* weights,
-     ae_int_t wcount,
-     /* Real    */ ae_vector* hpcbuf,
-     ae_state *_state)
+        ae_int_t wcount,
+        /* Real    */ ae_vector* hpcbuf,
+        ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_SSE2
     ae_bool result;
@@ -10908,9 +10908,9 @@ Stub function.
      Bochkanov Sergey
 *************************************************************************/
 static ae_bool hpccores_hpcfinalizechunkedgradientx(/* Real    */ ae_vector* buf,
-     ae_int_t wcount,
-     /* Real    */ ae_vector* grad,
-     ae_state *_state)
+        ae_int_t wcount,
+        /* Real    */ ae_vector* grad,
+        ae_state *_state)
 {
 #ifndef ALGLIB_INTERCEPTS_SSE2
     ae_bool result;
@@ -11044,12 +11044,12 @@ OUTPUT PARAMETERS
      Copyright 24.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void xdot(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     ae_int_t n,
-     /* Real    */ ae_vector* temp,
-     double* r,
-     double* rerr,
-     ae_state *_state)
+                        /* Real    */ ae_vector* b,
+                        ae_int_t n,
+                        /* Real    */ ae_vector* temp,
+                        double* r,
+                        double* rerr,
+                        ae_state *_state)
 {
     ae_int_t i;
     double mx;
@@ -11058,7 +11058,7 @@ void xdot(/* Real    */ ae_vector* a,
     *r = 0;
     *rerr = 0;
 
-    
+
     /*
      * special cases:
      * * N=0
@@ -11108,12 +11108,12 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void xcdot(/* Complex */ ae_vector* a,
-     /* Complex */ ae_vector* b,
-     ae_int_t n,
-     /* Real    */ ae_vector* temp,
-     ae_complex* r,
-     double* rerr,
-     ae_state *_state)
+                         /* Complex */ ae_vector* b,
+                         ae_int_t n,
+                         /* Real    */ ae_vector* temp,
+                         ae_complex* r,
+                         double* rerr,
+                         ae_state *_state)
 {
     ae_int_t i;
     double mx;
@@ -11125,7 +11125,7 @@ void xcdot(/* Complex */ ae_vector* a,
     r->y = 0;
     *rerr = 0;
 
-    
+
     /*
      * special cases:
      * * N=0
@@ -11136,7 +11136,7 @@ void xcdot(/* Complex */ ae_vector* a,
         *rerr = 0;
         return;
     }
-    
+
     /*
      * calculate real part
      */
@@ -11159,7 +11159,7 @@ void xcdot(/* Complex */ ae_vector* a,
     {
         xblas_xsum(temp, mx, 2*n, &r->x, &rerrx, _state);
     }
-    
+
     /*
      * calculate imaginary part
      */
@@ -11182,7 +11182,7 @@ void xcdot(/* Complex */ ae_vector* a,
     {
         xblas_xsum(temp, mx, 2*n, &r->y, &rerry, _state);
     }
-    
+
     /*
      * total error
      */
@@ -11205,7 +11205,7 @@ INPUT PARAMETERS:
             W is modified during calculations.
     MX  -   max(W[i])
     N   -   array size
-    
+
 OUTPUT PARAMETERS:
     R   -   SUM(w[i])
     RErr-   error estimate for R
@@ -11214,11 +11214,11 @@ OUTPUT PARAMETERS:
      Copyright 24.08.2009 by Bochkanov Sergey
 *************************************************************************/
 static void xblas_xsum(/* Real    */ ae_vector* w,
-     double mx,
-     ae_int_t n,
-     double* r,
-     double* rerr,
-     ae_state *_state)
+                                     double mx,
+                                     ae_int_t n,
+                                     double* r,
+                                     double* rerr,
+                                     ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -11233,7 +11233,7 @@ static void xblas_xsum(/* Real    */ ae_vector* w,
     *r = 0;
     *rerr = 0;
 
-    
+
     /*
      * special cases:
      * * N=0
@@ -11252,13 +11252,13 @@ static void xblas_xsum(/* Real    */ ae_vector* w,
         return;
     }
     ae_assert(n<536870912, "XDot: N is too large!", _state);
-    
+
     /*
      * Prepare
      */
     ln2 = ae_log(2, _state);
     *rerr = mx*ae_machineepsilon;
-    
+
     /*
      * 1. find S such that 0.5<=S*MX<1
      * 2. multiply W by S, so task is normalized in some sense
@@ -11276,7 +11276,7 @@ static void xblas_xsum(/* Real    */ ae_vector* w,
     }
     ae_v_muld(&w->ptr.p_double[0], 1, ae_v_len(0,n-1), s);
     s = 1/s;
-    
+
     /*
      * find Chunk=2^M such that N*Chunk<2^29
      *
@@ -11291,7 +11291,7 @@ static void xblas_xsum(/* Real    */ ae_vector* w,
         chunk = 2;
     }
     invchunk = 1/chunk;
-    
+
     /*
      * calculate result
      */
@@ -11320,7 +11320,7 @@ static void xblas_xsum(/* Real    */ ae_vector* w,
             break;
         }
     }
-    
+
     /*
      * correct error
      */
@@ -11374,16 +11374,16 @@ If |D|=0, it returns, leavind D/Stp unchanged.
      Copyright 01.04.2010 by Bochkanov Sergey
 *************************************************************************/
 void linminnormalized(/* Real    */ ae_vector* d,
-     double* stp,
-     ae_int_t n,
-     ae_state *_state)
+                                    double* stp,
+                                    ae_int_t n,
+                                    ae_state *_state)
 {
     double mx;
     double s;
     ae_int_t i;
 
 
-    
+
     /*
      * first, scale D to avoid underflow/overflow durng squaring
      */
@@ -11399,7 +11399,7 @@ void linminnormalized(/* Real    */ ae_vector* d,
     s = 1/mx;
     ae_v_muld(&d->ptr.p_double[0], 1, ae_v_len(0,n-1), s);
     *stp = *stp/s;
-    
+
     /*
      * normalize D
      */
@@ -11516,19 +11516,19 @@ ARGONNE NATIONAL LABORATORY. MINPACK PROJECT. JUNE 1983
 JORGE J. MORE', DAVID J. THUENTE
 *************************************************************************/
 void mcsrch(ae_int_t n,
-     /* Real    */ ae_vector* x,
-     double* f,
-     /* Real    */ ae_vector* g,
-     /* Real    */ ae_vector* s,
-     double* stp,
-     double stpmax,
-     double gtol,
-     ae_int_t* info,
-     ae_int_t* nfev,
-     /* Real    */ ae_vector* wa,
-     linminstate* state,
-     ae_int_t* stage,
-     ae_state *_state)
+            /* Real    */ ae_vector* x,
+            double* f,
+            /* Real    */ ae_vector* g,
+            /* Real    */ ae_vector* s,
+            double* stp,
+            double stpmax,
+            double gtol,
+            ae_int_t* info,
+            ae_int_t* nfev,
+            /* Real    */ ae_vector* wa,
+            linminstate* state,
+            ae_int_t* stage,
+            ae_state *_state)
 {
     double v;
     double p5;
@@ -11536,7 +11536,7 @@ void mcsrch(ae_int_t n,
     double zero;
 
 
-    
+
     /*
      * init
      */
@@ -11556,7 +11556,7 @@ void mcsrch(ae_int_t n,
     {
         *stp = stpmax;
     }
-    
+
     /*
      * Main cycle
      */
@@ -11564,7 +11564,7 @@ void mcsrch(ae_int_t n,
     {
         if( *stage==0 )
         {
-            
+
             /*
              * NEXT
              */
@@ -11575,7 +11575,7 @@ void mcsrch(ae_int_t n,
         {
             state->infoc = 1;
             *info = 0;
-            
+
             /*
              *     CHECK THE INPUT PARAMETERS FOR ERRORS.
              */
@@ -11591,7 +11591,7 @@ void mcsrch(ae_int_t n,
                 *stage = 0;
                 return;
             }
-            
+
             /*
              *     COMPUTE THE INITIAL GRADIENT IN THE SEARCH DIRECTION
              *     AND CHECK THAT S IS A DESCENT DIRECTION.
@@ -11603,7 +11603,7 @@ void mcsrch(ae_int_t n,
                 *stage = 0;
                 return;
             }
-            
+
             /*
              *     INITIALIZE LOCAL VARIABLES.
              */
@@ -11615,7 +11615,7 @@ void mcsrch(ae_int_t n,
             state->width = stpmax-linmin_stpmin;
             state->width1 = state->width/p5;
             ae_v_move(&wa->ptr.p_double[0], 1, &x->ptr.p_double[0], 1, ae_v_len(0,n-1));
-            
+
             /*
              *     THE VARIABLES STX, FX, DGX CONTAIN THE VALUES OF THE STEP,
              *     FUNCTION, AND DIRECTIONAL DERIVATIVE AT THE BEST STEP.
@@ -11631,7 +11631,7 @@ void mcsrch(ae_int_t n,
             state->sty = 0;
             state->fy = state->finit;
             state->dgy = state->dginit;
-            
+
             /*
              * NEXT
              */
@@ -11640,7 +11640,7 @@ void mcsrch(ae_int_t n,
         }
         if( *stage==3 )
         {
-            
+
             /*
              *     START OF ITERATION.
              *
@@ -11665,7 +11665,7 @@ void mcsrch(ae_int_t n,
                 state->stmin = state->stx;
                 state->stmax = *stp+state->xtrapf*(*stp-state->stx);
             }
-            
+
             /*
              *        FORCE THE STEP TO BE WITHIN THE BOUNDS STPMAX AND STPMIN.
              */
@@ -11677,7 +11677,7 @@ void mcsrch(ae_int_t n,
             {
                 *stp = linmin_stpmin;
             }
-            
+
             /*
              *        IF AN UNUSUAL TERMINATION IS TO OCCUR THEN LET
              *        STP BE THE LOWEST POINT OBTAINED SO FAR.
@@ -11686,14 +11686,14 @@ void mcsrch(ae_int_t n,
             {
                 *stp = state->stx;
             }
-            
+
             /*
              *        EVALUATE THE FUNCTION AND GRADIENT AT STP
              *        AND COMPUTE THE DIRECTIONAL DERIVATIVE.
              */
             ae_v_move(&x->ptr.p_double[0], 1, &wa->ptr.p_double[0], 1, ae_v_len(0,n-1));
             ae_v_addd(&x->ptr.p_double[0], 1, &s->ptr.p_double[0], 1, ae_v_len(0,n-1), *stp);
-            
+
             /*
              * NEXT
              */
@@ -11707,7 +11707,7 @@ void mcsrch(ae_int_t n,
             v = ae_v_dotproduct(&g->ptr.p_double[0], 1, &s->ptr.p_double[0], 1, ae_v_len(0,n-1));
             state->dg = v;
             state->ftest1 = state->finit+*stp*state->dgtest;
-            
+
             /*
              *        TEST FOR CONVERGENCE.
              */
@@ -11735,7 +11735,7 @@ void mcsrch(ae_int_t n,
             {
                 *info = 1;
             }
-            
+
             /*
              *        CHECK FOR TERMINATION.
              */
@@ -11744,7 +11744,7 @@ void mcsrch(ae_int_t n,
                 *stage = 0;
                 return;
             }
-            
+
             /*
              *        IN THE FIRST STAGE WE SEEK A STEP FOR WHICH THE MODIFIED
              *        FUNCTION HAS A NONPOSITIVE VALUE AND NONNEGATIVE DERIVATIVE.
@@ -11753,7 +11753,7 @@ void mcsrch(ae_int_t n,
             {
                 state->stage1 = ae_false;
             }
-            
+
             /*
              *        A MODIFIED FUNCTION IS USED TO PREDICT THE STEP ONLY IF
              *        WE HAVE NOT OBTAINED A STEP FOR WHICH THE MODIFIED
@@ -11763,7 +11763,7 @@ void mcsrch(ae_int_t n,
              */
             if( (state->stage1&&ae_fp_less_eq(*f,state->fx))&&ae_fp_greater(*f,state->ftest1) )
             {
-                
+
                 /*
                  *           DEFINE THE MODIFIED FUNCTION AND DERIVATIVE VALUES.
                  */
@@ -11773,13 +11773,13 @@ void mcsrch(ae_int_t n,
                 state->dgm = state->dg-state->dgtest;
                 state->dgxm = state->dgx-state->dgtest;
                 state->dgym = state->dgy-state->dgtest;
-                
+
                 /*
                  *           CALL CSTEP TO UPDATE THE INTERVAL OF UNCERTAINTY
                  *           AND TO COMPUTE THE NEW STEP.
                  */
                 linmin_mcstep(&state->stx, &state->fxm, &state->dgxm, &state->sty, &state->fym, &state->dgym, stp, state->fm, state->dgm, &state->brackt, state->stmin, state->stmax, &state->infoc, _state);
-                
+
                 /*
                  *           RESET THE FUNCTION AND GRADIENT VALUES FOR F.
                  */
@@ -11790,14 +11790,14 @@ void mcsrch(ae_int_t n,
             }
             else
             {
-                
+
                 /*
                  *           CALL MCSTEP TO UPDATE THE INTERVAL OF UNCERTAINTY
                  *           AND TO COMPUTE THE NEW STEP.
                  */
                 linmin_mcstep(&state->stx, &state->fx, &state->dgx, &state->sty, &state->fy, &state->dgy, stp, *f, state->dg, &state->brackt, state->stmin, state->stmax, &state->infoc, _state);
             }
-            
+
             /*
              *        FORCE A SUFFICIENT DECREASE IN THE SIZE OF THE
              *        INTERVAL OF UNCERTAINTY.
@@ -11811,7 +11811,7 @@ void mcsrch(ae_int_t n,
                 state->width1 = state->width;
                 state->width = ae_fabs(state->sty-state->stx, _state);
             }
-            
+
             /*
              *  NEXT.
              */
@@ -11848,14 +11848,14 @@ INPUT PARAMETERS:
      Copyright 05.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void armijocreate(ae_int_t n,
-     /* Real    */ ae_vector* x,
-     double f,
-     /* Real    */ ae_vector* s,
-     double stp,
-     double stpmax,
-     ae_int_t fmax,
-     armijostate* state,
-     ae_state *_state)
+                  /* Real    */ ae_vector* x,
+                  double f,
+                  /* Real    */ ae_vector* s,
+                  double stp,
+                  double stpmax,
+                  ae_int_t fmax,
+                  armijostate* state,
+                  ae_state *_state)
 {
 
 
@@ -11897,7 +11897,7 @@ ae_bool armijoiteration(armijostate* state, ae_state *_state)
     ae_bool result;
 
 
-    
+
     /*
      * Reverse communication preparations
      * I know it looks ugly, but it works the same way
@@ -11934,7 +11934,7 @@ ae_bool armijoiteration(armijostate* state, ae_state *_state)
     {
         goto lbl_3;
     }
-    
+
     /*
      * Routine body
      */
@@ -11952,12 +11952,12 @@ ae_bool armijoiteration(armijostate* state, ae_state *_state)
     }
     n = state->n;
     state->nfev = 0;
-    
+
     /*
      * We always need F
      */
     state->needf = ae_true;
-    
+
     /*
      * Bound StpLen
      */
@@ -11965,7 +11965,7 @@ ae_bool armijoiteration(armijostate* state, ae_state *_state)
     {
         state->stplen = state->stpmax;
     }
-    
+
     /*
      * Increase length
      */
@@ -11991,7 +11991,7 @@ lbl_6:
     {
         goto lbl_7;
     }
-    
+
     /*
      * test stopping conditions
      */
@@ -12007,7 +12007,7 @@ lbl_6:
         result = ae_false;
         return result;
     }
-    
+
     /*
      * evaluate F
      */
@@ -12022,7 +12022,7 @@ lbl_6:
     goto lbl_rcomm;
 lbl_1:
     state->nfev = state->nfev+1;
-    
+
     /*
      * make decision
      */
@@ -12040,7 +12040,7 @@ lbl_1:
     goto lbl_6;
 lbl_7:
 lbl_4:
-    
+
     /*
      * Decrease length
      */
@@ -12062,7 +12062,7 @@ lbl_10:
     {
         goto lbl_11;
     }
-    
+
     /*
      * test stopping conditions
      */
@@ -12078,7 +12078,7 @@ lbl_10:
         result = ae_false;
         return result;
     }
-    
+
     /*
      * evaluate F
      */
@@ -12089,7 +12089,7 @@ lbl_10:
     goto lbl_rcomm;
 lbl_3:
     state->nfev = state->nfev+1;
-    
+
     /*
      * make decision
      */
@@ -12107,14 +12107,14 @@ lbl_3:
     goto lbl_10;
 lbl_11:
 lbl_8:
-    
+
     /*
      * Nothing to be done
      */
     state->info = 1;
     result = ae_false;
     return result;
-    
+
     /*
      * Saving state
      */
@@ -12144,10 +12144,10 @@ OUTPUT PARAMETERS:
      Copyright 05.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void armijoresults(armijostate* state,
-     ae_int_t* info,
-     double* stp,
-     double* f,
-     ae_state *_state)
+                   ae_int_t* info,
+                   double* stp,
+                   double* f,
+                   ae_state *_state)
 {
 
 
@@ -12158,19 +12158,19 @@ void armijoresults(armijostate* state,
 
 
 static void linmin_mcstep(double* stx,
-     double* fx,
-     double* dx,
-     double* sty,
-     double* fy,
-     double* dy,
-     double* stp,
-     double fp,
-     double dp,
-     ae_bool* brackt,
-     double stmin,
-     double stmax,
-     ae_int_t* info,
-     ae_state *_state)
+                          double* fx,
+                          double* dx,
+                          double* sty,
+                          double* fy,
+                          double* dy,
+                          double* stp,
+                          double fp,
+                          double dp,
+                          ae_bool* brackt,
+                          double stmin,
+                          double stmax,
+                          ae_int_t* info,
+                          ae_state *_state)
 {
     ae_bool bound;
     double gamma;
@@ -12186,7 +12186,7 @@ static void linmin_mcstep(double* stx,
 
 
     *info = 0;
-    
+
     /*
      *     CHECK THE INPUT PARAMETERS FOR ERRORS.
      */
@@ -12194,12 +12194,12 @@ static void linmin_mcstep(double* stx,
     {
         return;
     }
-    
+
     /*
      *     DETERMINE IF THE DERIVATIVES HAVE OPPOSITE SIGN.
      */
     sgnd = dp*(*dx/ae_fabs(*dx, _state));
-    
+
     /*
      *     FIRST CASE. A HIGHER FUNCTION VALUE.
      *     THE MINIMUM IS BRACKETED. IF THE CUBIC STEP IS CLOSER
@@ -12236,7 +12236,7 @@ static void linmin_mcstep(double* stx,
     {
         if( ae_fp_less(sgnd,0) )
         {
-            
+
             /*
              *     SECOND CASE. A LOWER FUNCTION VALUE AND DERIVATIVES OF
              *     OPPOSITE SIGN. THE MINIMUM IS BRACKETED. IF THE CUBIC
@@ -12271,7 +12271,7 @@ static void linmin_mcstep(double* stx,
         {
             if( ae_fp_less(ae_fabs(dp, _state),ae_fabs(*dx, _state)) )
             {
-                
+
                 /*
                  *     THIRD CASE. A LOWER FUNCTION VALUE, DERIVATIVES OF THE
                  *     SAME SIGN, AND THE MAGNITUDE OF THE DERIVATIVE DECREASES.
@@ -12286,7 +12286,7 @@ static void linmin_mcstep(double* stx,
                 bound = ae_true;
                 theta = 3*(*fx-fp)/(*stp-(*stx))+(*dx)+dp;
                 s = ae_maxreal(ae_fabs(theta, _state), ae_maxreal(ae_fabs(*dx, _state), ae_fabs(dp, _state), _state), _state);
-                
+
                 /*
                  *        THE CASE GAMMA = 0 ONLY ARISES IF THE CUBIC DOES NOT TEND
                  *        TO INFINITY IN THE DIRECTION OF THE STEP.
@@ -12340,7 +12340,7 @@ static void linmin_mcstep(double* stx,
             }
             else
             {
-                
+
                 /*
                  *     FOURTH CASE. A LOWER FUNCTION VALUE, DERIVATIVES OF THE
                  *     SAME SIGN, AND THE MAGNITUDE OF THE DERIVATIVE DOES
@@ -12378,7 +12378,7 @@ static void linmin_mcstep(double* stx,
             }
         }
     }
-    
+
     /*
      *     UPDATE THE INTERVAL OF UNCERTAINTY. THIS UPDATE DOES NOT
      *     DEPEND ON THE NEW STEP OR THE CASE ANALYSIS ABOVE.
@@ -12401,7 +12401,7 @@ static void linmin_mcstep(double* stx,
         *fx = fp;
         *dx = dp;
     }
-    
+
     /*
      *     COMPUTE THE NEW STEP AND SAFEGUARD IT.
      */
@@ -12543,9 +12543,9 @@ void _armijostate_destroy(void* _p)
 
 
 void findprimitiverootandinverse(ae_int_t n,
-     ae_int_t* proot,
-     ae_int_t* invproot,
-     ae_state *_state)
+                                 ae_int_t* proot,
+                                 ae_int_t* invproot,
+                                 ae_state *_state)
 {
     ae_int_t candroot;
     ae_int_t phin;
@@ -12567,17 +12567,17 @@ void findprimitiverootandinverse(ae_int_t n,
     ae_assert(n>=3, "FindPrimitiveRootAndInverse: N<3", _state);
     *proot = 0;
     *invproot = 0;
-    
+
     /*
      * check that N is prime
      */
     ae_assert(ntheory_isprime(n, _state), "FindPrimitiveRoot: N is not prime", _state);
-    
+
     /*
      * Because N is prime, Euler totient function is equal to N-1
      */
     phin = n-1;
-    
+
     /*
      * Test different values of PRoot - from 2 to N-1.
      * One of these values MUST be primitive root.
@@ -12592,7 +12592,7 @@ void findprimitiverootandinverse(ae_int_t n,
      */
     for(candroot=2; candroot<=n-1; candroot++)
     {
-        
+
         /*
          * We have current candidate root in CandRoot.
          *
@@ -12630,7 +12630,7 @@ void findprimitiverootandinverse(ae_int_t n,
         }
     }
     ae_assert(*proot>=2, "FindPrimitiveRoot: internal error (root not found)", _state);
-    
+
     /*
      * Use extended Euclidean algorithm to find multiplicative inverse of primitive root
      */
@@ -12658,7 +12658,7 @@ void findprimitiverootandinverse(ae_int_t n,
         lastx = lastx+n;
     }
     *invproot = lastx;
-    
+
     /*
      * Check that it is safe to perform multiplication modulo N.
      * Check results for consistency.
@@ -12693,9 +12693,9 @@ static ae_bool ntheory_isprime(ae_int_t n, ae_state *_state)
 
 
 static ae_int_t ntheory_modmul(ae_int_t a,
-     ae_int_t b,
-     ae_int_t n,
-     ae_state *_state)
+                               ae_int_t b,
+                               ae_int_t n,
+                               ae_state *_state)
 {
     ae_int_t t;
     double ra;
@@ -12705,7 +12705,7 @@ static ae_int_t ntheory_modmul(ae_int_t a,
 
     ae_assert(a>=0&&a<n, "ModMul: A<0 or A>=N", _state);
     ae_assert(b>=0&&b<n, "ModMul: B<0 or B>=N", _state);
-    
+
     /*
      * Base cases
      */
@@ -12726,13 +12726,13 @@ static ae_int_t ntheory_modmul(ae_int_t a,
         result = a*b%n;
         return result;
     }
-    
+
     /*
      * Non-base cases
      */
     if( b%2==0 )
     {
-        
+
         /*
          * A*B = (A*(B/2)) * 2
          *
@@ -12754,7 +12754,7 @@ static ae_int_t ntheory_modmul(ae_int_t a,
     }
     else
     {
-        
+
         /*
          * A*B = (A*(B div 2)) * 2 + A
          *
@@ -12785,9 +12785,9 @@ static ae_int_t ntheory_modmul(ae_int_t a,
 
 
 static ae_int_t ntheory_modexp(ae_int_t a,
-     ae_int_t b,
-     ae_int_t n,
-     ae_state *_state)
+                               ae_int_t b,
+                               ae_int_t n,
+                               ae_state *_state)
 {
     ae_int_t t;
     ae_int_t result;
@@ -12795,7 +12795,7 @@ static ae_int_t ntheory_modexp(ae_int_t a,
 
     ae_assert(a>=0&&a<n, "ModExp: A<0 or A>=N", _state);
     ae_assert(b>=0, "ModExp: B<0", _state);
-    
+
     /*
      * Base cases
      */
@@ -12809,7 +12809,7 @@ static ae_int_t ntheory_modexp(ae_int_t a,
         result = a;
         return result;
     }
-    
+
     /*
      * Non-base cases
      */
@@ -12836,7 +12836,7 @@ This subroutine generates FFT plan for K complex FFT's with length N each.
 INPUT PARAMETERS:
     N           -   FFT length (in complex numbers), N>=1
     K           -   number of repetitions, K>=1
-    
+
 OUTPUT PARAMETERS:
     Plan        -   plan
 
@@ -12844,9 +12844,9 @@ OUTPUT PARAMETERS:
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 void ftcomplexfftplan(ae_int_t n,
-     ae_int_t k,
-     fasttransformplan* plan,
-     ae_state *_state)
+                      ae_int_t k,
+                      fasttransformplan* plan,
+                      ae_state *_state)
 {
     ae_frame _frame_block;
     srealarray bluesteinbuf;
@@ -12861,13 +12861,13 @@ void ftcomplexfftplan(ae_int_t n,
     _fasttransformplan_clear(plan);
     _srealarray_init(&bluesteinbuf, _state, ae_true);
 
-    
+
     /*
      * Initial check for parameters
      */
     ae_assert(n>0, "FTComplexFFTPlan: N<=0", _state);
     ae_assert(k>0, "FTComplexFFTPlan: K<=0", _state);
-    
+
     /*
      * Determine required sizes of precomputed real and integer
      * buffers. This stage of code is highly dependent on internals
@@ -12894,7 +12894,7 @@ void ftcomplexfftplan(ae_int_t n,
     {
         ae_vector_set_length(&plan->preci, precisize, _state);
     }
-    
+
     /*
      * Generate plan
      */
@@ -12906,7 +12906,7 @@ void ftcomplexfftplan(ae_int_t n,
     ftbase_ftcomplexfftplanrec(n, k, ae_true, ae_true, &rowptr, &bluesteinsize, &precrptr, &preciptr, plan, _state);
     ae_vector_set_length(&bluesteinbuf.val, bluesteinsize, _state);
     ae_shared_pool_set_seed(&plan->bluesteinpool, &bluesteinbuf, sizeof(bluesteinbuf), _srealarray_init, _srealarray_init_copy, _srealarray_destroy, _state);
-    
+
     /*
      * Check that actual amount of precomputed space used by transformation
      * plan is EXACTLY equal to amount of space allocated by us.
@@ -12926,7 +12926,7 @@ INPUT PARAMETERS:
     OffsA       -   offset of the subarray to process
     RepCnt      -   repetition count (transformation is repeatedly applied
                     to subsequent subarrays)
-    
+
 OUTPUT PARAMETERS:
     Plan        -   plan (temporary buffers can be modified, plan itself
                     is unchanged and can be reused)
@@ -12936,10 +12936,10 @@ OUTPUT PARAMETERS:
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 void ftapplyplan(fasttransformplan* plan,
-     /* Real    */ ae_vector* a,
-     ae_int_t offsa,
-     ae_int_t repcnt,
-     ae_state *_state)
+                 /* Real    */ ae_vector* a,
+                 ae_int_t offsa,
+                 ae_int_t repcnt,
+                 ae_state *_state)
 {
     ae_int_t plansize;
     ae_int_t i;
@@ -12965,10 +12965,10 @@ Factorization is chosen depending on task type and codelets we have.
      Copyright 01.05.2009 by Bochkanov Sergey
 *************************************************************************/
 void ftbasefactorize(ae_int_t n,
-     ae_int_t tasktype,
-     ae_int_t* n1,
-     ae_int_t* n2,
-     ae_state *_state)
+                     ae_int_t tasktype,
+                     ae_int_t* n1,
+                     ae_int_t* n2,
+                     ae_state *_state)
 {
     ae_int_t j;
 
@@ -12977,7 +12977,7 @@ void ftbasefactorize(ae_int_t n,
 
     *n1 = 0;
     *n2 = 0;
-    
+
     /*
      * try to find good codelet
      */
@@ -12993,7 +12993,7 @@ void ftbasefactorize(ae_int_t n,
             }
         }
     }
-    
+
     /*
      * try to factorize N
      */
@@ -13009,7 +13009,7 @@ void ftbasefactorize(ae_int_t n,
             }
         }
     }
-    
+
     /*
      * looks like N is prime :(
      */
@@ -13018,7 +13018,7 @@ void ftbasefactorize(ae_int_t n,
         *n1 = 1;
         *n2 = n;
     }
-    
+
     /*
      * normalize
      */
@@ -13133,26 +13133,26 @@ INPUT PARAMETERS:
     N           -   transform length
     PrecRSize   -   must be set to zero
     PrecISize   -   must be set to zero
-    
+
 OUTPUT PARAMETERS:
     PrecRSize   -   number of real temporaries required for transformation
     PrecISize   -   number of integer temporaries required for transformation
 
-    
+
   -- ALGLIB --
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftdeterminespacerequirements(ae_int_t n,
-     ae_int_t* precrsize,
-     ae_int_t* precisize,
-     ae_state *_state)
+        ae_int_t* precrsize,
+        ae_int_t* precisize,
+        ae_state *_state)
 {
     ae_int_t ncur;
     ae_int_t f;
     ae_int_t i;
 
 
-    
+
     /*
      * Determine required sizes of precomputed real and integer
      * buffers. This stage of code is highly dependent on internals
@@ -13228,28 +13228,28 @@ INPUT PARAMETERS:
                     * it is responsibility of the caller to allocate enough
                       space before calling this function
     Plan        -   plan (generated so far)
-    
+
 OUTPUT PARAMETERS:
     RowPtr      -   updated pointer (advanced by number of entries generated
                     by function)
     BluesteinSize-  updated amount
                     (may be increased, but may never be decreased)
-        
+
 NOTE: in case TopmostPlan is True, ChildPlan is also must be True.
-    
+
   -- ALGLIB --
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftcomplexfftplanrec(ae_int_t n,
-     ae_int_t k,
-     ae_bool childplan,
-     ae_bool topmostplan,
-     ae_int_t* rowptr,
-     ae_int_t* bluesteinsize,
-     ae_int_t* precrptr,
-     ae_int_t* preciptr,
-     fasttransformplan* plan,
-     ae_state *_state)
+                                       ae_int_t k,
+                                       ae_bool childplan,
+                                       ae_bool topmostplan,
+                                       ae_int_t* rowptr,
+                                       ae_int_t* bluesteinsize,
+                                       ae_int_t* precrptr,
+                                       ae_int_t* preciptr,
+                                       fasttransformplan* plan,
+                                       ae_state *_state)
 {
     ae_frame _frame_block;
     srealarray localbuf;
@@ -13269,7 +13269,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
     ae_assert(n>0, "FTComplexFFTPlan: N<=0", _state);
     ae_assert(k>0, "FTComplexFFTPlan: K<=0", _state);
     ae_assert(!topmostplan||childplan, "FTComplexFFTPlan: ChildPlan is inconsistent with TopmostPlan", _state);
-    
+
     /*
      * Try to generate "topmost" plan
      */
@@ -13278,14 +13278,14 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
         ftbase_ftfactorize(n, ae_false, &n1, &n2, _state);
         if( n1*n2==0 )
         {
-            
+
             /*
              * Handle prime-factor FFT with Bluestein's FFT.
              * Determine size of Bluestein's buffer.
              */
             m = ftbasefindsmooth(2*n-1, _state);
             *bluesteinsize = ae_maxint(2*m, *bluesteinsize, _state);
-            
+
             /*
              * Generate plan
              */
@@ -13297,12 +13297,12 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
             row1 = *rowptr;
             plan->entries.ptr.pp_int[row0][ftbase_colparam0] = row1-row0;
             ftbase_ftpushentry(plan, rowptr, ftbase_opend, k, n, 2, 0, _state);
-            
+
             /*
              * Fill precomputed buffer
              */
             ftbase_ftprecomputebluesteinsfft(n, m, &plan->precr, *precrptr, _state);
-            
+
             /*
              * Update pointer to the precomputed area
              */
@@ -13310,7 +13310,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
         }
         else
         {
-            
+
             /*
              * Handle composite FFT with recursive Cooley-Tukey which
              * uses global buffer instead of local one.
@@ -13335,7 +13335,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Prepare "non-topmost" plan:
      * * calculate factorization
@@ -13345,7 +13345,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
      *   applied later
      */
     ftbase_ftfactorize(n, ae_false, &n1, &n2, _state);
-    
+
     /*
      * Handle FFT's with N1*N2=0: either small-N or prime-factor
      */
@@ -13353,7 +13353,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
     {
         if( n<=ftbase_maxradix )
         {
-            
+
             /*
              * Small-N FFT
              */
@@ -13371,7 +13371,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
         }
         if( n<=ftbase_raderthreshold )
         {
-            
+
             /*
              * Handle prime-factor FFT's with Rader's FFT
              */
@@ -13396,7 +13396,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
         }
         else
         {
-            
+
             /*
              * Handle prime-factor FFT's with Bluestein's FFT
              */
@@ -13422,13 +13422,13 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Handle Cooley-Tukey FFT with small N1
      */
     if( n1<=ftbase_maxradix )
     {
-        
+
         /*
          * Specialized transformation for small N1:
          * * N2 short inplace FFT's, each N1-point, with integrated twiddle factors
@@ -13449,13 +13449,13 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Handle general Cooley-Tukey FFT, either "flat" or "recursive"
      */
     if( n<=ftbase_recursivethreshold )
     {
-        
+
         /*
          * General code for large N1/N2, "flat" version without explicit recurrence
          * (nested subplans are inserted directly into the body of the plan)
@@ -13477,7 +13477,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
     }
     else
     {
-        
+
         /*
          * General code for large N1/N2, "recursive" version - nested subplans
          * are separated from the plan body.
@@ -13500,7 +13500,7 @@ static void ftbase_ftcomplexfftplanrec(ae_int_t n,
         {
             ftbase_ftpushentry(plan, rowptr, ftbase_opend, k, n, 2, 0, _state);
         }
-        
+
         /*
          * Generate child subplans, insert refence to parent plans
          */
@@ -13527,24 +13527,24 @@ INPUT PARAMETERS:
     EOpSize     -   operand size
     EMcvSize    -   microvector size
     EParam0     -   parameter 0
-    
+
 OUTPUT PARAMETERS:
-    Plan        -   updated plan    
+    Plan        -   updated plan
     RowPtr      -   updated pointer
 
 NOTE: Param1 is set to -1.
-    
+
   -- ALGLIB --
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftpushentry(fasttransformplan* plan,
-     ae_int_t* rowptr,
-     ae_int_t etype,
-     ae_int_t eopcnt,
-     ae_int_t eopsize,
-     ae_int_t emcvsize,
-     ae_int_t eparam0,
-     ae_state *_state)
+                               ae_int_t* rowptr,
+                               ae_int_t etype,
+                               ae_int_t eopcnt,
+                               ae_int_t eopsize,
+                               ae_int_t emcvsize,
+                               ae_int_t eparam0,
+                               ae_state *_state)
 {
 
 
@@ -13566,23 +13566,23 @@ INPUT PARAMETERS:
     EMcvSize    -   microvector size
     EParam0     -   parameter 0
     EParam1     -   parameter 1
-    
+
 OUTPUT PARAMETERS:
-    Plan        -   updated plan    
+    Plan        -   updated plan
     RowPtr      -   updated pointer
 
   -- ALGLIB --
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftpushentry2(fasttransformplan* plan,
-     ae_int_t* rowptr,
-     ae_int_t etype,
-     ae_int_t eopcnt,
-     ae_int_t eopsize,
-     ae_int_t emcvsize,
-     ae_int_t eparam0,
-     ae_int_t eparam1,
-     ae_state *_state)
+                                ae_int_t* rowptr,
+                                ae_int_t etype,
+                                ae_int_t eopcnt,
+                                ae_int_t eopsize,
+                                ae_int_t emcvsize,
+                                ae_int_t eparam0,
+                                ae_int_t eparam1,
+                                ae_state *_state)
 {
 
 
@@ -13618,25 +13618,25 @@ INPUT PARAMETERS:
     EParam1     -   parameter 1
     EParam2     -   parameter 2
     EParam3     -   parameter 3
-    
+
 OUTPUT PARAMETERS:
-    Plan        -   updated plan    
+    Plan        -   updated plan
     RowPtr      -   updated pointer
 
   -- ALGLIB --
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftpushentry4(fasttransformplan* plan,
-     ae_int_t* rowptr,
-     ae_int_t etype,
-     ae_int_t eopcnt,
-     ae_int_t eopsize,
-     ae_int_t emcvsize,
-     ae_int_t eparam0,
-     ae_int_t eparam1,
-     ae_int_t eparam2,
-     ae_int_t eparam3,
-     ae_state *_state)
+                                ae_int_t* rowptr,
+                                ae_int_t etype,
+                                ae_int_t eopcnt,
+                                ae_int_t eopsize,
+                                ae_int_t emcvsize,
+                                ae_int_t eparam0,
+                                ae_int_t eparam1,
+                                ae_int_t eparam2,
+                                ae_int_t eparam3,
+                                ae_state *_state)
 {
 
 
@@ -13673,7 +13673,7 @@ INPUT PARAMETERS:
     OffsBuf     -   offset in the buffer array
     RepCnt      -   repetition count (transformation is repeatedly applied
                     to subsequent subarrays)
-    
+
 OUTPUT PARAMETERS:
     Plan        -   plan (temporary buffers can be modified, plan itself
                     is unchanged and can be reused)
@@ -13683,13 +13683,13 @@ OUTPUT PARAMETERS:
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftapplysubplan(fasttransformplan* plan,
-     ae_int_t subplan,
-     /* Real    */ ae_vector* a,
-     ae_int_t abase,
-     ae_int_t aoffset,
-     /* Real    */ ae_vector* buf,
-     ae_int_t repcnt,
-     ae_state *_state)
+                                  ae_int_t subplan,
+                                  /* Real    */ ae_vector* a,
+                                  ae_int_t abase,
+                                  ae_int_t aoffset,
+                                  /* Real    */ ae_vector* buf,
+                                  ae_int_t repcnt,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t rowidx;
@@ -13732,7 +13732,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
         param0 = plan->entries.ptr.pp_int[rowidx][ftbase_colparam0];
         param1 = plan->entries.ptr.pp_int[rowidx][ftbase_colparam1];
         touchint(&param1, _state);
-        
+
         /*
          * Process "jump" operation
          */
@@ -13741,7 +13741,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+plan->entries.ptr.pp_int[rowidx][ftbase_colparam0];
             continue;
         }
-        
+
         /*
          * Process "parallel call" operation:
          * * we perform initial check for consistency between parent and child plans
@@ -13770,7 +13770,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+1;
             continue;
         }
-        
+
         /*
          * Process "reference complex FFT" operation
          */
@@ -13780,7 +13780,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+1;
             continue;
         }
-        
+
         /*
          * Process "codelet FFT" operation
          */
@@ -13790,7 +13790,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+1;
             continue;
         }
-        
+
         /*
          * Process "integrated codelet FFT" operation
          */
@@ -13800,7 +13800,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+1;
             continue;
         }
-        
+
         /*
          * Process Bluestein's FFT operation
          */
@@ -13819,7 +13819,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+1;
             continue;
         }
-        
+
         /*
          * Process Rader's FFT
          */
@@ -13829,7 +13829,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+1;
             continue;
         }
-        
+
         /*
          * Process "complex twiddle factors" operation
          */
@@ -13845,7 +13845,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+1;
             continue;
         }
-        
+
         /*
          * Process "complex transposition" operation
          */
@@ -13861,7 +13861,7 @@ static void ftbase_ftapplysubplan(fasttransformplan* plan,
             rowidx = rowidx+1;
             continue;
         }
-        
+
         /*
          * Error
          */
@@ -13883,7 +13883,7 @@ INPUT PARAMETERS:
     OperandSize -   operand size (see description of FastTransformPlan)
     MicrovectorSize-microvector size (see description of FastTransformPlan)
     Buf         -   temporary array, must be at least OperandsCnt*OperandSize*MicrovectorSize
-    
+
 OUTPUT PARAMETERS:
     A           -   transformed array
 
@@ -13891,12 +13891,12 @@ OUTPUT PARAMETERS:
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftapplycomplexreffft(/* Real    */ ae_vector* a,
-     ae_int_t offs,
-     ae_int_t operandscnt,
-     ae_int_t operandsize,
-     ae_int_t microvectorsize,
-     /* Real    */ ae_vector* buf,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t operandscnt,
+        ae_int_t operandsize,
+        ae_int_t microvectorsize,
+        /* Real    */ ae_vector* buf,
+        ae_state *_state)
 {
     ae_int_t opidx;
     ae_int_t i;
@@ -13949,7 +13949,7 @@ INPUT PARAMETERS:
     OperandsCnt -   operands count (see description of FastTransformPlan)
     OperandSize -   operand size (see description of FastTransformPlan)
     MicrovectorSize-microvector size, must be 2
-    
+
 OUTPUT PARAMETERS:
     A           -   transformed array
 
@@ -13957,11 +13957,11 @@ OUTPUT PARAMETERS:
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftapplycomplexcodeletfft(/* Real    */ ae_vector* a,
-     ae_int_t offs,
-     ae_int_t operandscnt,
-     ae_int_t operandsize,
-     ae_int_t microvectorsize,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t operandscnt,
+        ae_int_t operandsize,
+        ae_int_t microvectorsize,
+        ae_state *_state)
 {
     ae_int_t opidx;
     ae_int_t n;
@@ -14024,7 +14024,7 @@ static void ftbase_ftapplycomplexcodeletfft(/* Real    */ ae_vector* a,
     ae_assert(operandsize>=1, "FTApplyComplexCodeletFFT: OperandSize<1", _state);
     ae_assert(microvectorsize==2, "FTApplyComplexCodeletFFT: MicrovectorSize<>2", _state);
     n = operandsize;
-    
+
     /*
      * Hard-coded transforms for different N's
      */
@@ -14278,7 +14278,7 @@ INPUT PARAMETERS:
     OperandsCnt -   operands count (see description of FastTransformPlan)
     OperandSize -   operand size (see description of FastTransformPlan)
     MicrovectorSize-microvector size, must be 1
-    
+
 OUTPUT PARAMETERS:
     A           -   transformed array
 
@@ -14286,11 +14286,11 @@ OUTPUT PARAMETERS:
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftapplycomplexcodelettwfft(/* Real    */ ae_vector* a,
-     ae_int_t offs,
-     ae_int_t operandscnt,
-     ae_int_t operandsize,
-     ae_int_t microvectorsize,
-     ae_state *_state)
+        ae_int_t offs,
+        ae_int_t operandscnt,
+        ae_int_t operandsize,
+        ae_int_t microvectorsize,
+        ae_state *_state)
 {
     ae_int_t opidx;
     ae_int_t mvidx;
@@ -14377,7 +14377,7 @@ static void ftbase_ftapplycomplexcodelettwfft(/* Real    */ ae_vector* a,
     ae_assert(microvectorsize%2==0, "FTApplyComplexCodeletFFT: MicrovectorSize is not even", _state);
     n = operandsize;
     m = microvectorsize/2;
-    
+
     /*
      * Hard-coded transforms for different N's
      */
@@ -14825,13 +14825,13 @@ INPUT PARAMETERS:
     M           -   size of the "padded" Bluestein's transform
     PrecR       -   preallocated array
     Offs        -   offset
-    
+
 OUTPUT PARAMETERS:
     PrecR       -   data at Offs:Offs+4*M-1 are modified:
                     * PrecR[Offs:Offs+2*M-1] stores Z[k]=exp(i*pi*k^2/N)
                     * PrecR[Offs+2*M:Offs+4*M-1] stores FFT of the Z
                     Other parts of PrecR are unchanged.
-                    
+
 NOTE: this function performs internal M-point FFT. It allocates temporary
       plan which is destroyed after leaving this function.
 
@@ -14839,10 +14839,10 @@ NOTE: this function performs internal M-point FFT. It allocates temporary
      Copyright 08.05.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftprecomputebluesteinsfft(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* precr,
-     ae_int_t offs,
-     ae_state *_state)
+        ae_int_t m,
+        /* Real    */ ae_vector* precr,
+        ae_int_t offs,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -14853,7 +14853,7 @@ static void ftbase_ftprecomputebluesteinsfft(ae_int_t n,
     ae_frame_make(_state, &_frame_block);
     _fasttransformplan_init(&plan, _state, ae_true);
 
-    
+
     /*
      * Fill first half of PrecR with b[k] = exp(i*pi*k^2/N)
      */
@@ -14870,7 +14870,7 @@ static void ftbase_ftprecomputebluesteinsfft(ae_int_t n,
         precr->ptr.p_double[offs+2*((m-i)%m)+0] = bx;
         precr->ptr.p_double[offs+2*((m-i)%m)+1] = by;
     }
-    
+
     /*
      * Precomputed FFT
      */
@@ -14905,7 +14905,7 @@ INPUT PARAMETERS:
     BufB        -   temporary buffer, at least 2*M elements
     BufC        -   temporary buffer, at least 2*M elements
     BufD        -   temporary buffer, at least 2*M elements
-    
+
 OUTPUT PARAMETERS:
     A           -   transformed array
 
@@ -14913,19 +14913,19 @@ OUTPUT PARAMETERS:
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftbluesteinsfft(fasttransformplan* plan,
-     /* Real    */ ae_vector* a,
-     ae_int_t abase,
-     ae_int_t aoffset,
-     ae_int_t operandscnt,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t precoffs,
-     ae_int_t subplan,
-     /* Real    */ ae_vector* bufa,
-     /* Real    */ ae_vector* bufb,
-     /* Real    */ ae_vector* bufc,
-     /* Real    */ ae_vector* bufd,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* a,
+                                   ae_int_t abase,
+                                   ae_int_t aoffset,
+                                   ae_int_t operandscnt,
+                                   ae_int_t n,
+                                   ae_int_t m,
+                                   ae_int_t precoffs,
+                                   ae_int_t subplan,
+                                   /* Real    */ ae_vector* bufa,
+                                   /* Real    */ ae_vector* bufb,
+                                   /* Real    */ ae_vector* bufc,
+                                   /* Real    */ ae_vector* bufd,
+                                   ae_state *_state)
 {
     ae_int_t op;
     ae_int_t i;
@@ -14944,7 +14944,7 @@ static void ftbase_ftbluesteinsfft(fasttransformplan* plan,
 
     for(op=0; op<=operandscnt-1; op++)
     {
-        
+
         /*
          * Multiply A by conj(Z), store to buffer.
          * Pad A by zeros.
@@ -14968,7 +14968,7 @@ static void ftbase_ftbluesteinsfft(fasttransformplan* plan,
         {
             bufa->ptr.p_double[i] = 0;
         }
-        
+
         /*
          * Perform convolution of A and Z (using precomputed
          * FFT of Z stored in Plan structure).
@@ -14988,7 +14988,7 @@ static void ftbase_ftbluesteinsfft(fasttransformplan* plan,
             p1 = p1+2;
         }
         ftbase_ftapplysubplan(plan, subplan, bufa, 0, 0, bufc, 1, _state);
-        
+
         /*
          * Post processing:
          *     A:=conj(Z)*conj(A)/M
@@ -15025,11 +15025,11 @@ INPUT PARAMETERS:
     RIQ         -   inverse of primitive root modulo N
     PrecR       -   preallocated array
     Offs        -   offset
-    
+
 OUTPUT PARAMETERS:
     PrecR       -   data at Offs:Offs+2*(N-1)-1 store FFT of Rader's factors,
                     other parts of PrecR are unchanged.
-                    
+
 NOTE: this function performs internal (N-1)-point FFT. It allocates temporary
       plan which is destroyed after leaving this function.
 
@@ -15037,11 +15037,11 @@ NOTE: this function performs internal (N-1)-point FFT. It allocates temporary
      Copyright 08.05.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftprecomputeradersfft(ae_int_t n,
-     ae_int_t rq,
-     ae_int_t riq,
-     /* Real    */ ae_vector* precr,
-     ae_int_t offs,
-     ae_state *_state)
+        ae_int_t rq,
+        ae_int_t riq,
+        /* Real    */ ae_vector* precr,
+        ae_int_t offs,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t q;
@@ -15052,7 +15052,7 @@ static void ftbase_ftprecomputeradersfft(ae_int_t n,
     ae_frame_make(_state, &_frame_block);
     _fasttransformplan_init(&plan, _state, ae_true);
 
-    
+
     /*
      * Fill PrecR with Rader factors, perform FFT
      */
@@ -15088,7 +15088,7 @@ INPUT PARAMETERS:
     RIQ         -   inverse of primitive root modulo N
     PrecOffs    -   offset of the precomputed data for the plan
     Buf         -   temporary array
-    
+
 OUTPUT PARAMETERS:
     A           -   transformed array
 
@@ -15096,17 +15096,17 @@ OUTPUT PARAMETERS:
      Copyright 05.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftradersfft(fasttransformplan* plan,
-     /* Real    */ ae_vector* a,
-     ae_int_t abase,
-     ae_int_t aoffset,
-     ae_int_t operandscnt,
-     ae_int_t n,
-     ae_int_t subplan,
-     ae_int_t rq,
-     ae_int_t riq,
-     ae_int_t precoffs,
-     /* Real    */ ae_vector* buf,
-     ae_state *_state)
+                               /* Real    */ ae_vector* a,
+                               ae_int_t abase,
+                               ae_int_t aoffset,
+                               ae_int_t operandscnt,
+                               ae_int_t n,
+                               ae_int_t subplan,
+                               ae_int_t rq,
+                               ae_int_t riq,
+                               ae_int_t precoffs,
+                               /* Real    */ ae_vector* buf,
+                               ae_state *_state)
 {
     ae_int_t opidx;
     ae_int_t i;
@@ -15126,13 +15126,13 @@ static void ftbase_ftradersfft(fasttransformplan* plan,
 
 
     ae_assert(operandscnt>=1, "FTApplyComplexRefFFT: OperandsCnt<1", _state);
-    
+
     /*
      * Process operands
      */
     for(opidx=0; opidx<=operandscnt-1; opidx++)
     {
-        
+
         /*
          * fill QA
          */
@@ -15163,7 +15163,7 @@ static void ftbase_ftradersfft(fasttransformplan* plan,
             p0 = p0+2;
             p1 = p1+2;
         }
-        
+
         /*
          * Convolution
          */
@@ -15189,7 +15189,7 @@ static void ftbase_ftradersfft(fasttransformplan* plan,
             a->ptr.p_double[p0+1] = -a->ptr.p_double[p0+1]/(n-1);
             p0 = p0+2;
         }
-        
+
         /*
          * Result
          */
@@ -15224,7 +15224,7 @@ Factorizes task size N into product of two smaller sizes N1 and N2
 INPUT PARAMETERS:
     N       -   task size, N>0
     IsRoot  -   whether taks is root task (first one in a sequence)
-    
+
 OUTPUT PARAMETERS:
     N1, N2  -   such numbers that:
                 * for prime N:                  N1=N2=0
@@ -15235,10 +15235,10 @@ OUTPUT PARAMETERS:
      Copyright 08.04.2013 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftfactorize(ae_int_t n,
-     ae_bool isroot,
-     ae_int_t* n1,
-     ae_int_t* n2,
-     ae_state *_state)
+                               ae_bool isroot,
+                               ae_int_t* n1,
+                               ae_int_t* n2,
+                               ae_state *_state)
 {
     ae_int_t j;
     ae_int_t k;
@@ -15249,7 +15249,7 @@ static void ftbase_ftfactorize(ae_int_t n,
     ae_assert(n>0, "FTFactorize: N<=0", _state);
     *n1 = 0;
     *n2 = 0;
-    
+
     /*
      * Small N
      */
@@ -15257,7 +15257,7 @@ static void ftbase_ftfactorize(ae_int_t n,
     {
         return;
     }
-    
+
     /*
      * Large N, recursive split
      */
@@ -15275,7 +15275,7 @@ static void ftbase_ftfactorize(ae_int_t n,
             }
         }
     }
-    
+
     /*
      * N>MaxRadix, try to find good codelet
      */
@@ -15288,7 +15288,7 @@ static void ftbase_ftfactorize(ae_int_t n,
             break;
         }
     }
-    
+
     /*
      * In case no good codelet was found,
      * try to factorize N into product of ANY primes.
@@ -15309,7 +15309,7 @@ static void ftbase_ftfactorize(ae_int_t n,
             }
         }
     }
-    
+
     /*
      * normalize
      */
@@ -15327,7 +15327,7 @@ Returns optimistic estimate of the FFT cost, in UNITs (1 UNIT = 100 KFLOPs)
 
 INPUT PARAMETERS:
     N       -   task size, N>0
-    
+
 RESULU:
     cost in UNITs, rounded down to nearest integer
 
@@ -15354,10 +15354,10 @@ Twiddle factors calculation
      Copyright 01.05.2009 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ffttwcalc(/* Real    */ ae_vector* a,
-     ae_int_t aoffset,
-     ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+        ae_int_t aoffset,
+        ae_int_t n1,
+        ae_int_t n2,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j2;
@@ -15378,7 +15378,7 @@ static void ftbase_ffttwcalc(/* Real    */ ae_vector* a,
     ae_int_t updatetw2;
 
 
-    
+
     /*
      * Multiplication by twiddle factors for complex Cooley-Tukey FFT
      * with N factorized as N1*N2.
@@ -15434,20 +15434,20 @@ static void ftbase_ffttwcalc(/* Real    */ ae_vector* a,
     offs = aoffset;
     for(i=0; i<=n2-1; i++)
     {
-        
+
         /*
          * Initialize twiddle factor for current row
          */
         twxm1 = 0;
         twy = 0;
-        
+
         /*
          * N1-point block is separated into 2-point chunks and residual 1-point chunk
          * (in case N1 is odd). Unrolled loop is several times faster.
          */
         for(j2=0; j2<=halfn1-1; j2++)
         {
-            
+
             /*
              * Processing:
              * * process first element in a chunk.
@@ -15473,7 +15473,7 @@ static void ftbase_ffttwcalc(/* Real    */ ae_vector* a,
             offs = offs+4;
             if( (j2+1)%updatetw2==0&&j2<halfn1-1 )
             {
-                
+
                 /*
                  * Recalculate twiddle factor
                  */
@@ -15484,7 +15484,7 @@ static void ftbase_ffttwcalc(/* Real    */ ae_vector* a,
             }
             else
             {
-                
+
                 /*
                  * Update twiddle factor
                  */
@@ -15495,7 +15495,7 @@ static void ftbase_ffttwcalc(/* Real    */ ae_vector* a,
         }
         if( n1%2==1 )
         {
-            
+
             /*
              * Handle residual chunk
              */
@@ -15507,7 +15507,7 @@ static void ftbase_ffttwcalc(/* Real    */ ae_vector* a,
             a->ptr.p_double[offs+1] = tmpy;
             offs = offs+2;
         }
-        
+
         /*
          * update TwRow: TwRow(new) = TwRow(old)*TwBase
          */
@@ -15539,11 +15539,11 @@ Linear transpose: transpose complex matrix stored in 1-dimensional array
      Copyright 01.05.2009 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_internalcomplexlintranspose(/* Real    */ ae_vector* a,
-     ae_int_t m,
-     ae_int_t n,
-     ae_int_t astart,
-     /* Real    */ ae_vector* buf,
-     ae_state *_state)
+        ae_int_t m,
+        ae_int_t n,
+        ae_int_t astart,
+        /* Real    */ ae_vector* buf,
+        ae_state *_state)
 {
 
 
@@ -15566,14 +15566,14 @@ stride is measured in complex numbers, i.e. in real/image pairs.
      Copyright 01.05.2009 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ffticltrec(/* Real    */ ae_vector* a,
-     ae_int_t astart,
-     ae_int_t astride,
-     /* Real    */ ae_vector* b,
-     ae_int_t bstart,
-     ae_int_t bstride,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t astart,
+        ae_int_t astride,
+        /* Real    */ ae_vector* b,
+        ae_int_t bstart,
+        ae_int_t bstride,
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -15607,7 +15607,7 @@ static void ftbase_ffticltrec(/* Real    */ ae_vector* a,
     }
     if( n>m )
     {
-        
+
         /*
          * New partition:
          *
@@ -15625,7 +15625,7 @@ static void ftbase_ffticltrec(/* Real    */ ae_vector* a,
     }
     else
     {
-        
+
         /*
          * New partition:
          *
@@ -15652,14 +15652,14 @@ Recurrent subroutine for a InternalRealLinTranspose
      Copyright 01.05.2009 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_fftirltrec(/* Real    */ ae_vector* a,
-     ae_int_t astart,
-     ae_int_t astride,
-     /* Real    */ ae_vector* b,
-     ae_int_t bstart,
-     ae_int_t bstride,
-     ae_int_t m,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t astart,
+        ae_int_t astride,
+        /* Real    */ ae_vector* b,
+        ae_int_t bstart,
+        ae_int_t bstride,
+        ae_int_t m,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -15690,7 +15690,7 @@ static void ftbase_fftirltrec(/* Real    */ ae_vector* a,
     }
     if( n>m )
     {
-        
+
         /*
          * New partition:
          *
@@ -15708,7 +15708,7 @@ static void ftbase_fftirltrec(/* Real    */ ae_vector* a,
     }
     else
     {
-        
+
         /*
          * New partition:
          *
@@ -15734,10 +15734,10 @@ recurrent subroutine for FFTFindSmoothRec
      Copyright 01.05.2009 by Bochkanov Sergey
 *************************************************************************/
 static void ftbase_ftbasefindsmoothrec(ae_int_t n,
-     ae_int_t seed,
-     ae_int_t leastfactor,
-     ae_int_t* best,
-     ae_state *_state)
+                                       ae_int_t seed,
+                                       ae_int_t leastfactor,
+                                       ae_int_t* best,
+                                       ae_state *_state)
 {
 
 

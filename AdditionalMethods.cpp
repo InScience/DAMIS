@@ -5,6 +5,7 @@
 #include "AdditionalMethods.h"
 #include "ObjectMatrix.h"
 #include "DataObject.h"
+#include "alglib/dataanalysis.h"
 
 ///////////////////////////////////////////////////////////
 //  Projection.cpp
@@ -13,19 +14,22 @@
 //  Original author: Mindaugas
 ///////////////////////////////////////////////////////////
 
-/*! \class AdditionalMethods
+/*! \file AdditionalMethods
     \brief A class of static methods for data conversion and static members.
  */
 
 const char* AdditionalMethods::alphanum= "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 std::string AdditionalMethods::tempFileSavePath = "";
-std::string AdditionalMethods::tempPath = "C:\\inetpub\\wwwroot\\Damis\\Data\\tempDist\\";
+std::string AdditionalMethods::tempPath = "";
+FILE *AdditionalMethods::distFile = NULL;
 
-AdditionalMethods::AdditionalMethods(){
+AdditionalMethods::AdditionalMethods()
+{
 
 }
 
-AdditionalMethods::~AdditionalMethods(){
+AdditionalMethods::~AdditionalMethods()
+{
 
 }
 
@@ -38,7 +42,12 @@ std::string AdditionalMethods::generateFileName()
     time(&t);
     srand((unsigned int)(t+rand()));
 
-    std::string catString;
+    std::string catString, path;
+    path.assign(AdditionalMethods::inputDataFile);
+
+    std::string::size_type tt = path.find_last_of("/");
+    path = path.substr(0,tt) + "/";
+    AdditionalMethods::tempPath.assign(path);
     catString.assign(AdditionalMethods::tempPath);
 
     int i;
@@ -47,12 +56,13 @@ std::string AdditionalMethods::generateFileName()
     for ( i = 0; i < qty; ++i)
         catString += (AdditionalMethods::alphanum[rand() % (strlen(AdditionalMethods::alphanum) - 1)]);
     catString +=".bin";
-//std::cout << catString;
+
     return  catString;
 }
 
 
-double** AdditionalMethods::ObjectMatrixToDouble(ObjectMatrix matrix){
+double** AdditionalMethods::ObjectMatrixToDouble(ObjectMatrix matrix)
+{
     int numOfObjects = matrix.getObjectCount();
     int numOfFeatures = matrix.getObjectAt(0).getFeatureCount();
     double **matrixToReturn;
@@ -65,7 +75,8 @@ double** AdditionalMethods::ObjectMatrixToDouble(ObjectMatrix matrix){
     return matrixToReturn;
 }
 
-ObjectMatrix AdditionalMethods::DoubleToObjectMatrix(double** matrix, int rows, int cols){
+ObjectMatrix AdditionalMethods::DoubleToObjectMatrix(double** matrix, int rows, int cols)
+{
     std::vector<double> v;
     v.reserve(cols);
     ObjectMatrix toReturn(rows);
@@ -111,9 +122,9 @@ alglib::real_1d_array AdditionalMethods::DataObjectTo1DArray(DataObject dataObje
     int n = dataObject.getFeatureCount();
     toReturn.setlength(n);
 
-   // for (int i = 0; i < m; i++)
-        for (int j = 0; j < n; j++)
-            toReturn(j) = dataObject.getFeatureAt(j);
+    // for (int i = 0; i < m; i++)
+    for (int j = 0; j < n; j++)
+        toReturn(j) = dataObject.getFeatureAt(j);
 
     return toReturn;
 }
@@ -142,13 +153,13 @@ DataObject AdditionalMethods::alglib1DArrayToDataObject(alglib::real_1d_array ar
     std::vector<double> dataObjectFeatures;
     dataObjectFeatures.reserve(m);
 
- /*   for (int i = 0; i < m; i++)
-    {*/
-        for (int j = 0; j < m; j++)
-            dataObjectFeatures.push_back(array(j));
-        /*toReturn.addObject(DataObject(dataObjectFeatures));
-        dataObjectFeatures.clear();*/
-        toReturn = DataObject(dataObjectFeatures);
+    /*   for (int i = 0; i < m; i++)
+       {*/
+    for (int j = 0; j < m; j++)
+        dataObjectFeatures.push_back(array(j));
+    /*toReturn.addObject(DataObject(dataObjectFeatures));
+    dataObjectFeatures.clear();*/
+    toReturn = DataObject(dataObjectFeatures);
     //}
     return toReturn;
 }
@@ -157,7 +168,8 @@ std::vector<std::string> AdditionalMethods::split(const std::string &s, char del
 {
     std::stringstream ss(s);
     std::string item;
-    while (std::getline(ss, item, delim)) {
+    while (std::getline(ss, item, delim))
+    {
         elems.push_back(item);
     }
     return elems;

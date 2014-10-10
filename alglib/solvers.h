@@ -1638,10 +1638,10 @@ These functions accept following parameters:
 
 *************************************************************************/
 void nleqsolve(nleqstate &state,
-    void (*func)(const real_1d_array &x, double &func, void *ptr),
-    void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+               void (*func)(const real_1d_array &x, double &func, void *ptr),
+               void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
+               void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+               void *ptr = NULL);
 
 
 /*************************************************************************
@@ -1714,186 +1714,186 @@ void nleqrestartfrom(const nleqstate &state, const real_1d_array &x);
 namespace alglib_impl
 {
 void rmatrixsolve(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                                ae_int_t n,
+                                /* Real    */ ae_vector* b,
+                                ae_int_t* info,
+                                densesolverreport* rep,
+                                /* Real    */ ae_vector* x,
+                                ae_state *_state);
 void rmatrixsolvem(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_bool rfs,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+                                 ae_int_t n,
+                                 /* Real    */ ae_matrix* b,
+                                 ae_int_t m,
+                                 ae_bool rfs,
+                                 ae_int_t* info,
+                                 densesolverreport* rep,
+                                 /* Real    */ ae_matrix* x,
+                                 ae_state *_state);
 void rmatrixlusolve(/* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                                  /* Integer */ ae_vector* p,
+                                  ae_int_t n,
+                                  /* Real    */ ae_vector* b,
+                                  ae_int_t* info,
+                                  densesolverreport* rep,
+                                  /* Real    */ ae_vector* x,
+                                  ae_state *_state);
 void rmatrixlusolvem(/* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+                                   /* Integer */ ae_vector* p,
+                                   ae_int_t n,
+                                   /* Real    */ ae_matrix* b,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   densesolverreport* rep,
+                                   /* Real    */ ae_matrix* x,
+                                   ae_state *_state);
 void rmatrixmixedsolve(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                                     /* Real    */ ae_matrix* lua,
+                                     /* Integer */ ae_vector* p,
+                                     ae_int_t n,
+                                     /* Real    */ ae_vector* b,
+                                     ae_int_t* info,
+                                     densesolverreport* rep,
+                                     /* Real    */ ae_vector* x,
+                                     ae_state *_state);
 void rmatrixmixedsolvem(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+                                      /* Real    */ ae_matrix* lua,
+                                      /* Integer */ ae_vector* p,
+                                      ae_int_t n,
+                                      /* Real    */ ae_matrix* b,
+                                      ae_int_t m,
+                                      ae_int_t* info,
+                                      densesolverreport* rep,
+                                      /* Real    */ ae_matrix* x,
+                                      ae_state *_state);
 void cmatrixsolvem(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_bool rfs,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state);
+                                 ae_int_t n,
+                                 /* Complex */ ae_matrix* b,
+                                 ae_int_t m,
+                                 ae_bool rfs,
+                                 ae_int_t* info,
+                                 densesolverreport* rep,
+                                 /* Complex */ ae_matrix* x,
+                                 ae_state *_state);
 void cmatrixsolve(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state);
+                                ae_int_t n,
+                                /* Complex */ ae_vector* b,
+                                ae_int_t* info,
+                                densesolverreport* rep,
+                                /* Complex */ ae_vector* x,
+                                ae_state *_state);
 void cmatrixlusolvem(/* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state);
+                                   /* Integer */ ae_vector* p,
+                                   ae_int_t n,
+                                   /* Complex */ ae_matrix* b,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   densesolverreport* rep,
+                                   /* Complex */ ae_matrix* x,
+                                   ae_state *_state);
 void cmatrixlusolve(/* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state);
+                                  /* Integer */ ae_vector* p,
+                                  ae_int_t n,
+                                  /* Complex */ ae_vector* b,
+                                  ae_int_t* info,
+                                  densesolverreport* rep,
+                                  /* Complex */ ae_vector* x,
+                                  ae_state *_state);
 void cmatrixmixedsolvem(/* Complex */ ae_matrix* a,
-     /* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state);
+                                      /* Complex */ ae_matrix* lua,
+                                      /* Integer */ ae_vector* p,
+                                      ae_int_t n,
+                                      /* Complex */ ae_matrix* b,
+                                      ae_int_t m,
+                                      ae_int_t* info,
+                                      densesolverreport* rep,
+                                      /* Complex */ ae_matrix* x,
+                                      ae_state *_state);
 void cmatrixmixedsolve(/* Complex */ ae_matrix* a,
-     /* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state);
+                                     /* Complex */ ae_matrix* lua,
+                                     /* Integer */ ae_vector* p,
+                                     ae_int_t n,
+                                     /* Complex */ ae_vector* b,
+                                     ae_int_t* info,
+                                     densesolverreport* rep,
+                                     /* Complex */ ae_vector* x,
+                                     ae_state *_state);
 void spdmatrixsolvem(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+                                   ae_int_t n,
+                                   ae_bool isupper,
+                                   /* Real    */ ae_matrix* b,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   densesolverreport* rep,
+                                   /* Real    */ ae_matrix* x,
+                                   ae_state *_state);
 void spdmatrixsolve(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                                  ae_int_t n,
+                                  ae_bool isupper,
+                                  /* Real    */ ae_vector* b,
+                                  ae_int_t* info,
+                                  densesolverreport* rep,
+                                  /* Real    */ ae_vector* x,
+                                  ae_state *_state);
 void spdmatrixcholeskysolvem(/* Real    */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Real    */ ae_matrix* x,
+        ae_state *_state);
 void spdmatrixcholeskysolve(/* Real    */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* b,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Real    */ ae_vector* x,
+        ae_state *_state);
 void hpdmatrixsolvem(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state);
+                                   ae_int_t n,
+                                   ae_bool isupper,
+                                   /* Complex */ ae_matrix* b,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   densesolverreport* rep,
+                                   /* Complex */ ae_matrix* x,
+                                   ae_state *_state);
 void hpdmatrixsolve(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state);
+                                  ae_int_t n,
+                                  ae_bool isupper,
+                                  /* Complex */ ae_vector* b,
+                                  ae_int_t* info,
+                                  densesolverreport* rep,
+                                  /* Complex */ ae_vector* x,
+                                  ae_state *_state);
 void hpdmatrixcholeskysolvem(/* Complex */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Complex */ ae_matrix* x,
+        ae_state *_state);
 void hpdmatrixcholeskysolve(/* Complex */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state);
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* b,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Complex */ ae_vector* x,
+        ae_state *_state);
 void rmatrixsolvels(/* Real    */ ae_matrix* a,
-     ae_int_t nrows,
-     ae_int_t ncols,
-     /* Real    */ ae_vector* b,
-     double threshold,
-     ae_int_t* info,
-     densesolverlsreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                                  ae_int_t nrows,
+                                  ae_int_t ncols,
+                                  /* Real    */ ae_vector* b,
+                                  double threshold,
+                                  ae_int_t* info,
+                                  densesolverlsreport* rep,
+                                  /* Real    */ ae_vector* x,
+                                  ae_state *_state);
 ae_bool _densesolverreport_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _densesolverreport_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _densesolverreport_clear(void* _p);
@@ -1903,34 +1903,34 @@ ae_bool _densesolverlsreport_init_copy(void* _dst, void* _src, ae_state *_state,
 void _densesolverlsreport_clear(void* _p);
 void _densesolverlsreport_destroy(void* _p);
 void linlsqrcreate(ae_int_t m,
-     ae_int_t n,
-     linlsqrstate* state,
-     ae_state *_state);
+                   ae_int_t n,
+                   linlsqrstate* state,
+                   ae_state *_state);
 void linlsqrsetb(linlsqrstate* state,
-     /* Real    */ ae_vector* b,
-     ae_state *_state);
+                 /* Real    */ ae_vector* b,
+                 ae_state *_state);
 void linlsqrsetprecunit(linlsqrstate* state, ae_state *_state);
 void linlsqrsetprecdiag(linlsqrstate* state, ae_state *_state);
 void linlsqrsetlambdai(linlsqrstate* state,
-     double lambdai,
-     ae_state *_state);
+                       double lambdai,
+                       ae_state *_state);
 ae_bool linlsqriteration(linlsqrstate* state, ae_state *_state);
 void linlsqrsolvesparse(linlsqrstate* state,
-     sparsematrix* a,
-     /* Real    */ ae_vector* b,
-     ae_state *_state);
+                        sparsematrix* a,
+                        /* Real    */ ae_vector* b,
+                        ae_state *_state);
 void linlsqrsetcond(linlsqrstate* state,
-     double epsa,
-     double epsb,
-     ae_int_t maxits,
-     ae_state *_state);
+                    double epsa,
+                    double epsb,
+                    ae_int_t maxits,
+                    ae_state *_state);
 void linlsqrresults(linlsqrstate* state,
-     /* Real    */ ae_vector* x,
-     linlsqrreport* rep,
-     ae_state *_state);
+                    /* Real    */ ae_vector* x,
+                    linlsqrreport* rep,
+                    ae_state *_state);
 void linlsqrsetxrep(linlsqrstate* state,
-     ae_bool needxrep,
-     ae_state *_state);
+                    ae_bool needxrep,
+                    ae_state *_state);
 void linlsqrrestart(linlsqrstate* state, ae_state *_state);
 ae_bool _linlsqrstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _linlsqrstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
@@ -1942,33 +1942,33 @@ void _linlsqrreport_clear(void* _p);
 void _linlsqrreport_destroy(void* _p);
 void lincgcreate(ae_int_t n, lincgstate* state, ae_state *_state);
 void lincgsetstartingpoint(lincgstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                           /* Real    */ ae_vector* x,
+                           ae_state *_state);
 void lincgsetb(lincgstate* state,
-     /* Real    */ ae_vector* b,
-     ae_state *_state);
+               /* Real    */ ae_vector* b,
+               ae_state *_state);
 void lincgsetprecunit(lincgstate* state, ae_state *_state);
 void lincgsetprecdiag(lincgstate* state, ae_state *_state);
 void lincgsetcond(lincgstate* state,
-     double epsf,
-     ae_int_t maxits,
-     ae_state *_state);
+                  double epsf,
+                  ae_int_t maxits,
+                  ae_state *_state);
 ae_bool lincgiteration(lincgstate* state, ae_state *_state);
 void lincgsolvesparse(lincgstate* state,
-     sparsematrix* a,
-     ae_bool isupper,
-     /* Real    */ ae_vector* b,
-     ae_state *_state);
+                      sparsematrix* a,
+                      ae_bool isupper,
+                      /* Real    */ ae_vector* b,
+                      ae_state *_state);
 void lincgresults(lincgstate* state,
-     /* Real    */ ae_vector* x,
-     lincgreport* rep,
-     ae_state *_state);
+                  /* Real    */ ae_vector* x,
+                  lincgreport* rep,
+                  ae_state *_state);
 void lincgsetrestartfreq(lincgstate* state,
-     ae_int_t srf,
-     ae_state *_state);
+                         ae_int_t srf,
+                         ae_state *_state);
 void lincgsetrupdatefreq(lincgstate* state,
-     ae_int_t freq,
-     ae_state *_state);
+                         ae_int_t freq,
+                         ae_state *_state);
 void lincgsetxrep(lincgstate* state, ae_bool needxrep, ae_state *_state);
 void lincgrestart(lincgstate* state, ae_state *_state);
 ae_bool _lincgstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
@@ -1980,28 +1980,28 @@ ae_bool _lincgreport_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool
 void _lincgreport_clear(void* _p);
 void _lincgreport_destroy(void* _p);
 void nleqcreatelm(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     nleqstate* state,
-     ae_state *_state);
+                  ae_int_t m,
+                  /* Real    */ ae_vector* x,
+                  nleqstate* state,
+                  ae_state *_state);
 void nleqsetcond(nleqstate* state,
-     double epsf,
-     ae_int_t maxits,
-     ae_state *_state);
+                 double epsf,
+                 ae_int_t maxits,
+                 ae_state *_state);
 void nleqsetxrep(nleqstate* state, ae_bool needxrep, ae_state *_state);
 void nleqsetstpmax(nleqstate* state, double stpmax, ae_state *_state);
 ae_bool nleqiteration(nleqstate* state, ae_state *_state);
 void nleqresults(nleqstate* state,
-     /* Real    */ ae_vector* x,
-     nleqreport* rep,
-     ae_state *_state);
+                 /* Real    */ ae_vector* x,
+                 nleqreport* rep,
+                 ae_state *_state);
 void nleqresultsbuf(nleqstate* state,
-     /* Real    */ ae_vector* x,
-     nleqreport* rep,
-     ae_state *_state);
+                    /* Real    */ ae_vector* x,
+                    nleqreport* rep,
+                    ae_state *_state);
 void nleqrestartfrom(nleqstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     ae_state *_state);
 ae_bool _nleqstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _nleqstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _nleqstate_clear(void* _p);

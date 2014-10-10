@@ -19,13 +19,16 @@
 #include <algorithm>    // std::transform
 #include "AdditionalMethods.h"
 
-PCA_::PCA_(){
+PCA_::PCA_()
+{
 }
 
-PCA_::~PCA_(){
+PCA_::~PCA_()
+{
 }
 
-PCA_::PCA_(double d, bool disp){
+PCA_::PCA_(double d, bool disp)
+{
     this->d = d;
     this->disp = disp;
     X = ObjectMatrix(AdditionalMethods::inputDataFile);
@@ -44,38 +47,41 @@ PCA_::PCA_(double d, bool disp){
     initializeProjectionMatrix();
     ProjectXMatrix();*/
 
-   /* ObjectMatrix Y_visi = pca.getProjection();
-    this->eigValues = pca.getEigenValues();
-    double wholeSum = 0.0, tempSum = 0.0;
+/* ObjectMatrix Y_visi = pca.getProjection();
+ this->eigValues = pca.getEigenValues();
+ double wholeSum = 0.0, tempSum = 0.0;
 
-    for (int i = 0; i < m; i++)
-        wholeSum += eigValues(i);
+ for (int i = 0; i < m; i++)
+     wholeSum += eigValues(i);
 
-    for (int i = 0; i < m; i++)
-    {
-        tempSum += eigValues(i);
-        dd++;
-        if ((tempSum / wholeSum) > disp)
-            break;
-    }
-    d = dd;
-    setProjectionDimension(d);
-    initializeProjectionMatrix();
+ for (int i = 0; i < m; i++)
+ {
+     tempSum += eigValues(i);
+     dd++;
+     if ((tempSum / wholeSum) > disp)
+         break;
+ }
+ d = dd;
+ setProjectionDimension(d);
+ initializeProjectionMatrix();
 
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < d; j++)
-            {
-                Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));
-            }
-    }
+ for (int i = 0; i < n; i++)
+ {
+     for (int j = 0; j < d; j++)
+         {
+             Y.updateDataObject(i, j, Y_visi.getObjectAt(i).getFeatureAt(j));
+         }
+ }
 }*/
 
-PCA_::PCA_(ObjectMatrix objMatrix, int dim){
+PCA_::PCA_(ObjectMatrix objMatrix, int dim)
+{
     X = objMatrix;
+     /*  for (int i = 0; i < X.getObjectCount(); i++)
+           std::cout <<X.getClassCount();*/
     this->disp = false;
     this->d = dim;
-  // setProjectionDimension(dim);
+    // setProjectionDimension(dim);
     /*initializeProjectionMatrix();
     ProjectXMatrix();*/
 }
@@ -85,7 +91,8 @@ PCA_::PCA_(ObjectMatrix objMatrix, int dim){
     return DimReductionMethod::getStress();
 }*/
 
-ObjectMatrix PCA_::getProjection(){
+ObjectMatrix PCA_::getProjection()
+{
 
     if (disp == false)
     {
@@ -112,8 +119,8 @@ ObjectMatrix PCA_::getProjection(){
 
         for (int i = 0; i < m; i++)
         {
-                tempSum += eigValues(dd);
-                dd++;
+            tempSum += eigValues(dd);
+            dd++;
             if (double(tempSum / wholeSum)  > perc)
                 break;
         }
@@ -128,10 +135,13 @@ ObjectMatrix PCA_::getProjection(){
         }
     }
 
+    Y.setPrintClass(X.getStringClassAttributes());
+
     return Y;
 }
 
-void PCA_::toDataType(){
+void PCA_::toDataType()
+{
     int m = X.getObjectCount();
     int n = X.getObjectAt(0).getFeatureCount();
     alglibX.setlength(m, n);
@@ -175,11 +185,12 @@ void PCA_::ProjectXMatrix()
         for (int i = 0; i < n; i++)
             wholeDisp += eigValues[i];
 
-    //    dispPart = tarpDisp / wholeDisp;
+        //    dispPart = tarpDisp / wholeDisp;
     }
 }
 
-void PCA_::fromDataType(){
+void PCA_::fromDataType()
+{
     int m = X.getObjectCount();
     int n = X.getObjectAt(0).getFeatureCount();
 

@@ -13,8 +13,8 @@
  */
 enum ProjectionEnum
 {
-	RAND = 1,/*!< Enum value RANDOM. */
-	PCA = 2, /*!< Enum value PCA. */
+    RAND = 1,/*!< Enum value RANDOM. */
+    PCA = 2, /*!< Enum value PCA. */
     DISPERSION = 3 /*!< Enum value DISPERSION. */
 };
 

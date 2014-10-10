@@ -11,7 +11,8 @@
 #include <numeric>
 
 
-double DistanceMetrics::getDistance(DataObject obj1, DataObject obj2, DistanceMetricsEnum dme){
+double DistanceMetrics::getDistance(DataObject obj1, DataObject obj2, DistanceMetricsEnum dme)
+{
     double to_return = 0.0;
     if (dme == MANHATTAN)
         to_return = DistanceMetrics::getManhattan(obj1, obj2);

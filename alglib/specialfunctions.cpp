@@ -2725,56 +2725,56 @@ static double gammafunc_gammastirf(double x, ae_state *_state);
 
 
 static void bessel_besselmfirstcheb(double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state);
+                                    double* b0,
+                                    double* b1,
+                                    double* b2,
+                                    ae_state *_state);
 static void bessel_besselmnextcheb(double x,
-     double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state);
+                                   double c,
+                                   double* b0,
+                                   double* b1,
+                                   double* b2,
+                                   ae_state *_state);
 static void bessel_besselm1firstcheb(double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state);
+                                     double* b0,
+                                     double* b1,
+                                     double* b2,
+                                     ae_state *_state);
 static void bessel_besselm1nextcheb(double x,
-     double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state);
+                                    double c,
+                                    double* b0,
+                                    double* b1,
+                                    double* b2,
+                                    ae_state *_state);
 static void bessel_besselasympt0(double x,
-     double* pzero,
-     double* qzero,
-     ae_state *_state);
+                                 double* pzero,
+                                 double* qzero,
+                                 ae_state *_state);
 static void bessel_besselasympt1(double x,
-     double* pzero,
-     double* qzero,
-     ae_state *_state);
+                                 double* pzero,
+                                 double* qzero,
+                                 ae_state *_state);
 
 
 
 
 static double ibetaf_incompletebetafe(double a,
-     double b,
-     double x,
-     double big,
-     double biginv,
-     ae_state *_state);
+                                      double b,
+                                      double x,
+                                      double big,
+                                      double biginv,
+                                      ae_state *_state);
 static double ibetaf_incompletebetafe2(double a,
-     double b,
-     double x,
-     double big,
-     double biginv,
-     ae_state *_state);
+                                       double b,
+                                       double x,
+                                       double big,
+                                       double biginv,
+                                       ae_state *_state);
 static double ibetaf_incompletebetaps(double a,
-     double b,
-     double x,
-     double maxgam,
-     ae_state *_state);
+                                      double b,
+                                      double x,
+                                      double maxgam,
+                                      ae_state *_state);
 
 
 
@@ -2808,11 +2808,11 @@ static double ibetaf_incompletebetaps(double a,
 
 
 static void trigintegrals_chebiterationshichi(double x,
-     double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state);
+        double c,
+        double* b0,
+        double* b1,
+        double* b2,
+        ae_state *_state);
 
 
 
@@ -3890,11 +3890,11 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1989, 2000 by Stephen L. Moshier
 *************************************************************************/
 void airy(double x,
-     double* ai,
-     double* aip,
-     double* bi,
-     double* bip,
-     ae_state *_state)
+          double* ai,
+          double* aip,
+          double* bi,
+          double* bip,
+          ae_state *_state)
 {
     double z;
     double zz;
@@ -5234,10 +5234,10 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
 static void bessel_besselmfirstcheb(double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state)
+                                    double* b0,
+                                    double* b1,
+                                    double* b2,
+                                    ae_state *_state)
 {
 
 
@@ -5254,11 +5254,11 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
 static void bessel_besselmnextcheb(double x,
-     double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state)
+                                   double c,
+                                   double* b0,
+                                   double* b1,
+                                   double* b2,
+                                   ae_state *_state)
 {
 
 
@@ -5275,10 +5275,10 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
 static void bessel_besselm1firstcheb(double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state)
+                                     double* b0,
+                                     double* b1,
+                                     double* b2,
+                                     ae_state *_state)
 {
 
 
@@ -5295,11 +5295,11 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
 static void bessel_besselm1nextcheb(double x,
-     double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state)
+                                    double c,
+                                    double* b0,
+                                    double* b1,
+                                    double* b2,
+                                    ae_state *_state)
 {
 
 
@@ -5310,9 +5310,9 @@ static void bessel_besselm1nextcheb(double x,
 
 
 static void bessel_besselasympt0(double x,
-     double* pzero,
-     double* qzero,
-     ae_state *_state)
+                                 double* pzero,
+                                 double* qzero,
+                                 ae_state *_state)
 {
     double xsq;
     double p2;
@@ -5358,9 +5358,9 @@ static void bessel_besselasympt0(double x,
 
 
 static void bessel_besselasympt1(double x,
-     double* pzero,
-     double* qzero,
-     ae_state *_state)
+                                 double* pzero,
+                                 double* qzero,
+                                 ae_state *_state)
 {
     double xsq;
     double p2;
@@ -5700,7 +5700,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
 
     i = 0;
     ae_assert(ae_fp_greater_eq(y,0)&&ae_fp_less_eq(y,1), "Domain error in InvIncompleteBeta", _state);
-    
+
     /*
      * special cases
      */
@@ -5714,7 +5714,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
         result = 1;
         return result;
     }
-    
+
     /*
      * these initializations are not really necessary,
      * but without them compiler complains about 'possibly uninitialized variables'.
@@ -5729,7 +5729,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
     lgm = 0;
     dir = 0;
     di = 0;
-    
+
     /*
      * normal initializations
      */
@@ -5745,13 +5745,13 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
     newtcycle = 4;
     breaknewtcycle = 5;
     breakihalvecycle = 6;
-    
+
     /*
      * main loop
      */
     for(;;)
     {
-        
+
         /*
          * start
          */
@@ -5809,7 +5809,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
             mainlooppos = ihalve;
             continue;
         }
-        
+
         /*
          * ihalve
          */
@@ -5821,7 +5821,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
             mainlooppos = ihalvecycle;
             continue;
         }
-        
+
         /*
          * ihalvecycle
          */
@@ -5957,7 +5957,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
                 continue;
             }
         }
-        
+
         /*
          * breakihalvecycle
          */
@@ -5976,7 +5976,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
             mainlooppos = newt;
             continue;
         }
-        
+
         /*
          * newt
          */
@@ -5992,7 +5992,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
             mainlooppos = newtcycle;
             continue;
         }
-        
+
         /*
          * newtcycle
          */
@@ -6083,7 +6083,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
                 continue;
             }
         }
-        
+
         /*
          * breaknewtcycle
          */
@@ -6094,7 +6094,7 @@ double invincompletebeta(double a, double b, double y, ae_state *_state)
             continue;
         }
     }
-    
+
     /*
      * done
      */
@@ -6121,11 +6121,11 @@ Cephes Math Library, Release 2.8:  June, 2000
 Copyright 1984, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
 static double ibetaf_incompletebetafe(double a,
-     double b,
-     double x,
-     double big,
-     double biginv,
-     ae_state *_state)
+                                      double b,
+                                      double x,
+                                      double big,
+                                      double biginv,
+                                      ae_state *_state)
 {
     double xk;
     double pk;
@@ -6237,11 +6237,11 @@ Cephes Math Library, Release 2.8:  June, 2000
 Copyright 1984, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
 static double ibetaf_incompletebetafe2(double a,
-     double b,
-     double x,
-     double big,
-     double biginv,
-     ae_state *_state)
+                                       double b,
+                                       double x,
+                                       double big,
+                                       double biginv,
+                                       ae_state *_state)
 {
     double xk;
     double pk;
@@ -6355,10 +6355,10 @@ Cephes Math Library, Release 2.8:  June, 2000
 Copyright 1984, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
 static double ibetaf_incompletebetaps(double a,
-     double b,
-     double x,
-     double maxgam,
-     ae_state *_state)
+                                      double b,
+                                      double x,
+                                      double maxgam,
+                                      ae_state *_state)
 {
     double s;
     double t;
@@ -6447,9 +6447,9 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
 double binomialdistribution(ae_int_t k,
-     ae_int_t n,
-     double p,
-     ae_state *_state)
+                            ae_int_t n,
+                            double p,
+                            ae_state *_state)
 {
     double dk;
     double dn;
@@ -6517,9 +6517,9 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
 double binomialcdistribution(ae_int_t k,
-     ae_int_t n,
-     double p,
-     ae_state *_state)
+                             ae_int_t n,
+                             double p,
+                             ae_state *_state)
 {
     double dk;
     double dn;
@@ -6589,9 +6589,9 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
 double invbinomialdistribution(ae_int_t k,
-     ae_int_t n,
-     double y,
-     ae_state *_state)
+                               ae_int_t n,
+                               double y,
+                               ae_state *_state)
 {
     double dk;
     double dn;
@@ -6645,9 +6645,9 @@ Result:
     the value of the Chebyshev polynomial at x
 *************************************************************************/
 double chebyshevcalculate(ae_int_t r,
-     ae_int_t n,
-     double x,
-     ae_state *_state)
+                          ae_int_t n,
+                          double x,
+                          ae_state *_state)
 {
     ae_int_t i;
     double a;
@@ -6656,7 +6656,7 @@ double chebyshevcalculate(ae_int_t r,
 
 
     result = 0;
-    
+
     /*
      * Prepare A and B
      */
@@ -6670,7 +6670,7 @@ double chebyshevcalculate(ae_int_t r,
         a = 1;
         b = 2*x;
     }
-    
+
     /*
      * Special cases: N=0 or N=1
      */
@@ -6684,7 +6684,7 @@ double chebyshevcalculate(ae_int_t r,
         result = b;
         return result;
     }
-    
+
     /*
      * General case: N>=2
      */
@@ -6716,10 +6716,10 @@ Result:
     the value of the Chebyshev polynomial at x
 *************************************************************************/
 double chebyshevsum(/* Real    */ ae_vector* c,
-     ae_int_t r,
-     ae_int_t n,
-     double x,
-     ae_state *_state)
+                                  ae_int_t r,
+                                  ae_int_t n,
+                                  double x,
+                                  ae_state *_state)
 {
     double b1;
     double b2;
@@ -6757,8 +6757,8 @@ Output parameters:
     C   -   coefficients
 *************************************************************************/
 void chebyshevcoefficients(ae_int_t n,
-     /* Real    */ ae_vector* c,
-     ae_state *_state)
+                           /* Real    */ ae_vector* c,
+                           ae_state *_state)
 {
     ae_int_t i;
 
@@ -6793,14 +6793,14 @@ B[0] + B[1]*X + ... + B[N]*X^N.
 Input parameters:
     A   -   Chebyshev series coefficients
     N   -   degree, N>=0
-    
+
 Output parameters
     B   -   power series coefficients
 *************************************************************************/
 void fromchebyshev(/* Real    */ ae_vector* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* b,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 /* Real    */ ae_vector* b,
+                                 ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -7505,19 +7505,19 @@ double incompleteellipticintegrale(double phi, double m, ae_state *_state)
     }
     t = ae_tan(lphi, _state);
     b = ae_sqrt(a, _state);
-    
+
     /*
      * Thanks to Brian Fitzgerald <fitzgb@mml0.meche.rpi.edu>
      * for pointing out an instability near odd multiples of pi/2
      */
     if( ae_fp_greater(ae_fabs(t, _state),10) )
     {
-        
+
         /*
          * Transform the amplitude
          */
         e = 1.0/(b*t);
-        
+
         /*
          * ... but avoid multiple recursions.
          */
@@ -8079,21 +8079,21 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 1995, 2000 by Stephen L. Moshier
 *************************************************************************/
 double invfdistribution(ae_int_t a,
-     ae_int_t b,
-     double y,
-     ae_state *_state)
+                        ae_int_t b,
+                        double y,
+                        ae_state *_state)
 {
     double w;
     double result;
 
 
     ae_assert(((a>=1&&b>=1)&&ae_fp_greater(y,0))&&ae_fp_less_eq(y,1), "Domain error in InvFDistribution", _state);
-    
+
     /*
      * Compute probability for x = 0.5
      */
     w = incompletebeta(0.5*b, 0.5*a, 0.5, _state);
-    
+
     /*
      * If that is greater than y, then the solution w < .5
      * Otherwise, solve at 1-y to remove cancellation in (b - b*w)
@@ -8304,13 +8304,13 @@ double hermitecalculate(ae_int_t n, double x, ae_state *_state)
 
 
     result = 0;
-    
+
     /*
      * Prepare A and B
      */
     a = 1;
     b = 2*x;
-    
+
     /*
      * Special cases: N=0 or N=1
      */
@@ -8324,7 +8324,7 @@ double hermitecalculate(ae_int_t n, double x, ae_state *_state)
         result = b;
         return result;
     }
-    
+
     /*
      * General case: N>=2
      */
@@ -8352,9 +8352,9 @@ Result:
     the value of the Hermite polynomial at x
 *************************************************************************/
 double hermitesum(/* Real    */ ae_vector* c,
-     ae_int_t n,
-     double x,
-     ae_state *_state)
+                                ae_int_t n,
+                                double x,
+                                ae_state *_state)
 {
     double b1;
     double b2;
@@ -8385,8 +8385,8 @@ Output parameters:
     C   -   coefficients
 *************************************************************************/
 void hermitecoefficients(ae_int_t n,
-     /* Real    */ ae_vector* c,
-     ae_state *_state)
+                         /* Real    */ ae_vector* c,
+                         ae_state *_state)
 {
     ae_int_t i;
 
@@ -8448,12 +8448,12 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
 void jacobianellipticfunctions(double u,
-     double m,
-     double* sn,
-     double* cn,
-     double* dn,
-     double* ph,
-     ae_state *_state)
+                               double m,
+                               double* sn,
+                               double* cn,
+                               double* dn,
+                               double* ph,
+                               ae_state *_state)
 {
     ae_frame _frame_block;
     double ai;
@@ -8593,9 +8593,9 @@ Result:
     the value of the Laguerre polynomial at x
 *************************************************************************/
 double laguerresum(/* Real    */ ae_vector* c,
-     ae_int_t n,
-     double x,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 double x,
+                                 ae_state *_state)
 {
     double b1;
     double b2;
@@ -8626,8 +8626,8 @@ Output parameters:
     C   -   coefficients
 *************************************************************************/
 void laguerrecoefficients(ae_int_t n,
-     /* Real    */ ae_vector* c,
-     ae_state *_state)
+                          /* Real    */ ae_vector* c,
+                          ae_state *_state)
 {
     ae_int_t i;
 
@@ -8699,9 +8699,9 @@ Result:
     the value of the Legendre polynomial at x
 *************************************************************************/
 double legendresum(/* Real    */ ae_vector* c,
-     ae_int_t n,
-     double x,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 double x,
+                                 ae_state *_state)
 {
     double b1;
     double b2;
@@ -8732,8 +8732,8 @@ Output parameters:
     C   -   coefficients
 *************************************************************************/
 void legendrecoefficients(ae_int_t n,
-     /* Real    */ ae_vector* c,
-     ae_state *_state)
+                          /* Real    */ ae_vector* c,
+                          ae_state *_state)
 {
     ae_int_t i;
 
@@ -9219,9 +9219,9 @@ Cephes Math Library Release 2.1:  January, 1989
 Copyright 1984, 1987, 1989 by Stephen L. Moshier
 *************************************************************************/
 void sinecosineintegrals(double x,
-     double* si,
-     double* ci,
-     ae_state *_state)
+                         double* si,
+                         double* ci,
+                         ae_state *_state)
 {
     double z;
     double c;
@@ -9430,9 +9430,9 @@ Cephes Math Library Release 2.8:  June, 2000
 Copyright 1984, 1987, 2000 by Stephen L. Moshier
 *************************************************************************/
 void hyperbolicsinecosineintegrals(double x,
-     double* shi,
-     double* chi,
-     ae_state *_state)
+                                   double* shi,
+                                   double* chi,
+                                   ae_state *_state)
 {
     double k;
     double z;
@@ -9620,11 +9620,11 @@ void hyperbolicsinecosineintegrals(double x,
 
 
 static void trigintegrals_chebiterationshichi(double x,
-     double c,
-     double* b0,
-     double* b1,
-     double* b2,
-     ae_state *_state)
+        double c,
+        double* b0,
+        double* b1,
+        double* b2,
+        ae_state *_state)
 {
 
 

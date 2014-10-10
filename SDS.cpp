@@ -24,7 +24,8 @@
 /** \class StaticData
  *  \brief A class of static attributes for passing data to alglib's static method.
  */
-class StaticData {
+class StaticData
+{
 public:
     static ObjectMatrix X_base;
     static ObjectMatrix Y_base;
@@ -35,27 +36,32 @@ ObjectMatrix StaticData::X_base;
 ObjectMatrix StaticData::Y_base;
 ObjectMatrix StaticData::X_new;
 
-SDS::SDS(){
+SDS::SDS()
+{
 
 }
 
-SDS::~SDS(){
+SDS::~SDS()
+{
 
 }
 
-SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInit, int nofBaseVect, DistanceMetricsEnum distMetrics):MDS(eps, maxIter, dim){
+SDS::SDS(double eps, int maxIter, int dim, ProjectionEnum baseVectInit, int nofBaseVect, DistanceMetricsEnum distMetrics):MDS(eps, maxIter, dim)
+{
     X = ObjectMatrix(AdditionalMethods::inputDataFile);
     X.loadDataMatrix();
     epsilon = eps;
     maxIteration = maxIter;
-  //  d = dim;
+    //  d = dim;
     initMethod = baseVectInit;
     nb = nofBaseVect;
     distMethod = distMetrics;
 }
 
-ObjectMatrix SDS::getProjection(){
+ObjectMatrix SDS::getProjection()
+{
     int m = X.getObjectCount();
+  //  std::vector<std::string> initClasses = X.getStringClassAttributes();
     int step = 0, rest = 0;
     StaticData::X_base = ObjectMatrix(nb);
     StaticData::X_new = ObjectMatrix(m - nb);
@@ -67,14 +73,18 @@ ObjectMatrix SDS::getProjection(){
 
     switch (initMethod)
     {
-        case 1: proj = Projection::projectMatrix(RAND, X);
-                break;
-        case 2: proj = Projection::projectMatrix(PCA, X);
-                break;
-        case 3: proj = Projection::projectMatrix(DISPERSION, X);
-                break;
-        default: proj = Projection::projectMatrix(DISPERSION, X);
-                break;
+    case 1:
+        proj = Projection::projectMatrix(RAND, X);
+        break;
+    case 2:
+        proj = Projection::projectMatrix(PCA, X);
+        break;
+    case 3:
+        proj = Projection::projectMatrix(DISPERSION, X);
+        break;
+    default:
+        proj = Projection::projectMatrix(DISPERSION, X);
+        break;
     }
 
     index = ShufleObjects::shufleObjectMatrix(BUBLESORTDSC, proj); //works slow
@@ -94,8 +104,19 @@ ObjectMatrix SDS::getProjection(){
             StaticData::X_new.addObject(X.getObjectAt(index.at(i)));
     }
 
+ //   StaticData::X_base.setIsClassPresent();
+
+ /*  for (int i = 0; i < StaticData::X_base.getObjectCount(); i++)
+           std::cout <<StaticData::X_base.getObjectAt(i).getClassLabel();*/
+
+
+
     PCA_ pca(StaticData::X_base, d);
     StaticData::Y_base = pca.getProjection();
+
+  /* for (int i = 0; i < StaticData::Y_base.getObjectCount(); i++)
+           std::cout <<StaticData::Y_base.getObjectAt(i).getClassLabel();*/
+
     SMACOF smcf(epsilon, maxIteration, d, StaticData::X_base, StaticData::Y_base);
     StaticData::Y_base = smcf.getProjection();
 
@@ -103,27 +124,30 @@ ObjectMatrix SDS::getProjection(){
 
     Y.clearDataObjects();
 
+    //initializeProjectionMatrix();
+
     for (int i = 0; i < nb; i++)
-        Y.addObject(StaticData::Y_base.getObjectAt(i));
+        Y.addObject(StaticData::Y_base.getObjectAt(i), X.getObjectAt(i).getClassLabel());
 
 //sudedam tai kas grazinama is QN
-ObjectMatrix tmpX;
+    ObjectMatrix tmpX;
 //ObjectMatrix retMat;
     for (int i = 0; i < m - nb; i++) //redo slow call and much more
-        {
-            //StaticData::X_new.clearDataObjects();
-            tmpX.addObject(X.getObjectAt(index.at(nb + i)));
-            StaticData::X_new = tmpX;
+    {
+        //StaticData::X_new.clearDataObjects();
+        tmpX.addObject(X.getObjectAt(index.at(nb + i)));
+        StaticData::X_new = tmpX;
 
-           // StaticData::X_new.addObject(X.getObjectAt(index.at(nb + i)));
-           // tmpY.addObject(Y_new.getObjectAt(i));
-            //std::cout << tmpY.getObjectAt(0).getFeatureAt(0) <<" " << tmpY.getObjectAt(0).getFeatureAt(1) << std::endl;
-            //std::cout << i << std::endl;
-           // retMat = getQN(tmpY);
-            Y.addObject(getQN(Y_new.getObjectAt(i))) ;//retMat.getObjectAt(0));
-         //   tmpY.clearDataObjects();
-            tmpX.clearDataObjects();
-        }
+        // StaticData::X_new.addObject(X.getObjectAt(index.at(nb + i)));
+        // tmpY.addObject(Y_new.getObjectAt(i));
+        //std::cout << tmpY.getObjectAt(0).getFeatureAt(0) <<" " << tmpY.getObjectAt(0).getFeatureAt(1) << std::endl;
+        //std::cout << i << std::endl;
+        // retMat = getQN(tmpY);
+        Y.addObject(getQN(Y_new.getObjectAt(i)), X.getObjectAt(nb + i).getClassLabel()) ;//retMat.getObjectAt(0));
+        //   tmpY.clearDataObjects();
+        tmpX.clearDataObjects();
+    }
+    Y.setPrintClass(X.getStringClassAttributes());
     return  Y;
 }
 

@@ -83,11 +83,11 @@ alglib_impl::idwinterpolant* _idwinterpolant_owner::c_ptr() const
 {
     return const_cast<alglib_impl::idwinterpolant*>(p_struct);
 }
-idwinterpolant::idwinterpolant() : _idwinterpolant_owner() 
+idwinterpolant::idwinterpolant() : _idwinterpolant_owner()
 {
 }
 
-idwinterpolant::idwinterpolant(const idwinterpolant &rhs):_idwinterpolant_owner(rhs) 
+idwinterpolant::idwinterpolant(const idwinterpolant &rhs):_idwinterpolant_owner(rhs)
 {
 }
 
@@ -372,11 +372,11 @@ alglib_impl::barycentricinterpolant* _barycentricinterpolant_owner::c_ptr() cons
 {
     return const_cast<alglib_impl::barycentricinterpolant*>(p_struct);
 }
-barycentricinterpolant::barycentricinterpolant() : _barycentricinterpolant_owner() 
+barycentricinterpolant::barycentricinterpolant() : _barycentricinterpolant_owner()
 {
 }
 
-barycentricinterpolant::barycentricinterpolant(const barycentricinterpolant &rhs):_barycentricinterpolant_owner(rhs) 
+barycentricinterpolant::barycentricinterpolant(const barycentricinterpolant &rhs):_barycentricinterpolant_owner(rhs)
 {
 }
 
@@ -763,7 +763,7 @@ OUTPUT PARAMETERS
 *************************************************************************/
 void polynomialcheb2bar(const real_1d_array &t, const double a, const double b, barycentricinterpolant &p)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = t.length();
@@ -879,7 +879,7 @@ NOTES:
 *************************************************************************/
 void polynomialbar2pow(const barycentricinterpolant &p, real_1d_array &a)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     double c;
     double s;
 
@@ -989,7 +989,7 @@ NOTES:
 *************************************************************************/
 void polynomialpow2bar(const real_1d_array &a, barycentricinterpolant &p)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     double c;
     double s;
@@ -1063,7 +1063,7 @@ OUTPUT PARAMETERS
 *************************************************************************/
 void polynomialbuild(const real_1d_array &x, const real_1d_array &y, barycentricinterpolant &p)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'polynomialbuild': looks like one of arguments has wrong size");
@@ -1138,7 +1138,7 @@ OUTPUT PARAMETERS
 *************************************************************************/
 void polynomialbuildeqdist(const double a, const double b, const real_1d_array &y, barycentricinterpolant &p)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = y.length();
@@ -1214,7 +1214,7 @@ OUTPUT PARAMETERS
 *************************************************************************/
 void polynomialbuildcheb1(const double a, const double b, const real_1d_array &y, barycentricinterpolant &p)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = y.length();
@@ -1290,7 +1290,7 @@ OUTPUT PARAMETERS
 *************************************************************************/
 void polynomialbuildcheb2(const double a, const double b, const real_1d_array &y, barycentricinterpolant &p)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = y.length();
@@ -1374,7 +1374,7 @@ IMPORTANT
 *************************************************************************/
 double polynomialcalceqdist(const double a, const double b, const real_1d_array &f, const double t)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = f.length();
@@ -1462,7 +1462,7 @@ IMPORTANT
 *************************************************************************/
 double polynomialcalccheb1(const double a, const double b, const real_1d_array &f, const double t)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = f.length();
@@ -1550,7 +1550,7 @@ IMPORTANT
 *************************************************************************/
 double polynomialcalccheb2(const double a, const double b, const real_1d_array &f, const double t)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = f.length();
@@ -1614,11 +1614,11 @@ alglib_impl::spline1dinterpolant* _spline1dinterpolant_owner::c_ptr() const
 {
     return const_cast<alglib_impl::spline1dinterpolant*>(p_struct);
 }
-spline1dinterpolant::spline1dinterpolant() : _spline1dinterpolant_owner() 
+spline1dinterpolant::spline1dinterpolant() : _spline1dinterpolant_owner()
 {
 }
 
-spline1dinterpolant::spline1dinterpolant(const spline1dinterpolant &rhs):_spline1dinterpolant_owner(rhs) 
+spline1dinterpolant::spline1dinterpolant(const spline1dinterpolant &rhs):_spline1dinterpolant_owner(rhs)
 {
 }
 
@@ -1698,7 +1698,7 @@ Subroutine automatically sorts points, so caller may pass unsorted array.
 *************************************************************************/
 void spline1dbuildlinear(const real_1d_array &x, const real_1d_array &y, spline1dinterpolant &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'spline1dbuildlinear': looks like one of arguments has wrong size");
@@ -1841,7 +1841,7 @@ i.e. to make Y[first_point]=Y[last_point].
 *************************************************************************/
 void spline1dbuildcubic(const real_1d_array &x, const real_1d_array &y, spline1dinterpolant &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t boundltype;
     double boundl;
@@ -2008,7 +2008,7 @@ i.e. to make Y[first_point]=Y[last_point].
 *************************************************************************/
 void spline1dgriddiffcubic(const real_1d_array &x, const real_1d_array &y, real_1d_array &d)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t boundltype;
     double boundl;
@@ -2177,7 +2177,7 @@ i.e. to make Y[first_point]=Y[last_point].
 *************************************************************************/
 void spline1dgriddiff2cubic(const real_1d_array &x, const real_1d_array &y, real_1d_array &d1, real_1d_array &d2)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t boundltype;
     double boundl;
@@ -2354,7 +2354,7 @@ i.e. to make Y[first_point]=Y[last_point].
 *************************************************************************/
 void spline1dconvcubic(const real_1d_array &x, const real_1d_array &y, const real_1d_array &x2, real_1d_array &y2)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t boundltype;
     double boundl;
@@ -2535,7 +2535,7 @@ i.e. to make Y[first_point]=Y[last_point].
 *************************************************************************/
 void spline1dconvdiffcubic(const real_1d_array &x, const real_1d_array &y, const real_1d_array &x2, real_1d_array &y2, real_1d_array &d2)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t boundltype;
     double boundl;
@@ -2720,7 +2720,7 @@ i.e. to make Y[first_point]=Y[last_point].
 *************************************************************************/
 void spline1dconvdiff2cubic(const real_1d_array &x, const real_1d_array &y, const real_1d_array &x2, real_1d_array &y2, real_1d_array &d2, real_1d_array &dd2)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t boundltype;
     double boundl;
@@ -2847,7 +2847,7 @@ i.e. to make Y[first_point]=Y[last_point].
 *************************************************************************/
 void spline1dbuildcatmullrom(const real_1d_array &x, const real_1d_array &y, spline1dinterpolant &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t boundtype;
     double tension;
@@ -2936,7 +2936,7 @@ Subroutine automatically sorts points, so caller may pass unsorted array.
 *************************************************************************/
 void spline1dbuildhermite(const real_1d_array &x, const real_1d_array &y, const real_1d_array &d, spline1dinterpolant &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()) || (x.length()!=d.length()))
         throw ap_error("Error while calling 'spline1dbuildhermite': looks like one of arguments has wrong size");
@@ -3019,7 +3019,7 @@ Subroutine automatically sorts points, so caller may pass unsorted array.
 *************************************************************************/
 void spline1dbuildakima(const real_1d_array &x, const real_1d_array &y, spline1dinterpolant &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'spline1dbuildakima': looks like one of arguments has wrong size");
@@ -3285,7 +3285,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void spline1dbuildmonotone(const real_1d_array &x, const real_1d_array &y, spline1dinterpolant &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'spline1dbuildmonotone': looks like one of arguments has wrong size");
@@ -3788,7 +3788,7 @@ NOTES:
 *************************************************************************/
 void polynomialfit(const real_1d_array &x, const real_1d_array &y, const ae_int_t m, ae_int_t &info, barycentricinterpolant &p, polynomialfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'polynomialfit': looks like one of arguments has wrong size");
@@ -3983,7 +3983,7 @@ above is not guaranteed and may result in inconsistency.
 *************************************************************************/
 void polynomialfitwc(const real_1d_array &x, const real_1d_array &y, const real_1d_array &w, const real_1d_array &xc, const real_1d_array &yc, const integer_1d_array &dc, const ae_int_t m, ae_int_t &info, barycentricinterpolant &p, polynomialfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t k;
     if( (x.length()!=y.length()) || (x.length()!=w.length()))
@@ -4297,7 +4297,7 @@ array.
 *************************************************************************/
 void spline1dfitpenalized(const real_1d_array &x, const real_1d_array &y, const ae_int_t m, const double rho, ae_int_t &info, spline1dinterpolant &s, spline1dfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'spline1dfitpenalized': looks like one of arguments has wrong size");
@@ -4466,7 +4466,7 @@ array.
 *************************************************************************/
 void spline1dfitpenalizedw(const real_1d_array &x, const real_1d_array &y, const real_1d_array &w, const ae_int_t m, const double rho, ae_int_t &info, spline1dinterpolant &s, spline1dfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()) || (x.length()!=w.length()))
         throw ap_error("Error while calling 'spline1dfitpenalizedw': looks like one of arguments has wrong size");
@@ -4701,7 +4701,7 @@ above is not guaranteed and may result in inconsistency.
 *************************************************************************/
 void spline1dfitcubicwc(const real_1d_array &x, const real_1d_array &y, const real_1d_array &w, const real_1d_array &xc, const real_1d_array &yc, const integer_1d_array &dc, const ae_int_t m, ae_int_t &info, spline1dinterpolant &s, spline1dfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t k;
     if( (x.length()!=y.length()) || (x.length()!=w.length()))
@@ -4950,7 +4950,7 @@ above is not guaranteed and may result in inconsistency.
 *************************************************************************/
 void spline1dfithermitewc(const real_1d_array &x, const real_1d_array &y, const real_1d_array &w, const real_1d_array &xc, const real_1d_array &yc, const integer_1d_array &dc, const ae_int_t m, ae_int_t &info, spline1dinterpolant &s, spline1dfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t k;
     if( (x.length()!=y.length()) || (x.length()!=w.length()))
@@ -5011,7 +5011,7 @@ about subroutine parameters (we don't duplicate it here because of length)
 *************************************************************************/
 void spline1dfitcubic(const real_1d_array &x, const real_1d_array &y, const ae_int_t m, ae_int_t &info, spline1dinterpolant &s, spline1dfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'spline1dfitcubic': looks like one of arguments has wrong size");
@@ -5070,7 +5070,7 @@ because of length).
 *************************************************************************/
 void spline1dfithermite(const real_1d_array &x, const real_1d_array &y, const ae_int_t m, ae_int_t &info, spline1dinterpolant &s, spline1dfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'spline1dfithermite': looks like one of arguments has wrong size");
@@ -5267,7 +5267,7 @@ NOTE:       covariance matrix is estimated using  correction  for  degrees
 *************************************************************************/
 void lsfitlinearw(const real_1d_array &y, const real_1d_array &w, const real_2d_array &fmatrix, ae_int_t &info, real_1d_array &c, lsfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     if( (y.length()!=w.length()) || (y.length()!=fmatrix.rows()))
@@ -5498,7 +5498,7 @@ NOTE:       covariance matrix is estimated using  correction  for  degrees
 *************************************************************************/
 void lsfitlinearwc(const real_1d_array &y, const real_1d_array &w, const real_2d_array &fmatrix, const real_2d_array &cmatrix, ae_int_t &info, real_1d_array &c, lsfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     ae_int_t k;
@@ -5691,7 +5691,7 @@ NOTE:       covariance matrix is estimated using  correction  for  degrees
 *************************************************************************/
 void lsfitlinear(const real_1d_array &y, const real_2d_array &fmatrix, ae_int_t &info, real_1d_array &c, lsfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     if( (y.length()!=fmatrix.rows()))
@@ -5914,7 +5914,7 @@ NOTE:       covariance matrix is estimated using  correction  for  degrees
 *************************************************************************/
 void lsfitlinearc(const real_1d_array &y, const real_2d_array &fmatrix, const real_2d_array &cmatrix, ae_int_t &info, real_1d_array &c, lsfitreport &rep)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     ae_int_t k;
@@ -6033,7 +6033,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void lsfitcreatewf(const real_2d_array &x, const real_1d_array &y, const real_1d_array &w, const real_1d_array &c, const double diffstep, lsfitstate &state)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     ae_int_t k;
@@ -6148,7 +6148,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void lsfitcreatef(const real_2d_array &x, const real_1d_array &y, const real_1d_array &c, const double diffstep, lsfitstate &state)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     ae_int_t k;
@@ -6279,7 +6279,7 @@ See also:
 *************************************************************************/
 void lsfitcreatewfg(const real_2d_array &x, const real_1d_array &y, const real_1d_array &w, const real_1d_array &c, const bool cheapfg, lsfitstate &state)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     ae_int_t k;
@@ -6396,7 +6396,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void lsfitcreatefg(const real_2d_array &x, const real_1d_array &y, const real_1d_array &c, const bool cheapfg, lsfitstate &state)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     ae_int_t k;
@@ -6499,7 +6499,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void lsfitcreatewfgh(const real_2d_array &x, const real_1d_array &y, const real_1d_array &w, const real_1d_array &c, lsfitstate &state)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     ae_int_t k;
@@ -6602,7 +6602,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void lsfitcreatefgh(const real_2d_array &x, const real_1d_array &y, const real_1d_array &c, lsfitstate &state)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
     ae_int_t k;
@@ -6847,9 +6847,9 @@ bool lsfititeration(const lsfitstate &state)
 
 
 void lsfitfit(lsfitstate &state,
-    void (*func)(const real_1d_array &c, const real_1d_array &x, double &func, void *ptr),
-    void  (*rep)(const real_1d_array &c, double func, void *ptr), 
-    void *ptr)
+              void (*func)(const real_1d_array &c, const real_1d_array &x, double &func, void *ptr),
+              void  (*rep)(const real_1d_array &c, double func, void *ptr),
+              void *ptr)
 {
     alglib_impl::ae_state _alglib_env_state;
     if( func==NULL )
@@ -6882,10 +6882,10 @@ void lsfitfit(lsfitstate &state,
 
 
 void lsfitfit(lsfitstate &state,
-    void (*func)(const real_1d_array &c, const real_1d_array &x, double &func, void *ptr),
-    void (*grad)(const real_1d_array &c, const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
-    void  (*rep)(const real_1d_array &c, double func, void *ptr), 
-    void *ptr)
+              void (*func)(const real_1d_array &c, const real_1d_array &x, double &func, void *ptr),
+              void (*grad)(const real_1d_array &c, const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
+              void  (*rep)(const real_1d_array &c, double func, void *ptr),
+              void *ptr)
 {
     alglib_impl::ae_state _alglib_env_state;
     if( func==NULL )
@@ -6925,11 +6925,11 @@ void lsfitfit(lsfitstate &state,
 
 
 void lsfitfit(lsfitstate &state,
-    void (*func)(const real_1d_array &c, const real_1d_array &x, double &func, void *ptr),
-    void (*grad)(const real_1d_array &c, const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
-    void (*hess)(const real_1d_array &c, const real_1d_array &x, double &func, real_1d_array &grad, real_2d_array &hess, void *ptr),
-    void  (*rep)(const real_1d_array &c, double func, void *ptr), 
-    void *ptr)
+              void (*func)(const real_1d_array &c, const real_1d_array &x, double &func, void *ptr),
+              void (*grad)(const real_1d_array &c, const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
+              void (*hess)(const real_1d_array &c, const real_1d_array &x, double &func, real_1d_array &grad, real_2d_array &hess, void *ptr),
+              void  (*rep)(const real_1d_array &c, double func, void *ptr),
+              void *ptr)
 {
     alglib_impl::ae_state _alglib_env_state;
     if( func==NULL )
@@ -7182,11 +7182,11 @@ alglib_impl::pspline2interpolant* _pspline2interpolant_owner::c_ptr() const
 {
     return const_cast<alglib_impl::pspline2interpolant*>(p_struct);
 }
-pspline2interpolant::pspline2interpolant() : _pspline2interpolant_owner() 
+pspline2interpolant::pspline2interpolant() : _pspline2interpolant_owner()
 {
 }
 
-pspline2interpolant::pspline2interpolant(const pspline2interpolant &rhs):_pspline2interpolant_owner(rhs) 
+pspline2interpolant::pspline2interpolant(const pspline2interpolant &rhs):_pspline2interpolant_owner(rhs)
 {
 }
 
@@ -7252,11 +7252,11 @@ alglib_impl::pspline3interpolant* _pspline3interpolant_owner::c_ptr() const
 {
     return const_cast<alglib_impl::pspline3interpolant*>(p_struct);
 }
-pspline3interpolant::pspline3interpolant() : _pspline3interpolant_owner() 
+pspline3interpolant::pspline3interpolant() : _pspline3interpolant_owner()
 {
 }
 
-pspline3interpolant::pspline3interpolant(const pspline3interpolant &rhs):_pspline3interpolant_owner(rhs) 
+pspline3interpolant::pspline3interpolant(const pspline3interpolant &rhs):_pspline3interpolant_owner(rhs)
 {
 }
 
@@ -7918,11 +7918,11 @@ alglib_impl::rbfmodel* _rbfmodel_owner::c_ptr() const
 {
     return const_cast<alglib_impl::rbfmodel*>(p_struct);
 }
-rbfmodel::rbfmodel() : _rbfmodel_owner() 
+rbfmodel::rbfmodel() : _rbfmodel_owner()
 {
 }
 
-rbfmodel::rbfmodel(const rbfmodel &rhs):_rbfmodel_owner(rhs) 
+rbfmodel::rbfmodel(const rbfmodel &rhs):_rbfmodel_owner(rhs)
 {
 }
 
@@ -8015,17 +8015,17 @@ Important properties of s_out:
 * it contains alphanumeric characters, dots, underscores, minus signs
 * these symbols are grouped into words, which are separated by spaces
   and Windows-style (CR+LF) newlines
-* although  serializer  uses  spaces and CR+LF as separators, you can 
+* although  serializer  uses  spaces and CR+LF as separators, you can
   replace any separator character by arbitrary combination of spaces,
   tabs, Windows or Unix newlines. It allows flexible reformatting  of
-  the  string  in  case you want to include it into text or XML file. 
+  the  string  in  case you want to include it into text or XML file.
   But you should not insert separators into the middle of the "words"
   nor you should change case of letters.
 * s_out can be freely moved between 32-bit and 64-bit systems, little
   and big endian machines, and so on. You can serialize structure  on
   32-bit machine and unserialize it on 64-bit one (or vice versa), or
-  serialize  it  on  SPARC  and  unserialize  on  x86.  You  can also 
-  serialize  it  in  C++ version of ALGLIB and unserialize in C# one, 
+  serialize  it  on  SPARC  and  unserialize  on  x86.  You  can also
+  serialize  it  in  C++ version of ALGLIB and unserialize in C# one,
   and vice versa.
 *************************************************************************/
 void rbfserialize(rbfmodel &obj, std::string &s_out)
@@ -8215,7 +8215,7 @@ NOTE: this   function  has   some   serialization-related  subtleties.  We
 *************************************************************************/
 void rbfsetpoints(const rbfmodel &s, const real_2d_array &xy)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = xy.rows();
@@ -8357,7 +8357,7 @@ NOTE: this   function  has   some   serialization-related  subtleties.  We
 *************************************************************************/
 void rbfsetalgoqnn(const rbfmodel &s)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     double q;
     double z;
 
@@ -8575,7 +8575,7 @@ TYPICAL ERRORS
 *************************************************************************/
 void rbfsetalgomultilayer(const rbfmodel &s, const double rbase, const ae_int_t nlayers)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     double lambdav;
 
     lambdav = 0.01;
@@ -9025,11 +9025,11 @@ alglib_impl::spline2dinterpolant* _spline2dinterpolant_owner::c_ptr() const
 {
     return const_cast<alglib_impl::spline2dinterpolant*>(p_struct);
 }
-spline2dinterpolant::spline2dinterpolant() : _spline2dinterpolant_owner() 
+spline2dinterpolant::spline2dinterpolant() : _spline2dinterpolant_owner()
 {
 }
 
-spline2dinterpolant::spline2dinterpolant(const spline2dinterpolant &rhs):_spline2dinterpolant_owner(rhs) 
+spline2dinterpolant::spline2dinterpolant(const spline2dinterpolant &rhs):_spline2dinterpolant_owner(rhs)
 {
 }
 
@@ -9579,11 +9579,11 @@ alglib_impl::spline3dinterpolant* _spline3dinterpolant_owner::c_ptr() const
 {
     return const_cast<alglib_impl::spline3dinterpolant*>(p_struct);
 }
-spline3dinterpolant::spline3dinterpolant() : _spline3dinterpolant_owner() 
+spline3dinterpolant::spline3dinterpolant() : _spline3dinterpolant_owner()
 {
 }
 
-spline3dinterpolant::spline3dinterpolant(const spline3dinterpolant &rhs):_spline3dinterpolant_owner(rhs) 
+spline3dinterpolant::spline3dinterpolant(const spline3dinterpolant &rhs):_spline3dinterpolant_owner(rhs)
 {
 }
 
@@ -9935,176 +9935,176 @@ namespace alglib_impl
 static double idwint_idwqfactor = 1.5;
 static ae_int_t idwint_idwkmin = 5;
 static double idwint_idwcalcq(idwinterpolant* z,
-     /* Real    */ ae_vector* x,
-     ae_int_t k,
-     ae_state *_state);
+                              /* Real    */ ae_vector* x,
+                              ae_int_t k,
+                              ae_state *_state);
 static void idwint_idwinit1(ae_int_t n,
-     ae_int_t nx,
-     ae_int_t d,
-     ae_int_t nq,
-     ae_int_t nw,
-     idwinterpolant* z,
-     ae_state *_state);
+                            ae_int_t nx,
+                            ae_int_t d,
+                            ae_int_t nq,
+                            ae_int_t nw,
+                            idwinterpolant* z,
+                            ae_state *_state);
 static void idwint_idwinternalsolver(/* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* fmatrix,
-     /* Real    */ ae_vector* temp,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     /* Real    */ ae_vector* x,
-     double* taskrcond,
-     ae_state *_state);
+        /* Real    */ ae_vector* w,
+        /* Real    */ ae_matrix* fmatrix,
+        /* Real    */ ae_vector* temp,
+        ae_int_t n,
+        ae_int_t m,
+        ae_int_t* info,
+        /* Real    */ ae_vector* x,
+        double* taskrcond,
+        ae_state *_state);
 
 
 static void ratint_barycentricnormalize(barycentricinterpolant* b,
-     ae_state *_state);
+                                        ae_state *_state);
 
 
 
 
 static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundltype,
-     double boundl,
-     ae_int_t boundrtype,
-     double boundr,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* a1,
-     /* Real    */ ae_vector* a2,
-     /* Real    */ ae_vector* a3,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* dt,
-     ae_state *_state);
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t boundltype,
+        double boundl,
+        ae_int_t boundrtype,
+        double boundr,
+        /* Real    */ ae_vector* d,
+        /* Real    */ ae_vector* a1,
+        /* Real    */ ae_vector* a2,
+        /* Real    */ ae_vector* a3,
+        /* Real    */ ae_vector* b,
+        /* Real    */ ae_vector* dt,
+        ae_state *_state);
 static void spline1d_heapsortpoints(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_state *_state);
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_state *_state);
 static void spline1d_heapsortppoints(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     ae_state *_state);
+        /* Real    */ ae_vector* y,
+        /* Integer */ ae_vector* p,
+        ae_int_t n,
+        ae_state *_state);
 static void spline1d_solvetridiagonal(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_vector* d,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+        /* Real    */ ae_vector* b,
+        /* Real    */ ae_vector* c,
+        /* Real    */ ae_vector* d,
+        ae_int_t n,
+        /* Real    */ ae_vector* x,
+        ae_state *_state);
 static void spline1d_solvecyclictridiagonal(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_vector* d,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+        /* Real    */ ae_vector* b,
+        /* Real    */ ae_vector* c,
+        /* Real    */ ae_vector* d,
+        ae_int_t n,
+        /* Real    */ ae_vector* x,
+        ae_state *_state);
 static double spline1d_diffthreepoint(double t,
-     double x0,
-     double f0,
-     double x1,
-     double f1,
-     double x2,
-     double f2,
-     ae_state *_state);
+                                      double x0,
+                                      double f0,
+                                      double x1,
+                                      double f1,
+                                      double x2,
+                                      double f2,
+                                      ae_state *_state);
 static void spline1d_hermitecalc(double p0,
-     double m0,
-     double p1,
-     double m1,
-     double t,
-     double* s,
-     double* ds,
-     ae_state *_state);
+                                 double m0,
+                                 double p1,
+                                 double m1,
+                                 double t,
+                                 double* s,
+                                 double* ds,
+                                 ae_state *_state);
 static double spline1d_rescaleval(double a0,
-     double b0,
-     double a1,
-     double b1,
-     double t,
-     ae_state *_state);
+                                  double b0,
+                                  double a1,
+                                  double b1,
+                                  double t,
+                                  ae_state *_state);
 
 
 static void lsfit_spline1dfitinternal(ae_int_t st,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t* info,
-     spline1dinterpolant* s,
-     spline1dfitreport* rep,
-     ae_state *_state);
+                                      /* Real    */ ae_vector* x,
+                                      /* Real    */ ae_vector* y,
+                                      /* Real    */ ae_vector* w,
+                                      ae_int_t n,
+                                      /* Real    */ ae_vector* xc,
+                                      /* Real    */ ae_vector* yc,
+                                      /* Integer */ ae_vector* dc,
+                                      ae_int_t k,
+                                      ae_int_t m,
+                                      ae_int_t* info,
+                                      spline1dinterpolant* s,
+                                      spline1dfitreport* rep,
+                                      ae_state *_state);
 static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* fmatrix,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state);
+        /* Real    */ ae_vector* w,
+        /* Real    */ ae_matrix* fmatrix,
+        ae_int_t n,
+        ae_int_t m,
+        ae_int_t* info,
+        /* Real    */ ae_vector* c,
+        lsfitreport* rep,
+        ae_state *_state);
 static void lsfit_lsfitclearrequestfields(lsfitstate* state,
-     ae_state *_state);
+        ae_state *_state);
 static void lsfit_barycentriccalcbasis(barycentricinterpolant* b,
-     double t,
-     /* Real    */ ae_vector* y,
-     ae_state *_state);
+                                       double t,
+                                       /* Real    */ ae_vector* y,
+                                       ae_state *_state);
 static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state);
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_vector* w,
+        ae_int_t n,
+        /* Real    */ ae_vector* xc,
+        /* Real    */ ae_vector* yc,
+        /* Integer */ ae_vector* dc,
+        ae_int_t k,
+        ae_int_t m,
+        ae_int_t* info,
+        /* Real    */ ae_vector* c,
+        lsfitreport* rep,
+        ae_state *_state);
 static void lsfit_barycentricfitwcfixedd(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t d,
-     ae_int_t* info,
-     barycentricinterpolant* b,
-     barycentricfitreport* rep,
-     ae_state *_state);
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_vector* w,
+        ae_int_t n,
+        /* Real    */ ae_vector* xc,
+        /* Real    */ ae_vector* yc,
+        /* Integer */ ae_vector* dc,
+        ae_int_t k,
+        ae_int_t m,
+        ae_int_t d,
+        ae_int_t* info,
+        barycentricinterpolant* b,
+        barycentricfitreport* rep,
+        ae_state *_state);
 static void lsfit_clearreport(lsfitreport* rep, ae_state *_state);
 static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
-     /* Real    */ ae_vector* f0,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* s,
-     ae_int_t n,
-     ae_int_t k,
-     lsfitreport* rep,
-     /* Real    */ ae_matrix* z,
-     ae_int_t zkind,
-     ae_state *_state);
+        /* Real    */ ae_vector* f0,
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_vector* w,
+        /* Real    */ ae_vector* x,
+        /* Real    */ ae_vector* s,
+        ae_int_t n,
+        ae_int_t k,
+        lsfitreport* rep,
+        /* Real    */ ae_matrix* z,
+        ae_int_t zkind,
+        ae_state *_state);
 
 
 static void pspline_pspline2par(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t pt,
-     /* Real    */ ae_vector* p,
-     ae_state *_state);
+        ae_int_t n,
+        ae_int_t pt,
+        /* Real    */ ae_vector* p,
+        ae_state *_state);
 static void pspline_pspline3par(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t pt,
-     /* Real    */ ae_vector* p,
-     ae_state *_state);
+        ae_int_t n,
+        ae_int_t pt,
+        /* Real    */ ae_vector* p,
+        ae_state *_state);
 
 
 static double rbf_eps = 1.0E-6;
@@ -10115,77 +10115,77 @@ static double rbf_rbfmlradius = 3;
 static ae_int_t rbf_rbffirstversion = 0;
 static void rbf_rbfgridpoints(rbfmodel* s, ae_state *_state);
 static void rbf_rbfradnn(rbfmodel* s,
-     double q,
-     double z,
-     ae_state *_state);
+                         double q,
+                         double z,
+                         ae_state *_state);
 static ae_bool rbf_buildlinearmodel(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     ae_int_t n,
-     ae_int_t ny,
-     ae_int_t modeltype,
-     /* Real    */ ae_matrix* v,
-     ae_state *_state);
+        /* Real    */ ae_matrix* y,
+        ae_int_t n,
+        ae_int_t ny,
+        ae_int_t modeltype,
+        /* Real    */ ae_matrix* v,
+        ae_state *_state);
 static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     /* Real    */ ae_matrix* xc,
-     /* Real    */ ae_vector* r,
-     ae_int_t n,
-     ae_int_t nc,
-     ae_int_t ny,
-     kdtree* pointstree,
-     kdtree* centerstree,
-     double epsort,
-     double epserr,
-     ae_int_t maxits,
-     ae_int_t* gnnz,
-     ae_int_t* snnz,
-     /* Real    */ ae_matrix* w,
-     ae_int_t* info,
-     ae_int_t* iterationscount,
-     ae_int_t* nmv,
-     ae_state *_state);
+        /* Real    */ ae_matrix* y,
+        /* Real    */ ae_matrix* xc,
+        /* Real    */ ae_vector* r,
+        ae_int_t n,
+        ae_int_t nc,
+        ae_int_t ny,
+        kdtree* pointstree,
+        kdtree* centerstree,
+        double epsort,
+        double epserr,
+        ae_int_t maxits,
+        ae_int_t* gnnz,
+        ae_int_t* snnz,
+        /* Real    */ ae_matrix* w,
+        ae_int_t* info,
+        ae_int_t* iterationscount,
+        ae_int_t* nmv,
+        ae_state *_state);
 static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     /* Real    */ ae_matrix* xc,
-     double rval,
-     /* Real    */ ae_vector* r,
-     ae_int_t n,
-     ae_int_t* nc,
-     ae_int_t ny,
-     ae_int_t nlayers,
-     kdtree* centerstree,
-     double epsort,
-     double epserr,
-     ae_int_t maxits,
-     double lambdav,
-     ae_int_t* annz,
-     /* Real    */ ae_matrix* w,
-     ae_int_t* info,
-     ae_int_t* iterationscount,
-     ae_int_t* nmv,
-     ae_state *_state);
+        /* Real    */ ae_matrix* y,
+        /* Real    */ ae_matrix* xc,
+        double rval,
+        /* Real    */ ae_vector* r,
+        ae_int_t n,
+        ae_int_t* nc,
+        ae_int_t ny,
+        ae_int_t nlayers,
+        kdtree* centerstree,
+        double epsort,
+        double epserr,
+        ae_int_t maxits,
+        double lambdav,
+        ae_int_t* annz,
+        /* Real    */ ae_matrix* w,
+        ae_int_t* info,
+        ae_int_t* iterationscount,
+        ae_int_t* nmv,
+        ae_state *_state);
 
 
 static void spline2d_bicubiccalcderivatives(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* dx,
-     /* Real    */ ae_matrix* dy,
-     /* Real    */ ae_matrix* dxy,
-     ae_state *_state);
+        /* Real    */ ae_vector* x,
+        /* Real    */ ae_vector* y,
+        ae_int_t m,
+        ae_int_t n,
+        /* Real    */ ae_matrix* dx,
+        /* Real    */ ae_matrix* dy,
+        /* Real    */ ae_matrix* dxy,
+        ae_state *_state);
 
 
 static void spline3d_spline3ddiff(spline3dinterpolant* c,
-     double x,
-     double y,
-     double z,
-     double* f,
-     double* fx,
-     double* fy,
-     double* fxy,
-     ae_state *_state);
+                                  double x,
+                                  double y,
+                                  double z,
+                                  double* f,
+                                  double* fx,
+                                  double* fy,
+                                  double* fxy,
+                                  ae_state *_state);
 
 
 
@@ -10206,8 +10206,8 @@ Result:
      Copyright 02.03.2010 by Bochkanov Sergey
 *************************************************************************/
 double idwcalc(idwinterpolant* z,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+               /* Real    */ ae_vector* x,
+               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -10221,19 +10221,19 @@ double idwcalc(idwinterpolant* z,
     double result;
 
 
-    
+
     /*
      * these initializers are not really necessary,
      * but without them compiler complains about uninitialized locals
      */
     k = 0;
-    
+
     /*
      * Query
      */
     if( z->modeltype==0 )
     {
-        
+
         /*
          * NQ/NW-based model
          */
@@ -10243,7 +10243,7 @@ double idwcalc(idwinterpolant* z,
     }
     if( z->modeltype==1 )
     {
-        
+
         /*
          * R-based model
          */
@@ -10252,7 +10252,7 @@ double idwcalc(idwinterpolant* z,
         kdtreequeryresultstags(&z->tree, &z->tbuf, _state);
         if( k<idwint_idwkmin )
         {
-            
+
             /*
              * we need at least IDWKMin points
              */
@@ -10261,7 +10261,7 @@ double idwcalc(idwinterpolant* z,
             kdtreequeryresultstags(&z->tree, &z->tbuf, _state);
         }
     }
-    
+
     /*
      * initialize weights for linear/quadratic members calculation.
      *
@@ -10287,7 +10287,7 @@ double idwcalc(idwinterpolant* z,
         di = z->rbuf.ptr.p_double[i];
         if( ae_fp_eq(di,d0) )
         {
-            
+
             /*
              * distance is equal to shortest, set it 1.0
              * without explicitly calculating (which would give
@@ -10298,7 +10298,7 @@ double idwcalc(idwinterpolant* z,
         }
         else
         {
-            
+
             /*
              * use normalized formula
              */
@@ -10347,7 +10347,7 @@ INPUT PARAMETERS:
 
 OUTPUT PARAMETERS:
     Z   -   IDW interpolant.
-    
+
 NOTES:
   * best results are obtained with quadratic models, worst - with constant
     models
@@ -10370,13 +10370,13 @@ NOTES:
      Copyright 02.03.2010 by Bochkanov Sergey
 *************************************************************************/
 void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t nx,
-     ae_int_t d,
-     ae_int_t nq,
-     ae_int_t nw,
-     idwinterpolant* z,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t nx,
+        ae_int_t d,
+        ae_int_t nq,
+        ae_int_t nw,
+        idwinterpolant* z,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -10417,20 +10417,20 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
     ae_vector_init(&temp, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&tags, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * these initializers are not really necessary,
      * but without them compiler complains about uninitialized locals
      */
     nc = 0;
-    
+
     /*
      * assertions
      */
     ae_assert(n>0, "IDWBuildModifiedShepard: N<=0!", _state);
     ae_assert(nx>=1, "IDWBuildModifiedShepard: NX<1!", _state);
     ae_assert(d>=-1&&d<=2, "IDWBuildModifiedShepard: D<>-1 and D<>0 and D<>1 and D<>2!", _state);
-    
+
     /*
      * Correct parameters if needed
      */
@@ -10447,13 +10447,13 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
     nw = ae_maxint(nw, ae_round(ae_pow(2, nx, _state), _state)+1, _state);
     nq = ae_minint(nq, n, _state);
     nw = ae_minint(nw, n, _state);
-    
+
     /*
      * primary initialization of Z
      */
     idwint_idwinit1(n, nx, d, nq, nw, z, _state);
     z->modeltype = 0;
-    
+
     /*
      * Create KD-tree
      */
@@ -10463,7 +10463,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
         tags.ptr.p_int[i] = i;
     }
     kdtreebuildtagged(xy, &tags, n, nx, 1, 2, &z->tree, _state);
-    
+
     /*
      * build nodal functions
      */
@@ -10480,7 +10480,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
         ae_vector_set_length(&y, nq, _state);
         ae_vector_set_length(&w, nq, _state);
         ae_vector_set_length(&qsol, nx, _state);
-        
+
         /*
          * NX for linear members,
          * 1 for temporary storage
@@ -10492,7 +10492,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
         ae_vector_set_length(&y, nq, _state);
         ae_vector_set_length(&w, nq, _state);
         ae_vector_set_length(&qsol, nx+ae_round(nx*(nx+1)*0.5, _state), _state);
-        
+
         /*
          * NX for linear members,
          * Round(NX*(NX+1)*0.5) for quadratic model,
@@ -10502,7 +10502,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
     }
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * Initialize center and function value.
          * If D=0 it is all what we need
@@ -10512,7 +10512,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
         {
             continue;
         }
-        
+
         /*
          * calculate weights for linear/quadratic members calculation.
          *
@@ -10540,7 +10540,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
             di = qrbuf.ptr.p_double[j];
             if( ae_fp_eq(di,d0) )
             {
-                
+
                 /*
                  * distance is equal to shortest, set it 1.0
                  * without explicitly calculating (which would give
@@ -10551,7 +10551,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
             }
             else
             {
-                
+
                 /*
                  * use normalized formula
                  */
@@ -10560,13 +10560,13 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
                 w.ptr.p_double[j] = ae_sqr(v1*v2, _state);
             }
         }
-        
+
         /*
          * calculate linear/quadratic members
          */
         if( d==-1 )
         {
-            
+
             /*
              * "Fast" linear nodal function calculated using
              * inverse distance weighting
@@ -10578,7 +10578,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
             s = 0;
             for(j=0; j<=k-1; j++)
             {
-                
+
                 /*
                  * calculate J-th inverse distance weighted gradient:
                  *     grad_k = (y_j-y_k)*(x_j-x_k)/sqr(norm(x_j-x_k))
@@ -10589,7 +10589,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
                 {
                     v = v+ae_sqr(qxybuf.ptr.pp_double[j][j2]-xy->ptr.pp_double[i][j2], _state);
                 }
-                
+
                 /*
                  * Although x_j<>x_k, sqr(norm(x_j-x_k)) may be zero due to
                  * underflow. If it is, we assume than J-th gradient is zero
@@ -10611,13 +10611,13 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
         }
         else
         {
-            
+
             /*
              * Least squares models: build
              */
             if( d==1 )
             {
-                
+
                 /*
                  * Linear nodal function calculated using
                  * least squares fitting to its neighbors
@@ -10634,7 +10634,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
             }
             if( d==2 )
             {
-                
+
                 /*
                  * Quadratic nodal function calculated using
                  * least squares fitting to its neighbors
@@ -10660,13 +10660,13 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
                 nc = nx+ae_round(nx*(nx+1)*0.5, _state);
             }
             idwint_idwinternalsolver(&y, &w, &fmatrix, &temp, k, nc, &info, &qsol, &taskrcond, _state);
-            
+
             /*
              * Least squares models: copy results
              */
             if( info>0 )
             {
-                
+
                 /*
                  * LLS task is solved, copy results
                  */
@@ -10679,7 +10679,7 @@ void idwbuildmodifiedshepard(/* Real    */ ae_matrix* xy,
             }
             else
             {
-                
+
                 /*
                  * Solver failure, very strange, but we will use
                  * zero values to handle it.
@@ -10724,11 +10724,11 @@ NOTES:
      Copyright 11.04.2010 by Bochkanov Sergey
 *************************************************************************/
 void idwbuildmodifiedshepardr(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t nx,
-     double r,
-     idwinterpolant* z,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t nx,
+        double r,
+        idwinterpolant* z,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -10738,21 +10738,21 @@ void idwbuildmodifiedshepardr(/* Real    */ ae_matrix* xy,
     _idwinterpolant_clear(z);
     ae_vector_init(&tags, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * assertions
      */
     ae_assert(n>0, "IDWBuildModifiedShepardR: N<=0!", _state);
     ae_assert(nx>=1, "IDWBuildModifiedShepardR: NX<1!", _state);
     ae_assert(ae_fp_greater(r,0), "IDWBuildModifiedShepardR: R<=0!", _state);
-    
+
     /*
      * primary initialization of Z
      */
     idwint_idwinit1(n, nx, 0, 0, n, z, _state);
     z->modeltype = 1;
     z->r = r;
-    
+
     /*
      * Create KD-tree
      */
@@ -10762,7 +10762,7 @@ void idwbuildmodifiedshepardr(/* Real    */ ae_matrix* xy,
         tags.ptr.p_int[i] = i;
     }
     kdtreebuildtagged(xy, &tags, n, nx, 1, 2, &z->tree, _state);
-    
+
     /*
      * build nodal functions
      */
@@ -10838,13 +10838,13 @@ NOTES:
      Copyright 02.03.2010 by Bochkanov Sergey
 *************************************************************************/
 void idwbuildnoisy(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t nx,
-     ae_int_t d,
-     ae_int_t nq,
-     ae_int_t nw,
-     idwinterpolant* z,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 ae_int_t nx,
+                                 ae_int_t d,
+                                 ae_int_t nq,
+                                 ae_int_t nw,
+                                 idwinterpolant* z,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -10879,20 +10879,20 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
     ae_vector_init(&tags, 0, DT_INT, _state, ae_true);
     ae_vector_init(&temp, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * these initializers are not really necessary,
      * but without them compiler complains about uninitialized locals
      */
     nc = 0;
-    
+
     /*
      * assertions
      */
     ae_assert(n>0, "IDWBuildNoisy: N<=0!", _state);
     ae_assert(nx>=1, "IDWBuildNoisy: NX<1!", _state);
     ae_assert(d>=1&&d<=2, "IDWBuildNoisy: D<>1 and D<>2!", _state);
-    
+
     /*
      * Correct parameters if needed
      */
@@ -10907,13 +10907,13 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
     nw = ae_maxint(nw, ae_round(ae_pow(2, nx, _state), _state)+1, _state);
     nq = ae_minint(nq, n, _state);
     nw = ae_minint(nw, n, _state);
-    
+
     /*
      * primary initialization of Z
      */
     idwint_idwinit1(n, nx, d, nq, nw, z, _state);
     z->modeltype = 0;
-    
+
     /*
      * Create KD-tree
      */
@@ -10923,7 +10923,7 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
         tags.ptr.p_int[i] = i;
     }
     kdtreebuildtagged(xy, &tags, n, nx, 1, 2, &z->tree, _state);
-    
+
     /*
      * build nodal functions
      * (special algorithm for noisy data is used)
@@ -10937,7 +10937,7 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
         ae_vector_set_length(&y, nq, _state);
         ae_vector_set_length(&w, nq, _state);
         ae_vector_set_length(&qsol, 1+nx, _state);
-        
+
         /*
          * 1 for constant member,
          * NX for linear members,
@@ -10950,7 +10950,7 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
         ae_vector_set_length(&y, nq, _state);
         ae_vector_set_length(&w, nq, _state);
         ae_vector_set_length(&qsol, 1+nx+ae_round(nx*(nx+1)*0.5, _state), _state);
-        
+
         /*
          * 1 for constant member,
          * NX for linear members,
@@ -10961,12 +10961,12 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
     }
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * Initialize center.
          */
         ae_v_move(&z->q.ptr.pp_double[i][0], 1, &xy->ptr.pp_double[i][0], 1, ae_v_len(0,nx-1));
-        
+
         /*
          * Calculate linear/quadratic members
          * using least squares fit
@@ -10979,7 +10979,7 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
         kdtreequeryresultsdistances(&z->tree, &qrbuf, _state);
         if( d==1 )
         {
-            
+
             /*
              * Linear nodal function calculated using
              * least squares fitting to its neighbors
@@ -10998,7 +10998,7 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
         }
         if( d==2 )
         {
-            
+
             /*
              * Quadratic nodal function calculated using
              * least squares fitting to its neighbors
@@ -11026,13 +11026,13 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
             nc = 1+nx+ae_round(nx*(nx+1)*0.5, _state);
         }
         idwint_idwinternalsolver(&y, &w, &fmatrix, &temp, k, nc, &info, &qsol, &taskrcond, _state);
-        
+
         /*
          * Least squares models: copy results
          */
         if( info>0 )
         {
-            
+
             /*
              * LLS task is solved, copy results
              */
@@ -11045,7 +11045,7 @@ void idwbuildnoisy(/* Real    */ ae_matrix* xy,
         }
         else
         {
-            
+
             /*
              * Solver failure, very strange, but we will use
              * zero values to handle it.
@@ -11074,9 +11074,9 @@ Internal subroutine: K-th nodal function calculation
      Copyright 02.03.2010 by Bochkanov Sergey
 *************************************************************************/
 static double idwint_idwcalcq(idwinterpolant* z,
-     /* Real    */ ae_vector* x,
-     ae_int_t k,
-     ae_state *_state)
+                              /* Real    */ ae_vector* x,
+                              ae_int_t k,
+                              ae_state *_state)
 {
     ae_int_t nx;
     ae_int_t i;
@@ -11086,12 +11086,12 @@ static double idwint_idwcalcq(idwinterpolant* z,
 
 
     nx = z->nx;
-    
+
     /*
      * constant member
      */
     result = z->q.ptr.pp_double[k][nx];
-    
+
     /*
      * linear members
      */
@@ -11102,7 +11102,7 @@ static double idwint_idwcalcq(idwinterpolant* z,
             result = result+z->q.ptr.pp_double[k][nx+1+i]*(x->ptr.p_double[i]-z->q.ptr.pp_double[k][i]);
         }
     }
-    
+
     /*
      * quadratic members
      */
@@ -11131,12 +11131,12 @@ It assumes correctness of all parameters.
      Copyright 02.03.2010 by Bochkanov Sergey
 *************************************************************************/
 static void idwint_idwinit1(ae_int_t n,
-     ae_int_t nx,
-     ae_int_t d,
-     ae_int_t nq,
-     ae_int_t nw,
-     idwinterpolant* z,
-     ae_state *_state)
+                            ae_int_t nx,
+                            ae_int_t d,
+                            ae_int_t nq,
+                            ae_int_t nw,
+                            idwinterpolant* z,
+                            ae_state *_state)
 {
 
 
@@ -11198,15 +11198,15 @@ INPUT PARAMETERS:
     Temp        array[0..N]
 *************************************************************************/
 static void idwint_idwinternalsolver(/* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* fmatrix,
-     /* Real    */ ae_vector* temp,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     /* Real    */ ae_vector* x,
-     double* taskrcond,
-     ae_state *_state)
+        /* Real    */ ae_vector* w,
+        /* Real    */ ae_matrix* fmatrix,
+        /* Real    */ ae_vector* temp,
+        ae_int_t n,
+        ae_int_t m,
+        ae_int_t* info,
+        /* Real    */ ae_vector* x,
+        double* taskrcond,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -11221,12 +11221,12 @@ static void idwint_idwinternalsolver(/* Real    */ ae_vector* y,
     ae_vector_init(&b, 0, DT_REAL, _state, ae_true);
     _densesolverlsreport_init(&srep, _state, ae_true);
 
-    
+
     /*
      * set up info
      */
     *info = 1;
-    
+
     /*
      * prepare matrix
      */
@@ -11236,13 +11236,13 @@ static void idwint_idwinternalsolver(/* Real    */ ae_vector* y,
         v = w->ptr.p_double[i];
         ae_v_muld(&fmatrix->ptr.pp_double[i][0], 1, ae_v_len(0,m), v);
     }
-    
+
     /*
      * use either fast algorithm or general algorithm
      */
     if( m<=n )
     {
-        
+
         /*
          * QR decomposition
          * We assume that M<=N (we would have called LSFit() otherwise)
@@ -11263,19 +11263,19 @@ static void idwint_idwinternalsolver(/* Real    */ ae_vector* y,
                 }
             }
         }
-        
+
         /*
          * Check condition number
          */
         *taskrcond = rmatrixtrrcondinf(fmatrix, m, ae_true, ae_false, _state);
-        
+
         /*
          * use either fast algorithm for non-degenerate cases
          * or slow algorithm for degenerate cases
          */
         if( ae_fp_greater(*taskrcond,10000*n*ae_machineepsilon) )
         {
-            
+
             /*
              * solve triangular system R*x = FMatrix[0:M-1,M]
              * using fast algorithm, then exit
@@ -11289,7 +11289,7 @@ static void idwint_idwinternalsolver(/* Real    */ ae_vector* y,
         }
         else
         {
-            
+
             /*
              * use more general algorithm
              */
@@ -11307,7 +11307,7 @@ static void idwint_idwinternalsolver(/* Real    */ ae_vector* y,
     }
     else
     {
-        
+
         /*
          * use more general algorithm
          */
@@ -11417,8 +11417,8 @@ Result:
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 double barycentriccalc(barycentricinterpolant* b,
-     double t,
-     ae_state *_state)
+                       double t,
+                       ae_state *_state)
 {
     double s1;
     double s2;
@@ -11429,7 +11429,7 @@ double barycentriccalc(barycentricinterpolant* b,
 
 
     ae_assert(!ae_isinf(t, _state), "BarycentricCalc: infinite T!", _state);
-    
+
     /*
      * special case: NaN
      */
@@ -11438,7 +11438,7 @@ double barycentriccalc(barycentricinterpolant* b,
         result = _state->v_nan;
         return result;
     }
-    
+
     /*
      * special case: N=1
      */
@@ -11447,7 +11447,7 @@ double barycentriccalc(barycentricinterpolant* b,
         result = b->sy*b->y.ptr.p_double[0];
         return result;
     }
-    
+
     /*
      * Here we assume that task is normalized, i.e.:
      * 1. abs(Y[i])<=1
@@ -11498,7 +11498,7 @@ INPUT PARAMETERS:
 OUTPUT PARAMETERS:
     F   -   barycentric interpolant at T
     DF  -   first derivative
-    
+
 NOTE
 
 
@@ -11506,10 +11506,10 @@ NOTE
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentricdiff1(barycentricinterpolant* b,
-     double t,
-     double* f,
-     double* df,
-     ae_state *_state)
+                      double t,
+                      double* f,
+                      double* df,
+                      ae_state *_state)
 {
     double v;
     double vv;
@@ -11535,7 +11535,7 @@ void barycentricdiff1(barycentricinterpolant* b,
     *df = 0;
 
     ae_assert(!ae_isinf(t, _state), "BarycentricDiff1: infinite T!", _state);
-    
+
     /*
      * special case: NaN
      */
@@ -11545,7 +11545,7 @@ void barycentricdiff1(barycentricinterpolant* b,
         *df = _state->v_nan;
         return;
     }
-    
+
     /*
      * special case: N=1
      */
@@ -11562,7 +11562,7 @@ void barycentricdiff1(barycentricinterpolant* b,
         return;
     }
     ae_assert(ae_fp_greater(b->sy,0), "BarycentricDiff1: internal error", _state);
-    
+
     /*
      * We assume than N>1 and B.SY>0. Find:
      * 1. pivot point (X[i] closest to T)
@@ -11583,7 +11583,7 @@ void barycentricdiff1(barycentricinterpolant* b,
         xmin = ae_minreal(xmin, vv, _state);
         xmax = ae_maxreal(xmax, vv, _state);
     }
-    
+
     /*
      * pivot point found, calculate dNumerator and dDenominator
      */
@@ -11658,11 +11658,11 @@ BarycentricDiff1() subroutine in such cases.
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentricdiff2(barycentricinterpolant* b,
-     double t,
-     double* f,
-     double* df,
-     double* d2f,
-     ae_state *_state)
+                      double t,
+                      double* f,
+                      double* df,
+                      double* d2f,
+                      ae_state *_state)
 {
     double v;
     double vv;
@@ -11685,7 +11685,7 @@ void barycentricdiff2(barycentricinterpolant* b,
     *d2f = 0;
 
     ae_assert(!ae_isinf(t, _state), "BarycentricDiff1: infinite T!", _state);
-    
+
     /*
      * special case: NaN
      */
@@ -11696,7 +11696,7 @@ void barycentricdiff2(barycentricinterpolant* b,
         *d2f = _state->v_nan;
         return;
     }
-    
+
     /*
      * special case: N=1
      */
@@ -11714,7 +11714,7 @@ void barycentricdiff2(barycentricinterpolant* b,
         *d2f = 0;
         return;
     }
-    
+
     /*
      * We assume than N>1 and B.SY>0. Find:
      * 1. pivot point (X[i] closest to T)
@@ -11735,7 +11735,7 @@ void barycentricdiff2(barycentricinterpolant* b,
             k = i;
         }
     }
-    
+
     /*
      * pivot point found, calculate dNumerator and dDenominator
      */
@@ -11792,16 +11792,16 @@ OUTPUT PARAMETERS:
      Copyright 19.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentriclintransx(barycentricinterpolant* b,
-     double ca,
-     double cb,
-     ae_state *_state)
+                          double ca,
+                          double cb,
+                          ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
     double v;
 
 
-    
+
     /*
      * special case, replace by constant F(CB)
      */
@@ -11817,7 +11817,7 @@ void barycentriclintransx(barycentricinterpolant* b,
         }
         return;
     }
-    
+
     /*
      * general case: CA<>0
      */
@@ -11866,9 +11866,9 @@ OUTPUT PARAMETERS:
      Copyright 19.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentriclintransy(barycentricinterpolant* b,
-     double ca,
-     double cb,
-     ae_state *_state)
+                          double ca,
+                          double cb,
+                          ae_state *_state)
 {
     ae_int_t i;
     double v;
@@ -11907,11 +11907,11 @@ OUTPUT PARAMETERS:
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentricunpack(barycentricinterpolant* b,
-     ae_int_t* n,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_state *_state)
+                       ae_int_t* n,
+                       /* Real    */ ae_vector* x,
+                       /* Real    */ ae_vector* y,
+                       /* Real    */ ae_vector* w,
+                       ae_state *_state)
 {
     double v;
 
@@ -11949,17 +11949,17 @@ OUTPUT PARAMETERS:
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentricbuildxyw(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     barycentricinterpolant* b,
-     ae_state *_state)
+                                       /* Real    */ ae_vector* y,
+                                       /* Real    */ ae_vector* w,
+                                       ae_int_t n,
+                                       barycentricinterpolant* b,
+                                       ae_state *_state)
 {
 
     _barycentricinterpolant_clear(b);
 
     ae_assert(n>0, "BarycentricBuildXYW: incorrect N!", _state);
-    
+
     /*
      * fill X/Y/W
      */
@@ -11970,7 +11970,7 @@ void barycentricbuildxyw(/* Real    */ ae_vector* x,
     ae_v_move(&b->y.ptr.p_double[0], 1, &y->ptr.p_double[0], 1, ae_v_len(0,n-1));
     ae_v_move(&b->w.ptr.p_double[0], 1, &w->ptr.p_double[0], 1, ae_v_len(0,n-1));
     b->n = n;
-    
+
     /*
      * Normalize
      */
@@ -12006,11 +12006,11 @@ Note:
      Copyright 17.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void barycentricbuildfloaterhormann(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t d,
-     barycentricinterpolant* b,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t d,
+        barycentricinterpolant* b,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     double s0;
@@ -12033,7 +12033,7 @@ void barycentricbuildfloaterhormann(/* Real    */ ae_vector* x,
 
     ae_assert(n>0, "BarycentricFloaterHormann: N<=0!", _state);
     ae_assert(d>=0, "BarycentricFloaterHormann: incorrect D!", _state);
-    
+
     /*
      * Prepare
      */
@@ -12042,7 +12042,7 @@ void barycentricbuildfloaterhormann(/* Real    */ ae_vector* x,
         d = n-1;
     }
     b->n = n;
-    
+
     /*
      * special case: N=1
      */
@@ -12058,7 +12058,7 @@ void barycentricbuildfloaterhormann(/* Real    */ ae_vector* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Fill X/Y
      */
@@ -12067,7 +12067,7 @@ void barycentricbuildfloaterhormann(/* Real    */ ae_vector* x,
     ae_v_move(&b->x.ptr.p_double[0], 1, &x->ptr.p_double[0], 1, ae_v_len(0,n-1));
     ae_v_move(&b->y.ptr.p_double[0], 1, &y->ptr.p_double[0], 1, ae_v_len(0,n-1));
     tagsortfastr(&b->x, &b->y, &sortrbuf, &sortrbuf2, n, _state);
-    
+
     /*
      * Calculate Wk
      */
@@ -12079,7 +12079,7 @@ void barycentricbuildfloaterhormann(/* Real    */ ae_vector* x,
     }
     for(k=0; k<=n-1; k++)
     {
-        
+
         /*
          * Wk
          */
@@ -12097,13 +12097,13 @@ void barycentricbuildfloaterhormann(/* Real    */ ae_vector* x,
             s = s+v;
         }
         b->w.ptr.p_double[k] = s0*s;
-        
+
         /*
          * Next S0
          */
         s0 = -s0;
     }
-    
+
     /*
      * Normalize
      */
@@ -12125,8 +12125,8 @@ OUTPUT PARAMETERS:
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentriccopy(barycentricinterpolant* b,
-     barycentricinterpolant* b2,
-     ae_state *_state)
+                     barycentricinterpolant* b2,
+                     ae_state *_state)
 {
 
     _barycentricinterpolant_clear(b2);
@@ -12153,7 +12153,7 @@ Normalization of barycentric interpolant:
 Internal subroutine.
 *************************************************************************/
 static void ratint_barycentricnormalize(barycentricinterpolant* b,
-     ae_state *_state)
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector p1;
@@ -12167,7 +12167,7 @@ static void ratint_barycentricnormalize(barycentricinterpolant* b,
     ae_vector_init(&p1, 0, DT_INT, _state, ae_true);
     ae_vector_init(&p2, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * Normalize task: |Y|<=1, |W|<=1, sort X[]
      */
@@ -12290,10 +12290,10 @@ NOTES:
      Copyright 30.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void polynomialbar2cheb(barycentricinterpolant* p,
-     double a,
-     double b,
-     /* Real    */ ae_vector* t,
-     ae_state *_state)
+                        double a,
+                        double b,
+                        /* Real    */ ae_vector* t,
+                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12315,7 +12315,7 @@ void polynomialbar2cheb(barycentricinterpolant* p,
     ae_assert(ae_isfinite(b, _state), "PolynomialBar2Cheb: B is not finite!", _state);
     ae_assert(ae_fp_neq(a,b), "PolynomialBar2Cheb: A=B!", _state);
     ae_assert(p->n>0, "PolynomialBar2Cheb: P is not correctly initialized barycentric interpolant!", _state);
-    
+
     /*
      * Calculate function values on a Chebyshev grid
      */
@@ -12326,7 +12326,7 @@ void polynomialbar2cheb(barycentricinterpolant* p,
         vx.ptr.p_double[i] = ae_cos(ae_pi*(i+0.5)/p->n, _state);
         vp.ptr.p_double[i] = barycentriccalc(p, 0.5*(vx.ptr.p_double[i]+1)*(b-a)+a, _state);
     }
-    
+
     /*
      * T[0]
      */
@@ -12337,7 +12337,7 @@ void polynomialbar2cheb(barycentricinterpolant* p,
         v = v+vp.ptr.p_double[i];
     }
     t->ptr.p_double[0] = v/p->n;
-    
+
     /*
      * other T's.
      *
@@ -12359,13 +12359,13 @@ void polynomialbar2cheb(barycentricinterpolant* p,
         }
         for(k=1; k<=p->n-1; k++)
         {
-            
+
             /*
              * calculate discrete product of function vector and TK
              */
             v = ae_v_dotproduct(&tk.ptr.p_double[0], 1, &vp.ptr.p_double[0], 1, ae_v_len(0,p->n-1));
             t->ptr.p_double[k] = v/(0.5*p->n);
-            
+
             /*
              * Update TK and TK1
              */
@@ -12402,11 +12402,11 @@ OUTPUT PARAMETERS
      Copyright 30.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void polynomialcheb2bar(/* Real    */ ae_vector* t,
-     ae_int_t n,
-     double a,
-     double b,
-     barycentricinterpolant* p,
-     ae_state *_state)
+                                      ae_int_t n,
+                                      double a,
+                                      double b,
+                                      barycentricinterpolant* p,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12428,14 +12428,14 @@ void polynomialcheb2bar(/* Real    */ ae_vector* t,
     ae_assert(n>=1, "PolynomialBar2Cheb: N<1", _state);
     ae_assert(t->cnt>=n, "PolynomialBar2Cheb: Length(T)<N", _state);
     ae_assert(isfinitevector(t, n, _state), "PolynomialBar2Cheb: T[] contains INF or NAN", _state);
-    
+
     /*
      * Calculate function values on a Chebyshev grid spanning [-1,+1]
      */
     ae_vector_set_length(&y, n, _state);
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * Calculate value on a grid spanning [-1,+1]
          */
@@ -12452,7 +12452,7 @@ void polynomialcheb2bar(/* Real    */ ae_vector* t,
         }
         y.ptr.p_double[i] = vy;
     }
-    
+
     /*
      * Build barycentric interpolant, map grid from [-1,+1] to [A,B]
      */
@@ -12491,7 +12491,7 @@ NOTES:
     this problem completely. This function  will  return  coefficients  in
     any  case,  but  for  N>8  they  will  become unreliable. However, N's
     less than 5 are pretty safe.
-    
+
 3.  barycentric interpolant passed as P may be either polynomial  obtained
     from  polynomial  interpolation/ fitting or rational function which is
     NOT polynomial. We can't distinguish between these two cases, and this
@@ -12502,10 +12502,10 @@ NOTES:
      Copyright 30.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void polynomialbar2pow(barycentricinterpolant* p,
-     double c,
-     double s,
-     /* Real    */ ae_vector* a,
-     ae_state *_state)
+                       double c,
+                       double s,
+                       /* Real    */ ae_vector* a,
+                       ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12531,7 +12531,7 @@ void polynomialbar2pow(barycentricinterpolant* p,
     ae_assert(ae_isfinite(s, _state), "PolynomialBar2Pow: S is not finite!", _state);
     ae_assert(ae_fp_neq(s,0), "PolynomialBar2Pow: S=0!", _state);
     ae_assert(p->n>0, "PolynomialBar2Pow: P is not correctly initialized barycentric interpolant!", _state);
-    
+
     /*
      * Calculate function values on a Chebyshev grid
      */
@@ -12542,7 +12542,7 @@ void polynomialbar2pow(barycentricinterpolant* p,
         vx.ptr.p_double[i] = ae_cos(ae_pi*(i+0.5)/p->n, _state);
         vp.ptr.p_double[i] = barycentriccalc(p, s*vx.ptr.p_double[i]+c, _state);
     }
-    
+
     /*
      * T[0]
      */
@@ -12553,7 +12553,7 @@ void polynomialbar2pow(barycentricinterpolant* p,
         v = v+vp.ptr.p_double[i];
     }
     t.ptr.p_double[0] = v/p->n;
-    
+
     /*
      * other T's.
      *
@@ -12575,13 +12575,13 @@ void polynomialbar2pow(barycentricinterpolant* p,
         }
         for(k=1; k<=p->n-1; k++)
         {
-            
+
             /*
              * calculate discrete product of function vector and TK
              */
             v = ae_v_dotproduct(&tk.ptr.p_double[0], 1, &vp.ptr.p_double[0], 1, ae_v_len(0,p->n-1));
             t.ptr.p_double[k] = v/(0.5*p->n);
-            
+
             /*
              * Update TK and TK1
              */
@@ -12593,7 +12593,7 @@ void polynomialbar2pow(barycentricinterpolant* p,
             }
         }
     }
-    
+
     /*
      * Convert from Chebyshev basis to power basis
      */
@@ -12677,11 +12677,11 @@ NOTES:
      Copyright 30.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void polynomialpow2bar(/* Real    */ ae_vector* a,
-     ae_int_t n,
-     double c,
-     double s,
-     barycentricinterpolant* p,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     double c,
+                                     double s,
+                                     barycentricinterpolant* p,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12701,14 +12701,14 @@ void polynomialpow2bar(/* Real    */ ae_vector* a,
     ae_assert(n>=1, "PolynomialPow2Bar: N<1", _state);
     ae_assert(a->cnt>=n, "PolynomialPow2Bar: Length(A)<N", _state);
     ae_assert(isfinitevector(a, n, _state), "PolynomialPow2Bar: A[] contains INF or NAN", _state);
-    
+
     /*
      * Calculate function values on a Chebyshev grid spanning [-1,+1]
      */
     ae_vector_set_length(&y, n, _state);
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * Calculate value on a grid spanning [-1,+1]
          */
@@ -12722,7 +12722,7 @@ void polynomialpow2bar(/* Real    */ ae_vector* a,
         }
         y.ptr.p_double[i] = vy;
     }
-    
+
     /*
      * Build barycentric interpolant, map grid from [-1,+1] to [A,B]
      */
@@ -12749,10 +12749,10 @@ OUTPUT PARAMETERS
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void polynomialbuild(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     barycentricinterpolant* p,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* y,
+                                   ae_int_t n,
+                                   barycentricinterpolant* p,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -12784,7 +12784,7 @@ void polynomialbuild(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(y, n, _state), "PolynomialBuild: Y contains infinite or NaN values!", _state);
     tagsortfastr(x, y, &sortrbuf, &sortrbuf2, n, _state);
     ae_assert(aredistinct(x, n, _state), "PolynomialBuild: at least two consequent points are too close!", _state);
-    
+
     /*
      * calculate W[j]
      * multi-pass algorithm is used to avoid overflow
@@ -12800,7 +12800,7 @@ void polynomialbuild(/* Real    */ ae_vector* x,
     }
     for(k=0; k<=n-1; k++)
     {
-        
+
         /*
          * W[K] is used instead of 0.0 because
          * cycle on J does not touch K-th element
@@ -12818,7 +12818,7 @@ void polynomialbuild(/* Real    */ ae_vector* x,
         }
         if( k%5==0 )
         {
-            
+
             /*
              * every 5-th run we renormalize W[]
              */
@@ -12851,11 +12851,11 @@ OUTPUT PARAMETERS
      Copyright 03.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void polynomialbuildeqdist(double a,
-     double b,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     barycentricinterpolant* p,
-     ae_state *_state)
+                           double b,
+                           /* Real    */ ae_vector* y,
+                           ae_int_t n,
+                           barycentricinterpolant* p,
+                           ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12875,7 +12875,7 @@ void polynomialbuildeqdist(double a,
     ae_assert(isfinitevector(y, n, _state), "PolynomialBuildEqDist: Y contains infinite or NaN values!", _state);
     ae_assert(ae_fp_neq(b,a), "PolynomialBuildEqDist: B=A!", _state);
     ae_assert(ae_fp_neq(a+(b-a)/n,a), "PolynomialBuildEqDist: B is too close to A!", _state);
-    
+
     /*
      * Special case: N=1
      */
@@ -12889,7 +12889,7 @@ void polynomialbuildeqdist(double a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * general case
      */
@@ -12929,11 +12929,11 @@ OUTPUT PARAMETERS
      Copyright 03.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void polynomialbuildcheb1(double a,
-     double b,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     barycentricinterpolant* p,
-     ae_state *_state)
+                          double b,
+                          /* Real    */ ae_vector* y,
+                          ae_int_t n,
+                          barycentricinterpolant* p,
+                          ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -12953,7 +12953,7 @@ void polynomialbuildcheb1(double a,
     ae_assert(ae_isfinite(b, _state), "PolynomialBuildCheb1: B is infinite or NaN!", _state);
     ae_assert(isfinitevector(y, n, _state), "PolynomialBuildCheb1: Y contains infinite or NaN values!", _state);
     ae_assert(ae_fp_neq(b,a), "PolynomialBuildCheb1: B=A!", _state);
-    
+
     /*
      * Special case: N=1
      */
@@ -12967,7 +12967,7 @@ void polynomialbuildcheb1(double a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * general case
      */
@@ -13007,11 +13007,11 @@ OUTPUT PARAMETERS
      Copyright 03.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void polynomialbuildcheb2(double a,
-     double b,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     barycentricinterpolant* p,
-     ae_state *_state)
+                          double b,
+                          /* Real    */ ae_vector* y,
+                          ae_int_t n,
+                          barycentricinterpolant* p,
+                          ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -13030,7 +13030,7 @@ void polynomialbuildcheb2(double a,
     ae_assert(ae_isfinite(b, _state), "PolynomialBuildCheb2: B is infinite or NaN!", _state);
     ae_assert(ae_fp_neq(b,a), "PolynomialBuildCheb2: B=A!", _state);
     ae_assert(isfinitevector(y, n, _state), "PolynomialBuildCheb2: Y contains infinite or NaN values!", _state);
-    
+
     /*
      * Special case: N=1
      */
@@ -13044,7 +13044,7 @@ void polynomialbuildcheb2(double a,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * general case
      */
@@ -13082,7 +13082,7 @@ INPUT PARAMETERS:
 
 RESULT
     value of the Lagrange interpolant at T
-    
+
 IMPORTANT
     this function provides fast interface which is not overflow-safe
     nor it is very precise.
@@ -13094,11 +13094,11 @@ IMPORTANT
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 double polynomialcalceqdist(double a,
-     double b,
-     /* Real    */ ae_vector* f,
-     ae_int_t n,
-     double t,
-     ae_state *_state)
+                            double b,
+                            /* Real    */ ae_vector* f,
+                            ae_int_t n,
+                            double t,
+                            ae_state *_state)
 {
     double s1;
     double s2;
@@ -13120,7 +13120,7 @@ double polynomialcalceqdist(double a,
     ae_assert(isfinitevector(f, n, _state), "PolynomialCalcEqDist: F contains infinite or NaN values!", _state);
     ae_assert(ae_fp_neq(b,a), "PolynomialCalcEqDist: B=A!", _state);
     ae_assert(!ae_isinf(t, _state), "PolynomialCalcEqDist: T is infinite!", _state);
-    
+
     /*
      * Special case: T is NAN
      */
@@ -13129,7 +13129,7 @@ double polynomialcalceqdist(double a,
         result = _state->v_nan;
         return result;
     }
-    
+
     /*
      * Special case: N=1
      */
@@ -13138,7 +13138,7 @@ double polynomialcalceqdist(double a,
         result = f->ptr.p_double[0];
         return result;
     }
-    
+
     /*
      * First, decide: should we use "safe" formula (guarded
      * against overflow) or fast one?
@@ -13162,14 +13162,14 @@ double polynomialcalceqdist(double a,
     }
     if( ae_fp_greater(ae_fabs(s, _state),threshold) )
     {
-        
+
         /*
          * use fast formula
          */
         j = -1;
         s = 1.0;
     }
-    
+
     /*
      * Calculate using safe or fast barycentric formula
      */
@@ -13226,11 +13226,11 @@ IMPORTANT
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 double polynomialcalccheb1(double a,
-     double b,
-     /* Real    */ ae_vector* f,
-     ae_int_t n,
-     double t,
-     ae_state *_state)
+                           double b,
+                           /* Real    */ ae_vector* f,
+                           ae_int_t n,
+                           double t,
+                           ae_state *_state)
 {
     double s1;
     double s2;
@@ -13260,7 +13260,7 @@ double polynomialcalccheb1(double a,
     ae_assert(isfinitevector(f, n, _state), "PolynomialCalcCheb1: F contains infinite or NaN values!", _state);
     ae_assert(ae_fp_neq(b,a), "PolynomialCalcCheb1: B=A!", _state);
     ae_assert(!ae_isinf(t, _state), "PolynomialCalcCheb1: T is infinite!", _state);
-    
+
     /*
      * Special case: T is NAN
      */
@@ -13269,7 +13269,7 @@ double polynomialcalccheb1(double a,
         result = _state->v_nan;
         return result;
     }
-    
+
     /*
      * Special case: N=1
      */
@@ -13278,7 +13278,7 @@ double polynomialcalccheb1(double a,
         result = f->ptr.p_double[0];
         return result;
     }
-    
+
     /*
      * Prepare information for the recurrence formula
      * used to calculate sin(pi*(2j+1)/(2n+2)) and
@@ -13303,7 +13303,7 @@ double polynomialcalccheb1(double a,
     delta = 2*ae_pi/(2*(n-1)+2);
     alpha = 2*ae_sqr(ae_sin(delta/2, _state), _state);
     beta = ae_sin(delta, _state);
-    
+
     /*
      * First, decide: should we use "safe" formula (guarded
      * against overflow) or fast one?
@@ -13315,7 +13315,7 @@ double polynomialcalccheb1(double a,
     s = t-x;
     for(i=1; i<=n-1; i++)
     {
-        
+
         /*
          * Next X[i]
          */
@@ -13324,7 +13324,7 @@ double polynomialcalccheb1(double a,
         sa = temps;
         ca = tempc;
         x = ca;
-        
+
         /*
          * Use X[i]
          */
@@ -13341,14 +13341,14 @@ double polynomialcalccheb1(double a,
     }
     if( ae_fp_greater(ae_fabs(s, _state),threshold) )
     {
-        
+
         /*
          * use fast formula
          */
         j = -1;
         s = 1.0;
     }
-    
+
     /*
      * Calculate using safe or fast barycentric formula
      */
@@ -13359,13 +13359,13 @@ double polynomialcalccheb1(double a,
     p1 = 1.0;
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * Calculate X[i], W[i]
          */
         x = ca;
         w = p1*sa;
-        
+
         /*
          * Proceed
          */
@@ -13381,7 +13381,7 @@ double polynomialcalccheb1(double a,
             s1 = s1+v*f->ptr.p_double[i];
             s2 = s2+v;
         }
-        
+
         /*
          * Next CA, SA, P1
          */
@@ -13423,11 +13423,11 @@ IMPORTANT
      Copyright 02.12.2009 by Bochkanov Sergey
 *************************************************************************/
 double polynomialcalccheb2(double a,
-     double b,
-     /* Real    */ ae_vector* f,
-     ae_int_t n,
-     double t,
-     ae_state *_state)
+                           double b,
+                           /* Real    */ ae_vector* f,
+                           ae_int_t n,
+                           double t,
+                           ae_state *_state)
 {
     double s1;
     double s2;
@@ -13457,7 +13457,7 @@ double polynomialcalccheb2(double a,
     ae_assert(ae_fp_neq(b,a), "PolynomialCalcCheb2: B=A!", _state);
     ae_assert(isfinitevector(f, n, _state), "PolynomialCalcCheb2: F contains infinite or NaN values!", _state);
     ae_assert(!ae_isinf(t, _state), "PolynomialCalcEqDist: T is infinite!", _state);
-    
+
     /*
      * Special case: T is NAN
      */
@@ -13466,7 +13466,7 @@ double polynomialcalccheb2(double a,
         result = _state->v_nan;
         return result;
     }
-    
+
     /*
      * Special case: N=1
      */
@@ -13475,7 +13475,7 @@ double polynomialcalccheb2(double a,
         result = f->ptr.p_double[0];
         return result;
     }
-    
+
     /*
      * Prepare information for the recurrence formula
      * used to calculate sin(pi*i/n) and
@@ -13500,7 +13500,7 @@ double polynomialcalccheb2(double a,
     delta = ae_pi/(n-1);
     alpha = 2*ae_sqr(ae_sin(delta/2, _state), _state);
     beta = ae_sin(delta, _state);
-    
+
     /*
      * First, decide: should we use "safe" formula (guarded
      * against overflow) or fast one?
@@ -13512,7 +13512,7 @@ double polynomialcalccheb2(double a,
     s = t-x;
     for(i=1; i<=n-1; i++)
     {
-        
+
         /*
          * Next X[i]
          */
@@ -13521,7 +13521,7 @@ double polynomialcalccheb2(double a,
         sa = temps;
         ca = tempc;
         x = ca;
-        
+
         /*
          * Use X[i]
          */
@@ -13538,14 +13538,14 @@ double polynomialcalccheb2(double a,
     }
     if( ae_fp_greater(ae_fabs(s, _state),threshold) )
     {
-        
+
         /*
          * use fast formula
          */
         j = -1;
         s = 1.0;
     }
-    
+
     /*
      * Calculate using safe or fast barycentric formula
      */
@@ -13556,7 +13556,7 @@ double polynomialcalccheb2(double a,
     p1 = 1.0;
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * Calculate X[i], W[i]
          */
@@ -13569,7 +13569,7 @@ double polynomialcalccheb2(double a,
         {
             w = 1.0*p1;
         }
-        
+
         /*
          * Proceed
          */
@@ -13585,7 +13585,7 @@ double polynomialcalccheb2(double a,
             s1 = s1+v*f->ptr.p_double[i];
             s2 = s2+v;
         }
-        
+
         /*
          * Next CA, SA, P1
          */
@@ -13613,7 +13613,7 @@ INPUT PARAMETERS:
             * if given, only first N points are used to build spline
             * if not given, automatically detected from X/Y sizes
               (len(X) must be equal to len(Y))
-    
+
 OUTPUT PARAMETERS:
     C   -   spline interpolant
 
@@ -13626,10 +13626,10 @@ Subroutine automatically sorts points, so caller may pass unsorted array.
      Copyright 24.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dbuildlinear(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     spline1dinterpolant* c,
-     ae_state *_state)
+                                       /* Real    */ ae_vector* y,
+                                       ae_int_t n,
+                                       spline1dinterpolant* c,
+                                       ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -13646,7 +13646,7 @@ void spline1dbuildlinear(/* Real    */ ae_vector* x,
     ae_assert(n>1, "Spline1DBuildLinear: N<2!", _state);
     ae_assert(x->cnt>=n, "Spline1DBuildLinear: Length(X)<N!", _state);
     ae_assert(y->cnt>=n, "Spline1DBuildLinear: Length(Y)<N!", _state);
-    
+
     /*
      * check and sort points
      */
@@ -13654,7 +13654,7 @@ void spline1dbuildlinear(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(y, n, _state), "Spline1DBuildLinear: Y contains infinite or NAN values!", _state);
     spline1d_heapsortpoints(x, y, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DBuildLinear: at least two consequent points are too close!", _state);
-    
+
     /*
      * Build
      */
@@ -13687,7 +13687,7 @@ This subroutine builds cubic spline interpolant.
 INPUT PARAMETERS:
     X           -   spline nodes, array[0..N-1].
     Y           -   function values, array[0..N-1].
-    
+
 OPTIONAL PARAMETERS:
     N           -   points count:
                     * N>=2
@@ -13735,14 +13735,14 @@ i.e. to make Y[first_point]=Y[last_point].
      Copyright 23.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dbuildcubic(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundltype,
-     double boundl,
-     ae_int_t boundrtype,
-     double boundr,
-     spline1dinterpolant* c,
-     ae_state *_state)
+                                      /* Real    */ ae_vector* y,
+                                      ae_int_t n,
+                                      ae_int_t boundltype,
+                                      double boundl,
+                                      ae_int_t boundrtype,
+                                      double boundr,
+                                      spline1dinterpolant* c,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -13770,7 +13770,7 @@ void spline1dbuildcubic(/* Real    */ ae_vector* x,
     ae_vector_init(&d, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * check correctness of boundary conditions
      */
@@ -13785,14 +13785,14 @@ void spline1dbuildcubic(/* Real    */ ae_vector* x,
     {
         ae_assert(ae_isfinite(boundr, _state), "Spline1DBuildCubic: BoundR is infinite or NAN!", _state);
     }
-    
+
     /*
      * check lengths of arguments
      */
     ae_assert(n>=2, "Spline1DBuildCubic: N<2!", _state);
     ae_assert(x->cnt>=n, "Spline1DBuildCubic: Length(X)<N!", _state);
     ae_assert(y->cnt>=n, "Spline1DBuildCubic: Length(Y)<N!", _state);
-    
+
     /*
      * check and sort points
      */
@@ -13805,7 +13805,7 @@ void spline1dbuildcubic(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(y, ylen, _state), "Spline1DBuildCubic: Y contains infinite or NAN values!", _state);
     spline1d_heapsortppoints(x, y, &p, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DBuildCubic: at least two consequent points are too close!", _state);
-    
+
     /*
      * Now we've checked and preordered everything,
      * so we can call internal function to calculate derivatives,
@@ -13885,14 +13885,14 @@ i.e. to make Y[first_point]=Y[last_point].
      Copyright 03.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void spline1dgriddiffcubic(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundltype,
-     double boundl,
-     ae_int_t boundrtype,
-     double boundr,
-     /* Real    */ ae_vector* d,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t boundltype,
+        double boundl,
+        ae_int_t boundrtype,
+        double boundr,
+        /* Real    */ ae_vector* d,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -13919,7 +13919,7 @@ void spline1dgriddiffcubic(/* Real    */ ae_vector* x,
     ae_vector_init(&dt, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * check correctness of boundary conditions
      */
@@ -13934,14 +13934,14 @@ void spline1dgriddiffcubic(/* Real    */ ae_vector* x,
     {
         ae_assert(ae_isfinite(boundr, _state), "Spline1DGridDiffCubic: BoundR is infinite or NAN!", _state);
     }
-    
+
     /*
      * check lengths of arguments
      */
     ae_assert(n>=2, "Spline1DGridDiffCubic: N<2!", _state);
     ae_assert(x->cnt>=n, "Spline1DGridDiffCubic: Length(X)<N!", _state);
     ae_assert(y->cnt>=n, "Spline1DGridDiffCubic: Length(Y)<N!", _state);
-    
+
     /*
      * check and sort points
      */
@@ -13954,13 +13954,13 @@ void spline1dgriddiffcubic(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(y, ylen, _state), "Spline1DGridDiffCubic: Y contains infinite or NAN values!", _state);
     spline1d_heapsortppoints(x, y, &p, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DGridDiffCubic: at least two consequent points are too close!", _state);
-    
+
     /*
      * Now we've checked and preordered everything,
      * so we can call internal function.
      */
     spline1d_spline1dgriddiffcubicinternal(x, y, n, boundltype, boundl, boundrtype, boundr, d, &a1, &a2, &a3, &b, &dt, _state);
-    
+
     /*
      * Remember that HeapSortPPoints() call?
      * Now we have to reorder them back.
@@ -14041,15 +14041,15 @@ i.e. to make Y[first_point]=Y[last_point].
      Copyright 03.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void spline1dgriddiff2cubic(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundltype,
-     double boundl,
-     ae_int_t boundrtype,
-     double boundr,
-     /* Real    */ ae_vector* d1,
-     /* Real    */ ae_vector* d2,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t boundltype,
+        double boundl,
+        ae_int_t boundrtype,
+        double boundr,
+        /* Real    */ ae_vector* d1,
+        /* Real    */ ae_vector* d2,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -14082,7 +14082,7 @@ void spline1dgriddiff2cubic(/* Real    */ ae_vector* x,
     ae_vector_init(&dt, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * check correctness of boundary conditions
      */
@@ -14097,14 +14097,14 @@ void spline1dgriddiff2cubic(/* Real    */ ae_vector* x,
     {
         ae_assert(ae_isfinite(boundr, _state), "Spline1DGridDiff2Cubic: BoundR is infinite or NAN!", _state);
     }
-    
+
     /*
      * check lengths of arguments
      */
     ae_assert(n>=2, "Spline1DGridDiff2Cubic: N<2!", _state);
     ae_assert(x->cnt>=n, "Spline1DGridDiff2Cubic: Length(X)<N!", _state);
     ae_assert(y->cnt>=n, "Spline1DGridDiff2Cubic: Length(Y)<N!", _state);
-    
+
     /*
      * check and sort points
      */
@@ -14117,7 +14117,7 @@ void spline1dgriddiff2cubic(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(y, ylen, _state), "Spline1DGridDiff2Cubic: Y contains infinite or NAN values!", _state);
     spline1d_heapsortppoints(x, y, &p, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DGridDiff2Cubic: at least two consequent points are too close!", _state);
-    
+
     /*
      * Now we've checked and preordered everything,
      * so we can call internal function.
@@ -14132,7 +14132,7 @@ void spline1dgriddiff2cubic(/* Real    */ ae_vector* x,
     s3 = 0;
     for(i=0; i<=n-2; i++)
     {
-        
+
         /*
          * We convert from Hermite basis to the power basis.
          * Si is coefficient before x^i.
@@ -14151,7 +14151,7 @@ void spline1dgriddiff2cubic(/* Real    */ ae_vector* x,
         d2->ptr.p_double[i] = 2*s2;
     }
     d2->ptr.p_double[n-1] = 2*s2+6*s3*delta;
-    
+
     /*
      * Remember that HeapSortPPoints() call?
      * Now we have to reorder them back.
@@ -14241,16 +14241,16 @@ i.e. to make Y[first_point]=Y[last_point].
      Copyright 03.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void spline1dconvcubic(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundltype,
-     double boundl,
-     ae_int_t boundrtype,
-     double boundr,
-     /* Real    */ ae_vector* x2,
-     ae_int_t n2,
-     /* Real    */ ae_vector* y2,
-     ae_state *_state)
+                                     /* Real    */ ae_vector* y,
+                                     ae_int_t n,
+                                     ae_int_t boundltype,
+                                     double boundl,
+                                     ae_int_t boundrtype,
+                                     double boundr,
+                                     /* Real    */ ae_vector* x2,
+                                     ae_int_t n2,
+                                     /* Real    */ ae_vector* y2,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -14290,7 +14290,7 @@ void spline1dconvcubic(/* Real    */ ae_vector* x,
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
     ae_vector_init(&p2, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * check correctness of boundary conditions
      */
@@ -14305,7 +14305,7 @@ void spline1dconvcubic(/* Real    */ ae_vector* x,
     {
         ae_assert(ae_isfinite(boundr, _state), "Spline1DConvCubic: BoundR is infinite or NAN!", _state);
     }
-    
+
     /*
      * check lengths of arguments
      */
@@ -14314,7 +14314,7 @@ void spline1dconvcubic(/* Real    */ ae_vector* x,
     ae_assert(y->cnt>=n, "Spline1DConvCubic: Length(Y)<N!", _state);
     ae_assert(n2>=2, "Spline1DConvCubic: N2<2!", _state);
     ae_assert(x2->cnt>=n2, "Spline1DConvCubic: Length(X2)<N2!", _state);
-    
+
     /*
      * check and sort X/Y
      */
@@ -14328,12 +14328,12 @@ void spline1dconvcubic(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(x2, n2, _state), "Spline1DConvCubic: X2 contains infinite or NAN values!", _state);
     spline1d_heapsortppoints(x, y, &p, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DConvCubic: at least two consequent points are too close!", _state);
-    
+
     /*
      * set up DT (we will need it below)
      */
     ae_vector_set_length(&dt, ae_maxint(n, n2, _state), _state);
-    
+
     /*
      * sort X2:
      * * use fake array DT because HeapSortPPoints() needs both integer AND real arrays
@@ -14350,7 +14350,7 @@ void spline1dconvcubic(/* Real    */ ae_vector* x,
         }
     }
     spline1d_heapsortppoints(x2, &dt, &p2, n2, _state);
-    
+
     /*
      * Now we've checked and preordered everything, so we:
      * * call internal GridDiff() function to get Hermite form of spline
@@ -14437,17 +14437,17 @@ i.e. to make Y[first_point]=Y[last_point].
      Copyright 03.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void spline1dconvdiffcubic(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundltype,
-     double boundl,
-     ae_int_t boundrtype,
-     double boundr,
-     /* Real    */ ae_vector* x2,
-     ae_int_t n2,
-     /* Real    */ ae_vector* y2,
-     /* Real    */ ae_vector* d2,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t boundltype,
+        double boundl,
+        ae_int_t boundrtype,
+        double boundr,
+        /* Real    */ ae_vector* x2,
+        ae_int_t n2,
+        /* Real    */ ae_vector* y2,
+        /* Real    */ ae_vector* d2,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -14486,7 +14486,7 @@ void spline1dconvdiffcubic(/* Real    */ ae_vector* x,
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
     ae_vector_init(&p2, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * check correctness of boundary conditions
      */
@@ -14501,7 +14501,7 @@ void spline1dconvdiffcubic(/* Real    */ ae_vector* x,
     {
         ae_assert(ae_isfinite(boundr, _state), "Spline1DConvDiffCubic: BoundR is infinite or NAN!", _state);
     }
-    
+
     /*
      * check lengths of arguments
      */
@@ -14510,7 +14510,7 @@ void spline1dconvdiffcubic(/* Real    */ ae_vector* x,
     ae_assert(y->cnt>=n, "Spline1DConvDiffCubic: Length(Y)<N!", _state);
     ae_assert(n2>=2, "Spline1DConvDiffCubic: N2<2!", _state);
     ae_assert(x2->cnt>=n2, "Spline1DConvDiffCubic: Length(X2)<N2!", _state);
-    
+
     /*
      * check and sort X/Y
      */
@@ -14524,12 +14524,12 @@ void spline1dconvdiffcubic(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(x2, n2, _state), "Spline1DConvDiffCubic: X2 contains infinite or NAN values!", _state);
     spline1d_heapsortppoints(x, y, &p, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DConvDiffCubic: at least two consequent points are too close!", _state);
-    
+
     /*
      * set up DT (we will need it below)
      */
     ae_vector_set_length(&dt, ae_maxint(n, n2, _state), _state);
-    
+
     /*
      * sort X2:
      * * use fake array DT because HeapSortPPoints() needs both integer AND real arrays
@@ -14546,7 +14546,7 @@ void spline1dconvdiffcubic(/* Real    */ ae_vector* x,
         }
     }
     spline1d_heapsortppoints(x2, &dt, &p2, n2, _state);
-    
+
     /*
      * Now we've checked and preordered everything, so we:
      * * call internal GridDiff() function to get Hermite form of spline
@@ -14640,18 +14640,18 @@ i.e. to make Y[first_point]=Y[last_point].
      Copyright 03.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void spline1dconvdiff2cubic(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundltype,
-     double boundl,
-     ae_int_t boundrtype,
-     double boundr,
-     /* Real    */ ae_vector* x2,
-     ae_int_t n2,
-     /* Real    */ ae_vector* y2,
-     /* Real    */ ae_vector* d2,
-     /* Real    */ ae_vector* dd2,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t boundltype,
+        double boundl,
+        ae_int_t boundrtype,
+        double boundr,
+        /* Real    */ ae_vector* x2,
+        ae_int_t n2,
+        /* Real    */ ae_vector* y2,
+        /* Real    */ ae_vector* d2,
+        /* Real    */ ae_vector* dd2,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -14689,7 +14689,7 @@ void spline1dconvdiff2cubic(/* Real    */ ae_vector* x,
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
     ae_vector_init(&p2, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * check correctness of boundary conditions
      */
@@ -14704,7 +14704,7 @@ void spline1dconvdiff2cubic(/* Real    */ ae_vector* x,
     {
         ae_assert(ae_isfinite(boundr, _state), "Spline1DConvDiff2Cubic: BoundR is infinite or NAN!", _state);
     }
-    
+
     /*
      * check lengths of arguments
      */
@@ -14713,7 +14713,7 @@ void spline1dconvdiff2cubic(/* Real    */ ae_vector* x,
     ae_assert(y->cnt>=n, "Spline1DConvDiff2Cubic: Length(Y)<N!", _state);
     ae_assert(n2>=2, "Spline1DConvDiff2Cubic: N2<2!", _state);
     ae_assert(x2->cnt>=n2, "Spline1DConvDiff2Cubic: Length(X2)<N2!", _state);
-    
+
     /*
      * check and sort X/Y
      */
@@ -14727,12 +14727,12 @@ void spline1dconvdiff2cubic(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(x2, n2, _state), "Spline1DConvDiff2Cubic: X2 contains infinite or NAN values!", _state);
     spline1d_heapsortppoints(x, y, &p, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DConvDiff2Cubic: at least two consequent points are too close!", _state);
-    
+
     /*
      * set up DT (we will need it below)
      */
     ae_vector_set_length(&dt, ae_maxint(n, n2, _state), _state);
-    
+
     /*
      * sort X2:
      * * use fake array DT because HeapSortPPoints() needs both integer AND real arrays
@@ -14749,7 +14749,7 @@ void spline1dconvdiff2cubic(/* Real    */ ae_vector* x,
         }
     }
     spline1d_heapsortppoints(x2, &dt, &p2, n2, _state);
-    
+
     /*
      * Now we've checked and preordered everything, so we:
      * * call internal GridDiff() function to get Hermite form of spline
@@ -14784,7 +14784,7 @@ This subroutine builds Catmull-Rom spline interpolant.
 INPUT PARAMETERS:
     X           -   spline nodes, array[0..N-1].
     Y           -   function values, array[0..N-1].
-    
+
 OPTIONAL PARAMETERS:
     N           -   points count:
                     * N>=2
@@ -14819,12 +14819,12 @@ i.e. to make Y[first_point]=Y[last_point].
      Copyright 23.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundtype,
-     double tension,
-     spline1dinterpolant* c,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t boundtype,
+        double tension,
+        spline1dinterpolant* c,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -14846,7 +14846,7 @@ void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
     ae_assert(ae_fp_less_eq(tension,1), "Spline1DBuildCatmullRom: Tension>1!", _state);
     ae_assert(x->cnt>=n, "Spline1DBuildCatmullRom: Length(X)<N!", _state);
     ae_assert(y->cnt>=n, "Spline1DBuildCatmullRom: Length(Y)<N!", _state);
-    
+
     /*
      * check and sort points
      */
@@ -14854,7 +14854,7 @@ void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(y, n, _state), "Spline1DBuildCatmullRom: Y contains infinite or NAN values!", _state);
     spline1d_heapsortpoints(x, y, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DBuildCatmullRom: at least two consequent points are too close!", _state);
-    
+
     /*
      * Special cases:
      * * N=2, parabolic terminated boundary condition on both ends
@@ -14862,7 +14862,7 @@ void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
      */
     if( n==2&&boundtype==0 )
     {
-        
+
         /*
          * Just linear spline
          */
@@ -14872,7 +14872,7 @@ void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
     }
     if( n==2&&boundtype==-1 )
     {
-        
+
         /*
          * Same as cubic spline with periodic conditions
          */
@@ -14880,13 +14880,13 @@ void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Periodic or non-periodic boundary conditions
      */
     if( boundtype==-1 )
     {
-        
+
         /*
          * Periodic boundary conditions
          */
@@ -14898,7 +14898,7 @@ void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
             d.ptr.p_double[i] = (1-tension)*(y->ptr.p_double[i+1]-y->ptr.p_double[i-1])/(x->ptr.p_double[i+1]-x->ptr.p_double[i-1]);
         }
         d.ptr.p_double[n-1] = d.ptr.p_double[0];
-        
+
         /*
          * Now problem is reduced to the cubic Hermite spline
          */
@@ -14907,7 +14907,7 @@ void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
     }
     else
     {
-        
+
         /*
          * Non-periodic boundary conditions
          */
@@ -14918,7 +14918,7 @@ void spline1dbuildcatmullrom(/* Real    */ ae_vector* x,
         }
         d.ptr.p_double[0] = 2*(y->ptr.p_double[1]-y->ptr.p_double[0])/(x->ptr.p_double[1]-x->ptr.p_double[0])-d.ptr.p_double[1];
         d.ptr.p_double[n-1] = 2*(y->ptr.p_double[n-1]-y->ptr.p_double[n-2])/(x->ptr.p_double[n-1]-x->ptr.p_double[n-2])-d.ptr.p_double[n-2];
-        
+
         /*
          * Now problem is reduced to the cubic Hermite spline
          */
@@ -14953,11 +14953,11 @@ Subroutine automatically sorts points, so caller may pass unsorted array.
      Copyright 23.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dbuildhermite(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* d,
-     ae_int_t n,
-     spline1dinterpolant* c,
-     ae_state *_state)
+                                        /* Real    */ ae_vector* y,
+                                        /* Real    */ ae_vector* d,
+                                        ae_int_t n,
+                                        spline1dinterpolant* c,
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -14981,7 +14981,7 @@ void spline1dbuildhermite(/* Real    */ ae_vector* x,
     ae_assert(x->cnt>=n, "Spline1DBuildHermite: Length(X)<N!", _state);
     ae_assert(y->cnt>=n, "Spline1DBuildHermite: Length(Y)<N!", _state);
     ae_assert(d->cnt>=n, "Spline1DBuildHermite: Length(D)<N!", _state);
-    
+
     /*
      * check and sort points
      */
@@ -14990,7 +14990,7 @@ void spline1dbuildhermite(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(d, n, _state), "Spline1DBuildHermite: D contains infinite or NAN values!", _state);
     heapsortdpoints(x, y, d, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DBuildHermite: at least two consequent points are too close!", _state);
-    
+
     /*
      * Build
      */
@@ -15044,10 +15044,10 @@ Subroutine automatically sorts points, so caller may pass unsorted array.
      Copyright 24.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dbuildakima(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     spline1dinterpolant* c,
-     ae_state *_state)
+                                      /* Real    */ ae_vector* y,
+                                      ae_int_t n,
+                                      spline1dinterpolant* c,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -15070,7 +15070,7 @@ void spline1dbuildakima(/* Real    */ ae_vector* x,
     ae_assert(n>=2, "Spline1DBuildAkima: N<2!", _state);
     ae_assert(x->cnt>=n, "Spline1DBuildAkima: Length(X)<N!", _state);
     ae_assert(y->cnt>=n, "Spline1DBuildAkima: Length(Y)<N!", _state);
-    
+
     /*
      * check and sort points
      */
@@ -15078,7 +15078,7 @@ void spline1dbuildakima(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(y, n, _state), "Spline1DBuildAkima: Y contains infinite or NAN values!", _state);
     spline1d_heapsortpoints(x, y, n, _state);
     ae_assert(aredistinct(x, n, _state), "Spline1DBuildAkima: at least two consequent points are too close!", _state);
-    
+
     /*
      * Handle special cases: N=2, N=3, N=4
      */
@@ -15088,7 +15088,7 @@ void spline1dbuildakima(/* Real    */ ae_vector* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Prepare W (weights), Diff (divided differences)
      */
@@ -15102,7 +15102,7 @@ void spline1dbuildakima(/* Real    */ ae_vector* x,
     {
         w.ptr.p_double[i] = ae_fabs(diff.ptr.p_double[i]-diff.ptr.p_double[i-1], _state);
     }
-    
+
     /*
      * Prepare Hermite interpolation scheme
      */
@@ -15122,7 +15122,7 @@ void spline1dbuildakima(/* Real    */ ae_vector* x,
     d.ptr.p_double[1] = spline1d_diffthreepoint(x->ptr.p_double[1], x->ptr.p_double[0], y->ptr.p_double[0], x->ptr.p_double[1], y->ptr.p_double[1], x->ptr.p_double[2], y->ptr.p_double[2], _state);
     d.ptr.p_double[n-2] = spline1d_diffthreepoint(x->ptr.p_double[n-2], x->ptr.p_double[n-3], y->ptr.p_double[n-3], x->ptr.p_double[n-2], y->ptr.p_double[n-2], x->ptr.p_double[n-1], y->ptr.p_double[n-1], _state);
     d.ptr.p_double[n-1] = spline1d_diffthreepoint(x->ptr.p_double[n-1], x->ptr.p_double[n-3], y->ptr.p_double[n-3], x->ptr.p_double[n-2], y->ptr.p_double[n-2], x->ptr.p_double[n-1], y->ptr.p_double[n-1], _state);
-    
+
     /*
      * Build Akima spline using Hermite interpolation scheme
      */
@@ -15155,7 +15155,7 @@ double spline1dcalc(spline1dinterpolant* c, double x, ae_state *_state)
 
     ae_assert(c->k==3, "Spline1DCalc: internal error", _state);
     ae_assert(!ae_isinf(x, _state), "Spline1DCalc: infinite X!", _state);
-    
+
     /*
      * special case: NaN
      */
@@ -15164,7 +15164,7 @@ double spline1dcalc(spline1dinterpolant* c, double x, ae_state *_state)
         result = _state->v_nan;
         return result;
     }
-    
+
     /*
      * correct if periodic
      */
@@ -15172,7 +15172,7 @@ double spline1dcalc(spline1dinterpolant* c, double x, ae_state *_state)
     {
         apperiodicmap(&x, c->x.ptr.p_double[0], c->x.ptr.p_double[c->n-1], &t, _state);
     }
-    
+
     /*
      * Binary search in the [ x[0], ..., x[n-2] ] (x[n-1] is not included)
      */
@@ -15190,7 +15190,7 @@ double spline1dcalc(spline1dinterpolant* c, double x, ae_state *_state)
             l = m;
         }
     }
-    
+
     /*
      * Interpolation
      */
@@ -15217,11 +15217,11 @@ Result:
      Copyright 24.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1ddiff(spline1dinterpolant* c,
-     double x,
-     double* s,
-     double* ds,
-     double* d2s,
-     ae_state *_state)
+                  double x,
+                  double* s,
+                  double* ds,
+                  double* d2s,
+                  ae_state *_state)
 {
     ae_int_t l;
     ae_int_t r;
@@ -15234,7 +15234,7 @@ void spline1ddiff(spline1dinterpolant* c,
 
     ae_assert(c->k==3, "Spline1DDiff: internal error", _state);
     ae_assert(!ae_isinf(x, _state), "Spline1DDiff: infinite X!", _state);
-    
+
     /*
      * special case: NaN
      */
@@ -15245,7 +15245,7 @@ void spline1ddiff(spline1dinterpolant* c,
         *d2s = _state->v_nan;
         return;
     }
-    
+
     /*
      * correct if periodic
      */
@@ -15253,7 +15253,7 @@ void spline1ddiff(spline1dinterpolant* c,
     {
         apperiodicmap(&x, c->x.ptr.p_double[0], c->x.ptr.p_double[c->n-1], &t, _state);
     }
-    
+
     /*
      * Binary search
      */
@@ -15271,7 +15271,7 @@ void spline1ddiff(spline1dinterpolant* c,
             l = m;
         }
     }
-    
+
     /*
      * Differentiation
      */
@@ -15296,8 +15296,8 @@ Result:
      Copyright 29.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dcopy(spline1dinterpolant* c,
-     spline1dinterpolant* cc,
-     ae_state *_state)
+                  spline1dinterpolant* cc,
+                  ae_state *_state)
 {
     ae_int_t s;
 
@@ -15334,7 +15334,7 @@ OUTPUT PARAMETERS:
             On [x[i], x[i+1]] spline is equals to:
                 S(x) = C0 + C1*t + C2*t^2 + C3*t^3
                 t = x-x[i]
-                
+
 NOTE:
     You  can rebuild spline with  Spline1DBuildHermite()  function,  which
     accepts as inputs function values and derivatives at nodes, which  are
@@ -15344,9 +15344,9 @@ NOTE:
      Copyright 29.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dunpack(spline1dinterpolant* c,
-     ae_int_t* n,
-     /* Real    */ ae_matrix* tbl,
-     ae_state *_state)
+                    ae_int_t* n,
+                    /* Real    */ ae_matrix* tbl,
+                    ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -15356,7 +15356,7 @@ void spline1dunpack(spline1dinterpolant* c,
 
     ae_matrix_set_length(tbl, c->n-2+1, 2+c->k+1, _state);
     *n = c->n;
-    
+
     /*
      * Fill
      */
@@ -15385,9 +15385,9 @@ Result:
      Copyright 30.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dlintransx(spline1dinterpolant* c,
-     double a,
-     double b,
-     ae_state *_state)
+                       double a,
+                       double b,
+                       ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -15411,14 +15411,14 @@ void spline1dlintransx(spline1dinterpolant* c,
     ae_vector_set_length(&x, n, _state);
     ae_vector_set_length(&y, n, _state);
     ae_vector_set_length(&d, n, _state);
-    
+
     /*
      * Unpack, X, Y, dY/dX.
      * Scale and pack with Spline1DBuildHermite again.
      */
     if( ae_fp_eq(a,0) )
     {
-        
+
         /*
          * Special case: A=0
          */
@@ -15432,7 +15432,7 @@ void spline1dlintransx(spline1dinterpolant* c,
     }
     else
     {
-        
+
         /*
          * General case, A<>0
          */
@@ -15474,9 +15474,9 @@ Result:
      Copyright 30.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline1dlintransy(spline1dinterpolant* c,
-     double a,
-     double b,
-     ae_state *_state)
+                       double a,
+                       double b,
+                       ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -15512,8 +15512,8 @@ Result:
      Copyright 23.06.2007 by Bochkanov Sergey
 *************************************************************************/
 double spline1dintegrate(spline1dinterpolant* c,
-     double x,
-     ae_state *_state)
+                         double x,
+                         ae_state *_state)
 {
     ae_int_t n;
     ae_int_t i;
@@ -15530,7 +15530,7 @@ double spline1dintegrate(spline1dinterpolant* c,
 
 
     n = c->n;
-    
+
     /*
      * Periodic splines require special treatment. We make
      * following transformation:
@@ -15543,7 +15543,7 @@ double spline1dintegrate(spline1dinterpolant* c,
      */
     if( c->periodic&&(ae_fp_less(x,c->x.ptr.p_double[0])||ae_fp_greater(x,c->x.ptr.p_double[c->n-1])) )
     {
-        
+
         /*
          * compute integral(S(x)dx,A,B)
          */
@@ -15560,7 +15560,7 @@ double spline1dintegrate(spline1dinterpolant* c,
                 intab = intab+c->c.ptr.p_double[m+j]*v/(j+1);
             }
         }
-        
+
         /*
          * map X into [A,B]
          */
@@ -15571,7 +15571,7 @@ double spline1dintegrate(spline1dinterpolant* c,
     {
         additionalterm = 0;
     }
-    
+
     /*
      * Binary search in the [ x[0], ..., x[n-2] ] (x[n-1] is not included)
      */
@@ -15589,7 +15589,7 @@ double spline1dintegrate(spline1dinterpolant* c,
             l = m;
         }
     }
-    
+
     /*
      * Integration
      */
@@ -15651,18 +15651,18 @@ OUTPUT ARRAYS:
      Copyright 03.09.2010 by Bochkanov Sergey
 *************************************************************************/
 void spline1dconvdiffinternal(/* Real    */ ae_vector* xold,
-     /* Real    */ ae_vector* yold,
-     /* Real    */ ae_vector* dold,
-     ae_int_t n,
-     /* Real    */ ae_vector* x2,
-     ae_int_t n2,
-     /* Real    */ ae_vector* y,
-     ae_bool needy,
-     /* Real    */ ae_vector* d1,
-     ae_bool needd1,
-     /* Real    */ ae_vector* d2,
-     ae_bool needd2,
-     ae_state *_state)
+        /* Real    */ ae_vector* yold,
+        /* Real    */ ae_vector* dold,
+        ae_int_t n,
+        /* Real    */ ae_vector* x2,
+        ae_int_t n2,
+        /* Real    */ ae_vector* y,
+        ae_bool needy,
+        /* Real    */ ae_vector* d1,
+        ae_bool needd1,
+        /* Real    */ ae_vector* d2,
+        ae_bool needd2,
+        ae_state *_state)
 {
     ae_int_t intervalindex;
     ae_int_t pointindex;
@@ -15683,7 +15683,7 @@ void spline1dconvdiffinternal(/* Real    */ ae_vector* xold,
     double t;
 
 
-    
+
     /*
      * Prepare space
      */
@@ -15699,7 +15699,7 @@ void spline1dconvdiffinternal(/* Real    */ ae_vector* xold,
     {
         ae_vector_set_length(d2, n2, _state);
     }
-    
+
     /*
      * These assignments aren't actually needed
      * (variables are initialized in the loop below),
@@ -15711,7 +15711,7 @@ void spline1dconvdiffinternal(/* Real    */ ae_vector* xold,
     c3 = 0;
     a = 0;
     b = 0;
-    
+
     /*
      * Cycle
      */
@@ -15719,7 +15719,7 @@ void spline1dconvdiffinternal(/* Real    */ ae_vector* xold,
     pointindex = 0;
     for(;;)
     {
-        
+
         /*
          * are we ready to exit?
          */
@@ -15728,7 +15728,7 @@ void spline1dconvdiffinternal(/* Real    */ ae_vector* xold,
             break;
         }
         t = x2->ptr.p_double[pointindex];
-        
+
         /*
          * do we need to advance interval?
          */
@@ -15762,7 +15762,7 @@ void spline1dconvdiffinternal(/* Real    */ ae_vector* xold,
             c3 = (2*(fa-fb)+da*w+db*w)/w3;
             continue;
         }
-        
+
         /*
          * Calculate spline and its derivatives using power basis
          */
@@ -15788,31 +15788,31 @@ void spline1dconvdiffinternal(/* Real    */ ae_vector* xold,
 This function finds all roots and extrema of the spline S(x)  defined  at
 [A,B] (interval which contains spline nodes).
 
-It  does not extrapolates function, so roots and extrema located  outside 
+It  does not extrapolates function, so roots and extrema located  outside
 of [A,B] will not be found. It returns all isolated (including  multiple)
 roots and extrema.
 
 INPUT PARAMETERS
     C           -   spline interpolant
-    
+
 OUTPUT PARAMETERS
-    R           -   array[NR], contains roots of the spline. 
+    R           -   array[NR], contains roots of the spline.
                     In case there is no roots, this array has zero length.
     NR          -   number of roots, >=0
     DR          -   is set to True in case there is at least one interval
                     where spline is just a zero constant. Such degenerate
                     cases are not reported in the R/NR
-    E           -   array[NE], contains  extrema  (maximums/minimums)  of 
-                    the spline. In case there is no extrema,  this  array 
+    E           -   array[NE], contains  extrema  (maximums/minimums)  of
+                    the spline. In case there is no extrema,  this  array
                     has zero length.
     ET          -   array[NE], extrema types:
                     * ET[i]>0 in case I-th extrema is a minimum
                     * ET[i]<0 in case I-th extrema is a maximum
     NE          -   number of extrema, >=0
     DE          -   is set to True in case there is at least one interval
-                    where spline is a constant. Such degenerate cases are  
+                    where spline is a constant. Such degenerate cases are
                     not reported in the E/NE.
-                    
+
 NOTES:
 
 1. This function does NOT report following kinds of roots:
@@ -15822,19 +15822,19 @@ NOTES:
 2. This function does NOT report following kinds of extrema:
    * intervals where function is a constant
    * extrema which are outside of (A,B) (note: it WON'T return A or B)
-   
+
  -- ALGLIB PROJECT --
-     Copyright 26.09.2011 by Bochkanov Sergey   
+     Copyright 26.09.2011 by Bochkanov Sergey
 *************************************************************************/
 void spline1drootsandextrema(spline1dinterpolant* c,
-     /* Real    */ ae_vector* r,
-     ae_int_t* nr,
-     ae_bool* dr,
-     /* Real    */ ae_vector* e,
-     /* Integer */ ae_vector* et,
-     ae_int_t* ne,
-     ae_bool* de,
-     ae_state *_state)
+                             /* Real    */ ae_vector* r,
+                             ae_int_t* nr,
+                             ae_bool* dr,
+                             /* Real    */ ae_vector* e,
+                             /* Integer */ ae_vector* et,
+                             ae_int_t* ne,
+                             ae_bool* de,
+                             ae_state *_state)
 {
     ae_frame _frame_block;
     double pl;
@@ -15872,13 +15872,13 @@ void spline1drootsandextrema(spline1dinterpolant* c,
     ae_vector_init(&tmpet, 0, DT_INT, _state, ae_true);
     ae_vector_init(&tmpc, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      *exception handling
      */
     ae_assert(c->k==3, "Spline1DRootsAndExtrema : incorrect parameter C.K!", _state);
     ae_assert(c->continuity>=0, "Spline1DRootsAndExtrema : parameter C.Continuity must not be less than 0!", _state);
-    
+
     /*
      *initialization of variable
      */
@@ -15887,15 +15887,15 @@ void spline1drootsandextrema(spline1dinterpolant* c,
     *dr = ae_false;
     *de = ae_false;
     nstep = ae_true;
-    
+
     /*
      *consider case, when C.Continuty=0
      */
     if( c->continuity==0 )
     {
-        
+
         /*
-         *allocation for auxiliary arrays 
+         *allocation for auxiliary arrays
          *'TmpR ' - it stores a time value for roots
          *'TmpE ' - it stores a time value for extremums
          *'TmpET '- it stores a time value for extremums type
@@ -15903,13 +15903,13 @@ void spline1drootsandextrema(spline1dinterpolant* c,
         rvectorsetlengthatleast(&tmpr, 3*(c->n-1), _state);
         rvectorsetlengthatleast(&tmpe, 2*(c->n-1), _state);
         ivectorsetlengthatleast(&tmpet, 2*(c->n-1), _state);
-        
+
         /*
          *start calculating
          */
         for(i=0; i<=c->n-2; i++)
         {
-            
+
             /*
              *initialization pL, mL, pR, mR
              */
@@ -15917,26 +15917,26 @@ void spline1drootsandextrema(spline1dinterpolant* c,
             ml = c->c.ptr.p_double[4*i+1];
             pr = c->c.ptr.p_double[4*(i+1)];
             mr = c->c.ptr.p_double[4*i+1]+2*c->c.ptr.p_double[4*i+2]*(c->x.ptr.p_double[i+1]-c->x.ptr.p_double[i])+3*c->c.ptr.p_double[4*i+3]*(c->x.ptr.p_double[i+1]-c->x.ptr.p_double[i])*(c->x.ptr.p_double[i+1]-c->x.ptr.p_double[i]);
-            
+
             /*
              *pre-searching roots and extremums
              */
             solvecubicpolinom(pl, ml, pr, mr, c->x.ptr.p_double[i], c->x.ptr.p_double[i+1], &x0, &x1, &x2, &ex0, &ex1, &tnr, &tne, &tr, _state);
             *dr = *dr||tnr==-1;
             *de = *de||tne==-1;
-            
+
             /*
              *searching of roots
              */
             if( tnr==1&&nstep )
             {
-                
+
                 /*
                  *is there roots?
                  */
                 if( *nr>0 )
                 {
-                    
+
                     /*
                      *is a next root equal a previous root?
                      *if is't, then write new root
@@ -15949,7 +15949,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 }
                 else
                 {
-                    
+
                     /*
                      *write a first root
                      */
@@ -15959,15 +15959,15 @@ void spline1drootsandextrema(spline1dinterpolant* c,
             }
             else
             {
-                
+
                 /*
                  *case when function at a segment identically to zero
-                 *then we have to clear a root, if the one located on a 
+                 *then we have to clear a root, if the one located on a
                  *constant segment
                  */
                 if( tnr==-1 )
                 {
-                    
+
                     /*
                      *safe state variable as constant
                      */
@@ -15975,7 +15975,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                     {
                         nstep = ae_false;
                     }
-                    
+
                     /*
                      *clear the root, if there is
                      */
@@ -15986,7 +15986,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                             *nr = *nr-1;
                         }
                     }
-                    
+
                     /*
                      *change state for 'DR'
                      */
@@ -16000,14 +16000,14 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                     nstep = ae_true;
                 }
             }
-            
+
             /*
              *searching of extremums
              */
             if( i>0 )
             {
                 pll = c->c.ptr.p_double[4*(i-1)];
-                
+
                 /*
                  *if pL=pLL or pL=pR then
                  */
@@ -16022,7 +16022,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 {
                     if( ae_fp_greater(pl,pll)&&ae_fp_greater(pl,pr) )
                     {
-                        
+
                         /*
                          *maximum
                          */
@@ -16034,7 +16034,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                     {
                         if( ae_fp_less(pl,pll)&&ae_fp_less(pl,pr) )
                         {
-                            
+
                             /*
                              *minimum
                              */
@@ -16046,14 +16046,14 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 }
             }
         }
-        
+
         /*
          *write final result
          */
         rvectorsetlengthatleast(r, *nr, _state);
         rvectorsetlengthatleast(e, *ne, _state);
         ivectorsetlengthatleast(et, *ne, _state);
-        
+
         /*
          *write roots
          */
@@ -16061,7 +16061,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
         {
             r->ptr.p_double[i] = tmpr.ptr.p_double[i];
         }
-        
+
         /*
          *write extremums and their types
          */
@@ -16073,11 +16073,11 @@ void spline1drootsandextrema(spline1dinterpolant* c,
     }
     else
     {
-        
+
         /*
-         *case, when C.Continuity>=1 
+         *case, when C.Continuity>=1
          *'TmpR ' - it stores a time value for roots
-         *'TmpC' - it stores a time value for extremums and 
+         *'TmpC' - it stores a time value for extremums and
          *their function value (TmpC={EX0,F(EX0), EX1,F(EX1), ..., EXn,F(EXn)};)
          *'TmpE' - it stores a time value for extremums only
          *'TmpET'- it stores a time value for extremums type
@@ -16086,13 +16086,13 @@ void spline1drootsandextrema(spline1dinterpolant* c,
         rvectorsetlengthatleast(&tmpc, 4*c->n, _state);
         rvectorsetlengthatleast(&tmpe, 2*c->n, _state);
         ivectorsetlengthatleast(&tmpet, 2*c->n, _state);
-        
+
         /*
          *start calculating
          */
         for(i=0; i<=c->n-2; i++)
         {
-            
+
             /*
              *we calculate pL,mL, pR,mR as Fi+1(F'i+1) at left border
              */
@@ -16100,18 +16100,18 @@ void spline1drootsandextrema(spline1dinterpolant* c,
             ml = c->c.ptr.p_double[4*i+1];
             pr = c->c.ptr.p_double[4*(i+1)];
             mr = c->c.ptr.p_double[4*(i+1)+1];
-            
+
             /*
              *calculating roots and extremums at [X[i],X[i+1]]
              */
             solvecubicpolinom(pl, ml, pr, mr, c->x.ptr.p_double[i], c->x.ptr.p_double[i+1], &x0, &x1, &x2, &ex0, &ex1, &tnr, &tne, &tr, _state);
-            
+
             /*
              *searching roots
              */
             if( tnr>0 )
             {
-                
+
                 /*
                  *re-init tR
                  */
@@ -16127,7 +16127,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 {
                     tr.ptr.p_double[2] = x2;
                 }
-                
+
                 /*
                  *start root selection
                  */
@@ -16135,7 +16135,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 {
                     if( ae_fp_neq(tmpr.ptr.p_double[*nr-1],x0) )
                     {
-                        
+
                         /*
                          *previous segment was't constant identical zero
                          */
@@ -16149,7 +16149,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                         }
                         else
                         {
-                            
+
                             /*
                              *previous segment was constant identical zero
                              *and we must ignore [NR+j-1] root
@@ -16173,7 +16173,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 }
                 else
                 {
-                    
+
                     /*
                      *write first root
                      */
@@ -16188,7 +16188,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
             {
                 if( tnr==-1 )
                 {
-                    
+
                     /*
                      *decrement 'NR' if at previous step was writen a root
                      *(previous segment identical zero)
@@ -16197,7 +16197,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                     {
                         *nr = *nr-1;
                     }
-                    
+
                     /*
                      *previous segment is't constant
                      */
@@ -16205,7 +16205,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                     {
                         nstep = ae_false;
                     }
-                    
+
                     /*
                      *rewrite 'DR'
                      */
@@ -16215,7 +16215,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                     }
                 }
             }
-            
+
             /*
              *searching extremums
              *write all term like extremums
@@ -16224,7 +16224,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
             {
                 if( *ne>0 )
                 {
-                    
+
                     /*
                      *just ignore identical extremums
                      *because he must be one
@@ -16238,7 +16238,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 }
                 else
                 {
-                    
+
                     /*
                      *write first extremum and it function value
                      */
@@ -16253,7 +16253,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 {
                     if( *ne>0 )
                     {
-                        
+
                         /*
                          *ignore identical extremum
                          */
@@ -16266,7 +16266,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                     }
                     else
                     {
-                        
+
                         /*
                          *write first extremum
                          */
@@ -16274,7 +16274,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                         tmpc.ptr.p_double[*ne+1] = c->c.ptr.p_double[4*i]+c->c.ptr.p_double[4*i+1]*(ex0-c->x.ptr.p_double[i])+c->c.ptr.p_double[4*i+2]*(ex0-c->x.ptr.p_double[i])*(ex0-c->x.ptr.p_double[i])+c->c.ptr.p_double[4*i+3]*(ex0-c->x.ptr.p_double[i])*(ex0-c->x.ptr.p_double[i])*(ex0-c->x.ptr.p_double[i]);
                         *ne = *ne+2;
                     }
-                    
+
                     /*
                      *write second extremum
                      */
@@ -16294,7 +16294,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 }
             }
         }
-        
+
         /*
          *checking of arrays
          *get number of extremums (tNe=NE/2)
@@ -16311,7 +16311,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
             {
                 if( ae_fp_greater(tmpc.ptr.p_double[2*i+1],tmpc.ptr.p_double[2*(i-1)+1])&&ae_fp_greater(tmpc.ptr.p_double[2*i+1],tmpc.ptr.p_double[2*(i+1)+1]) )
                 {
-                    
+
                     /*
                      *maximum
                      */
@@ -16323,7 +16323,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 {
                     if( ae_fp_less(tmpc.ptr.p_double[2*i+1],tmpc.ptr.p_double[2*(i-1)+1])&&ae_fp_less(tmpc.ptr.p_double[2*i+1],tmpc.ptr.p_double[2*(i+1)+1]) )
                     {
-                        
+
                         /*
                          *minimum
                          */
@@ -16341,7 +16341,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                     {
                         if( ae_fp_greater(tmpc.ptr.p_double[2*i+1],pl)&&ae_fp_greater(tmpc.ptr.p_double[2*i+1],tmpc.ptr.p_double[2*(i+1)+1]) )
                         {
-                            
+
                             /*
                              *maximum
                              */
@@ -16353,7 +16353,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                         {
                             if( ae_fp_less(tmpc.ptr.p_double[2*i+1],pl)&&ae_fp_less(tmpc.ptr.p_double[2*i+1],tmpc.ptr.p_double[2*(i+1)+1]) )
                             {
-                                
+
                                 /*
                                  *minimum
                                  */
@@ -16372,7 +16372,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                         {
                             if( ae_fp_greater(tmpc.ptr.p_double[2*i+1],tmpc.ptr.p_double[2*(i-1)+1])&&ae_fp_greater(tmpc.ptr.p_double[2*i+1],pr) )
                             {
-                                
+
                                 /*
                                  *maximum
                                  */
@@ -16384,7 +16384,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                             {
                                 if( ae_fp_less(tmpc.ptr.p_double[2*i+1],tmpc.ptr.p_double[2*(i-1)+1])&&ae_fp_less(tmpc.ptr.p_double[2*i+1],pr) )
                                 {
-                                    
+
                                     /*
                                      *minimum
                                      */
@@ -16398,7 +16398,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
                 }
             }
         }
-        
+
         /*
          *final results
          *allocate R, E, ET
@@ -16406,7 +16406,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
         rvectorsetlengthatleast(r, *nr, _state);
         rvectorsetlengthatleast(e, *ne, _state);
         ivectorsetlengthatleast(et, *ne, _state);
-        
+
         /*
          *write result for extremus and their types
          */
@@ -16415,7 +16415,7 @@ void spline1drootsandextrema(spline1dinterpolant* c,
             e->ptr.p_double[i] = tmpe.ptr.p_double[i];
             et->ptr.p_int[i] = tmpet.ptr.p_int[i];
         }
-        
+
         /*
          *write result for roots
          */
@@ -16432,10 +16432,10 @@ void spline1drootsandextrema(spline1dinterpolant* c,
 Internal subroutine. Heap sort.
 *************************************************************************/
 void heapsortdpoints(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* d,
-     ae_int_t n,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* y,
+                                   /* Real    */ ae_vector* d,
+                                   ae_int_t n,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector rbuf;
@@ -16484,10 +16484,10 @@ OUTPUT PARAMETERS:
     X0   -  first root of an equation
     X1   -  second root of an equation
     NR   -  number of roots
-    
+
 RESTRICTIONS OF PARAMETERS:
 
-Parameters for this procedure has't to be zero simultaneously. Is expected, 
+Parameters for this procedure has't to be zero simultaneously. Is expected,
 that input polinom is't degenerate or constant identicaly ZERO.
 
 
@@ -16501,13 +16501,13 @@ Number of roots is NR.
      Copyright 26.09.2011 by Bochkanov Sergey
 *************************************************************************/
 void solvepolinom2(double p0,
-     double m0,
-     double p1,
-     double m1,
-     double* x0,
-     double* x1,
-     ae_int_t* nr,
-     ae_state *_state)
+                   double m0,
+                   double p1,
+                   double m1,
+                   double* x0,
+                   double* x1,
+                   ae_int_t* nr,
+                   ae_state *_state)
 {
     double a;
     double b;
@@ -16521,21 +16521,21 @@ void solvepolinom2(double p0,
     *x1 = 0;
     *nr = 0;
 
-    
+
     /*
      *calculate parameters for equation: A, B  and C
      */
     a = 6*p0+3*m0-6*p1+3*m1;
     b = -6*p0-4*m0+6*p1-2*m1;
     c = m0;
-    
+
     /*
      *check case, when A=0
      *we are considering the linear equation
      */
     if( ae_fp_eq(a,0) )
     {
-        
+
         /*
          *B<>0 and root inside [0;1]
          *one root
@@ -16552,7 +16552,7 @@ void solvepolinom2(double p0,
             return;
         }
     }
-    
+
     /*
      *consider case, when extremumu outside (0;1)
      *exist one root only
@@ -16564,7 +16564,7 @@ void solvepolinom2(double p0,
             *nr = 0;
             return;
         }
-        
+
         /*
          *consider case, when the one exist
          *same sign of derivative
@@ -16586,7 +16586,7 @@ void solvepolinom2(double p0,
             }
             return;
         }
-        
+
         /*
          *consider case, when the one is 0
          */
@@ -16605,7 +16605,7 @@ void solvepolinom2(double p0,
     }
     else
     {
-        
+
         /*
          *consider case, when both of derivatives is 0
          */
@@ -16616,7 +16616,7 @@ void solvepolinom2(double p0,
             *nr = 2;
             return;
         }
-        
+
         /*
          *consider case, when derivative at 0 is 0, and derivative at 1 is't 0
          */
@@ -16650,7 +16650,7 @@ void solvepolinom2(double p0,
                     *x1 = 0;
                 }
                 *nr = 2;
-                
+
                 /*
                  *roots must placed ascending
                  */
@@ -16693,7 +16693,7 @@ void solvepolinom2(double p0,
                     *x1 = 1;
                 }
                 *nr = 2;
-                
+
                 /*
                  *roots must placed ascending
                  */
@@ -16723,14 +16723,14 @@ void solvepolinom2(double p0,
             }
             *x0 = (-b-ae_sqrt(dd, _state))/(2*a);
             *x1 = (-b+ae_sqrt(dd, _state))/(2*a);
-            
+
             /*
-             *if EXF and m0, EXF and m1 has different signs, then equation has two roots              
+             *if EXF and m0, EXF and m1 has different signs, then equation has two roots
              */
             if( ae_sign(exf, _state)*ae_sign(m0, _state)<0&&ae_sign(exf, _state)*ae_sign(m1, _state)<0 )
             {
                 *nr = 2;
-                
+
                 /*
                  *roots must placed ascending
                  */
@@ -16768,7 +16768,7 @@ void solvepolinom2(double p0,
 
 
 /*************************************************************************
-This procedure search roots of an cubic equation inside [A;B], it number of roots 
+This procedure search roots of an cubic equation inside [A;B], it number of roots
 and number of extremums.
 
 INPUT PARAMETERS:
@@ -16787,7 +16787,7 @@ OUTPUT PARAMETERS:
     EX0  -  second extremum of a function
     NR   -  number of roots
     NR   -  number of extrmums
-    
+
 RESTRICTIONS OF PARAMETERS:
 
 Length of [A;B] must be positive and is't zero, i.e. A<>B and A<B.
@@ -16802,20 +16802,20 @@ If 'NE' is -1 it's mean, than polinom has infiniti extremums.
      Copyright 26.09.2011 by Bochkanov Sergey
 *************************************************************************/
 void solvecubicpolinom(double pa,
-     double ma,
-     double pb,
-     double mb,
-     double a,
-     double b,
-     double* x0,
-     double* x1,
-     double* x2,
-     double* ex0,
-     double* ex1,
-     ae_int_t* nr,
-     ae_int_t* ne,
-     /* Real    */ ae_vector* tempdata,
-     ae_state *_state)
+                       double ma,
+                       double pb,
+                       double mb,
+                       double a,
+                       double b,
+                       double* x0,
+                       double* x1,
+                       double* x2,
+                       double* ex0,
+                       double* ex1,
+                       ae_int_t* nr,
+                       ae_int_t* ne,
+                       /* Real    */ ae_vector* tempdata,
+                       ae_state *_state)
 {
     ae_int_t i;
     double tmpma;
@@ -16832,14 +16832,14 @@ void solvecubicpolinom(double pa,
     *ne = 0;
 
     rvectorsetlengthatleast(tempdata, 3, _state);
-    
+
     /*
      *case, when A>B
      */
     ae_assert(ae_fp_less(a,b), "\nSolveCubicPolinom: incorrect borders for [A;B]!\n", _state);
-    
+
     /*
-     *case 1    
+     *case 1
      *function can be identicaly to ZERO
      */
     if( ((ae_fp_eq(ma,0)&&ae_fp_eq(mb,0))&&ae_fp_eq(pa,pb))&&ae_fp_eq(pa,0) )
@@ -16859,7 +16859,7 @@ void solvecubicpolinom(double pa,
     solvepolinom2(pa, tmpma, pb, tmpmb, ex0, ex1, ne, _state);
     *ex0 = spline1d_rescaleval(0, 1, a, b, *ex0, _state);
     *ex1 = spline1d_rescaleval(0, 1, a, b, *ex1, _state);
-    
+
     /*
      *case 3.1
      *no extremums at [A;B]
@@ -16873,7 +16873,7 @@ void solvecubicpolinom(double pa,
         }
         return;
     }
-    
+
     /*
      *case 3.2
      *one extremum
@@ -16936,7 +16936,7 @@ void solvecubicpolinom(double pa,
     }
     else
     {
-        
+
         /*
          *case 3.3
          *two extremums(or more, but it's impossible)
@@ -17034,7 +17034,7 @@ void solvecubicpolinom(double pa,
         }
         else
         {
-            
+
             /*
              *case 3.3.2
              *both extremums inside (0;1)
@@ -17093,7 +17093,7 @@ void solvecubicpolinom(double pa,
                     i = i+1;
                 }
             }
-            
+
             /*
              *write are found roots
              */
@@ -17124,9 +17124,9 @@ INPUT PARAMETERS:
     mA   -   value of a derivative at A
     pB   -   value of a function at B
     mB   -   value of a derivative at B
-    A0   -   left border [A0;B0] 
+    A0   -   left border [A0;B0]
     B0   -   right border [A0;B0]
-    
+
 RESTRICTIONS OF PARAMETERS:
 
 We assume, that B0>A0.
@@ -17134,7 +17134,7 @@ We assume, that B0>A0.
 
 REMARK:
 
-Assume, that exist one root only at [A;B], else 
+Assume, that exist one root only at [A;B], else
 function may be work incorrectly.
 The function dont check value A0,B0!
 
@@ -17142,13 +17142,13 @@ The function dont check value A0,B0!
      Copyright 26.09.2011 by Bochkanov Sergey
 *************************************************************************/
 ae_int_t bisectmethod(double pa,
-     double ma,
-     double pb,
-     double mb,
-     double a,
-     double b,
-     double* x,
-     ae_state *_state)
+                      double ma,
+                      double pb,
+                      double mb,
+                      double a,
+                      double b,
+                      double* x,
+                      ae_state *_state)
 {
     double vacuum;
     double eps;
@@ -17162,24 +17162,24 @@ ae_int_t bisectmethod(double pa,
 
     *x = 0;
 
-    
+
     /*
      *accuracy
      */
     eps = 1000*(b-a)*ae_machineepsilon;
-    
+
     /*
      *initialization left and right borders
      */
     a0 = a;
     b0 = b;
-    
+
     /*
      *initialize function value at 'A' and 'B'
      */
     spline1d_hermitecalc(pa, ma, pb, mb, a, &lf, &vacuum, _state);
     spline1d_hermitecalc(pa, ma, pb, mb, b, &rf, &vacuum, _state);
-    
+
     /*
      *check, that 'A' and 'B' are't roots,
      *and that root exist
@@ -17207,7 +17207,7 @@ ae_int_t bisectmethod(double pa,
             }
         }
     }
-    
+
     /*
      *searching a root
      */
@@ -17278,10 +17278,10 @@ OUTPUT PARAMETERS:
      Copyright 21.06.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline1dbuildmonotone(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     spline1dinterpolant* c,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        spline1dinterpolant* c,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -17312,14 +17312,14 @@ void spline1dbuildmonotone(/* Real    */ ae_vector* x,
     ae_vector_init(&ey, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * Check lengths of arguments
      */
     ae_assert(n>=2, "Spline1DBuildMonotone: N<2", _state);
     ae_assert(x->cnt>=n, "Spline1DBuildMonotone: Length(X)<N", _state);
     ae_assert(y->cnt>=n, "Spline1DBuildMonotone: Length(Y)<N", _state);
-    
+
     /*
      * Check and sort points
      */
@@ -17341,7 +17341,7 @@ void spline1dbuildmonotone(/* Real    */ ae_vector* x,
         ex.ptr.p_double[i] = x->ptr.p_double[i-1];
         ey.ptr.p_double[i] = y->ptr.p_double[i-1];
     }
-    
+
     /*
      * Init sign of the function for first segment
      */
@@ -17360,7 +17360,7 @@ void spline1dbuildmonotone(/* Real    */ ae_vector* x,
     i = 0;
     while(i<n-1)
     {
-        
+
         /*
          * Partition of the segment [X0;Xn]
          */
@@ -17380,7 +17380,7 @@ void spline1dbuildmonotone(/* Real    */ ae_vector* x,
         }
         sn = i+tmpn;
         ae_assert(tmpn>=2, "Spline1DBuildMonotone: internal error", _state);
-        
+
         /*
          * Calculate derivatives for current segment
          */
@@ -17424,7 +17424,7 @@ void spline1dbuildmonotone(/* Real    */ ae_vector* x,
                 }
             }
         }
-        
+
         /*
          * Transition to next segment
          */
@@ -17450,24 +17450,24 @@ be equal to the first one (if periodic boundary conditions are specified).
      Copyright 03.09.2010 by Bochkanov Sergey
 *************************************************************************/
 static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t boundltype,
-     double boundl,
-     ae_int_t boundrtype,
-     double boundr,
-     /* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* a1,
-     /* Real    */ ae_vector* a2,
-     /* Real    */ ae_vector* a3,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* dt,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t boundltype,
+        double boundl,
+        ae_int_t boundrtype,
+        double boundr,
+        /* Real    */ ae_vector* d,
+        /* Real    */ ae_vector* a1,
+        /* Real    */ ae_vector* a2,
+        /* Real    */ ae_vector* a3,
+        /* Real    */ ae_vector* b,
+        /* Real    */ ae_vector* dt,
+        ae_state *_state)
 {
     ae_int_t i;
 
 
-    
+
     /*
      * allocate arrays
      */
@@ -17495,7 +17495,7 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
     {
         ae_vector_set_length(dt, n, _state);
     }
-    
+
     /*
      * Special cases:
      * * N=2, parabolic terminated boundary condition on both ends
@@ -17513,19 +17513,19 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
         d->ptr.p_double[1] = 0;
         return;
     }
-    
+
     /*
      * Periodic and non-periodic boundary conditions are
      * two separate classes
      */
     if( boundrtype==-1&&boundltype==-1 )
     {
-        
+
         /*
          * Periodic boundary conditions
          */
         y->ptr.p_double[n-1] = y->ptr.p_double[0];
-        
+
         /*
          * Boundary conditions at N-1 points
          * (one point less because last point is the same as first point).
@@ -17536,7 +17536,7 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
         b->ptr.p_double[0] = 3*(y->ptr.p_double[n-1]-y->ptr.p_double[n-2])/(x->ptr.p_double[n-1]-x->ptr.p_double[n-2])*(x->ptr.p_double[1]-x->ptr.p_double[0])+3*(y->ptr.p_double[1]-y->ptr.p_double[0])/(x->ptr.p_double[1]-x->ptr.p_double[0])*(x->ptr.p_double[n-1]-x->ptr.p_double[n-2]);
         for(i=1; i<=n-2; i++)
         {
-            
+
             /*
              * Altough last point is [N-2], we use X[N-1] and Y[N-1]
              * (because of periodicity)
@@ -17546,7 +17546,7 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
             a3->ptr.p_double[i] = x->ptr.p_double[i]-x->ptr.p_double[i-1];
             b->ptr.p_double[i] = 3*(y->ptr.p_double[i]-y->ptr.p_double[i-1])/(x->ptr.p_double[i]-x->ptr.p_double[i-1])*(x->ptr.p_double[i+1]-x->ptr.p_double[i])+3*(y->ptr.p_double[i+1]-y->ptr.p_double[i])/(x->ptr.p_double[i+1]-x->ptr.p_double[i])*(x->ptr.p_double[i]-x->ptr.p_double[i-1]);
         }
-        
+
         /*
          * Solve, add last point (with index N-1)
          */
@@ -17556,7 +17556,7 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
     }
     else
     {
-        
+
         /*
          * Non-periodic boundary condition.
          * Left boundary conditions.
@@ -17582,7 +17582,7 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
             a3->ptr.p_double[0] = 1;
             b->ptr.p_double[0] = 3*(y->ptr.p_double[1]-y->ptr.p_double[0])/(x->ptr.p_double[1]-x->ptr.p_double[0])-0.5*boundl*(x->ptr.p_double[1]-x->ptr.p_double[0]);
         }
-        
+
         /*
          * Central conditions
          */
@@ -17593,7 +17593,7 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
             a3->ptr.p_double[i] = x->ptr.p_double[i]-x->ptr.p_double[i-1];
             b->ptr.p_double[i] = 3*(y->ptr.p_double[i]-y->ptr.p_double[i-1])/(x->ptr.p_double[i]-x->ptr.p_double[i-1])*(x->ptr.p_double[i+1]-x->ptr.p_double[i])+3*(y->ptr.p_double[i+1]-y->ptr.p_double[i])/(x->ptr.p_double[i+1]-x->ptr.p_double[i])*(x->ptr.p_double[i]-x->ptr.p_double[i-1]);
         }
-        
+
         /*
          * Right boundary conditions
          */
@@ -17618,7 +17618,7 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
             a3->ptr.p_double[n-1] = 0;
             b->ptr.p_double[n-1] = 3*(y->ptr.p_double[n-1]-y->ptr.p_double[n-2])/(x->ptr.p_double[n-1]-x->ptr.p_double[n-2])+0.5*boundr*(x->ptr.p_double[n-1]-x->ptr.p_double[n-2]);
         }
-        
+
         /*
          * Solve
          */
@@ -17631,9 +17631,9 @@ static void spline1d_spline1dgriddiffcubicinternal(/* Real    */ ae_vector* x,
 Internal subroutine. Heap sort.
 *************************************************************************/
 static void spline1d_heapsortpoints(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector bufx;
@@ -17654,17 +17654,17 @@ Internal subroutine. Heap sort.
 Accepts:
     X, Y    -   points
     P       -   empty or preallocated array
-    
+
 Returns:
     X, Y    -   sorted by X
     P       -   array of permutations; I-th position of output
                 arrays X/Y contains (X[P[I]],Y[P[I]])
 *************************************************************************/
 static void spline1d_heapsortppoints(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        /* Integer */ ae_vector* p,
+        ae_int_t n,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector rbuf;
@@ -17697,7 +17697,7 @@ static void spline1d_heapsortppoints(/* Real    */ ae_vector* x,
 /*************************************************************************
 Internal subroutine. Tridiagonal solver. Solves
 
-( B[0] C[0]                      
+( B[0] C[0]
 ( A[1] B[1] C[1]                 )
 (      A[2] B[2] C[2]            )
 (            ..........          ) * X = D
@@ -17707,12 +17707,12 @@ Internal subroutine. Tridiagonal solver. Solves
 
 *************************************************************************/
 static void spline1d_solvetridiagonal(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_vector* d,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+        /* Real    */ ae_vector* b,
+        /* Real    */ ae_vector* c,
+        /* Real    */ ae_vector* d,
+        ae_int_t n,
+        /* Real    */ ae_vector* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _b;
@@ -17757,12 +17757,12 @@ Internal subroutine. Cyclic tridiagonal solver. Solves
 ( C[N-1]           A[N-1] B[N-1] )
 *************************************************************************/
 static void spline1d_solvecyclictridiagonal(/* Real    */ ae_vector* a,
-     /* Real    */ ae_vector* b,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_vector* d,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+        /* Real    */ ae_vector* b,
+        /* Real    */ ae_vector* c,
+        /* Real    */ ae_vector* d,
+        ae_int_t n,
+        /* Real    */ ae_vector* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _b;
@@ -17811,13 +17811,13 @@ static void spline1d_solvecyclictridiagonal(/* Real    */ ae_vector* a,
 Internal subroutine. Three-point differentiation
 *************************************************************************/
 static double spline1d_diffthreepoint(double t,
-     double x0,
-     double f0,
-     double x1,
-     double f1,
-     double x2,
-     double f2,
-     ae_state *_state)
+                                      double x0,
+                                      double f0,
+                                      double x1,
+                                      double f1,
+                                      double x2,
+                                      double f2,
+                                      ae_state *_state)
 {
     double a;
     double b;
@@ -17836,7 +17836,7 @@ static double spline1d_diffthreepoint(double t,
 
 /*************************************************************************
 Procedure for calculating value of a function is providet in the form of
-Hermite polinom  
+Hermite polinom
 
 INPUT PARAMETERS:
     P0   -   value of a function at 0
@@ -17844,22 +17844,22 @@ INPUT PARAMETERS:
     P1   -   value of a function at 1
     M1   -   value of a derivative at 1
     T    -   point inside [0;1]
-    
+
 OUTPUT PARAMETERS:
     S    -   value of a function at T
     B0   -   value of a derivative function at T
-    
+
  -- ALGLIB PROJECT --
      Copyright 26.09.2011 by Bochkanov Sergey
 *************************************************************************/
 static void spline1d_hermitecalc(double p0,
-     double m0,
-     double p1,
-     double m1,
-     double t,
-     double* s,
-     double* ds,
-     ae_state *_state)
+                                 double m0,
+                                 double p1,
+                                 double m1,
+                                 double t,
+                                 double* s,
+                                 double* ds,
+                                 ae_state *_state)
 {
 
     *s = 0;
@@ -17878,23 +17878,23 @@ INPUT PARAMETERS:
     B0   -   right border [A0;B0]
     A1   -   left border [A1;B1]
     B1   -   right border [A1;B1]
-    T    -   value inside [A0;B0]  
-    
+    T    -   value inside [A0;B0]
+
 RESTRICTIONS OF PARAMETERS:
 
-We assume, that B0>A0 and B1>A1. But we chech, that T is inside [A0;B0], 
-and if T<A0 then T become A1, if T>B0 then T - B1. 
+We assume, that B0>A0 and B1>A1. But we chech, that T is inside [A0;B0],
+and if T<A0 then T become A1, if T>B0 then T - B1.
 
 INPUT PARAMETERS:
-        A0   -   left border for segment [A0;B0] from 'T' is converted to [A1;B1] 
-        B0   -   right border for segment [A0;B0] from 'T' is converted to [A1;B1] 
-        A1   -   left border for segment [A1;B1] to 'T' is converted from [A0;B0] 
-        B1   -   right border for segment [A1;B1] to 'T' is converted from [A0;B0] 
-        T    -   the parameter is mapped from [A0;B0] to [A1;B1] 
+        A0   -   left border for segment [A0;B0] from 'T' is converted to [A1;B1]
+        B0   -   right border for segment [A0;B0] from 'T' is converted to [A1;B1]
+        A1   -   left border for segment [A1;B1] to 'T' is converted from [A0;B0]
+        B1   -   right border for segment [A1;B1] to 'T' is converted from [A0;B0]
+        T    -   the parameter is mapped from [A0;B0] to [A1;B1]
 
 Result:
     is converted value for 'T' from [A0;B0] to [A1;B1]
-         
+
 REMARK:
 
 The function dont check value A0,B0 and A1,B1!
@@ -17903,16 +17903,16 @@ The function dont check value A0,B0 and A1,B1!
      Copyright 26.09.2011 by Bochkanov Sergey
 *************************************************************************/
 static double spline1d_rescaleval(double a0,
-     double b0,
-     double a1,
-     double b1,
-     double t,
-     ae_state *_state)
+                                  double b0,
+                                  double a1,
+                                  double b1,
+                                  double t,
+                                  ae_state *_state)
 {
     double result;
 
 
-    
+
     /*
      *return left border
      */
@@ -17921,7 +17921,7 @@ static double spline1d_rescaleval(double a0,
         result = a1;
         return result;
     }
-    
+
     /*
      *return right border
      */
@@ -17930,7 +17930,7 @@ static double spline1d_rescaleval(double a0,
         result = b1;
         return result;
     }
-    
+
     /*
      *return value between left and right borders
      */
@@ -18029,13 +18029,13 @@ NOTES:
      Copyright 10.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void polynomialfit(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     barycentricinterpolant* p,
-     polynomialfitreport* rep,
-     ae_state *_state)
+                                 /* Real    */ ae_vector* y,
+                                 ae_int_t n,
+                                 ae_int_t m,
+                                 ae_int_t* info,
+                                 barycentricinterpolant* p,
+                                 polynomialfitreport* rep,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -18149,18 +18149,18 @@ above is not guaranteed and may result in inconsistency.
      Copyright 10.12.2009 by Bochkanov Sergey
 *************************************************************************/
 void polynomialfitwc(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t* info,
-     barycentricinterpolant* p,
-     polynomialfitreport* rep,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* y,
+                                   /* Real    */ ae_vector* w,
+                                   ae_int_t n,
+                                   /* Real    */ ae_vector* xc,
+                                   /* Real    */ ae_vector* yc,
+                                   /* Integer */ ae_vector* dc,
+                                   ae_int_t k,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   barycentricinterpolant* p,
+                                   polynomialfitreport* rep,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -18233,7 +18233,7 @@ void polynomialfitwc(/* Real    */ ae_vector* x,
     {
         ae_assert(dc->ptr.p_int[i]==0||dc->ptr.p_int[i]==1, "PolynomialFitWC: one of DC[] is not 0 or 1!", _state);
     }
-    
+
     /*
      * Scale X, Y, XC, YC.
      * Solve scaled problem using internal Chebyshev fitting function.
@@ -18245,7 +18245,7 @@ void polynomialfitwc(/* Real    */ ae_vector* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Generate barycentric model and scale it
      * * BX, BY store barycentric model nodes
@@ -18302,7 +18302,7 @@ void polynomialfitwc(/* Real    */ ae_vector* x,
     barycentricbuildxyw(&bx, &by, &bw, m, p, _state);
     barycentriclintransx(p, 2/(xb-xa), -(xa+xb)/(xb-xa), _state);
     barycentriclintransy(p, sb-sa, sa, _state);
-    
+
     /*
      * Scale absolute errors obtained from LSFitLinearW.
      * Relative error should be calculated separately
@@ -18415,18 +18415,18 @@ above is not guaranteed and may result in inconsistency.
      Copyright 18.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentricfitfloaterhormannwc(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t* info,
-     barycentricinterpolant* b,
-     barycentricfitreport* rep,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_vector* w,
+        ae_int_t n,
+        /* Real    */ ae_vector* xc,
+        /* Real    */ ae_vector* yc,
+        /* Integer */ ae_vector* dc,
+        ae_int_t k,
+        ae_int_t m,
+        ae_int_t* info,
+        barycentricinterpolant* b,
+        barycentricfitreport* rep,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t d;
@@ -18463,7 +18463,7 @@ void barycentricfitfloaterhormannwc(/* Real    */ ae_vector* x,
     {
         ae_assert(dc->ptr.p_int[i]==0||dc->ptr.p_int[i]==1, "BarycentricFitFloaterHormannWC: one of DC[] is not 0 or 1!", _state);
     }
-    
+
     /*
      * Find optimal D
      *
@@ -18480,7 +18480,7 @@ void barycentricfitfloaterhormannwc(/* Real    */ ae_vector* x,
         ae_assert((locinfo==-4||locinfo==-3)||locinfo>0, "BarycentricFitFloaterHormannWC: unexpected result from BarycentricFitWCFixedD!", _state);
         if( locinfo>0 )
         {
-            
+
             /*
              * Calculate weghted RMS
              */
@@ -18551,13 +18551,13 @@ OUTPUT PARAMETERS:
      Copyright 18.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void barycentricfitfloaterhormann(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     barycentricinterpolant* b,
-     barycentricfitreport* rep,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_int_t m,
+        ae_int_t* info,
+        barycentricinterpolant* b,
+        barycentricfitreport* rep,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector w;
@@ -18653,14 +18653,14 @@ array.
      Copyright 18.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void spline1dfitpenalized(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t m,
-     double rho,
-     ae_int_t* info,
-     spline1dinterpolant* s,
-     spline1dfitreport* rep,
-     ae_state *_state)
+                                        /* Real    */ ae_vector* y,
+                                        ae_int_t n,
+                                        ae_int_t m,
+                                        double rho,
+                                        ae_int_t* info,
+                                        spline1dinterpolant* s,
+                                        spline1dfitreport* rep,
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -18762,15 +18762,15 @@ array.
      Copyright 19.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     ae_int_t m,
-     double rho,
-     ae_int_t* info,
-     spline1dinterpolant* s,
-     spline1dfitreport* rep,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_vector* w,
+        ae_int_t n,
+        ae_int_t m,
+        double rho,
+        ae_int_t* info,
+        spline1dinterpolant* s,
+        spline1dfitreport* rep,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -18863,7 +18863,7 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(y, n, _state), "Spline1DFitPenalizedW: Y contains infinite or NAN values!", _state);
     ae_assert(isfinitevector(w, n, _state), "Spline1DFitPenalizedW: Y contains infinite or NAN values!", _state);
     ae_assert(ae_isfinite(rho, _state), "Spline1DFitPenalizedW: Rho is infinite!", _state);
-    
+
     /*
      * Prepare LambdaV
      */
@@ -18877,17 +18877,17 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
         rho = v;
     }
     lambdav = ae_pow(10, rho, _state);
-    
+
     /*
      * Sort X, Y, W
      */
     heapsortdpoints(x, y, w, n, _state);
-    
+
     /*
      * Scale X, Y, XC, YC
      */
     lsfitscalexy(x, y, w, n, &xc, &yc, &dc, 0, &xa, &xb, &sa, &sb, &xoriginal, &yoriginal, _state);
-    
+
     /*
      * Allocate space
      */
@@ -18901,7 +18901,7 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
     ae_vector_set_length(&rightpart, m, _state);
     ae_vector_set_length(&tmp0, ae_maxint(m, n, _state), _state);
     ae_vector_set_length(&c, m, _state);
-    
+
     /*
      * Fill:
      * * FMatrix by values of basis functions
@@ -18911,7 +18911,7 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
     fdmax = 0;
     for(b=0; b<=m-1; b++)
     {
-        
+
         /*
          * Prepare I-th basis function
          */
@@ -18923,7 +18923,7 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
         by.ptr.p_double[b] = 1;
         spline1dgriddiff2cubic(&bx, &by, m, 2, 0.0, 2, 0.0, &bd1, &bd2, _state);
         spline1dbuildcubic(&bx, &by, m, 2, 0.0, 2, 0.0, &bs, _state);
-        
+
         /*
          * Calculate B-th column of FMatrix
          * Update FDMax (maximum column norm)
@@ -18936,13 +18936,13 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
             v = v+ae_sqr(w->ptr.p_double[i]*fcolumn.ptr.p_double[i], _state);
         }
         fdmax = ae_maxreal(fdmax, v, _state);
-        
+
         /*
          * Fill temporary with second derivatives of basis function
          */
         ae_v_move(&d2matrix.ptr.pp_double[b][0], 1, &bd2.ptr.p_double[0], 1, ae_v_len(0,m-1));
     }
-    
+
     /*
      * * calculate penalty matrix A
      * * calculate max of diagonal elements of A
@@ -18952,7 +18952,7 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
     {
         for(j=i; j<=m-1; j++)
         {
-            
+
             /*
              * calculate integral(B_i''*B_j'') where B_i and B_j are
              * i-th and j-th basis splines.
@@ -18977,12 +18977,12 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
         admax = ae_maxreal(admax, ae_fabs(amatrix.ptr.pp_double[i][i], _state), _state);
     }
     pdecay = lambdav*fdmax/admax;
-    
+
     /*
      * Calculate TDecay for Tikhonov regularization
      */
     tdecay = fdmax*(1+pdecay)*10*ae_machineepsilon;
-    
+
     /*
      * Prepare system
      *
@@ -19014,7 +19014,7 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
         v = y->ptr.p_double[i]*w->ptr.p_double[i];
         ae_v_addd(&rightpart.ptr.p_double[0], 1, &fmatrix.ptr.pp_double[i][0], 1, ae_v_len(0,m-1), v);
     }
-    
+
     /*
      * Solve system
      */
@@ -19026,7 +19026,7 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
     }
     fblscholeskysolve(&nmatrix, 1.0, m, ae_true, &rightpart, &tmp0, _state);
     ae_v_move(&c.ptr.p_double[0], 1, &rightpart.ptr.p_double[0], 1, ae_v_len(0,m-1));
-    
+
     /*
      * add nodes to force linearity outside of the fitting interval
      */
@@ -19047,7 +19047,7 @@ void spline1dfitpenalizedw(/* Real    */ ae_vector* x,
     spline1dlintransx(s, 2/(xb-xa), -(xa+xb)/(xb-xa), _state);
     spline1dlintransy(s, sb-sa, sa, _state);
     *info = 1;
-    
+
     /*
      * Fill report
      */
@@ -19179,18 +19179,18 @@ above is not guaranteed and may result in inconsistency.
      Copyright 18.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void spline1dfitcubicwc(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t* info,
-     spline1dinterpolant* s,
-     spline1dfitreport* rep,
-     ae_state *_state)
+                                      /* Real    */ ae_vector* y,
+                                      /* Real    */ ae_vector* w,
+                                      ae_int_t n,
+                                      /* Real    */ ae_vector* xc,
+                                      /* Real    */ ae_vector* yc,
+                                      /* Integer */ ae_vector* dc,
+                                      ae_int_t k,
+                                      ae_int_t m,
+                                      ae_int_t* info,
+                                      spline1dinterpolant* s,
+                                      spline1dfitreport* rep,
+                                      ae_state *_state)
 {
     ae_int_t i;
 
@@ -19326,18 +19326,18 @@ above is not guaranteed and may result in inconsistency.
      Copyright 18.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void spline1dfithermitewc(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t* info,
-     spline1dinterpolant* s,
-     spline1dfitreport* rep,
-     ae_state *_state)
+                                        /* Real    */ ae_vector* y,
+                                        /* Real    */ ae_vector* w,
+                                        ae_int_t n,
+                                        /* Real    */ ae_vector* xc,
+                                        /* Real    */ ae_vector* yc,
+                                        /* Integer */ ae_vector* dc,
+                                        ae_int_t k,
+                                        ae_int_t m,
+                                        ae_int_t* info,
+                                        spline1dinterpolant* s,
+                                        spline1dfitreport* rep,
+                                        ae_state *_state)
 {
     ae_int_t i;
 
@@ -19380,13 +19380,13 @@ about subroutine parameters (we don't duplicate it here because of length)
      Copyright 18.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void spline1dfitcubic(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     spline1dinterpolant* s,
-     spline1dfitreport* rep,
-     ae_state *_state)
+                                    /* Real    */ ae_vector* y,
+                                    ae_int_t n,
+                                    ae_int_t m,
+                                    ae_int_t* info,
+                                    spline1dinterpolant* s,
+                                    spline1dfitreport* rep,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -19432,13 +19432,13 @@ because of length).
      Copyright 18.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void spline1dfithermite(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     spline1dinterpolant* s,
-     spline1dfitreport* rep,
-     ae_state *_state)
+                                      /* Real    */ ae_vector* y,
+                                      ae_int_t n,
+                                      ae_int_t m,
+                                      ae_int_t* info,
+                                      spline1dinterpolant* s,
+                                      spline1dfitreport* rep,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -19513,9 +19513,9 @@ OUTPUT PARAMETERS:
                 * AvgRelError       average relative error on the non-zero Y
                 * MaxError          maximum error
                                     NON-WEIGHTED ERRORS ARE CALCULATED
-                
-ERRORS IN PARAMETERS                
-                
+
+ERRORS IN PARAMETERS
+
 This  solver  also  calculates different kinds of errors in parameters and
 fills corresponding fields of report:
 * Rep.CovPar        covariance matrix for parameters, array[K,K].
@@ -19527,7 +19527,7 @@ fills corresponding fields of report:
                     errcurve = sqrt(diag(F*CovPar*F')),
                     where F is functions matrix.
 * Rep.Noise         vector of per-point estimates of noise, array[N]
-            
+
 NOTE:       noise in the data is estimated as follows:
             * for fitting without user-supplied  weights  all  points  are
               assumed to have same level of noise, which is estimated from
@@ -19535,33 +19535,33 @@ NOTE:       noise in the data is estimated as follows:
             * for fitting with user-supplied weights we assume that  noise
               level in I-th point is inversely proportional to Ith weight.
               Coefficient of proportionality is estimated from the data.
-            
+
 NOTE:       we apply small amount of regularization when we invert squared
             Jacobian and calculate covariance matrix. It  guarantees  that
             algorithm won't divide by zero  during  inversion,  but  skews
             error estimates a bit (fractional error is about 10^-9).
-            
+
             However, we believe that this difference is insignificant  for
             all practical purposes except for the situation when you  want
             to compare ALGLIB results with "reference"  implementation  up
             to the last significant digit.
-            
+
 NOTE:       covariance matrix is estimated using  correction  for  degrees
             of freedom (covariances are divided by N-M instead of dividing
             by N).
-                                    
+
   -- ALGLIB --
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitlinearw(/* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* fmatrix,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state)
+                                /* Real    */ ae_vector* w,
+                                /* Real    */ ae_matrix* fmatrix,
+                                ae_int_t n,
+                                ae_int_t m,
+                                ae_int_t* info,
+                                /* Real    */ ae_vector* c,
+                                lsfitreport* rep,
+                                ae_state *_state)
 {
 
     *info = 0;
@@ -19632,9 +19632,9 @@ OUTPUT PARAMETERS:
 
 IMPORTANT:
     this subroitine doesn't calculate task's condition number for K<>0.
-                
-ERRORS IN PARAMETERS                
-                
+
+ERRORS IN PARAMETERS
+
 This  solver  also  calculates different kinds of errors in parameters and
 fills corresponding fields of report:
 * Rep.CovPar        covariance matrix for parameters, array[K,K].
@@ -19651,7 +19651,7 @@ IMPORTANT:  errors  in  parameters  are  calculated  without  taking  into
             account boundary/linear constraints! Presence  of  constraints
             changes distribution of errors, but there is no  easy  way  to
             account for constraints when you calculate covariance matrix.
-            
+
 NOTE:       noise in the data is estimated as follows:
             * for fitting without user-supplied  weights  all  points  are
               assumed to have same level of noise, which is estimated from
@@ -19659,17 +19659,17 @@ NOTE:       noise in the data is estimated as follows:
             * for fitting with user-supplied weights we assume that  noise
               level in I-th point is inversely proportional to Ith weight.
               Coefficient of proportionality is estimated from the data.
-            
+
 NOTE:       we apply small amount of regularization when we invert squared
             Jacobian and calculate covariance matrix. It  guarantees  that
             algorithm won't divide by zero  during  inversion,  but  skews
             error estimates a bit (fractional error is about 10^-9).
-            
+
             However, we believe that this difference is insignificant  for
             all practical purposes except for the situation when you  want
             to compare ALGLIB results with "reference"  implementation  up
             to the last significant digit.
-            
+
 NOTE:       covariance matrix is estimated using  correction  for  degrees
             of freedom (covariances are divided by N-M instead of dividing
             by N).
@@ -19678,16 +19678,16 @@ NOTE:       covariance matrix is estimated using  correction  for  degrees
      Copyright 07.09.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitlinearwc(/* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* fmatrix,
-     /* Real    */ ae_matrix* cmatrix,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t k,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state)
+                                 /* Real    */ ae_vector* w,
+                                 /* Real    */ ae_matrix* fmatrix,
+                                 /* Real    */ ae_matrix* cmatrix,
+                                 ae_int_t n,
+                                 ae_int_t m,
+                                 ae_int_t k,
+                                 ae_int_t* info,
+                                 /* Real    */ ae_vector* c,
+                                 lsfitreport* rep,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _y;
@@ -19734,13 +19734,13 @@ void lsfitlinearwc(/* Real    */ ae_vector* y,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Solve
      */
     if( k==0 )
     {
-        
+
         /*
          * no constraints
          */
@@ -19748,7 +19748,7 @@ void lsfitlinearwc(/* Real    */ ae_vector* y,
     }
     else
     {
-        
+
         /*
          * First, find general form solution of constraints system:
          * * factorize C = L*Q
@@ -19795,7 +19795,7 @@ void lsfitlinearwc(/* Real    */ ae_vector* y,
             v = tmp.ptr.p_double[i];
             ae_v_addd(&c0.ptr.p_double[0], 1, &q.ptr.pp_double[i][0], 1, ae_v_len(0,m-1), v);
         }
-        
+
         /*
          * Second, prepare modified matrix F2 = F*Q2' and solve modified task
          */
@@ -19810,7 +19810,7 @@ void lsfitlinearwc(/* Real    */ ae_vector* y,
             ae_frame_leave(_state);
             return;
         }
-        
+
         /*
          * then, convert back to original answer: C = C0 + Q2'*Y0
          */
@@ -19857,9 +19857,9 @@ OUTPUT PARAMETERS:
                 * AvgRelError       average relative error on the non-zero Y
                 * MaxError          maximum error
                                     NON-WEIGHTED ERRORS ARE CALCULATED
-                
-ERRORS IN PARAMETERS                
-                
+
+ERRORS IN PARAMETERS
+
 This  solver  also  calculates different kinds of errors in parameters and
 fills corresponding fields of report:
 * Rep.CovPar        covariance matrix for parameters, array[K,K].
@@ -19871,7 +19871,7 @@ fills corresponding fields of report:
                     errcurve = sqrt(diag(F*CovPar*F')),
                     where F is functions matrix.
 * Rep.Noise         vector of per-point estimates of noise, array[N]
-            
+
 NOTE:       noise in the data is estimated as follows:
             * for fitting without user-supplied  weights  all  points  are
               assumed to have same level of noise, which is estimated from
@@ -19879,17 +19879,17 @@ NOTE:       noise in the data is estimated as follows:
             * for fitting with user-supplied weights we assume that  noise
               level in I-th point is inversely proportional to Ith weight.
               Coefficient of proportionality is estimated from the data.
-            
+
 NOTE:       we apply small amount of regularization when we invert squared
             Jacobian and calculate covariance matrix. It  guarantees  that
             algorithm won't divide by zero  during  inversion,  but  skews
             error estimates a bit (fractional error is about 10^-9).
-            
+
             However, we believe that this difference is insignificant  for
             all practical purposes except for the situation when you  want
             to compare ALGLIB results with "reference"  implementation  up
             to the last significant digit.
-            
+
 NOTE:       covariance matrix is estimated using  correction  for  degrees
             of freedom (covariances are divided by N-M instead of dividing
             by N).
@@ -19898,13 +19898,13 @@ NOTE:       covariance matrix is estimated using  correction  for  degrees
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitlinear(/* Real    */ ae_vector* y,
-     /* Real    */ ae_matrix* fmatrix,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state)
+                               /* Real    */ ae_matrix* fmatrix,
+                               ae_int_t n,
+                               ae_int_t m,
+                               ae_int_t* info,
+                               /* Real    */ ae_vector* c,
+                               lsfitreport* rep,
+                               ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector w;
@@ -19980,9 +19980,9 @@ OUTPUT PARAMETERS:
 
 IMPORTANT:
     this subroitine doesn't calculate task's condition number for K<>0.
-                
-ERRORS IN PARAMETERS                
-                
+
+ERRORS IN PARAMETERS
+
 This  solver  also  calculates different kinds of errors in parameters and
 fills corresponding fields of report:
 * Rep.CovPar        covariance matrix for parameters, array[K,K].
@@ -19999,7 +19999,7 @@ IMPORTANT:  errors  in  parameters  are  calculated  without  taking  into
             account boundary/linear constraints! Presence  of  constraints
             changes distribution of errors, but there is no  easy  way  to
             account for constraints when you calculate covariance matrix.
-            
+
 NOTE:       noise in the data is estimated as follows:
             * for fitting without user-supplied  weights  all  points  are
               assumed to have same level of noise, which is estimated from
@@ -20007,17 +20007,17 @@ NOTE:       noise in the data is estimated as follows:
             * for fitting with user-supplied weights we assume that  noise
               level in I-th point is inversely proportional to Ith weight.
               Coefficient of proportionality is estimated from the data.
-            
+
 NOTE:       we apply small amount of regularization when we invert squared
             Jacobian and calculate covariance matrix. It  guarantees  that
             algorithm won't divide by zero  during  inversion,  but  skews
             error estimates a bit (fractional error is about 10^-9).
-            
+
             However, we believe that this difference is insignificant  for
             all practical purposes except for the situation when you  want
             to compare ALGLIB results with "reference"  implementation  up
             to the last significant digit.
-            
+
 NOTE:       covariance matrix is estimated using  correction  for  degrees
             of freedom (covariances are divided by N-M instead of dividing
             by N).
@@ -20026,15 +20026,15 @@ NOTE:       covariance matrix is estimated using  correction  for  degrees
      Copyright 07.09.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitlinearc(/* Real    */ ae_vector* y,
-     /* Real    */ ae_matrix* fmatrix,
-     /* Real    */ ae_matrix* cmatrix,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t k,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state)
+                                /* Real    */ ae_matrix* fmatrix,
+                                /* Real    */ ae_matrix* cmatrix,
+                                ae_int_t n,
+                                ae_int_t m,
+                                ae_int_t k,
+                                ae_int_t* info,
+                                /* Real    */ ae_vector* c,
+                                lsfitreport* rep,
+                                ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _y;
@@ -20109,15 +20109,15 @@ OUTPUT PARAMETERS:
      Copyright 18.10.2008 by Bochkanov Sergey
 *************************************************************************/
 void lsfitcreatewf(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_vector* c,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t k,
-     double diffstep,
-     lsfitstate* state,
-     ae_state *_state)
+                                 /* Real    */ ae_vector* y,
+                                 /* Real    */ ae_vector* w,
+                                 /* Real    */ ae_vector* c,
+                                 ae_int_t n,
+                                 ae_int_t m,
+                                 ae_int_t k,
+                                 double diffstep,
+                                 lsfitstate* state,
+                                 ae_state *_state)
 {
     ae_int_t i;
 
@@ -20217,14 +20217,14 @@ OUTPUT PARAMETERS:
      Copyright 18.10.2008 by Bochkanov Sergey
 *************************************************************************/
 void lsfitcreatef(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* c,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t k,
-     double diffstep,
-     lsfitstate* state,
-     ae_state *_state)
+                                /* Real    */ ae_vector* y,
+                                /* Real    */ ae_vector* c,
+                                ae_int_t n,
+                                ae_int_t m,
+                                ae_int_t k,
+                                double diffstep,
+                                lsfitstate* state,
+                                ae_state *_state)
 {
     ae_int_t i;
 
@@ -20290,16 +20290,16 @@ Weighted nonlinear least squares fitting using gradient only.
 Nonlinear task min(F(c)) is solved, where
 
     F(c) = (w[0]*(f(c,x[0])-y[0]))^2 + ... + (w[n-1]*(f(c,x[n-1])-y[n-1]))^2,
-    
+
     * N is a number of points,
     * M is a dimension of a space points belong to,
     * K is a dimension of a space of parameters being fitted,
     * w is an N-dimensional vector of weight coefficients,
     * x is a set of N points, each of them is an M-dimensional vector,
     * c is a K-dimensional vector of parameters being fitted
-    
+
 This subroutine uses only f(c,x[i]) and its gradient.
-    
+
 INPUT PARAMETERS:
     X       -   array[0..N-1,0..M-1], points (one row = one point)
     Y       -   array[0..N-1], function values.
@@ -20330,15 +20330,15 @@ See also:
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitcreatewfg(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_vector* c,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t k,
-     ae_bool cheapfg,
-     lsfitstate* state,
-     ae_state *_state)
+                                  /* Real    */ ae_vector* y,
+                                  /* Real    */ ae_vector* w,
+                                  /* Real    */ ae_vector* c,
+                                  ae_int_t n,
+                                  ae_int_t m,
+                                  ae_int_t k,
+                                  ae_bool cheapfg,
+                                  lsfitstate* state,
+                                  ae_state *_state)
 {
     ae_int_t i;
 
@@ -20445,14 +20445,14 @@ OUTPUT PARAMETERS:
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitcreatefg(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* c,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t k,
-     ae_bool cheapfg,
-     lsfitstate* state,
-     ae_state *_state)
+                                 /* Real    */ ae_vector* y,
+                                 /* Real    */ ae_vector* c,
+                                 ae_int_t n,
+                                 ae_int_t m,
+                                 ae_int_t k,
+                                 ae_bool cheapfg,
+                                 lsfitstate* state,
+                                 ae_state *_state)
 {
     ae_int_t i;
 
@@ -20550,14 +20550,14 @@ OUTPUT PARAMETERS:
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitcreatewfgh(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_vector* c,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t k,
-     lsfitstate* state,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* y,
+                                   /* Real    */ ae_vector* w,
+                                   /* Real    */ ae_vector* c,
+                                   ae_int_t n,
+                                   ae_int_t m,
+                                   ae_int_t k,
+                                   lsfitstate* state,
+                                   ae_state *_state)
 {
     ae_int_t i;
 
@@ -20651,13 +20651,13 @@ OUTPUT PARAMETERS:
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitcreatefgh(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* c,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t k,
-     lsfitstate* state,
-     ae_state *_state)
+                                  /* Real    */ ae_vector* y,
+                                  /* Real    */ ae_vector* c,
+                                  ae_int_t n,
+                                  ae_int_t m,
+                                  ae_int_t k,
+                                  lsfitstate* state,
+                                  ae_state *_state)
 {
     ae_int_t i;
 
@@ -20744,10 +20744,10 @@ stopping criterion selection (according to the scheme used by MINLM unit).
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitsetcond(lsfitstate* state,
-     double epsf,
-     double epsx,
-     ae_int_t maxits,
-     ae_state *_state)
+                  double epsf,
+                  double epsx,
+                  ae_int_t maxits,
+                  ae_state *_state)
 {
 
 
@@ -20798,7 +20798,7 @@ This function turns on/off reporting.
 INPUT PARAMETERS:
     State   -   structure which stores algorithm state
     NeedXRep-   whether iteration reports are needed or not
-    
+
 When reports are needed, State.C (current parameters) and State.F (current
 value of fitting function) are reported.
 
@@ -20842,8 +20842,8 @@ INPUT PARAMETERS:
      Copyright 14.01.2011 by Bochkanov Sergey
 *************************************************************************/
 void lsfitsetscale(lsfitstate* state,
-     /* Real    */ ae_vector* s,
-     ae_state *_state)
+                   /* Real    */ ae_vector* s,
+                   ae_state *_state)
 {
     ae_int_t i;
 
@@ -20887,9 +20887,9 @@ following useful properties:
      Copyright 14.01.2011 by Bochkanov Sergey
 *************************************************************************/
 void lsfitsetbc(lsfitstate* state,
-     /* Real    */ ae_vector* bndl,
-     /* Real    */ ae_vector* bndu,
-     ae_state *_state)
+                /* Real    */ ae_vector* bndl,
+                /* Real    */ ae_vector* bndu,
+                ae_state *_state)
 {
     ae_int_t i;
     ae_int_t k;
@@ -20922,11 +20922,11 @@ NOTES:
 
    For example, if we want to do linear fit by f(c0,c1,x) = c0*x+c1,  then
    x will be argument, and {c0,c1} will be parameters.
-   
+
    It is important to understand that this algorithm finds minimum in  the
    space of function PARAMETERS (not arguments), so it  needs  derivatives
    of f() with respect to C, not X.
-   
+
    In the example above it will need f=c0*x+c1 and {df/dc0,df/dc1} = {x,1}
    instead of {df/dx} = {c0}.
 
@@ -20935,15 +20935,15 @@ NOTES:
 3. If  state  was  created  with  LSFitCreateFG(),  algorithm  needs  just
    function   and   its   gradient,   but   if   state   was  created with
    LSFitCreateFGH(), algorithm will need function, gradient and Hessian.
-   
+
    According  to  the  said  above,  there  ase  several  versions of this
    function, which accept different sets of callbacks.
-   
+
    This flexibility opens way to subtle errors - you may create state with
    LSFitCreateFGH() (optimization using Hessian), but call function  which
    does not accept Hessian. So when algorithm will request Hessian,  there
    will be no callback to call. In this case exception will be thrown.
-   
+
    Be careful to avoid such errors because there is no way to find them at
    compile time - you can see them at runtime only.
 
@@ -20971,7 +20971,7 @@ ae_bool lsfititeration(lsfitstate* state, ae_state *_state)
     ae_bool result;
 
 
-    
+
     /*
      * Reverse communication preparations
      * I know it looks ugly, but it works the same way
@@ -21076,11 +21076,11 @@ ae_bool lsfititeration(lsfitstate* state, ae_state *_state)
     {
         goto lbl_13;
     }
-    
+
     /*
      * Routine body
      */
-    
+
     /*
      * Init
      */
@@ -21097,7 +21097,7 @@ ae_bool lsfititeration(lsfitstate* state, ae_state *_state)
     minlmsetxrep(&state->optstate, state->xrep, _state);
     minlmsetscale(&state->optstate, &state->s, _state);
     minlmsetbc(&state->optstate, &state->bndl, &state->bndu, _state);
-    
+
     /*
      *  Check that user-supplied gradient is correct
      */
@@ -21183,7 +21183,7 @@ lbl_21:
 lbl_18:
     state->needfg = ae_false;
 lbl_14:
-    
+
     /*
      * Fill WCur by weights:
      * * for WKind=0 unit weights are chosen
@@ -21198,7 +21198,7 @@ lbl_14:
             state->wcur.ptr.p_double[i] = state->taskw.ptr.p_double[i];
         }
     }
-    
+
     /*
      * Optimize
      */
@@ -21211,7 +21211,7 @@ lbl_22:
     {
         goto lbl_24;
     }
-    
+
     /*
      * calculate f[] = wi*(f(xi,c)-yi)
      */
@@ -21241,7 +21241,7 @@ lbl_24:
     {
         goto lbl_29;
     }
-    
+
     /*
      * calculate F = sum (wi*(f(xi,c)-yi))^2
      */
@@ -21272,7 +21272,7 @@ lbl_29:
     {
         goto lbl_34;
     }
-    
+
     /*
      * calculate F/gradF
      */
@@ -21309,7 +21309,7 @@ lbl_34:
     {
         goto lbl_39;
     }
-    
+
     /*
      * calculate Fi/jac(Fi)
      */
@@ -21340,7 +21340,7 @@ lbl_39:
     {
         goto lbl_44;
     }
-    
+
     /*
      * calculate F/grad(F)/hess(F)
      */
@@ -21391,7 +21391,7 @@ lbl_44:
     {
         goto lbl_49;
     }
-    
+
     /*
      * Report new iteration
      */
@@ -21410,7 +21410,7 @@ lbl_23:
     minlmresults(&state->optstate, &state->c, &state->optrep, _state);
     state->repterminationtype = state->optrep.terminationtype;
     state->repiterationscount = state->optrep.iterationscount;
-    
+
     /*
      * calculate errors
      */
@@ -21418,7 +21418,7 @@ lbl_23:
     {
         goto lbl_51;
     }
-    
+
     /*
      * Calculate RMS/Avg/Max/... errors
      */
@@ -21464,7 +21464,7 @@ lbl_55:
     {
         state->repavgrelerror = state->repavgrelerror/relcnt;
     }
-    
+
     /*
      * Calculate covariance matrix
      */
@@ -21475,7 +21475,7 @@ lbl_55:
     {
         goto lbl_56;
     }
-    
+
     /*
      * Compute Jacobian by means of numerical differentiation
      */
@@ -21538,7 +21538,7 @@ lbl_60:
     state->needf = ae_false;
     goto lbl_57;
 lbl_56:
-    
+
     /*
      * Jacobian is calculated with user-provided analytic gradient
      */
@@ -21573,7 +21573,7 @@ lbl_57:
 lbl_51:
     result = ae_false;
     return result;
-    
+
     /*
      * Saving state
      */
@@ -21628,9 +21628,9 @@ OUTPUT PARAMETERS:
                 * MaxError          maximum error
                                     NON-WEIGHTED ERRORS ARE CALCULATED
                 * WRMSError         weighted rms error on the (X,Y).
-                
-ERRORS IN PARAMETERS                
-                
+
+ERRORS IN PARAMETERS
+
 This  solver  also  calculates different kinds of errors in parameters and
 fills corresponding fields of report:
 * Rep.CovPar        covariance matrix for parameters, array[K,K].
@@ -21647,7 +21647,7 @@ IMPORTANT:  errors  in  parameters  are  calculated  without  taking  into
             account boundary/linear constraints! Presence  of  constraints
             changes distribution of errors, but there is no  easy  way  to
             account for constraints when you calculate covariance matrix.
-            
+
 NOTE:       noise in the data is estimated as follows:
             * for fitting without user-supplied  weights  all  points  are
               assumed to have same level of noise, which is estimated from
@@ -21655,17 +21655,17 @@ NOTE:       noise in the data is estimated as follows:
             * for fitting with user-supplied weights we assume that  noise
               level in I-th point is inversely proportional to Ith weight.
               Coefficient of proportionality is estimated from the data.
-            
+
 NOTE:       we apply small amount of regularization when we invert squared
             Jacobian and calculate covariance matrix. It  guarantees  that
             algorithm won't divide by zero  during  inversion,  but  skews
             error estimates a bit (fractional error is about 10^-9).
-            
+
             However, we believe that this difference is insignificant  for
             all practical purposes except for the situation when you  want
             to compare ALGLIB results with "reference"  implementation  up
             to the last significant digit.
-            
+
 NOTE:       covariance matrix is estimated using  correction  for  degrees
             of freedom (covariances are divided by N-M instead of dividing
             by N).
@@ -21674,10 +21674,10 @@ NOTE:       covariance matrix is estimated using  correction  for  degrees
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitresults(lsfitstate* state,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state)
+                  ae_int_t* info,
+                  /* Real    */ ae_vector* c,
+                  lsfitreport* rep,
+                  ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -21762,7 +21762,7 @@ NOTE 3: this function may lead to false positives. In case it reports that
 
 NOTE 4: this function works only for optimizers created with LSFitCreateWFG()
         or LSFitCreateFG() constructors.
-        
+
 INPUT PARAMETERS:
     State       -   structure used to store algorithm state
     TestStep    -   verification step:
@@ -21773,8 +21773,8 @@ INPUT PARAMETERS:
      Copyright 15.06.2012 by Bochkanov Sergey
 *************************************************************************/
 void lsfitsetgradientcheck(lsfitstate* state,
-     double teststep,
-     ae_state *_state)
+                           double teststep,
+                           ae_state *_state)
 {
 
 
@@ -21797,27 +21797,27 @@ Transformations performed:
 
 * Y             [SA,SB] => [0,1]
                 transformation makes mean(Y)=0, stddev(Y)=1
-                
+
 * YC            transformed accordingly to SA, SB, DC[I]
 
   -- ALGLIB PROJECT --
      Copyright 08.09.2009 by Bochkanov Sergey
 *************************************************************************/
 void lsfitscalexy(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     double* xa,
-     double* xb,
-     double* sa,
-     double* sb,
-     /* Real    */ ae_vector* xoriginal,
-     /* Real    */ ae_vector* yoriginal,
-     ae_state *_state)
+                                /* Real    */ ae_vector* y,
+                                /* Real    */ ae_vector* w,
+                                ae_int_t n,
+                                /* Real    */ ae_vector* xc,
+                                /* Real    */ ae_vector* yc,
+                                /* Integer */ ae_vector* dc,
+                                ae_int_t k,
+                                double* xa,
+                                double* xb,
+                                double* sa,
+                                double* sb,
+                                /* Real    */ ae_vector* xoriginal,
+                                /* Real    */ ae_vector* yoriginal,
+                                ae_state *_state)
 {
     double xmin;
     double xmax;
@@ -21833,7 +21833,7 @@ void lsfitscalexy(/* Real    */ ae_vector* x,
 
     ae_assert(n>=1, "LSFitScaleXY: incorrect N", _state);
     ae_assert(k>=0, "LSFitScaleXY: incorrect K", _state);
-    
+
     /*
      * Calculate xmin/xmax.
      * Force xmin<>xmax.
@@ -21869,7 +21869,7 @@ void lsfitscalexy(/* Real    */ ae_vector* x,
             }
         }
     }
-    
+
     /*
      * Transform abscissas: map [XA,XB] to [0,1]
      *
@@ -21890,7 +21890,7 @@ void lsfitscalexy(/* Real    */ ae_vector* x,
         xc->ptr.p_double[i] = 2*(xc->ptr.p_double[i]-0.5*(*xa+(*xb)))/(*xb-(*xa));
         yc->ptr.p_double[i] = yc->ptr.p_double[i]*ae_pow(0.5*(*xb-(*xa)), dc->ptr.p_int[i], _state);
     }
-    
+
     /*
      * Transform function values: map [SA,SB] to [0,1]
      * SA = mean(Y),
@@ -21936,7 +21936,7 @@ void lsfitscalexy(/* Real    */ ae_vector* x,
             yc->ptr.p_double[i] = yc->ptr.p_double[i]/(*sb-(*sa));
         }
     }
-    
+
     /*
      * Scale weights
      */
@@ -21962,19 +21962,19 @@ Internal spline fitting subroutine
      Copyright 08.09.2009 by Bochkanov Sergey
 *************************************************************************/
 static void lsfit_spline1dfitinternal(ae_int_t st,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t* info,
-     spline1dinterpolant* s,
-     spline1dfitreport* rep,
-     ae_state *_state)
+                                      /* Real    */ ae_vector* x,
+                                      /* Real    */ ae_vector* y,
+                                      /* Real    */ ae_vector* w,
+                                      ae_int_t n,
+                                      /* Real    */ ae_vector* xc,
+                                      /* Real    */ ae_vector* yc,
+                                      /* Integer */ ae_vector* dc,
+                                      ae_int_t k,
+                                      ae_int_t m,
+                                      ae_int_t* info,
+                                      spline1dinterpolant* s,
+                                      spline1dfitreport* rep,
+                                      ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -22074,7 +22074,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
     }
     if( st==1&&m%2!=0 )
     {
-        
+
         /*
          * Hermite fitter must have even number of basis functions
          */
@@ -22082,18 +22082,18 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * weight decay for correct handling of task which becomes
      * degenerate after constraints are applied
      */
     decay = 10000*ae_machineepsilon;
-    
+
     /*
      * Scale X, Y, XC, YC
      */
     lsfitscalexy(x, y, w, n, xc, yc, dc, k, &xa, &xb, &sa, &sb, &xoriginal, &yoriginal, _state);
-    
+
     /*
      * allocate space, initialize:
      * * SX     -   grid for basis functions
@@ -22110,7 +22110,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
     }
     if( st==0 )
     {
-        
+
         /*
          * allocate space for cubic spline
          */
@@ -22123,7 +22123,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
     }
     if( st==1 )
     {
-        
+
         /*
          * allocate space for Hermite spline
          */
@@ -22135,7 +22135,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
             sx.ptr.p_double[j] = (double)(2*j)/(double)(m/2-1)-1;
         }
     }
-    
+
     /*
      * Prepare design and constraints matrices:
      * * fill constraints matrix
@@ -22146,13 +22146,13 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
      */
     for(j=0; j<=m-1; j++)
     {
-        
+
         /*
          * prepare Jth basis function
          */
         if( st==0 )
         {
-            
+
             /*
              * cubic spline basis
              */
@@ -22178,7 +22178,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
         }
         if( st==1 )
         {
-            
+
             /*
              * Hermite basis
              */
@@ -22197,7 +22197,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
             }
             spline1dbuildhermite(&sx, &sy, &sd, m/2, &s2, _state);
         }
-        
+
         /*
          * values at X[], XC[]
          */
@@ -22256,13 +22256,13 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
         y2.ptr.p_double[n+i] = 0;
         w2.ptr.p_double[n+i] = mx;
     }
-    
+
     /*
      * Solve constrained task
      */
     if( k>0 )
     {
-        
+
         /*
          * solve using regularization
          */
@@ -22270,7 +22270,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
     }
     else
     {
-        
+
         /*
          * no constraints, no regularization needed
          */
@@ -22281,13 +22281,13 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Generate spline and scale it
      */
     if( st==0 )
     {
-        
+
         /*
          * cubic spline basis
          */
@@ -22296,7 +22296,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
     }
     if( st==1 )
     {
-        
+
         /*
          * Hermite basis
          */
@@ -22309,7 +22309,7 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
     }
     spline1dlintransx(s, 2/(xb-xa), -(xa+xb)/(xb-xa), _state);
     spline1dlintransy(s, sb-sa, sa, _state);
-    
+
     /*
      * Scale absolute errors obtained from LSFitLinearW.
      * Relative error should be calculated separately
@@ -22341,14 +22341,14 @@ static void lsfit_spline1dfitinternal(ae_int_t st,
 Internal fitting subroutine
 *************************************************************************/
 static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_matrix* fmatrix,
-     ae_int_t n,
-     ae_int_t m,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state)
+        /* Real    */ ae_vector* w,
+        /* Real    */ ae_matrix* fmatrix,
+        ae_int_t n,
+        ae_int_t m,
+        ae_int_t* info,
+        /* Real    */ ae_vector* c,
+        lsfitreport* rep,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     double threshold;
@@ -22401,13 +22401,13 @@ static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
     }
     *info = 1;
     threshold = ae_sqrt(ae_machineepsilon, _state);
-    
+
     /*
      * Degenerate case, needs special handling
      */
     if( n<m )
     {
-        
+
         /*
          * Create design matrix.
          */
@@ -22421,7 +22421,7 @@ static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
             b.ptr.p_double[j] = w->ptr.p_double[j]*y->ptr.p_double[j];
             wmod.ptr.p_double[j] = 1;
         }
-        
+
         /*
          * LQ decomposition and reduction to M=N
          */
@@ -22448,7 +22448,7 @@ static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * N>=M. Generate design matrix and reduce to N=M using
      * QR decomposition.
@@ -22476,7 +22476,7 @@ static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
     }
     ae_vector_set_length(&b, m, _state);
     ae_v_move(&b.ptr.p_double[0], 1, &tmp.ptr.p_double[0], 1, ae_v_len(0,m-1));
-    
+
     /*
      * R contains reduced MxM design upper triangular matrix,
      * B contains reduced Mx1 right part.
@@ -22490,7 +22490,7 @@ static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
     rep->taskrcond = rmatrixlurcondinf(&r, m, _state);
     if( ae_fp_greater(rep->taskrcond,threshold) )
     {
-        
+
         /*
          * use QR-based solver
          */
@@ -22504,7 +22504,7 @@ static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
     }
     else
     {
-        
+
         /*
          * use SVD-based solver
          */
@@ -22559,7 +22559,7 @@ static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
             ae_v_addd(&c->ptr.p_double[0], 1, &vt.ptr.pp_double[i][0], 1, ae_v_len(0,m-1), v);
         }
     }
-    
+
     /*
      * calculate errors
      */
@@ -22620,7 +22620,7 @@ static void lsfit_lsfitlinearinternal(/* Real    */ ae_vector* y,
 Internal subroutine
 *************************************************************************/
 static void lsfit_lsfitclearrequestfields(lsfitstate* state,
-     ae_state *_state)
+        ae_state *_state)
 {
 
 
@@ -22639,9 +22639,9 @@ Used for efficient simultaneous calculation of N basis functions.
      Copyright 17.08.2009 by Bochkanov Sergey
 *************************************************************************/
 static void lsfit_barycentriccalcbasis(barycentricinterpolant* b,
-     double t,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+                                       double t,
+                                       /* Real    */ ae_vector* y,
+                                       ae_state *_state)
 {
     double s2;
     double s;
@@ -22650,7 +22650,7 @@ static void lsfit_barycentriccalcbasis(barycentricinterpolant* b,
     ae_int_t j;
 
 
-    
+
     /*
      * special case: N=1
      */
@@ -22659,7 +22659,7 @@ static void lsfit_barycentriccalcbasis(barycentricinterpolant* b,
         y->ptr.p_double[0] = 1;
         return;
     }
-    
+
     /*
      * Here we assume that task is normalized, i.e.:
      * 1. abs(Y[i])<=1
@@ -22750,18 +22750,18 @@ IMPORTANT:
      Copyright 10.12.2009 by Bochkanov Sergey
 *************************************************************************/
 static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t* info,
-     /* Real    */ ae_vector* c,
-     lsfitreport* rep,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_vector* w,
+        ae_int_t n,
+        /* Real    */ ae_vector* xc,
+        /* Real    */ ae_vector* yc,
+        /* Integer */ ae_vector* dc,
+        ae_int_t k,
+        ae_int_t m,
+        ae_int_t* info,
+        /* Real    */ ae_vector* c,
+        lsfitreport* rep,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _xc;
@@ -22801,13 +22801,13 @@ static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
     ae_matrix_init(&cmatrix, 0, 0, DT_REAL, _state, ae_true);
 
     lsfit_clearreport(rep, _state);
-    
+
     /*
      * weight decay for correct handling of task which becomes
      * degenerate after constraints are applied
      */
     decay = 10000*ae_machineepsilon;
-    
+
     /*
      * allocate space, initialize/fill:
      * * FMatrix-   values of basis functions at X[]
@@ -22827,7 +22827,7 @@ static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
     {
         ae_matrix_set_length(&cmatrix, k, m+1, _state);
     }
-    
+
     /*
      * Fill design matrix, Y2, W2:
      * * first N rows with basis functions for original points
@@ -22835,7 +22835,7 @@ static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
      */
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * prepare Ith row
          * use Tmp for calculations to avoid multidimensional arrays overhead
@@ -22887,13 +22887,13 @@ static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
         y2.ptr.p_double[n+i] = 0;
         w2.ptr.p_double[n+i] = mx;
     }
-    
+
     /*
      * fill constraints matrix
      */
     for(i=0; i<=k-1; i++)
     {
-        
+
         /*
          * prepare Ith row
          * use Tmp for basis function values,
@@ -22930,13 +22930,13 @@ static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
         }
         cmatrix.ptr.pp_double[i][m] = yc->ptr.p_double[i];
     }
-    
+
     /*
      * Solve constrained task
      */
     if( k>0 )
     {
-        
+
         /*
          * solve using regularization
          */
@@ -22944,7 +22944,7 @@ static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
     }
     else
     {
-        
+
         /*
          * no constraints, no regularization needed
          */
@@ -22963,19 +22963,19 @@ static void lsfit_internalchebyshevfit(/* Real    */ ae_vector* x,
 Internal Floater-Hormann fitting subroutine for fixed D
 *************************************************************************/
 static void lsfit_barycentricfitwcfixedd(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     ae_int_t n,
-     /* Real    */ ae_vector* xc,
-     /* Real    */ ae_vector* yc,
-     /* Integer */ ae_vector* dc,
-     ae_int_t k,
-     ae_int_t m,
-     ae_int_t d,
-     ae_int_t* info,
-     barycentricinterpolant* b,
-     barycentricfitreport* rep,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_vector* w,
+        ae_int_t n,
+        /* Real    */ ae_vector* xc,
+        /* Real    */ ae_vector* yc,
+        /* Integer */ ae_vector* dc,
+        ae_int_t k,
+        ae_int_t m,
+        ae_int_t d,
+        ae_int_t* info,
+        barycentricinterpolant* b,
+        barycentricfitreport* rep,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -23057,18 +23057,18 @@ static void lsfit_barycentricfitwcfixedd(/* Real    */ ae_vector* x,
             return;
         }
     }
-    
+
     /*
      * weight decay for correct handling of task which becomes
      * degenerate after constraints are applied
      */
     decay = 10000*ae_machineepsilon;
-    
+
     /*
      * Scale X, Y, XC, YC
      */
     lsfitscalexy(x, y, w, n, xc, yc, dc, k, &xa, &xb, &sa, &sb, &xoriginal, &yoriginal, _state);
-    
+
     /*
      * allocate space, initialize:
      * * FMatrix-   values of basis functions at X[]
@@ -23083,7 +23083,7 @@ static void lsfit_barycentricfitwcfixedd(/* Real    */ ae_vector* x,
     }
     ae_vector_set_length(&y2, n+m, _state);
     ae_vector_set_length(&w2, n+m, _state);
-    
+
     /*
      * Prepare design and constraints matrices:
      * * fill constraints matrix
@@ -23158,13 +23158,13 @@ static void lsfit_barycentricfitwcfixedd(/* Real    */ ae_vector* x,
             cmatrix.ptr.pp_double[i][m] = yc->ptr.p_double[i];
         }
     }
-    
+
     /*
      * Solve constrained task
      */
     if( k>0 )
     {
-        
+
         /*
          * solve using regularization
          */
@@ -23172,7 +23172,7 @@ static void lsfit_barycentricfitwcfixedd(/* Real    */ ae_vector* x,
     }
     else
     {
-        
+
         /*
          * no constraints, no regularization needed
          */
@@ -23183,7 +23183,7 @@ static void lsfit_barycentricfitwcfixedd(/* Real    */ ae_vector* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Generate interpolant and scale it
      */
@@ -23191,7 +23191,7 @@ static void lsfit_barycentricfitwcfixedd(/* Real    */ ae_vector* x,
     barycentricbuildfloaterhormann(&sx, &sy, m, d, b, _state);
     barycentriclintransx(b, 2/(xb-xa), -(xa+xb)/(xb-xa), _state);
     barycentriclintransy(b, sb-sa, sa, _state);
-    
+
     /*
      * Scale absolute errors obtained from LSFitLinearW.
      * Relative error should be calculated separately
@@ -23305,7 +23305,7 @@ IMPORTANT:  errors  in  parameters  are  calculated  without  taking  into
             account boundary/linear constraints! Presence  of  constraints
             changes distribution of errors, but there is no  easy  way  to
             account for constraints when you calculate covariance matrix.
-            
+
 NOTE:       noise in the data is estimated as follows:
             * for fitting without user-supplied  weights  all  points  are
               assumed to have same level of noise, which is estimated from
@@ -23313,12 +23313,12 @@ NOTE:       noise in the data is estimated as follows:
             * for fitting with user-supplied weights we assume that  noise
               level in I-th point is inversely proportional to Ith weight.
               Coefficient of proportionality is estimated from the data.
-            
+
 NOTE:       we apply small amount of regularization when we invert squared
             Jacobian and calculate covariance matrix. It  guarantees  that
             algorithm won't divide by zero  during  inversion,  but  skews
             error estimates a bit (fractional error is about 10^-9).
-            
+
             However, we believe that this difference is insignificant  for
             all practical purposes except for the situation when you  want
             to compare ALGLIB results with "reference"  implementation  up
@@ -23328,17 +23328,17 @@ NOTE:       we apply small amount of regularization when we invert squared
      Copyright 10.12.2009 by Bochkanov Sergey
 *************************************************************************/
 static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
-     /* Real    */ ae_vector* f0,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_vector* w,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* s,
-     ae_int_t n,
-     ae_int_t k,
-     lsfitreport* rep,
-     /* Real    */ ae_matrix* z,
-     ae_int_t zkind,
-     ae_state *_state)
+        /* Real    */ ae_vector* f0,
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_vector* w,
+        /* Real    */ ae_vector* x,
+        /* Real    */ ae_vector* s,
+        ae_int_t n,
+        ae_int_t k,
+        lsfitreport* rep,
+        /* Real    */ ae_matrix* z,
+        ae_int_t zkind,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _s;
@@ -23361,7 +23361,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
     s = &_s;
     _matinvreport_init(&invrep, _state, ae_true);
 
-    
+
     /*
      * Compute NZCnt - count of non-zero weights
      */
@@ -23373,7 +23373,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
             nzcnt = nzcnt+1;
         }
     }
-    
+
     /*
      * Compute R2
      */
@@ -23413,7 +23413,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
     {
         rep->r2 = 0;
     }
-    
+
     /*
      * Compute estimate of proportionality between noise in the data and weights:
      *     NoiseC = mean(per-point-noise*per-point-weight)
@@ -23437,7 +23437,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
     {
         noisec = 0.0;
     }
-    
+
     /*
      * Two branches on noise level:
      * * NoiseC>0   normal situation
@@ -23446,14 +23446,14 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
     rmatrixsetlengthatleast(&rep->covpar, k, k, _state);
     if( ae_fp_greater(noisec,0) )
     {
-        
+
         /*
          * Normal situation: non-zero noise level
          */
         ae_assert(zkind==0||zkind==1, "LSFit: internal error in EstimateErrors() function", _state);
         if( zkind==0 )
         {
-            
+
             /*
              * Z contains no additional information which can be used to speed up
              * calculations. We have to calculate covariance matrix on our own:
@@ -23469,7 +23469,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
                 v = w->ptr.p_double[i]/noisec;
                 ae_v_moved(&z->ptr.pp_double[i][0], 1, &f1->ptr.pp_double[i][0], 1, ae_v_len(0,k-1), v);
             }
-            
+
             /*
              * Convert S to automatically scaled damped matrix:
              * * calculate SZ - sum of diagonal elements of Z'*Z
@@ -23498,7 +23498,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
             {
                 s->ptr.p_double[j] = sz/ss/ae_sqr(s->ptr.p_double[j], _state);
             }
-            
+
             /*
              * Calculate damped inverse inv(Z'*Z+S).
              * We increase damping factor V until Z'*Z become well-conditioned.
@@ -23525,10 +23525,10 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
         }
         if( zkind==1 )
         {
-            
+
             /*
              * We can reuse additional information:
-             * * Z contains R matrix from QR decomposition of W*F1 
+             * * Z contains R matrix from QR decomposition of W*F1
              * * After multiplication by 1/NoiseC we get Z_mod = N*F1, where diag(N)=w[i]/NoiseC
              * * Such triangular Z_mod is a Cholesky factor from decomposition of J'*N'*N*J.
              *   Thus, we can calculate covariance matrix as inverse of the matrix given by
@@ -23560,7 +23560,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
             {
                 s->ptr.p_double[j] = sz/ss/s->ptr.p_double[j];
             }
-            
+
             /*
              * Calculate damped inverse of inv((Z+v*S)'*(Z+v*S))
              * We increase damping factor V until matrix become well-conditioned.
@@ -23591,7 +23591,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
     }
     else
     {
-        
+
         /*
          * Degenerate situation: zero noise level, covariance matrix is zero.
          */
@@ -23603,7 +23603,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
             }
         }
     }
-    
+
     /*
      * Estimate erorrs in parameters, curve and per-point noise
      */
@@ -23616,7 +23616,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
     }
     for(i=0; i<=n-1; i++)
     {
-        
+
         /*
          * ErrCurve[I] is sqrt(P[i,i]) where P=J*CovPar*J'
          */
@@ -23629,7 +23629,7 @@ static void lsfit_estimateerrors(/* Real    */ ae_matrix* f1,
             }
         }
         rep->errcurve.ptr.p_double[i] = ae_sqrt(v, _state);
-        
+
         /*
          * Noise[i] is filled using weights and current estimate of noise level
          */
@@ -24031,11 +24031,11 @@ NOTES:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline2build(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t st,
-     ae_int_t pt,
-     pspline2interpolant* p,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 ae_int_t st,
+                                 ae_int_t pt,
+                                 pspline2interpolant* p,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _xy;
@@ -24057,20 +24057,20 @@ void pspline2build(/* Real    */ ae_matrix* xy,
     {
         ae_assert(n>=2, "PSpline2Build: N<2!", _state);
     }
-    
+
     /*
      * Prepare
      */
     p->n = n;
     p->periodic = ae_false;
     ae_vector_set_length(&tmp, n, _state);
-    
+
     /*
      * Build parameterization, check that all parameters are distinct
      */
     pspline_pspline2par(xy, n, pt, &p->p, _state);
     ae_assert(aredistinct(&p->p, n, _state), "PSpline2Build: consequent points are too close!", _state);
-    
+
     /*
      * Build splines
      */
@@ -24110,11 +24110,11 @@ description here.
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline3build(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t st,
-     ae_int_t pt,
-     pspline3interpolant* p,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 ae_int_t st,
+                                 ae_int_t pt,
+                                 pspline3interpolant* p,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _xy;
@@ -24136,20 +24136,20 @@ void pspline3build(/* Real    */ ae_matrix* xy,
     {
         ae_assert(n>=2, "PSpline3Build: N<2!", _state);
     }
-    
+
     /*
      * Prepare
      */
     p->n = n;
     p->periodic = ae_false;
     ae_vector_set_length(&tmp, n, _state);
-    
+
     /*
      * Build parameterization, check that all parameters are distinct
      */
     pspline_pspline3par(xy, n, pt, &p->p, _state);
     ae_assert(aredistinct(&p->p, n, _state), "PSpline3Build: consequent points are too close!", _state);
-    
+
     /*
      * Build splines
      */
@@ -24219,11 +24219,11 @@ NOTES:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline2buildperiodic(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t st,
-     ae_int_t pt,
-     pspline2interpolant* p,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t st,
+        ae_int_t pt,
+        pspline2interpolant* p,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _xy;
@@ -24240,7 +24240,7 @@ void pspline2buildperiodic(/* Real    */ ae_matrix* xy,
     ae_assert(st>=1&&st<=2, "PSpline2BuildPeriodic: incorrect spline type!", _state);
     ae_assert(pt>=0&&pt<=2, "PSpline2BuildPeriodic: incorrect parameterization type!", _state);
     ae_assert(n>=3, "PSpline2BuildPeriodic: N<3!", _state);
-    
+
     /*
      * Prepare
      */
@@ -24251,13 +24251,13 @@ void pspline2buildperiodic(/* Real    */ ae_matrix* xy,
     ae_v_move(&xyp.ptr.pp_double[0][0], xyp.stride, &xy->ptr.pp_double[0][0], xy->stride, ae_v_len(0,n-1));
     ae_v_move(&xyp.ptr.pp_double[0][1], xyp.stride, &xy->ptr.pp_double[0][1], xy->stride, ae_v_len(0,n-1));
     ae_v_move(&xyp.ptr.pp_double[n][0], 1, &xy->ptr.pp_double[0][0], 1, ae_v_len(0,1));
-    
+
     /*
      * Build parameterization, check that all parameters are distinct
      */
     pspline_pspline2par(&xyp, n+1, pt, &p->p, _state);
     ae_assert(aredistinct(&p->p, n+1, _state), "PSpline2BuildPeriodic: consequent (or first and last) points are too close!", _state);
-    
+
     /*
      * Build splines
      */
@@ -24291,11 +24291,11 @@ description here.
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline3buildperiodic(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t st,
-     ae_int_t pt,
-     pspline3interpolant* p,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t st,
+        ae_int_t pt,
+        pspline3interpolant* p,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _xy;
@@ -24312,7 +24312,7 @@ void pspline3buildperiodic(/* Real    */ ae_matrix* xy,
     ae_assert(st>=1&&st<=2, "PSpline3BuildPeriodic: incorrect spline type!", _state);
     ae_assert(pt>=0&&pt<=2, "PSpline3BuildPeriodic: incorrect parameterization type!", _state);
     ae_assert(n>=3, "PSpline3BuildPeriodic: N<3!", _state);
-    
+
     /*
      * Prepare
      */
@@ -24324,13 +24324,13 @@ void pspline3buildperiodic(/* Real    */ ae_matrix* xy,
     ae_v_move(&xyp.ptr.pp_double[0][1], xyp.stride, &xy->ptr.pp_double[0][1], xy->stride, ae_v_len(0,n-1));
     ae_v_move(&xyp.ptr.pp_double[0][2], xyp.stride, &xy->ptr.pp_double[0][2], xy->stride, ae_v_len(0,n-1));
     ae_v_move(&xyp.ptr.pp_double[n][0], 1, &xy->ptr.pp_double[0][0], 1, ae_v_len(0,2));
-    
+
     /*
      * Build parameterization, check that all parameters are distinct
      */
     pspline_pspline3par(&xyp, n+1, pt, &p->p, _state);
     ae_assert(aredistinct(&p->p, n+1, _state), "PSplineBuild2Periodic: consequent (or first and last) points are too close!", _state);
-    
+
     /*
      * Build splines
      */
@@ -24382,9 +24382,9 @@ NOTES:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline2parametervalues(pspline2interpolant* p,
-     ae_int_t* n,
-     /* Real    */ ae_vector* t,
-     ae_state *_state)
+                             ae_int_t* n,
+                             /* Real    */ ae_vector* t,
+                             ae_state *_state)
 {
 
     *n = 0;
@@ -24411,9 +24411,9 @@ Same as PSpline2ParameterValues(), but for 3D.
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline3parametervalues(pspline3interpolant* p,
-     ae_int_t* n,
-     /* Real    */ ae_vector* t,
-     ae_state *_state)
+                             ae_int_t* n,
+                             /* Real    */ ae_vector* t,
+                             ae_state *_state)
 {
 
     *n = 0;
@@ -24453,10 +24453,10 @@ OUTPUT PARAMETERS:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline2calc(pspline2interpolant* p,
-     double t,
-     double* x,
-     double* y,
-     ae_state *_state)
+                  double t,
+                  double* x,
+                  double* y,
+                  ae_state *_state)
 {
 
     *x = 0;
@@ -24494,11 +24494,11 @@ OUTPUT PARAMETERS:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline3calc(pspline3interpolant* p,
-     double t,
-     double* x,
-     double* y,
-     double* z,
-     ae_state *_state)
+                  double t,
+                  double* x,
+                  double* y,
+                  double* z,
+                  ae_state *_state)
 {
 
     *x = 0;
@@ -24530,7 +24530,7 @@ INPUT PARAMETERS:
 OUTPUT PARAMETERS:
     X    -   X-component of tangent vector (normalized)
     Y    -   Y-component of tangent vector (normalized)
-    
+
 NOTE:
     X^2+Y^2 is either 1 (for non-zero tangent vector) or 0.
 
@@ -24539,10 +24539,10 @@ NOTE:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline2tangent(pspline2interpolant* p,
-     double t,
-     double* x,
-     double* y,
-     ae_state *_state)
+                     double t,
+                     double* x,
+                     double* y,
+                     ae_state *_state)
 {
     double v;
     double v0;
@@ -24558,7 +24558,7 @@ void pspline2tangent(pspline2interpolant* p,
     pspline2diff(p, t, &v0, x, &v1, y, _state);
     if( ae_fp_neq(*x,0)||ae_fp_neq(*y,0) )
     {
-        
+
         /*
          * this code is a bit more complex than X^2+Y^2 to avoid
          * overflow for large values of X and Y.
@@ -24595,11 +24595,11 @@ NOTE:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline3tangent(pspline3interpolant* p,
-     double t,
-     double* x,
-     double* y,
-     double* z,
-     ae_state *_state)
+                     double t,
+                     double* x,
+                     double* y,
+                     double* z,
+                     ae_state *_state)
 {
     double v;
     double v0;
@@ -24648,12 +24648,12 @@ OUTPUT PARAMETERS:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline2diff(pspline2interpolant* p,
-     double t,
-     double* x,
-     double* dx,
-     double* y,
-     double* dy,
-     ae_state *_state)
+                  double t,
+                  double* x,
+                  double* dx,
+                  double* y,
+                  double* dy,
+                  ae_state *_state)
 {
     double d2s;
 
@@ -24696,14 +24696,14 @@ OUTPUT PARAMETERS:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline3diff(pspline3interpolant* p,
-     double t,
-     double* x,
-     double* dx,
-     double* y,
-     double* dy,
-     double* z,
-     double* dz,
-     ae_state *_state)
+                  double t,
+                  double* x,
+                  double* dx,
+                  double* y,
+                  double* dy,
+                  double* z,
+                  double* dz,
+                  ae_state *_state)
 {
     double d2s;
 
@@ -24749,14 +24749,14 @@ OUTPUT PARAMETERS:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline2diff2(pspline2interpolant* p,
-     double t,
-     double* x,
-     double* dx,
-     double* d2x,
-     double* y,
-     double* dy,
-     double* d2y,
-     ae_state *_state)
+                   double t,
+                   double* x,
+                   double* dx,
+                   double* d2x,
+                   double* y,
+                   double* dy,
+                   double* d2y,
+                   ae_state *_state)
 {
 
     *x = 0;
@@ -24803,17 +24803,17 @@ OUTPUT PARAMETERS:
      Copyright 28.05.2010 by Bochkanov Sergey
 *************************************************************************/
 void pspline3diff2(pspline3interpolant* p,
-     double t,
-     double* x,
-     double* dx,
-     double* d2x,
-     double* y,
-     double* dy,
-     double* d2y,
-     double* z,
-     double* dz,
-     double* d2z,
-     ae_state *_state)
+                   double t,
+                   double* x,
+                   double* dx,
+                   double* d2x,
+                   double* y,
+                   double* dy,
+                   double* d2y,
+                   double* z,
+                   double* dz,
+                   double* d2z,
+                   ae_state *_state)
 {
 
     *x = 0;
@@ -24854,9 +24854,9 @@ RESULT:
      Copyright 30.05.2010 by Bochkanov Sergey
 *************************************************************************/
 double pspline2arclength(pspline2interpolant* p,
-     double a,
-     double b,
-     ae_state *_state)
+                         double a,
+                         double b,
+                         ae_state *_state)
 {
     ae_frame _frame_block;
     autogkstate state;
@@ -24905,9 +24905,9 @@ RESULT:
      Copyright 30.05.2010 by Bochkanov Sergey
 *************************************************************************/
 double pspline3arclength(pspline3interpolant* p,
-     double a,
-     double b,
-     ae_state *_state)
+                         double a,
+                         double b,
+                         ae_state *_state)
 {
     ae_frame _frame_block;
     autogkstate state;
@@ -24946,10 +24946,10 @@ double pspline3arclength(pspline3interpolant* p,
 Builds non-periodic parameterization for 2-dimensional spline
 *************************************************************************/
 static void pspline_pspline2par(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t pt,
-     /* Real    */ ae_vector* p,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t pt,
+        /* Real    */ ae_vector* p,
+        ae_state *_state)
 {
     double v;
     ae_int_t i;
@@ -24957,7 +24957,7 @@ static void pspline_pspline2par(/* Real    */ ae_matrix* xy,
     ae_vector_clear(p);
 
     ae_assert(pt>=0&&pt<=2, "PSpline2Par: internal error!", _state);
-    
+
     /*
      * Build parameterization:
      * * fill by non-normalized values
@@ -24996,10 +24996,10 @@ static void pspline_pspline2par(/* Real    */ ae_matrix* xy,
 Builds non-periodic parameterization for 3-dimensional spline
 *************************************************************************/
 static void pspline_pspline3par(/* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_int_t pt,
-     /* Real    */ ae_vector* p,
-     ae_state *_state)
+        ae_int_t n,
+        ae_int_t pt,
+        /* Real    */ ae_vector* p,
+        ae_state *_state)
 {
     double v;
     ae_int_t i;
@@ -25007,7 +25007,7 @@ static void pspline_pspline3par(/* Real    */ ae_matrix* xy,
     ae_vector_clear(p);
 
     ae_assert(pt>=0&&pt<=2, "PSpline3Par: internal error!", _state);
-    
+
     /*
      * Build parameterization:
      * * fill by non-normalized values
@@ -25175,7 +25175,7 @@ USAGE:
 6. User may call RBFCalc() to calculate model value at the specified point,
    RBFGridCalc() to  calculate   model  values at the points of the regular
    grid. User may extract model coefficients with RBFUnpack() call.
-   
+
 INPUT PARAMETERS:
     NX      -   dimension of the space, NX=2 or NX=3
     NY      -   function dimension, NY>=1
@@ -25184,10 +25184,10 @@ OUTPUT PARAMETERS:
     S       -   RBF model (initially equals to zero)
 
 NOTE 1: memory requirements. RBF models require amount of memory  which is
-        proportional  to  the  number  of data points. Memory is allocated 
+        proportional  to  the  number  of data points. Memory is allocated
         during model construction, but most of this memory is freed  after
         model coefficients are calculated.
-        
+
         Some approximate estimates for N centers with default settings are
         given below:
         * about 250*N*(sizeof(double)+2*sizeof(int)) bytes  of  memory  is
@@ -25228,7 +25228,7 @@ void rbfcreate(ae_int_t nx, ae_int_t ny, rbfmodel* s, ae_state *_state)
     s->radzvalue = 5;
     s->aterm = 1;
     s->algorithmtype = 1;
-    
+
     /*
      * stopping criteria
      */
@@ -25248,8 +25248,8 @@ INPUT PARAMETERS:
     S       -   RBF model, initialized by RBFCreate() call.
     XY      -   points, array[N,NX+NY]. One row corresponds to  one  point
                 in the dataset. First NX elements  are  coordinates,  next
-                NY elements are function values. Array may  be larger than 
-                specific,  in  this  case  only leading [N,NX+NY] elements 
+                NY elements are function values. Array may  be larger than
+                specific,  in  this  case  only leading [N,NX+NY] elements
                 will be used.
     N       -   number of points in the dataset
 
@@ -25259,15 +25259,15 @@ should call RBFBuildModel() in order to build a model for you.
 NOTE: this   function  has   some   serialization-related  subtleties.  We
       recommend you to study serialization examples from ALGLIB  Reference
       Manual if you want to perform serialization of your models.
-      
+
 
   -- ALGLIB --
      Copyright 13.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void rbfsetpoints(rbfmodel* s,
-     /* Real    */ ae_matrix* xy,
-     ae_int_t n,
-     ae_state *_state)
+                  /* Real    */ ae_matrix* xy,
+                  ae_int_t n,
+                  ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -25448,15 +25448,15 @@ TYPICAL ERRORS
 4. Using too many layers - you will get too large and too slow model. This
    model  will  perfectly  reproduce  your function, but maybe you will be
    able to achieve similar results with less layers (and less memory).
-   
+
   -- ALGLIB --
      Copyright 02.03.2012 by Bochkanov Sergey
 *************************************************************************/
 void rbfsetalgomultilayer(rbfmodel* s,
-     double rbase,
-     ae_int_t nlayers,
-     double lambdav,
-     ae_state *_state)
+                          double rbase,
+                          ae_int_t nlayers,
+                          double lambdav,
+                          ae_state *_state)
 {
 
 
@@ -25474,7 +25474,7 @@ void rbfsetalgomultilayer(rbfmodel* s,
 
 /*************************************************************************
 This function sets linear term (model is a sum of radial  basis  functions
-plus linear polynomial). This function won't have effect until  next  call 
+plus linear polynomial). This function won't have effect until  next  call
 to RBFBuildModel().
 
 INPUT PARAMETERS:
@@ -25497,7 +25497,7 @@ void rbfsetlinterm(rbfmodel* s, ae_state *_state)
 
 /*************************************************************************
 This function sets constant term (model is a sum of radial basis functions
-plus constant).  This  function  won't  have  effect  until  next  call to 
+plus constant).  This  function  won't  have  effect  until  next  call to
 RBFBuildModel().
 
 INPUT PARAMETERS:
@@ -25519,7 +25519,7 @@ void rbfsetconstterm(rbfmodel* s, ae_state *_state)
 
 
 /*************************************************************************
-This  function  sets  zero  term (model is a sum of radial basis functions 
+This  function  sets  zero  term (model is a sum of radial basis functions
 without polynomial term). This function won't have effect until next  call
 to RBFBuildModel().
 
@@ -25547,7 +25547,7 @@ This function sets stopping criteria of the underlying linear solver.
 INPUT PARAMETERS:
     S       -   RBF model, initialized by RBFCreate() call
     EpsOrt  -   orthogonality stopping criterion, EpsOrt>=0. Algorithm will
-                stop when ||A'*r||<=EpsOrt where A' is a transpose of  the 
+                stop when ||A'*r||<=EpsOrt where A' is a transpose of  the
                 system matrix, r is a residual vector.
                 Recommended value of EpsOrt is equal to 1E-6.
                 This criterion will stop algorithm when we have "bad fit"
@@ -25557,7 +25557,7 @@ INPUT PARAMETERS:
                 ||r||<=EpsErr*||b||, where r is a residual vector, b is  a
                 right part of the system (function values).
                 Recommended value of EpsErr is equal to 1E-3 or 1E-6.
-                This  criterion  will  stop  algorithm  in  a  "good  fit" 
+                This  criterion  will  stop  algorithm  in  a  "good  fit"
                 situation when we have near-zero residual near the desired
                 solution.
     MaxIts  -   this criterion will stop algorithm after MaxIts iterations.
@@ -25565,7 +25565,7 @@ INPUT PARAMETERS:
                 Zero MaxIts means that no limit is placed on the number of
                 iterations.
 
-We  recommend  to  set  moderate  non-zero  values   EpsOrt   and   EpsErr 
+We  recommend  to  set  moderate  non-zero  values   EpsOrt   and   EpsErr
 simultaneously. Values equal to 10E-6 are good to start with. In case  you
 need high performance and do not need high precision ,  you  may  decrease
 EpsErr down to 0.001. However, we do not recommend decreasing EpsOrt.
@@ -25580,10 +25580,10 @@ NOTE: this   function  has   some   serialization-related  subtleties.  We
      Copyright 13.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void rbfsetcond(rbfmodel* s,
-     double epsort,
-     double epserr,
-     ae_int_t maxits,
-     ae_state *_state)
+                double epsort,
+                double epserr,
+                ae_int_t maxits,
+                ae_state *_state)
 {
 
 
@@ -25606,11 +25606,11 @@ void rbfsetcond(rbfmodel* s,
 
 
 /*************************************************************************
-This   function  builds  RBF  model  and  returns  report  (contains  some 
+This   function  builds  RBF  model  and  returns  report  (contains  some
 information which can be used for evaluation of the algorithm properties).
 
 Call to this function modifies RBF model by calculating its centers/radii/
-weights  and  saving  them  into  RBFModel  structure.  Initially RBFModel 
+weights  and  saving  them  into  RBFModel  structure.  Initially RBFModel
 contain zero coefficients, but after call to this function  we  will  have
 coefficients which were calculated in order to fit our dataset.
 
@@ -25693,7 +25693,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
     ae_vector_init(&tmp1, 0, DT_REAL, _state, ae_true);
 
     ae_assert(s->nx==2||s->nx==3, "RBFBuildModel: S.NX<>2 or S.NX<>3!", _state);
-    
+
     /*
      * Quick exit when we have no points
      */
@@ -25720,7 +25720,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * General case, N>0
      */
@@ -25728,7 +25728,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
     rep->iterationscount = 0;
     rep->nmv = 0;
     ae_vector_set_length(&xcx, rbf_mxnx, _state);
-    
+
     /*
      * First model in a sequence - linear model.
      * Residuals from linear regression are stored in the ResidualY variable
@@ -25748,7 +25748,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Handle special case: multilayer model with NLayers=0.
      * Quick exit.
@@ -25776,7 +25776,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Second model in a sequence - RBF term.
      *
@@ -25788,7 +25788,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
     layerscnt = 0;
     if( s->algorithmtype==1 )
     {
-        
+
         /*
          * Add RBF model.
          * This model uses local KD-trees to speed-up nearest neighbor searches.
@@ -25909,7 +25909,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
         kdtreebuildtagged(&xc, &ctags, nc, rbf_mxnx, 0, 2, &ctree, _state);
         if( s->fixrad )
         {
-            
+
             /*
              * Fixed radius
              */
@@ -25921,7 +25921,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
         }
         else
         {
-            
+
             /*
              * Dynamic radius
              */
@@ -25938,7 +25938,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
                 }
                 else
                 {
-                    
+
                     /*
                      * NC>1, calculate radii using distances to nearest neigbors
                      */
@@ -25955,7 +25955,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
                         }
                         else
                         {
-                            
+
                             /*
                              * No neighbors found (it will happen when we have only one center).
                              * Initialize radius with default value.
@@ -25963,7 +25963,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
                             radius.ptr.p_double[i] = 1.0;
                         }
                     }
-                    
+
                     /*
                      * Apply filtering
                      */
@@ -25977,7 +25977,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
                     {
                         radius.ptr.p_double[i] = ae_minreal(radius.ptr.p_double[i], s->radzvalue*tmp0.ptr.p_double[nc/2], _state);
                     }
-                    
+
                     /*
                      * Calculate RMax, check that all radii are non-zero
                      */
@@ -26024,7 +26024,7 @@ void rbfbuildmodel(rbfmodel* s, rbfreport* rep, ae_state *_state)
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Model is built
      */
@@ -26080,7 +26080,7 @@ This function should be used when we have NY=1 (scalar function) and  NX=2
 you have general situation (NX-dimensional space, NY-dimensional function)
 you should use general, less efficient implementation RBFCalc().
 
-If  you  want  to  calculate  function  values  many times, consider using 
+If  you  want  to  calculate  function  values  many times, consider using
 RBFGridCalc2(), which is far more efficient than many subsequent calls  to
 RBFCalc2().
 
@@ -26179,10 +26179,10 @@ RESULT:
      Copyright 13.12.2011 by Bochkanov Sergey
 *************************************************************************/
 double rbfcalc3(rbfmodel* s,
-     double x0,
-     double x1,
-     double x2,
-     ae_state *_state)
+                double x0,
+                double x1,
+                double x2,
+                ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -26207,7 +26207,7 @@ double rbfcalc3(rbfmodel* s,
     {
         return result;
     }
-    
+
     /*
      * calculating value for F(X)
      */
@@ -26241,9 +26241,9 @@ double rbfcalc3(rbfmodel* s,
 /*************************************************************************
 This function calculates values of the RBF model at the given point.
 
-This is general function which can be used for arbitrary NX (dimension  of 
+This is general function which can be used for arbitrary NX (dimension  of
 the space of arguments) and NY (dimension of the function itself). However
-when  you  have  NY=1  you  may  find more convenient to use RBFCalc2() or 
+when  you  have  NY=1  you  may  find more convenient to use RBFCalc2() or
 RBFCalc3().
 
 This function returns 0.0 when model is not initialized.
@@ -26251,11 +26251,11 @@ This function returns 0.0 when model is not initialized.
 INPUT PARAMETERS:
     S       -   RBF model
     X       -   coordinates, array[NX].
-                X may have more than NX elements, in this case only 
+                X may have more than NX elements, in this case only
                 leading NX will be used.
 
 OUTPUT PARAMETERS:
-    Y       -   function value, array[NY]. Y is out-parameter and 
+    Y       -   function value, array[NY]. Y is out-parameter and
                 reallocated after call to this function. In case you  want
                 to reuse previously allocated Y, you may use RBFCalcBuf(),
                 which reallocates Y only when it is too small.
@@ -26264,9 +26264,9 @@ OUTPUT PARAMETERS:
      Copyright 13.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void rbfcalc(rbfmodel* s,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+             /* Real    */ ae_vector* x,
+             /* Real    */ ae_vector* y,
+             ae_state *_state)
 {
 
     ae_vector_clear(y);
@@ -26280,13 +26280,13 @@ void rbfcalc(rbfmodel* s,
 /*************************************************************************
 This function calculates values of the RBF model at the given point.
 
-Same as RBFCalc(), but does not reallocate Y when in is large enough to 
+Same as RBFCalc(), but does not reallocate Y when in is large enough to
 store function values.
 
 INPUT PARAMETERS:
     S       -   RBF model
     X       -   coordinates, array[NX].
-                X may have more than NX elements, in this case only 
+                X may have more than NX elements, in this case only
                 leading NX will be used.
     Y       -   possibly preallocated array
 
@@ -26298,9 +26298,9 @@ OUTPUT PARAMETERS:
      Copyright 13.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void rbfcalcbuf(rbfmodel* s,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state)
+                /* Real    */ ae_vector* x,
+                /* Real    */ ae_vector* y,
+                ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -26378,19 +26378,19 @@ INPUT PARAMETERS:
     N1      -   grid size (number of nodes) in the second dimension
 
 OUTPUT PARAMETERS:
-    Y       -   function values, array[N0,N1]. Y is out-variable and 
+    Y       -   function values, array[N0,N1]. Y is out-variable and
                 is reallocated by this function.
 
   -- ALGLIB --
      Copyright 13.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void rbfgridcalc2(rbfmodel* s,
-     /* Real    */ ae_vector* x0,
-     ae_int_t n0,
-     /* Real    */ ae_vector* x1,
-     ae_int_t n1,
-     /* Real    */ ae_matrix* y,
-     ae_state *_state)
+                  /* Real    */ ae_vector* x0,
+                  ae_int_t n0,
+                  /* Real    */ ae_vector* x1,
+                  ae_int_t n1,
+                  /* Real    */ ae_matrix* y,
+                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector cpx0;
@@ -26442,7 +26442,7 @@ void rbfgridcalc2(rbfmodel* s,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      *create and sort arrays
      */
@@ -26458,7 +26458,7 @@ void rbfgridcalc2(rbfmodel* s,
         cpx1.ptr.p_double[i] = x1->ptr.p_double[i];
     }
     tagsort(&cpx1, n1, &p11, &p2, _state);
-    
+
     /*
      *calculate function's value
      */
@@ -26469,7 +26469,7 @@ void rbfgridcalc2(rbfmodel* s,
         {
             omega = s->wr.ptr.pp_double[i][1+d];
             rlimit = radius*rbf_rbffarradius;
-            
+
             /*
              *search lower and upper indexes
              */
@@ -26495,7 +26495,7 @@ void rbfgridcalc2(rbfmodel* s,
             radius = 0.5*radius;
         }
     }
-    
+
     /*
      *add linear term
      */
@@ -26521,27 +26521,27 @@ OUTPUT PARAMETERS:
     NY      -   dimensionality of the target function
     XWR     -   model information, array[NC,NX+NY+1].
                 One row of the array corresponds to one basis function:
-                * first NX columns  - coordinates of the center 
-                * next NY columns   - weights, one per dimension of the 
+                * first NX columns  - coordinates of the center
+                * next NY columns   - weights, one per dimension of the
                                       function being modelled
                 * last column       - radius, same for all dimensions of
                                       the function being modelled
     NC      -   number of the centers
-    V       -   polynomial  term , array[NY,NX+1]. One row per one 
-                dimension of the function being modelled. First NX 
-                elements are linear coefficients, V[NX] is equal to the 
+    V       -   polynomial  term , array[NY,NX+1]. One row per one
+                dimension of the function being modelled. First NX
+                elements are linear coefficients, V[NX] is equal to the
                 constant part.
 
   -- ALGLIB --
      Copyright 13.12.2011 by Bochkanov Sergey
 *************************************************************************/
 void rbfunpack(rbfmodel* s,
-     ae_int_t* nx,
-     ae_int_t* ny,
-     /* Real    */ ae_matrix* xwr,
-     ae_int_t* nc,
-     /* Real    */ ae_matrix* v,
-     ae_state *_state)
+               ae_int_t* nx,
+               ae_int_t* ny,
+               /* Real    */ ae_matrix* xwr,
+               ae_int_t* nc,
+               /* Real    */ ae_matrix* v,
+               ae_state *_state)
 {
     ae_int_t i;
     ae_int_t j;
@@ -26556,7 +26556,7 @@ void rbfunpack(rbfmodel* s,
     *nx = s->nx;
     *ny = s->ny;
     *nc = s->nc;
-    
+
     /*
      * Fill V
      */
@@ -26566,7 +26566,7 @@ void rbfunpack(rbfmodel* s,
         ae_v_move(&v->ptr.pp_double[i][0], 1, &s->v.ptr.pp_double[i][0], 1, ae_v_len(0,s->nx-1));
         v->ptr.pp_double[i][s->nx] = s->v.ptr.pp_double[i][rbf_mxnx];
     }
-    
+
     /*
      * Fill XWR and V
      */
@@ -26598,13 +26598,13 @@ void rbfalloc(ae_serializer* s, rbfmodel* model, ae_state *_state)
 {
 
 
-    
+
     /*
      * Header
      */
     ae_serializer_alloc_entry(s);
     ae_serializer_alloc_entry(s);
-    
+
     /*
      * Data
      */
@@ -26630,13 +26630,13 @@ void rbfserialize(ae_serializer* s, rbfmodel* model, ae_state *_state)
 {
 
 
-    
+
     /*
      * Header
      */
     ae_serializer_serialize_int(s, getrbfserializationcode(_state), _state);
     ae_serializer_serialize_int(s, rbf_rbffirstversion, _state);
-    
+
     /*
      * Data
      */
@@ -26667,7 +26667,7 @@ void rbfunserialize(ae_serializer* s, rbfmodel* model, ae_state *_state)
 
     _rbfmodel_clear(model);
 
-    
+
     /*
      * Header
      */
@@ -26675,7 +26675,7 @@ void rbfunserialize(ae_serializer* s, rbfmodel* model, ae_state *_state)
     ae_assert(i0==getrbfserializationcode(_state), "RBFUnserialize: stream header corrupted", _state);
     ae_serializer_unserialize_int(s, &i1, _state);
     ae_assert(i1==rbf_rbffirstversion, "RBFUnserialize: stream header corrupted", _state);
-    
+
     /*
      * Unserialize primary model parameters, initialize model.
      *
@@ -26753,7 +26753,7 @@ INPUT PARAMETERS:
     S       -   RBF model, initialized by RBFCreate() call
     Q       -   radius coefficient, Q>0
     Z       -   z-parameter, Z>0
-    
+
 Default value of Q is equal to 1.0
 Default value of Z is equal to 5.0
 
@@ -26765,9 +26765,9 @@ NOTE: this   function  has   some   serialization-related  subtleties.  We
      Copyright 13.12.2011 by Bochkanov Sergey
 *************************************************************************/
 static void rbf_rbfradnn(rbfmodel* s,
-     double q,
-     double z,
-     ae_state *_state)
+                         double q,
+                         double z,
+                         ae_state *_state)
 {
 
 
@@ -26780,12 +26780,12 @@ static void rbf_rbfradnn(rbfmodel* s,
 
 
 static ae_bool rbf_buildlinearmodel(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     ae_int_t n,
-     ae_int_t ny,
-     ae_int_t modeltype,
-     /* Real    */ ae_matrix* v,
-     ae_state *_state)
+        /* Real    */ ae_matrix* y,
+        ae_int_t n,
+        ae_int_t ny,
+        ae_int_t modeltype,
+        /* Real    */ ae_matrix* v,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector tmpy;
@@ -26812,7 +26812,7 @@ static ae_bool rbf_buildlinearmodel(/* Real    */ ae_matrix* x,
 
     ae_assert(n>=0, "BuildLinearModel: N<0", _state);
     ae_assert(ny>0, "BuildLinearModel: NY<=0", _state);
-    
+
     /*
      * Handle degenerate case (N=0)
      */
@@ -26830,18 +26830,18 @@ static ae_bool rbf_buildlinearmodel(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Allocate temporaries
      */
     ae_vector_set_length(&tmpy, n, _state);
-    
+
     /*
      * General linear model.
      */
     if( modeltype==1 )
     {
-        
+
         /*
          * Calculate scaling/shifting, transform variables, prepare LLS problem
          */
@@ -26885,9 +26885,9 @@ static ae_bool rbf_buildlinearmodel(/* Real    */ ae_matrix* x,
         {
             a.ptr.pp_double[i][rbf_mxnx] = 1;
         }
-        
+
         /*
-         * Solve linear system in transformed variables, make backward 
+         * Solve linear system in transformed variables, make backward
          */
         for(i=0; i<=ny-1; i++)
         {
@@ -26923,7 +26923,7 @@ static ae_bool rbf_buildlinearmodel(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Constant model, very simple
      */
@@ -26951,7 +26951,7 @@ static ae_bool rbf_buildlinearmodel(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Zero model
      */
@@ -26969,24 +26969,24 @@ static ae_bool rbf_buildlinearmodel(/* Real    */ ae_matrix* x,
 
 
 static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     /* Real    */ ae_matrix* xc,
-     /* Real    */ ae_vector* r,
-     ae_int_t n,
-     ae_int_t nc,
-     ae_int_t ny,
-     kdtree* pointstree,
-     kdtree* centerstree,
-     double epsort,
-     double epserr,
-     ae_int_t maxits,
-     ae_int_t* gnnz,
-     ae_int_t* snnz,
-     /* Real    */ ae_matrix* w,
-     ae_int_t* info,
-     ae_int_t* iterationscount,
-     ae_int_t* nmv,
-     ae_state *_state)
+        /* Real    */ ae_matrix* y,
+        /* Real    */ ae_matrix* xc,
+        /* Real    */ ae_vector* r,
+        ae_int_t n,
+        ae_int_t nc,
+        ae_int_t ny,
+        kdtree* pointstree,
+        kdtree* centerstree,
+        double epsort,
+        double epserr,
+        ae_int_t maxits,
+        ae_int_t* gnnz,
+        ae_int_t* snnz,
+        /* Real    */ ae_matrix* w,
+        ae_int_t* info,
+        ae_int_t* iterationscount,
+        ae_int_t* nmv,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     linlsqrstate state;
@@ -27068,7 +27068,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
     ae_matrix_init(&xx, 0, 0, DT_REAL, _state, ae_true);
     ae_matrix_init(&cx, 0, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * Handle special cases: NC=0
      */
@@ -27080,7 +27080,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Prepare for general case, NC>0
      */
@@ -27090,7 +27090,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
     *info = -1;
     *iterationscount = 0;
     *nmv = 0;
-    
+
     /*
      * This block prepares quantities used to compute approximate cardinal basis functions (ACBFs):
      * * NearCentersCnt[]   -   array[NC], whose elements store number of near centers used to build ACBF
@@ -27118,7 +27118,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         {
             xcx.ptr.p_double[j] = xc->ptr.pp_double[i][j];
         }
-        
+
         /*
          * Determine number of near centers and maximum radius of near centers
          */
@@ -27129,7 +27129,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         {
             maxrad = ae_maxreal(maxrad, ae_fabs(r->ptr.p_double[centerstags.ptr.p_int[j]], _state), _state);
         }
-        
+
         /*
          * Determine number of near points (ones which used to build ACBF)
          * and skipped points (the most near points which are NOT used to build ACBF
@@ -27138,12 +27138,12 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         skipnearpointscnt.ptr.p_int[i] = kdtreequeryrnn(pointstree, &xcx, 0.1*r->ptr.p_double[i], ae_true, _state);
         nearpointscnt.ptr.p_int[i] = kdtreequeryrnn(pointstree, &xcx, (r->ptr.p_double[i]+maxrad)*rbf_rbfnearradius, ae_true, _state)-skipnearpointscnt.ptr.p_int[i];
         ae_assert(nearpointscnt.ptr.p_int[i]>=0, "BuildRBFModelLSQR: internal error", _state);
-        
+
         /*
          * Determine number of far points
          */
         farpointscnt.ptr.p_int[i] = kdtreequeryrnn(pointstree, &xcx, ae_maxreal(r->ptr.p_double[i]*rbf_rbfnearradius+maxrad*rbf_rbffarradius, r->ptr.p_double[i]*rbf_rbffarradius, _state), ae_true, _state);
-        
+
         /*
          * calculate sum and max, make some basic checks
          */
@@ -27158,7 +27158,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
     *snnz = sumnearcenterscnt;
     *gnnz = sumfarpointscnt;
     ae_assert(maxnearcenterscnt>0, "BuildRBFModelLSQR: internal error", _state);
-    
+
     /*
      * Allocate temporaries.
      *
@@ -27173,7 +27173,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
     ae_matrix_set_length(&nearcenters, maxnearcenterscnt, rbf_mxnx, _state);
     ae_matrix_set_length(&nearpoints, ae_maxint(maxnearpointscnt, 1, _state), rbf_mxnx, _state);
     ae_matrix_set_length(&farpoints, ae_maxint(maxfarpointscnt, 1, _state), rbf_mxnx, _state);
-    
+
     /*
      * fill matrix SpG
      */
@@ -27182,7 +27182,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
     for(i=0; i<=nc-1; i++)
     {
         centerscnt = nearcenterscnt.ptr.p_int[i];
-        
+
         /*
          * main center
          */
@@ -27190,7 +27190,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         {
             xcx.ptr.p_double[j] = xc->ptr.pp_double[i][j];
         }
-        
+
         /*
          * center's tree
          */
@@ -27198,7 +27198,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         ae_assert(tmpi==centerscnt, "BuildRBFModelLSQR: internal error", _state);
         kdtreequeryresultsx(centerstree, &cx, _state);
         kdtreequeryresultstags(centerstree, &centerstags, _state);
-        
+
         /*
          * point's tree
          */
@@ -27207,7 +27207,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         {
             mrad = ae_maxreal(mrad, r->ptr.p_double[centerstags.ptr.p_int[j]], _state);
         }
-        
+
         /*
          * we need to be sure that 'CTree' contains
          * at least one side center
@@ -27220,7 +27220,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         }
         if( centerscnt>1&&nearpointscnt.ptr.p_int[i]>0 )
         {
-            
+
             /*
              * first KDTree request for points
              */
@@ -27251,7 +27251,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
             {
                 g.ptr.p_double[j] = ae_exp(-(ae_sqr(xcx.ptr.p_double[0]-cx.ptr.pp_double[j][0], _state)+ae_sqr(xcx.ptr.p_double[1]-cx.ptr.pp_double[j][1], _state)+ae_sqr(xcx.ptr.p_double[2]-cx.ptr.pp_double[j][2], _state))/ae_sqr(r->ptr.p_double[centerstags.ptr.p_int[j]], _state), _state);
             }
-            
+
             /*
              * calculate the problem
              */
@@ -27284,7 +27284,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
                 sparseset(&sps, i, centerstags.ptr.p_int[j], c.ptr.p_double[j], _state);
             }
         }
-        
+
         /*
          * second KDTree request for points
          */
@@ -27293,7 +27293,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
         ae_assert(tmpi==pointscnt, "BuildRBFModelLSQR: internal error", _state);
         kdtreequeryresultsx(pointstree, &xx, _state);
         kdtreequeryresultstags(pointstree, &pointstags, _state);
-        
+
         /*
          *fill SpG matrix
          */
@@ -27321,7 +27321,7 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
     }
     sparseconverttocrs(&spg, _state);
     sparseconverttocrs(&sps, _state);
-    
+
     /*
      * solve by LSQR method
      */
@@ -27358,25 +27358,25 @@ static void rbf_buildrbfmodellsqr(/* Real    */ ae_matrix* x,
 
 
 static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     /* Real    */ ae_matrix* xc,
-     double rval,
-     /* Real    */ ae_vector* r,
-     ae_int_t n,
-     ae_int_t* nc,
-     ae_int_t ny,
-     ae_int_t nlayers,
-     kdtree* centerstree,
-     double epsort,
-     double epserr,
-     ae_int_t maxits,
-     double lambdav,
-     ae_int_t* annz,
-     /* Real    */ ae_matrix* w,
-     ae_int_t* info,
-     ae_int_t* iterationscount,
-     ae_int_t* nmv,
-     ae_state *_state)
+        /* Real    */ ae_matrix* y,
+        /* Real    */ ae_matrix* xc,
+        double rval,
+        /* Real    */ ae_vector* r,
+        ae_int_t n,
+        ae_int_t* nc,
+        ae_int_t ny,
+        ae_int_t nlayers,
+        kdtree* centerstree,
+        double epsort,
+        double epserr,
+        ae_int_t maxits,
+        double lambdav,
+        ae_int_t* annz,
+        /* Real    */ ae_matrix* w,
+        ae_int_t* info,
+        ae_int_t* iterationscount,
+        ae_int_t* nmv,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     linlsqrstate state;
@@ -27458,7 +27458,7 @@ static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
     linlsqrcreate(n, n, &state, _state);
     linlsqrsetcond(&state, epsort, epserr, maxits, _state);
     linlsqrsetlambdai(&state, 1.0E-6, _state);
-    
+
     /*
      * calculate number of non-zero elements for sparse matrix
      */
@@ -27472,7 +27472,7 @@ static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
     }
     for(layer=0; layer<=nlayers-1; layer++)
     {
-        
+
         /*
          * Fill sparse matrix, calculate norm(A)
          */
@@ -27496,7 +27496,7 @@ static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
         }
         anorm = ae_sqrt(anorm, _state);
         sparseconverttocrs(&spa, _state);
-        
+
         /*
          * Calculate maximum residual before adding new layer.
          * This value is not used by algorithm, the only purpose is to make debugging easier.
@@ -27509,7 +27509,7 @@ static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
                 rmaxbefore = ae_maxreal(rmaxbefore, ae_fabs(y->ptr.pp_double[j][i], _state), _state);
             }
         }
-        
+
         /*
          * Process NY dimensions of the target function
          */
@@ -27519,7 +27519,7 @@ static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
             {
                 tmpy.ptr.p_double[j] = y->ptr.pp_double[j][i];
             }
-            
+
             /*
              * calculate Omega for current layer
              */
@@ -27532,7 +27532,7 @@ static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
                 ae_frame_leave(_state);
                 return;
             }
-            
+
             /*
              * calculate error for current layer
              */
@@ -27552,7 +27552,7 @@ static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
                 }
                 y->ptr.pp_double[j][i] = y->ptr.pp_double[j][i]-yval;
             }
-            
+
             /*
              * write Omega in out parameter W
              */
@@ -27563,7 +27563,7 @@ static void rbf_buildrbfmlayersmodellsqr(/* Real    */ ae_matrix* x,
             *iterationscount = *iterationscount+lsqrrep.iterationscount;
             *nmv = *nmv+lsqrrep.nmv;
         }
-        
+
         /*
          * Calculate maximum residual before adding new layer.
          * This value is not used by algorithm, the only purpose is to make debugging easier.
@@ -27738,9 +27738,9 @@ Result:
      Copyright 05.07.2007 by Bochkanov Sergey
 *************************************************************************/
 double spline2dcalc(spline2dinterpolant* c,
-     double x,
-     double y,
-     ae_state *_state)
+                    double x,
+                    double y,
+                    ae_state *_state)
 {
     double v;
     double vx;
@@ -27780,13 +27780,13 @@ Output parameters:
      Copyright 05.07.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline2ddiff(spline2dinterpolant* c,
-     double x,
-     double y,
-     double* f,
-     double* fx,
-     double* fy,
-     double* fxy,
-     ae_state *_state)
+                  double x,
+                  double y,
+                  double* f,
+                  double* fx,
+                  double* fy,
+                  double* fxy,
+                  ae_state *_state)
 {
     double t;
     double dt;
@@ -27825,7 +27825,7 @@ void spline2ddiff(spline2dinterpolant* c,
 
     ae_assert(c->stype==-1||c->stype==-3, "Spline2DDiff: incorrect C (incorrect parameter C.SType)", _state);
     ae_assert(ae_isfinite(x, _state)&&ae_isfinite(y, _state), "Spline2DDiff: X or Y contains NaN or Infinite value", _state);
-    
+
     /*
      * Prepare F, dF/dX, dF/dY, d2F/dXdY
      */
@@ -27837,7 +27837,7 @@ void spline2ddiff(spline2dinterpolant* c,
     {
         return;
     }
-    
+
     /*
      * Binary search in the [ x[0], ..., x[n-2] ] (x[n-1] is not included)
      */
@@ -27858,7 +27858,7 @@ void spline2ddiff(spline2dinterpolant* c,
     t = (x-c->x.ptr.p_double[l])/(c->x.ptr.p_double[l+1]-c->x.ptr.p_double[l]);
     dt = 1.0/(c->x.ptr.p_double[l+1]-c->x.ptr.p_double[l]);
     ix = l;
-    
+
     /*
      * Binary search in the [ y[0], ..., y[m-2] ] (y[m-1] is not included)
      */
@@ -27879,7 +27879,7 @@ void spline2ddiff(spline2dinterpolant* c,
     u = (y-c->y.ptr.p_double[l])/(c->y.ptr.p_double[l+1]-c->y.ptr.p_double[l]);
     du = 1.0/(c->y.ptr.p_double[l+1]-c->y.ptr.p_double[l]);
     iy = l;
-    
+
     /*
      * Bilinear interpolation
      */
@@ -27895,13 +27895,13 @@ void spline2ddiff(spline2dinterpolant* c,
         *fxy = (y1-y2+y3-y4)*du*dt;
         return;
     }
-    
+
     /*
      * Bicubic interpolation
      */
     if( c->stype==-3 )
     {
-        
+
         /*
          * Prepare info
          */
@@ -27920,7 +27920,7 @@ void spline2ddiff(spline2dinterpolant* c,
         s2 = c->n*iy+(ix+1);
         s3 = c->n*(iy+1)+(ix+1);
         s4 = c->n*(iy+1)+ix;
-        
+
         /*
          * Calculate
          */
@@ -28008,11 +28008,11 @@ Result:
      Copyright 30.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline2dlintransxy(spline2dinterpolant* c,
-     double ax,
-     double bx,
-     double ay,
-     double by,
-     ae_state *_state)
+                        double ax,
+                        double bx,
+                        double ay,
+                        double by,
+                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector x;
@@ -28055,7 +28055,7 @@ void spline2dlintransxy(spline2dinterpolant* c,
             }
         }
     }
-    
+
     /*
      * Handle different combinations of AX/AY
      */
@@ -28114,7 +28114,7 @@ void spline2dlintransxy(spline2dinterpolant* c,
             }
         }
     }
-    
+
     /*
      * Rebuild spline
      */
@@ -28136,7 +28136,7 @@ This subroutine performs linear transformation of the spline.
 Input parameters:
     C   -   spline interpolant.
     A, B-   transformation coefficients: S2(x,y) = A*S(x,y) + B
-    
+
 Output parameters:
     C   -   transformed spline
 
@@ -28144,9 +28144,9 @@ Output parameters:
      Copyright 30.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline2dlintransf(spline2dinterpolant* c,
-     double a,
-     double b,
-     ae_state *_state)
+                       double a,
+                       double b,
+                       ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector x;
@@ -28201,8 +28201,8 @@ Output parameters:
      Copyright 29.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline2dcopy(spline2dinterpolant* c,
-     spline2dinterpolant* cc,
-     ae_state *_state)
+                  spline2dinterpolant* cc,
+                  ae_state *_state)
 {
     ae_int_t tblsize;
 
@@ -28243,7 +28243,7 @@ Input parameters:
     OldWidth    -   old grid width, OldWidth>1
     NewHeight   -   new grid height, NewHeight>1
     NewWidth    -   new grid width, NewWidth>1
-    
+
 Output parameters:
     B           -   function values at the new grid,
                     array[0..NewHeight-1, 0..NewWidth-1]
@@ -28253,12 +28253,12 @@ Output parameters:
      Copyright by Bochkanov Sergey
 *************************************************************************/
 void spline2dresamplebicubic(/* Real    */ ae_matrix* a,
-     ae_int_t oldheight,
-     ae_int_t oldwidth,
-     /* Real    */ ae_matrix* b,
-     ae_int_t newheight,
-     ae_int_t newwidth,
-     ae_state *_state)
+        ae_int_t oldheight,
+        ae_int_t oldwidth,
+        /* Real    */ ae_matrix* b,
+        ae_int_t newheight,
+        ae_int_t newwidth,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix buf;
@@ -28279,7 +28279,7 @@ void spline2dresamplebicubic(/* Real    */ ae_matrix* a,
 
     ae_assert(oldwidth>1&&oldheight>1, "Spline2DResampleBicubic: width/height less than 1", _state);
     ae_assert(newwidth>1&&newheight>1, "Spline2DResampleBicubic: width/height less than 1", _state);
-    
+
     /*
      * Prepare
      */
@@ -28289,13 +28289,13 @@ void spline2dresamplebicubic(/* Real    */ ae_matrix* a,
     ae_matrix_set_length(&buf, oldheight, newwidth, _state);
     ae_vector_set_length(&x, ae_maxint(mw, mh, _state), _state);
     ae_vector_set_length(&y, ae_maxint(mw, mh, _state), _state);
-    
+
     /*
      * Horizontal interpolation
      */
     for(i=0; i<=oldheight-1; i++)
     {
-        
+
         /*
          * Fill X, Y
          */
@@ -28304,7 +28304,7 @@ void spline2dresamplebicubic(/* Real    */ ae_matrix* a,
             x.ptr.p_double[j] = (double)j/(double)(oldwidth-1);
             y.ptr.p_double[j] = a->ptr.pp_double[i][j];
         }
-        
+
         /*
          * Interpolate and place result into temporary matrix
          */
@@ -28314,13 +28314,13 @@ void spline2dresamplebicubic(/* Real    */ ae_matrix* a,
             buf.ptr.pp_double[i][j] = spline1dcalc(&c, (double)j/(double)(newwidth-1), _state);
         }
     }
-    
+
     /*
      * Vertical interpolation
      */
     for(j=0; j<=newwidth-1; j++)
     {
-        
+
         /*
          * Fill X, Y
          */
@@ -28329,7 +28329,7 @@ void spline2dresamplebicubic(/* Real    */ ae_matrix* a,
             x.ptr.p_double[i] = (double)i/(double)(oldheight-1);
             y.ptr.p_double[i] = buf.ptr.pp_double[i][j];
         }
-        
+
         /*
          * Interpolate and place result into B
          */
@@ -28363,12 +28363,12 @@ Output parameters:
      Copyright by Bochkanov Sergey
 *************************************************************************/
 void spline2dresamplebilinear(/* Real    */ ae_matrix* a,
-     ae_int_t oldheight,
-     ae_int_t oldwidth,
-     /* Real    */ ae_matrix* b,
-     ae_int_t newheight,
-     ae_int_t newwidth,
-     ae_state *_state)
+        ae_int_t oldheight,
+        ae_int_t oldwidth,
+        /* Real    */ ae_matrix* b,
+        ae_int_t newheight,
+        ae_int_t newwidth,
+        ae_state *_state)
 {
     ae_int_t l;
     ae_int_t c;
@@ -28425,13 +28425,13 @@ Output parameters:
      Copyright 16.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline2dbuildbilinearv(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     /* Real    */ ae_vector* f,
-     ae_int_t d,
-     spline2dinterpolant* c,
-     ae_state *_state)
+        ae_int_t n,
+        /* Real    */ ae_vector* y,
+        ae_int_t m,
+        /* Real    */ ae_vector* f,
+        ae_int_t d,
+        spline2dinterpolant* c,
+        ae_state *_state)
 {
     double t;
     ae_int_t i;
@@ -28449,7 +28449,7 @@ void spline2dbuildbilinearv(/* Real    */ ae_vector* x,
     k = n*m*d;
     ae_assert(f->cnt>=k, "Spline2DBuildBilinearV: length of F is too short (Length(F)<N*M*D)", _state);
     ae_assert(isfinitevector(f, k, _state), "Spline2DBuildBilinearV: F contains NaN or Infinite value", _state);
-    
+
     /*
      * Fill interpolant
      */
@@ -28473,7 +28473,7 @@ void spline2dbuildbilinearv(/* Real    */ ae_vector* x,
     {
         c->f.ptr.p_double[i] = f->ptr.p_double[i];
     }
-    
+
     /*
      * Sort points
      */
@@ -28553,13 +28553,13 @@ Output parameters:
      Copyright 16.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline2dbuildbicubicv(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     /* Real    */ ae_vector* f,
-     ae_int_t d,
-     spline2dinterpolant* c,
-     ae_state *_state)
+        ae_int_t n,
+        /* Real    */ ae_vector* y,
+        ae_int_t m,
+        /* Real    */ ae_vector* f,
+        ae_int_t d,
+        spline2dinterpolant* c,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _f;
@@ -28590,7 +28590,7 @@ void spline2dbuildbicubicv(/* Real    */ ae_vector* x,
     k = n*m*d;
     ae_assert(f->cnt>=k, "Spline2DBuildBicubicV: length of F is too short (Length(F)<N*M*D)", _state);
     ae_assert(isfinitevector(f, k, _state), "Spline2DBuildBicubicV: F contains NaN or Infinite value", _state);
-    
+
     /*
      * Fill interpolant:
      *  F[0]...F[N*M*D-1]:
@@ -28620,7 +28620,7 @@ void spline2dbuildbicubicv(/* Real    */ ae_vector* x,
     {
         c->y.ptr.p_double[i] = y->ptr.p_double[i];
     }
-    
+
     /*
      * Sort points
      */
@@ -28720,10 +28720,10 @@ OUTPUT PARAMETERS:
      Copyright 16.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline2dcalcvbuf(spline2dinterpolant* c,
-     double x,
-     double y,
-     /* Real    */ ae_vector* f,
-     ae_state *_state)
+                      double x,
+                      double y,
+                      /* Real    */ ae_vector* f,
+                      ae_state *_state)
 {
     double t;
     double dt;
@@ -28760,7 +28760,7 @@ void spline2dcalcvbuf(spline2dinterpolant* c,
     ae_assert(c->stype==-1||c->stype==-3, "Spline2DCalcVBuf: incorrect C (incorrect parameter C.SType)", _state);
     ae_assert(ae_isfinite(x, _state)&&ae_isfinite(y, _state), "Spline2DCalcVBuf: either X=NaN/Infinite or Y=NaN/Infinite", _state);
     rvectorsetlengthatleast(f, c->d, _state);
-    
+
     /*
      * Binary search in the [ x[0], ..., x[n-2] ] (x[n-1] is not included)
      */
@@ -28781,7 +28781,7 @@ void spline2dcalcvbuf(spline2dinterpolant* c,
     t = (x-c->x.ptr.p_double[l])/(c->x.ptr.p_double[l+1]-c->x.ptr.p_double[l]);
     dt = 1.0/(c->x.ptr.p_double[l+1]-c->x.ptr.p_double[l]);
     ix = l;
-    
+
     /*
      * Binary search in the [ y[0], ..., y[m-2] ] (y[m-1] is not included)
      */
@@ -28802,7 +28802,7 @@ void spline2dcalcvbuf(spline2dinterpolant* c,
     u = (y-c->y.ptr.p_double[l])/(c->y.ptr.p_double[l+1]-c->y.ptr.p_double[l]);
     du = 1.0/(c->y.ptr.p_double[l+1]-c->y.ptr.p_double[l]);
     iy = l;
-    
+
     /*
      * Bilinear interpolation
      */
@@ -28818,13 +28818,13 @@ void spline2dcalcvbuf(spline2dinterpolant* c,
         }
         return;
     }
-    
+
     /*
      * Bicubic interpolation
      */
     if( c->stype==-3 )
     {
-        
+
         /*
          * Prepare info
          */
@@ -28841,7 +28841,7 @@ void spline2dcalcvbuf(spline2dinterpolant* c,
         sfxy = 3*c->n*c->m*c->d;
         for(i=0; i<=c->d-1; i++)
         {
-            
+
             /*
              * Prepare F, dF/dX, dF/dY, d2F/dXdY
              */
@@ -28850,7 +28850,7 @@ void spline2dcalcvbuf(spline2dinterpolant* c,
             s2 = c->d*(c->n*iy+(ix+1))+i;
             s3 = c->d*(c->n*(iy+1)+(ix+1))+i;
             s4 = c->d*(c->n*(iy+1)+ix)+i;
-            
+
             /*
              * Calculate
              */
@@ -28911,10 +28911,10 @@ OUTPUT PARAMETERS:
      Copyright 16.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline2dcalcv(spline2dinterpolant* c,
-     double x,
-     double y,
-     /* Real    */ ae_vector* f,
-     ae_state *_state)
+                   double x,
+                   double y,
+                   /* Real    */ ae_vector* f,
+                   ae_state *_state)
 {
 
     ae_vector_clear(f);
@@ -28940,10 +28940,10 @@ Result:
             For T=0..D-1 (component index), I = 0...N-2 (x index),
             J=0..M-2 (y index):
                 K :=  T + I*D + J*D*(N-1)
-                
+
                 K-th row stores decomposition for T-th component of the
                 vector-valued function
-                
+
                 Tbl[K,0] = X[i]
                 Tbl[K,1] = X[i+1]
                 Tbl[K,2] = Y[j]
@@ -28965,11 +28965,11 @@ Result:
      Copyright 16.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline2dunpackv(spline2dinterpolant* c,
-     ae_int_t* m,
-     ae_int_t* n,
-     ae_int_t* d,
-     /* Real    */ ae_matrix* tbl,
-     ae_state *_state)
+                     ae_int_t* m,
+                     ae_int_t* n,
+                     ae_int_t* d,
+                     /* Real    */ ae_matrix* tbl,
+                     ae_state *_state)
 {
     ae_int_t k;
     ae_int_t p;
@@ -29018,7 +29018,7 @@ void spline2dunpackv(spline2dinterpolant* c,
                 tbl->ptr.pp_double[p][3] = c->y.ptr.p_double[i+1];
                 dt = 1/(tbl->ptr.pp_double[p][1]-tbl->ptr.pp_double[p][0]);
                 du = 1/(tbl->ptr.pp_double[p][3]-tbl->ptr.pp_double[p][2]);
-                
+
                 /*
                  * Bilinear interpolation
                  */
@@ -29037,7 +29037,7 @@ void spline2dunpackv(spline2dinterpolant* c,
                     tbl->ptr.pp_double[p][4+0*4+1] = y4-y1;
                     tbl->ptr.pp_double[p][4+1*4+1] = y3-y2-y4+y1;
                 }
-                
+
                 /*
                  * Bicubic interpolation
                  */
@@ -29064,7 +29064,7 @@ void spline2dunpackv(spline2dinterpolant* c,
                     tbl->ptr.pp_double[p][4+3*4+2] = -6*c->f.ptr.p_double[s1]+6*c->f.ptr.p_double[s2]-6*c->f.ptr.p_double[s3]+6*c->f.ptr.p_double[s4]-3*c->f.ptr.p_double[sfx+s1]/dt-3*c->f.ptr.p_double[sfx+s2]/dt+3*c->f.ptr.p_double[sfx+s3]/dt+3*c->f.ptr.p_double[sfx+s4]/dt-4*c->f.ptr.p_double[sfy+s1]/du+4*c->f.ptr.p_double[sfy+s2]/du+2*c->f.ptr.p_double[sfy+s3]/du-2*c->f.ptr.p_double[sfy+s4]/du-2*c->f.ptr.p_double[sfxy+s1]/(dt*du)-2*c->f.ptr.p_double[sfxy+s2]/(dt*du)-c->f.ptr.p_double[sfxy+s3]/(dt*du)-c->f.ptr.p_double[sfxy+s4]/(dt*du);
                     tbl->ptr.pp_double[p][4+3*4+3] = 4*c->f.ptr.p_double[s1]-4*c->f.ptr.p_double[s2]+4*c->f.ptr.p_double[s3]-4*c->f.ptr.p_double[s4]+2*c->f.ptr.p_double[sfx+s1]/dt+2*c->f.ptr.p_double[sfx+s2]/dt-2*c->f.ptr.p_double[sfx+s3]/dt-2*c->f.ptr.p_double[sfx+s4]/dt+2*c->f.ptr.p_double[sfy+s1]/du-2*c->f.ptr.p_double[sfy+s2]/du-2*c->f.ptr.p_double[sfy+s3]/du+2*c->f.ptr.p_double[sfy+s4]/du+c->f.ptr.p_double[sfxy+s1]/(dt*du)+c->f.ptr.p_double[sfxy+s2]/(dt*du)+c->f.ptr.p_double[sfxy+s3]/(dt*du)+c->f.ptr.p_double[sfxy+s4]/(dt*du);
                 }
-                
+
                 /*
                  * Rescale Cij
                  */
@@ -29091,12 +29091,12 @@ flexible and accepts its arguments in more convenient order.
      Copyright 05.07.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline2dbuildbilinear(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_matrix* f,
-     ae_int_t m,
-     ae_int_t n,
-     spline2dinterpolant* c,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        /* Real    */ ae_matrix* f,
+        ae_int_t m,
+        ae_int_t n,
+        spline2dinterpolant* c,
+        ae_state *_state)
 {
     double t;
     ae_int_t i;
@@ -29111,7 +29111,7 @@ void spline2dbuildbilinear(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(x, n, _state)&&isfinitevector(y, m, _state), "Spline2DBuildBilinear: X or Y contains NaN or Infinite value", _state);
     ae_assert(f->rows>=m&&f->cols>=n, "Spline2DBuildBilinear: size of F is too small (rows(F)<M or cols(F)<N)", _state);
     ae_assert(apservisfinitematrix(f, m, n, _state), "Spline2DBuildBilinear: F contains NaN or Infinite value", _state);
-    
+
     /*
      * Fill interpolant
      */
@@ -29138,7 +29138,7 @@ void spline2dbuildbilinear(/* Real    */ ae_vector* x,
             c->f.ptr.p_double[i*c->n+j] = f->ptr.pp_double[i][j];
         }
     }
-    
+
     /*
      * Sort points
      */
@@ -29201,12 +29201,12 @@ flexible and accepts its arguments in more convenient order.
      Copyright 05.07.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline2dbuildbicubic(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     /* Real    */ ae_matrix* f,
-     ae_int_t m,
-     ae_int_t n,
-     spline2dinterpolant* c,
-     ae_state *_state)
+                                        /* Real    */ ae_vector* y,
+                                        /* Real    */ ae_matrix* f,
+                                        ae_int_t m,
+                                        ae_int_t n,
+                                        spline2dinterpolant* c,
+                                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _f;
@@ -29235,7 +29235,7 @@ void spline2dbuildbicubic(/* Real    */ ae_vector* x,
     ae_assert(isfinitevector(x, n, _state)&&isfinitevector(y, m, _state), "Spline2DBuildBicubic: X or Y contains NaN or Infinite value", _state);
     ae_assert(f->rows>=m&&f->cols>=n, "Spline2DBuildBicubic: size of F is too small (rows(F)<M or cols(F)<N)", _state);
     ae_assert(apservisfinitematrix(f, m, n, _state), "Spline2DBuildBicubic: F contains NaN or Infinite value", _state);
-    
+
     /*
      * Fill interpolant:
      *  F[0]...F[N*M-1]:
@@ -29266,7 +29266,7 @@ void spline2dbuildbicubic(/* Real    */ ae_vector* x,
     {
         c->y.ptr.p_double[i] = y->ptr.p_double[i];
     }
-    
+
     /*
      * Sort points
      */
@@ -29342,10 +29342,10 @@ and accepts its arguments in more convenient order.
      Copyright 29.06.2007 by Bochkanov Sergey
 *************************************************************************/
 void spline2dunpack(spline2dinterpolant* c,
-     ae_int_t* m,
-     ae_int_t* n,
-     /* Real    */ ae_matrix* tbl,
-     ae_state *_state)
+                    ae_int_t* m,
+                    ae_int_t* n,
+                    /* Real    */ ae_matrix* tbl,
+                    ae_state *_state)
 {
     ae_int_t k;
     ae_int_t p;
@@ -29384,7 +29384,7 @@ void spline2dunpack(spline2dinterpolant* c,
     sfx = *n*(*m);
     sfy = 2*(*n)*(*m);
     sfxy = 3*(*n)*(*m);
-    
+
     /*
      * Fill
      */
@@ -29399,7 +29399,7 @@ void spline2dunpack(spline2dinterpolant* c,
             tbl->ptr.pp_double[p][3] = c->y.ptr.p_double[i+1];
             dt = 1/(tbl->ptr.pp_double[p][1]-tbl->ptr.pp_double[p][0]);
             du = 1/(tbl->ptr.pp_double[p][3]-tbl->ptr.pp_double[p][2]);
-            
+
             /*
              * Bilinear interpolation
              */
@@ -29418,7 +29418,7 @@ void spline2dunpack(spline2dinterpolant* c,
                 tbl->ptr.pp_double[p][4+0*4+1] = y4-y1;
                 tbl->ptr.pp_double[p][4+1*4+1] = y3-y2-y4+y1;
             }
-            
+
             /*
              * Bicubic interpolation
              */
@@ -29445,7 +29445,7 @@ void spline2dunpack(spline2dinterpolant* c,
                 tbl->ptr.pp_double[p][4+3*4+2] = -6*c->f.ptr.p_double[s1]+6*c->f.ptr.p_double[s2]-6*c->f.ptr.p_double[s3]+6*c->f.ptr.p_double[s4]-3*c->f.ptr.p_double[sfx+s1]/dt-3*c->f.ptr.p_double[sfx+s2]/dt+3*c->f.ptr.p_double[sfx+s3]/dt+3*c->f.ptr.p_double[sfx+s4]/dt-4*c->f.ptr.p_double[sfy+s1]/du+4*c->f.ptr.p_double[sfy+s2]/du+2*c->f.ptr.p_double[sfy+s3]/du-2*c->f.ptr.p_double[sfy+s4]/du-2*c->f.ptr.p_double[sfxy+s1]/(dt*du)-2*c->f.ptr.p_double[sfxy+s2]/(dt*du)-c->f.ptr.p_double[sfxy+s3]/(dt*du)-c->f.ptr.p_double[sfxy+s4]/(dt*du);
                 tbl->ptr.pp_double[p][4+3*4+3] = 4*c->f.ptr.p_double[s1]-4*c->f.ptr.p_double[s2]+4*c->f.ptr.p_double[s3]-4*c->f.ptr.p_double[s4]+2*c->f.ptr.p_double[sfx+s1]/dt+2*c->f.ptr.p_double[sfx+s2]/dt-2*c->f.ptr.p_double[sfx+s3]/dt-2*c->f.ptr.p_double[sfx+s4]/dt+2*c->f.ptr.p_double[sfy+s1]/du-2*c->f.ptr.p_double[sfy+s2]/du-2*c->f.ptr.p_double[sfy+s3]/du+2*c->f.ptr.p_double[sfy+s4]/du+c->f.ptr.p_double[sfxy+s1]/(dt*du)+c->f.ptr.p_double[sfxy+s2]/(dt*du)+c->f.ptr.p_double[sfxy+s3]/(dt*du)+c->f.ptr.p_double[sfxy+s4]/(dt*du);
             }
-            
+
             /*
              * Rescale Cij
              */
@@ -29466,14 +29466,14 @@ Internal subroutine.
 Calculation of the first derivatives and the cross-derivative.
 *************************************************************************/
 static void spline2d_bicubiccalcderivatives(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     ae_int_t n,
-     /* Real    */ ae_matrix* dx,
-     /* Real    */ ae_matrix* dy,
-     /* Real    */ ae_matrix* dxy,
-     ae_state *_state)
+        /* Real    */ ae_vector* x,
+        /* Real    */ ae_vector* y,
+        ae_int_t m,
+        ae_int_t n,
+        /* Real    */ ae_matrix* dx,
+        /* Real    */ ae_matrix* dy,
+        /* Real    */ ae_matrix* dxy,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -29496,7 +29496,7 @@ static void spline2d_bicubiccalcderivatives(/* Real    */ ae_matrix* a,
     ae_matrix_set_length(dx, m, n, _state);
     ae_matrix_set_length(dy, m, n, _state);
     ae_matrix_set_length(dxy, m, n, _state);
-    
+
     /*
      * dF/dX
      */
@@ -29516,7 +29516,7 @@ static void spline2d_bicubiccalcderivatives(/* Real    */ ae_matrix* a,
             dx->ptr.pp_double[i][j] = ds;
         }
     }
-    
+
     /*
      * dF/dY
      */
@@ -29536,7 +29536,7 @@ static void spline2d_bicubiccalcderivatives(/* Real    */ ae_matrix* a,
             dy->ptr.pp_double[i][j] = ds;
         }
     }
-    
+
     /*
      * d2F/dXdY
      */
@@ -29632,10 +29632,10 @@ Result:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 double spline3dcalc(spline3dinterpolant* c,
-     double x,
-     double y,
-     double z,
-     ae_state *_state)
+                    double x,
+                    double y,
+                    double z,
+                    ae_state *_state)
 {
     double v;
     double vx;
@@ -29665,7 +29665,7 @@ INPUT PARAMETERS:
     AX, BX  -   transformation coefficients: x = A*u + B
     AY, BY  -   transformation coefficients: y = A*v + B
     AZ, BZ  -   transformation coefficients: z = A*w + B
-    
+
 OUTPUT PARAMETERS:
     C   -   transformed spline
 
@@ -29673,13 +29673,13 @@ OUTPUT PARAMETERS:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline3dlintransxyz(spline3dinterpolant* c,
-     double ax,
-     double bx,
-     double ay,
-     double by,
-     double az,
-     double bz,
-     ae_state *_state)
+                         double ax,
+                         double bx,
+                         double ay,
+                         double by,
+                         double az,
+                         double bz,
+                         ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector x;
@@ -29716,7 +29716,7 @@ void spline3dlintransxyz(spline3dinterpolant* c,
     {
         z.ptr.p_double[i] = c->z.ptr.p_double[i];
     }
-    
+
     /*
      * Handle different combinations of zero/nonzero AX/AY/AZ
      */
@@ -29867,7 +29867,7 @@ void spline3dlintransxyz(spline3dinterpolant* c,
         az = 1;
         bz = 0;
     }
-    
+
     /*
      * General case: AX<>0, AY<>0, AZ<>0
      * Unpack, scale and pack again.
@@ -29898,7 +29898,7 @@ This subroutine performs linear transformation of the spline.
 INPUT PARAMETERS:
     C   -   spline interpolant.
     A, B-   transformation coefficients: S2(x,y) = A*S(x,y,z) + B
-    
+
 OUTPUT PARAMETERS:
     C   -   transformed spline
 
@@ -29906,9 +29906,9 @@ OUTPUT PARAMETERS:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline3dlintransf(spline3dinterpolant* c,
-     double a,
-     double b,
-     ae_state *_state)
+                       double a,
+                       double b,
+                       ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector x;
@@ -29966,8 +29966,8 @@ OUTPUT PARAMETERS:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline3dcopy(spline3dinterpolant* c,
-     spline3dinterpolant* cc,
-     ae_state *_state)
+                  spline3dinterpolant* cc,
+                  ae_state *_state)
 {
     ae_int_t tblsize;
 
@@ -30028,14 +30028,14 @@ OUTPUT PARAMETERS:
      Copyright by Bochkanov Sergey
 *************************************************************************/
 void spline3dresampletrilinear(/* Real    */ ae_vector* a,
-     ae_int_t oldzcount,
-     ae_int_t oldycount,
-     ae_int_t oldxcount,
-     ae_int_t newzcount,
-     ae_int_t newycount,
-     ae_int_t newxcount,
-     /* Real    */ ae_vector* b,
-     ae_state *_state)
+        ae_int_t oldzcount,
+        ae_int_t oldycount,
+        ae_int_t oldxcount,
+        ae_int_t newzcount,
+        ae_int_t newycount,
+        ae_int_t newxcount,
+        /* Real    */ ae_vector* b,
+        ae_state *_state)
 {
     double xd;
     double yd;
@@ -30100,7 +30100,7 @@ This subroutine builds trilinear vector-valued spline.
 INPUT PARAMETERS:
     X   -   spline abscissas,  array[0..N-1]
     Y   -   spline ordinates,  array[0..M-1]
-    Z   -   spline applicates, array[0..L-1] 
+    Z   -   spline applicates, array[0..L-1]
     F   -   function values, array[0..M*N*L*D-1]:
             * first D elements store D values at (X[0],Y[0],Z[0])
             * next D elements store D values at (X[1],Y[0],Z[0])
@@ -30127,15 +30127,15 @@ OUTPUT PARAMETERS:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline3dbuildtrilinearv(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     /* Real    */ ae_vector* z,
-     ae_int_t l,
-     /* Real    */ ae_vector* f,
-     ae_int_t d,
-     spline3dinterpolant* c,
-     ae_state *_state)
+        ae_int_t n,
+        /* Real    */ ae_vector* y,
+        ae_int_t m,
+        /* Real    */ ae_vector* z,
+        ae_int_t l,
+        /* Real    */ ae_vector* f,
+        ae_int_t d,
+        spline3dinterpolant* c,
+        ae_state *_state)
 {
     double t;
     ae_int_t tblsize;
@@ -30156,7 +30156,7 @@ void spline3dbuildtrilinearv(/* Real    */ ae_vector* x,
     tblsize = n*m*l*d;
     ae_assert(f->cnt>=tblsize, "Spline3DBuildTrilinearV: length of F is too short (Length(F)<N*M*L*D)", _state);
     ae_assert(isfinitevector(f, tblsize, _state), "Spline3DBuildTrilinearV: F contains NaN or Infinite value", _state);
-    
+
     /*
      * Fill interpolant
      */
@@ -30186,7 +30186,7 @@ void spline3dbuildtrilinearv(/* Real    */ ae_vector* x,
     {
         c->f.ptr.p_double[i] = f->ptr.p_double[i];
     }
-    
+
     /*
      * Sort points:
      *  * sort x;
@@ -30302,11 +30302,11 @@ OUTPUT PARAMETERS:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline3dcalcvbuf(spline3dinterpolant* c,
-     double x,
-     double y,
-     double z,
-     /* Real    */ ae_vector* f,
-     ae_state *_state)
+                      double x,
+                      double y,
+                      double z,
+                      /* Real    */ ae_vector* f,
+                      ae_state *_state)
 {
     double xd;
     double yd;
@@ -30327,7 +30327,7 @@ void spline3dcalcvbuf(spline3dinterpolant* c,
     ae_assert(c->stype==-1||c->stype==-3, "Spline3DCalcVBuf: incorrect C (incorrect parameter C.SType)", _state);
     ae_assert((ae_isfinite(x, _state)&&ae_isfinite(y, _state))&&ae_isfinite(z, _state), "Spline3DCalcVBuf: X, Y or Z contains NaN/Infinite", _state);
     rvectorsetlengthatleast(f, c->d, _state);
-    
+
     /*
      * Binary search in the [ x[0], ..., x[n-2] ] (x[n-1] is not included)
      */
@@ -30346,7 +30346,7 @@ void spline3dcalcvbuf(spline3dinterpolant* c,
         }
     }
     ix = l;
-    
+
     /*
      * Binary search in the [ y[0], ..., y[n-2] ] (y[n-1] is not included)
      */
@@ -30365,7 +30365,7 @@ void spline3dcalcvbuf(spline3dinterpolant* c,
         }
     }
     iy = l;
-    
+
     /*
      * Binary search in the [ z[0], ..., z[n-2] ] (z[n-1] is not included)
      */
@@ -30389,7 +30389,7 @@ void spline3dcalcvbuf(spline3dinterpolant* c,
     zd = (z-c->z.ptr.p_double[iz])/(c->z.ptr.p_double[iz+1]-c->z.ptr.p_double[iz]);
     for(i=0; i<=c->d-1; i++)
     {
-        
+
         /*
          * Trilinear interpolation
          */
@@ -30427,11 +30427,11 @@ OUTPUT PARAMETERS:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline3dcalcv(spline3dinterpolant* c,
-     double x,
-     double y,
-     double z,
-     /* Real    */ ae_vector* f,
-     ae_state *_state)
+                   double x,
+                   double y,
+                   double z,
+                   /* Real    */ ae_vector* f,
+                   ae_state *_state)
 {
 
     ae_vector_clear(f);
@@ -30460,17 +30460,17 @@ Result:
             For T=0..D-1 (component index), I = 0...N-2 (x index),
             J=0..M-2 (y index), K=0..L-2 (z index):
                 Q := T + I*D + J*D*(N-1) + K*D*(N-1)*(M-1),
-                
+
                 Q-th row stores decomposition for T-th component of the
                 vector-valued function
-                
+
                 Tbl[Q,0] = X[i]
                 Tbl[Q,1] = X[i+1]
                 Tbl[Q,2] = Y[j]
                 Tbl[Q,3] = Y[j+1]
                 Tbl[Q,4] = Z[k]
                 Tbl[Q,5] = Z[k+1]
-                
+
                 Tbl[Q,6] = C000
                 Tbl[Q,7] = C100
                 Tbl[Q,8] = C010
@@ -30484,7 +30484,7 @@ Result:
                 t = x-x[j]
                 u = y-y[i]
                 v = z-z[k]
-            
+
             NOTE: format of Tbl is given for SType=1. Future versions of
                   ALGLIB can use different formats for different values of
                   SType.
@@ -30493,13 +30493,13 @@ Result:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 void spline3dunpackv(spline3dinterpolant* c,
-     ae_int_t* n,
-     ae_int_t* m,
-     ae_int_t* l,
-     ae_int_t* d,
-     ae_int_t* stype,
-     /* Real    */ ae_matrix* tbl,
-     ae_state *_state)
+                     ae_int_t* n,
+                     ae_int_t* m,
+                     ae_int_t* l,
+                     ae_int_t* d,
+                     ae_int_t* stype,
+                     /* Real    */ ae_matrix* tbl,
+                     ae_state *_state)
 {
     ae_int_t p;
     ae_int_t ci;
@@ -30528,7 +30528,7 @@ void spline3dunpackv(spline3dinterpolant* c,
     *d = c->d;
     *stype = ae_iabs(c->stype, _state);
     ae_matrix_set_length(tbl, (*n-1)*(*m-1)*(*l-1)*(*d), 14, _state);
-    
+
     /*
      * Fill
      */
@@ -30550,7 +30550,7 @@ void spline3dunpackv(spline3dinterpolant* c,
                     du = 1/(tbl->ptr.pp_double[p][1]-tbl->ptr.pp_double[p][0]);
                     dv = 1/(tbl->ptr.pp_double[p][3]-tbl->ptr.pp_double[p][2]);
                     dw = 1/(tbl->ptr.pp_double[p][5]-tbl->ptr.pp_double[p][4]);
-                    
+
                     /*
                      * Trilinear interpolation
                      */
@@ -30569,7 +30569,7 @@ void spline3dunpackv(spline3dinterpolant* c,
                         tbl->ptr.pp_double[p][6+2*(2*1+1)+0] = c->f.ptr.p_double[*d*(*n*(*m*(k+1)+(j+1))+i)+di]-c->f.ptr.p_double[*d*(*n*(*m*(k+1)+j)+i)+di]-c->f.ptr.p_double[*d*(*n*(*m*k+(j+1))+i)+di]+c->f.ptr.p_double[*d*(*n*(*m*k+j)+i)+di];
                         tbl->ptr.pp_double[p][6+2*(2*1+1)+1] = c->f.ptr.p_double[*d*(*n*(*m*(k+1)+(j+1))+(i+1))+di]-c->f.ptr.p_double[*d*(*n*(*m*(k+1)+(j+1))+i)+di]-c->f.ptr.p_double[*d*(*n*(*m*(k+1)+j)+(i+1))+di]+c->f.ptr.p_double[*d*(*n*(*m*(k+1)+j)+i)+di]-c->f.ptr.p_double[*d*(*n*(*m*k+(j+1))+(i+1))+di]+c->f.ptr.p_double[*d*(*n*(*m*k+(j+1))+i)+di]+c->f.ptr.p_double[*d*(*n*(*m*k+j)+(i+1))+di]-c->f.ptr.p_double[*d*(*n*(*m*k+j)+i)+di];
                     }
-                    
+
                     /*
                      * Rescale Cij
                      */
@@ -30609,14 +30609,14 @@ OUTPUT PARAMETERS:
      Copyright 26.04.2012 by Bochkanov Sergey
 *************************************************************************/
 static void spline3d_spline3ddiff(spline3dinterpolant* c,
-     double x,
-     double y,
-     double z,
-     double* f,
-     double* fx,
-     double* fy,
-     double* fxy,
-     ae_state *_state)
+                                  double x,
+                                  double y,
+                                  double z,
+                                  double* f,
+                                  double* fx,
+                                  double* fy,
+                                  double* fxy,
+                                  ae_state *_state)
 {
     double xd;
     double yd;
@@ -30639,7 +30639,7 @@ static void spline3d_spline3ddiff(spline3dinterpolant* c,
 
     ae_assert(c->stype==-1||c->stype==-3, "Spline3DDiff: incorrect C (incorrect parameter C.SType)", _state);
     ae_assert(ae_isfinite(x, _state)&&ae_isfinite(y, _state), "Spline3DDiff: X or Y contains NaN or Infinite value", _state);
-    
+
     /*
      * Prepare F, dF/dX, dF/dY, d2F/dXdY
      */
@@ -30651,7 +30651,7 @@ static void spline3d_spline3ddiff(spline3dinterpolant* c,
     {
         return;
     }
-    
+
     /*
      * Binary search in the [ x[0], ..., x[n-2] ] (x[n-1] is not included)
      */
@@ -30670,7 +30670,7 @@ static void spline3d_spline3ddiff(spline3dinterpolant* c,
         }
     }
     ix = l;
-    
+
     /*
      * Binary search in the [ y[0], ..., y[n-2] ] (y[n-1] is not included)
      */
@@ -30689,7 +30689,7 @@ static void spline3d_spline3ddiff(spline3dinterpolant* c,
         }
     }
     iy = l;
-    
+
     /*
      * Binary search in the [ z[0], ..., z[n-2] ] (z[n-1] is not included)
      */
@@ -30711,7 +30711,7 @@ static void spline3d_spline3ddiff(spline3dinterpolant* c,
     xd = (x-c->x.ptr.p_double[ix])/(c->x.ptr.p_double[ix+1]-c->x.ptr.p_double[ix]);
     yd = (y-c->y.ptr.p_double[iy])/(c->y.ptr.p_double[iy+1]-c->y.ptr.p_double[iy]);
     zd = (z-c->z.ptr.p_double[iz])/(c->z.ptr.p_double[iz+1]-c->z.ptr.p_double[iz]);
-    
+
     /*
      * Trilinear interpolation
      */

@@ -1428,13 +1428,13 @@ NOTES:
 
 *************************************************************************/
 void mincgoptimize(mincgstate &state,
-    void (*func)(const real_1d_array &x, double &func, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                   void (*func)(const real_1d_array &x, double &func, void *ptr),
+                   void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                   void *ptr = NULL);
 void mincgoptimize(mincgstate &state,
-    void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                   void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
+                   void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                   void *ptr = NULL);
 
 
 /*************************************************************************
@@ -1959,13 +1959,13 @@ NOTES:
 
 *************************************************************************/
 void minbleicoptimize(minbleicstate &state,
-    void (*func)(const real_1d_array &x, double &func, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                      void (*func)(const real_1d_array &x, double &func, void *ptr),
+                      void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                      void *ptr = NULL);
 void minbleicoptimize(minbleicstate &state,
-    void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                      void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
+                      void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                      void *ptr = NULL);
 
 
 /*************************************************************************
@@ -2442,13 +2442,13 @@ NOTES:
 
 *************************************************************************/
 void minlbfgsoptimize(minlbfgsstate &state,
-    void (*func)(const real_1d_array &x, double &func, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                      void (*func)(const real_1d_array &x, double &func, void *ptr),
+                      void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                      void *ptr = NULL);
 void minlbfgsoptimize(minlbfgsstate &state,
-    void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                      void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
+                      void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                      void *ptr = NULL);
 
 
 /*************************************************************************
@@ -3420,31 +3420,31 @@ NOTES:
 
 *************************************************************************/
 void minlmoptimize(minlmstate &state,
-    void (*fvec)(const real_1d_array &x, real_1d_array &fi, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                   void (*fvec)(const real_1d_array &x, real_1d_array &fi, void *ptr),
+                   void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                   void *ptr = NULL);
 void minlmoptimize(minlmstate &state,
-    void (*fvec)(const real_1d_array &x, real_1d_array &fi, void *ptr),
-    void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                   void (*fvec)(const real_1d_array &x, real_1d_array &fi, void *ptr),
+                   void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
+                   void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                   void *ptr = NULL);
 void minlmoptimize(minlmstate &state,
-    void (*func)(const real_1d_array &x, double &func, void *ptr),
-    void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
-    void (*hess)(const real_1d_array &x, double &func, real_1d_array &grad, real_2d_array &hess, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                   void (*func)(const real_1d_array &x, double &func, void *ptr),
+                   void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
+                   void (*hess)(const real_1d_array &x, double &func, real_1d_array &grad, real_2d_array &hess, void *ptr),
+                   void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                   void *ptr = NULL);
 void minlmoptimize(minlmstate &state,
-    void (*func)(const real_1d_array &x, double &func, void *ptr),
-    void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                   void (*func)(const real_1d_array &x, double &func, void *ptr),
+                   void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
+                   void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                   void *ptr = NULL);
 void minlmoptimize(minlmstate &state,
-    void (*func)(const real_1d_array &x, double &func, void *ptr),
-    void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
-    void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                   void (*func)(const real_1d_array &x, double &func, void *ptr),
+                   void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
+                   void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
+                   void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                   void *ptr = NULL);
 
 
 /*************************************************************************
@@ -3697,9 +3697,9 @@ These functions accept following parameters:
 
 *************************************************************************/
 void minasaoptimize(minasastate &state,
-    void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
-    void *ptr = NULL);
+                    void (*grad)(const real_1d_array &x, double &func, real_1d_array &grad, void *ptr),
+                    void  (*rep)(const real_1d_array &x, double func, void *ptr) = NULL,
+                    void *ptr = NULL);
 
 
 /*************************************************************************
@@ -3741,270 +3741,270 @@ namespace alglib_impl
 {
 void trimprepare(double f, double* threshold, ae_state *_state);
 void trimfunction(double* f,
-     /* Real    */ ae_vector* g,
-     ae_int_t n,
-     double threshold,
-     ae_state *_state);
+                  /* Real    */ ae_vector* g,
+                  ae_int_t n,
+                  double threshold,
+                  ae_state *_state);
 ae_bool enforceboundaryconstraints(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* bl,
-     /* Boolean */ ae_vector* havebl,
-     /* Real    */ ae_vector* bu,
-     /* Boolean */ ae_vector* havebu,
-     ae_int_t nmain,
-     ae_int_t nslack,
-     ae_state *_state);
+        /* Real    */ ae_vector* bl,
+        /* Boolean */ ae_vector* havebl,
+        /* Real    */ ae_vector* bu,
+        /* Boolean */ ae_vector* havebu,
+        ae_int_t nmain,
+        ae_int_t nslack,
+        ae_state *_state);
 void projectgradientintobc(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* g,
-     /* Real    */ ae_vector* bl,
-     /* Boolean */ ae_vector* havebl,
-     /* Real    */ ae_vector* bu,
-     /* Boolean */ ae_vector* havebu,
-     ae_int_t nmain,
-     ae_int_t nslack,
-     ae_state *_state);
+        /* Real    */ ae_vector* g,
+        /* Real    */ ae_vector* bl,
+        /* Boolean */ ae_vector* havebl,
+        /* Real    */ ae_vector* bu,
+        /* Boolean */ ae_vector* havebu,
+        ae_int_t nmain,
+        ae_int_t nslack,
+        ae_state *_state);
 void calculatestepbound(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* d,
-     double alpha,
-     /* Real    */ ae_vector* bndl,
-     /* Boolean */ ae_vector* havebndl,
-     /* Real    */ ae_vector* bndu,
-     /* Boolean */ ae_vector* havebndu,
-     ae_int_t nmain,
-     ae_int_t nslack,
-     ae_int_t* variabletofreeze,
-     double* valuetofreeze,
-     double* maxsteplen,
-     ae_state *_state);
+                                      /* Real    */ ae_vector* d,
+                                      double alpha,
+                                      /* Real    */ ae_vector* bndl,
+                                      /* Boolean */ ae_vector* havebndl,
+                                      /* Real    */ ae_vector* bndu,
+                                      /* Boolean */ ae_vector* havebndu,
+                                      ae_int_t nmain,
+                                      ae_int_t nslack,
+                                      ae_int_t* variabletofreeze,
+                                      double* valuetofreeze,
+                                      double* maxsteplen,
+                                      ae_state *_state);
 ae_int_t postprocessboundedstep(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* xprev,
-     /* Real    */ ae_vector* bndl,
-     /* Boolean */ ae_vector* havebndl,
-     /* Real    */ ae_vector* bndu,
-     /* Boolean */ ae_vector* havebndu,
-     ae_int_t nmain,
-     ae_int_t nslack,
-     ae_int_t variabletofreeze,
-     double valuetofreeze,
-     double steptaken,
-     double maxsteplen,
-     ae_state *_state);
+        /* Real    */ ae_vector* xprev,
+        /* Real    */ ae_vector* bndl,
+        /* Boolean */ ae_vector* havebndl,
+        /* Real    */ ae_vector* bndu,
+        /* Boolean */ ae_vector* havebndu,
+        ae_int_t nmain,
+        ae_int_t nslack,
+        ae_int_t variabletofreeze,
+        double valuetofreeze,
+        double steptaken,
+        double maxsteplen,
+        ae_state *_state);
 void filterdirection(/* Real    */ ae_vector* d,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* bndl,
-     /* Boolean */ ae_vector* havebndl,
-     /* Real    */ ae_vector* bndu,
-     /* Boolean */ ae_vector* havebndu,
-     /* Real    */ ae_vector* s,
-     ae_int_t nmain,
-     ae_int_t nslack,
-     double droptol,
-     ae_state *_state);
+                                   /* Real    */ ae_vector* x,
+                                   /* Real    */ ae_vector* bndl,
+                                   /* Boolean */ ae_vector* havebndl,
+                                   /* Real    */ ae_vector* bndu,
+                                   /* Boolean */ ae_vector* havebndu,
+                                   /* Real    */ ae_vector* s,
+                                   ae_int_t nmain,
+                                   ae_int_t nslack,
+                                   double droptol,
+                                   ae_state *_state);
 ae_int_t numberofchangedconstraints(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* xprev,
-     /* Real    */ ae_vector* bndl,
-     /* Boolean */ ae_vector* havebndl,
-     /* Real    */ ae_vector* bndu,
-     /* Boolean */ ae_vector* havebndu,
-     ae_int_t nmain,
-     ae_int_t nslack,
-     ae_state *_state);
+        /* Real    */ ae_vector* xprev,
+        /* Real    */ ae_vector* bndl,
+        /* Boolean */ ae_vector* havebndl,
+        /* Real    */ ae_vector* bndu,
+        /* Boolean */ ae_vector* havebndu,
+        ae_int_t nmain,
+        ae_int_t nslack,
+        ae_state *_state);
 ae_bool findfeasiblepoint(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* bndl,
-     /* Boolean */ ae_vector* havebndl,
-     /* Real    */ ae_vector* bndu,
-     /* Boolean */ ae_vector* havebndu,
-     ae_int_t nmain,
-     ae_int_t nslack,
-     /* Real    */ ae_matrix* ce,
-     ae_int_t k,
-     double epsi,
-     ae_int_t* qpits,
-     ae_int_t* gpaits,
-     ae_state *_state);
+                                        /* Real    */ ae_vector* bndl,
+                                        /* Boolean */ ae_vector* havebndl,
+                                        /* Real    */ ae_vector* bndu,
+                                        /* Boolean */ ae_vector* havebndu,
+                                        ae_int_t nmain,
+                                        ae_int_t nslack,
+                                        /* Real    */ ae_matrix* ce,
+                                        ae_int_t k,
+                                        double epsi,
+                                        ae_int_t* qpits,
+                                        ae_int_t* gpaits,
+                                        ae_state *_state);
 ae_bool derivativecheck(double f0,
-     double df0,
-     double f1,
-     double df1,
-     double f,
-     double df,
-     double width,
-     ae_state *_state);
+                        double df0,
+                        double f1,
+                        double df1,
+                        double f,
+                        double df,
+                        double width,
+                        ae_state *_state);
 void cqminit(ae_int_t n, convexquadraticmodel* s, ae_state *_state);
 void cqmseta(convexquadraticmodel* s,
-     /* Real    */ ae_matrix* a,
-     ae_bool isupper,
-     double alpha,
-     ae_state *_state);
+             /* Real    */ ae_matrix* a,
+             ae_bool isupper,
+             double alpha,
+             ae_state *_state);
 void cqmrewritedensediagonal(convexquadraticmodel* s,
-     /* Real    */ ae_vector* z,
-     ae_state *_state);
+                             /* Real    */ ae_vector* z,
+                             ae_state *_state);
 void cqmsetd(convexquadraticmodel* s,
-     /* Real    */ ae_vector* d,
-     double tau,
-     ae_state *_state);
+             /* Real    */ ae_vector* d,
+             double tau,
+             ae_state *_state);
 void cqmdropa(convexquadraticmodel* s, ae_state *_state);
 void cqmsetb(convexquadraticmodel* s,
-     /* Real    */ ae_vector* b,
-     ae_state *_state);
+             /* Real    */ ae_vector* b,
+             ae_state *_state);
 void cqmsetq(convexquadraticmodel* s,
-     /* Real    */ ae_matrix* q,
-     /* Real    */ ae_vector* r,
-     ae_int_t k,
-     double theta,
-     ae_state *_state);
+             /* Real    */ ae_matrix* q,
+             /* Real    */ ae_vector* r,
+             ae_int_t k,
+             double theta,
+             ae_state *_state);
 void cqmsetactiveset(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     /* Boolean */ ae_vector* activeset,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     /* Boolean */ ae_vector* activeset,
+                     ae_state *_state);
 double cqmeval(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+               /* Real    */ ae_vector* x,
+               ae_state *_state);
 void cqmevalx(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     double* r,
-     double* noise,
-     ae_state *_state);
+              /* Real    */ ae_vector* x,
+              double* r,
+              double* noise,
+              ae_state *_state);
 void cqmgradunconstrained(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* g,
-     ae_state *_state);
+                          /* Real    */ ae_vector* x,
+                          /* Real    */ ae_vector* g,
+                          ae_state *_state);
 double cqmxtadx2(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                 /* Real    */ ae_vector* x,
+                 ae_state *_state);
 void cqmadx(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_state *_state);
+            /* Real    */ ae_vector* x,
+            /* Real    */ ae_vector* y,
+            ae_state *_state);
 ae_bool cqmconstrainedoptimum(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                              /* Real    */ ae_vector* x,
+                              ae_state *_state);
 void cqmscalevector(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                    /* Real    */ ae_vector* x,
+                    ae_state *_state);
 double cqmdebugconstrainedevalt(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                                /* Real    */ ae_vector* x,
+                                ae_state *_state);
 double cqmdebugconstrainedevale(convexquadraticmodel* s,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                                /* Real    */ ae_vector* x,
+                                ae_state *_state);
 ae_bool _convexquadraticmodel_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _convexquadraticmodel_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _convexquadraticmodel_clear(void* _p);
 void _convexquadraticmodel_destroy(void* _p);
 void snnlsinit(ae_int_t nsmax,
-     ae_int_t ndmax,
-     ae_int_t nrmax,
-     snnlssolver* s,
-     ae_state *_state);
+               ae_int_t ndmax,
+               ae_int_t nrmax,
+               snnlssolver* s,
+               ae_state *_state);
 void snnlssetproblem(snnlssolver* s,
-     /* Real    */ ae_matrix* a,
-     /* Real    */ ae_vector* b,
-     ae_int_t ns,
-     ae_int_t nd,
-     ae_int_t nr,
-     ae_state *_state);
+                     /* Real    */ ae_matrix* a,
+                     /* Real    */ ae_vector* b,
+                     ae_int_t ns,
+                     ae_int_t nd,
+                     ae_int_t nr,
+                     ae_state *_state);
 void snnlsdropnnc(snnlssolver* s, ae_int_t idx, ae_state *_state);
 void snnlssolve(snnlssolver* s,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                /* Real    */ ae_vector* x,
+                ae_state *_state);
 ae_bool _snnlssolver_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _snnlssolver_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _snnlssolver_clear(void* _p);
 void _snnlssolver_destroy(void* _p);
 void sasinit(ae_int_t n, sactiveset* s, ae_state *_state);
 void sassetscale(sactiveset* state,
-     /* Real    */ ae_vector* s,
-     ae_state *_state);
+                 /* Real    */ ae_vector* s,
+                 ae_state *_state);
 void sassetprecdiag(sactiveset* state,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                    /* Real    */ ae_vector* d,
+                    ae_state *_state);
 void sassetbc(sactiveset* state,
-     /* Real    */ ae_vector* bndl,
-     /* Real    */ ae_vector* bndu,
-     ae_state *_state);
+              /* Real    */ ae_vector* bndl,
+              /* Real    */ ae_vector* bndu,
+              ae_state *_state);
 void sassetlc(sactiveset* state,
-     /* Real    */ ae_matrix* c,
-     /* Integer */ ae_vector* ct,
-     ae_int_t k,
-     ae_state *_state);
+              /* Real    */ ae_matrix* c,
+              /* Integer */ ae_vector* ct,
+              ae_int_t k,
+              ae_state *_state);
 void sassetlcx(sactiveset* state,
-     /* Real    */ ae_matrix* cleic,
-     ae_int_t nec,
-     ae_int_t nic,
-     ae_state *_state);
+               /* Real    */ ae_matrix* cleic,
+               ae_int_t nec,
+               ae_int_t nic,
+               ae_state *_state);
 ae_bool sasstartoptimization(sactiveset* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                             /* Real    */ ae_vector* x,
+                             ae_state *_state);
 void sasexploredirection(sactiveset* state,
-     /* Real    */ ae_vector* d,
-     double* stpmax,
-     ae_int_t* cidx,
-     double* vval,
-     ae_state *_state);
+                         /* Real    */ ae_vector* d,
+                         double* stpmax,
+                         ae_int_t* cidx,
+                         double* vval,
+                         ae_state *_state);
 ae_int_t sasmoveto(sactiveset* state,
-     /* Real    */ ae_vector* xn,
-     ae_bool needact,
-     ae_int_t cidx,
-     double cval,
-     ae_state *_state);
+                   /* Real    */ ae_vector* xn,
+                   ae_bool needact,
+                   ae_int_t cidx,
+                   double cval,
+                   ae_state *_state);
 void sasimmediateactivation(sactiveset* state,
-     ae_int_t cidx,
-     double cval,
-     ae_state *_state);
+                            ae_int_t cidx,
+                            double cval,
+                            ae_state *_state);
 void sasconstraineddescent(sactiveset* state,
-     /* Real    */ ae_vector* g,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                           /* Real    */ ae_vector* g,
+                           /* Real    */ ae_vector* d,
+                           ae_state *_state);
 void sasconstraineddescentprec(sactiveset* state,
-     /* Real    */ ae_vector* g,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                               /* Real    */ ae_vector* g,
+                               /* Real    */ ae_vector* d,
+                               ae_state *_state);
 void sasconstraineddirection(sactiveset* state,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                             /* Real    */ ae_vector* d,
+                             ae_state *_state);
 void sasconstraineddirectionprec(sactiveset* state,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                                 /* Real    */ ae_vector* d,
+                                 ae_state *_state);
 void sascorrection(sactiveset* state,
-     /* Real    */ ae_vector* x,
-     double* penalty,
-     ae_state *_state);
+                   /* Real    */ ae_vector* x,
+                   double* penalty,
+                   ae_state *_state);
 double sasactivelcpenalty1(sactiveset* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                           /* Real    */ ae_vector* x,
+                           ae_state *_state);
 double sasscaledconstrainednorm(sactiveset* state,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                                /* Real    */ ae_vector* d,
+                                ae_state *_state);
 void sasstopoptimization(sactiveset* state, ae_state *_state);
 void sasreactivateconstraints(sactiveset* state,
-     /* Real    */ ae_vector* gc,
-     ae_state *_state);
+                              /* Real    */ ae_vector* gc,
+                              ae_state *_state);
 void sasreactivateconstraintsprec(sactiveset* state,
-     /* Real    */ ae_vector* gc,
-     ae_state *_state);
+                                  /* Real    */ ae_vector* gc,
+                                  ae_state *_state);
 void sasrebuildbasis(sactiveset* state, ae_state *_state);
 ae_bool _sactiveset_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _sactiveset_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _sactiveset_clear(void* _p);
 void _sactiveset_destroy(void* _p);
 void mincgcreate(ae_int_t n,
-     /* Real    */ ae_vector* x,
-     mincgstate* state,
-     ae_state *_state);
+                 /* Real    */ ae_vector* x,
+                 mincgstate* state,
+                 ae_state *_state);
 void mincgcreatef(ae_int_t n,
-     /* Real    */ ae_vector* x,
-     double diffstep,
-     mincgstate* state,
-     ae_state *_state);
+                  /* Real    */ ae_vector* x,
+                  double diffstep,
+                  mincgstate* state,
+                  ae_state *_state);
 void mincgsetcond(mincgstate* state,
-     double epsg,
-     double epsf,
-     double epsx,
-     ae_int_t maxits,
-     ae_state *_state);
+                  double epsg,
+                  double epsf,
+                  double epsx,
+                  ae_int_t maxits,
+                  ae_state *_state);
 void mincgsetscale(mincgstate* state,
-     /* Real    */ ae_vector* s,
-     ae_state *_state);
+                   /* Real    */ ae_vector* s,
+                   ae_state *_state);
 void mincgsetxrep(mincgstate* state, ae_bool needxrep, ae_state *_state);
 void mincgsetdrep(mincgstate* state, ae_bool needdrep, ae_state *_state);
 void mincgsetcgtype(mincgstate* state, ae_int_t cgtype, ae_state *_state);
@@ -4012,36 +4012,36 @@ void mincgsetstpmax(mincgstate* state, double stpmax, ae_state *_state);
 void mincgsuggeststep(mincgstate* state, double stp, ae_state *_state);
 void mincgsetprecdefault(mincgstate* state, ae_state *_state);
 void mincgsetprecdiag(mincgstate* state,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                      /* Real    */ ae_vector* d,
+                      ae_state *_state);
 void mincgsetprecscale(mincgstate* state, ae_state *_state);
 ae_bool mincgiteration(mincgstate* state, ae_state *_state);
 void mincgresults(mincgstate* state,
-     /* Real    */ ae_vector* x,
-     mincgreport* rep,
-     ae_state *_state);
+                  /* Real    */ ae_vector* x,
+                  mincgreport* rep,
+                  ae_state *_state);
 void mincgresultsbuf(mincgstate* state,
-     /* Real    */ ae_vector* x,
-     mincgreport* rep,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     mincgreport* rep,
+                     ae_state *_state);
 void mincgrestartfrom(mincgstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                      /* Real    */ ae_vector* x,
+                      ae_state *_state);
 void mincgsetprecdiagfast(mincgstate* state,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                          /* Real    */ ae_vector* d,
+                          ae_state *_state);
 void mincgsetpreclowrankfast(mincgstate* state,
-     /* Real    */ ae_vector* d1,
-     /* Real    */ ae_vector* c,
-     /* Real    */ ae_matrix* v,
-     ae_int_t vcnt,
-     ae_state *_state);
+                             /* Real    */ ae_vector* d1,
+                             /* Real    */ ae_vector* c,
+                             /* Real    */ ae_matrix* v,
+                             ae_int_t vcnt,
+                             ae_state *_state);
 void mincgsetprecvarpart(mincgstate* state,
-     /* Real    */ ae_vector* d2,
-     ae_state *_state);
+                         /* Real    */ ae_vector* d2,
+                         ae_state *_state);
 void mincgsetgradientcheck(mincgstate* state,
-     double teststep,
-     ae_state *_state);
+                           double teststep,
+                           ae_state *_state);
 ae_bool _mincgstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _mincgstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _mincgstate_clear(void* _p);
@@ -4051,62 +4051,62 @@ ae_bool _mincgreport_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool
 void _mincgreport_clear(void* _p);
 void _mincgreport_destroy(void* _p);
 void minbleiccreate(ae_int_t n,
-     /* Real    */ ae_vector* x,
-     minbleicstate* state,
-     ae_state *_state);
+                    /* Real    */ ae_vector* x,
+                    minbleicstate* state,
+                    ae_state *_state);
 void minbleiccreatef(ae_int_t n,
-     /* Real    */ ae_vector* x,
-     double diffstep,
-     minbleicstate* state,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     double diffstep,
+                     minbleicstate* state,
+                     ae_state *_state);
 void minbleicsetbc(minbleicstate* state,
-     /* Real    */ ae_vector* bndl,
-     /* Real    */ ae_vector* bndu,
-     ae_state *_state);
+                   /* Real    */ ae_vector* bndl,
+                   /* Real    */ ae_vector* bndu,
+                   ae_state *_state);
 void minbleicsetlc(minbleicstate* state,
-     /* Real    */ ae_matrix* c,
-     /* Integer */ ae_vector* ct,
-     ae_int_t k,
-     ae_state *_state);
+                   /* Real    */ ae_matrix* c,
+                   /* Integer */ ae_vector* ct,
+                   ae_int_t k,
+                   ae_state *_state);
 void minbleicsetcond(minbleicstate* state,
-     double epsg,
-     double epsf,
-     double epsx,
-     ae_int_t maxits,
-     ae_state *_state);
+                     double epsg,
+                     double epsf,
+                     double epsx,
+                     ae_int_t maxits,
+                     ae_state *_state);
 void minbleicsetscale(minbleicstate* state,
-     /* Real    */ ae_vector* s,
-     ae_state *_state);
+                      /* Real    */ ae_vector* s,
+                      ae_state *_state);
 void minbleicsetprecdefault(minbleicstate* state, ae_state *_state);
 void minbleicsetprecdiag(minbleicstate* state,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                         /* Real    */ ae_vector* d,
+                         ae_state *_state);
 void minbleicsetprecscale(minbleicstate* state, ae_state *_state);
 void minbleicsetxrep(minbleicstate* state,
-     ae_bool needxrep,
-     ae_state *_state);
+                     ae_bool needxrep,
+                     ae_state *_state);
 void minbleicsetdrep(minbleicstate* state,
-     ae_bool needdrep,
-     ae_state *_state);
+                     ae_bool needdrep,
+                     ae_state *_state);
 void minbleicsetstpmax(minbleicstate* state,
-     double stpmax,
-     ae_state *_state);
+                       double stpmax,
+                       ae_state *_state);
 ae_bool minbleiciteration(minbleicstate* state, ae_state *_state);
 void minbleicresults(minbleicstate* state,
-     /* Real    */ ae_vector* x,
-     minbleicreport* rep,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     minbleicreport* rep,
+                     ae_state *_state);
 void minbleicresultsbuf(minbleicstate* state,
-     /* Real    */ ae_vector* x,
-     minbleicreport* rep,
-     ae_state *_state);
+                        /* Real    */ ae_vector* x,
+                        minbleicreport* rep,
+                        ae_state *_state);
 void minbleicrestartfrom(minbleicstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                         /* Real    */ ae_vector* x,
+                         ae_state *_state);
 void minbleicemergencytermination(minbleicstate* state, ae_state *_state);
 void minbleicsetgradientcheck(minbleicstate* state,
-     double teststep,
-     ae_state *_state);
+                              double teststep,
+                              ae_state *_state);
 ae_bool _minbleicstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _minbleicstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _minbleicstate_clear(void* _p);
@@ -4116,62 +4116,62 @@ ae_bool _minbleicreport_init_copy(void* _dst, void* _src, ae_state *_state, ae_b
 void _minbleicreport_clear(void* _p);
 void _minbleicreport_destroy(void* _p);
 void minlbfgscreate(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     minlbfgsstate* state,
-     ae_state *_state);
+                    ae_int_t m,
+                    /* Real    */ ae_vector* x,
+                    minlbfgsstate* state,
+                    ae_state *_state);
 void minlbfgscreatef(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     double diffstep,
-     minlbfgsstate* state,
-     ae_state *_state);
+                     ae_int_t m,
+                     /* Real    */ ae_vector* x,
+                     double diffstep,
+                     minlbfgsstate* state,
+                     ae_state *_state);
 void minlbfgssetcond(minlbfgsstate* state,
-     double epsg,
-     double epsf,
-     double epsx,
-     ae_int_t maxits,
-     ae_state *_state);
+                     double epsg,
+                     double epsf,
+                     double epsx,
+                     ae_int_t maxits,
+                     ae_state *_state);
 void minlbfgssetxrep(minlbfgsstate* state,
-     ae_bool needxrep,
-     ae_state *_state);
+                     ae_bool needxrep,
+                     ae_state *_state);
 void minlbfgssetstpmax(minlbfgsstate* state,
-     double stpmax,
-     ae_state *_state);
+                       double stpmax,
+                       ae_state *_state);
 void minlbfgssetscale(minlbfgsstate* state,
-     /* Real    */ ae_vector* s,
-     ae_state *_state);
+                      /* Real    */ ae_vector* s,
+                      ae_state *_state);
 void minlbfgscreatex(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     ae_int_t flags,
-     double diffstep,
-     minlbfgsstate* state,
-     ae_state *_state);
+                     ae_int_t m,
+                     /* Real    */ ae_vector* x,
+                     ae_int_t flags,
+                     double diffstep,
+                     minlbfgsstate* state,
+                     ae_state *_state);
 void minlbfgssetprecdefault(minlbfgsstate* state, ae_state *_state);
 void minlbfgssetpreccholesky(minlbfgsstate* state,
-     /* Real    */ ae_matrix* p,
-     ae_bool isupper,
-     ae_state *_state);
+                             /* Real    */ ae_matrix* p,
+                             ae_bool isupper,
+                             ae_state *_state);
 void minlbfgssetprecdiag(minlbfgsstate* state,
-     /* Real    */ ae_vector* d,
-     ae_state *_state);
+                         /* Real    */ ae_vector* d,
+                         ae_state *_state);
 void minlbfgssetprecscale(minlbfgsstate* state, ae_state *_state);
 ae_bool minlbfgsiteration(minlbfgsstate* state, ae_state *_state);
 void minlbfgsresults(minlbfgsstate* state,
-     /* Real    */ ae_vector* x,
-     minlbfgsreport* rep,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     minlbfgsreport* rep,
+                     ae_state *_state);
 void minlbfgsresultsbuf(minlbfgsstate* state,
-     /* Real    */ ae_vector* x,
-     minlbfgsreport* rep,
-     ae_state *_state);
+                        /* Real    */ ae_vector* x,
+                        minlbfgsreport* rep,
+                        ae_state *_state);
 void minlbfgsrestartfrom(minlbfgsstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                         /* Real    */ ae_vector* x,
+                         ae_state *_state);
 void minlbfgssetgradientcheck(minlbfgsstate* state,
-     double teststep,
-     ae_state *_state);
+                              double teststep,
+                              ae_state *_state);
 ae_bool _minlbfgsstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _minlbfgsstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _minlbfgsstate_clear(void* _p);
@@ -4182,67 +4182,67 @@ void _minlbfgsreport_clear(void* _p);
 void _minlbfgsreport_destroy(void* _p);
 void minqpcreate(ae_int_t n, minqpstate* state, ae_state *_state);
 void minqpsetlinearterm(minqpstate* state,
-     /* Real    */ ae_vector* b,
-     ae_state *_state);
+                        /* Real    */ ae_vector* b,
+                        ae_state *_state);
 void minqpsetquadraticterm(minqpstate* state,
-     /* Real    */ ae_matrix* a,
-     ae_bool isupper,
-     ae_state *_state);
+                           /* Real    */ ae_matrix* a,
+                           ae_bool isupper,
+                           ae_state *_state);
 void minqpsetquadratictermsparse(minqpstate* state,
-     sparsematrix* a,
-     ae_bool isupper,
-     ae_state *_state);
+                                 sparsematrix* a,
+                                 ae_bool isupper,
+                                 ae_state *_state);
 void minqpsetstartingpoint(minqpstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                           /* Real    */ ae_vector* x,
+                           ae_state *_state);
 void minqpsetorigin(minqpstate* state,
-     /* Real    */ ae_vector* xorigin,
-     ae_state *_state);
+                    /* Real    */ ae_vector* xorigin,
+                    ae_state *_state);
 void minqpsetscale(minqpstate* state,
-     /* Real    */ ae_vector* s,
-     ae_state *_state);
+                   /* Real    */ ae_vector* s,
+                   ae_state *_state);
 void minqpsetalgocholesky(minqpstate* state, ae_state *_state);
 void minqpsetalgobleic(minqpstate* state,
-     double epsg,
-     double epsf,
-     double epsx,
-     ae_int_t maxits,
-     ae_state *_state);
+                       double epsg,
+                       double epsf,
+                       double epsx,
+                       ae_int_t maxits,
+                       ae_state *_state);
 void minqpsetbc(minqpstate* state,
-     /* Real    */ ae_vector* bndl,
-     /* Real    */ ae_vector* bndu,
-     ae_state *_state);
+                /* Real    */ ae_vector* bndl,
+                /* Real    */ ae_vector* bndu,
+                ae_state *_state);
 void minqpsetlc(minqpstate* state,
-     /* Real    */ ae_matrix* c,
-     /* Integer */ ae_vector* ct,
-     ae_int_t k,
-     ae_state *_state);
+                /* Real    */ ae_matrix* c,
+                /* Integer */ ae_vector* ct,
+                ae_int_t k,
+                ae_state *_state);
 void minqpoptimize(minqpstate* state, ae_state *_state);
 void minqpresults(minqpstate* state,
-     /* Real    */ ae_vector* x,
-     minqpreport* rep,
-     ae_state *_state);
+                  /* Real    */ ae_vector* x,
+                  minqpreport* rep,
+                  ae_state *_state);
 void minqpresultsbuf(minqpstate* state,
-     /* Real    */ ae_vector* x,
-     minqpreport* rep,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     minqpreport* rep,
+                     ae_state *_state);
 void minqpsetlineartermfast(minqpstate* state,
-     /* Real    */ ae_vector* b,
-     ae_state *_state);
+                            /* Real    */ ae_vector* b,
+                            ae_state *_state);
 void minqpsetquadratictermfast(minqpstate* state,
-     /* Real    */ ae_matrix* a,
-     ae_bool isupper,
-     double s,
-     ae_state *_state);
+                               /* Real    */ ae_matrix* a,
+                               ae_bool isupper,
+                               double s,
+                               ae_state *_state);
 void minqprewritediagonal(minqpstate* state,
-     /* Real    */ ae_vector* s,
-     ae_state *_state);
+                          /* Real    */ ae_vector* s,
+                          ae_state *_state);
 void minqpsetstartingpointfast(minqpstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                               /* Real    */ ae_vector* x,
+                               ae_state *_state);
 void minqpsetoriginfast(minqpstate* state,
-     /* Real    */ ae_vector* xorigin,
-     ae_state *_state);
+                        /* Real    */ ae_vector* xorigin,
+                        ae_state *_state);
 ae_bool _minqpstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _minqpstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _minqpstate_clear(void* _p);
@@ -4252,68 +4252,68 @@ ae_bool _minqpreport_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool
 void _minqpreport_clear(void* _p);
 void _minqpreport_destroy(void* _p);
 void minlmcreatevj(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     minlmstate* state,
-     ae_state *_state);
+                   ae_int_t m,
+                   /* Real    */ ae_vector* x,
+                   minlmstate* state,
+                   ae_state *_state);
 void minlmcreatev(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     double diffstep,
-     minlmstate* state,
-     ae_state *_state);
+                  ae_int_t m,
+                  /* Real    */ ae_vector* x,
+                  double diffstep,
+                  minlmstate* state,
+                  ae_state *_state);
 void minlmcreatefgh(ae_int_t n,
-     /* Real    */ ae_vector* x,
-     minlmstate* state,
-     ae_state *_state);
+                    /* Real    */ ae_vector* x,
+                    minlmstate* state,
+                    ae_state *_state);
 void minlmsetcond(minlmstate* state,
-     double epsg,
-     double epsf,
-     double epsx,
-     ae_int_t maxits,
-     ae_state *_state);
+                  double epsg,
+                  double epsf,
+                  double epsx,
+                  ae_int_t maxits,
+                  ae_state *_state);
 void minlmsetxrep(minlmstate* state, ae_bool needxrep, ae_state *_state);
 void minlmsetstpmax(minlmstate* state, double stpmax, ae_state *_state);
 void minlmsetscale(minlmstate* state,
-     /* Real    */ ae_vector* s,
-     ae_state *_state);
+                   /* Real    */ ae_vector* s,
+                   ae_state *_state);
 void minlmsetbc(minlmstate* state,
-     /* Real    */ ae_vector* bndl,
-     /* Real    */ ae_vector* bndu,
-     ae_state *_state);
+                /* Real    */ ae_vector* bndl,
+                /* Real    */ ae_vector* bndu,
+                ae_state *_state);
 void minlmsetacctype(minlmstate* state,
-     ae_int_t acctype,
-     ae_state *_state);
+                     ae_int_t acctype,
+                     ae_state *_state);
 ae_bool minlmiteration(minlmstate* state, ae_state *_state);
 void minlmresults(minlmstate* state,
-     /* Real    */ ae_vector* x,
-     minlmreport* rep,
-     ae_state *_state);
+                  /* Real    */ ae_vector* x,
+                  minlmreport* rep,
+                  ae_state *_state);
 void minlmresultsbuf(minlmstate* state,
-     /* Real    */ ae_vector* x,
-     minlmreport* rep,
-     ae_state *_state);
+                     /* Real    */ ae_vector* x,
+                     minlmreport* rep,
+                     ae_state *_state);
 void minlmrestartfrom(minlmstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state);
+                      /* Real    */ ae_vector* x,
+                      ae_state *_state);
 void minlmcreatevgj(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     minlmstate* state,
-     ae_state *_state);
+                    ae_int_t m,
+                    /* Real    */ ae_vector* x,
+                    minlmstate* state,
+                    ae_state *_state);
 void minlmcreatefgj(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     minlmstate* state,
-     ae_state *_state);
+                    ae_int_t m,
+                    /* Real    */ ae_vector* x,
+                    minlmstate* state,
+                    ae_state *_state);
 void minlmcreatefj(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     minlmstate* state,
-     ae_state *_state);
+                   ae_int_t m,
+                   /* Real    */ ae_vector* x,
+                   minlmstate* state,
+                   ae_state *_state);
 void minlmsetgradientcheck(minlmstate* state,
-     double teststep,
-     ae_state *_state);
+                           double teststep,
+                           ae_state *_state);
 ae_bool _minlmstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _minlmstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _minlmstate_clear(void* _p);
@@ -4323,48 +4323,48 @@ ae_bool _minlmreport_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool
 void _minlmreport_clear(void* _p);
 void _minlmreport_destroy(void* _p);
 void minlbfgssetdefaultpreconditioner(minlbfgsstate* state,
-     ae_state *_state);
+                                      ae_state *_state);
 void minlbfgssetcholeskypreconditioner(minlbfgsstate* state,
-     /* Real    */ ae_matrix* p,
-     ae_bool isupper,
-     ae_state *_state);
+                                       /* Real    */ ae_matrix* p,
+                                       ae_bool isupper,
+                                       ae_state *_state);
 void minbleicsetbarrierwidth(minbleicstate* state,
-     double mu,
-     ae_state *_state);
+                             double mu,
+                             ae_state *_state);
 void minbleicsetbarrierdecay(minbleicstate* state,
-     double mudecay,
-     ae_state *_state);
+                             double mudecay,
+                             ae_state *_state);
 void minasacreate(ae_int_t n,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* bndl,
-     /* Real    */ ae_vector* bndu,
-     minasastate* state,
-     ae_state *_state);
+                  /* Real    */ ae_vector* x,
+                  /* Real    */ ae_vector* bndl,
+                  /* Real    */ ae_vector* bndu,
+                  minasastate* state,
+                  ae_state *_state);
 void minasasetcond(minasastate* state,
-     double epsg,
-     double epsf,
-     double epsx,
-     ae_int_t maxits,
-     ae_state *_state);
+                   double epsg,
+                   double epsf,
+                   double epsx,
+                   ae_int_t maxits,
+                   ae_state *_state);
 void minasasetxrep(minasastate* state, ae_bool needxrep, ae_state *_state);
 void minasasetalgorithm(minasastate* state,
-     ae_int_t algotype,
-     ae_state *_state);
+                        ae_int_t algotype,
+                        ae_state *_state);
 void minasasetstpmax(minasastate* state, double stpmax, ae_state *_state);
 ae_bool minasaiteration(minasastate* state, ae_state *_state);
 void minasaresults(minasastate* state,
-     /* Real    */ ae_vector* x,
-     minasareport* rep,
-     ae_state *_state);
+                   /* Real    */ ae_vector* x,
+                   minasareport* rep,
+                   ae_state *_state);
 void minasaresultsbuf(minasastate* state,
-     /* Real    */ ae_vector* x,
-     minasareport* rep,
-     ae_state *_state);
+                      /* Real    */ ae_vector* x,
+                      minasareport* rep,
+                      ae_state *_state);
 void minasarestartfrom(minasastate* state,
-     /* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* bndl,
-     /* Real    */ ae_vector* bndu,
-     ae_state *_state);
+                       /* Real    */ ae_vector* x,
+                       /* Real    */ ae_vector* bndl,
+                       /* Real    */ ae_vector* bndu,
+                       ae_state *_state);
 ae_bool _minasastate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _minasastate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _minasastate_clear(void* _p);

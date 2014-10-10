@@ -8,7 +8,8 @@
 #include <time.h>
 #include <stdlib.h>
 
-double Statistics::getAverage(ObjectMatrix om, int k){
+double Statistics::getAverage(ObjectMatrix om, int k)
+{
     double average;
     int n = om.getObjectCount();
     double s = 0.0;
@@ -17,12 +18,14 @@ double Statistics::getAverage(ObjectMatrix om, int k){
     average = s / n;
     return average;
 }
-std::vector<double> Statistics::getAverageColumns(ObjectMatrix om){
+std::vector<double> Statistics::getAverageColumns(ObjectMatrix om)
+{
 
     std::vector<double> columnSum;
     int n = om.getObjectCount(), i, j;
     int m = om.getObjectAt(0).getFeatureCount();
-    std::vector<double> average; average.reserve(m);
+    std::vector<double> average;
+    average.reserve(m);
 
     double s, oCaunt = float(n);
     for (i = 0; i < m; i++) //hold features
@@ -80,9 +83,9 @@ double Statistics::getCovCoef(ObjectMatrix om, int k, int l)
 
 double Statistics::getRandom()
 {
-   // srand(time(NULL) + AdditionalMethods::PID);
+    // srand(time(NULL) + AdditionalMethods::PID);
     return (double)rand()/RAND_MAX;
-    }
+}
 
 double Statistics::getRandom(double min, double max)
 {

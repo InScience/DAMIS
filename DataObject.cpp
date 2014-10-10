@@ -12,43 +12,52 @@
 #include "DataObject.h"
 
 
-DataObject::DataObject(){
+DataObject::DataObject()
+{
 
     classLabel = -1;
 }
 
-DataObject::~DataObject(){
+DataObject::~DataObject()
+{
 
 }
 
-DataObject::DataObject(int feature_count){
+DataObject::DataObject(int feature_count)
+{
 
     classLabel = -1;
     featureCount = feature_count;
 }
 
-DataObject::DataObject(std::vector<double> vector){
+DataObject::DataObject(std::vector<double> vector, int cLabel)
+{
     features = vector;
     featureCount = features.size();
+    this->classLabel = cLabel;
 }
 
-DataObject::DataObject(int feature_count, int class_label){
+DataObject::DataObject(int feature_count, int class_label)
+{
 
     featureCount = feature_count;
     classLabel = class_label;
 }
 
-int DataObject::getClassLabel(){
-	return classLabel;
+int DataObject::getClassLabel()
+{
+    return this->classLabel;
 }
 
-int DataObject::getFeatureCount(){
+int DataObject::getFeatureCount()
+{
     //return features.size();
     return featureCount;
 }
 
-void DataObject::setClassLabel(int class_Label){
-    classLabel = class_Label;
+void DataObject::setClassLabel(int class_Label)
+{
+    this->classLabel = class_Label;
 }
 
 bool DataObject::IsIdentical(DataObject obj)
@@ -78,6 +87,11 @@ void DataObject::updateFeature(int featureIndex, double newValue)
 {
     features.at(featureIndex) = newValue;
 }
+
+/*void DataObject::updateClass(int objectIndex, double newValue)
+{
+    classLabel = newValue;
+}*/
 
 std::vector<double> DataObject::getFeatures()
 {

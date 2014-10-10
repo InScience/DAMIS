@@ -14,21 +14,26 @@
 #include "AdditionalMethods.h"
 #include "Statistics.h"
 #include <cmath>
+#include <iostream>
 
 
-DimReductionMethod::DimReductionMethod(){
+DimReductionMethod::DimReductionMethod()
+{
     d = 2;
 }
 
-DimReductionMethod::~DimReductionMethod(){
+DimReductionMethod::~DimReductionMethod()
+{
 
 }
 
-int DimReductionMethod::getProjectionDimension(){
-	return d;
+int DimReductionMethod::getProjectionDimension()
+{
+    return d;
 }
 
-void DimReductionMethod::initializeProjectionMatrix(){
+void DimReductionMethod::initializeProjectionMatrix()
+{
     int n = X.getObjectCount();
     Y = ObjectMatrix(n);
     std::vector<double> DataObjectItem;
@@ -36,17 +41,26 @@ void DimReductionMethod::initializeProjectionMatrix(){
 
     for (int i = 0; i < n; i++)
     {
+       // DataObject tmp = X.getObjectAt(i);
         for (int j = 0; j < d; j++)
         {
             double rnd = Statistics::getRandom(-5, 5);
             DataObjectItem.push_back(rnd);
         }
-        Y.addObject(DataObject(DataObjectItem));
+        if (X.getClassCount() > 0)
+            {
+                Y.addObject(DataObject(DataObjectItem, X.getObjectAt(i).getClassLabel()));
+             //   std::cout << X.getObjectAt(i).getClassLabel() <<std::endl;
+            }
+        else
+            Y.addObject(DataObject(DataObjectItem));
+
         DataObjectItem.clear();
     }
 }
 
-void DimReductionMethod::setProjectionDimension(int dimension){
+void DimReductionMethod::setProjectionDimension(int dimension)
+{
     d = dimension;
 }
 // TODO (Povilas#1#): Rewrite stress calculation without sqrt
@@ -58,8 +72,10 @@ double DimReductionMethod::getStress()
     int noOfBytes = sizeof(double); //for file reading
     std::vector<double> ob1, ob2;
 
-    FILE *distFile;
-    distFile = fopen(AdditionalMethods::tempFileSavePath.c_str(), "rb");
+  //  FILE *distFile;
+
+    fclose(AdditionalMethods::distFile);
+    AdditionalMethods::distFile = fopen(AdditionalMethods::tempFileSavePath.c_str(), "rb");
     double tmpDist;
 // TODO (Povilas#1#): Check if file exists
 
@@ -78,12 +94,12 @@ double DimReductionMethod::getStress()
             }
             distY = std::sqrt(s);
 
-            fread(&distX, noOfBytes, 1, distFile);
+            fread(&distX, noOfBytes, 1, AdditionalMethods::distFile);
             tmpDist = distX - distY;
             stress += tmpDist * tmpDist;
         }
     }
-    fclose(distFile);
+ //   fclose(AdditionalMethods::distFile);
 
     return stress * 1. / X.getWeight();
 }

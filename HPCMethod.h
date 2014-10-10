@@ -5,8 +5,8 @@
 //  Original author: Povilas
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_C30BAF2D_F989_4624_9B14_AC72555B02B9__INCLUDED_)
-#define EA_C30BAF2D_F989_4624_9B14_AC72555B02B9__INCLUDED_
+#if !defined(HPCMETHOD_H)
+#define HPCMETHOD_H
 
 #include "ObjectMatrix.h"
 #include "WebInterface.h"
@@ -20,22 +20,22 @@ class HPCMethod : public WebInterface
 {
 
 public:
-        /**
-        * A default constructor.
-        */
-	HPCMethod();
-        /**
-        * A destructor.
-        */
-	virtual ~HPCMethod();
-        /** \var ObjectMatrix X
-         *  \brief Initial data matrix.
-         */
-	ObjectMatrix X;
-        /** \fn virtual void sendMessage();
-         *  \brief Sends a message to Web interface.
-         */
-	virtual void sendMessage();
+    /*! \fn HPCMethod();
+    * \brief A default constructor.
+    */
+    HPCMethod();
+    /*! \fn virtual ~HPCMethod();
+    * \brief A destructor.
+    */
+    virtual ~HPCMethod();
+    /*! \var ObjectMatrix X
+     *  \brief Initial input data matrix.
+     */
+    ObjectMatrix X;
+    /*! \fn virtual void sendMessage();
+     *  \brief Sends a message to Web interface.
+     */
+    virtual void sendMessage();
 
 };
-#endif // !defined(EA_C30BAF2D_F989_4624_9B14_AC72555B02B9__INCLUDED_)
+#endif // !defined(HPCMETHOD_H)

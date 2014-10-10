@@ -17,15 +17,18 @@
 #include "AdditionalMethods.h"
 
 
-SOM::SOM(){
+SOM::SOM()
+{
 
 }
 
-SOM::~SOM(){
+SOM::~SOM()
+{
 
 }
 
-SOM::SOM(int rows, int columns, int ehat){
+SOM::SOM(int rows, int columns, int ehat)
+{
     k_x = rows;
     k_y = columns;
     eHat = ehat;
@@ -33,14 +36,16 @@ SOM::SOM(int rows, int columns, int ehat){
     X.loadDataMatrix();
 }
 
-SOM::SOM(int rows, int columns, int ehat, ObjectMatrix x){
+SOM::SOM(int rows, int columns, int ehat, ObjectMatrix x)
+{
     k_x = rows;
     k_y = columns;
     eHat = ehat;
     X = x;
 }
 
-ObjectMatrix SOM::getProjection(){
+ObjectMatrix SOM::getProjection()
+{
     int n = X.getObjectAt(0).getFeatureCount();
     int m = X.getObjectCount();
     ObjectMatrix *M  = new ObjectMatrix(k_x, k_y, n);
@@ -136,7 +141,8 @@ double SOM::Max(double d1, double d2)
         return d2;
 }
 
-double SOM::getQuantizationError(){
+double SOM::getQuantizationError()
+{
     int m = X.getObjectCount();
     int r = nWinner.getObjectCount();
     double som_qe = 0.0; //, dist_li = 0.0;
@@ -145,11 +151,11 @@ double SOM::getQuantizationError(){
 
     for (int l = 0; l < m; l++)
     {
-      //  dist_li =0.0;
-      objXtmp = X.getObjectAt(l);
+        //  dist_li =0.0;
+        objXtmp = X.getObjectAt(l);
         for (int i = 0; i < r; i++)
             som_qe += DistanceMetrics::getDistance(nWinner.getObjectAt(i), objXtmp, EUCLIDEAN);
-       // som_qe += dist_li;
+        // som_qe += dist_li;
     }
 
     return som_qe / m; //dalyba is m

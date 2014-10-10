@@ -93,7 +93,7 @@ OUTPUT PARAMETERS
 *************************************************************************/
 void samplemoments(const real_1d_array &x, double &mean, double &variance, double &skewness, double &kurtosis)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -165,7 +165,7 @@ and stored at 'Mean' variable.
 *************************************************************************/
 double samplemean(const real_1d_array &x)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -237,7 +237,7 @@ and stored at 'Variance' variable.
 *************************************************************************/
 double samplevariance(const real_1d_array &x)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -309,7 +309,7 @@ and stored at 'Skewness' variable.
 *************************************************************************/
 double sampleskewness(const real_1d_array &x)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -381,7 +381,7 @@ and stored at 'Kurtosis' variable.
 *************************************************************************/
 double samplekurtosis(const real_1d_array &x)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -447,7 +447,7 @@ Output parameters:
 *************************************************************************/
 void sampleadev(const real_1d_array &x, double &adev)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -513,7 +513,7 @@ Output parameters:
 *************************************************************************/
 void samplemedian(const real_1d_array &x, double &median)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -581,7 +581,7 @@ Output parameters:
 *************************************************************************/
 void samplepercentile(const real_1d_array &x, const double p, double &v)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -649,7 +649,7 @@ Result:
 *************************************************************************/
 double cov2(const real_1d_array &x, const real_1d_array &y)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'cov2': looks like one of arguments has wrong size");
@@ -720,7 +720,7 @@ Result:
 *************************************************************************/
 double pearsoncorr2(const real_1d_array &x, const real_1d_array &y)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'pearsoncorr2': looks like one of arguments has wrong size");
@@ -791,7 +791,7 @@ Result:
 *************************************************************************/
 double spearmancorr2(const real_1d_array &x, const real_1d_array &y)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     if( (x.length()!=y.length()))
         throw ap_error("Error while calling 'spearmancorr2': looks like one of arguments has wrong size");
@@ -923,7 +923,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void covm(const real_2d_array &x, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
 
@@ -946,7 +946,7 @@ void covm(const real_2d_array &x, real_2d_array &c)
 
 void smp_covm(const real_2d_array &x, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
 
@@ -1079,7 +1079,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void pearsoncorrm(const real_2d_array &x, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
 
@@ -1102,7 +1102,7 @@ void pearsoncorrm(const real_2d_array &x, real_2d_array &c)
 
 void smp_pearsoncorrm(const real_2d_array &x, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
 
@@ -1235,7 +1235,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void spearmancorrm(const real_2d_array &x, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
 
@@ -1258,7 +1258,7 @@ void spearmancorrm(const real_2d_array &x, real_2d_array &c)
 
 void smp_spearmancorrm(const real_2d_array &x, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m;
 
@@ -1403,7 +1403,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void covm2(const real_2d_array &x, const real_2d_array &y, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m1;
     ae_int_t m2;
@@ -1429,7 +1429,7 @@ void covm2(const real_2d_array &x, const real_2d_array &y, real_2d_array &c)
 
 void smp_covm2(const real_2d_array &x, const real_2d_array &y, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m1;
     ae_int_t m2;
@@ -1577,7 +1577,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void pearsoncorrm2(const real_2d_array &x, const real_2d_array &y, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m1;
     ae_int_t m2;
@@ -1603,7 +1603,7 @@ void pearsoncorrm2(const real_2d_array &x, const real_2d_array &y, real_2d_array
 
 void smp_pearsoncorrm2(const real_2d_array &x, const real_2d_array &y, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m1;
     ae_int_t m2;
@@ -1751,7 +1751,7 @@ OUTPUT PARAMETERS:
 *************************************************************************/
 void spearmancorrm2(const real_2d_array &x, const real_2d_array &y, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m1;
     ae_int_t m2;
@@ -1777,7 +1777,7 @@ void spearmancorrm2(const real_2d_array &x, const real_2d_array &y, real_2d_arra
 
 void smp_spearmancorrm2(const real_2d_array &x, const real_2d_array &y, real_2d_array &c)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
     ae_int_t m1;
     ae_int_t m2;
@@ -1841,7 +1841,7 @@ void smp_rankdata(const real_2d_array &xy, const ae_int_t npoints, const ae_int_
 *************************************************************************/
 void rankdata(real_2d_array &xy)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t npoints;
     ae_int_t nfeatures;
 
@@ -1864,7 +1864,7 @@ void rankdata(real_2d_array &xy)
 
 void smp_rankdata(real_2d_array &xy)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t npoints;
     ae_int_t nfeatures;
 
@@ -1925,7 +1925,7 @@ void smp_rankdatacentered(const real_2d_array &xy, const ae_int_t npoints, const
 *************************************************************************/
 void rankdatacentered(real_2d_array &xy)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t npoints;
     ae_int_t nfeatures;
 
@@ -1948,7 +1948,7 @@ void rankdatacentered(real_2d_array &xy)
 
 void smp_rankdatacentered(real_2d_array &xy)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t npoints;
     ae_int_t nfeatures;
 
@@ -2658,21 +2658,21 @@ void wilcoxonsignedranktest(const real_1d_array &x, const ae_int_t n, const doub
 namespace alglib_impl
 {
 static void basestat_rankdatarec(/* Real    */ ae_matrix* xy,
-     ae_int_t i0,
-     ae_int_t i1,
-     ae_int_t nfeatures,
-     ae_bool iscentered,
-     ae_shared_pool* pool,
-     ae_int_t basecasecost,
-     ae_state *_state);
+        ae_int_t i0,
+        ae_int_t i1,
+        ae_int_t nfeatures,
+        ae_bool iscentered,
+        ae_shared_pool* pool,
+        ae_int_t basecasecost,
+        ae_state *_state);
 static void basestat_rankdatabasecase(/* Real    */ ae_matrix* xy,
-     ae_int_t i0,
-     ae_int_t i1,
-     ae_int_t nfeatures,
-     ae_bool iscentered,
-     apbuffers* buf0,
-     apbuffers* buf1,
-     ae_state *_state);
+        ae_int_t i0,
+        ae_int_t i1,
+        ae_int_t nfeatures,
+        ae_bool iscentered,
+        apbuffers* buf0,
+        apbuffers* buf1,
+        ae_state *_state);
 
 
 static double correlationtests_spearmantail5(double s, ae_state *_state);
@@ -2681,17 +2681,17 @@ static double correlationtests_spearmantail7(double s, ae_state *_state);
 static double correlationtests_spearmantail8(double s, ae_state *_state);
 static double correlationtests_spearmantail9(double s, ae_state *_state);
 static double correlationtests_spearmantail(double t,
-     ae_int_t n,
-     ae_state *_state);
+        ae_int_t n,
+        ae_state *_state);
 
 
 static void jarquebera_jarqueberastatistic(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double* s,
-     ae_state *_state);
+        ae_int_t n,
+        double* s,
+        ae_state *_state);
 static double jarquebera_jarqueberaapprox(ae_int_t n,
-     double s,
-     ae_state *_state);
+        double s,
+        ae_state *_state);
 static double jarquebera_jbtbl5(double s, ae_state *_state);
 static double jarquebera_jbtbl6(double s, ae_state *_state);
 static double jarquebera_jbtbl7(double s, ae_state *_state);
@@ -2719,48 +2719,48 @@ static double jarquebera_jbtbl501(double s, ae_state *_state);
 static double jarquebera_jbtbl701(double s, ae_state *_state);
 static double jarquebera_jbtbl1401(double s, ae_state *_state);
 static void jarquebera_jbcheb(double x,
-     double c,
-     double* tj,
-     double* tj1,
-     double* r,
-     ae_state *_state);
+                              double c,
+                              double* tj,
+                              double* tj1,
+                              double* r,
+                              ae_state *_state);
 
 
 static void mannwhitneyu_ucheb(double x,
-     double c,
-     double* tj,
-     double* tj1,
-     double* r,
-     ae_state *_state);
+                               double c,
+                               double* tj,
+                               double* tj1,
+                               double* r,
+                               ae_state *_state);
 static double mannwhitneyu_uninterpolate(double p1,
-     double p2,
-     double p3,
-     ae_int_t n,
-     ae_state *_state);
+        double p2,
+        double p3,
+        ae_int_t n,
+        ae_state *_state);
 static double mannwhitneyu_usigma000(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                     ae_int_t n2,
+                                     ae_state *_state);
 static double mannwhitneyu_usigma075(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                     ae_int_t n2,
+                                     ae_state *_state);
 static double mannwhitneyu_usigma150(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                     ae_int_t n2,
+                                     ae_state *_state);
 static double mannwhitneyu_usigma225(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                     ae_int_t n2,
+                                     ae_state *_state);
 static double mannwhitneyu_usigma300(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                     ae_int_t n2,
+                                     ae_state *_state);
 static double mannwhitneyu_usigma333(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                     ae_int_t n2,
+                                     ae_state *_state);
 static double mannwhitneyu_usigma367(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                     ae_int_t n2,
+                                     ae_state *_state);
 static double mannwhitneyu_usigma400(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                     ae_int_t n2,
+                                     ae_state *_state);
 static double mannwhitneyu_utbln5n5(double s, ae_state *_state);
 static double mannwhitneyu_utbln5n6(double s, ae_state *_state);
 static double mannwhitneyu_utbln5n7(double s, ae_state *_state);
@@ -2861,9 +2861,9 @@ static double mannwhitneyu_utbln14n15(double s, ae_state *_state);
 static double mannwhitneyu_utbln14n30(double s, ae_state *_state);
 static double mannwhitneyu_utbln14n100(double s, ae_state *_state);
 static double mannwhitneyu_usigma(double s,
-     ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state);
+                                  ae_int_t n1,
+                                  ae_int_t n2,
+                                  ae_state *_state);
 
 
 
@@ -2873,11 +2873,11 @@ static double mannwhitneyu_usigma(double s,
 
 
 static void wsr_wcheb(double x,
-     double c,
-     double* tj,
-     double* tj1,
-     double* r,
-     ae_state *_state);
+                      double c,
+                      double* tj,
+                      double* tj1,
+                      double* r,
+                      ae_state *_state);
 static double wsr_w5(double s, ae_state *_state);
 static double wsr_w6(double s, ae_state *_state);
 static double wsr_w7(double s, ae_state *_state);
@@ -2922,7 +2922,7 @@ INPUT PARAMETERS:
     N       -   N>=0, sample size:
                 * if given, only leading N elements of X are processed
                 * if not given, automatically determined from size of X
-    
+
 OUTPUT PARAMETERS
     Mean    -   mean.
     Variance-   variance.
@@ -2934,12 +2934,12 @@ OUTPUT PARAMETERS
      Copyright 06.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void samplemoments(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double* mean,
-     double* variance,
-     double* skewness,
-     double* kurtosis,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 double* mean,
+                                 double* variance,
+                                 double* skewness,
+                                 double* kurtosis,
+                                 ae_state *_state)
 {
     ae_int_t i;
     double v;
@@ -2955,7 +2955,7 @@ void samplemoments(/* Real    */ ae_vector* x,
     ae_assert(n>=0, "SampleMoments: N<0", _state);
     ae_assert(x->cnt>=n, "SampleMoments: Length(X)<N!", _state);
     ae_assert(isfinitevector(x, n, _state), "SampleMoments: X is not finite vector", _state);
-    
+
     /*
      * Init, special case 'N=0'
      */
@@ -2968,7 +2968,7 @@ void samplemoments(/* Real    */ ae_vector* x,
     {
         return;
     }
-    
+
     /*
      * Mean
      */
@@ -2977,7 +2977,7 @@ void samplemoments(/* Real    */ ae_vector* x,
         *mean = *mean+x->ptr.p_double[i];
     }
     *mean = *mean/n;
-    
+
     /*
      * Variance (using corrected two-pass algorithm)
      */
@@ -3001,7 +3001,7 @@ void samplemoments(/* Real    */ ae_vector* x,
         }
         stddev = ae_sqrt(*variance, _state);
     }
-    
+
     /*
      * Skewness and kurtosis
      */
@@ -3030,7 +3030,7 @@ INPUT PARAMETERS:
                 * if not given, automatically determined from size of X
 
 NOTE:
-                
+
 This function return result  which calculated by 'SampleMoments' function
 and stored at 'Mean' variable.
 
@@ -3039,8 +3039,8 @@ and stored at 'Mean' variable.
      Copyright 06.09.2006 by Bochkanov Sergey
 *************************************************************************/
 double samplemean(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+                                ae_int_t n,
+                                ae_state *_state)
 {
     double mean;
     double tmp0;
@@ -3065,7 +3065,7 @@ INPUT PARAMETERS:
                 * if not given, automatically determined from size of X
 
 NOTE:
-                
+
 This function return result  which calculated by 'SampleMoments' function
 and stored at 'Variance' variable.
 
@@ -3074,8 +3074,8 @@ and stored at 'Variance' variable.
      Copyright 06.09.2006 by Bochkanov Sergey
 *************************************************************************/
 double samplevariance(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_state *_state)
 {
     double variance;
     double tmp0;
@@ -3100,7 +3100,7 @@ INPUT PARAMETERS:
                 * if not given, automatically determined from size of X
 
 NOTE:
-                
+
 This function return result  which calculated by 'SampleMoments' function
 and stored at 'Skewness' variable.
 
@@ -3109,8 +3109,8 @@ and stored at 'Skewness' variable.
      Copyright 06.09.2006 by Bochkanov Sergey
 *************************************************************************/
 double sampleskewness(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_state *_state)
 {
     double skewness;
     double tmp0;
@@ -3135,7 +3135,7 @@ INPUT PARAMETERS:
                 * if not given, automatically determined from size of X
 
 NOTE:
-                
+
 This function return result  which calculated by 'SampleMoments' function
 and stored at 'Kurtosis' variable.
 
@@ -3144,8 +3144,8 @@ and stored at 'Kurtosis' variable.
      Copyright 06.09.2006 by Bochkanov Sergey
 *************************************************************************/
 double samplekurtosis(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    ae_state *_state)
 {
     double kurtosis;
     double tmp0;
@@ -3168,7 +3168,7 @@ Input parameters:
     N   -   N>=0, sample size:
             * if given, only leading N elements of X are processed
             * if not given, automatically determined from size of X
-    
+
 Output parameters:
     ADev-   ADev
 
@@ -3176,9 +3176,9 @@ Output parameters:
      Copyright 06.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void sampleadev(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double* adev,
-     ae_state *_state)
+                              ae_int_t n,
+                              double* adev,
+                              ae_state *_state)
 {
     ae_int_t i;
     double mean;
@@ -3188,7 +3188,7 @@ void sampleadev(/* Real    */ ae_vector* x,
     ae_assert(n>=0, "SampleADev: N<0", _state);
     ae_assert(x->cnt>=n, "SampleADev: Length(X)<N!", _state);
     ae_assert(isfinitevector(x, n, _state), "SampleADev: X is not finite vector", _state);
-    
+
     /*
      * Init, handle N=0
      */
@@ -3198,7 +3198,7 @@ void sampleadev(/* Real    */ ae_vector* x,
     {
         return;
     }
-    
+
     /*
      * Mean
      */
@@ -3207,7 +3207,7 @@ void sampleadev(/* Real    */ ae_vector* x,
         mean = mean+x->ptr.p_double[i];
     }
     mean = mean/n;
-    
+
     /*
      * ADev
      */
@@ -3235,9 +3235,9 @@ Output parameters:
      Copyright 06.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void samplemedian(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double* median,
-     ae_state *_state)
+                                ae_int_t n,
+                                double* median,
+                                ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -3258,7 +3258,7 @@ void samplemedian(/* Real    */ ae_vector* x,
     ae_assert(n>=0, "SampleMedian: N<0", _state);
     ae_assert(x->cnt>=n, "SampleMedian: Length(X)<N!", _state);
     ae_assert(isfinitevector(x, n, _state), "SampleMedian: X is not finite vector", _state);
-    
+
     /*
      * Some degenerate cases
      */
@@ -3280,7 +3280,7 @@ void samplemedian(/* Real    */ ae_vector* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Common case, N>=3.
      * Choose X[(N-1)/2]
@@ -3292,7 +3292,7 @@ void samplemedian(/* Real    */ ae_vector* x,
     {
         if( ir<=l+1 )
         {
-            
+
             /*
              * 1 or 2 elements in partition
              */
@@ -3363,7 +3363,7 @@ void samplemedian(/* Real    */ ae_vector* x,
             }
         }
     }
-    
+
     /*
      * If N is odd, return result
      */
@@ -3403,10 +3403,10 @@ Output parameters:
      Copyright 01.03.2008 by Bochkanov Sergey
 *************************************************************************/
 void samplepercentile(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double p,
-     double* v,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    double p,
+                                    double* v,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -3463,9 +3463,9 @@ Result:
      Copyright 28.10.2010 by Bochkanov Sergey
 *************************************************************************/
 double cov2(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_state *_state)
+                          /* Real    */ ae_vector* y,
+                          ae_int_t n,
+                          ae_state *_state)
 {
     ae_int_t i;
     double xmean;
@@ -3484,7 +3484,7 @@ double cov2(/* Real    */ ae_vector* x,
     ae_assert(y->cnt>=n, "Cov2: Length(Y)<N!", _state);
     ae_assert(isfinitevector(x, n, _state), "Cov2: X is not finite vector", _state);
     ae_assert(isfinitevector(y, n, _state), "Cov2: Y is not finite vector", _state);
-    
+
     /*
      * Special case
      */
@@ -3493,7 +3493,7 @@ double cov2(/* Real    */ ae_vector* x,
         result = 0;
         return result;
     }
-    
+
     /*
      * Calculate mean.
      *
@@ -3527,7 +3527,7 @@ double cov2(/* Real    */ ae_vector* x,
         result = 0;
         return result;
     }
-    
+
     /*
      * covariance
      */
@@ -3559,9 +3559,9 @@ Result:
      Copyright 28.10.2010 by Bochkanov Sergey
 *************************************************************************/
 double pearsoncorr2(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_state *_state)
+                                  /* Real    */ ae_vector* y,
+                                  ae_int_t n,
+                                  ae_state *_state)
 {
     ae_int_t i;
     double xmean;
@@ -3584,7 +3584,7 @@ double pearsoncorr2(/* Real    */ ae_vector* x,
     ae_assert(y->cnt>=n, "PearsonCorr2: Length(Y)<N!", _state);
     ae_assert(isfinitevector(x, n, _state), "PearsonCorr2: X is not finite vector", _state);
     ae_assert(isfinitevector(y, n, _state), "PearsonCorr2: Y is not finite vector", _state);
-    
+
     /*
      * Special case
      */
@@ -3593,7 +3593,7 @@ double pearsoncorr2(/* Real    */ ae_vector* x,
         result = 0;
         return result;
     }
-    
+
     /*
      * Calculate mean.
      *
@@ -3627,7 +3627,7 @@ double pearsoncorr2(/* Real    */ ae_vector* x,
         result = 0;
         return result;
     }
-    
+
     /*
      * numerator and denominator
      */
@@ -3672,9 +3672,9 @@ Result:
      Copyright 09.04.2007 by Bochkanov Sergey
 *************************************************************************/
 double spearmancorr2(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_state *_state)
+                                   /* Real    */ ae_vector* y,
+                                   ae_int_t n,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -3694,7 +3694,7 @@ double spearmancorr2(/* Real    */ ae_vector* x,
     ae_assert(y->cnt>=n, "SpearmanCorr2: Length(Y)<N!", _state);
     ae_assert(isfinitevector(x, n, _state), "SpearmanCorr2: X is not finite vector", _state);
     ae_assert(isfinitevector(y, n, _state), "SpearmanCorr2: Y is not finite vector", _state);
-    
+
     /*
      * Special case
      */
@@ -3720,7 +3720,7 @@ SMP EDITION OF ALGLIB:
   ! This function can utilize multicore capabilities of  your system.  In
   ! order to do this you have to call version with "smp_" prefix,   which
   ! indicates that multicore code will be used.
-  ! 
+  !
   ! This note is given for users of SMP edition; if you use GPL  edition,
   ! or commercial edition of ALGLIB without SMP support, you  still  will
   ! be able to call smp-version of this function,  but  all  computations
@@ -3752,10 +3752,10 @@ OUTPUT PARAMETERS:
      Copyright 28.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void covm(/* Real    */ ae_matrix* x,
-     ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_matrix* c,
-     ae_state *_state)
+                        ae_int_t n,
+                        ae_int_t m,
+                        /* Real    */ ae_matrix* c,
+                        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _x;
@@ -3779,7 +3779,7 @@ void covm(/* Real    */ ae_matrix* x,
     ae_assert(x->rows>=n, "CovM: Rows(X)<N!", _state);
     ae_assert(x->cols>=m||n==0, "CovM: Cols(X)<M!", _state);
     ae_assert(apservisfinitematrix(x, n, m, _state), "CovM: X contains infinite/NAN elements", _state);
-    
+
     /*
      * N<=1, return zero
      */
@@ -3796,7 +3796,7 @@ void covm(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Calculate means,
      * check for constant columns
@@ -3820,7 +3820,7 @@ void covm(/* Real    */ ae_matrix* x,
             same.ptr.p_bool[j] = same.ptr.p_bool[j]&&ae_fp_eq(x->ptr.pp_double[i][j],x0.ptr.p_double[j]);
         }
     }
-    
+
     /*
      * * center variables;
      * * if we have constant columns, these columns are
@@ -3849,9 +3849,9 @@ void covm(/* Real    */ ae_matrix* x,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_covm(/* Real    */ ae_matrix* x,
-    ae_int_t n,
-    ae_int_t m,
-    /* Real    */ ae_matrix* c, ae_state *_state)
+                               ae_int_t n,
+                               ae_int_t m,
+                               /* Real    */ ae_matrix* c, ae_state *_state)
 {
     covm(x,n,m,c, _state);
 }
@@ -3865,7 +3865,7 @@ SMP EDITION OF ALGLIB:
   ! This function can utilize multicore capabilities of  your system.  In
   ! order to do this you have to call version with "smp_" prefix,   which
   ! indicates that multicore code will be used.
-  ! 
+  !
   ! This note is given for users of SMP edition; if you use GPL  edition,
   ! or commercial edition of ALGLIB without SMP support, you  still  will
   ! be able to call smp-version of this function,  but  all  computations
@@ -3897,10 +3897,10 @@ OUTPUT PARAMETERS:
      Copyright 28.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void pearsoncorrm(/* Real    */ ae_matrix* x,
-     ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_matrix* c,
-     ae_state *_state)
+                                ae_int_t n,
+                                ae_int_t m,
+                                /* Real    */ ae_matrix* c,
+                                ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector t;
@@ -3946,9 +3946,9 @@ void pearsoncorrm(/* Real    */ ae_matrix* x,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_pearsoncorrm(/* Real    */ ae_matrix* x,
-    ae_int_t n,
-    ae_int_t m,
-    /* Real    */ ae_matrix* c, ae_state *_state)
+                                       ae_int_t n,
+                                       ae_int_t m,
+                                       /* Real    */ ae_matrix* c, ae_state *_state)
 {
     pearsoncorrm(x,n,m,c, _state);
 }
@@ -3962,7 +3962,7 @@ SMP EDITION OF ALGLIB:
   ! This function can utilize multicore capabilities of  your system.  In
   ! order to do this you have to call version with "smp_" prefix,   which
   ! indicates that multicore code will be used.
-  ! 
+  !
   ! This note is given for users of SMP edition; if you use GPL  edition,
   ! or commercial edition of ALGLIB without SMP support, you  still  will
   ! be able to call smp-version of this function,  but  all  computations
@@ -3994,10 +3994,10 @@ OUTPUT PARAMETERS:
      Copyright 28.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void spearmancorrm(/* Real    */ ae_matrix* x,
-     ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_matrix* c,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 ae_int_t m,
+                                 /* Real    */ ae_matrix* c,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -4021,7 +4021,7 @@ void spearmancorrm(/* Real    */ ae_matrix* x,
     ae_assert(x->rows>=n, "SpearmanCorrM: Rows(X)<N!", _state);
     ae_assert(x->cols>=m||n==0, "SpearmanCorrM: Cols(X)<M!", _state);
     ae_assert(apservisfinitematrix(x, n, m, _state), "SpearmanCorrM: X contains infinite/NAN elements", _state);
-    
+
     /*
      * N<=1, return zero
      */
@@ -4038,20 +4038,20 @@ void spearmancorrm(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Allocate
      */
     ae_vector_set_length(&t, ae_maxint(n, m, _state), _state);
     ae_matrix_set_length(c, m, m, _state);
-    
+
     /*
      * Replace data with ranks
      */
     ae_matrix_set_length(&xc, m, n, _state);
     rmatrixtranspose(n, m, x, 0, 0, &xc, 0, 0, _state);
     rankdata(&xc, m, n, _state);
-    
+
     /*
      * 1. Calculate means, check for constant columns
      * 2. Center variables, constant  columns are
@@ -4060,7 +4060,7 @@ void spearmancorrm(/* Real    */ ae_matrix* x,
      */
     for(i=0; i<=m-1; i++)
     {
-        
+
         /*
          * Calculate:
          * * V - mean value of I-th variable
@@ -4076,13 +4076,13 @@ void spearmancorrm(/* Real    */ ae_matrix* x,
             b = b&&ae_fp_eq(vv,x0);
         }
         v = v/n;
-        
+
         /*
          * Center/zero I-th variable
          */
         if( b )
         {
-            
+
             /*
              * Zero
              */
@@ -4093,7 +4093,7 @@ void spearmancorrm(/* Real    */ ae_matrix* x,
         }
         else
         {
-            
+
             /*
              * Center
              */
@@ -4103,12 +4103,12 @@ void spearmancorrm(/* Real    */ ae_matrix* x,
             }
         }
     }
-    
+
     /*
      * Calculate upper half of symmetric covariance matrix
      */
     rmatrixsyrk(m, n, (double)1/(double)(n-1), &xc, 0, 0, 0, 0.0, c, 0, 0, ae_true, _state);
-    
+
     /*
      * Calculate Pearson coefficients (upper triangle)
      */
@@ -4131,7 +4131,7 @@ void spearmancorrm(/* Real    */ ae_matrix* x,
             c->ptr.pp_double[i][j] = c->ptr.pp_double[i][j]*v*t.ptr.p_double[j];
         }
     }
-    
+
     /*
      * force symmetricity
      */
@@ -4144,9 +4144,9 @@ void spearmancorrm(/* Real    */ ae_matrix* x,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_spearmancorrm(/* Real    */ ae_matrix* x,
-    ae_int_t n,
-    ae_int_t m,
-    /* Real    */ ae_matrix* c, ae_state *_state)
+                                        ae_int_t n,
+                                        ae_int_t m,
+                                        /* Real    */ ae_matrix* c, ae_state *_state)
 {
     spearmancorrm(x,n,m,c, _state);
 }
@@ -4160,7 +4160,7 @@ SMP EDITION OF ALGLIB:
   ! This function can utilize multicore capabilities of  your system.  In
   ! order to do this you have to call version with "smp_" prefix,   which
   ! indicates that multicore code will be used.
-  ! 
+  !
   ! This note is given for users of SMP edition; if you use GPL  edition,
   ! or commercial edition of ALGLIB without SMP support, you  still  will
   ! be able to call smp-version of this function,  but  all  computations
@@ -4198,12 +4198,12 @@ OUTPUT PARAMETERS:
      Copyright 28.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void covm2(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     ae_int_t n,
-     ae_int_t m1,
-     ae_int_t m2,
-     /* Real    */ ae_matrix* c,
-     ae_state *_state)
+                         /* Real    */ ae_matrix* y,
+                         ae_int_t n,
+                         ae_int_t m1,
+                         ae_int_t m2,
+                         /* Real    */ ae_matrix* c,
+                         ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _x;
@@ -4238,7 +4238,7 @@ void covm2(/* Real    */ ae_matrix* x,
     ae_assert(y->rows>=n, "CovM2: Rows(Y)<N!", _state);
     ae_assert(y->cols>=m2||n==0, "CovM2: Cols(Y)<M2!", _state);
     ae_assert(apservisfinitematrix(y, n, m2, _state), "CovM2: X contains infinite/NAN elements", _state);
-    
+
     /*
      * N<=1, return zero
      */
@@ -4255,7 +4255,7 @@ void covm2(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Allocate
      */
@@ -4265,7 +4265,7 @@ void covm2(/* Real    */ ae_matrix* x,
     ae_vector_set_length(&samex, m1, _state);
     ae_vector_set_length(&samey, m2, _state);
     ae_matrix_set_length(c, m1, m2, _state);
-    
+
     /*
      * * calculate means of X
      * * center X
@@ -4299,7 +4299,7 @@ void covm2(/* Real    */ ae_matrix* x,
             }
         }
     }
-    
+
     /*
      * Repeat same steps for Y
      */
@@ -4329,7 +4329,7 @@ void covm2(/* Real    */ ae_matrix* x,
             }
         }
     }
-    
+
     /*
      * calculate cross-covariance matrix
      */
@@ -4342,11 +4342,11 @@ void covm2(/* Real    */ ae_matrix* x,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_covm2(/* Real    */ ae_matrix* x,
-    /* Real    */ ae_matrix* y,
-    ae_int_t n,
-    ae_int_t m1,
-    ae_int_t m2,
-    /* Real    */ ae_matrix* c, ae_state *_state)
+                                /* Real    */ ae_matrix* y,
+                                ae_int_t n,
+                                ae_int_t m1,
+                                ae_int_t m2,
+                                /* Real    */ ae_matrix* c, ae_state *_state)
 {
     covm2(x,y,n,m1,m2,c, _state);
 }
@@ -4360,7 +4360,7 @@ SMP EDITION OF ALGLIB:
   ! This function can utilize multicore capabilities of  your system.  In
   ! order to do this you have to call version with "smp_" prefix,   which
   ! indicates that multicore code will be used.
-  ! 
+  !
   ! This note is given for users of SMP edition; if you use GPL  edition,
   ! or commercial edition of ALGLIB without SMP support, you  still  will
   ! be able to call smp-version of this function,  but  all  computations
@@ -4398,12 +4398,12 @@ OUTPUT PARAMETERS:
      Copyright 28.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void pearsoncorrm2(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     ae_int_t n,
-     ae_int_t m1,
-     ae_int_t m2,
-     /* Real    */ ae_matrix* c,
-     ae_state *_state)
+                                 /* Real    */ ae_matrix* y,
+                                 ae_int_t n,
+                                 ae_int_t m1,
+                                 ae_int_t m2,
+                                 /* Real    */ ae_matrix* c,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix _x;
@@ -4442,7 +4442,7 @@ void pearsoncorrm2(/* Real    */ ae_matrix* x,
     ae_assert(y->rows>=n, "PearsonCorrM2: Rows(Y)<N!", _state);
     ae_assert(y->cols>=m2||n==0, "PearsonCorrM2: Cols(Y)<M2!", _state);
     ae_assert(apservisfinitematrix(y, n, m2, _state), "PearsonCorrM2: X contains infinite/NAN elements", _state);
-    
+
     /*
      * N<=1, return zero
      */
@@ -4459,7 +4459,7 @@ void pearsoncorrm2(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Allocate
      */
@@ -4471,7 +4471,7 @@ void pearsoncorrm2(/* Real    */ ae_matrix* x,
     ae_vector_set_length(&samex, m1, _state);
     ae_vector_set_length(&samey, m2, _state);
     ae_matrix_set_length(c, m1, m2, _state);
-    
+
     /*
      * * calculate means of X
      * * center X
@@ -4512,7 +4512,7 @@ void pearsoncorrm2(/* Real    */ ae_matrix* x,
     {
         sx.ptr.p_double[j] = ae_sqrt(sx.ptr.p_double[j]/(n-1), _state);
     }
-    
+
     /*
      * Repeat same steps for Y
      */
@@ -4548,12 +4548,12 @@ void pearsoncorrm2(/* Real    */ ae_matrix* x,
     {
         sy.ptr.p_double[j] = ae_sqrt(sy.ptr.p_double[j]/(n-1), _state);
     }
-    
+
     /*
      * calculate cross-covariance matrix
      */
     rmatrixgemm(m1, m2, n, (double)1/(double)(n-1), x, 0, 0, 1, y, 0, 0, 0, 0.0, c, 0, 0, _state);
-    
+
     /*
      * Divide by standard deviations
      */
@@ -4595,11 +4595,11 @@ void pearsoncorrm2(/* Real    */ ae_matrix* x,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_pearsoncorrm2(/* Real    */ ae_matrix* x,
-    /* Real    */ ae_matrix* y,
-    ae_int_t n,
-    ae_int_t m1,
-    ae_int_t m2,
-    /* Real    */ ae_matrix* c, ae_state *_state)
+                                        /* Real    */ ae_matrix* y,
+                                        ae_int_t n,
+                                        ae_int_t m1,
+                                        ae_int_t m2,
+                                        /* Real    */ ae_matrix* c, ae_state *_state)
 {
     pearsoncorrm2(x,y,n,m1,m2,c, _state);
 }
@@ -4613,7 +4613,7 @@ SMP EDITION OF ALGLIB:
   ! This function can utilize multicore capabilities of  your system.  In
   ! order to do this you have to call version with "smp_" prefix,   which
   ! indicates that multicore code will be used.
-  ! 
+  !
   ! This note is given for users of SMP edition; if you use GPL  edition,
   ! or commercial edition of ALGLIB without SMP support, you  still  will
   ! be able to call smp-version of this function,  but  all  computations
@@ -4651,12 +4651,12 @@ OUTPUT PARAMETERS:
      Copyright 28.10.2010 by Bochkanov Sergey
 *************************************************************************/
 void spearmancorrm2(/* Real    */ ae_matrix* x,
-     /* Real    */ ae_matrix* y,
-     ae_int_t n,
-     ae_int_t m1,
-     ae_int_t m2,
-     /* Real    */ ae_matrix* c,
-     ae_state *_state)
+                                  /* Real    */ ae_matrix* y,
+                                  ae_int_t n,
+                                  ae_int_t m1,
+                                  ae_int_t m2,
+                                  /* Real    */ ae_matrix* c,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -4692,7 +4692,7 @@ void spearmancorrm2(/* Real    */ ae_matrix* x,
     ae_assert(y->rows>=n, "SpearmanCorrM2: Rows(Y)<N!", _state);
     ae_assert(y->cols>=m2||n==0, "SpearmanCorrM2: Cols(Y)<M2!", _state);
     ae_assert(apservisfinitematrix(y, n, m2, _state), "SpearmanCorrM2: X contains infinite/NAN elements", _state);
-    
+
     /*
      * N<=1, return zero
      */
@@ -4709,7 +4709,7 @@ void spearmancorrm2(/* Real    */ ae_matrix* x,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Allocate
      */
@@ -4717,7 +4717,7 @@ void spearmancorrm2(/* Real    */ ae_matrix* x,
     ae_vector_set_length(&sx, m1, _state);
     ae_vector_set_length(&sy, m2, _state);
     ae_matrix_set_length(c, m1, m2, _state);
-    
+
     /*
      * Replace data with ranks
      */
@@ -4727,7 +4727,7 @@ void spearmancorrm2(/* Real    */ ae_matrix* x,
     rmatrixtranspose(n, m2, y, 0, 0, &yc, 0, 0, _state);
     rankdata(&xc, m1, n, _state);
     rankdata(&yc, m2, n, _state);
-    
+
     /*
      * 1. Calculate means, variances, check for constant columns
      * 2. Center variables, constant  columns are
@@ -4802,12 +4802,12 @@ void spearmancorrm2(/* Real    */ ae_matrix* x,
         }
         sy.ptr.p_double[i] = ae_sqrt(v2/(n-1), _state);
     }
-    
+
     /*
      * calculate cross-covariance matrix
      */
     rmatrixgemm(m1, m2, n, (double)1/(double)(n-1), &xc, 0, 0, 0, &yc, 0, 0, 1, 0.0, c, 0, 0, _state);
-    
+
     /*
      * Divide by standard deviations
      */
@@ -4849,20 +4849,20 @@ void spearmancorrm2(/* Real    */ ae_matrix* x,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_spearmancorrm2(/* Real    */ ae_matrix* x,
-    /* Real    */ ae_matrix* y,
-    ae_int_t n,
-    ae_int_t m1,
-    ae_int_t m2,
-    /* Real    */ ae_matrix* c, ae_state *_state)
+        /* Real    */ ae_matrix* y,
+        ae_int_t n,
+        ae_int_t m1,
+        ae_int_t m2,
+        /* Real    */ ae_matrix* c, ae_state *_state)
 {
     spearmancorrm2(x,y,n,m1,m2,c, _state);
 }
 
 
 void rankdata(/* Real    */ ae_matrix* xy,
-     ae_int_t npoints,
-     ae_int_t nfeatures,
-     ae_state *_state)
+                            ae_int_t npoints,
+                            ae_int_t nfeatures,
+                            ae_state *_state)
 {
     ae_frame _frame_block;
     apbuffers buf0;
@@ -4880,7 +4880,7 @@ void rankdata(/* Real    */ ae_matrix* xy,
     ae_assert(xy->rows>=npoints, "RankData: Rows(XY)<NPoints", _state);
     ae_assert(xy->cols>=nfeatures||npoints==0, "RankData: Cols(XY)<NFeatures", _state);
     ae_assert(apservisfinitematrix(xy, npoints, nfeatures, _state), "RankData: XY contains infinite/NAN elements", _state);
-    
+
     /*
      * Basecase cost is a maximum cost of basecase problems.
      * Problems harded than that cost will be split.
@@ -4890,7 +4890,7 @@ void rankdata(/* Real    */ ae_matrix* xy,
      * to solve problem.
      */
     basecasecost = 10000;
-    
+
     /*
      * Try to use serial code, no SMP functionality, no shared pools.
      */
@@ -4900,7 +4900,7 @@ void rankdata(/* Real    */ ae_matrix* xy,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Parallel code
      */
@@ -4914,17 +4914,17 @@ void rankdata(/* Real    */ ae_matrix* xy,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_rankdata(/* Real    */ ae_matrix* xy,
-    ae_int_t npoints,
-    ae_int_t nfeatures, ae_state *_state)
+                                   ae_int_t npoints,
+                                   ae_int_t nfeatures, ae_state *_state)
 {
     rankdata(xy,npoints,nfeatures, _state);
 }
 
 
 void rankdatacentered(/* Real    */ ae_matrix* xy,
-     ae_int_t npoints,
-     ae_int_t nfeatures,
-     ae_state *_state)
+                                    ae_int_t npoints,
+                                    ae_int_t nfeatures,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     apbuffers buf0;
@@ -4942,7 +4942,7 @@ void rankdatacentered(/* Real    */ ae_matrix* xy,
     ae_assert(xy->rows>=npoints, "RankData: Rows(XY)<NPoints", _state);
     ae_assert(xy->cols>=nfeatures||npoints==0, "RankData: Cols(XY)<NFeatures", _state);
     ae_assert(apservisfinitematrix(xy, npoints, nfeatures, _state), "RankData: XY contains infinite/NAN elements", _state);
-    
+
     /*
      * Basecase cost is a maximum cost of basecase problems.
      * Problems harded than that cost will be split.
@@ -4952,7 +4952,7 @@ void rankdatacentered(/* Real    */ ae_matrix* xy,
      * to solve problem.
      */
     basecasecost = 10000;
-    
+
     /*
      * Try to use serial code, no SMP functionality, no shared pools.
      */
@@ -4962,7 +4962,7 @@ void rankdatacentered(/* Real    */ ae_matrix* xy,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Parallel code
      */
@@ -4976,8 +4976,8 @@ void rankdatacentered(/* Real    */ ae_matrix* xy,
 Single-threaded stub. HPC ALGLIB replaces it by multithreaded code.
 *************************************************************************/
 void _pexec_rankdatacentered(/* Real    */ ae_matrix* xy,
-    ae_int_t npoints,
-    ae_int_t nfeatures, ae_state *_state)
+        ae_int_t npoints,
+        ae_int_t nfeatures, ae_state *_state)
 {
     rankdatacentered(xy,npoints,nfeatures, _state);
 }
@@ -4990,9 +4990,9 @@ Obsolete function, we recommend to use PearsonCorr2().
      Copyright 09.04.2007 by Bochkanov Sergey
 *************************************************************************/
 double pearsoncorrelation(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_state *_state)
+                                        /* Real    */ ae_vector* y,
+                                        ae_int_t n,
+                                        ae_state *_state)
 {
     double result;
 
@@ -5009,9 +5009,9 @@ Obsolete function, we recommend to use SpearmanCorr2().
     Copyright 09.04.2007 by Bochkanov Sergey
 *************************************************************************/
 double spearmanrankcorrelation(/* Real    */ ae_vector* x,
-     /* Real    */ ae_vector* y,
-     ae_int_t n,
-     ae_state *_state)
+        /* Real    */ ae_vector* y,
+        ae_int_t n,
+        ae_state *_state)
 {
     double result;
 
@@ -5022,13 +5022,13 @@ double spearmanrankcorrelation(/* Real    */ ae_vector* x,
 
 
 static void basestat_rankdatarec(/* Real    */ ae_matrix* xy,
-     ae_int_t i0,
-     ae_int_t i1,
-     ae_int_t nfeatures,
-     ae_bool iscentered,
-     ae_shared_pool* pool,
-     ae_int_t basecasecost,
-     ae_state *_state)
+        ae_int_t i0,
+        ae_int_t i1,
+        ae_int_t nfeatures,
+        ae_bool iscentered,
+        ae_shared_pool* pool,
+        ae_int_t basecasecost,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     apbuffers *buf0;
@@ -5043,7 +5043,7 @@ static void basestat_rankdatarec(/* Real    */ ae_matrix* xy,
     ae_smart_ptr_init(&_buf1, (void**)&buf1, _state, ae_true);
 
     ae_assert(i1>=i0, "RankDataRec: internal error", _state);
-    
+
     /*
      * Recursively split problem, if it is too large
      */
@@ -5056,7 +5056,7 @@ static void basestat_rankdatarec(/* Real    */ ae_matrix* xy,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * Retrieve buffers from pool, call serial code, return buffers to pool
      */
@@ -5070,13 +5070,13 @@ static void basestat_rankdatarec(/* Real    */ ae_matrix* xy,
 
 
 static void basestat_rankdatabasecase(/* Real    */ ae_matrix* xy,
-     ae_int_t i0,
-     ae_int_t i1,
-     ae_int_t nfeatures,
-     ae_bool iscentered,
-     apbuffers* buf0,
-     apbuffers* buf1,
-     ae_state *_state)
+        ae_int_t i0,
+        ae_int_t i1,
+        ae_int_t nfeatures,
+        ae_bool iscentered,
+        apbuffers* buf0,
+        apbuffers* buf1,
+        ae_state *_state)
 {
     ae_int_t i;
 
@@ -5134,11 +5134,11 @@ Output parameters:
      Copyright 09.04.2007 by Bochkanov Sergey
 *************************************************************************/
 void pearsoncorrelationsignificance(double r,
-     ae_int_t n,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    double* bothtails,
+                                    double* lefttail,
+                                    double* righttail,
+                                    ae_state *_state)
 {
     double t;
     double p;
@@ -5147,7 +5147,7 @@ void pearsoncorrelationsignificance(double r,
     *lefttail = 0;
     *righttail = 0;
 
-    
+
     /*
      * Some special cases
      */
@@ -5172,7 +5172,7 @@ void pearsoncorrelationsignificance(double r,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * General case
      */
@@ -5223,11 +5223,11 @@ Output parameters:
      Copyright 09.04.2007 by Bochkanov Sergey
 *************************************************************************/
 void spearmanrankcorrelationsignificance(double r,
-     ae_int_t n,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+        ae_int_t n,
+        double* bothtails,
+        double* lefttail,
+        double* righttail,
+        ae_state *_state)
 {
     double t;
     double p;
@@ -5236,7 +5236,7 @@ void spearmanrankcorrelationsignificance(double r,
     *lefttail = 0;
     *righttail = 0;
 
-    
+
     /*
      * Special case
      */
@@ -5247,7 +5247,7 @@ void spearmanrankcorrelationsignificance(double r,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * General case
      */
@@ -5762,8 +5762,8 @@ static double correlationtests_spearmantail9(double s, ae_state *_state)
 Tail(T,N), accepts T<0
 *************************************************************************/
 static double correlationtests_spearmantail(double t,
-     ae_int_t n,
-     ae_state *_state)
+        ae_int_t n,
+        ae_state *_state)
 {
     double result;
 
@@ -5839,15 +5839,15 @@ from table values.
      Copyright 09.04.2007 by Bochkanov Sergey
 *************************************************************************/
 void jarqueberatest(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double* p,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  double* p,
+                                  ae_state *_state)
 {
     double s;
 
     *p = 0;
 
-    
+
     /*
      * N is too small
      */
@@ -5856,7 +5856,7 @@ void jarqueberatest(/* Real    */ ae_vector* x,
         *p = 1.0;
         return;
     }
-    
+
     /*
      * N is large enough
      */
@@ -5866,9 +5866,9 @@ void jarqueberatest(/* Real    */ ae_vector* x,
 
 
 static void jarquebera_jarqueberastatistic(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double* s,
-     ae_state *_state)
+        ae_int_t n,
+        double* s,
+        ae_state *_state)
 {
     ae_int_t i;
     double v;
@@ -5888,7 +5888,7 @@ static void jarquebera_jarqueberastatistic(/* Real    */ ae_vector* x,
     kurtosis = 0;
     stddev = 0;
     ae_assert(n>1, "Assertion failed", _state);
-    
+
     /*
      * Mean
      */
@@ -5897,7 +5897,7 @@ static void jarquebera_jarqueberastatistic(/* Real    */ ae_vector* x,
         mean = mean+x->ptr.p_double[i];
     }
     mean = mean/n;
-    
+
     /*
      * Variance (using corrected two-pass algorithm)
      */
@@ -5921,7 +5921,7 @@ static void jarquebera_jarqueberastatistic(/* Real    */ ae_vector* x,
         }
         stddev = ae_sqrt(variance, _state);
     }
-    
+
     /*
      * Skewness and kurtosis
      */
@@ -5937,7 +5937,7 @@ static void jarquebera_jarqueberastatistic(/* Real    */ ae_vector* x,
         skewness = skewness/n;
         kurtosis = kurtosis/n-3;
     }
-    
+
     /*
      * Statistic
      */
@@ -5946,8 +5946,8 @@ static void jarquebera_jarqueberastatistic(/* Real    */ ae_vector* x,
 
 
 static double jarquebera_jarqueberaapprox(ae_int_t n,
-     double s,
-     ae_state *_state)
+        double s,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector vx;
@@ -5977,7 +5977,7 @@ static double jarquebera_jarqueberaapprox(ae_int_t n,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * N = 5..20 are tabulated
      */
@@ -6050,7 +6050,7 @@ static double jarquebera_jarqueberaapprox(ae_int_t n,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * N = 20, 30, 50 are tabulated.
      * In-between values are interpolated
@@ -6076,7 +6076,7 @@ static double jarquebera_jarqueberaapprox(ae_int_t n,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * N = 50, 65, 100 are tabulated.
      * In-between values are interpolated
@@ -6102,7 +6102,7 @@ static double jarquebera_jarqueberaapprox(ae_int_t n,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * N = 100, 130, 200 are tabulated.
      * In-between values are interpolated
@@ -6128,7 +6128,7 @@ static double jarquebera_jarqueberaapprox(ae_int_t n,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * N = 200, 301, 501 are tabulated.
      * In-between values are interpolated
@@ -6154,7 +6154,7 @@ static double jarquebera_jarqueberaapprox(ae_int_t n,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * N = 501, 701, 1401 are tabulated.
      * In-between values are interpolated
@@ -6180,7 +6180,7 @@ static double jarquebera_jarqueberaapprox(ae_int_t n,
         ae_frame_leave(_state);
         return result;
     }
-    
+
     /*
      * Asymptotic expansion
      */
@@ -8047,11 +8047,11 @@ static double jarquebera_jbtbl1401(double s, ae_state *_state)
 
 
 static void jarquebera_jbcheb(double x,
-     double c,
-     double* tj,
-     double* tj1,
-     double* r,
-     ae_state *_state)
+                              double c,
+                              double* tj,
+                              double* tj1,
+                              double* r,
+                              ae_state *_state)
 {
     double t;
 
@@ -8130,13 +8130,13 @@ not be sharply different from the values for interval [5, 100].
      Copyright 09.04.2007 by Bochkanov Sergey
 *************************************************************************/
 void mannwhitneyutest(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+                                    ae_int_t n,
+                                    /* Real    */ ae_vector* y,
+                                    ae_int_t m,
+                                    double* bothtails,
+                                    double* lefttail,
+                                    double* righttail,
+                                    ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -8165,7 +8165,7 @@ void mannwhitneyutest(/* Real    */ ae_vector* x,
     ae_vector_init(&c, 0, DT_INT, _state, ae_true);
     ae_vector_init(&tiesize, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * Prepare
      */
@@ -8190,7 +8190,7 @@ void mannwhitneyutest(/* Real    */ ae_vector* x,
         r.ptr.p_double[n+i] = y->ptr.p_double[i];
         c.ptr.p_int[n+i] = 1;
     }
-    
+
     /*
      * sort {R, C}
      */
@@ -8267,7 +8267,7 @@ void mannwhitneyutest(/* Real    */ ae_vector* x,
         }
         while(i>=1);
     }
-    
+
     /*
      * compute tied ranks
      */
@@ -8293,7 +8293,7 @@ void mannwhitneyutest(/* Real    */ ae_vector* x,
         tiecount = tiecount+1;
         i = j;
     }
-    
+
     /*
      * Compute U
      */
@@ -8306,7 +8306,7 @@ void mannwhitneyutest(/* Real    */ ae_vector* x,
         }
     }
     u = n*m+n*(n+1)/2-u;
-    
+
     /*
      * Result
      */
@@ -8339,11 +8339,11 @@ void mannwhitneyutest(/* Real    */ ae_vector* x,
 Sequential Chebyshev interpolation.
 *************************************************************************/
 static void mannwhitneyu_ucheb(double x,
-     double c,
-     double* tj,
-     double* tj1,
-     double* r,
-     ae_state *_state)
+                               double c,
+                               double* tj,
+                               double* tj1,
+                               double* r,
+                               ae_state *_state)
 {
     double t;
 
@@ -8359,10 +8359,10 @@ static void mannwhitneyu_ucheb(double x,
 Three-point polynomial interpolation.
 *************************************************************************/
 static double mannwhitneyu_uninterpolate(double p1,
-     double p2,
-     double p3,
-     ae_int_t n,
-     ae_state *_state)
+        double p2,
+        double p3,
+        ae_int_t n,
+        ae_state *_state)
 {
     double t1;
     double t2;
@@ -8388,8 +8388,8 @@ static double mannwhitneyu_uninterpolate(double p1,
 Tail(0, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma000(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                     ae_int_t n2,
+                                     ae_state *_state)
 {
     double p1;
     double p2;
@@ -8409,8 +8409,8 @@ static double mannwhitneyu_usigma000(ae_int_t n1,
 Tail(0.75, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma075(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                     ae_int_t n2,
+                                     ae_state *_state)
 {
     double p1;
     double p2;
@@ -8430,8 +8430,8 @@ static double mannwhitneyu_usigma075(ae_int_t n1,
 Tail(1.5, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma150(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                     ae_int_t n2,
+                                     ae_state *_state)
 {
     double p1;
     double p2;
@@ -8451,8 +8451,8 @@ static double mannwhitneyu_usigma150(ae_int_t n1,
 Tail(2.25, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma225(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                     ae_int_t n2,
+                                     ae_state *_state)
 {
     double p1;
     double p2;
@@ -8472,8 +8472,8 @@ static double mannwhitneyu_usigma225(ae_int_t n1,
 Tail(3.0, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma300(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                     ae_int_t n2,
+                                     ae_state *_state)
 {
     double p1;
     double p2;
@@ -8493,8 +8493,8 @@ static double mannwhitneyu_usigma300(ae_int_t n1,
 Tail(3.33, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma333(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                     ae_int_t n2,
+                                     ae_state *_state)
 {
     double p1;
     double p2;
@@ -8514,8 +8514,8 @@ static double mannwhitneyu_usigma333(ae_int_t n1,
 Tail(3.66, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma367(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                     ae_int_t n2,
+                                     ae_state *_state)
 {
     double p1;
     double p2;
@@ -8535,8 +8535,8 @@ static double mannwhitneyu_usigma367(ae_int_t n1,
 Tail(4.0, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma400(ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                     ae_int_t n2,
+                                     ae_state *_state)
 {
     double p1;
     double p2;
@@ -12021,9 +12021,9 @@ static double mannwhitneyu_utbln14n100(double s, ae_state *_state)
 Tail(S, N1, N2)
 *************************************************************************/
 static double mannwhitneyu_usigma(double s,
-     ae_int_t n1,
-     ae_int_t n2,
-     ae_state *_state)
+                                  ae_int_t n1,
+                                  ae_int_t n2,
+                                  ae_state *_state)
 {
     double f0;
     double f1;
@@ -12039,7 +12039,7 @@ static double mannwhitneyu_usigma(double s,
 
 
     result = 0;
-    
+
     /*
      * N1=5, N2 = 5, 6, 7, ...
      */
@@ -12154,7 +12154,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=6, N2 = 6, 7, 8, ...
      */
@@ -12209,7 +12209,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=7, N2 = 7, 8, ...
      */
@@ -12260,7 +12260,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=8, N2 = 8, 9, 10, ...
      */
@@ -12307,7 +12307,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=9, N2 = 9, 10, ...
      */
@@ -12350,7 +12350,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=10, N2 = 10, 11, ...
      */
@@ -12389,7 +12389,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=11, N2 = 11, 12, ...
      */
@@ -12424,7 +12424,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=12, N2 = 12, 13, ...
      */
@@ -12455,7 +12455,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=13, N2 = 13, 14, ...
      */
@@ -12482,7 +12482,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1=14, N2 = 14, 15, ...
      */
@@ -12505,7 +12505,7 @@ static double mannwhitneyu_usigma(double s,
         }
         return result;
     }
-    
+
     /*
      * N1 >= 15, N2 >= 15
      */
@@ -12602,12 +12602,12 @@ approximation is used, so significance levels have about 15 exact digits.
      Copyright 08.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void onesamplesigntest(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double median,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+                                     ae_int_t n,
+                                     double median,
+                                     double* bothtails,
+                                     double* lefttail,
+                                     double* righttail,
+                                     ae_state *_state)
 {
     ae_int_t i;
     ae_int_t gtcnt;
@@ -12624,7 +12624,7 @@ void onesamplesigntest(/* Real    */ ae_vector* x,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * Calculate:
      * GTCnt - count of x[i]>Median
@@ -12645,7 +12645,7 @@ void onesamplesigntest(/* Real    */ ae_vector* x,
     }
     if( necnt==0 )
     {
-        
+
         /*
          * all x[i] are equal to Median.
          * So we can conclude that Median is a true median :)
@@ -12706,12 +12706,12 @@ NOTE: this function correctly handles degenerate cases:
      Copyright 08.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void studentttest1(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double mean,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 double mean,
+                                 double* bothtails,
+                                 double* lefttail,
+                                 double* righttail,
+                                 ae_state *_state)
 {
     ae_int_t i;
     double xmean;
@@ -12736,7 +12736,7 @@ void studentttest1(/* Real    */ ae_vector* x,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * Mean
      */
@@ -12757,7 +12757,7 @@ void studentttest1(/* Real    */ ae_vector* x,
     {
         xmean = xmean/n;
     }
-    
+
     /*
      * Variance (using corrected two-pass algorithm)
      */
@@ -12811,7 +12811,7 @@ void studentttest1(/* Real    */ ae_vector* x,
         }
         return;
     }
-    
+
     /*
      * Statistic
      */
@@ -12865,13 +12865,13 @@ NOTE: this function correctly handles degenerate cases:
      Copyright 18.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void studentttest2(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 /* Real    */ ae_vector* y,
+                                 ae_int_t m,
+                                 double* bothtails,
+                                 double* lefttail,
+                                 double* righttail,
+                                 ae_state *_state)
 {
     ae_int_t i;
     ae_bool samex;
@@ -12896,7 +12896,7 @@ void studentttest2(/* Real    */ ae_vector* x,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * Mean
      */
@@ -12934,7 +12934,7 @@ void studentttest2(/* Real    */ ae_vector* x,
     {
         ymean = ymean/m;
     }
-    
+
     /*
      * S
      */
@@ -12979,7 +12979,7 @@ void studentttest2(/* Real    */ ae_vector* x,
         }
         return;
     }
-    
+
     /*
      * Statistic
      */
@@ -13035,13 +13035,13 @@ NOTE: this function correctly handles degenerate cases:
      Copyright 18.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void unequalvariancettest(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+                                        ae_int_t n,
+                                        /* Real    */ ae_vector* y,
+                                        ae_int_t m,
+                                        double* bothtails,
+                                        double* lefttail,
+                                        double* righttail,
+                                        ae_state *_state)
 {
     ae_int_t i;
     ae_bool samex;
@@ -13069,7 +13069,7 @@ void unequalvariancettest(/* Real    */ ae_vector* x,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * Mean
      */
@@ -13107,7 +13107,7 @@ void unequalvariancettest(/* Real    */ ae_vector* x,
     {
         ymean = ymean/m;
     }
-    
+
     /*
      * Variance (using corrected two-pass algorithm)
      */
@@ -13129,7 +13129,7 @@ void unequalvariancettest(/* Real    */ ae_vector* x,
         }
         yvar = yvar/(m-1);
     }
-    
+
     /*
      * Handle different special cases
      * (one or both variances are zero).
@@ -13164,7 +13164,7 @@ void unequalvariancettest(/* Real    */ ae_vector* x,
     }
     if( ae_fp_eq(xvar,0) )
     {
-        
+
         /*
          * X is constant, unpooled 2-sample test reduces to 1-sample test.
          *
@@ -13177,14 +13177,14 @@ void unequalvariancettest(/* Real    */ ae_vector* x,
     }
     if( ae_fp_eq(yvar,0) )
     {
-        
+
         /*
          * Y is constant, unpooled 2-sample test reduces to 1-sample test.
          */
         studentttest1(x, n, ymean, bothtails, lefttail, righttail, _state);
         return;
     }
-    
+
     /*
      * Statistic
      */
@@ -13244,13 +13244,13 @@ Output parameters:
      Copyright 19.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void ftest(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     /* Real    */ ae_vector* y,
-     ae_int_t m,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+                         ae_int_t n,
+                         /* Real    */ ae_vector* y,
+                         ae_int_t m,
+                         double* bothtails,
+                         double* lefttail,
+                         double* righttail,
+                         ae_state *_state)
 {
     ae_int_t i;
     double xmean;
@@ -13272,7 +13272,7 @@ void ftest(/* Real    */ ae_vector* x,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * Mean
      */
@@ -13288,7 +13288,7 @@ void ftest(/* Real    */ ae_vector* x,
         ymean = ymean+y->ptr.p_double[i];
     }
     ymean = ymean/m;
-    
+
     /*
      * Variance (using corrected two-pass algorithm)
      */
@@ -13311,7 +13311,7 @@ void ftest(/* Real    */ ae_vector* x,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * Statistic
      */
@@ -13359,12 +13359,12 @@ Output parameters:
      Copyright 19.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void onesamplevariancetest(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double variance,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+        ae_int_t n,
+        double variance,
+        double* bothtails,
+        double* lefttail,
+        double* righttail,
+        ae_state *_state)
 {
     ae_int_t i;
     double xmean;
@@ -13383,7 +13383,7 @@ void onesamplevariancetest(/* Real    */ ae_vector* x,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * Mean
      */
@@ -13393,7 +13393,7 @@ void onesamplevariancetest(/* Real    */ ae_vector* x,
         xmean = xmean+x->ptr.p_double[i];
     }
     xmean = xmean/n;
-    
+
     /*
      * Variance
      */
@@ -13410,7 +13410,7 @@ void onesamplevariancetest(/* Real    */ ae_vector* x,
         *righttail = 1.0;
         return;
     }
-    
+
     /*
      * Statistic
      */
@@ -13474,12 +13474,12 @@ the significance level outlies this interval, the test returns 0.0001.
      Copyright 08.09.2006 by Bochkanov Sergey
 *************************************************************************/
 void wilcoxonsignedranktest(/* Real    */ ae_vector* x,
-     ae_int_t n,
-     double e,
-     double* bothtails,
-     double* lefttail,
-     double* righttail,
-     ae_state *_state)
+        ae_int_t n,
+        double e,
+        double* bothtails,
+        double* lefttail,
+        double* righttail,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector _x;
@@ -13508,7 +13508,7 @@ void wilcoxonsignedranktest(/* Real    */ ae_vector* x,
     ae_vector_init(&r, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&c, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * Prepare
      */
@@ -13545,7 +13545,7 @@ void wilcoxonsignedranktest(/* Real    */ ae_vector* x,
         r.ptr.p_double[i] = ae_fabs(x->ptr.p_double[i]-e, _state);
         c.ptr.p_int[i] = i;
     }
-    
+
     /*
      * sort {R, C}
      */
@@ -13622,7 +13622,7 @@ void wilcoxonsignedranktest(/* Real    */ ae_vector* x,
         }
         while(i>=1);
     }
-    
+
     /*
      * compute tied ranks
      */
@@ -13644,7 +13644,7 @@ void wilcoxonsignedranktest(/* Real    */ ae_vector* x,
         }
         i = j;
     }
-    
+
     /*
      * Compute W+
      */
@@ -13656,7 +13656,7 @@ void wilcoxonsignedranktest(/* Real    */ ae_vector* x,
             w = w+r.ptr.p_double[i];
         }
     }
-    
+
     /*
      * Result
      */
@@ -13684,11 +13684,11 @@ void wilcoxonsignedranktest(/* Real    */ ae_vector* x,
 Sequential Chebyshev interpolation.
 *************************************************************************/
 static void wsr_wcheb(double x,
-     double c,
-     double* tj,
-     double* tj1,
-     double* r,
-     ae_state *_state)
+                      double c,
+                      double* tj,
+                      double* tj1,
+                      double* r,
+                      ae_state *_state)
 {
     double t;
 

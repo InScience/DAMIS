@@ -201,8 +201,8 @@ It accepts following parameters:
 
 *************************************************************************/
 void odesolversolve(odesolverstate &state,
-    void (*diff)(const real_1d_array &y, double x, real_1d_array &dy, void *ptr),
-    void *ptr = NULL);
+                    void (*diff)(const real_1d_array &y, double x, real_1d_array &dy, void *ptr),
+                    void *ptr = NULL);
 
 
 /*************************************************************************
@@ -239,20 +239,20 @@ void odesolverresults(const odesolverstate &state, ae_int_t &m, real_1d_array &x
 namespace alglib_impl
 {
 void odesolverrkck(/* Real    */ ae_vector* y,
-     ae_int_t n,
-     /* Real    */ ae_vector* x,
-     ae_int_t m,
-     double eps,
-     double h,
-     odesolverstate* state,
-     ae_state *_state);
+                                 ae_int_t n,
+                                 /* Real    */ ae_vector* x,
+                                 ae_int_t m,
+                                 double eps,
+                                 double h,
+                                 odesolverstate* state,
+                                 ae_state *_state);
 ae_bool odesolveriteration(odesolverstate* state, ae_state *_state);
 void odesolverresults(odesolverstate* state,
-     ae_int_t* m,
-     /* Real    */ ae_vector* xtbl,
-     /* Real    */ ae_matrix* ytbl,
-     odesolverreport* rep,
-     ae_state *_state);
+                      ae_int_t* m,
+                      /* Real    */ ae_vector* xtbl,
+                      /* Real    */ ae_matrix* ytbl,
+                      odesolverreport* rep,
+                      ae_state *_state);
 ae_bool _odesolverstate_init(void* _p, ae_state *_state, ae_bool make_automatic);
 ae_bool _odesolverstate_init_copy(void* _dst, void* _src, ae_state *_state, ae_bool make_automatic);
 void _odesolverstate_clear(void* _p);

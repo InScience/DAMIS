@@ -10,29 +10,33 @@
 #include "SOMMDS.h"
 #include "SOM.h"
 
-SOMMDS::SOMMDS(){
+SOMMDS::SOMMDS()
+{
 
 }
 
-SOMMDS::~SOMMDS(){
+SOMMDS::~SOMMDS()
+{
 
 }
 
 //SOMMDS::SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat):SMACOF(eps, max_iter, d), SOM(kx, ky, e_hat){
-SOMMDS::SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat): SOM(kx, ky, e_hat){
-this->eps = eps;
-this->maxIter = max_iter;
-this->d = d;
+SOMMDS::SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat): SOM(kx, ky, e_hat)
+{
+    this->eps = eps;
+    this->maxIter = max_iter;
+    this->d = d;
 
 }
 
-ObjectMatrix SOMMDS::getProjection(){
+ObjectMatrix SOMMDS::getProjection()
+{
     ObjectMatrix M_ws;
     M_ws = SOM::getProjection();
 //    som_qe = SOM::getQuantizationError();
-   // X = M_ws;
+    // X = M_ws;
     smcf = new SMACOF (eps, maxIter, d, M_ws);
-   // mds_error = SMACOF::getStress();
+    // mds_error = SMACOF::getStress();
     return  smcf->getProjection();
 }
 

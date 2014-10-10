@@ -129,8 +129,8 @@ http://www.fsf.org/licensing/licenses
 
 /////////////////////////////////////////////////////////////////////////
 //
-// THIS SECTION CONTAINS DECLARATIONS FOR BASIC FUNCTIONALITY 
-// LIKE MEMORY MANAGEMENT FOR VECTORS/MATRICES WHICH IS SHARED 
+// THIS SECTION CONTAINS DECLARATIONS FOR BASIC FUNCTIONALITY
+// LIKE MEMORY MANAGEMENT FOR VECTORS/MATRICES WHICH IS SHARED
 // BETWEEN C++ AND PURE C LIBRARIES
 //
 /////////////////////////////////////////////////////////////////////////
@@ -192,7 +192,10 @@ typedef ptrdiff_t ae_int_t;
 #define ae_false false
 #endif
 
-typedef struct { double x, y; } ae_complex;
+typedef struct
+{
+    double x, y;
+} ae_complex;
 
 typedef enum
 {
@@ -344,29 +347,29 @@ typedef struct ae_state
      * endianness type: AE_LITTLE_ENDIAN or AE_BIG_ENDIAN
      */
     ae_int_t endianness;
-    
+
     /*
      * double value for NAN
      */
     double v_nan;
-    
+
     /*
      * double value for +INF
      */
     double v_posinf;
-    
+
     /*
      * double value for -INF
      */
     double v_neginf;
-    
+
     /*
      * pointer to the top block in a stack of frames
      * which hold dynamically allocated objects
      */
     ae_dyn_block * volatile p_top_block;
     ae_dyn_block last_block;
-    
+
     /*
      * jmp_buf for cases when C-style exception handling is used
      */
@@ -378,12 +381,12 @@ typedef struct ae_state
      * ae_error_type of the last error (filled when exception is thrown)
      */
     ae_error_type volatile last_error;
-    
+
     /*
      * human-readable message (filled when exception is thrown)
      */
     const char* volatile error_msg;
-    
+
     /*
      * threading information:
      * a) current thread pool
@@ -397,7 +400,7 @@ typedef struct ae_state
     void *worker_thread;
     void *parent_task;
     void (*thread_exception_handler)(void*);
-    
+
 } ae_state;
 
 /************************************************************************
@@ -457,20 +460,20 @@ typedef struct ae_smart_ptr
 {
     /* pointer to subscriber; all changes in ptr are translated to subscriber */
     void **subscriber;
-    
+
     /* pointer to object */
     void *ptr;
-    
+
     /* whether smart pointer owns ptr */
     ae_bool is_owner;
-    
+
     /* whether object pointed by ptr is dynamic - clearing such object requires BOTH
        calling destructor function AND calling ae_free for memory occupied by object. */
     ae_bool is_dynamic;
-    
+
     /* destructor function for pointer; clears all dynamically allocated memory */
     void (*destroy)(void*);
-    
+
     /* frame entry; used to ensure automatic deallocation of smart pointer in case of exception/exit */
     ae_dyn_block frame_entry;
 } ae_smart_ptr;
@@ -513,10 +516,10 @@ typedef struct ae_shared_pool
 {
     /* lock object which protects pool */
     ae_lock pool_lock;
-    
+
     /* seed object (used to create new instances of temporaries) */
     void                    * volatile seed_object;
-    
+
     /*
      * list of recycled OBJECTS:
      * 1. entries in this list store pointers to recycled objects
@@ -524,8 +527,8 @@ typedef struct ae_shared_pool
      *    move it to recycled_entries and return its obj field to caller/
      */
     ae_shared_pool_entry    * volatile recycled_objects;
-    
-    /* 
+
+    /*
      * list of recycled ENTRIES:
      * 1. this list holds entries which are not used to store recycled objects;
      *    every time recycled object is retrieved, its entry is moved to this list.
@@ -533,26 +536,26 @@ typedef struct ae_shared_pool
      *    before allocating it with malloc()
      */
     ae_shared_pool_entry    * volatile recycled_entries;
-    
+
     /* enumeration pointer, points to current recycled object*/
     ae_shared_pool_entry    * volatile enumeration_counter;
-    
+
     /* size of object; this field is used when we call malloc() for new objects */
     ae_int_t                size_of_object;
-    
+
     /* initializer function; accepts pointer to malloc'ed object, initializes its fields */
     ae_bool (*init)(void* dst, ae_state* state, ae_bool make_automatic);
-    
+
     /* copy constructor; accepts pointer to malloc'ed, but not initialized object */
     ae_bool (*init_copy)(void* dst, void* src, ae_state* state, ae_bool make_automatic);
-    
+
     /* destructor function; */
     void (*destroy)(void* ptr);
-    
+
     /* frame entry; contains pointer to the pool object itself */
     ae_dyn_block frame_entry;
 } ae_shared_pool;
- 
+
 ae_int_t ae_misalignment(const void *ptr, size_t alignment);
 void* ae_align(void *ptr, size_t alignment);
 void* aligned_malloc(size_t size, size_t alignment);
@@ -894,7 +897,7 @@ class ap_error
 {
 public:
     std::string msg;
-    
+
     ap_error();
     ap_error(const char *s);
     static void make_assertion(bool bClause);
@@ -927,7 +930,7 @@ public:
 
     alglib_impl::ae_complex*       c_ptr();
     const alglib_impl::ae_complex* c_ptr() const;
-    
+
     std::string tostring(int dps) const;
 
     double x, y;
@@ -960,9 +963,9 @@ Level 1 BLAS functions
 
 NOTES:
 * destination and source should NOT overlap
-* stride is assumed to be positive, but it is not 
+* stride is assumed to be positive, but it is not
   assert'ed within function
-* conj_src parameter specifies whether complex source is conjugated 
+* conj_src parameter specifies whether complex source is conjugated
   before processing or not. Pass string which starts with 'N' or 'n'
   ("No conj", for example) to use unmodified parameter. All other
   values will result in conjugation of input, but it is recommended
@@ -1067,7 +1070,7 @@ protected:
     // called from copy constructor).
     //
     void create(const ae_vector_wrapper &rhs);
-    
+
     //
     // Copies array given by string into current object. Additional
     // parameter DATATYPE contains information about type of the data
@@ -1077,7 +1080,7 @@ protected:
     // called from copy constructor).
     //
     void create(const char *s, alglib_impl::ae_datatype datatype);
-    
+
     //
     // Assigns RHS to current object.
     //
@@ -1091,7 +1094,7 @@ protected:
     // NOTE: this function correctly handles assignments of the object to itself.
     //
     void assign(const ae_vector_wrapper &rhs);
-    
+
     alglib_impl::ae_vector *p_vec;
     alglib_impl::ae_vector vec;
 };
@@ -1200,7 +1203,7 @@ public:
     ae_int_t rows() const;
     ae_int_t cols() const;
     bool isempty() const;
-	ae_int_t getstride() const;
+    ae_int_t getstride() const;
 
     void attach_to(alglib_impl::ae_matrix *ptr);
     void allocate_own(ae_int_t rows, ae_int_t cols, alglib_impl::ae_datatype datatype);
@@ -1216,7 +1219,7 @@ protected:
     // called from copy constructor).
     //
     void create(const ae_matrix_wrapper &rhs);
-    
+
     //
     // Copies array given by string into current object. Additional
     // parameter DATATYPE contains information about type of the data
@@ -1226,7 +1229,7 @@ protected:
     // called from copy constructor).
     //
     void create(const char *s, alglib_impl::ae_datatype datatype);
-    
+
     //
     // Assigns RHS to current object.
     //
@@ -1240,7 +1243,7 @@ protected:
     // NOTE: this function correctly handles assignments of the object to itself.
     //
     void assign(const ae_matrix_wrapper &rhs);
-    
+
     alglib_impl::ae_matrix *p_mat;
     alglib_impl::ae_matrix mat;
 };
@@ -1259,9 +1262,9 @@ public:
 
     const ae_bool* operator[](ae_int_t i) const;
     ae_bool* operator[](ae_int_t i);
-    
+
     void setcontent(ae_int_t irows, ae_int_t icols, const bool *pContent );
-    
+
     std::string tostring() const ;
 };
 
@@ -1281,7 +1284,7 @@ public:
     ae_int_t* operator[](ae_int_t i);
 
     void setcontent(ae_int_t irows, ae_int_t icols, const ae_int_t *pContent );
-    
+
     std::string tostring() const;
 };
 
@@ -1428,123 +1431,123 @@ void _ialglib_mcopyblock_complex(ae_int_t m, ae_int_t n, const ae_complex *a, ae
 void _ialglib_mcopyunblock_complex(ae_int_t m, ae_int_t n, const double *a, ae_int_t op, ae_complex* b, ae_int_t stride);
 
 ae_bool _ialglib_i_rmatrixgemmf(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     ae_matrix *a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     ae_matrix *b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     double beta,
-     ae_matrix *c,
-     ae_int_t ic,
-     ae_int_t jc);
+                                ae_int_t n,
+                                ae_int_t k,
+                                double alpha,
+                                ae_matrix *a,
+                                ae_int_t ia,
+                                ae_int_t ja,
+                                ae_int_t optypea,
+                                ae_matrix *b,
+                                ae_int_t ib,
+                                ae_int_t jb,
+                                ae_int_t optypeb,
+                                double beta,
+                                ae_matrix *c,
+                                ae_int_t ic,
+                                ae_int_t jc);
 ae_bool _ialglib_i_cmatrixgemmf(ae_int_t m,
-     ae_int_t n,
-     ae_int_t k,
-     ae_complex alpha,
-     ae_matrix *a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     ae_matrix *b,
-     ae_int_t ib,
-     ae_int_t jb,
-     ae_int_t optypeb,
-     ae_complex beta,
-     ae_matrix *c,
-     ae_int_t ic,
-     ae_int_t jc);
+                                ae_int_t n,
+                                ae_int_t k,
+                                ae_complex alpha,
+                                ae_matrix *a,
+                                ae_int_t ia,
+                                ae_int_t ja,
+                                ae_int_t optypea,
+                                ae_matrix *b,
+                                ae_int_t ib,
+                                ae_int_t jb,
+                                ae_int_t optypeb,
+                                ae_complex beta,
+                                ae_matrix *c,
+                                ae_int_t ic,
+                                ae_int_t jc);
 ae_bool _ialglib_i_cmatrixrighttrsmf(ae_int_t m,
-     ae_int_t n,
-     ae_matrix *a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     ae_matrix *x,
-     ae_int_t i2,
-     ae_int_t j2);
+                                     ae_int_t n,
+                                     ae_matrix *a,
+                                     ae_int_t i1,
+                                     ae_int_t j1,
+                                     ae_bool isupper,
+                                     ae_bool isunit,
+                                     ae_int_t optype,
+                                     ae_matrix *x,
+                                     ae_int_t i2,
+                                     ae_int_t j2);
 ae_bool _ialglib_i_rmatrixrighttrsmf(ae_int_t m,
-     ae_int_t n,
-     ae_matrix *a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     ae_matrix *x,
-     ae_int_t i2,
-     ae_int_t j2);
+                                     ae_int_t n,
+                                     ae_matrix *a,
+                                     ae_int_t i1,
+                                     ae_int_t j1,
+                                     ae_bool isupper,
+                                     ae_bool isunit,
+                                     ae_int_t optype,
+                                     ae_matrix *x,
+                                     ae_int_t i2,
+                                     ae_int_t j2);
 ae_bool _ialglib_i_cmatrixlefttrsmf(ae_int_t m,
-     ae_int_t n,
-     ae_matrix *a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     ae_matrix *x,
-     ae_int_t i2,
-     ae_int_t j2);
+                                    ae_int_t n,
+                                    ae_matrix *a,
+                                    ae_int_t i1,
+                                    ae_int_t j1,
+                                    ae_bool isupper,
+                                    ae_bool isunit,
+                                    ae_int_t optype,
+                                    ae_matrix *x,
+                                    ae_int_t i2,
+                                    ae_int_t j2);
 ae_bool _ialglib_i_rmatrixlefttrsmf(ae_int_t m,
-     ae_int_t n,
-     ae_matrix *a,
-     ae_int_t i1,
-     ae_int_t j1,
-     ae_bool isupper,
-     ae_bool isunit,
-     ae_int_t optype,
-     ae_matrix *x,
-     ae_int_t i2,
-     ae_int_t j2);
+                                    ae_int_t n,
+                                    ae_matrix *a,
+                                    ae_int_t i1,
+                                    ae_int_t j1,
+                                    ae_bool isupper,
+                                    ae_bool isunit,
+                                    ae_int_t optype,
+                                    ae_matrix *x,
+                                    ae_int_t i2,
+                                    ae_int_t j2);
 ae_bool _ialglib_i_cmatrixsyrkf(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     ae_matrix *a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     ae_matrix *c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper);
+                                ae_int_t k,
+                                double alpha,
+                                ae_matrix *a,
+                                ae_int_t ia,
+                                ae_int_t ja,
+                                ae_int_t optypea,
+                                double beta,
+                                ae_matrix *c,
+                                ae_int_t ic,
+                                ae_int_t jc,
+                                ae_bool isupper);
 ae_bool _ialglib_i_rmatrixsyrkf(ae_int_t n,
-     ae_int_t k,
-     double alpha,
-     ae_matrix *a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_int_t optypea,
-     double beta,
-     ae_matrix *c,
-     ae_int_t ic,
-     ae_int_t jc,
-     ae_bool isupper);
+                                ae_int_t k,
+                                double alpha,
+                                ae_matrix *a,
+                                ae_int_t ia,
+                                ae_int_t ja,
+                                ae_int_t optypea,
+                                double beta,
+                                ae_matrix *c,
+                                ae_int_t ic,
+                                ae_int_t jc,
+                                ae_bool isupper);
 ae_bool _ialglib_i_cmatrixrank1f(ae_int_t m,
-     ae_int_t n,
-     ae_matrix *a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_vector *u,
-     ae_int_t uoffs,
-     ae_vector *v,
-     ae_int_t voffs);
+                                 ae_int_t n,
+                                 ae_matrix *a,
+                                 ae_int_t ia,
+                                 ae_int_t ja,
+                                 ae_vector *u,
+                                 ae_int_t uoffs,
+                                 ae_vector *v,
+                                 ae_int_t voffs);
 ae_bool _ialglib_i_rmatrixrank1f(ae_int_t m,
-     ae_int_t n,
-     ae_matrix *a,
-     ae_int_t ia,
-     ae_int_t ja,
-     ae_vector *u,
-     ae_int_t uoffs,
-     ae_vector *v,
-     ae_int_t voffs);
+                                 ae_int_t n,
+                                 ae_matrix *a,
+                                 ae_int_t ia,
+                                 ae_int_t ja,
+                                 ae_vector *u,
+                                 ae_int_t uoffs,
+                                 ae_vector *v,
+                                 ae_int_t voffs);
 
 
 

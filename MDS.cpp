@@ -34,16 +34,16 @@ MDS::MDS(double eps, int maxIter, int dimension)
     epsilon = eps;
     maxIteration = maxIter;
     d = dimension;
-  /*  int m = X.getObjectCount();
-    gutman = ObjectMatrix(m);
-    std::vector<double> gutmanRow;
-    gutmanRow.resize(m, 0);
+    /*  int m = X.getObjectCount();
+      gutman = ObjectMatrix(m);
+      std::vector<double> gutmanRow;
+      gutmanRow.resize(m, 0);
+
+      /* for (int i = 0; i < m; i++)
+           gutmanRow.push_back(0.0);*/
 
     /* for (int i = 0; i < m; i++)
-         gutmanRow.push_back(0.0);*/
-
-   /* for (int i = 0; i < m; i++)
-        gutman.addObject(DataObject(gutmanRow));*/
+         gutman.addObject(DataObject(gutmanRow));*/
 }
 
 MDS::MDS(double eps, int maxIter, int dimension, ObjectMatrix initialMatrix)
@@ -101,42 +101,42 @@ ObjectMatrix MDS::getGutman()
         gutman.updateDataObject(i, i,  sum);
     }
 
- /*   int m = X.getObjectCount();
-    double distXij;
-    double distYij;
-    double sum = 0.0;
+    /*   int m = X.getObjectCount();
+       double distXij;
+       double distYij;
+       double sum = 0.0;
 
-    for (int i = 0; i < m; i++)
-    {
-        sum = 0.0;
-        for (int j = 0; j < i; j++)
-        {
-            distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
-            if (distYij > 0)
-            {
-                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
-                gutman.updateDataObject(i, j,  -1 * distXij/distYij);
-            }
-            else
-                gutman.updateDataObject(i, j, 0.0);
-            sum += gutman.getObjectAt(i).getFeatureAt(j);
-        }
+       for (int i = 0; i < m; i++)
+       {
+           sum = 0.0;
+           for (int j = 0; j < i; j++)
+           {
+               distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+               if (distYij > 0)
+               {
+                   distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+                   gutman.updateDataObject(i, j,  -1 * distXij/distYij);
+               }
+               else
+                   gutman.updateDataObject(i, j, 0.0);
+               sum += gutman.getObjectAt(i).getFeatureAt(j);
+           }
 
-        for (int j = i + 1; j < m; j++)
-        {
-            distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
-            if (distYij > 0)
-            {
-                distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
-                gutman.updateDataObject(i, j,  -1 * distXij/distYij);
-            }
-            else
-                gutman.updateDataObject(i, j, 0.0);
-            sum += gutman.getObjectAt(i).getFeatureAt(j);
-        }
-        gutman.updateDataObject(i, i, -1 * sum);
-    }*/
-   // gutman.saveDataMatrix("D:/temp/temp.txt");
+           for (int j = i + 1; j < m; j++)
+           {
+               distYij = DistanceMetrics::getDistance(Y.getObjectAt(i), Y.getObjectAt(j), EUCLIDEAN);
+               if (distYij > 0)
+               {
+                   distXij = DistanceMetrics::getDistance(X.getObjectAt(i), X.getObjectAt(j), EUCLIDEAN);
+                   gutman.updateDataObject(i, j,  -1 * distXij/distYij);
+               }
+               else
+                   gutman.updateDataObject(i, j, 0.0);
+               sum += gutman.getObjectAt(i).getFeatureAt(j);
+           }
+           gutman.updateDataObject(i, i, -1 * sum);
+       }*/
+    // gutman.saveDataMatrix("D:/temp/temp.txt");
     return  gutman;
 }
 
@@ -234,19 +234,19 @@ ObjectMatrix MDS::getGutman(ObjectMatrix Ynew)
     }
 
 
-     /*   for (int j = i + 1; j < m; j++)
-        {
-            distYij = DistanceMetrics::getDistance(objYi, Ynew.getObjectAt(j), EUCLIDEAN);
-            if (distYij > 0)
-            {
-                distXij = DistanceMetrics::getDistance(objXi, X.getObjectAt(j), EUCLIDEAN);
-                gutman.updateDataObject(i, j,  -1 * distXij/distYij);
-            }
-            else
-                gutman.updateDataObject(i, j, 0.0);
-            sum += objGutmani.getFeatureAt(j);
-        }
-        gutman.updateDataObject(i, i, -1 * sum);
+    /*   for (int j = i + 1; j < m; j++)
+       {
+           distYij = DistanceMetrics::getDistance(objYi, Ynew.getObjectAt(j), EUCLIDEAN);
+           if (distYij > 0)
+           {
+               distXij = DistanceMetrics::getDistance(objXi, X.getObjectAt(j), EUCLIDEAN);
+               gutman.updateDataObject(i, j,  -1 * distXij/distYij);
+           }
+           else
+               gutman.updateDataObject(i, j, 0.0);
+           sum += objGutmani.getFeatureAt(j);
+       }
+       gutman.updateDataObject(i, i, -1 * sum);
     }*/
     return  gutman;
 }

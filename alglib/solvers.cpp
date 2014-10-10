@@ -1180,11 +1180,11 @@ alglib_impl::linlsqrstate* _linlsqrstate_owner::c_ptr() const
 {
     return const_cast<alglib_impl::linlsqrstate*>(p_struct);
 }
-linlsqrstate::linlsqrstate() : _linlsqrstate_owner() 
+linlsqrstate::linlsqrstate() : _linlsqrstate_owner()
 {
 }
 
-linlsqrstate::linlsqrstate(const linlsqrstate &rhs):_linlsqrstate_owner(rhs) 
+linlsqrstate::linlsqrstate(const linlsqrstate &rhs):_linlsqrstate_owner(rhs)
 {
 }
 
@@ -1583,11 +1583,11 @@ alglib_impl::lincgstate* _lincgstate_owner::c_ptr() const
 {
     return const_cast<alglib_impl::lincgstate*>(p_struct);
 }
-lincgstate::lincgstate() : _lincgstate_owner() 
+lincgstate::lincgstate() : _lincgstate_owner()
 {
 }
 
-lincgstate::lincgstate(const lincgstate &rhs):_lincgstate_owner(rhs) 
+lincgstate::lincgstate(const lincgstate &rhs):_lincgstate_owner(rhs)
 {
 }
 
@@ -2293,7 +2293,7 @@ NOTES:
 *************************************************************************/
 void nleqcreatelm(const ae_int_t m, const real_1d_array &x, nleqstate &state)
 {
-    alglib_impl::ae_state _alglib_env_state;    
+    alglib_impl::ae_state _alglib_env_state;
     ae_int_t n;
 
     n = x.length();
@@ -2431,10 +2431,10 @@ bool nleqiteration(const nleqstate &state)
 
 
 void nleqsolve(nleqstate &state,
-    void (*func)(const real_1d_array &x, double &func, void *ptr),
-    void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
-    void  (*rep)(const real_1d_array &x, double func, void *ptr), 
-    void *ptr)
+               void (*func)(const real_1d_array &x, double &func, void *ptr),
+               void  (*jac)(const real_1d_array &x, real_1d_array &fi, real_2d_array &jac, void *ptr),
+               void  (*rep)(const real_1d_array &x, double func, void *ptr),
+               void *ptr)
 {
     alglib_impl::ae_state _alglib_env_state;
     if( func==NULL )
@@ -2584,88 +2584,88 @@ void nleqrestartfrom(const nleqstate &state, const real_1d_array &x)
 namespace alglib_impl
 {
 static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     double scalea,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_bool havea,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+        /* Integer */ ae_vector* p,
+        double scalea,
+        ae_int_t n,
+        /* Real    */ ae_matrix* a,
+        ae_bool havea,
+        /* Real    */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Real    */ ae_matrix* x,
+        ae_state *_state);
 static void densesolver_spdmatrixcholeskysolveinternal(/* Real    */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_matrix* a,
-     ae_bool havea,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state);
+        double sqrtscalea,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_matrix* a,
+        ae_bool havea,
+        /* Real    */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Real    */ ae_matrix* x,
+        ae_state *_state);
 static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     double scalea,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_bool havea,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state);
+        /* Integer */ ae_vector* p,
+        double scalea,
+        ae_int_t n,
+        /* Complex */ ae_matrix* a,
+        ae_bool havea,
+        /* Complex */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Complex */ ae_matrix* x,
+        ae_state *_state);
 static void densesolver_hpdmatrixcholeskysolveinternal(/* Complex */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_matrix* a,
-     ae_bool havea,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state);
+        double sqrtscalea,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_matrix* a,
+        ae_bool havea,
+        /* Complex */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Complex */ ae_matrix* x,
+        ae_state *_state);
 static ae_int_t densesolver_densesolverrfsmax(ae_int_t n,
-     double r1,
-     double rinf,
-     ae_state *_state);
+        double r1,
+        double rinf,
+        ae_state *_state);
 static ae_int_t densesolver_densesolverrfsmaxv2(ae_int_t n,
-     double r2,
-     ae_state *_state);
+        double r2,
+        ae_state *_state);
 static void densesolver_rbasiclusolve(/* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     double scalea,
-     ae_int_t n,
-     /* Real    */ ae_vector* xb,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state);
+        /* Integer */ ae_vector* p,
+        double scalea,
+        ae_int_t n,
+        /* Real    */ ae_vector* xb,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state);
 static void densesolver_spdbasiccholeskysolve(/* Real    */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* xb,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state);
+        double sqrtscalea,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* xb,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state);
 static void densesolver_cbasiclusolve(/* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     double scalea,
-     ae_int_t n,
-     /* Complex */ ae_vector* xb,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        /* Integer */ ae_vector* p,
+        double scalea,
+        ae_int_t n,
+        /* Complex */ ae_vector* xb,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 static void densesolver_hpdbasiccholeskysolve(/* Complex */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* xb,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state);
+        double sqrtscalea,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* xb,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state);
 
 
 static double linlsqr_atol = 1.0E-6;
@@ -2680,13 +2680,13 @@ static void lincg_updateitersdata(lincgstate* state, ae_state *_state);
 
 static void nleq_clearrequestfields(nleqstate* state, ae_state *_state);
 static ae_bool nleq_increaselambda(double* lambdav,
-     double* nu,
-     double lambdaup,
-     ae_state *_state);
+                                   double* nu,
+                                   double lambdaup,
+                                   ae_state *_state);
 static void nleq_decreaselambda(double* lambdav,
-     double* nu,
-     double lambdadown,
-     ae_state *_state);
+                                double* nu,
+                                double lambdadown,
+                                ae_state *_state);
 
 
 
@@ -2733,12 +2733,12 @@ Subroutine sets following fields of the Rep structure:
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixsolve(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+                                ae_int_t n,
+                                /* Real    */ ae_vector* b,
+                                ae_int_t* info,
+                                densesolverreport* rep,
+                                /* Real    */ ae_vector* x,
+                                ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -2798,14 +2798,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixsolvem(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_bool rfs,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 /* Real    */ ae_matrix* b,
+                                 ae_int_t m,
+                                 ae_bool rfs,
+                                 ae_int_t* info,
+                                 densesolverreport* rep,
+                                 /* Real    */ ae_matrix* x,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix da;
@@ -2823,7 +2823,7 @@ void rmatrixsolvem(/* Real    */ ae_matrix* a,
     ae_matrix_init(&emptya, 0, 0, DT_REAL, _state, ae_true);
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -2834,7 +2834,7 @@ void rmatrixsolvem(/* Real    */ ae_matrix* a,
         return;
     }
     ae_matrix_set_length(&da, n, n, _state);
-    
+
     /*
      * 1. scale matrix, max(|A[i,j]|)
      * 2. factorize scaled matrix
@@ -2895,18 +2895,18 @@ OUTPUT PARAMETERS
     Info    -   same as in RMatrixSolve
     Rep     -   same as in RMatrixSolve
     X       -   same as in RMatrixSolve
-    
+
   -- ALGLIB --
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixlusolve(/* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+                                  /* Integer */ ae_vector* p,
+                                  ae_int_t n,
+                                  /* Real    */ ae_vector* b,
+                                  ae_int_t* info,
+                                  densesolverreport* rep,
+                                  /* Real    */ ae_vector* x,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -2965,14 +2965,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixlusolvem(/* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state)
+                                   /* Integer */ ae_vector* p,
+                                   ae_int_t n,
+                                   /* Real    */ ae_matrix* b,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   densesolverreport* rep,
+                                   /* Real    */ ae_matrix* x,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix emptya;
@@ -2986,7 +2986,7 @@ void rmatrixlusolvem(/* Real    */ ae_matrix* lua,
     ae_matrix_clear(x);
     ae_matrix_init(&emptya, 0, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -2996,7 +2996,7 @@ void rmatrixlusolvem(/* Real    */ ae_matrix* lua,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * 1. scale matrix, max(|U[i,j]|)
      *    we assume that LU is in its normal form, i.e. |L[i,j]|<=1
@@ -3049,14 +3049,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixmixedsolve(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+                                     /* Real    */ ae_matrix* lua,
+                                     /* Integer */ ae_vector* p,
+                                     ae_int_t n,
+                                     /* Real    */ ae_vector* b,
+                                     ae_int_t* info,
+                                     densesolverreport* rep,
+                                     /* Real    */ ae_vector* x,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -3113,15 +3113,15 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixmixedsolvem(/* Real    */ ae_matrix* a,
-     /* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state)
+                                      /* Real    */ ae_matrix* lua,
+                                      /* Integer */ ae_vector* p,
+                                      ae_int_t n,
+                                      /* Real    */ ae_matrix* b,
+                                      ae_int_t m,
+                                      ae_int_t* info,
+                                      densesolverreport* rep,
+                                      /* Real    */ ae_matrix* x,
+                                      ae_state *_state)
 {
     double scalea;
     ae_int_t i;
@@ -3131,7 +3131,7 @@ void rmatrixmixedsolvem(/* Real    */ ae_matrix* a,
     _densesolverreport_clear(rep);
     ae_matrix_clear(x);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -3140,7 +3140,7 @@ void rmatrixmixedsolvem(/* Real    */ ae_matrix* a,
         *info = -1;
         return;
     }
-    
+
     /*
      * 1. scale matrix, max(|A[i,j]|)
      * 2. factorize scaled matrix
@@ -3192,14 +3192,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void cmatrixsolvem(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_bool rfs,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state)
+                                 ae_int_t n,
+                                 /* Complex */ ae_matrix* b,
+                                 ae_int_t m,
+                                 ae_bool rfs,
+                                 ae_int_t* info,
+                                 densesolverreport* rep,
+                                 /* Complex */ ae_matrix* x,
+                                 ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix da;
@@ -3217,7 +3217,7 @@ void cmatrixsolvem(/* Complex */ ae_matrix* a,
     ae_matrix_init(&emptya, 0, 0, DT_COMPLEX, _state, ae_true);
     ae_vector_init(&p, 0, DT_INT, _state, ae_true);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -3228,7 +3228,7 @@ void cmatrixsolvem(/* Complex */ ae_matrix* a,
         return;
     }
     ae_matrix_set_length(&da, n, n, _state);
-    
+
     /*
      * 1. scale matrix, max(|A[i,j]|)
      * 2. factorize scaled matrix
@@ -3287,12 +3287,12 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void cmatrixsolve(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state)
+                                ae_int_t n,
+                                /* Complex */ ae_vector* b,
+                                ae_int_t* info,
+                                densesolverreport* rep,
+                                /* Complex */ ae_vector* x,
+                                ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -3348,14 +3348,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void cmatrixlusolvem(/* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state)
+                                   /* Integer */ ae_vector* p,
+                                   ae_int_t n,
+                                   /* Complex */ ae_matrix* b,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   densesolverreport* rep,
+                                   /* Complex */ ae_matrix* x,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix emptya;
@@ -3369,7 +3369,7 @@ void cmatrixlusolvem(/* Complex */ ae_matrix* lua,
     ae_matrix_clear(x);
     ae_matrix_init(&emptya, 0, 0, DT_COMPLEX, _state, ae_true);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -3379,7 +3379,7 @@ void cmatrixlusolvem(/* Complex */ ae_matrix* lua,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * 1. scale matrix, max(|U[i,j]|)
      *    we assume that LU is in its normal form, i.e. |L[i,j]|<=1
@@ -3430,13 +3430,13 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void cmatrixlusolve(/* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state)
+                                  /* Integer */ ae_vector* p,
+                                  ae_int_t n,
+                                  /* Complex */ ae_vector* b,
+                                  ae_int_t* info,
+                                  densesolverreport* rep,
+                                  /* Complex */ ae_vector* x,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -3490,15 +3490,15 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void cmatrixmixedsolvem(/* Complex */ ae_matrix* a,
-     /* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state)
+                                      /* Complex */ ae_matrix* lua,
+                                      /* Integer */ ae_vector* p,
+                                      ae_int_t n,
+                                      /* Complex */ ae_matrix* b,
+                                      ae_int_t m,
+                                      ae_int_t* info,
+                                      densesolverreport* rep,
+                                      /* Complex */ ae_matrix* x,
+                                      ae_state *_state)
 {
     double scalea;
     ae_int_t i;
@@ -3508,7 +3508,7 @@ void cmatrixmixedsolvem(/* Complex */ ae_matrix* a,
     _densesolverreport_clear(rep);
     ae_matrix_clear(x);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -3517,7 +3517,7 @@ void cmatrixmixedsolvem(/* Complex */ ae_matrix* a,
         *info = -1;
         return;
     }
-    
+
     /*
      * 1. scale matrix, max(|A[i,j]|)
      * 2. factorize scaled matrix
@@ -3565,14 +3565,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void cmatrixmixedsolve(/* Complex */ ae_matrix* a,
-     /* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     ae_int_t n,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state)
+                                     /* Complex */ ae_matrix* lua,
+                                     /* Integer */ ae_vector* p,
+                                     ae_int_t n,
+                                     /* Complex */ ae_vector* b,
+                                     ae_int_t* info,
+                                     densesolverreport* rep,
+                                     /* Complex */ ae_vector* x,
+                                     ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -3632,14 +3632,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void spdmatrixsolvem(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state)
+                                   ae_int_t n,
+                                   ae_bool isupper,
+                                   /* Real    */ ae_matrix* b,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   densesolverreport* rep,
+                                   /* Real    */ ae_matrix* x,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix da;
@@ -3655,7 +3655,7 @@ void spdmatrixsolvem(/* Real    */ ae_matrix* a,
     ae_matrix_clear(x);
     ae_matrix_init(&da, 0, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -3666,7 +3666,7 @@ void spdmatrixsolvem(/* Real    */ ae_matrix* a,
         return;
     }
     ae_matrix_set_length(&da, n, n, _state);
-    
+
     /*
      * 1. scale matrix, max(|A[i,j]|)
      * 2. factorize scaled matrix
@@ -3762,13 +3762,13 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void spdmatrixsolve(/* Real    */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_bool isupper,
+                                  /* Real    */ ae_vector* b,
+                                  ae_int_t* info,
+                                  densesolverreport* rep,
+                                  /* Real    */ ae_vector* x,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -3828,14 +3828,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void spdmatrixcholeskysolvem(/* Real    */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Real    */ ae_matrix* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix emptya;
@@ -3851,7 +3851,7 @@ void spdmatrixcholeskysolvem(/* Real    */ ae_matrix* cha,
     ae_matrix_clear(x);
     ae_matrix_init(&emptya, 0, 0, DT_REAL, _state, ae_true);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -3861,7 +3861,7 @@ void spdmatrixcholeskysolvem(/* Real    */ ae_matrix* cha,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * 1. scale matrix, max(|U[i,j]|)
      * 2. factorize scaled matrix
@@ -3926,13 +3926,13 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void spdmatrixcholeskysolve(/* Real    */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* b,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Real    */ ae_vector* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -3992,14 +3992,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void hpdmatrixsolvem(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state)
+                                   ae_int_t n,
+                                   ae_bool isupper,
+                                   /* Complex */ ae_matrix* b,
+                                   ae_int_t m,
+                                   ae_int_t* info,
+                                   densesolverreport* rep,
+                                   /* Complex */ ae_matrix* x,
+                                   ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix da;
@@ -4015,7 +4015,7 @@ void hpdmatrixsolvem(/* Complex */ ae_matrix* a,
     ae_matrix_clear(x);
     ae_matrix_init(&da, 0, 0, DT_COMPLEX, _state, ae_true);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -4026,7 +4026,7 @@ void hpdmatrixsolvem(/* Complex */ ae_matrix* a,
         return;
     }
     ae_matrix_set_length(&da, n, n, _state);
-    
+
     /*
      * 1. scale matrix, max(|A[i,j]|)
      * 2. factorize scaled matrix
@@ -4123,13 +4123,13 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void hpdmatrixsolve(/* Complex */ ae_matrix* a,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state)
+                                  ae_int_t n,
+                                  ae_bool isupper,
+                                  /* Complex */ ae_vector* b,
+                                  ae_int_t* info,
+                                  densesolverreport* rep,
+                                  /* Complex */ ae_vector* x,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -4189,14 +4189,14 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void hpdmatrixcholeskysolvem(/* Complex */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Complex */ ae_matrix* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix emptya;
@@ -4212,7 +4212,7 @@ void hpdmatrixcholeskysolvem(/* Complex */ ae_matrix* cha,
     ae_matrix_clear(x);
     ae_matrix_init(&emptya, 0, 0, DT_COMPLEX, _state, ae_true);
 
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -4222,7 +4222,7 @@ void hpdmatrixcholeskysolvem(/* Complex */ ae_matrix* cha,
         ae_frame_leave(_state);
         return;
     }
-    
+
     /*
      * 1. scale matrix, max(|U[i,j]|)
      * 2. factorize scaled matrix
@@ -4287,13 +4287,13 @@ OUTPUT PARAMETERS
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 void hpdmatrixcholeskysolve(/* Complex */ ae_matrix* cha,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* b,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_vector* x,
-     ae_state *_state)
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* b,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Complex */ ae_vector* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_matrix bm;
@@ -4343,7 +4343,7 @@ INPUT PARAMETERS
                 considered  zero.  Set  it to 0.0, if you don't understand
                 what it means, so the solver will choose good value on its
                 own.
-                
+
 OUTPUT PARAMETERS
     Info    -   return code:
                 * -4    SVD subroutine failed
@@ -4367,14 +4367,14 @@ Subroutine sets following fields of the Rep structure:
      Copyright 24.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void rmatrixsolvels(/* Real    */ ae_matrix* a,
-     ae_int_t nrows,
-     ae_int_t ncols,
-     /* Real    */ ae_vector* b,
-     double threshold,
-     ae_int_t* info,
-     densesolverlsreport* rep,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+                                  ae_int_t nrows,
+                                  ae_int_t ncols,
+                                  /* Real    */ ae_vector* b,
+                                  double threshold,
+                                  ae_int_t* info,
+                                  densesolverlsreport* rep,
+                                  /* Real    */ ae_vector* x,
+                                  ae_state *_state)
 {
     ae_frame _frame_block;
     ae_vector sv;
@@ -4427,7 +4427,7 @@ void rmatrixsolvels(/* Real    */ ae_matrix* a,
     {
         threshold = 1000*ae_machineepsilon;
     }
-    
+
     /*
      * Factorize A first
      */
@@ -4480,7 +4480,7 @@ void rmatrixsolvels(/* Real    */ ae_matrix* a,
     }
     rep->n = ncols;
     *info = 1;
-    
+
     /*
      * Iterative refinement of xc combined with solution:
      * 1. xc = 0
@@ -4523,7 +4523,7 @@ void rmatrixsolvels(/* Real    */ ae_matrix* a,
         {
             break;
         }
-        
+
         /*
          * calculate right part
          */
@@ -4549,7 +4549,7 @@ void rmatrixsolvels(/* Real    */ ae_matrix* a,
                 terminatenexttime = ae_true;
             }
         }
-        
+
         /*
          * solve A*dx = rp
          */
@@ -4582,13 +4582,13 @@ void rmatrixsolvels(/* Real    */ ae_matrix* a,
             v = sutb.ptr.p_double[i];
             ae_v_addd(&tmp.ptr.p_double[0], 1, &vt.ptr.pp_double[i][0], 1, ae_v_len(0,ncols-1), v);
         }
-        
+
         /*
          * update x:  x:=x+dx
          */
         ae_v_add(&x->ptr.p_double[0], 1, &tmp.ptr.p_double[0], 1, ae_v_len(0,ncols-1));
     }
-    
+
     /*
      * fill CX
      */
@@ -4611,17 +4611,17 @@ Internal LU solver
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     double scalea,
-     ae_int_t n,
-     /* Real    */ ae_matrix* a,
-     ae_bool havea,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state)
+        /* Integer */ ae_vector* p,
+        double scalea,
+        ae_int_t n,
+        /* Real    */ ae_matrix* a,
+        ae_bool havea,
+        /* Real    */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Real    */ ae_matrix* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -4654,7 +4654,7 @@ static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
     ae_vector_init(&tx, 0, DT_REAL, _state, ae_true);
 
     ae_assert(ae_fp_greater(scalea,0), "Assertion failed", _state);
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -4680,7 +4680,7 @@ static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
     ae_vector_set_length(&tx, n+1, _state);
     ae_vector_set_length(&xa, n+1, _state);
     ae_vector_set_length(&xb, n+1, _state);
-    
+
     /*
      * estimate condition number, test for near singularity
      */
@@ -4702,18 +4702,18 @@ static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
         return;
     }
     *info = 1;
-    
+
     /*
      * solve
      */
     for(k=0; k<=m-1; k++)
     {
-        
+
         /*
          * copy B to contiguous storage
          */
         ae_v_move(&bc.ptr.p_double[0], 1, &b->ptr.pp_double[0][k], b->stride, ae_v_len(0,n-1));
-        
+
         /*
          * Scale right part:
          * * MX stores max(|Bi|)
@@ -4730,7 +4730,7 @@ static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
             mxb = 1;
         }
         scaleright = 1/mxb;
-        
+
         /*
          * First, non-iterative part of solution process.
          * We use separate code for this task because
@@ -4738,7 +4738,7 @@ static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
          */
         ae_v_moved(&xc.ptr.p_double[0], 1, &bc.ptr.p_double[0], 1, ae_v_len(0,n-1), scaleright);
         densesolver_rbasiclusolve(lua, p, scalea, n, &xc, &tx, _state);
-        
+
         /*
          * Iterative refinement of xc:
          * * calculate r = bc-A*xc using extra-precise dot product
@@ -4759,7 +4759,7 @@ static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
                 {
                     break;
                 }
-                
+
                 /*
                  * generate right part
                  */
@@ -4778,7 +4778,7 @@ static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
                 {
                     terminatenexttime = ae_true;
                 }
-                
+
                 /*
                  * solve and update
                  */
@@ -4786,7 +4786,7 @@ static void densesolver_rmatrixlusolveinternal(/* Real    */ ae_matrix* lua,
                 ae_v_add(&xc.ptr.p_double[0], 1, &y.ptr.p_double[0], 1, ae_v_len(0,n-1));
             }
         }
-        
+
         /*
          * Store xc.
          * Post-scale result.
@@ -4805,17 +4805,17 @@ Internal Cholesky solver
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static void densesolver_spdmatrixcholeskysolveinternal(/* Real    */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_matrix* a,
-     ae_bool havea,
-     /* Real    */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Real    */ ae_matrix* x,
-     ae_state *_state)
+        double sqrtscalea,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_matrix* a,
+        ae_bool havea,
+        /* Real    */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Real    */ ae_matrix* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -4843,7 +4843,7 @@ static void densesolver_spdmatrixcholeskysolveinternal(/* Real    */ ae_matrix* 
     ae_vector_init(&tx, 0, DT_REAL, _state, ae_true);
 
     ae_assert(ae_fp_greater(sqrtscalea,0), "Assertion failed", _state);
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -4860,7 +4860,7 @@ static void densesolver_spdmatrixcholeskysolveinternal(/* Real    */ ae_matrix* 
     ae_vector_set_length(&tx, n+1, _state);
     ae_vector_set_length(&xa, n+1, _state);
     ae_vector_set_length(&xb, n+1, _state);
-    
+
     /*
      * estimate condition number, test for near singularity
      */
@@ -4882,18 +4882,18 @@ static void densesolver_spdmatrixcholeskysolveinternal(/* Real    */ ae_matrix* 
         return;
     }
     *info = 1;
-    
+
     /*
      * solve
      */
     for(k=0; k<=m-1; k++)
     {
-        
+
         /*
          * copy B to contiguous storage
          */
         ae_v_move(&bc.ptr.p_double[0], 1, &b->ptr.pp_double[0][k], b->stride, ae_v_len(0,n-1));
-        
+
         /*
          * Scale right part:
          * * MX stores max(|Bi|)
@@ -4910,7 +4910,7 @@ static void densesolver_spdmatrixcholeskysolveinternal(/* Real    */ ae_matrix* 
             mxb = 1;
         }
         scaleright = 1/mxb;
-        
+
         /*
          * First, non-iterative part of solution process.
          * We use separate code for this task because
@@ -4918,7 +4918,7 @@ static void densesolver_spdmatrixcholeskysolveinternal(/* Real    */ ae_matrix* 
          */
         ae_v_moved(&xc.ptr.p_double[0], 1, &bc.ptr.p_double[0], 1, ae_v_len(0,n-1), scaleright);
         densesolver_spdbasiccholeskysolve(cha, sqrtscalea, n, isupper, &xc, &tx, _state);
-        
+
         /*
          * Store xc.
          * Post-scale result.
@@ -4937,17 +4937,17 @@ Internal LU solver
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     double scalea,
-     ae_int_t n,
-     /* Complex */ ae_matrix* a,
-     ae_bool havea,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state)
+        /* Integer */ ae_vector* p,
+        double scalea,
+        ae_int_t n,
+        /* Complex */ ae_matrix* a,
+        ae_bool havea,
+        /* Complex */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Complex */ ae_matrix* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -4982,7 +4982,7 @@ static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
     ae_vector_init(&tmpbuf, 0, DT_REAL, _state, ae_true);
 
     ae_assert(ae_fp_greater(scalea,0), "Assertion failed", _state);
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -5009,7 +5009,7 @@ static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
     ae_vector_set_length(&xa, n+1, _state);
     ae_vector_set_length(&xb, n+1, _state);
     ae_vector_set_length(&tmpbuf, 2*n+2, _state);
-    
+
     /*
      * estimate condition number, test for near singularity
      */
@@ -5031,18 +5031,18 @@ static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
         return;
     }
     *info = 1;
-    
+
     /*
      * solve
      */
     for(k=0; k<=m-1; k++)
     {
-        
+
         /*
          * copy B to contiguous storage
          */
         ae_v_cmove(&bc.ptr.p_complex[0], 1, &b->ptr.pp_complex[0][k], b->stride, "N", ae_v_len(0,n-1));
-        
+
         /*
          * Scale right part:
          * * MX stores max(|Bi|)
@@ -5059,7 +5059,7 @@ static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
             mxb = 1;
         }
         scaleright = 1/mxb;
-        
+
         /*
          * First, non-iterative part of solution process.
          * We use separate code for this task because
@@ -5067,7 +5067,7 @@ static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
          */
         ae_v_cmoved(&xc.ptr.p_complex[0], 1, &bc.ptr.p_complex[0], 1, "N", ae_v_len(0,n-1), scaleright);
         densesolver_cbasiclusolve(lua, p, scalea, n, &xc, &tx, _state);
-        
+
         /*
          * Iterative refinement of xc:
          * * calculate r = bc-A*xc using extra-precise dot product
@@ -5088,7 +5088,7 @@ static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
                 {
                     break;
                 }
-                
+
                 /*
                  * generate right part
                  */
@@ -5107,7 +5107,7 @@ static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
                 {
                     terminatenexttime = ae_true;
                 }
-                
+
                 /*
                  * solve and update
                  */
@@ -5115,7 +5115,7 @@ static void densesolver_cmatrixlusolveinternal(/* Complex */ ae_matrix* lua,
                 ae_v_cadd(&xc.ptr.p_complex[0], 1, &y.ptr.p_complex[0], 1, "N", ae_v_len(0,n-1));
             }
         }
-        
+
         /*
          * Store xc.
          * Post-scale result.
@@ -5134,17 +5134,17 @@ Internal Cholesky solver
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static void densesolver_hpdmatrixcholeskysolveinternal(/* Complex */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_matrix* a,
-     ae_bool havea,
-     /* Complex */ ae_matrix* b,
-     ae_int_t m,
-     ae_int_t* info,
-     densesolverreport* rep,
-     /* Complex */ ae_matrix* x,
-     ae_state *_state)
+        double sqrtscalea,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_matrix* a,
+        ae_bool havea,
+        /* Complex */ ae_matrix* b,
+        ae_int_t m,
+        ae_int_t* info,
+        densesolverreport* rep,
+        /* Complex */ ae_matrix* x,
+        ae_state *_state)
 {
     ae_frame _frame_block;
     ae_int_t i;
@@ -5172,7 +5172,7 @@ static void densesolver_hpdmatrixcholeskysolveinternal(/* Complex */ ae_matrix* 
     ae_vector_init(&tx, 0, DT_COMPLEX, _state, ae_true);
 
     ae_assert(ae_fp_greater(sqrtscalea,0), "Assertion failed", _state);
-    
+
     /*
      * prepare: check inputs, allocate space...
      */
@@ -5189,7 +5189,7 @@ static void densesolver_hpdmatrixcholeskysolveinternal(/* Complex */ ae_matrix* 
     ae_vector_set_length(&tx, n+1, _state);
     ae_vector_set_length(&xa, n+1, _state);
     ae_vector_set_length(&xb, n+1, _state);
-    
+
     /*
      * estimate condition number, test for near singularity
      */
@@ -5211,18 +5211,18 @@ static void densesolver_hpdmatrixcholeskysolveinternal(/* Complex */ ae_matrix* 
         return;
     }
     *info = 1;
-    
+
     /*
      * solve
      */
     for(k=0; k<=m-1; k++)
     {
-        
+
         /*
          * copy B to contiguous storage
          */
         ae_v_cmove(&bc.ptr.p_complex[0], 1, &b->ptr.pp_complex[0][k], b->stride, "N", ae_v_len(0,n-1));
-        
+
         /*
          * Scale right part:
          * * MX stores max(|Bi|)
@@ -5239,7 +5239,7 @@ static void densesolver_hpdmatrixcholeskysolveinternal(/* Complex */ ae_matrix* 
             mxb = 1;
         }
         scaleright = 1/mxb;
-        
+
         /*
          * First, non-iterative part of solution process.
          * We use separate code for this task because
@@ -5247,7 +5247,7 @@ static void densesolver_hpdmatrixcholeskysolveinternal(/* Complex */ ae_matrix* 
          */
         ae_v_cmoved(&xc.ptr.p_complex[0], 1, &bc.ptr.p_complex[0], 1, "N", ae_v_len(0,n-1), scaleright);
         densesolver_hpdbasiccholeskysolve(cha, sqrtscalea, n, isupper, &xc, &tx, _state);
-        
+
         /*
          * Store xc.
          * Post-scale result.
@@ -5270,9 +5270,9 @@ Returns maximum count of RFS iterations as function of:
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static ae_int_t densesolver_densesolverrfsmax(ae_int_t n,
-     double r1,
-     double rinf,
-     ae_state *_state)
+        double r1,
+        double rinf,
+        ae_state *_state)
 {
     ae_int_t result;
 
@@ -5293,8 +5293,8 @@ Returns maximum count of RFS iterations as function of:
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static ae_int_t densesolver_densesolverrfsmaxv2(ae_int_t n,
-     double r2,
-     ae_state *_state)
+        double r2,
+        ae_state *_state)
 {
     ae_int_t result;
 
@@ -5315,12 +5315,12 @@ This subroutine assumes that:
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static void densesolver_rbasiclusolve(/* Real    */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     double scalea,
-     ae_int_t n,
-     /* Real    */ ae_vector* xb,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        /* Integer */ ae_vector* p,
+        double scalea,
+        ae_int_t n,
+        /* Real    */ ae_vector* xb,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     double v;
@@ -5361,24 +5361,24 @@ This subroutine assumes that:
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static void densesolver_spdbasiccholeskysolve(/* Real    */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Real    */ ae_vector* xb,
-     /* Real    */ ae_vector* tmp,
-     ae_state *_state)
+        double sqrtscalea,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Real    */ ae_vector* xb,
+        /* Real    */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     double v;
 
 
-    
+
     /*
      * A = L*L' or A=U'*U
      */
     if( isupper )
     {
-        
+
         /*
          * Solve U'*y=b first.
          */
@@ -5392,7 +5392,7 @@ static void densesolver_spdbasiccholeskysolve(/* Real    */ ae_matrix* cha,
                 ae_v_subd(&xb->ptr.p_double[i+1], 1, &tmp->ptr.p_double[i+1], 1, ae_v_len(i+1,n-1), v);
             }
         }
-        
+
         /*
          * Solve U*x=y then.
          */
@@ -5409,7 +5409,7 @@ static void densesolver_spdbasiccholeskysolve(/* Real    */ ae_matrix* cha,
     }
     else
     {
-        
+
         /*
          * Solve L*y=b first
          */
@@ -5423,7 +5423,7 @@ static void densesolver_spdbasiccholeskysolve(/* Real    */ ae_matrix* cha,
             }
             xb->ptr.p_double[i] = xb->ptr.p_double[i]/(sqrtscalea*cha->ptr.pp_double[i][i]);
         }
-        
+
         /*
          * Solve L'*x=y then.
          */
@@ -5452,12 +5452,12 @@ This subroutine assumes that:
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static void densesolver_cbasiclusolve(/* Complex */ ae_matrix* lua,
-     /* Integer */ ae_vector* p,
-     double scalea,
-     ae_int_t n,
-     /* Complex */ ae_vector* xb,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        /* Integer */ ae_vector* p,
+        double scalea,
+        ae_int_t n,
+        /* Complex */ ae_vector* xb,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_complex v;
@@ -5498,24 +5498,24 @@ This subroutine assumes that:
      Copyright 27.01.2010 by Bochkanov Sergey
 *************************************************************************/
 static void densesolver_hpdbasiccholeskysolve(/* Complex */ ae_matrix* cha,
-     double sqrtscalea,
-     ae_int_t n,
-     ae_bool isupper,
-     /* Complex */ ae_vector* xb,
-     /* Complex */ ae_vector* tmp,
-     ae_state *_state)
+        double sqrtscalea,
+        ae_int_t n,
+        ae_bool isupper,
+        /* Complex */ ae_vector* xb,
+        /* Complex */ ae_vector* tmp,
+        ae_state *_state)
 {
     ae_int_t i;
     ae_complex v;
 
 
-    
+
     /*
      * A = L*L' or A=U'*U
      */
     if( isupper )
     {
-        
+
         /*
          * Solve U'*y=b first.
          */
@@ -5529,7 +5529,7 @@ static void densesolver_hpdbasiccholeskysolve(/* Complex */ ae_matrix* cha,
                 ae_v_csubc(&xb->ptr.p_complex[i+1], 1, &tmp->ptr.p_complex[i+1], 1, "N", ae_v_len(i+1,n-1), v);
             }
         }
-        
+
         /*
          * Solve U*x=y then.
          */
@@ -5546,7 +5546,7 @@ static void densesolver_hpdbasiccholeskysolve(/* Complex */ ae_matrix* cha,
     }
     else
     {
-        
+
         /*
          * Solve L*y=b first
          */
@@ -5560,7 +5560,7 @@ static void densesolver_hpdbasiccholeskysolve(/* Complex */ ae_matrix* cha,
             }
             xb->ptr.p_complex[i] = ae_c_div(xb->ptr.p_complex[i],ae_c_mul_d(cha->ptr.pp_complex[i][i],sqrtscalea));
         }
-        
+
         /*
          * Solve L'*x=y then.
          */
@@ -5659,13 +5659,13 @@ is returned for non-compatible systems.
 USAGE:
 1. User initializes algorithm state with LinLSQRCreate() call
 2. User tunes solver parameters with  LinLSQRSetCond() and other functions
-3. User  calls  LinLSQRSolveSparse()  function which takes algorithm state 
+3. User  calls  LinLSQRSolveSparse()  function which takes algorithm state
    and SparseMatrix object.
 4. User calls LinLSQRResults() to get solution
-5. Optionally, user may call LinLSQRSolveSparse() again to  solve  another  
-   problem  with different matrix and/or right part without reinitializing 
+5. Optionally, user may call LinLSQRSolveSparse() again to  solve  another
+   problem  with different matrix and/or right part without reinitializing
    LinLSQRState structure.
-  
+
 INPUT PARAMETERS:
     M       -   number of rows in A
     N       -   number of variables, N>0
@@ -5677,9 +5677,9 @@ OUTPUT PARAMETERS:
      Copyright 30.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void linlsqrcreate(ae_int_t m,
-     ae_int_t n,
-     linlsqrstate* state,
-     ae_state *_state)
+                   ae_int_t n,
+                   linlsqrstate* state,
+                   ae_state *_state)
 {
     ae_int_t i;
 
@@ -5697,10 +5697,10 @@ void linlsqrcreate(ae_int_t m,
     state->lambdai = 0;
     state->xrep = ae_false;
     state->running = ae_false;
-    
+
     /*
      * * allocate arrays
-     * * set RX to NAN (just for the case user calls Results() without 
+     * * set RX to NAN (just for the case user calls Results() without
      *   calling SolveSparse()
      * * set B to zero
      */
@@ -5744,8 +5744,8 @@ OUTPUT PARAMETERS:
      Copyright 30.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void linlsqrsetb(linlsqrstate* state,
-     /* Real    */ ae_vector* b,
-     ae_state *_state)
+                 /* Real    */ ae_vector* b,
+                 ae_state *_state)
 {
     ae_int_t i;
 
@@ -5812,13 +5812,13 @@ INPUT PARAMETERS:
 
 OUTPUT PARAMETERS:
     State   -   structure which stores algorithm state
-    
+
   -- ALGLIB --
      Copyright 30.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void linlsqrsetlambdai(linlsqrstate* state,
-     double lambdai,
-     ae_state *_state)
+                       double lambdai,
+                       ae_state *_state)
 {
 
 
@@ -5841,7 +5841,7 @@ ae_bool linlsqriteration(linlsqrstate* state, ae_state *_state)
     ae_bool result;
 
 
-    
+
     /*
      * Reverse communication preparations
      * I know it looks ugly, but it works the same way
@@ -5892,7 +5892,7 @@ ae_bool linlsqriteration(linlsqrstate* state, ae_state *_state)
     {
         goto lbl_6;
     }
-    
+
     /*
      * Routine body
      */
@@ -5904,7 +5904,7 @@ ae_bool linlsqriteration(linlsqrstate* state, ae_state *_state)
     state->repiterationscount = 0;
     summn = state->m+state->n;
     state->r2 = state->bnorm2;
-    
+
     /*
      *estimate for ANorm
      */
@@ -5934,7 +5934,7 @@ lbl_9:
         goto lbl_11;
     }
     ae_v_move(&state->x.ptr.p_double[0], 1, &state->nes.x.ptr.p_double[0], 1, ae_v_len(0,state->m-1));
-    
+
     /*
      *matrix-vector multiplication
      */
@@ -5951,7 +5951,7 @@ lbl_11:
     goto lbl_7;
 lbl_8:
     normestimatorresults(&state->nes, &state->anorm, _state);
-    
+
     /*
      *initialize .RX by zeros
      */
@@ -5959,7 +5959,7 @@ lbl_8:
     {
         state->rx.ptr.p_double[i] = 0;
     }
-    
+
     /*
      *output first report
      */
@@ -5975,14 +5975,14 @@ lbl_8:
 lbl_2:
     state->xupdated = ae_false;
 lbl_13:
-    
+
     /*
      * LSQR, Step 0.
      *
      * Algorithm outline corresponds to one which was described at p.50 of
-     * "LSQR - an algorithm for sparse linear equations and sparse least 
+     * "LSQR - an algorithm for sparse linear equations and sparse least
      * squares" by C.Paige and M.Saunders with one small addition - we
-     * explicitly extend system matrix by additional N lines in order 
+     * explicitly extend system matrix by additional N lines in order
      * to handle non-zero lambda, i.e. original A is replaced by
      *         [ A        ]
      * A_mod = [          ]
@@ -6008,7 +6008,7 @@ lbl_13:
     state->betai = bnorm;
     if( ae_fp_eq(state->betai,0) )
     {
-        
+
         /*
          * Zero right part
          */
@@ -6048,7 +6048,7 @@ lbl_3:
     state->alphai = ae_sqrt(state->alphai, _state);
     if( ae_fp_eq(state->alphai,0) )
     {
-        
+
         /*
          * Orthogonality stopping criterion is met
          */
@@ -6069,7 +6069,7 @@ lbl_3:
         state->d.ptr.p_double[i] = 0;
     }
     state->dnorm = 0;
-    
+
     /*
      * Steps I=1, 2, ...
      */
@@ -6078,23 +6078,23 @@ lbl_15:
     {
         goto lbl_16;
     }
-    
+
     /*
      * At I-th step State.RepIterationsCount=I.
      */
     state->repiterationscount = state->repiterationscount+1;
-    
+
     /*
      * Bidiagonalization part:
      *     beta[i+1]*u[i+1]  = A_mod*v[i]-alpha[i]*u[i]
      *     alpha[i+1]*v[i+1] = A_mod'*u[i+1] - beta[i+1]*v[i]
-     *     
+     *
      * NOTE:  beta[i+1]=0 or alpha[i+1]=0 will lead to successful termination
      *        in the end of the current iteration. In this case u/v are zero.
      * NOTE2: algorithm won't fail on zero alpha or beta (there will be no
      *        division by zero because it will be stopped BEFORE division
      *        occurs). However, near-zero alpha and beta won't stop algorithm
-     *        and, although no division by zero will happen, orthogonality 
+     *        and, although no division by zero will happen, orthogonality
      *        in U and V will be lost.
      */
     ae_v_move(&state->x.ptr.p_double[0], 1, &state->vi.ptr.p_double[0], 1, ae_v_len(0,state->n-1));
@@ -6149,7 +6149,7 @@ lbl_5:
             state->vip1.ptr.p_double[i] = state->vip1.ptr.p_double[i]/state->alphaip1;
         }
     }
-    
+
     /*
      * Build next orthogonal transformation
      */
@@ -6160,7 +6160,7 @@ lbl_5:
     state->rhobarip1 = -state->ci*state->alphaip1;
     state->phii = state->ci*state->phibari;
     state->phibarip1 = state->si*state->phibari;
-    
+
     /*
      * Update .RNorm
      *
@@ -6172,7 +6172,7 @@ lbl_5:
      * undesirable, so we prefer to guard against R increase.
      */
     state->r2 = ae_minreal(state->r2, state->phibarip1*state->phibarip1, _state);
-    
+
     /*
      * Update d and DNorm, check condition-related stopping criteria
      */
@@ -6188,7 +6188,7 @@ lbl_5:
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Update x, output report
      */
@@ -6208,7 +6208,7 @@ lbl_5:
 lbl_6:
     state->xupdated = ae_false;
 lbl_17:
-    
+
     /*
      * Check stopping criteria
      * 1. achieved required number of iterations;
@@ -6217,7 +6217,7 @@ lbl_17:
      */
     if( state->maxits>0&&state->repiterationscount>=state->maxits )
     {
-        
+
         /*
          * Achieved required number of iterations
          */
@@ -6228,7 +6228,7 @@ lbl_17:
     }
     if( ae_fp_less_eq(state->phibarip1,state->epsb*bnorm) )
     {
-        
+
         /*
          * ||Rk||<=EpsB*||B||, here ||Rk||=PhiBar
          */
@@ -6239,7 +6239,7 @@ lbl_17:
     }
     if( ae_fp_less_eq(state->alphaip1*ae_fabs(state->ci, _state)/state->anorm,state->epsa) )
     {
-        
+
         /*
          * ||A^T*Rk||/(||A||*||Rk||)<=EpsA, here ||A^T*Rk||=PhiBar*Alpha[i+1]*|.C|
          */
@@ -6248,7 +6248,7 @@ lbl_17:
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Update omega
      */
@@ -6256,7 +6256,7 @@ lbl_17:
     {
         state->omegaip1.ptr.p_double[i] = state->vip1.ptr.p_double[i]-state->theta/state->rhoi*state->omegai.ptr.p_double[i];
     }
-    
+
     /*
      * Prepare for the next iteration - rename variables:
      * u[i]   := u[i+1]
@@ -6275,7 +6275,7 @@ lbl_17:
 lbl_16:
     result = ae_false;
     return result;
-    
+
     /*
      * Saving state
      */
@@ -6293,7 +6293,7 @@ Procedure for solution of A*x=b with sparse A.
 
 INPUT PARAMETERS:
     State   -   algorithm state
-    A       -   sparse M*N matrix in the CRS format (you MUST contvert  it 
+    A       -   sparse M*N matrix in the CRS format (you MUST contvert  it
                 to CRS format  by  calling  SparseConvertToCRS()  function
                 BEFORE you pass it to this function).
     B       -   right part, array[M]
@@ -6301,7 +6301,7 @@ INPUT PARAMETERS:
 RESULT:
     This function returns no result.
     You can get solution by calling LinCGResults()
-    
+
 NOTE: this function uses lightweight preconditioning -  multiplication  by
       inverse of diag(A). If you want, you can turn preconditioning off by
       calling LinLSQRSetPrecUnit(). However, preconditioning cost is   low
@@ -6312,9 +6312,9 @@ NOTE: this function uses lightweight preconditioning -  multiplication  by
      Copyright 30.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void linlsqrsolvesparse(linlsqrstate* state,
-     sparsematrix* a,
-     /* Real    */ ae_vector* b,
-     ae_state *_state)
+                        sparsematrix* a,
+                        /* Real    */ ae_vector* b,
+                        ae_state *_state)
 {
     ae_int_t n;
     ae_int_t i;
@@ -6328,19 +6328,19 @@ void linlsqrsolvesparse(linlsqrstate* state,
     ae_assert(!state->running, "LinLSQRSolveSparse: you can not call this function when LinLSQRIteration is running", _state);
     ae_assert(b->cnt>=state->m, "LinLSQRSolveSparse: Length(B)<M", _state);
     ae_assert(isfinitevector(b, state->m, _state), "LinLSQRSolveSparse: B contains infinite or NaN values", _state);
-    
+
     /*
      * Allocate temporaries
      */
     rvectorsetlengthatleast(&state->tmpd, n, _state);
     rvectorsetlengthatleast(&state->tmpx, n, _state);
-    
+
     /*
      * Compute diagonal scaling matrix D
      */
     if( state->prectype==0 )
     {
-        
+
         /*
          * Default preconditioner - inverse of column norms
          */
@@ -6368,7 +6368,7 @@ void linlsqrsolvesparse(linlsqrstate* state,
     }
     else
     {
-        
+
         /*
          * No diagonal scaling
          */
@@ -6377,7 +6377,7 @@ void linlsqrsolvesparse(linlsqrstate* state,
             state->tmpd.ptr.p_double[i] = 1;
         }
     }
-    
+
     /*
      * Solve.
      *
@@ -6428,15 +6428,15 @@ OUTPUT PARAMETERS:
 
 NOTE: if EpsA,EpsB,EpsC and MaxIts are zero then these variables will
 be setted as default values.
-    
+
   -- ALGLIB --
      Copyright 30.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void linlsqrsetcond(linlsqrstate* state,
-     double epsa,
-     double epsb,
-     ae_int_t maxits,
-     ae_state *_state)
+                    double epsa,
+                    double epsb,
+                    ae_int_t maxits,
+                    ae_state *_state)
 {
 
 
@@ -6479,14 +6479,14 @@ OUTPUT PARAMETERS:
                             (sometimes returned on singular systems)
                 * Rep.IterationsCount contains iterations count
                 * NMV countains number of matrix-vector calculations
-                
+
   -- ALGLIB --
      Copyright 30.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void linlsqrresults(linlsqrstate* state,
-     /* Real    */ ae_vector* x,
-     linlsqrreport* rep,
-     ae_state *_state)
+                    /* Real    */ ae_vector* x,
+                    linlsqrreport* rep,
+                    ae_state *_state)
 {
 
     ae_vector_clear(x);
@@ -6518,8 +6518,8 @@ provided to MinCGOptimize().
      Copyright 30.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void linlsqrsetxrep(linlsqrstate* state,
-     ae_bool needxrep,
-     ae_state *_state)
+                    ae_bool needxrep,
+                    ae_state *_state)
 {
 
 
@@ -6773,7 +6773,7 @@ USAGE:
 6. Optionally, user may call LinCGSolveSparse()  again  to  solve  another
    problem  with different matrix and/or right part without reinitializing
    LinCGState structure.
-  
+
 INPUT PARAMETERS:
     N       -   problem dimension, N>0
 
@@ -6798,10 +6798,10 @@ void lincgcreate(ae_int_t n, lincgstate* state, ae_state *_state)
     state->maxits = 0;
     state->xrep = ae_false;
     state->running = ae_false;
-    
+
     /*
      * * allocate arrays
-     * * set RX to NAN (just for the case user calls Results() without 
+     * * set RX to NAN (just for the case user calls Results() without
      *   calling SolveSparse()
      * * set starting point to zero
      * * we do NOT initialize B here because we assume that user should
@@ -6847,8 +6847,8 @@ OUTPUT PARAMETERS:
      Copyright 14.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void lincgsetstartingpoint(lincgstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+                           /* Real    */ ae_vector* x,
+                           ae_state *_state)
 {
 
 
@@ -6872,8 +6872,8 @@ OUTPUT PARAMETERS:
      Copyright 14.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void lincgsetb(lincgstate* state,
-     /* Real    */ ae_vector* b,
-     ae_state *_state)
+               /* Real    */ ae_vector* b,
+               ae_state *_state)
 {
 
 
@@ -6929,25 +6929,25 @@ void lincgsetprecdiag(lincgstate* state, ae_state *_state)
 This function sets stopping criteria.
 
 INPUT PARAMETERS:
-    EpsF    -   algorithm will be stopped if norm of residual is less than 
+    EpsF    -   algorithm will be stopped if norm of residual is less than
                 EpsF*||b||.
-    MaxIts  -   algorithm will be stopped if number of iterations is  more 
+    MaxIts  -   algorithm will be stopped if number of iterations is  more
                 than MaxIts.
 
 OUTPUT PARAMETERS:
     State   -   structure which stores algorithm state
 
 NOTES:
-If  both  EpsF  and  MaxIts  are  zero then small EpsF will be set to small 
+If  both  EpsF  and  MaxIts  are  zero then small EpsF will be set to small
 value.
 
   -- ALGLIB --
      Copyright 14.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void lincgsetcond(lincgstate* state,
-     double epsf,
-     ae_int_t maxits,
-     ae_state *_state)
+                  double epsf,
+                  ae_int_t maxits,
+                  ae_state *_state)
 {
 
 
@@ -6982,7 +6982,7 @@ ae_bool lincgiteration(lincgstate* state, ae_state *_state)
     ae_bool result;
 
 
-    
+
     /*
      * Reverse communication preparations
      * I know it looks ugly, but it works the same way
@@ -7039,7 +7039,7 @@ ae_bool lincgiteration(lincgstate* state, ae_state *_state)
     {
         goto lbl_7;
     }
-    
+
     /*
      * Routine body
      */
@@ -7048,7 +7048,7 @@ ae_bool lincgiteration(lincgstate* state, ae_state *_state)
     state->repnmv = 0;
     lincg_clearrfields(state, _state);
     lincg_updateitersdata(state, _state);
-    
+
     /*
      * Start 0-th iteration
      */
@@ -7072,7 +7072,7 @@ lbl_0:
         bnorm = bnorm+state->b.ptr.p_double[i]*state->b.ptr.p_double[i];
     }
     bnorm = ae_sqrt(bnorm, _state);
-    
+
     /*
      * Output first report
      */
@@ -7088,7 +7088,7 @@ lbl_0:
 lbl_1:
     state->xupdated = ae_false;
 lbl_8:
-    
+
     /*
      * Is x0 a solution?
      */
@@ -7106,7 +7106,7 @@ lbl_8:
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Calculate Z and P
      */
@@ -7123,7 +7123,7 @@ lbl_2:
         state->z.ptr.p_double[i] = state->pv.ptr.p_double[i];
         state->p.ptr.p_double[i] = state->z.ptr.p_double[i];
     }
-    
+
     /*
      * Other iterations(1..N)
      */
@@ -7134,7 +7134,7 @@ lbl_10:
         goto lbl_11;
     }
     state->repiterationscount = state->repiterationscount+1;
-    
+
     /*
      * Calculate Alpha
      */
@@ -7148,7 +7148,7 @@ lbl_3:
     state->needvmv = ae_false;
     if( !ae_isfinite(state->vmv, _state)||ae_fp_less_eq(state->vmv,0) )
     {
-        
+
         /*
          * a) Overflow when calculating VMV
          * b) non-positive VMV (non-SPD matrix)
@@ -7173,7 +7173,7 @@ lbl_3:
     state->alpha = state->alpha/state->vmv;
     if( !ae_isfinite(state->alpha, _state) )
     {
-        
+
         /*
          * Overflow when calculating Alpha
          */
@@ -7182,7 +7182,7 @@ lbl_3:
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Next step toward solution
      */
@@ -7190,7 +7190,7 @@ lbl_3:
     {
         state->cx.ptr.p_double[i] = state->rx.ptr.p_double[i]+state->alpha*state->p.ptr.p_double[i];
     }
-    
+
     /*
      * Calculate R:
      * * use recurrent relation to update R
@@ -7201,7 +7201,7 @@ lbl_3:
     {
         goto lbl_12;
     }
-    
+
     /*
      * Calculate R using recurrent formula
      */
@@ -7212,7 +7212,7 @@ lbl_3:
     }
     goto lbl_13;
 lbl_12:
-    
+
     /*
      * Calculate R using matrix-vector multiplication
      */
@@ -7229,7 +7229,7 @@ lbl_4:
         state->cr.ptr.p_double[i] = state->b.ptr.p_double[i]-state->mv.ptr.p_double[i];
         state->x.ptr.p_double[i] = state->cr.ptr.p_double[i];
     }
-    
+
     /*
      * Calculating merit function
      * Check emergency stopping criterion
@@ -7253,7 +7253,7 @@ lbl_4:
             return result;
         }
     }
-    
+
     /*
      *output last report
      */
@@ -7277,7 +7277,7 @@ lbl_14:
     state->meritfunction = v;
 lbl_13:
     ae_v_move(&state->rx.ptr.p_double[0], 1, &state->cx.ptr.p_double[0], 1, ae_v_len(0,state->n-1));
-    
+
     /*
      * calculating RNorm
      *
@@ -7288,7 +7288,7 @@ lbl_13:
     {
         state->r2 = state->r2+state->cr.ptr.p_double[i]*state->cr.ptr.p_double[i];
     }
-    
+
     /*
      *output report
      */
@@ -7304,7 +7304,7 @@ lbl_13:
 lbl_6:
     state->xupdated = ae_false;
 lbl_18:
-    
+
     /*
      *stopping criterion
      *achieved the required precision
@@ -7335,7 +7335,7 @@ lbl_18:
                 return result;
             }
         }
-        
+
         /*
          *if X is finite number
          */
@@ -7345,7 +7345,7 @@ lbl_18:
         return result;
     }
     ae_v_move(&state->x.ptr.p_double[0], 1, &state->cr.ptr.p_double[0], 1, ae_v_len(0,state->n-1));
-    
+
     /*
      *prepere of parameters for next iteration
      */
@@ -7366,7 +7366,7 @@ lbl_7:
             state->beta = state->beta+state->cz.ptr.p_double[i]*state->cr.ptr.p_double[i];
             uvar = uvar+state->z.ptr.p_double[i]*state->r.ptr.p_double[i];
         }
-        
+
         /*
          *check that UVar is't INF or is't zero
          */
@@ -7377,12 +7377,12 @@ lbl_7:
             result = ae_false;
             return result;
         }
-        
+
         /*
          *calculate .BETA
          */
         state->beta = state->beta/uvar;
-        
+
         /*
          *check that .BETA neither INF nor NaN
          */
@@ -7402,13 +7402,13 @@ lbl_7:
     {
         ae_v_move(&state->p.ptr.p_double[0], 1, &state->cz.ptr.p_double[0], 1, ae_v_len(0,state->n-1));
     }
-    
+
     /*
      *prepere data for next iteration
      */
     for(i=0; i<=state->n-1; i++)
     {
-        
+
         /*
          *write (k+1)th iteration to (k )th iteration
          */
@@ -7419,7 +7419,7 @@ lbl_7:
 lbl_11:
     result = ae_false;
     return result;
-    
+
     /*
      * Saving state
      */
@@ -7438,11 +7438,11 @@ Procedure for solution of A*x=b with sparse A.
 
 INPUT PARAMETERS:
     State   -   algorithm state
-    A       -   sparse matrix in the CRS format (you MUST contvert  it  to 
+    A       -   sparse matrix in the CRS format (you MUST contvert  it  to
                 CRS format by calling SparseConvertToCRS() function).
     IsUpper -   whether upper or lower triangle of A is used:
                 * IsUpper=True  => only upper triangle is used and lower
-                                   triangle is not referenced at all 
+                                   triangle is not referenced at all
                 * IsUpper=False => only lower triangle is used and upper
                                    triangle is not referenced at all
     B       -   right part, array[N]
@@ -7450,7 +7450,7 @@ INPUT PARAMETERS:
 RESULT:
     This function returns no result.
     You can get solution by calling LinCGResults()
-    
+
 NOTE: this function uses lightweight preconditioning -  multiplication  by
       inverse of diag(A). If you want, you can turn preconditioning off by
       calling LinCGSetPrecUnit(). However, preconditioning cost is low and
@@ -7461,10 +7461,10 @@ NOTE: this function uses lightweight preconditioning -  multiplication  by
      Copyright 14.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void lincgsolvesparse(lincgstate* state,
-     sparsematrix* a,
-     ae_bool isupper,
-     /* Real    */ ae_vector* b,
-     ae_state *_state)
+                      sparsematrix* a,
+                      ae_bool isupper,
+                      /* Real    */ ae_vector* b,
+                      ae_state *_state)
 {
     ae_int_t n;
     ae_int_t i;
@@ -7475,18 +7475,18 @@ void lincgsolvesparse(lincgstate* state,
     n = state->n;
     ae_assert(b->cnt>=state->n, "LinCGSetB: Length(B)<N", _state);
     ae_assert(isfinitevector(b, state->n, _state), "LinCGSetB: B contains infinite or NaN values!", _state);
-    
+
     /*
      * Allocate temporaries
      */
     rvectorsetlengthatleast(&state->tmpd, n, _state);
-    
+
     /*
      * Compute diagonal scaling matrix D
      */
     if( state->prectype==0 )
     {
-        
+
         /*
          * Default preconditioner - inverse of matrix diagonal
          */
@@ -7505,7 +7505,7 @@ void lincgsolvesparse(lincgstate* state,
     }
     else
     {
-        
+
         /*
          * No diagonal scaling
          */
@@ -7514,7 +7514,7 @@ void lincgsolvesparse(lincgstate* state,
             state->tmpd.ptr.p_double[i] = 1;
         }
     }
-    
+
     /*
      * Solve
      */
@@ -7522,7 +7522,7 @@ void lincgsolvesparse(lincgstate* state,
     lincgsetb(state, b, _state);
     while(lincgiteration(state, _state))
     {
-        
+
         /*
          * Process different requests from optimizer
          */
@@ -7560,7 +7560,7 @@ OUTPUT PARAMETERS:
     Rep     -   optimization report:
                 * Rep.TerminationType completetion code:
                     * -5    input matrix is either not positive definite,
-                            too large or too small                            
+                            too large or too small
                     * -4    overflow/underflow during solution
                             (ill conditioned problem)
                     *  1    ||residual||<=EpsF*||b||
@@ -7574,9 +7574,9 @@ OUTPUT PARAMETERS:
      Copyright 14.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void lincgresults(lincgstate* state,
-     /* Real    */ ae_vector* x,
-     lincgreport* rep,
-     ae_state *_state)
+                  /* Real    */ ae_vector* x,
+                  lincgreport* rep,
+                  ae_state *_state)
 {
 
     ae_vector_clear(x);
@@ -7603,8 +7603,8 @@ after N subsequent iterations.
      Copyright 14.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void lincgsetrestartfreq(lincgstate* state,
-     ae_int_t srf,
-     ae_state *_state)
+                         ae_int_t srf,
+                         ae_state *_state)
 {
 
 
@@ -7623,7 +7623,7 @@ of numerical errors and to stop algorithm when r_k starts to grow.
 
 Such low update frequence (1/10) gives very  little  overhead,  but  makes
 algorithm a bit more robust against numerical errors. However, you may
-change it 
+change it
 
 INPUT PARAMETERS:
     Freq    -   desired update frequency, Freq>=0.
@@ -7633,8 +7633,8 @@ INPUT PARAMETERS:
      Copyright 14.11.2011 by Bochkanov Sergey
 *************************************************************************/
 void lincgsetrupdatefreq(lincgstate* state,
-     ae_int_t freq,
-     ae_state *_state)
+                         ae_int_t freq,
+                         ae_state *_state)
 {
 
 
@@ -7954,10 +7954,10 @@ NOTES:
      Copyright 20.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void nleqcreatelm(ae_int_t n,
-     ae_int_t m,
-     /* Real    */ ae_vector* x,
-     nleqstate* state,
-     ae_state *_state)
+                  ae_int_t m,
+                  /* Real    */ ae_vector* x,
+                  nleqstate* state,
+                  ae_state *_state)
 {
 
     _nleqstate_clear(state);
@@ -7966,7 +7966,7 @@ void nleqcreatelm(ae_int_t n,
     ae_assert(m>=1, "NLEQCreateLM: M<1!", _state);
     ae_assert(x->cnt>=n, "NLEQCreateLM: Length(X)<N!", _state);
     ae_assert(isfinitevector(x, n, _state), "NLEQCreateLM: X contains infinite or NaN values!", _state);
-    
+
     /*
      * Initialize
      */
@@ -8005,9 +8005,9 @@ NOTES:
      Copyright 20.08.2010 by Bochkanov Sergey
 *************************************************************************/
 void nleqsetcond(nleqstate* state,
-     double epsf,
-     ae_int_t maxits,
-     ae_state *_state)
+                 double epsf,
+                 ae_int_t maxits,
+                 ae_state *_state)
 {
 
 
@@ -8091,7 +8091,7 @@ ae_bool nleqiteration(nleqstate* state, ae_state *_state)
     ae_bool result;
 
 
-    
+
     /*
      * Reverse communication preparations
      * I know it looks ugly, but it works the same way
@@ -8148,11 +8148,11 @@ ae_bool nleqiteration(nleqstate* state, ae_state *_state)
     {
         goto lbl_4;
     }
-    
+
     /*
      * Routine body
      */
-    
+
     /*
      * Prepare
      */
@@ -8162,7 +8162,7 @@ ae_bool nleqiteration(nleqstate* state, ae_state *_state)
     state->repiterationscount = 0;
     state->repnfunc = 0;
     state->repnjac = 0;
-    
+
     /*
      * Calculate F/G, initialize algorithm
      */
@@ -8180,7 +8180,7 @@ lbl_0:
     {
         goto lbl_5;
     }
-    
+
     /*
      * progress report
      */
@@ -8197,7 +8197,7 @@ lbl_5:
         result = ae_false;
         return result;
     }
-    
+
     /*
      * Main cycle
      */
@@ -8210,7 +8210,7 @@ lbl_7:
     {
         goto lbl_8;
     }
-    
+
     /*
      * Get Jacobian;
      * before we get to this point we already have State.XBase filled
@@ -8228,7 +8228,7 @@ lbl_2:
     state->repnjac = state->repnjac+1;
     rmatrixmv(n, m, &state->j, 0, 0, 1, &state->fi, 0, &state->rightpart, 0, _state);
     ae_v_muld(&state->rightpart.ptr.p_double[0], 1, ae_v_len(0,n-1), -1);
-    
+
     /*
      * Inner cycle: find good lambda
      */
@@ -8237,7 +8237,7 @@ lbl_9:
     {
         goto lbl_10;
     }
-    
+
     /*
      * Solve (J^T*J + (Lambda+Mu)*I)*y = J^T*F
      * to get step d=-y where:
@@ -8250,7 +8250,7 @@ lbl_9:
         state->candstep.ptr.p_double[i] = 0;
     }
     fblssolvecgx(&state->j, m, n, lambdav, &state->rightpart, &state->candstep, &state->cgbuf, _state);
-    
+
     /*
      * Normalize step (it must be no more than StpMax)
      */
@@ -8268,7 +8268,7 @@ lbl_9:
     {
         stepnorm = ae_minreal(stepnorm, state->stpmax, _state);
     }
-    
+
     /*
      * Test new step - is it good enough?
      * * if not, Lambda is increased and we try again.
@@ -8291,7 +8291,7 @@ lbl_9:
     }
     if( b )
     {
-        
+
         /*
          * Step is too small, force zero step and break
          */
@@ -8309,7 +8309,7 @@ lbl_3:
     state->repnfunc = state->repnfunc+1;
     if( ae_fp_less(state->f,state->fbase) )
     {
-        
+
         /*
          * function value decreased, move on
          */
@@ -8318,7 +8318,7 @@ lbl_3:
     }
     if( !nleq_increaselambda(&lambdav, &rho, lambdaup, _state) )
     {
-        
+
         /*
          * Lambda is too large (near overflow), force zero step and break
          */
@@ -8329,7 +8329,7 @@ lbl_3:
     }
     goto lbl_9;
 lbl_10:
-    
+
     /*
      * Accept step:
      * * new position
@@ -8338,7 +8338,7 @@ lbl_10:
     state->fbase = state->f;
     ae_v_addd(&state->xbase.ptr.p_double[0], 1, &state->candstep.ptr.p_double[0], 1, ae_v_len(0,n-1), stepnorm);
     state->repiterationscount = state->repiterationscount+1;
-    
+
     /*
      * Report new iteration
      */
@@ -8355,7 +8355,7 @@ lbl_10:
 lbl_4:
     state->xupdated = ae_false;
 lbl_11:
-    
+
     /*
      * Test stopping conditions on F, step (zero/non-zero) and MaxIts;
      * If one of the conditions is met, RepTerminationType is changed.
@@ -8376,7 +8376,7 @@ lbl_11:
     {
         goto lbl_8;
     }
-    
+
     /*
      * Now, iteration is finally over
      */
@@ -8384,7 +8384,7 @@ lbl_11:
 lbl_8:
     result = ae_false;
     return result;
-    
+
     /*
      * Saving state
      */
@@ -8430,9 +8430,9 @@ OUTPUT PARAMETERS:
      Copyright 20.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void nleqresults(nleqstate* state,
-     /* Real    */ ae_vector* x,
-     nleqreport* rep,
-     ae_state *_state)
+                 /* Real    */ ae_vector* x,
+                 nleqreport* rep,
+                 ae_state *_state)
 {
 
     ae_vector_clear(x);
@@ -8454,9 +8454,9 @@ where array reallocation penalty is too large to be ignored.
      Copyright 20.08.2009 by Bochkanov Sergey
 *************************************************************************/
 void nleqresultsbuf(nleqstate* state,
-     /* Real    */ ae_vector* x,
-     nleqreport* rep,
-     ae_state *_state)
+                    /* Real    */ ae_vector* x,
+                    nleqreport* rep,
+                    ae_state *_state)
 {
 
 
@@ -8490,8 +8490,8 @@ INPUT PARAMETERS:
      Copyright 30.07.2010 by Bochkanov Sergey
 *************************************************************************/
 void nleqrestartfrom(nleqstate* state,
-     /* Real    */ ae_vector* x,
-     ae_state *_state)
+                     /* Real    */ ae_vector* x,
+                     ae_state *_state)
 {
 
 
@@ -8523,9 +8523,9 @@ static void nleq_clearrequestfields(nleqstate* state, ae_state *_state)
 Increases lambda, returns False when there is a danger of overflow
 *************************************************************************/
 static ae_bool nleq_increaselambda(double* lambdav,
-     double* nu,
-     double lambdaup,
-     ae_state *_state)
+                                   double* nu,
+                                   double lambdaup,
+                                   ae_state *_state)
 {
     double lnlambda;
     double lnnu;
@@ -8558,9 +8558,9 @@ static ae_bool nleq_increaselambda(double* lambdav,
 Decreases lambda, but leaves it unchanged when there is danger of underflow.
 *************************************************************************/
 static void nleq_decreaselambda(double* lambdav,
-     double* nu,
-     double lambdadown,
-     ae_state *_state)
+                                double* nu,
+                                double lambdadown,
+                                ae_state *_state)
 {
 
 

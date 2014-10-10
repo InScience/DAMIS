@@ -15,18 +15,23 @@
 //#include <fstream>
 //#include <iomanip>
 #include <float.h>
+#include <iostream>
 
-SAMANN::SAMANN(){
-
-}
-
-SAMANN::~SAMANN(){
+SAMANN::SAMANN()
+{
 
 }
 
-SAMANN::SAMANN(int m1, int nl, double e, int maxIter){
+SAMANN::~SAMANN()
+{
+
+}
+
+SAMANN::SAMANN(int m1, int nl, double e, int maxIter)
+{
     X = ObjectMatrix(AdditionalMethods::inputDataFile);
     X.loadDataMatrix();
+    this->tmpX = X;
 
     mTrain = m1;
     nNeurons = nl;
@@ -37,21 +42,23 @@ SAMANN::SAMANN(int m1, int nl, double e, int maxIter){
     stressErrors.reserve(maxIter);
 }
 
-double SAMANN::getLambda(){
+double SAMANN::getLambda()
+{
 
     double temp = 0.0;
     int m = X.getObjectCount();
     DataObject objXi;
     for (int i = 0; i < m - 1; i++)
     {
-     objXi =  X.getObjectAt(i);
+        objXi =  X.getObjectAt(i);
         for (int j = i + 1; j < m; j++)
             temp += DistanceMetrics::getDistance(objXi, X.getObjectAt(j), EUCLIDEAN);
     }
     return 1.0 / temp;
 }
 
-ObjectMatrix SAMANN::getProjection(){
+ObjectMatrix SAMANN::getProjection()
+{
 
     int n = X.getObjectAt(0).getFeatureCount();
     int m = X.getObjectCount();
@@ -179,7 +186,7 @@ ObjectMatrix SAMANN::getProjection(){
             }
         }
 
-      //  DataObject objXNiuu, objY_paslNiuu;
+        //  DataObject objXNiuu, objY_paslNiuu;
 
         for (int niuu = 0; niuu < m; niuu++)
         {
@@ -247,9 +254,13 @@ ObjectMatrix SAMANN::getProjection(){
         objY_isNiu = Y_is.getObjectAt(i);
         for (int j = 1; j <= d; j++)
             Yrow.push_back(objY_isNiu.getFeatureAt(j));
-        Y.addObject(DataObject(Yrow));
+        Y.addObject(DataObject(Yrow), tmpX.getObjectAt(i).getClassLabel());
+       // std::cout << tmpX.getObjectAt(i).getClassLabel() << std::endl;
         Yrow.clear();
     }
+
+    Y.setPrintClass(tmpX.getStringClassAttributes());
+
     return Y;
 }
 
@@ -356,15 +367,16 @@ bool SAMANN::isIdentical(DataObject obj)
     return ats;
 }
 
-double SAMANN::getStress(){
+double SAMANN::getStress()
+{
     double tarp1 = 0.0, tarp2 = 0.0, distX, distY, tmp;
     int m = X.getObjectCount();
     DataObject objXMiu, objY_isMiu;
 
     for (int miu = 0; miu < m - 1; miu++)
     {
-       objXMiu = X.getObjectAt(miu);
-       objY_isMiu = Y_is.getObjectAt(miu);
+        objXMiu = X.getObjectAt(miu);
+        objY_isMiu = Y_is.getObjectAt(miu);
         for (int niu = miu + 1; niu < m; niu++)
         {
             distX = DistanceMetrics::getDistance(objXMiu, X.getObjectAt(niu), EUCLIDEAN);

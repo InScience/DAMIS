@@ -25,11 +25,14 @@
 #include "SOM.h"
 #include "SOMMDS.h"
 #include "DMA.h"
-#include "mpi_x86\mpi.h"
+#include "mpich2/mpi.h"
 #include "Projection.h"
 #include "PCA.h"
 #include "AdditionalMethods.h"
-#include "cmdLineParser\CommandLineParser.h"
+#include "KMEANS.h"
+#include "MLP.h"
+#include "DECTREE.h"
+#include "cmdLineParser/CommandLineParser.h"
 
 #include <sstream>
 #include <algorithm>
@@ -51,7 +54,7 @@ int main(int argc, char** argv)
 
     int numOfProcs, pid; // (numOfProcs) procesu kiekis
 
-    // MPI::Init(argc, argv);
+//    MPI::Init(argc, argv);
     MPI_Init(&argc, &argv);
     //pid = MPI::COMM_WORLD.Get_rank();
     MPI_Comm_rank(MPI_COMM_WORLD, &pid);
@@ -61,7 +64,7 @@ int main(int argc, char** argv)
     //numOfProcs = MPI::COMM_WORLD.Get_size();
     MPI_Comm_size(MPI_COMM_WORLD, &numOfProcs);
 
-   // MPI_Status status;
+    // MPI_Status status;
 
     CommandLineParser cmdLine(argc,argv,true);
 
@@ -75,16 +78,16 @@ int main(int argc, char** argv)
     {
         AdditionalMethods::inputDataFile.assign(inputFile);
 
-            //generate file name for X distance matrix
+        //generate file name for X distance matrix
         if (pid == 0)
         {
             AdditionalMethods::tempFileSavePath = AdditionalMethods::generateFileName();
             if (AdditionalMethods::tempFileSavePath.empty())
-                {
-                    MPI_Finalize();
-                    printf("Unable to generate file name for X distance matrix");
-                    return 0;
-                }
+            {
+                MPI_Finalize();
+                printf("Unable to generate file name for X distance matrix");
+                return 0;
+            }
         }
 
         tmp = cmdLine.get_arg("-al");
@@ -173,17 +176,44 @@ int main(int argc, char** argv)
         else if (tmp == "SOM")
         {
             SOM *method = new SOM(strToInt(cmdLine.get_arg("-rows")),strToInt(cmdLine.get_arg("-columns")), strToInt(cmdLine.get_arg("-eHat")));
-           // std::cout << strToInt(cmdLine.get_arg("-rows")) << "-rows" <<  strToInt(cmdLine.get_arg("-columns")) <<"-columns" << strToInt(cmdLine.get_arg("-eHat")) << "-eHat";
+            // std::cout << strToInt(cmdLine.get_arg("-rows")) << "-rows" <<  strToInt(cmdLine.get_arg("-columns")) <<"-columns" << strToInt(cmdLine.get_arg("-eHat")) << "-eHat";
             paralelCompute(pid, numOfProcs, method, resultFile, statFile);
+        }
+        else if (tmp == "KMEANS")
+        {
+                  KMEANS *method = new KMEANS(strToInt(cmdLine.get_arg("-noOfClust")),strToInt(cmdLine.get_arg("-maxIter")));
+            // std::cout << strToInt(cmdLine.get_arg("-rows")) << "-rows" <<  strToInt(cmdLine.get_arg("-columns")) <<"-columns" << strToInt(cmdLine.get_arg("-eHat")) << "-eHat";
+                  paralelCompute(pid, numOfProcs, method, resultFile, statFile);
+        }
+         else if (tmp == "MLP")
+        {
+            tmp = cmdLine.get_arg("-kFoldVal");
+            std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::toupper);
+            bool kFoldValidation = true;
+            if (tmp == "0" || tmp == "FALSE")
+            {
+                kFoldValidation =false;
+            }
+            //  KMEANS *method = new KMEANS(strToInt(cmdLine.get_arg("-noOfClust")),strToInt(cmdLine.get_arg("-maxIter")));
+                MLP *method = new MLP(strToInt(cmdLine.get_arg("-h1pNo")), strToInt(cmdLine.get_arg("-h2pNo")), strToDouble(cmdLine.get_arg("-qty")), strToInt(cmdLine.get_arg("-maxIter")), kFoldValidation);
+            // std::cout << strToInt(cmdLine.get_arg("-rows")) << "-rows" <<  strToInt(cmdLine.get_arg("-columns")) <<"-columns" << strToInt(cmdLine.get_arg("-eHat")) << "-eHat";
+                paralelCompute(pid, numOfProcs, method, resultFile, statFile);
+            }
+         else if (tmp == "DECTREE")
+        {
+                //  KMEANS *method = new KMEANS(strToInt(cmdLine.get_arg("-noOfClust")),strToInt(cmdLine.get_arg("-maxIter")));
+                DECTREE *method = new DECTREE(strToDouble(cmdLine.get_arg("-dL")), strToDouble(cmdLine.get_arg("-dT")), strToDouble(cmdLine.get_arg("-r")), strToInt(cmdLine.get_arg("-nTree")));
+            // std::cout << strToInt(cmdLine.get_arg("-rows")) << "-rows" <<  strToInt(cmdLine.get_arg("-columns")) <<"-columns" << strToInt(cmdLine.get_arg("-eHat")) << "-eHat";
+                paralelCompute(pid, numOfProcs, method, resultFile, statFile);
         }
         else
         {
-            std::cout << "Unknown algorithm call";
+            std::cout << "Unknown algorithm call" << std::endl;
         }
     }
     else
     {
-        std::cout << "Input/output file parameter(s) not found";
+        std::cout << "Input/output file parameter(s) not found" << std::endl;
     }
 
     MPI_Finalize();
@@ -219,7 +249,7 @@ void paralelCompute(int pid, int numOfProcs, T *mthd, std::string resultFile, st
             int n = Y.getObjectCount();
             int m = Y.getObjectAt(0).getFeatureCount();
 
-             stressErrors[0] = mthd->getStress();
+            stressErrors[0] = mthd->getStress();
 
             for (int i = 1; i < numOfProcs; i++)
             {

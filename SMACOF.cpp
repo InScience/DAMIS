@@ -19,15 +19,18 @@
 #include "AdditionalMethods.h"
 #include "DistanceMetrics.h"
 
-SMACOF::SMACOF(){
+SMACOF::SMACOF()
+{
 
 }
 
-SMACOF::~SMACOF(){
+SMACOF::~SMACOF()
+{
 
 }
 
-SMACOF::SMACOF(double eps, int maxIter, int d):MDS(eps, maxIter, d){
+SMACOF::SMACOF(double eps, int maxIter, int d):MDS(eps, maxIter, d)
+{
     X = ObjectMatrix(AdditionalMethods::inputDataFile);
     X.loadDataMatrix();
     readFile = true;
@@ -42,7 +45,8 @@ SMACOF::SMACOF(double eps, int maxIter, int d):MDS(eps, maxIter, d){
     initializeProjectionMatrix();
 }
 
-SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix X_base, ObjectMatrix Y_base):MDS(eps, maxIter, d){
+SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix X_base, ObjectMatrix Y_base):MDS(eps, maxIter, d)
+{
     X = X_base;
     readFile = false;
 
@@ -60,7 +64,8 @@ SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix X_base, ObjectMatrix
     Y = initialY;
 }*/
 
-SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix initialX):MDS(eps, maxIter, d){
+SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix initialX):MDS(eps, maxIter, d)
+{
     X = initialX;
     readFile = false;
 
@@ -71,11 +76,12 @@ SMACOF::SMACOF(double eps, int maxIter, int d, ObjectMatrix initialX):MDS(eps, m
 
     for (int i = 0; i < m; i++)
         gutman.addObject(DataObject(gutmanRow));
-   // Y = Y_base;
+    // Y = Y_base;
     initializeProjectionMatrix();
 }
 
-ObjectMatrix SMACOF::getProjection(){
+ObjectMatrix SMACOF::getProjection()
+{
     stressErrors.reserve(maxIteration);
     int iteration = 0;
     int m = X.getObjectCount();
@@ -83,7 +89,7 @@ ObjectMatrix SMACOF::getProjection(){
     stressErrors.push_back(getStress());
     double sum = 0.0;
     double Epsilon = DBL_MAX;
-  //  ObjectMatrix Gutman;
+    //  ObjectMatrix Gutman;
     ObjectMatrix Y_new(m);
 
     ObjectMatrix Y_loc = Y; // runs faster if have local copy of Y matrix
@@ -105,10 +111,10 @@ ObjectMatrix SMACOF::getProjection(){
             {
                 sum = 0.0;
                 for (int k = 0; k < m; k++)
-                        sum += obj1.getFeatureAt(k) * Y_loc.getObjectAt(k).getFeatureAt(j); //get from local copy
+                    sum += obj1.getFeatureAt(k) * Y_loc.getObjectAt(k).getFeatureAt(j); //get from local copy
                 Y_newRow.push_back(sum / (float) m);
             }
-            Y_new.addObject(DataObject(Y_newRow));
+            Y_new.addObject(DataObject(Y_newRow), X.getObjectAt(i).getClassLabel());
         }
         Y = Y_new;
         Y_loc = Y;
@@ -116,8 +122,9 @@ ObjectMatrix SMACOF::getProjection(){
         stressErrors.push_back(getStress());
         iteration++;
         Epsilon = std::fabs(stressErrors.at(iteration - 1) - stressErrors.at(iteration));
-    //    std::cout << iteration << " " << Epsilon << " " << str << std::endl;
+        //    std::cout << iteration << " " << Epsilon << " " << str << std::endl;
     }
+    Y.setPrintClass(X.getStringClassAttributes());
     return Y;
 }
 
