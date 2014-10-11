@@ -276,7 +276,7 @@ void ObjectMatrix::saveDataMatrix(const char* path)
     if (!additionalAttributes.empty())
     {
         for (int i = 0; i < getObjectAt(0).getFeatureCount() - additionalAttributes.size(); i++)
-            attributeLabels.push_back("atr_" + std::to_string(static_cast<long long>(i+1)) + " REAL");
+            attributeLabels.push_back("atr" + std::to_string(static_cast<long long>(i+1)) + " REAL");
 
         for (int i = 0; i < additionalAttributes.size(); i++)
             {
@@ -287,7 +287,7 @@ void ObjectMatrix::saveDataMatrix(const char* path)
     else
     {
         for (int i = 0; i < getObjectAt(0).getFeatureCount(); i++)
-            attributeLabels.push_back("atr_" + std::to_string(static_cast<long long>(i+1)) + " REAL");
+            attributeLabels.push_back("atr" + std::to_string(static_cast<long long>(i+1)) + " REAL");
     }
     file.writeData(path, this->comments, this->DataObjects, attributeStringClasses, attributeLabels);
 }
