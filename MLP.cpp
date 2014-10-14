@@ -22,8 +22,13 @@ MLP::MLP(int h1pNo, int h2pNo, double qtty, int maxIter, bool validationMethod)
     mlpsetdecay(trn, 0.001); // by default we set moderate weight decay
     mlpsetcond(trn, wstep, this->maxIter);     // * we choose iterations limit as stopping condition (another condition - step size - is zero, which means than this condition is not active)
 
-    alglib::mlpcreatec2(X.getObjectAt(0).getFeatureCount(), h1No, h2No, X.getClassCount(), network); //create nn network with noofinput features, 2 hidden layers, noofclasses (and sore to network variable)
-
+    if ((h1No > 0) && (h2No > 0))
+        alglib::mlpcreatec2(X.getObjectAt(0).getFeatureCount(), h1No, h2No, X.getClassCount(), network); //create nn network with noofinput features, 2 hidden layers, noofclasses (and sore to network variable)
+    if ((h1No > 0) && (h2No == 0))
+         alglib::mlpcreatec1(X.getObjectAt(0).getFeatureCount(), h1No, X.getClassCount(), network); //create nn network with no of input features, 1 hidden layer, noofclasses (and sore to network variable)
+    if ((h1No == 0) && (h2No == 0))
+        alglib::mlpcreatec0(X.getObjectAt(0).getFeatureCount(), X.getClassCount(), network); //create nn network with no of input features, 0 hidden layer, noofclasses (and sore to network variable)
+///h2No must be non zero
 
     if (this->kFoldValidation == true) //do kfold validation
     {
@@ -102,7 +107,7 @@ ObjectMatrix MLP::getProjection()
         std::vector <std::string > probabilities; probabilities.reserve(0);
 
         for (int i = 0; i < X.getClassCount(); i++)
-            probabilities.push_back("probability_" + X.getStringClassAttributes().at(i));
+            probabilities.push_back("probClass" + X.getStringClassAttributes().at(i));
 
         Y.addAtributes(probabilities);
 
