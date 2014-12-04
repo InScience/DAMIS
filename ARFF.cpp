@@ -127,7 +127,7 @@ void ARFF::readArffFile()
                         }
                         else
                           {
-                              std::cout << "Class atribute is ill-defined, cannot find {} brackets";
+//                              std::cout << "Class atribute is ill-defined, cannot find {} brackets";
                               readSuccess = false;
                           }
                     }
@@ -194,7 +194,7 @@ void ARFF::readArffFile()
 
                                 if (badClass)
                                 {
-                                    std::cout << "Found invalid class at line - " << line_no;
+//                                    std::cout << "Found invalid class at line - " << line_no;
                                     readSuccess = false;
                                     //continue;
                                 }
@@ -209,7 +209,7 @@ void ARFF::readArffFile()
                                     doubleVector.push_back(x);
                                 else
                                 {
-                                    std::cout << "File is not valid (skipping object), found non numeric value \\ " << tmp[i] << " \\ at line " <<line_no <<" at position " <<i;
+//                                    std::cout << "File is not valid (skipping object), found non numeric value \\ " << tmp[i] << " \\ at line " <<line_no <<" at position " <<i;
                                     badAtrrSection = true;
                                     readSuccess = false;
 
@@ -233,7 +233,7 @@ void ARFF::readArffFile()
                     }
                     else
                        {
-                        std::cout << "Data section line " << line_no << " does not have required quantity features ";
+//                        std::cout << "Data section line " << line_no << " does not have required quantity features ";
                           readSuccess = false;
                        }
                 }
@@ -244,13 +244,13 @@ void ARFF::readArffFile()
     }
     else
         {
-            std::cout << "Cannot open file " << this->fileToRead << " for reading into ARFF object";
+//            std::cout << "Cannot open file " << this->fileToRead << " for reading into ARFF object";
             readSuccess = false;
         }
 
     if (ARFF::data.empty() || ARFF::attributes.empty())
         {
-            std::cout << "Data file " << this->fileToRead << " does not contain either attribute or correct data section ";
+      //      std::cout << "Data file " << this->fileToRead << " does not contain either attribute or correct data section ";
             readSuccess = false;
         }
 }
@@ -286,10 +286,13 @@ void ARFF::writeStatData(std::string statFile, double err, double calcTime)
     file<<"@ATTRIBUTE calcTime REAL"<<std::endl;
     file <<"%"<<std::endl;
     file<<"@DATA"<<std::endl;
-    file << err << ", "<<calcTime;
+    time_t endTime;
+    time(&endTime);
+    file << err << ", "<<difftime(endTime, AdditionalMethods::startTime);
     file.close();
 
-    AdditionalMethods::deleteFile();
+ //   AdditionalMethods::deleteFile();
+
 }
 
 std::vector<std::string> ARFF::getAttributes()
@@ -371,14 +374,4 @@ bool ARFF::isSuccessfullyRead()
     return readSuccess;
 }
 
-/**
- * Method that deletes single file
- */
-int AdditionalMethods::deleteFile()
-{
-    fclose(AdditionalMethods::distFile);
-    if (std::remove(AdditionalMethods::tempFileSavePath.c_str()) != 0)
-       // printf("Error deleting file");
 
-    return 0;
-}
