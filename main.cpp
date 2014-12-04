@@ -25,7 +25,7 @@
 #include "SOM.h"
 #include "SOMMDS.h"
 #include "DMA.h"
-#include "mpich2/mpi.h"
+#include <mpi.h>
 #include "Projection.h"
 #include "PCA.h"
 #include "AdditionalMethods.h"
@@ -33,6 +33,7 @@
 #include "MLP.h"
 #include "DECTREE.h"
 #include "cmdLineParser/CommandLineParser.h"
+#include <time.h>
 
 #include <sstream>
 #include <algorithm>
@@ -49,22 +50,30 @@ void paralelCompute(int pid, int numOfProcs, T *mthd, std::string resultFile, st
 
 int main(int argc, char** argv)
 {
+
     std::string inputFile = "", resultFile="", statFile="";     // pradiniu duomenu, rezultatų ir paklaidų failai
-    std::string tmp ="";                                        //temp parameter for call method selection
+    std::string tmp ="";
+    const char* send;                                        //temp parameter for call method selection
+    int tmpPathSize;
 
     int numOfProcs, pid; // (numOfProcs) procesu kiekis
 
 //    MPI::Init(argc, argv);
     MPI_Init(&argc, &argv);
+        //numOfProcs = MPI::COMM_WORLD.Get_size();
+    MPI_Comm_size(MPI_COMM_WORLD, &numOfProcs);
     //pid = MPI::COMM_WORLD.Get_rank();
     MPI_Comm_rank(MPI_COMM_WORLD, &pid);
+    // MPI_Status status;
+
+    if (pid == 0)
+        time(&AdditionalMethods::startTime);
 
     AdditionalMethods::PID = pid;
 
-    //numOfProcs = MPI::COMM_WORLD.Get_size();
-    MPI_Comm_size(MPI_COMM_WORLD, &numOfProcs);
-
-    // MPI_Status status;
+    //std::cout <<AdditionalMethods::PID << " " << numOfProcs << std::endl;
+   // MPI_Finalize();
+   // return 0;
 
     CommandLineParser cmdLine(argc,argv,true);
 
@@ -79,16 +88,28 @@ int main(int argc, char** argv)
         AdditionalMethods::inputDataFile.assign(inputFile);
 
         //generate file name for X distance matrix
-        if (pid == 0)
-        {
-            AdditionalMethods::tempFileSavePath = AdditionalMethods::generateFileName();
-            if (AdditionalMethods::tempFileSavePath.empty())
+        //if (pid == 0) // if it is master then generate and brodcast the distance matrix file name
+       // {
+            AdditionalMethods::tempFileSavePath = strdup(AdditionalMethods::generateFileName().c_str());
+
+            if (AdditionalMethods::tempFileSavePath == "")
             {
                 MPI_Finalize();
-                printf("Unable to generate file name for X distance matrix");
+                std::cout <<"Unable to generate file name for X distance matrix";
                 return 0;
             }
-        }
+
+        //     tmpPathSize = strlen(AdditionalMethods::tempFileSavePath) + 2; //get size of the generated file path + 2 adds space to '\0' symbols
+       // }
+
+      //  MPI_Bcast(&tmpPathSize, 1, MPI_INT, 0, MPI_COMM_WORLD); //broad cast the size
+
+     //   if (pid != 0) // if it is not root process then allocate the plase that will store the passed path to the file
+     //       AdditionalMethods::tempFileSavePath = (char*)malloc(tmpPathSize* sizeof(char));
+//
+     //   MPI_Bcast(AdditionalMethods::tempFileSavePath, tmpPathSize, MPI_CHAR, 0, MPI_COMM_WORLD); //bradcast the path to other processes
+
+      //  std::cout << AdditionalMethods::PID << " " <<tmpPathSize <<" " << AdditionalMethods::tempFileSavePath <<std::endl;
 
         tmp = cmdLine.get_arg("-al");
         std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::toupper);
@@ -148,6 +169,7 @@ int main(int argc, char** argv)
                 SMACOF *method = new SMACOF(eps, maxIter, d);
                 //std::cout << strToDouble(cmdLine.get_arg("-eps")) << strToInt(cmdLine.get_arg("-maxIter")) << strToInt(cmdLine.get_arg("-d")) << cmdLine.get_arg("-zeidel");
                 paralelCompute(pid, numOfProcs, method, resultFile, statFile);
+                //paralelCompute(pid, 5, method, resultFile, statFile);
             }
             else
             {
@@ -216,14 +238,18 @@ int main(int argc, char** argv)
         std::cout << "Input/output file parameter(s) not found" << std::endl;
     }
 
+
+//std::cout <<"aaa " <<AdditionalMethods::PID << std::endl;
+
     MPI_Finalize();
+//AdditionalMethods::deleteFile();//
     return 0;
 }
 
 template <typename T>
 void paralelCompute(int pid, int numOfProcs, T *mthd, std::string resultFile, std::string statFile)
 {
-    double t_start, t_end;                      // skaiciavimu pradzia ir pabaiga
+    time_t t_end;                      // skaiciavimu pradzia ir pabaiga
     ObjectMatrix Y;                             // projekcijos matrica
     double *stressErrors;                       // surinktu is procesu paklaidu aibe (testavimui)
     double receivedStress, min_stress = 0.0;    // gaunama ir maziausia paklaidos
@@ -233,48 +259,58 @@ void paralelCompute(int pid, int numOfProcs, T *mthd, std::string resultFile, st
 
     int send, min_rank = 0;
 
+// time(&t_start);
+
     if (pid == 0)
     {
-        t_start = MPI_Wtime();
         if (numOfProcs == 1)
         {
             Y = mthd->getProjection();
             Y.saveDataMatrix(resultFile.c_str());
-            ARFF::writeStatData(statFile, mthd->getStress(), MPI_Wtime() - t_start);
+           // time(&t_end);
+            ARFF::writeStatData(statFile, mthd->getStress(), difftime(time(&t_end), AdditionalMethods::startTime));
+//std::cout << " laikas  " << difftime(time(&t_end), AdditionalMethods::startTime) <<  std::endl;
         }
         else
         {
             stressErrors = new double[numOfProcs];     // surinktu paklaidu masyvas (testavimui)
             Y = mthd->getProjection();
-            int n = Y.getObjectCount();
-            int m = Y.getObjectAt(0).getFeatureCount();
+            int n ;//= Y.getObjectCount();
+            int m ;//= Y.getObjectAt(0).getFeatureCount();
 
-            stressErrors[0] = mthd->getStress();
-
+            stressErrors[0] = mthd->getStress()+1;
+//std::cout << "0 turi paklaida " << stressErrors[0] << std::endl;
             for (int i = 1; i < numOfProcs; i++)
             {
-                MPI_Recv(&receivedStress, 1, MPI_DOUBLE, i, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimama paklaida is kiekvieno proceso
+                MPI_Recv(&receivedStress, 1, MPI_DOUBLE, i, i, MPI_COMM_WORLD, &status);  // priimama paklaida is kiekvieno proceso
+//std::cout << "gauna is " <<i << " projekcijos paklaida " << receivedStress << std::endl;
                 stressErrors[i] = receivedStress;
             }
 
-            t_end = MPI_Wtime();
+          //  time(&t_end);
 
             min_stress = stressErrors[0];
             for (int i = 1; i < numOfProcs; i++)
-                if (stressErrors[i] < min_stress)
+               {
+                   if (stressErrors[i] < min_stress)
                 {
                     min_stress = stressErrors[i];
                     min_rank = i;
-                }
 
+                }
+//std::cout << "rankas: " <<min_rank << " err: " << stressErrors[i] << std::endl;
+               }
+//std::cout << "rankas is " <<min_rank << " maziausias" << std::endl;
             if (min_rank == 0)  // jei maziausia paklaida tevinio proceso siunciamas pranesimas likusiems, kad savo Y nesiustu
             {
                 send = 0;
+
                 for (int i = 1; i < numOfProcs; i++)
                     MPI_Send(&send, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
-
+//std::cout << "ssiusta visiems 0 " << std::endl;
                 Y.saveDataMatrix(resultFile.c_str());
-                ARFF::writeStatData(statFile, mthd->getStress(), MPI_Wtime() - t_start);
+              //  time(&t_end);
+                ARFF::writeStatData(statFile, stressErrors[min_rank], difftime(time(&t_end), AdditionalMethods::startTime));
             }
             else
             {
@@ -289,14 +325,60 @@ void paralelCompute(int pid, int numOfProcs, T *mthd, std::string resultFile, st
                         send = 0;
                         MPI_Send(&send, 1, MPI_INT, i, 0, MPI_COMM_WORLD);  // siunciamas pranesimas, kad nesiustu Y
                     }
+
+                 //   int nn, mm; //kintamieji nusako kokie dyd=io matrica bus gaunama
+
+                    MPI_Recv(&n, 1, MPI_INT, min_rank, min_rank, MPI_COMM_WORLD, &status);
+                    MPI_Recv(&m, 1, MPI_INT, min_rank, min_rank, MPI_COMM_WORLD, &status);
+//std::cout << "gaunama n ir m " << n << " " << m << std::endl;
+
+                /*if (nn!=n || mm!m) //will have to receive the whole Y data since matrices of the parent and child do not match
+                {
+                    n = mm;
+                    m = mm;
+                }*/
+ //std::cout << "Procesorius  " << pid  << " gavo matrica" << std::endl;
+               // Y = AdditionalMethods::DoubleToObjectMatrix(receiveArray, n, m); // gra=ianams tik skai2iai realiai priskirti negalima kadangi dingsta kals4s
                 receiveArray = AdditionalMethods::Array2D(n, m);
-
-                MPI_Recv(&(receiveArray[0][0]), m * n, MPI_DOUBLE, min_rank, MPI_ANY_TAG, MPI_COMM_WORLD, &status);   // priimama Y
+                MPI_Recv(&(receiveArray[0][0]), n * m, MPI_DOUBLE, min_rank, min_rank, MPI_COMM_WORLD, &status);   // priimama Y data dali
                 Y = AdditionalMethods::DoubleToObjectMatrix(receiveArray, n, m);
+//std::cout << "Y sukurta  "<< std::endl;
+                //update the Y matrix data that was received from the another process
+                for (int i = 0; i < n; i++)
+                        for (int j = 0; j < m; j++)
+                            Y.updateDataObject(i,j,receiveArray[i][j]);
+                int classQty = 0;
+                MPI_Recv(&classQty, 1, MPI_INT, min_rank, min_rank, MPI_COMM_WORLD, &status); // receive the different class qty
 
+ //std::cout << "gaunamas klasiu kiekis  " << classQty  << std::endl;
+
+                if (classQty !=0 )
+                {
+                    std::vector<std::string> receivedAtrrClasses;
+                    int clNameLenght;
+                    for (int cl = 0; cl < classQty; cl++)
+                    {
+                        MPI_Recv(&clNameLenght, 1, MPI_INT, min_rank, min_rank, MPI_COMM_WORLD, &status); // must send +1
+                        char buffer[clNameLenght];
+                        MPI_Recv(buffer, clNameLenght, MPI_CHAR, min_rank, min_rank, MPI_COMM_WORLD, &status);
+                        receivedAtrrClasses.push_back(std::string(buffer));
+//std::cout << buffer << std::endl;
+                    }
+                //set class present yra kazkas neaisku keli tokie patys metodai :!!!!
+                    Y.setPrintClass(receivedAtrrClasses);
+
+                    int classLabelBuffer[n];
+                    MPI_Recv(&classLabelBuffer, n, MPI_INT, min_rank, min_rank, MPI_COMM_WORLD, &status);
+                    for (int i = 0; i < n; i++)
+                        {
+                            Y.updateDataObjectClass(i,classLabelBuffer[i]);
+//std::cout << classLabelBuffer[i] << " ";
+                        }
+                }
                 Y.saveDataMatrix(resultFile.c_str());
-                ARFF::writeStatData(statFile, mthd->getStress(), MPI_Wtime() - t_start);
-
+                //time(&t_end);
+                ARFF::writeStatData(statFile, stressErrors[min_rank], difftime(time(&t_end), AdditionalMethods::startTime));
+//std::cout << " laikas  " << difftime(time(&t_end), AdditionalMethods::startTime) <<  std::endl;
             }
         }
     }
@@ -306,17 +388,49 @@ void paralelCompute(int pid, int numOfProcs, T *mthd, std::string resultFile, st
 
         double stress = mthd->getStress();
         MPI_Send(&stress, 1, MPI_DOUBLE, 0, pid, MPI_COMM_WORLD);  // siunciama paklaida teviniam procesui
-        MPI_Recv(&send, 1, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);  // priimamas pranesimas ar siusti Y
+//std::cout << "Procesorius  " << pid  << " issiunte pakalaida" << std::endl;
+        MPI_Recv(&send, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);  // priimamas pranesimas ar siusti Y
+
 
         if (send == 1)          // siusti, jei send = 1, nesiusti, jei send = 0
         {
             int n = Y.getObjectCount();
             int m = Y.getObjectAt(0).getFeatureCount();
+            //siisiunciam busimos matricos dydi //SOM atveju nugal4toj7 kiekis gali ir nesutapti su tevinio porceso turimu
+            MPI_Send(&n, 1, MPI_INT, 0, pid, MPI_COMM_WORLD);
+            MPI_Send(&m, 1, MPI_INT, 0, pid, MPI_COMM_WORLD);
+
             sendArray = AdditionalMethods::Array2D(n, m);
             sendArray = AdditionalMethods::ObjectMatrixToDouble(Y);
             MPI_Send(&(sendArray[0][0]), m * n, MPI_DOUBLE, 0, pid, MPI_COMM_WORLD);  // siunciama Y
+
+            int classQty = Y.getClassCount();
+            MPI_Send(&classQty, 1, MPI_INT, 0, pid, MPI_COMM_WORLD); //siunciam kiek  yra skirtingu klasiu atributu sekcijoje
+            if (classQty != 0 )
+            {
+                std::vector<std::string> possClasses = Y.getStringClassAttributes();
+                for (int i = 0 ; i < classQty; i ++)
+                {
+                   //  std::string cls = possClasses.at(i);
+                   // const char* cString = cls.c_str();
+//std::cout << cls << " ";
+                    int clsSize = possClasses.at(i).size()+1;
+                    MPI_Send(&clsSize, 1, MPI_INT, 0, pid, MPI_COMM_WORLD); //siunciam charo dydi
+                    MPI_Send((void*)possClasses.at(i).c_str(), clsSize, MPI_CHAR, 0, pid, MPI_COMM_WORLD); //siunciam patį stringą
+                }
+                //kadangi yra ir pačios klases siunciam ir objekto klasių masyvą
+                int classLabelBuffer[n];
+                for (int i = 0; i < n; i++)
+                    classLabelBuffer[i] = Y.getObjectAt(i).getClassLabel();
+
+                MPI_Send(&classLabelBuffer, n, MPI_INT, 0, pid, MPI_COMM_WORLD); //send buffer
+            }
+
+//std::cout << "Procesorius  " << pid  << " issiunte matrica" << std::endl;
         }
+
     }
+   // MPI_Barrier(MPI_COMM_WORLD);
 }
 
 void PrintMatrix(ObjectMatrix matrix)
@@ -324,16 +438,16 @@ void PrintMatrix(ObjectMatrix matrix)
     int numOfObjects = matrix.getObjectCount();
     int numOfFeatures = matrix.getObjectAt(0).getFeatureCount();
 
-    std::cout<<"******* Projekcijos matrica *******"<<std::endl;
+//    std::cout<<"******* Projekcijos matrica *******"<<std::endl;
     for (int i = 0; i < numOfObjects; i++)
     {
-        for (int j = 0; j < numOfFeatures; j++)
-            std::cout<<matrix.getObjectAt(i).getFeatureAt(j)<<" ";
-        std::cout<<std::endl;
+        for (int j = 0; j < numOfFeatures; j++);
+ //           std::cout<<matrix.getObjectAt(i).getFeatureAt(j)<<" ";
+ //       std::cout<<std::endl;
     }
 }
 /*
-* Method that converts string command line parameter to double
+* Method that converts string command line parameter to doublel
 */
 double strToDouble(std::string cmdParam)
 {
