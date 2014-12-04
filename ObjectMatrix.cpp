@@ -16,6 +16,7 @@
 #include <cmath>
 #include <iostream>
 #include <algorithm>
+#include <mpi.h>
 //#include <set>
 
 //double ObjectMatrix::_weight = 0;
@@ -40,7 +41,8 @@ ObjectMatrix::ObjectMatrix(std::string file)
 
 ObjectMatrix::ObjectMatrix(int cnt)
 {
-    DataObjects.reserve(cnt);
+ //   DataObjects.reserve(cnt);
+    DataObjects.reserve(0);
     objectCount = 0;
 	isClassPresent = false;
 }
@@ -93,6 +95,11 @@ void ObjectMatrix::updateDataObjectClass(int objectIndex, int newClass)
     this->DataObjects.at(objectIndex).setClassLabel(newClass);
   //  this->isClassPresent = true;
 }
+
+/*std::vector<int> ObjectMatrix::getIntObjectClasses();
+{
+    return this->objClasses
+}*/
 
 bool ObjectMatrix::getPrintClass()
 {
@@ -213,7 +220,8 @@ void ObjectMatrix::loadDataMatrix()
         double diff, sRow, tmpVal;
 
       //  FILE *distFile;
-        AdditionalMethods::distFile = fopen(AdditionalMethods::tempFileSavePath.c_str(), "wb");
+        if (AdditionalMethods::PID == 0) // semaphore to sync distance matrix write
+            AdditionalMethods::distFile = fopen(AdditionalMethods::tempFileSavePath, "wb");
 
         for (i = 0; i < objectCount - 1; i++)
         {
@@ -225,19 +233,42 @@ void ObjectMatrix::loadDataMatrix()
                     diff  = data.at(i).at(z) - data.at(j).at(z);
                     sRow += diff * diff;
                 }
-                tmpVal = std::sqrt(sRow);
-                fwrite(&tmpVal, sizeof(double), 1, AdditionalMethods::distFile);
+                if (AdditionalMethods::PID == 0)
+                   {
+                        tmpVal = std::sqrt(sRow);
+                        fwrite(&tmpVal, sizeof(double), 1, AdditionalMethods::distFile);
+                   }
                 ObjectMatrix::_weight += sRow;
             }
         }
-       // fclose(distFile);
+        //implementation of waait for other processes while PID finishes distance file writing
+        if (AdditionalMethods::PID == 0)
+       //     {
+                fclose(AdditionalMethods::distFile);
+         //       AdditionalMethods::distFileCreated = 1;
+         //   }
+       /* else
+            {
+                while (AdditionalMethods::distFileCreated != 1)
+                    system("sleep 1");
+            }*/
+
         // end distance matrix calculation
+       // std::cout<<  std::endl << AdditionalMethods::PID << std::endl;
     }
     else
     {
         //_weight = 0;
         objectCount = 0;
     }
+
+     MPI_Barrier(MPI_COMM_WORLD);
+     if(objectCount == 0)
+     {
+         std::cout << "No data in input file. Terminating"<< std::endl;
+         MPI_Finalize();
+         exit(1);
+     }
 }
 void ObjectMatrix::addComment(std::string comnt)
 {
