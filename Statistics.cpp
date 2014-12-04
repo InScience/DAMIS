@@ -7,6 +7,7 @@
 #include "DataObject.h"
 #include <time.h>
 #include <stdlib.h>
+#include <iostream>
 
 double Statistics::getAverage(ObjectMatrix om, int k)
 {
@@ -83,7 +84,7 @@ double Statistics::getCovCoef(ObjectMatrix om, int k, int l)
 
 double Statistics::getRandom()
 {
-    // srand(time(NULL) + AdditionalMethods::PID);
+    //srand(time(NULL) + AdditionalMethods::PID);
     return (double)rand()/RAND_MAX;
 }
 
@@ -116,4 +117,5 @@ ObjectMatrix Statistics::getCovMatrix(ObjectMatrix om)
 void Statistics::initSeed()
 {
     srand(time(NULL) + AdditionalMethods::PID);
+    //std::cout <<  rand() << " ";
 }
