@@ -74,8 +74,8 @@ double DimReductionMethod::getStress()
 
   //  FILE *distFile;
 
-    fclose(AdditionalMethods::distFile);
-    AdditionalMethods::distFile = fopen(AdditionalMethods::tempFileSavePath.c_str(), "rb");
+   /// fclose(AdditionalMethods::distFile);
+    AdditionalMethods::distFile = fopen(AdditionalMethods::tempFileSavePath, "rb");
     double tmpDist;
 // TODO (Povilas#1#): Check if file exists
 
@@ -99,7 +99,8 @@ double DimReductionMethod::getStress()
             stress += tmpDist * tmpDist;
         }
     }
- //   fclose(AdditionalMethods::distFile);
+    ///
+    fclose(AdditionalMethods::distFile);
 
     return stress * 1. / X.getWeight();
 }
