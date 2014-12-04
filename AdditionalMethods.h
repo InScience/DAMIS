@@ -113,7 +113,7 @@ public:
     /*! \var std::string fileSavePath;
     *  \brief Location where temporary matrix X distances will be saved.
     */
-    static std::string tempFileSavePath;
+    static char *tempFileSavePath;
     /*! \var std::string distFileName;
     *  \brief Random generated file name of the X distance matrix.
     */
@@ -122,6 +122,11 @@ public:
     * Holds pointer to bin file
     */
     static FILE* distFile;
+    /*!
+    * Semaphore that indicates whether the distance file has been created
+    */
+    //static int distFileCreated;
+    static time_t startTime;
 
 private:
     /*!
