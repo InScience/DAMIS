@@ -19,9 +19,11 @@
  */
 
 const char* AdditionalMethods::alphanum= "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-std::string AdditionalMethods::tempFileSavePath = "";
+char *AdditionalMethods::tempFileSavePath = "";
 std::string AdditionalMethods::tempPath = "";
 FILE *AdditionalMethods::distFile = NULL;
+//int AdditionalMethods::distFileCreated = 0;
+time_t AdditionalMethods::startTime = 0;
 
 AdditionalMethods::AdditionalMethods()
 {
@@ -53,8 +55,15 @@ std::string AdditionalMethods::generateFileName()
     int i;
     int qty = 20;
 
+       /* char PID[5];
+        snprintf(PID, sizeof(PID), "%d", AdditionalMethods::PID);*/
+
     for ( i = 0; i < qty; ++i)
         catString += (AdditionalMethods::alphanum[rand() % (strlen(AdditionalMethods::alphanum) - 1)]);
+   ///
+    /*catString +="_";
+    catString +=PID;*/
+   ///
     catString +=".bin";
 
     return  catString;
@@ -74,6 +83,7 @@ double** AdditionalMethods::ObjectMatrixToDouble(ObjectMatrix matrix)
 
     return matrixToReturn;
 }
+
 
 ObjectMatrix AdditionalMethods::DoubleToObjectMatrix(double** matrix, int rows, int cols)
 {
@@ -181,3 +191,16 @@ std::vector<std::string> AdditionalMethods::split(const std::string& s, char del
     AdditionalMethods::split(s, delim, elems);
     return elems;
 }
+
+/**
+ * Method that deletes single file
+ */
+int AdditionalMethods::deleteFile()
+{
+    fclose(AdditionalMethods::distFile);
+    if (std::remove(AdditionalMethods::tempFileSavePath) != 0)
+       std::cout << "Error deleting file";
+
+    return 0;
+}
+
