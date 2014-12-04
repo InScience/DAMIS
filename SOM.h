@@ -32,6 +32,15 @@ public:
      * \param int eHat - learning epoch
      */
     SOM(int rows, int columns, int eHat);
+
+        /*! \fn SOM(int rows, int columns, int eHat);
+     * \brief An overloaded constructor that accepts: number of rows, number of columns and hat value.
+     * \param int rows - number of som rows
+     * \param int columns - number of som columns
+     * \param int eHat - learning epoch
+     * \param int retWinners - if called SOMMDS then winners aree returned
+     */
+    SOM(int rows, int columns, int eHat, bool retWinners);
     /*
      * An overloaded constructor that accepts: number of rows, number of columns, hat value and initial matrix.
      */

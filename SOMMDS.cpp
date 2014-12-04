@@ -21,7 +21,7 @@ SOMMDS::~SOMMDS()
 }
 
 //SOMMDS::SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat):SMACOF(eps, max_iter, d), SOM(kx, ky, e_hat){
-SOMMDS::SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat): SOM(kx, ky, e_hat)
+SOMMDS::SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat): SOM(kx, ky, e_hat, true)
 {
     this->eps = eps;
     this->maxIter = max_iter;

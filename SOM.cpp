@@ -37,6 +37,15 @@ SOM::SOM(int rows, int columns, int ehat)
     X.loadDataMatrix();
     returnWinners = false;
 }
+SOM::SOM(int rows, int columns, int ehat, bool retWinners)
+{
+    k_x = rows;
+    k_y = columns;
+    eHat = ehat;
+    X = ObjectMatrix(AdditionalMethods::inputDataFile);
+    X.loadDataMatrix();
+    returnWinners = retWinners;
+}
 
 SOM::SOM(int rows, int columns, int ehat, ObjectMatrix x)
 {
@@ -70,7 +79,7 @@ ObjectMatrix SOM::getProjection()
 
             for (int k = 0; k < n; k++)
             {
-                rnd = Statistics::getRandom(-10.0, 1.0);
+                rnd = Statistics::getRandom(-1.0, 1.0);
                 M->updateDataObject(i, j, k, rnd);
                 dist += rnd*rnd;
             }
