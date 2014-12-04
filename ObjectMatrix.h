@@ -169,6 +169,12 @@ public:
      *  \brief sets the presence of classes
      */
     void setIsClassPresent();
+    /*! \fn std::vector<int>getIntObjectClasses();
+     *  \brief returns data section object classes in int.
+     * int is the class index of the attribute class section class
+     * \return std::vector<int> object classes.
+     */
+   // std::vector<int> getIntObjectClasses();
 
 
 
@@ -194,7 +200,7 @@ private:
      */
     std::vector<std::string> featureTitles;
     /*! \var std::vector<int> objClasses
-     *  \brief Holds int object clss vector
+     *  \brief Holds int object class vector
      */
     std::vector<int> objClasses;
     /*! \var std::vector<std::string> additionalAttributes;
