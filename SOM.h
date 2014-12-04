@@ -89,6 +89,10 @@ private:
      * Number or rows is equal to number of ObjectMatrix rows (k_x)
      */
     int k_x;
+        /*!
+     * If initial matrix with classes or winners mus be returned
+     */
+    bool returnWinners;
 
 };
 #endif // !defined(SOM_H)
