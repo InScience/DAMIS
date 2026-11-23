@@ -46,6 +46,9 @@ scripts/smoke-test.sh            # all algorithms on arff_files/iris.arff, NP=2
 NP=4 scripts/smoke-test.sh
 ```
 
+GitHub Actions (`.github/workflows/ci.yml`) build and run the smoke test on Ubuntu 26.04 on every push and
+pull request.
+
 ## Changes in 2026
 
 - Standalone `Makefile` (the NetBeans project files were never committed).
