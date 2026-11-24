@@ -32,7 +32,7 @@ jobs:
           apt-get update
           apt-get install -y --no-install-recommends build-essential openmpi-bin libopenmpi-dev git ca-certificates
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Build
         run: make -j"$(nproc)"
