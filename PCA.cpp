@@ -170,8 +170,12 @@ void PCA_::ProjectXMatrix()
 
     if (info == 1)
     {
+        // projection dimension as set by setProjectionDimension(); PCA_::d shadows it and holds
+        // the variance percentage when disp == true (looping to it overran the 4 iris columns)
+        const int dim = DimReductionMethod::d;
+
         for (int i = 0; i < m; i++) // objektu skaicius
-            for (int j = 0; j < d; j++) //i kuria erdve projekuojam
+            for (int j = 0; j < dim; j++) //i kuria erdve projekuojam
             {
                 tmp = 0.0;
                 for (int k = 0; k < n; k++) // objekto atriutu skaicius
@@ -179,7 +183,7 @@ void PCA_::ProjectXMatrix()
                 Y.updateDataObject(i, j, tmp);
             }
 
-        for (int i = 0; i < d; i++)
+        for (int i = 0; i < dim; i++)
             tarpDisp += eigValues[i];
 
         for (int i = 0; i < n; i++)

@@ -37,10 +37,13 @@ ObjectMatrix Projection::byRand(ObjectMatrix objectMatrix)
 
     ObjectMatrix projection(n);
 
-    int x, randMax = RAND_MAX - RAND_MAX % max;
-    int p = RAND_MAX+1;
-    while(p > randMax)
+    // pick a random column; rejection sampling avoids modulo bias
+    // (was: int p = RAND_MAX+1, an int overflow that skipped the loop and always chose the same column)
+    int x, randMax = RAND_MAX - (RAND_MAX % max);
+    int p;
+    do
         p = rand();
+    while (p >= randMax);
     x = min + p % (max - min);
 
     for (int i = 0; i < n; i++)
@@ -76,7 +79,7 @@ ObjectMatrix Projection::byDispersion(ObjectMatrix objectMatrix)
         for (int i = 0; i < n; i++)
         {
             tmpDiff = objectMatrix.getObjectAt(i).getFeatureAt(j) - average.at(j);
-            tmp += tmpDiff;
+            tmp += tmpDiff * tmpDiff; // squared deviation (plain deviations sum to ~0, sqrt gave 0/NaN and column 0 was always picked)
         }
         dispersion.push_back(std::sqrt(tmp)); //got rid of the 1/n multiplier
     }

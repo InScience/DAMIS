@@ -7,6 +7,9 @@
 
 #include <cstdlib>
 #include <vector>
+#include <cstdio>
+#include <cstring>
+#include <string>
 #include <iostream>
 #include <fstream>
 #include <unistd.h>
@@ -55,6 +58,7 @@ int main(int argc, char** argv)
     std::string tmp ="";
     const char* send;                                        //temp parameter for call method selection
     int tmpPathSize;
+    int exitCode = 0;                                       // non zero lets the caller (DamisService) detect a failed run
 
     int numOfProcs, pid; // (numOfProcs) procesu kiekis
 
@@ -87,29 +91,27 @@ int main(int argc, char** argv)
     {
         AdditionalMethods::inputDataFile.assign(inputFile);
 
-        //generate file name for X distance matrix
-        //if (pid == 0) // if it is master then generate and brodcast the distance matrix file name
-       // {
-            AdditionalMethods::tempFileSavePath = strdup(AdditionalMethods::generateFileName().c_str());
+        //generate file name for X distance matrix on the master and broadcast it, so that every
+        //process uses the same file (they used to rely on srand(time) giving them the same name)
+        std::string distFileName;
+        tmpPathSize = 0;
+        if (pid == 0)
+        {
+            distFileName = AdditionalMethods::generateFileName();
+            tmpPathSize = static_cast<int>(distFileName.size());
+        }
+        MPI_Bcast(&tmpPathSize, 1, MPI_INT, 0, MPI_COMM_WORLD); //broad cast the size
+        distFileName.resize(tmpPathSize);
+        if (tmpPathSize > 0)
+            MPI_Bcast(&distFileName[0], tmpPathSize, MPI_CHAR, 0, MPI_COMM_WORLD); //broadcast the path to other processes
 
-            if (AdditionalMethods::tempFileSavePath == "")
-            {
-                MPI_Finalize();
-                std::cout <<"Unable to generate file name for X distance matrix";
-                return 0;
-            }
-
-        //     tmpPathSize = strlen(AdditionalMethods::tempFileSavePath) + 2; //get size of the generated file path + 2 adds space to '\0' symbols
-       // }
-
-      //  MPI_Bcast(&tmpPathSize, 1, MPI_INT, 0, MPI_COMM_WORLD); //broad cast the size
-
-     //   if (pid != 0) // if it is not root process then allocate the plase that will store the passed path to the file
-     //       AdditionalMethods::tempFileSavePath = (char*)malloc(tmpPathSize* sizeof(char));
-//
-     //   MPI_Bcast(AdditionalMethods::tempFileSavePath, tmpPathSize, MPI_CHAR, 0, MPI_COMM_WORLD); //bradcast the path to other processes
-
-      //  std::cout << AdditionalMethods::PID << " " <<tmpPathSize <<" " << AdditionalMethods::tempFileSavePath <<std::endl;
+        if (distFileName.empty())
+        {
+            std::cout <<"Unable to generate file name for X distance matrix" << std::endl;
+            MPI_Finalize();
+            return 1;
+        }
+        AdditionalMethods::tempFileSavePath = strdup(distFileName.c_str());
 
         tmp = cmdLine.get_arg("-al");
         std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::toupper);
@@ -190,7 +192,11 @@ int main(int argc, char** argv)
         {
             //SOMMDS(double eps, int max_iter, int d, int kx, int ky, int e_hat);
             //SOMMDS mthd11(epsilon, maxIter, d, 100, 3, 5);
-            SOMMDS *method = new SOMMDS(strToDouble(cmdLine.get_arg("-eps")), strToInt(cmdLine.get_arg("-maxIter")), strToInt(cmdLine.get_arg("-mdsProjection")),strToInt(cmdLine.get_arg("-rows")),strToInt(cmdLine.get_arg("-columns")), strToInt(cmdLine.get_arg("-eHat")));
+            // DamisService passes the MDS iteration count as -mdsIteration (-maxIter kept for direct calls)
+            std::string mdsIteration = cmdLine.get_arg("-mdsIteration");
+            if (mdsIteration.empty())
+                mdsIteration = cmdLine.get_arg("-maxIter");
+            SOMMDS *method = new SOMMDS(strToDouble(cmdLine.get_arg("-eps")), strToInt(mdsIteration), strToInt(cmdLine.get_arg("-mdsProjection")),strToInt(cmdLine.get_arg("-rows")),strToInt(cmdLine.get_arg("-columns")), strToInt(cmdLine.get_arg("-eHat")));
             //method.
 //            std::cout << strToDouble(cmdLine.get_arg("-eps")) << strToInt(cmdLine.get_arg("-maxIter")) << strToInt(cmdLine.get_arg("-mdsProjection")) << strToInt(cmdLine.get_arg("-rows")) << strToInt(cmdLine.get_arg("-columns")) << strToInt(cmdLine.get_arg("-eHat"));
             paralelCompute(pid, numOfProcs, method, resultFile, statFile);
@@ -231,19 +237,25 @@ int main(int argc, char** argv)
         else
         {
             std::cout << "Unknown algorithm call" << std::endl;
+            exitCode = 1;
         }
     }
     else
     {
         std::cout << "Input/output file parameter(s) not found" << std::endl;
+        exitCode = 1;
     }
 
 
 //std::cout <<"aaa " <<AdditionalMethods::PID << std::endl;
 
+    // all processes are done with the X distance matrix file, the master removes it
+    MPI_Barrier(MPI_COMM_WORLD);
+    if (pid == 0 && AdditionalMethods::tempFileSavePath[0] != '\0')
+        std::remove(AdditionalMethods::tempFileSavePath);
+
     MPI_Finalize();
-//AdditionalMethods::deleteFile();//
-    return 0;
+    return exitCode;
 }
 
 template <typename T>
@@ -458,6 +470,7 @@ double strToDouble(std::string cmdParam)
     {
         return atof(cmdParam.c_str());
     }
+    return 0.0; // missing or non numeric parameter (used to fall off the end: undefined behaviour)
 }
 
 int strToInt(std::string cmdParam)
@@ -469,4 +482,5 @@ int strToInt(std::string cmdParam)
     {
         return atoi(cmdParam.c_str());
     }
+    return 0; // missing or non numeric parameter (used to fall off the end: undefined behaviour)
 }

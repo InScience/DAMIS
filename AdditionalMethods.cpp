@@ -2,6 +2,9 @@
 #include <sstream>
 #include <iostream>
 #include <time.h>
+#include <cstring>
+#include <random>
+#include <unistd.h>
 #include "AdditionalMethods.h"
 #include "ObjectMatrix.h"
 #include "DataObject.h"
@@ -19,7 +22,8 @@
  */
 
 const char* AdditionalMethods::alphanum= "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-char *AdditionalMethods::tempFileSavePath = "";
+static char emptyPath[] = "";
+char *AdditionalMethods::tempFileSavePath = emptyPath;
 std::string AdditionalMethods::tempPath = "";
 FILE *AdditionalMethods::distFile = NULL;
 //int AdditionalMethods::distFileCreated = 0;
@@ -40,30 +44,26 @@ AdditionalMethods::~AdditionalMethods()
  */
 std::string AdditionalMethods::generateFileName()
 {
-    time_t t;
-    time(&t);
-    srand((unsigned int)(t+rand()));
+    // std::random_device instead of srand(time): concurrent runs started within the same
+    // second must not get the same distance matrix file. rand() is (re)seeded by Statistics::initSeed().
+    static std::random_device rd;
+    static std::mt19937 gen(rd() ^ (static_cast<unsigned int>(getpid()) << 16));
+    std::uniform_int_distribution<size_t> pick(0, strlen(AdditionalMethods::alphanum) - 1);
 
     std::string catString, path;
     path.assign(AdditionalMethods::inputDataFile);
 
     std::string::size_type tt = path.find_last_of("/");
-    path = path.substr(0,tt) + "/";
+    path = (tt == std::string::npos) ? "./" : path.substr(0,tt) + "/";
     AdditionalMethods::tempPath.assign(path);
     catString.assign(AdditionalMethods::tempPath);
 
     int i;
     int qty = 20;
 
-       /* char PID[5];
-        snprintf(PID, sizeof(PID), "%d", AdditionalMethods::PID);*/
-
     for ( i = 0; i < qty; ++i)
-        catString += (AdditionalMethods::alphanum[rand() % (strlen(AdditionalMethods::alphanum) - 1)]);
-   ///
-    /*catString +="_";
-    catString +=PID;*/
-   ///
+        catString += AdditionalMethods::alphanum[pick(gen)];
+
     catString +=".bin";
 
     return  catString;

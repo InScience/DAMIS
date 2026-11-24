@@ -5,6 +5,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <algorithm>
+#include <cctype>
 #include <iostream>
 //#include "DataObject.h"
 
@@ -114,9 +115,9 @@ void ARFF::readArffFile()
                             for (unsigned int i = 0; i < tmp4.size(); i++) //push back each class label
                             {
                                 //trim spaces from start
-                                tmp4[i].erase(tmp4[i].begin(), std::find_if(tmp4[i].begin(), tmp4[i].end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+                                tmp4[i].erase(tmp4[i].begin(), std::find_if(tmp4[i].begin(), tmp4[i].end(), [](unsigned char c) { return !std::isspace(c); }));
                                 //trim spaces from end
-                                tmp4[i].erase(std::find_if(tmp4[i].rbegin(), tmp4[i].rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), tmp4[i].end());
+                                tmp4[i].erase(std::find_if(tmp4[i].rbegin(), tmp4[i].rend(), [](unsigned char c) { return !std::isspace(c); }).base(), tmp4[i].end());
 
                                 className.assign(tmp4[i]);
                                 std::transform(className.begin(), className.end(), className.begin(), ::toupper);
@@ -160,7 +161,7 @@ void ARFF::readArffFile()
                         bool badAtrrSection = false;
 
                         std::string className;
-                        int classInt;
+                        int classInt = 0;
 
                         for (unsigned int i = 0; i < tmp.size(); i++) // for each attribute in each data line
                         {
@@ -168,9 +169,9 @@ void ARFF::readArffFile()
                             {
                                 //check if the class attribute in data section is valid
                                  //trim spaces from start
-                                tmp[i].erase(tmp[i].begin(), std::find_if(tmp[i].begin(), tmp[i].end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+                                tmp[i].erase(tmp[i].begin(), std::find_if(tmp[i].begin(), tmp[i].end(), [](unsigned char c) { return !std::isspace(c); }));
                                 //trim spaces from end
-                                tmp[i].erase(std::find_if(tmp[i].rbegin(), tmp[i].rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), tmp[i].end());
+                                tmp[i].erase(std::find_if(tmp[i].rbegin(), tmp[i].rend(), [](unsigned char c) { return !std::isspace(c); }).base(), tmp[i].end());
 
                                 className.assign(tmp[i]);
                                 std::transform(className.begin(), className.end(), className.begin(), ::toupper);

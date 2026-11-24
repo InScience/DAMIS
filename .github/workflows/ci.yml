@@ -1,0 +1,41 @@
+# Builds the Algorithms binary on Ubuntu 26.04 (the system of the DamisService image) with OpenMPI and runs
+# every algorithm on the iris sample (scripts/smoke-test.sh). The service image and the whole application
+# are tested by the CI of InScience/DAMIS_WebService and InScience/DAMIS-GUI.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build and smoke test (Ubuntu 26.04, OpenMPI)
+    runs-on: ubuntu-24.04
+    container: ubuntu:26.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Install the compiler and OpenMPI
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends build-essential openmpi-bin libopenmpi-dev git ca-certificates
+
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: make -j"$(nproc)"
+
+      - name: Smoke test (2 MPI processes)
+        run: NP=2 scripts/smoke-test.sh
